@@ -1,0 +1,22 @@
+spd = 0;
+dir = 0;
+angle = 0;
+alpha = 1;
+index = 0;
+scale = 1;
+ammo = -1; ammodetermined = false;
+time = 0;
+pickup = false;
+pickup_range = 10;
+enemy = false;
+bounce_time = 0;
+sprite = -1;
+animation = 0;
+animation_speed = 0;
+offset = ceil(random_range(-3, 3));
+quantity = 1;
+drop = false;
+pack = false;
+damage = 0;
+
+image_alpha = 0;

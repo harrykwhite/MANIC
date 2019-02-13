@@ -1,0 +1,10 @@
+/*burnobj[0] = obj_grass_small_0;
+burnobj[1] = obj_grass_small_1;
+burnobj[2] = obj_grass_medium_0;
+burnobj[3] = obj_grass_bush_0;
+burnobj[4] = obj_campfire_0;
+burnobj[5] = obj_proj_4;
+burnobj[6] = obj_proj_5;*/
+burnobj[0] = obj_campfire_0;
+burnobj[1] = obj_proj_4;
+burnobj[2] = obj_proj_5;

@@ -1,0 +1,1 @@
+scr_depth_controller(y, scr_draw_attributes_environhit);

@@ -1,0 +1,76 @@
+// Variables
+background_01 = -1;
+background_02 = -1;
+
+sound_break_0 = 0;
+lighting = 1;
+
+spawn = false;
+spawn_time = 60 * 10;
+
+// Spawn System
+scr_spawn_setup("city", 1.3);
+spawn_state_time_real = 0;
+spawn_pause_update = false;
+spawn_rate_real = 1;
+spawn_cleared = false;
+
+// Objective System
+objective_update = false;
+
+switch(room){
+	case rm_level_7_00:
+		spawn_x = 240;
+		spawn_y = 192;
+		
+		objective_title[0] = "Clear the area of 10 enemies";
+		objective_type[0] = ObjectiveType.Kill;
+		objective_type_kill_number[0] = 10;
+		objective_type_kill_number_max[0] = objective_type_kill_number[0];
+
+		objective_title[1] = "Move east to the next area";
+		objective_type[1] = ObjectiveType.Clear;
+		break;
+	
+	case rm_level_7_01:
+		spawn_x = 240;
+		spawn_y = 196;
+		
+		objective_title[0] = "Clear the area of 10 enemies";
+		objective_type[0] = ObjectiveType.Kill;
+		objective_type_kill_number[0] = 10;
+		objective_type_kill_number_max[0] = objective_type_kill_number[0];
+		
+		objective_title[1] = "Move south to the next area";
+		objective_type[1] = ObjectiveType.Clear;
+		break;
+	
+	case rm_level_7_02:
+		spawn_x = 336;
+		spawn_y = 124;
+		
+		objective_title[0] = "Clear the area of 10 enemies";
+		objective_type[0] = ObjectiveType.Kill;
+		objective_type_kill_number[0] = 10;
+		objective_type_kill_number_max[0] = objective_type_kill_number[0];
+		
+		objective_title[1] = "Move south to leave the area";
+		objective_type[1] = ObjectiveType.Clear;
+		break;
+}
+
+global.game_objective_current = 0;
+
+// Other
+global.cutscene_current = 2;
+fly_can_spawn = true;
+sprite_index = noone;
+depth = -5;
+
+rain = audio_play_sound(m_ambience_rain_0, 3, true);
+audio_sound_gain(rain, 0, 0);
+audio_sound_gain(rain, 1, 8000);
+
+if (room == rm_level_7_00) || (room == rm_level_7_01){
+	fly_can_spawn = false;
+}

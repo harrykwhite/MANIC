@@ -1,0 +1,1 @@
+scr_pawn_weapon_setup(95, WeaponType.Melee);

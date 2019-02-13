@@ -1,0 +1,10 @@
+alpha = 0.9;
+alpha_decline = 0.025;
+size_decline = 0.025;
+sprite = 0;
+angle = 0;
+xscale = 1;
+yscale = 1;
+spd = 0;
+dir = 0;
+special = noone;
