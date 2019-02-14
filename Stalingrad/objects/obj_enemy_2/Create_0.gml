@@ -49,7 +49,7 @@ defense = 0;
 
 move_speed = 0;
 move_speed_real = 0;
-move_speed_offset = random_range(0.75, 0.9);
+move_speed_offset = random_range(0.95, 1.1);
 move_xTo = x;
 move_yTo = y;
 move_away_time = 20 + random_range(-10, 10);
