@@ -8711,6 +8711,14 @@
             }
         },
         {
+            "Key": "db9585b4-785f-4a4f-8640-4e7edc9b267a",
+            "Value": {
+                "id": "18315a69-129f-4898-bb19-4f90eddf6dec",
+                "resourcePath": "objects\\obj_enemy_2_light\\obj_enemy_2_light.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "dbd0b73f-4d02-4b31-a09a-054e21f3402b",
             "Value": {
                 "id": "10fcc035-44aa-43e9-a641-a076044a6a24",
