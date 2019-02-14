@@ -1,3 +1,8 @@
+// Minecart State
+if (inMinecart){
+	state = scr_player_minecart;
+}
+
 // Breaking Dash
 var inst, len;
 

@@ -56,6 +56,11 @@ if (img_index < image_number){
 image_index = floor(img_index);
 image_speed = 0;
 
+if (keyboard_check_pressed(ord("G"))){
+	inMinecart = !inMinecart;
+	minecart = instance_nearest(x, y, obj_pawn_minecart);
+}
+
 if (instance_exists(mylight)){
 	mylight.x = x;
 	mylight.y = y;

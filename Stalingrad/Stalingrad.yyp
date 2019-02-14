@@ -2239,6 +2239,14 @@
             }
         },
         {
+            "Key": "36a8382a-c471-40bc-b75c-1197294d11e3",
+            "Value": {
+                "id": "b9717e52-bd82-4884-b8ff-c90517c3dbc4",
+                "resourcePath": "scripts\\scr_player_minecart\\scr_player_minecart.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "36baeca6-1a9e-4e54-96c8-3ded2dcf40c4",
             "Value": {
                 "id": "26909f0e-926b-47c7-aad1-2025798e2361",
@@ -3183,6 +3191,14 @@
             }
         },
         {
+            "Key": "4e278f83-3fcb-479f-ac3a-24129b52d60d",
+            "Value": {
+                "id": "0cb86f3f-2baf-4bd3-b929-a7b9b58bc5cc",
+                "resourcePath": "sprites\\spr_pawn_minecart_0\\spr_pawn_minecart_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "4e2d0d9e-b0ad-4a29-929e-0af82c65985d",
             "Value": {
                 "id": "af3da886-e002-461a-ab4a-363da292d7fd",
@@ -4100,6 +4116,14 @@
                 "id": "9d0e2296-76c1-46e1-a505-d2ee4622b620",
                 "resourcePath": "scripts\\scr_part_type_snow_0\\scr_part_type_snow_0.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "67c55928-018d-4879-abee-623082cfee64",
+            "Value": {
+                "id": "92e69851-9552-445d-8b1f-13ba5ea5b79b",
+                "resourcePath": "sprites\\spr_pawn_player_minecart_0\\spr_pawn_player_minecart_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -6172,6 +6196,14 @@
                 "id": "071d4402-ee6a-4c4a-b958-440532f90bf8",
                 "resourcePath": "sprites\\spr_enemy_0_sniperboss_walk_0\\spr_enemy_0_sniperboss_walk_0.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "96c89177-1928-47b4-93c5-230aeeef8340",
+            "Value": {
+                "id": "bcedd234-b5d8-4927-99f4-0f1f325b4ce2",
+                "resourcePath": "objects\\obj_pawn_minecart\\obj_pawn_minecart.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -10147,6 +10179,7 @@
         "38f8bf51-c294-4396-8b6c-61ed09c220af",
         "638dc00a-9619-468a-a905-be8726c83911",
         "6636ed92-7038-4342-b58e-4bb0b7e804bd",
+        "36a8382a-c471-40bc-b75c-1197294d11e3",
         "7526341e-5da9-491c-8957-3fd54db0c9fb",
         "80529325-db35-4b2a-b971-265d5a348df5",
         "a146404e-735a-4ab8-ad42-1ca2222e7db1",

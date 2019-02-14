@@ -85,3 +85,6 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 
 // Other
 isVisible = true;
+
+minecart = noone;
+inMinecart = false;

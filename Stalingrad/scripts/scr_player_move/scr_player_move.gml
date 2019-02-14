@@ -10,6 +10,13 @@ if (spd_offset > 1){
 	spd_offset += spd_offset_change;
 }
 
+// Minecart State
+if (inMinecart){
+	state = scr_player_minecart;
+	exit;
+}
+
+// Main
 if (global.weapon_slot_standalone == -1){
 	
 	// Axis
