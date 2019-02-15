@@ -4119,14 +4119,6 @@
             }
         },
         {
-            "Key": "67c55928-018d-4879-abee-623082cfee64",
-            "Value": {
-                "id": "92e69851-9552-445d-8b1f-13ba5ea5b79b",
-                "resourcePath": "sprites\\spr_pawn_player_minecart_0\\spr_pawn_player_minecart_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "67f04608-7f1b-4d76-8f81-a7c369858ad5",
             "Value": {
                 "id": "77b863da-1403-42e7-810a-d51c1ad650aa",
@@ -4836,6 +4828,14 @@
                 "id": "535b57f7-1ccf-40f4-b61d-ea20b419956a",
                 "resourcePath": "sounds\\snd_character_hit_0\\snd_character_hit_0.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "7bb8a27e-da67-4a66-a168-db2b06f36e0b",
+            "Value": {
+                "id": "504eccf7-040e-4236-8675-3467bf232c9c",
+                "resourcePath": "sprites\\spr_pawn_minecart_1\\spr_pawn_minecart_1.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

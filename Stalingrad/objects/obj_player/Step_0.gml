@@ -57,7 +57,7 @@ image_index = floor(img_index);
 image_speed = 0;
 
 if (keyboard_check_pressed(ord("G"))){
-	inMinecart = !inMinecart;
+	in_minecart = !in_minecart;
 	minecart = instance_nearest(x, y, obj_pawn_minecart);
 }
 

@@ -1,5 +1,5 @@
 // Minecart State
-if (inMinecart){
+if (in_minecart){
 	state = scr_player_minecart;
 }
 

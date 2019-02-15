@@ -1,8 +1,10 @@
 // Drawing Shadow
-draw_set_color(c_black);
-draw_set_alpha(0.24);
-draw_ellipse(x - 10, y + 23, x + 9, y + 28, false);
-draw_set_alpha(1);
+if (!in_minecart){
+	draw_set_color(c_black);
+	draw_set_alpha(0.24);
+	draw_ellipse(x - 10, y + 23, x + 9, y + 28, false);
+	draw_set_alpha(1);
+}
 
 // Drawing Arm
 var wcurrent = global.weapon_slot[global.weapon_slotcurrent];

@@ -11,7 +11,7 @@ if (spd_offset > 1){
 }
 
 // Minecart State
-if (inMinecart){
+if (in_minecart){
 	state = scr_player_minecart;
 	exit;
 }
