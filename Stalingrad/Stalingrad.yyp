@@ -263,6 +263,14 @@
             }
         },
         {
+            "Key": "05fc3623-0a97-4cd5-a256-269de4663983",
+            "Value": {
+                "id": "563b2690-b1ec-4e4f-8d83-32dbb0995693",
+                "resourcePath": "tilesets\\tileset_floor_rail\\tileset_floor_rail.yy",
+                "resourceType": "GMTileSet"
+            }
+        },
+        {
             "Key": "062aaaf1-5283-4604-9eb7-552b47b1c451",
             "Value": {
                 "id": "98a6796b-9745-4218-bd42-884604ec5a02",
@@ -6031,6 +6039,14 @@
             }
         },
         {
+            "Key": "92dbdec9-d983-4298-9a72-900b9d7de23b",
+            "Value": {
+                "id": "27f6a7d8-6df4-443b-88ea-261651dc03fd",
+                "resourcePath": "sprites\\spr_pawn_minecart_0_interact\\spr_pawn_minecart_0_interact.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "92f77b69-9a74-41fe-af85-cd6c8f6dc1f5",
             "Value": {
                 "id": "452748a5-65c2-414e-ad1e-05ce48af1299",
@@ -8108,6 +8124,14 @@
                 "id": "0a9ad833-6735-440b-8b63-80511b01a08e",
                 "resourcePath": "objects\\obj_damage_poison\\obj_damage_poison.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "c9cd63ea-e070-4852-9164-56d0ea18fcaa",
+            "Value": {
+                "id": "7365cd68-9bc9-462c-b448-e93fa8ca88fe",
+                "resourcePath": "sprites\\spr_tileset_floor_rail\\spr_tileset_floor_rail.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

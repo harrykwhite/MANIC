@@ -6,7 +6,8 @@
     "children": [
         "b7a9cc1b-d51a-4d56-b334-198b83a7b727",
         "a3962f57-7241-4e96-b6bd-3e3d42512528",
-        "a1981203-d080-43fd-b673-26edf52e76c1"
+        "a1981203-d080-43fd-b673-26edf52e76c1",
+        "05fc3623-0a97-4cd5-a256-269de4663983"
     ],
     "filterType": "GMTileSet",
     "folderName": "Interior",
