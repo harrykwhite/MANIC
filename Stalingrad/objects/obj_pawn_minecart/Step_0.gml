@@ -8,7 +8,7 @@ if (instance_exists(global.player)){
 	if (global.player.in_minecart){
 		if (global.player.minecart == id){
 			visible = false;
-			
+
 			if (pressed){
 				global.player.minecart = noone;
 				global.player.in_minecart = false;
@@ -22,6 +22,8 @@ if (instance_exists(global.player)){
 			if (pressed){
 				global.player.minecart = id;
 				global.player.in_minecart = true;
+				global.player.x = x;
+				global.player.y = y;
 			}
 		}
 	}
