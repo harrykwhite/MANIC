@@ -4,6 +4,10 @@ if (!in_minecart){
 	draw_set_alpha(0.24);
 	draw_ellipse(x - 10, y + 23, x + 9, y + 28, false);
 	draw_set_alpha(1);
+}else{
+	if (minecart_sprite != noone){
+		draw_sprite(minecart_sprite, minecart_sprite_image, x, y);
+	}
 }
 
 // Drawing Arm

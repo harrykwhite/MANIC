@@ -11,7 +11,11 @@ if (instance_exists(global.player)){
 
 			if (pressed){
 				global.player.minecart = noone;
+				global.player.minecart_sprite = noone;
+				global.player.minecart_sprite_image = 0;
+				global.player.minecart_update_interval = 0;
 				global.player.in_minecart = false;
+				global.player.sprite_index = spr_player_idle_2;
 			}
 		}
 	}else{

@@ -38,6 +38,7 @@ if (instance_exists(global.player)){
 		case rm_level_5_01: global.player.flashlight_direction = 90; global.player.image_xscale = -1; break;
 		case rm_level_5_02: global.player.flashlight_direction = 180; global.player.image_xscale = -1; break;
 		case rm_level_5_03: global.player.flashlight_direction = 180; global.player.image_xscale = -1; break;
+		case rm_level_5_04: global.player.flashlight_direction = 180; global.player.image_xscale = -1; break;
 		case rm_level_6_00: global.player.flashlight_direction = 90; global.player.image_xscale = -1; break;
 		case rm_level_7_00: global.player.flashlight_direction = 360; global.player.image_xscale = 1; break;
 		case rm_level_7_01: global.player.flashlight_direction = 360; global.player.image_xscale = 1; break;

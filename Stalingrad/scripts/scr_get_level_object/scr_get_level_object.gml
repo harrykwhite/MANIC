@@ -50,6 +50,10 @@ switch(room){
 		level = obj_controller_levelfive;
 		break;
 	
+	case rm_level_5_04:
+		level = obj_controller_levelfive;
+		break;
+	
 	case rm_level_6_00:
 		level = obj_controller_levelsix;
 		break;

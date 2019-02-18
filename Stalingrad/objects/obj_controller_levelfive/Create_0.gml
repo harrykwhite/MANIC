@@ -27,6 +27,11 @@ switch(room){
 		spawn_x = 940;
 		spawn_y = 258;
 		break;
+	
+	case rm_level_5_04:
+		spawn_x = 940;
+		spawn_y = 253;
+		break;
 }
 
 // Spawn System
@@ -87,9 +92,18 @@ switch(room){
 		objective_title[2] = "Free all prisoners (2 / 3)";
 		objective_type[2] = noone;
 		
-		objective_title[3] = "Move west to leave the area";
+		objective_title[3] = "Move west to the next area";
 		objective_type[3] = ObjectiveType.Clear;
 		break;
+	
+	case rm_level_5_04:
+		objective_title[0] = "Clear the area of 20 enemies";
+		objective_type[0] = ObjectiveType.Kill;
+		objective_type_kill_number[0] = 20;
+		objective_type_kill_number_max[0] = objective_type_kill_number[0];
+		
+		objective_title[1] = "Move south to leave the area";
+		objective_type[1] = ObjectiveType.Clear;
 }
 
 global.game_objective_current = 0;
