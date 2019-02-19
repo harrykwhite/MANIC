@@ -223,7 +223,7 @@ if (instance_exists(target)){
 			}
 		}
 	
-		if (wait_stop_movement == true){
+		if (wait_stop_movement ){
 			if (wait > 0){
 				speed_multiplier = 0;
 			}

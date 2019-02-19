@@ -1,4 +1,4 @@
-if (activate == true){
+if (activate ){
 	var length = array_length_1d(object);
 	
 	for(var i = 0; i < length; i++){

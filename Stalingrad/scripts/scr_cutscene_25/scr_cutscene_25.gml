@@ -16,8 +16,8 @@ if (instance_exists(global.player)){
 	global.player.flashlight_direction = 180;
 	
 	if (point_distance(global.player.x, global.player.y, -65, yTo) < 40){
-		obj_controller_ui.rank_display_draw = true;
-		instance_destroy(global.player);
+		obj_controller_ui.area_next_fade = true;
+		obj_controller_ui.area_next_room = rm_level_5_03;
 	}else{
 		global.player.move_xTo = -60;
 		global.player.move_yTo = yTo;

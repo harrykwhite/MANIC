@@ -3,7 +3,7 @@ scr_ui_rank_display_setup();
 scr_ui_rank_display_update();
 
 // Screen Blend
-if (screenblend_draw == true){
+if (screenblend_draw ){
     if (screenblend_alpha < screenblend_endalpha){
         screenblend_alpha += screenblend_speed;
     }else{

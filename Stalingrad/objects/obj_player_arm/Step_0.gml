@@ -41,7 +41,7 @@ if (instance_exists(global.player)) && (wcurrent!=-1){
 	        }else{
 	            yoffset = 0;
 	        }
-	    }else if (global.player.move_back == true){
+	    }else if (global.player.move_back ){
     
 	        // BACKWARDS
 	        if (img == 0) || (img == 2) || (img == 7) || (img == 9){

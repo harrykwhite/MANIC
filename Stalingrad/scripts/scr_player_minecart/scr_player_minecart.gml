@@ -21,11 +21,11 @@ if (mouse_x > x){
 	image_xscale = -1;
 }
 
-if (keyboard_check(ord("D")) || (keyboard_check(ord("W")))){
+if (keyboard_check(ord("D"))){
 	if (minecart_speed < 2.5){
 		minecart_speed += 0.1;
 	}
-}else if (keyboard_check(ord("A")) || (keyboard_check(ord("S")))){
+}else if (keyboard_check(ord("A"))){
 	if (minecart_speed > -2.5){
 		minecart_speed -= 0.1;
 	}
@@ -45,10 +45,9 @@ if (minecart_speed != 0) || (minecart_speed != 0){
 	image_speed = 0;
 }
 
-minecart.trail_current = clamp(minecart.trail_current, 0, array_length_1d(minecart.trail_x) - 1);
-var offset = -20;
+var offset = -10;
 	if (x > minecart.rect_x1 + ((minecart.rect_x2 - minecart.rect_x1) / 2)){
-		offset = 20;
+		offset = 10;
 	}
 	cart_dir = point_direction(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);
 	cart_dist = point_distance(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);
@@ -79,9 +78,9 @@ if (cart_dist < 4){
 	}
 	
 	minecart.trail_current = clamp(minecart.trail_current, 0, array_length_1d(minecart.trail_x) - 1);
-	var offset = -20;
+	var offset = -10;
 	if (x > minecart.rect_x1 + ((minecart.rect_x2 - minecart.rect_x1) / 2)){
-		offset = 20;
+		offset = 10;
 	}
 	cart_dir = point_direction(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);
 	cart_dist = point_distance(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);

@@ -15,7 +15,7 @@ if (attack_time > 0){
 if (instance_exists(owner)){
     alphaTo = 1;
 
-    if (attack == true){
+    if (attack ){
 		if (throw_offset < 40){
 			throw_offset++;
 		}else{

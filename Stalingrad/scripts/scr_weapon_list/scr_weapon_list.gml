@@ -35,6 +35,7 @@ enum PlayerWeapon{
 	Minigun,
 	FlareRifle,
 	DartGun,
+	MountedMachineGunCart,
 }
 
 enum AmmoType{
@@ -343,6 +344,17 @@ global.weapon_ammotype[28]=AmmoType.Darts;
 global.weapon_camerarange[28]=38;
 global.weapon_mouse[28] = MouseType.SmallCrosshair;
 global.weapon_dualhanded[28] = false;
+
+global.weapon_name[29]="Mounted Machine Gun";
+global.weapon_object[29]=obj_weapon_29;
+global.weapon_sprite[29]=spr_weapon_29;
+global.weapon_type[29]=WeaponType.Ranged;
+global.weapon_heavy[29]=true;
+global.weapon_ammomax[29]=60;
+global.weapon_ammotype[29]=AmmoType.Bullets;
+global.weapon_camerarange[29]=35;
+global.weapon_mouse[29] = MouseType.Crosshair;
+global.weapon_dualhanded[29] = false;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];

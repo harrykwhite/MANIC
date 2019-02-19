@@ -125,7 +125,7 @@ if (!global.game_pause) && (global.boss_current == -1){
 
 // Restoring Music after Pause
 if (global.game_pause == false){
-	if (spawn_pause_update == true){
+	if (spawn_pause_update ){
 		spawn_pause_update = global.game_pause;
 		
 		// Play other music.

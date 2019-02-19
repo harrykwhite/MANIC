@@ -19,7 +19,6 @@ if (instance_exists(global.player)){
 	if (global.weapon_slot_standalone != -1){
 		index = global.weapon_slot_standalone;
 		mouse = global.weapon_mouse[index];
-		show_debug_message("fear");
 	}
 	
 	if (index != -1){

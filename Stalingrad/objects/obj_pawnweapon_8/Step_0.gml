@@ -33,7 +33,7 @@ if (instance_exists(owner)){
 		attack_time = attack_time_max;
 	}
     
-    if (attack == true) && (attack_time <= 0){
+    if (attack ) && (attack_time <= 0){
 	    var xpos = x + lengthdir_x(22 * owner.scale, dir);
 		var ypos = y + lengthdir_y(22 * owner.scale, dir);
 		var isEnemy = true;

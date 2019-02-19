@@ -1,5 +1,5 @@
 ///scr_cutscene_50();
-var index = 50, xTo = 0, yTo = -80;
+var index = 50, xTo = 714, yTo = -80;
 var to = noone;
 
 if (instance_exists(obj_controller_camera)){
@@ -8,8 +8,6 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	xTo = global.player.x;
-	
 	global.cutscene_camera_x[index] = xTo;
 	global.cutscene_camera_y[index] = yTo;
 	global.player.flashlight_move = false;

@@ -140,7 +140,7 @@ if (instance_exists(global.player)){
 	
 	if (global.game_combat_active) && (!global.game_pause) && (objective_type[global.game_objective_current] != ObjectiveType.Clear) && (global.boss_current == -1) && (global.game_objective_current != 4){
 		
-		if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
+		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}
 		
@@ -262,7 +262,7 @@ if (instance_exists(global.player)){
 			spawn = false;
 		}
 		
-	}else if (global.game_pause == true){
+	}else if (global.game_pause ){
 		
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
 			audio_pause_sound(spawn_music_main[CombatState.Idle]);

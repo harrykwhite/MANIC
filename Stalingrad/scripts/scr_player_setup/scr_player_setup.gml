@@ -47,9 +47,9 @@ health_alpha = 0;
 health_scale = 1;
 
 // Stamina
-global.player_staminaMax = 100;
-global.player_staminaCurrent = global.player_staminaMax;
-global.player_staminaBreak = 0;
+global.player_stamina_max = 100;
+global.player_stamina_current = global.player_stamina_max;
+global.player_stamina_break = 0;
 global.player_stamina_active = false;
 
 // Weapon

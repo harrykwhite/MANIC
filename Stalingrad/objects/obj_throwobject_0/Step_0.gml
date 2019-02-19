@@ -44,7 +44,7 @@ if (bounce_time <= 0) && (spd > 0){
 }
 
 // Explode
-if (explode == true){
+if (explode ){
     repeat(9){
         part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
     }

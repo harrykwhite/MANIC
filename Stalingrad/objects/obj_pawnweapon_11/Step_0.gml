@@ -21,7 +21,7 @@ if (instance_exists(owner)){
 		}
 	}
 	
-    if ((attack == true) && (attack_time <= 0)) || (shoot_continue_time > 0){
+    if ((attack ) && (attack_time <= 0)) || (shoot_continue_time > 0){
 	    var xpos = x + lengthdir_x(19 * owner.scale, dir) + lengthdir_x(3, up(dir));
 		var ypos = y + lengthdir_y(19 * owner.scale, dir) + lengthdir_y(3, up(dir));
 		var isEnemy = true;

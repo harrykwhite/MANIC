@@ -7,7 +7,7 @@ image_speed = 1;
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (instance_exists(global.player)) && (global.player_stamina_active == true){
+if (instance_exists(global.player)) && (global.player_stamina_active ){
     if (mouse_check_button_pressed(mb_left)) || (mouse_check_button_pressed(mb_right)){
 		if (!collision_line(global.player.x, global.player.y, x + lengthdir_x(3, mdir), y + lengthdir_y(3, mdir), obj_p_solid, false, true)){
 	        scr_player_stamina_drain(20);

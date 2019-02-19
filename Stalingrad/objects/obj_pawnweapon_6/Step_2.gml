@@ -8,7 +8,7 @@ if (scr_pawn_weapon_endstepcan()){
 		image_yscale = 1;
 	}
 
-	if (attack_active == true){
+	if (attack_active ){
 	
 	    if (attack_return == false){
 	        if (attack_offset < 8){

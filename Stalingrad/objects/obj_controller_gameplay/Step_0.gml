@@ -62,20 +62,20 @@ if (global.game_pause == false){
 	global.game_time_passed++;
 	
 	// Player Stamina
-	if (global.player_staminaBreak <= 0){
-	    if (global.player_staminaCurrent < global.player_staminaMax){
-	        global.player_staminaCurrent++;
+	if (global.player_stamina_break <= 0){
+	    if (global.player_stamina_current < global.player_stamina_max){
+	        global.player_stamina_current++;
 	    }else{
 	        global.player_stamina_active = true;
 	    }
     
-	    global.player_staminaCurrent = clamp(global.player_staminaCurrent, 0, global.player_staminaMax);
+	    global.player_stamina_current = clamp(global.player_stamina_current, 0, global.player_stamina_max);
     
 	}else{
-	    global.player_staminaBreak--;
+	    global.player_stamina_break--;
 	}
 
-	if (global.player_staminaCurrent <= 1){
+	if (global.player_stamina_current <= 1){
 	    global.player_stamina_active = false;
 	}
 	

@@ -65,8 +65,8 @@ if (instance_exists(global.player)){
 
 // Player Stamina
 if (instance_exists(global.player)){
-    var sc = global.player_staminaCurrent;
-    var sm = global.player_staminaMax;
+    var sc = global.player_stamina_current;
+    var sm = global.player_stamina_max;
     
     var xx = 134;
     var yy = 37;
@@ -416,7 +416,7 @@ var xx = display_get_gui_width() / 2;
 var yy = (display_get_gui_height() / 2) - ((30 * pause_selectedmax) / 2);
 var offset = 30;
 
-if (global.game_pause == true){
+if (global.game_pause ){
 	draw_set_colour(c_black);
 	draw_set_alpha(pause_text_alpha * 0.5);
 	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);

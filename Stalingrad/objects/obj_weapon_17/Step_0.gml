@@ -9,7 +9,7 @@ sprite_index = spr_weapon_17;
 
 if (use_current){
     if (mouse_check_button(mb_left)){
-        if (shoot_can == true) && (global.weapon_slot_standalone_ammo > 0){
+        if (shoot_can ) && (global.weapon_slot_standalone_ammo > 0){
             scr_effect_screenshake(2);
 			scr_player_flash(6);
 			scr_sound_play(snd_weapon_shoot_2, false, 0.6, 0.9);

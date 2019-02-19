@@ -49,7 +49,7 @@ if (bounce_time <= 0) && (spd > 0){
 }
 
 // Explode
-if (explode == true){
+if (explode ){
 	instance_destroy();
 	scr_damage_custom(damage, 1, 45, 45, 3, damage_enemy, !damage_enemy, damage_companion, true);
     scr_damage_custom_toxic(45, 45, 140, damage_companion);

@@ -23,9 +23,9 @@ switch(room){
 		spawn_x = 640;
 		spawn_y = 704;
 		
-		objective_title[0] = "Clear the area of 20 enemies";
+		objective_title[0] = "Clear the area of 25 enemies";
 		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 20;
+		objective_type_kill_number[0] = 25;
 		objective_type_kill_number_max[0] = objective_type_kill_number[0];
 
 		objective_title[1] = "Move north to the next area";
@@ -36,9 +36,9 @@ switch(room){
 		spawn_x = 920;
 		spawn_y = 1196;
 		
-		objective_title[0] = "Clear the area of 25 enemies";
+		objective_title[0] = "Clear the area of 30 enemies";
 		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 25;
+		objective_type_kill_number[0] = 30;
 		objective_type_kill_number_max[0] = objective_type_kill_number[0];
 
 		objective_title[1] = "Move north to the next area";

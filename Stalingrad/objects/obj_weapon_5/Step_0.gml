@@ -6,12 +6,12 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (mouse_check_button_pressed(mb_left)) && (shoot_can == true) && (shoot_current==-1){
+if (mouse_check_button_pressed(mb_left)) && (shoot_can ) && (shoot_current==-1){
     shoot_current = 0;
 }
 
 if (shoot_current!=-1) && (global.game_pause == false) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){ // If the mouse left button is pressed and the game is not paused.
-    if (shoot_can == true){
+    if (shoot_can ){
         scr_player_knockback_initiate(0.5, mdir);
         scr_effect_screenshake(1);
 		scr_player_flash(4);
@@ -63,7 +63,7 @@ if (mouse_check_button_pressed(mb_left)){
 // Throwing Weapon
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (global.player_stamina_active == true){
+if (global.player_stamina_active ){
     if (mouse_check_button_pressed(mb_right)){
 		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){

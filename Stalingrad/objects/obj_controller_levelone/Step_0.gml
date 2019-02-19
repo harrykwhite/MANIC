@@ -63,7 +63,7 @@ if (instance_exists(global.player)) && (objective_type[global.game_objective_cur
 	var spawn_rate = spawn_rate_real;
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1){
 	
-		if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
+		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}
 		
@@ -162,7 +162,7 @@ if (instance_exists(global.player)) && (objective_type[global.game_objective_cur
 			spawn = false;
 		}
 		
-	}else if (global.game_pause == true){
+	}else if (global.game_pause ){
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
 			audio_pause_sound(spawn_music_main[CombatState.Idle]);
 		}

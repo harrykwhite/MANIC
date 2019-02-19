@@ -13,8 +13,8 @@ if (special == "levelfourbossrestart"){
 }
 
 if (instance_exists(global.player)) && (global.cutscene_current == -1) && (active){	
-	if ((global.level_current == 0) || (global.level_current == 2) || (global.level_current == 3) || (global.level_current == 4) || (global.level_current == 6) || (global.level_current == 7)) && (global.game_objective_current == 0){
-		if (index != 33) && (index != 34) && (index != 35) && (index != 36) && (index != 38) && (index != 6) && (index != 40) && (index != 41) && (index != 42) && (index != 43) && (index != 44) && (index != 45) && (index != 46) && (index != 48) && (index != 49){
+	if ((global.level_current == 0) || (global.level_current == 2) || (global.level_current == 3) || (global.level_current == 4) || (global.level_current == 6) || (global.level_current == 7) || (global.level_current == 8)) && (global.game_objective_current == 0){
+		if (index != 33) && (index != 34) && (index != 35) && (index != 36) && (index != 38) && (index != 6) && (index != 40) && (index != 41) && (index != 42) && (index != 43) && (index != 44) && (index != 45) && (index != 46){
 			exit;
 		}
 	}

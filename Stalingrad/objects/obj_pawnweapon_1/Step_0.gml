@@ -15,7 +15,7 @@ if (instance_exists(owner)) && (global.cutscene_current == -1){
         attack_time--;
     }
 
-    if (attack == true) && (attack_time <= 0){
+    if (attack ) && (attack_time <= 0){
 		
         scr_effect_screenshake(2);
         scr_sound_play_distance(snd_weapon_swing_0, false, 450);
