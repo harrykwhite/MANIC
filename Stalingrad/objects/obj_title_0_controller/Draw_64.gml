@@ -1,7 +1,7 @@
 if (STATE == GameState.Developer){
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_center);
-	scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) - 174, "Midnight Development Build", c_white);
+	scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) - 174, "MANIC Development Build", c_white);
 	draw_set_font(fnt_cambria_0);
 	
 	for(var i = 0; i < smax + 2; i++){
