@@ -25,17 +25,39 @@ if (keyboard_check(ord("D"))){
 	if (minecart_speed < 2.5){
 		minecart_speed += 0.1;
 	}
+	
+	minecart_speed = clamp(minecart_speed, 0, 2.5);
+	minecart_left = false;
+	if (!minecart_right){
+		if (minecart.trail_current < array_length_1d(minecart.trail_x) - 1){
+			minecart.trail_current ++;
+		}else{
+			minecart.trail_current = 0;
+		}
+		minecart_right = true;
+	}
 }else if (keyboard_check(ord("A"))){
 	if (minecart_speed > -2.5){
 		minecart_speed -= 0.1;
 	}
+	
+	minecart_speed = clamp(minecart_speed, -2.5, 0);
+	minecart_right = false;
+	if (!minecart_left){
+		if (minecart.trail_current > 0){
+			minecart.trail_current --;
+		}else{
+			minecart.trail_current = array_length_1d(minecart.trail_x) - 1;
+		}
+		minecart_left = true;
+	}
 }else{
 	if (minecart_speed > 0){
-		minecart_speed -= 0.025;
+		minecart_speed -= 0.02;
 	}
 	
 	if (minecart_speed < 0){
-		minecart_speed += 0.025;
+		minecart_speed += 0.02;
 	}
 }
 

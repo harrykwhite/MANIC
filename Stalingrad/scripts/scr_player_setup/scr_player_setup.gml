@@ -38,7 +38,7 @@ footstep_time = 0;
 footstep_flip = 1;
 
 // Health
-if (room == rm_level_1_00) || (room == rm_level_2_00) || (room == rm_level_3_00) || (room == rm_level_4_00) || (room == rm_level_5_04) || (room == rm_level_6_00) || (room == rm_level_7_00) || (room == rm_level_8_00) || (room == rm_level_9_00){
+if (room == rm_level_1_00) || (room == rm_level_2_00) || (room == rm_level_3_00) || (room == rm_level_4_00) || (room == rm_level_5_00) || (room == rm_level_6_00) || (room == rm_level_7_00) || (room == rm_level_8_00) || (room == rm_level_9_00){
 	global.player_healthMax = 6;
 	global.player_healthCurrent = global.player_healthMax;
 }
@@ -87,6 +87,8 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 isVisible = true;
 
 minecart = noone;
+minecart_left = false;
+minecart_right = false;
 minecart_speed = 0;
 minecart_sprite = noone;
 minecart_sprite_image = 0;

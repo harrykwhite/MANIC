@@ -20,7 +20,7 @@ switch(global.level_current){
 		break;
 	
 	case 4:
-		interval = 4500;
+		interval = 5000;
 		break;
 	
 	case 5:
@@ -36,7 +36,7 @@ switch(global.level_current){
 		break;
 	
 	case 8:
-		interval = 3000;
+		interval = 4000;
 		break;
 }
 
