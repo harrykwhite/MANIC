@@ -1,3 +1,3 @@
 index = 46;
-destroyOnActive = true;
+destroy_on_active = true;
 special = "levelfourboss";

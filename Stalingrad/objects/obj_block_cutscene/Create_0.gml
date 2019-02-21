@@ -1,6 +1,6 @@
 index = -1;
 special = "";
-destroyOnActive = true;
+destroy_on_active = true;
 respawnOnDeath = false;
 active = true;
 time = 0;

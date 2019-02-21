@@ -38,7 +38,7 @@ if (explode){
 		part_particles_create(global.ps_front, rectx + random(rectw), recty + random(recth), global.pt_burst_3, 1);
 	}
 	
-	var brk = instance_create(x - (sprite_width / 2), y - (sprite_height / 2), obj_break);
+	var brk = instance_create(x, y, obj_break);
 	brk.shake = 2;
 	brk.sprite_index = spr_bunker_wall_1_remains;
 	

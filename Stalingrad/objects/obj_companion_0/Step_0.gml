@@ -1,4 +1,4 @@
-if (global.game_pause) || ((cutscene_prop) && (!in_cutscene)){
+if (global.game_pause) || ((cutscene_prop) && (!in_cutscene)) || ((global.cutscene_current != -1) && (!in_cutscene)){
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);

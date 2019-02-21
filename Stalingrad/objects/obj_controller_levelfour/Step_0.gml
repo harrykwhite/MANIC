@@ -73,11 +73,9 @@ if (instance_exists(global.player)){
 	var spawn_rate = spawn_rate_real;
 	
 	if (global.game_combat_active) && (!global.game_pause) && (objective_type[global.game_objective_current] != ObjectiveType.Clear) && (global.boss_current == -1) && (global.cutscene_current == -1){
-	
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}
-		
 	if (spawn_time > 0){
 			spawn_time -= spawn_rate;
 		}else{

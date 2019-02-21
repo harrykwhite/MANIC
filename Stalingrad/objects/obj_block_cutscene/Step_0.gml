@@ -7,7 +7,7 @@ if (special == "levelfourboss"){
 }
 
 if (special == "levelfourbossrestart"){
-	if (global.game_objective_current != 3) || (!levelobj.dogkeeper_failed){
+	if (global.boss_current != -1) || (global.game_objective_current != 3) || (!levelobj.dogkeeper_failed){
 		exit;
 	}
 }
@@ -41,7 +41,7 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 	}
 	
 	if (global.level_current == 5) && (room == rm_level_6_01){
-		if (global.game_objective_current != 1) && (index != 26){
+		if (levelobj.objective_type[global.game_objective_current] != ObjectiveType.Clear) && (index != 26){
 			exit;
 		}
 	}else{
@@ -62,7 +62,6 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 				var number, inst;
 				instance_activate_object(obj_block_cutscene);
 				scr_enemy_destroy_all();
-				levelobj.dogkeeper = instance_create(872, 530, obj_thedogkeeper);
 				
 				number = instance_number(obj_block_cutscene);
 				for(var i = 0; i < number; i++){
@@ -76,7 +75,7 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 				}
 			}
 			
-			if (destroyOnActive){
+			if (destroy_on_active){
 				if (!respawnOnDeath){
 					instance_destroy();
 				}else{
@@ -86,5 +85,12 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 		}
 	}else{
 		time ++;
+	}
+}else{
+	if (global.cutscene_current == -1){
+		if (special == "levelfourboss"){
+			levelobj.dogkeeper_failed = true;
+			instance_destroy();
+		}
 	}
 }

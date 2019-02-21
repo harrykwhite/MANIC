@@ -1,2 +1,2 @@
 index = 10;
-destroyOnActive = false;
+destroy_on_active = false;

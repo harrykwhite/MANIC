@@ -33,9 +33,8 @@ if (instance_exists(global.player)) && (!global.game_pause){
 	var xspd = (xTo - x) * camera_speed;
 	var yspd = (yTo - y) * camera_speed;
 	
-	len = sqrt(sqr(xspd) + sqr(yspd));
-	x += min(xspd, 18);
-	y += min(yspd, 18);
+	x += min(xspd, 24);
+	y += min(yspd, 24);
 
 	camera_set_view_pos(view_camera[0],
 	-(camera_get_view_width(view_camera[0]) / 2) + x,
