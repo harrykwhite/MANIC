@@ -12,9 +12,9 @@ switch(room){
 		spawn_x = 295;
 		spawn_y = 170;
 		
-		objective_title[0] = "Clear the area of 15 enemies";
+		objective_title[0] = "Clear the area of 30 enemies";
 		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 15;
+		objective_type_kill_number[0] = 30;
 		objective_type_kill_number_max[0] = objective_type_kill_number[0];
 
 		objective_title[1] = "Move south to the next area";

@@ -136,7 +136,7 @@ if (health_current <= 0){
 			dropchance = 100;
 			global.game_objective_current++;
 			obj_controller_ui.objective_text_set = false;
-			audio_sound_gain(global.boss_music[global.boss_current], 0, 2000);
+			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
 			audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
 			instance_create(x, y + 4, obj_health_pack_1);
 			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
@@ -180,7 +180,7 @@ if (health_current <= 0){
 		global.game_objective_current++;
 		scr_game_objective_ui_update();
 		obj_controller_ui.objective_text_set = false;
-		audio_sound_gain(global.boss_music[global.boss_current], 0, 2000);
+		audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
 		audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
 		instance_create(x, y + 4, obj_health_pack_1);
 		scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);

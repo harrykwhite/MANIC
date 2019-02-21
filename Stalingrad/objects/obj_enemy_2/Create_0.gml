@@ -15,8 +15,7 @@ bite_retreat_direction = 0;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
-mylight = instance_create(x, y, obj_enemy_2_light);
-light_brightness = 0;
+mylight = noone;
 
 companion_attack_time = 0;
 companion_attack_time_max = 145;

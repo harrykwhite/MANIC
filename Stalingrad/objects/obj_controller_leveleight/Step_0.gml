@@ -223,9 +223,9 @@ if (instance_exists(global.player)){
 
 if (objective_type[global.game_objective_current] == ObjectiveType.Clear){
 	if (!spawn_cleared){
-		audio_sound_gain(spawn_music_main[CombatState.Idle], 1, 8000);
-		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
-		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 6000);
+		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 3000);
+		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 3000);
 		spawn_cleared = true;
 	}
 	

@@ -14,7 +14,7 @@ sprite_index = noone;
 
 ini_open("config.ini");
 window_set_fullscreen(ini_read_real("DISPLAY", "fullscreen", true));
-wsize = ini_read_real("DISPLAY", "windowScale", 2);
+wsize = 2//ini_read_real("DISPLAY", "windowScale", 2);
 ini_close();
 
 if (!window_get_fullscreen()){

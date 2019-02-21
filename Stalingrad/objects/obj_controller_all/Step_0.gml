@@ -9,8 +9,13 @@ if (keyboard_check_pressed(vk_tab)){
 if (full <= 0){
 	if (keyboard_check_pressed(ord("F"))){
 		window_set_fullscreen(!window_get_fullscreen());
-		display_set_gui_size(720 * 2.5, floor(405 * 2.5));
 		full = 40;
+		
+		if (!window_get_fullscreen()){
+			window_set_size(720 * wsize, 405 * wsize);
+			window_set_position((display_get_width() / 2) - ((720 * wsize) / 2), (display_get_height() / 2) - ((405 * wsize) / 2));
+		}
+		display_set_gui_size(720 * 2.5, floor(405 * 2.5));
 	}
 }else{
 	full--;

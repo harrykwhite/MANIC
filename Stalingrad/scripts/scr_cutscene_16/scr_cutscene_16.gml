@@ -16,7 +16,7 @@ if (instance_exists(global.player)){
 	global.player.flashlight_move = false;
 	global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, room_height + 30);
 	
-	if (point_distance(global.player.x, global.player.y, xTo, room_height + 20) < 120){
+	if (point_distance(global.player.x, global.player.y, xTo, room_height + 100) < 120){
 		obj_controller_ui.area_next_fade = true;
 		obj_controller_ui.area_next_room = rm_level_3_01;
 	}else{

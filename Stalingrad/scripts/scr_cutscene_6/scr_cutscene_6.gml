@@ -14,9 +14,9 @@ if (instance_exists(global.player)){
 	
 	if (instance_exists(cobj)){
 		global.player.flashlight_move = false;
-		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
+		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo - 30, yTo);
 		
-		xTo = global.player.x - 2;
+		xTo = global.player.x;
 		yTo = global.player.y;
 		
 		if (point_distance(global.player.x, global.player.y, cobj.x, cobj.y) < 57){

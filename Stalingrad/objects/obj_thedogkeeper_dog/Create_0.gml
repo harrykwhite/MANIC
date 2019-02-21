@@ -18,6 +18,7 @@ attack_active_time = 45;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
+mylight = noone;
 
 companion_attack_time = 0;
 companion_attack_time_max = 145;
