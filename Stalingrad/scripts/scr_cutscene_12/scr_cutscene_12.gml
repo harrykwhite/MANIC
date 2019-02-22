@@ -13,7 +13,7 @@ if (instance_exists(global.player)){
 	global.cutscene_camera_x[index] = xTo;
 	global.cutscene_camera_y[index] = yTo;
 	global.player.flashlight_move = false;
-	global.player.flashlight_direction = point_direction(global.player.x, global.player.y, -30, yTo);
+	global.player.flashlight_direction = point_direction(global.player.x, global.player.y, -80, yTo);
 	
 	if (point_distance(global.player.x, global.player.y, -60, yTo) < 80){
 		obj_controller_ui.area_next_fade = true;

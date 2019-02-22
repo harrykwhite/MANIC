@@ -20,6 +20,7 @@ instance_activate_object(obj_block_persistent);
 instance_activate_object(obj_artifact_pickup);
 instance_activate_object(obj_block_particle);
 instance_activate_object(obj_enemy_0_arm);
+instance_activate_object(obj_enemy_0_light);
 
 if (corpse_active_time > 0){
 	instance_activate_object(obj_environment_corpse);

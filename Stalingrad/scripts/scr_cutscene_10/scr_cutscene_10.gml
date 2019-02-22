@@ -1,5 +1,5 @@
 ///scr_cutscene_10();
-var index = 10, xTo = 1129, yTo = 0;
+var index = 10, xTo = 1129, yTo = 252;
 var to = noone;
 
 if (instance_exists(obj_controller_camera)){

@@ -18,6 +18,7 @@ if (instance_exists(global.player)){
 		
 		global.player.flashlight_move = false;
 		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
+		global.boss_current = Boss.TheDogkeeper;
 		
 		if (global.cutscene_time[index] > 100){
 			global.cutscene_current = -1;
