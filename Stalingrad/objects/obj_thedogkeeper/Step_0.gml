@@ -6,7 +6,7 @@ mylight.x = x;
 mylight.y = y;
 mylight.light[| eLight.X] = x;
 mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+mylight.light[| eLight.LutIntensity] = max((1.25 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1);
 mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 if (global.game_pause) || ((global.cutscene_current != -1) && ((cutscene_prop) && (!in_cutscene))){

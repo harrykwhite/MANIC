@@ -12,7 +12,7 @@ for(var i = 0; i < (dash_speed ) + 1; i++){
 	
 	if (global.cutscene_current != -1) || ((move_xTo != -1) && (move_yTo != -1)) || (dash_length_current >= dash_length) || (inst != noone){
 	    
-		if (inst != noone){
+		/*if (inst != noone){
 			scr_env_objects();
 			len = array_length_1d(envobject);
 		
@@ -26,7 +26,7 @@ for(var i = 0; i < (dash_speed ) + 1; i++){
 					exit;
 				}
 			}
-		}
+		}*/
 		
 		state = scr_player_move;
 	    dash_length_current = 0;

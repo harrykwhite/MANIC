@@ -4,7 +4,7 @@ scale = random_range(1, 1.1);
 destroy = false;
 
 damage = 1;
-strength = 1;
+strength = 0.75;
 
 leash_dir = 0;
 leash_offset = 0;

@@ -1,2 +1,2 @@
-index = PlayerWeapon.Machete;
+index = PlayerWeapon.FlareGun;
 angle = -15;

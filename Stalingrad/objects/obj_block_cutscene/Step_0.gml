@@ -29,9 +29,11 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 	}
 	
 	if (global.level_current == 3) && (room == rm_level_4_01){
-		if (global.game_objective_current != 3) && (global.game_objective_current != 4){
-			exit;
-		}                                                          
+		if (special != "levelfourboss") && (special != "levelfourbossrestart"){
+			if (global.game_objective_current < 4){
+				exit;
+			}                                                          
+		}
 	}
 	
 	if (global.level_current == 4) && (room == rm_level_5_03){

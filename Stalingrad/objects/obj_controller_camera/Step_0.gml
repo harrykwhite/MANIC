@@ -12,7 +12,7 @@ if (global.weapon_slot_standalone == -1){
 
 // Camera
 if (instance_exists(global.player)) && (!global.game_pause){
-	camera_speed = 0.1;
+	camera_speed = 0.085;
     if (global.cutscene_current == -1){
         if (camera_radius != -1) && (!camera_move_to_player){
             xx = global.player.x + lengthdir_x(min(camera_radius, mdist), dir);
@@ -33,8 +33,8 @@ if (instance_exists(global.player)) && (!global.game_pause){
 	var xspd = (xTo - x) * camera_speed;
 	var yspd = (yTo - y) * camera_speed;
 	
-	x += min(xspd, 24);
-	y += min(yspd, 24);
+	x += xspd;//min(xspd, 24);
+	y += yspd;//min(yspd, 24);
 
 	camera_set_view_pos(view_camera[0],
 	-(camera_get_view_width(view_camera[0]) / 2) + x,
@@ -44,8 +44,7 @@ if (instance_exists(global.player)) && (!global.game_pause){
 	clamp(camera_get_view_x(view_camera[0]), 0, room_width - camera_get_view_width(view_camera[0])),
 	clamp(camera_get_view_y(view_camera[0]), 0, room_height - camera_get_view_height(view_camera[0])));
 	
-	if (camera_screenshake ){
-		
+	if (camera_screenshake){
 	    camera_set_view_pos(view_camera[0],
 		camera_get_view_x(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.2, 0, true), 
 		camera_get_view_y(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.2, 0, true)
@@ -68,7 +67,6 @@ if (instance_exists(global.player)) && (!global.game_pause){
 		camera_move_to_player = false;
 	}
 }else{
-	
     xx = x;
     yy = y;
     camera_speed = 0;
