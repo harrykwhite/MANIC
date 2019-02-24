@@ -15,7 +15,7 @@ if (count > 0){
 ds_list_destroy(list);
 
 if (explode_anim){
-	if (scale < 1.2){
+	if (scale < 1.3){
 		scale += 0.03;
 	}else{
 		explode = true;
@@ -42,7 +42,7 @@ if (explode){
 	brk.shake = 2;
 	brk.sprite_index = spr_bunker_wall_1_remains;
 	
-	scr_effect_screenshake(5);
-	scr_effect_freeze(2);
+	scr_effect_screenshake(4);
+	scr_effect_freeze(7);
 	instance_destroy();
 }

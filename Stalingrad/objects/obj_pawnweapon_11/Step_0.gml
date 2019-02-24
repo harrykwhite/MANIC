@@ -14,10 +14,15 @@ if (instance_exists(owner)){
 	if (attack_time > 0){
 		attack_time --;
 		
-		if (within(attack_time, 21, 23)){
+		if (within(attack_time, 25, 27)){
 			if (!audio_is_playing(snd_weapon_reload_0)){
 				scr_sound_play(snd_weapon_reload_0, false, 0.9, 1.2);
 			}
+		}
+		
+		attack_ready = false;
+		if (attack_time < 27){
+			attack_ready = true;
 		}
 	}
 	

@@ -62,6 +62,7 @@ if (health_current <= 0){
     
     instance_destroy();
 	audio_play_sound(snd_other_kick_0, 3, false);
+	audio_play_sound(snd_character_death_0, 3, false);
 	
 	if (mylight != noone){
 		instance_destroy(mylight);

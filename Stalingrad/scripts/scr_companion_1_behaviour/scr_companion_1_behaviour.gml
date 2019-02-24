@@ -104,25 +104,27 @@ if (instance_exists(global.player)){
 					move_speed = 1.2;
 				}else{
 					move_speed = 0;
-					if (weapon_does_exist){
-						if (attack_time > 0){
-							attack_time --;
-						}else{
-							if (weapon.attack_time <= 0){
-								runaway_starttime = 2;
-							}
+					if (!collision_line(x, y - 6, target.x, target.y, obj_p_solid, false, false)){
+						if (weapon_does_exist){
+							if (attack_time > 0){
+								attack_time --;
+							}else{
+								if (weapon.attack_time <= 0){
+									runaway_starttime = 2;
+								}
 							
-							if (weapon_index == -1) || (weapon_index == PawnWeapon.Knife){
-								instance_destroy(weapon);
-								weapon = instance_create(x, y, obj_pawnweapon_4);
-								weapon.owner = id;
-								weapon_index = PawnWeapon.Grenade;
-								attack_time = attack_time_max * attack_time_offset;
-								exit;
-							}
+								if (weapon_index == -1) || (weapon_index == PawnWeapon.Knife){
+									instance_destroy(weapon);
+									weapon = instance_create(x, y, obj_pawnweapon_4);
+									weapon.owner = id;
+									weapon_index = PawnWeapon.Grenade;
+									attack_time = attack_time_max * attack_time_offset;
+									exit;
+								}
 									
-							weapon.attack = true;
-							attack_time = attack_time_max * attack_time_offset;
+								weapon.attack = true;
+								attack_time = attack_time_max * attack_time_offset;
+							}
 						}
 					}
 				}

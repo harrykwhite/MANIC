@@ -21,6 +21,14 @@ if (component_spawn){
 	component_spawn = false;
 }
 
+if (!open_set){
+	if (count == 2){
+		open = true;
+		open_pause = false;
+	}
+	open_set = true;
+}
+
 if (mainsprite == noone){
 	mainsprite = sprite_index;
 }

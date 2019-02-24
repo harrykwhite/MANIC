@@ -116,7 +116,7 @@ if (screenblend_alpha > 0){
     draw_set_alpha(1);
 }
 
-// Objective Display
+/* Objective Display
 objective_text_scale = clamp(objective_text_scale, 0, 1.25);
 
 var scale = objective_text_scale + wave(0, 0.025, 3, 0, false);
@@ -166,7 +166,7 @@ if (global.cutscene_current == -1){
 	draw_set_alpha(objective_text_red_alpha - pause_text_alpha);
 	draw_text_transformed((display_get_gui_width() / 2), (display_get_gui_height() - 70), objective_text, scale, scale, 0);
 	draw_set_alpha(1);
-}
+}*/
 
 // Score Display
 var length = 7;

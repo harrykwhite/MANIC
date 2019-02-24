@@ -70,9 +70,8 @@ if (!global.game_pause){
 	if (score_current < global.game_score){
 		score_current += 50;
 	}
-	
-// Pause
 }else{
+	// Pause
 	if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
 		if (pause_selected > 0){
 			pause_selected --;

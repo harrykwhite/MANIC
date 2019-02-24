@@ -53,6 +53,15 @@ if (instance_exists(target)){
 			bite_retreat = false;
 		}
 	}else{
+		if (distance_to_point(target.x, target.y + 6) < 200){
+			if (bark_time > 0){
+				bark_time--;
+			}else{
+				scr_sound_play(snd_character_bark_0, false, 0.7, 1.3);
+				bark_time = random_range(140, 260);
+			}
+		}
+		
 		if (distance_to_point(target.x, target.y + 6) > 50){
 			if (move_away_time > 0){
 				move_away_time--;

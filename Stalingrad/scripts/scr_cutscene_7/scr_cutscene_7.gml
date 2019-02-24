@@ -46,10 +46,6 @@ if (instance_exists(global.player)){
 			global.cutscene_time[index] = 0;
 			scr_game_objective_ui_update();
 			obj_controller_ui.objective_text_set = false;
-			
-			if (room == rm_level_4_01) && (global.game_objective_current == 3){
-				levelobj.dogkeeper = instance_create(872, 530, obj_thedogkeeper);
-			}
 		}
 	}else{
 		global.player.move_xTo = xTo;

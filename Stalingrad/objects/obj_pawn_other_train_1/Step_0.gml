@@ -8,7 +8,7 @@ if (open){
 	
 	if (open_pause){
 		if (open_time < 50){
-			if (global.cutscene_current != -1){
+			if (global.cutscene_current == 22) or (global.cutscene_current == 51){
 				open_time ++;
 			}
 			
@@ -64,7 +64,7 @@ if (count != 0) && (count != 7){
 		mylight.y = y - 4;
 		mylight.light[| eLight.X] = x;
 		mylight.light[| eLight.Y] = y - 4;
-		mylight.light[| eLight.LutIntensity] = 1.45;
+		mylight.light[| eLight.LutIntensity] = 1.25;
 		mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 	}
 }

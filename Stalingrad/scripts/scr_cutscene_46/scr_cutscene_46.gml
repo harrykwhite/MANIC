@@ -10,8 +10,11 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	eobj = levelobj.dogkeeper;
+	if (levelobj.dogkeeper == noone){
+		levelobj.dogkeeper = instance_create(872, 500, obj_thedogkeeper);
+	}
 	
+	eobj = levelobj.dogkeeper;
 	if (instance_exists(eobj)){
 		xTo = eobj.x;
 		yTo = eobj.y;

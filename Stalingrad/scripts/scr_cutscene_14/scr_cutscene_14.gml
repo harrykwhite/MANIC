@@ -1,5 +1,5 @@
 ///scr_cutscene_14();
-var index = 14, xTo = 460, yTo = 575;
+var index = 14, xTo = 460, yTo = room_height;
 var to = noone;
 
 if (instance_exists(obj_controller_camera)){
@@ -8,7 +8,6 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	
 	xTo = global.player.x;
 	
 	global.cutscene_camera_x[index] = xTo;

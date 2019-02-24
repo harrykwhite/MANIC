@@ -1,8 +1,8 @@
 ///@param total
 var total = argument0;
-var interval, s = true;
+var interval = 3200, s = true;
 
-switch(global.level_current){
+/*switch(global.level_current){
 	case 0:
 		interval = 4000;
 		break;
@@ -38,7 +38,7 @@ switch(global.level_current){
 	case 8:
 		interval = 4000;
 		break;
-}
+}*/
 
 for(var i = 0; i < 15; i++){
 	if (within(total, i * interval, ((i + 1) * interval) - 1)){

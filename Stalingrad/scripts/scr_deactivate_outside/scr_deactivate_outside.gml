@@ -21,6 +21,8 @@ instance_activate_object(obj_artifact_pickup);
 instance_activate_object(obj_block_particle);
 instance_activate_object(obj_enemy_0_arm);
 instance_activate_object(obj_enemy_0_light);
+instance_activate_object(obj_pawn_other_train_0);
+instance_activate_object(obj_pawn_other_train_1);
 
 if (corpse_active_time > 0){
 	instance_activate_object(obj_environment_corpse);
@@ -38,9 +40,6 @@ if (global.level_current == 5){
 	if (instance_exists(levelobject.objective_special_boss_object)){
 		instance_activate_object(levelobject.objective_special_boss_object);
 	}
-	
-	instance_activate_object(obj_pawn_other_train_0);
-	instance_activate_object(obj_pawn_other_train_1);
 }
 
 if (global.weapon_slot[global.weapon_slotcurrent] != -1) && (global.weapon_slot_standalone == -1){

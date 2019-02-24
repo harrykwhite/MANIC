@@ -48,7 +48,7 @@ headless_image = 0;
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
 
-defense = 5;
+defense = 3;
 
 move_speed = 0;
 move_speed_real = 0;

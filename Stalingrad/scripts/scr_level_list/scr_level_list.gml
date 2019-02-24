@@ -20,13 +20,13 @@ global.level_artifact_number[1] = 4;
 global.level_displaynum[1] = "Two";
 
 global.level_name[2] = "Underground Bunker";
-global.level_room[2] = rm_level_3_01;
+global.level_room[2] = rm_level_3_00;
 global.level_artifact_current[2] = 0;
 global.level_artifact_number[2] = 5;
 global.level_displaynum[2] = "Three";
 
 global.level_name[3] = "Storage Facility";
-global.level_room[3] = rm_level_4_01;
+global.level_room[3] = rm_level_4_00;
 global.level_artifact_current[3] = 0;
 global.level_artifact_number[3] = 3;
 global.level_displaynum[3] = "Four";

@@ -24,7 +24,13 @@ if (instance_exists(target)){
 	}
 	
 	move_dir = point_direction(x, y, move_xTo, move_yTo);
-	weapon.dir = point_direction(x, y, target.x, target.y + 6);
+	if (instance_exists(weapon)){
+		weapon.dir = point_direction(x, y, target.x, target.y + 6);
+		
+		if (weapon.attack_ready){
+			speed_multiplier = 0;
+		}
+	}
 }else{
 	move_speed = 0;
 	face_player = false;

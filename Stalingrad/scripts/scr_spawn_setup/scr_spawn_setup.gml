@@ -34,23 +34,23 @@ switch(music){
 		break;
 }
 
-spawn_interval[CombatState.Idle] = 7 / srate;
-spawn_state_time[CombatState.Idle] = 30;
-spawn_max[CombatState.Idle] = round(3 * srate);
+spawn_interval[CombatState.Idle] = 9 / srate;
+spawn_state_time[CombatState.Idle] = 25;
+spawn_max[CombatState.Idle] = round(2 * srate);
 spawn_music_stinger[CombatState.Idle] = m_combat_stinger_0;
 spawn_music_main[CombatState.Idle] = combat_0;
 spawn_music_pause_gain[CombatState.Idle] = 0;
 spawn_music_pause_position[CombatState.Idle] = 0;
 
-spawn_interval[CombatState.Buildup] = 4 / srate;
-spawn_state_time[CombatState.Buildup] = 15;
-spawn_max[CombatState.Buildup] = round(4 * srate);
+spawn_interval[CombatState.Buildup] = 5 / srate;
+spawn_state_time[CombatState.Buildup] = 20;
+spawn_max[CombatState.Buildup] = round(3 * srate);
 spawn_music_stinger[CombatState.Buildup] = m_combat_stinger_1;
 spawn_music_main[CombatState.Buildup] = combat_1;
 spawn_music_pause_gain[CombatState.Buildup] = 0;
 spawn_music_pause_position[CombatState.Buildup] = 0;
 
-spawn_interval[CombatState.Climax] = 2.5 / srate;
+spawn_interval[CombatState.Climax] = 1.5 / srate;
 spawn_state_time[CombatState.Climax] = 15;
 spawn_max[CombatState.Climax] = round(5 * srate);
 spawn_music_stinger[CombatState.Climax] = stinger_2;

@@ -10,6 +10,7 @@ leave = false;
 open = false;
 open_time = 0;
 open_pause = false;
+open_set = false;
 close = false;
 mylight = noone;
 

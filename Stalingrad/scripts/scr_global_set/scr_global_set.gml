@@ -13,6 +13,7 @@ global.game_playthrough = false;
 global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
 global.game_combat_balance = 1;
+global.game_level_opening_type = 0;
 
 global.boss_current = -1;
 

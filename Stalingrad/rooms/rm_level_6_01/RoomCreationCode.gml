@@ -3,7 +3,6 @@ if (!instance_exists(obj_player)){
 }
 
 global.player = obj_player;
-global.player.isVisible = false;
 global.player_footstep_default = snd_character_footstep_grass;
 
 if (global.player_companion != -1){
