@@ -16,7 +16,7 @@ if (open){
 	
 	if (open_pause){
 		if (open_time < 50){
-			if (global.cutscene_current == 22) || (global.cutscene_current == 51){
+			if (global.cutscene_current == 22) || (global.cutscene_current == 47) || (global.cutscene_current == 51){
 				open_time ++;
 			}
 			

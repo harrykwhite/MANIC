@@ -411,15 +411,19 @@ if (rank_display_draw){
 	}
 }
 
+// Pause Backdrop
+if (pausedialogue_alpha > 0) or (pause_text_alpha > 0){
+	draw_set_colour(c_black);
+	draw_set_alpha((pause_text_alpha + pausedialogue_alpha) * 0.5);
+	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+}
+
 // Pause
 var xx = display_get_gui_width() / 2;
 var yy = (display_get_gui_height() / 2) - ((30 * pause_selectedmax) / 2);
 var offset = 30;
 
-if (global.game_pause ){
-	draw_set_colour(c_black);
-	draw_set_alpha(pause_text_alpha * 0.5);
-	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+if (global.game_pause) && (!pausedialogue){
 	if (pause_text_alpha < 1){
 		pause_text_alpha += 0.2;
 	}
@@ -448,6 +452,34 @@ if (pause_text_update == false){
 		pause_text_update = true;
 	}
 }
+
+// Pause Dialogue
+if (pausedialogue){
+	global.game_pause = true;
+	if (pausedialogue_alpha < 1){
+		pausedialogue_alpha += 0.1;
+	}
+}else{
+	if (pausedialogue_alpha > 0){
+		pausedialogue_alpha -= 0.1;
+	}
+}
+
+draw_set_alpha(pausedialogue_alpha);
+draw_set_font(fnt_cambria_1);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_set_colour(c_white);
+
+switch(pausedialogue_type){
+	case 0:
+		draw_text(display_get_gui_width() / 2, display_get_gui_height() / 2, "I haven't been given any dialogue yet!");
+		break;
+}
+
+draw_text((display_get_gui_width() / 2) + 220, (display_get_gui_height() / 2) + 220, "Resume [E]");
+draw_set_valign(fa_top);
+draw_set_alpha(1);
 
 // Level Screen Opening
 if (screen_fade_opening > 0){

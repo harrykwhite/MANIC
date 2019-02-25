@@ -37,7 +37,11 @@ switch(room){
 		objective_title[3] = "Board the train"
 		objective_type[3] = ObjectiveType.Clear;
 		
-		global.cutscene_current = 2;
+		if (global.game_level_opening_type == 1){
+			global.cutscene_current = 47;
+		}else{
+			global.cutscene_current = 2;
+		}
 		break;
 
 	case rm_level_6_01:

@@ -72,6 +72,17 @@ if (!global.game_pause){
 	}
 }else{
 	// Pause
+	if (pausedialogue){
+		if (pausedialogue_time < 30){
+			pausedialogue_time ++;
+		}else{
+			if (keyboard_check_pressed(ord("E"))){
+				pausedialogue = false;
+				pausedialogue_time = 0;
+			}
+		}
+	}
+	
 	if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
 		if (pause_selected > 0){
 			pause_selected --;

@@ -9,6 +9,7 @@ vspd = 0;
 
 mylight = instance_create(x, y, obj_player_light);
 flashlight = instance_create(x, y, obj_player_flashlight);
+light_brightness = 0;
 
 image_speed = 0;
 image_index = 0;

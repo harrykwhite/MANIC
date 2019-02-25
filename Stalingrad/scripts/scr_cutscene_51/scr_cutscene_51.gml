@@ -1,6 +1,6 @@
 ///scr_cutscene_51();
 var index = 51;
-var xTo = 712, yTo = 2020;
+var xTo = 824, yTo = 2020;
 var dir = 0;
 
 if (instance_exists(obj_controller_camera)){
@@ -27,16 +27,16 @@ if (instance_exists(global.player)){
 		}
 	}else{
 		global.player.move_xTo = xTo;
-		global.player.move_yTo = yTo - 10;
+		global.player.move_yTo = yTo;
 		global.player.move_extSpd = global.player.spd_max;
 	}
 }else{
 	if (global.cutscene_time[index] < 60){
 		global.cutscene_time[index] ++;
 	}else{
-		global.level_current = 3;
+		global.level_current = 5//3;
 		global.game_level_opening_type = 1;
 		obj_controller_ui.area_next_fade = true;
-		obj_controller_ui.area_next_room = rm_level_4_00;
+		obj_controller_ui.area_next_room = rm_level_6_00;
 	}
 }

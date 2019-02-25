@@ -24,6 +24,7 @@ if (instance_exists(global.player)){
 		}else{
 			obj_controller_ui.area_next_fade = true;
 			obj_controller_ui.area_next_room = rm_level_6_01;
+			global.game_level_opening_type = 0;
 		}
 	}else{
 		global.player.move_xTo = xTo;

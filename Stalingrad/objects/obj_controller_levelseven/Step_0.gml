@@ -48,8 +48,8 @@ if (!global.game_pause){
 // Spawning
 var lighting_level; 
 lighting_level[CombatState.Climax] = 1;
-lighting_level[CombatState.Buildup] = 0.95;
-lighting_level[CombatState.Idle] = 0.9;
+lighting_level[CombatState.Buildup] = 0.9;
+lighting_level[CombatState.Idle] = 0.8;
 
 if (lighting < lighting_level[global.game_combat_state]){
 	lighting += 0.004;

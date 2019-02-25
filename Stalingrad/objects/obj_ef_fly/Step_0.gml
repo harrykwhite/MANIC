@@ -14,6 +14,11 @@ if (fscale < 1){
 	fscale += 0.01;
 }
 
+if (buzz == noone){
+	buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
+}
+scr_sound_set_distance(buzz, 40);
+
 while(point_distance(x, y, xoffset + xbase, yoffset + ybase) < 5){
 	xoffset = random_range(-xrange, xrange);
 	yoffset = random_range(-yrange, yrange);

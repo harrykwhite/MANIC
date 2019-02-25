@@ -56,12 +56,19 @@ if (img_index < image_number){
 image_index = floor(img_index);
 image_speed = 0;
 
+if (isVisible){
+	if (light_brightness < 1){
+		light_brightness += 0.025;
+	}
+}
+
 if (instance_exists(mylight)){
 	mylight.x = x;
 	mylight.y = y;
 	mylight.light[| eLight.X] = x;
 	mylight.light[| eLight.Y] = y;
-	mylight.light[| eLight.LutIntensity] = 1.65 + (clamp(flash_time, 0, 2) / 10);
+	mylight.light[| eLight.Range] = 250 * light_brightness * 0.8;
+	mylight.light[| eLight.LutIntensity] = (1.65 + (clamp(flash_time, 0, 2) / 10)) * 0.8;
 	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }
 
@@ -73,8 +80,9 @@ if (instance_exists(flashlight)){
 	flashlight.x = x + lengthdir_x(4, flashlight_direction);
 	flashlight.y = y + lengthdir_y(4, flashlight_direction);
 	flashlight.light[| eLight.X] = x + lengthdir_x(4, flashlight_direction);
-	flashlight.light[| eLight.Y] = y + lengthdir_y(4, flashlight_direction);;
-	flashlight.light[| eLight.LutIntensity] = 1.75;
+	flashlight.light[| eLight.Y] = y + lengthdir_y(4, flashlight_direction);
+	flashlight.light[| eLight.LutIntensity] = 1.75 * 0.8;
+	flashlight.light[| eLight.Range] = 480 * light_brightness * 0.8;
 	flashlight.light[| eLight.Direction] = flashlight_direction;
 	flashlight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }

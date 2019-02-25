@@ -18,6 +18,7 @@ if (instance_exists(global.player)){
 	if (point_distance(global.player.x, global.player.y, xTo, 0) < 200){		
 		obj_controller_ui.area_next_fade = true;
 		obj_controller_ui.area_next_room = rm_level_5_01;
+		global.game_level_opening_type = 0;
 	}
 	
 	global.player.move_xTo = xTo;

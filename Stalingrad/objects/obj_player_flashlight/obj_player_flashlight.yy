@@ -39,6 +39,14 @@
             "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
             "propertyId": "a89637b7-5f88-4100-a038-c4d3e5c67480",
             "value": "1.5"
+        },
+        {
+            "id": "c52a1594-2b63-4529-ab6e-279c6070ceac",
+            "modelName": "GMOverriddenProperty",
+            "mvc": "1.0",
+            "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
+            "propertyId": "1cb40d30-25a7-4fac-beac-2258d74cb99b",
+            "value": "1056"
         }
     ],
     "parentObjectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",

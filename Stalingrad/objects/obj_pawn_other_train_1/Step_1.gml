@@ -41,7 +41,7 @@ if (component_spawn){
 }
 
 if (!open_set){
-	if (count == 2) && (global.cutscene_current != 47){
+	if (count == cutscene_opening_count) && (global.cutscene_current != 47){
 		open = true;
 		open_pause = false;
 	}

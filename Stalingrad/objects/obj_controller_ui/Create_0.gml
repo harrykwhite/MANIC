@@ -87,4 +87,9 @@ control_indicate = false;
 control_indicate_text = "";
 control_indicate_x = 0;
 
+pausedialogue = false;
+pausedialogue_alpha = 0;
+pausedialogue_type = 0;
+pausedialogue_time = 0;
+
 sprite_index = noone;

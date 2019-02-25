@@ -28,12 +28,12 @@ if (corpse_active_time > 0){
 	instance_activate_object(obj_environment_corpse);
 }
 
-if (global.level_current == 4){
+if (room == rm_level_5_00) || (room == rm_level_5_02) || (room == rm_level_5_03) || (room == rm_level_5_04){
 	instance_activate_object(obj_pawn_other_prisoner_0);
 	instance_activate_object(obj_weapon_17_stand);
 }
 
-if (global.level_current == 5){
+if (room == rm_level_6_00){
 	var levelobject = scr_get_level_object();
 	var arm;
 	

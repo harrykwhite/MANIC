@@ -6,4 +6,5 @@ active = true;
 time = 0;
 interact = false;
 interact_special = "";
+interact_message = "";
 interact_instance = noone;

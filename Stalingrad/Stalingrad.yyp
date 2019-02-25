@@ -5663,6 +5663,14 @@
             }
         },
         {
+            "Key": "8bfc037d-ea70-42f7-ba5f-8fcd31abb43d",
+            "Value": {
+                "id": "c9b212f2-3289-4649-b71b-c0d22df200cf",
+                "resourcePath": "sounds\\snd_other_fly_0\\snd_other_fly_0.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "8c2c68a4-c646-4854-a590-c9e700158de2",
             "Value": {
                 "id": "63f591c8-3890-4e67-bac0-b834bb6f85b5",

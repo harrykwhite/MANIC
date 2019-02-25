@@ -57,20 +57,24 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 	}
 	
 	if (place_meeting(x + 1, y + 1, global.player)){
-		if (interact_instance != noone) && (instance_exists(interact_instance)){
-			interact_instance.interact = true;
-		}
-		
 		if (interact){
 			switch(interact_special){
 				case "train":
+					interact_message = "Board Train";
 					interact_instance = obj_controller_gameplay.cutscene_trainopening_inst;
 					break;
 			}
-		
-			if (!keyboard_check_pressed(ord("E"))){
-				exit;
+			
+			if (interact_instance != noone) && (instance_exists(interact_instance)){
+				interact_instance.interact = true;
+				scr_ui_control_indicate(interact_message + " [E]");
 			}
+		
+			if (keyboard_check_pressed(ord("E"))){
+				obj_controller_ui.pausedialogue = true;
+			}
+			
+			exit;
 		}
 		
 		if (time >= 30){
