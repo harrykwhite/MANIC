@@ -1,6 +1,6 @@
 ///scr_cutscene_22();
 var index = 22;
-var xTo = 0, yTo = 0;
+var xTo = 673, yTo = 253;
 var dir = 0;
 
 if (instance_exists(obj_controller_camera)){
@@ -9,9 +9,6 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	xTo = global.player.x;
-	yTo = 253;
-	
 	global.cutscene_camera_x[index] = xTo;
 	global.cutscene_camera_y[index] = yTo;
 	global.player.flashlight_move = false;

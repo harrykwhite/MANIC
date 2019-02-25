@@ -1,6 +1,6 @@
 ///scr_cutscene_51();
 var index = 51;
-var xTo = 0, yTo = 0;
+var xTo = 712, yTo = 2020;
 var dir = 0;
 
 if (instance_exists(obj_controller_camera)){
@@ -9,9 +9,6 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	xTo = global.player.x;
-	yTo = 2020;
-	
 	global.cutscene_camera_x[index] = xTo;
 	global.cutscene_camera_y[index] = yTo;
 	global.player.flashlight_move = false;
@@ -23,8 +20,9 @@ if (instance_exists(global.player)){
 		global.player.image_speed = 0;
 		global.player.image_index = 0;
 		
-		if (global.cutscene_time[index] < 20){
+		if (global.cutscene_time[index] < 30){
 			global.cutscene_time[index] ++;
+		}else{
 			instance_destroy(global.player);
 		}
 	}else{
@@ -33,7 +31,7 @@ if (instance_exists(global.player)){
 		global.player.move_extSpd = global.player.spd_max;
 	}
 }else{
-	if (global.cutscene_time[index] < 40){
+	if (global.cutscene_time[index] < 60){
 		global.cutscene_time[index] ++;
 	}else{
 		global.level_current = 3;

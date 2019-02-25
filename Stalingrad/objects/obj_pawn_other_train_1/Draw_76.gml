@@ -1,1 +1,1 @@
-scr_depth_controller(y + 3, -1);
+scr_depth_controller(y + 3, scr_draw_attributes_train_door);

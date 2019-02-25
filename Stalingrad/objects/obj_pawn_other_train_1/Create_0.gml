@@ -12,7 +12,10 @@ open_time = 0;
 open_pause = false;
 open_set = false;
 close = false;
-mylight = noone;
+//mylight = noone;
+sprite_set = false;
+type = 0;
+interact = false;
 
 if (x >= room_width){
 	dir = -1;

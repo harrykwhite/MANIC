@@ -4,3 +4,6 @@ destroy_on_active = true;
 respawnOnDeath = false;
 active = true;
 time = 0;
+interact = false;
+interact_special = "";
+interact_instance = noone;

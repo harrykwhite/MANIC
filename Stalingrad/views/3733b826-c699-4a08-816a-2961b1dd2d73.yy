@@ -6,7 +6,8 @@
     "children": [
         "04336586-4566-4410-957b-b52ad40bdb1d",
         "9af1fbd1-6641-474c-bede-a51550b87923",
-        "24386115-f5a1-46e0-8d75-3259dae86f47"
+        "24386115-f5a1-46e0-8d75-3259dae86f47",
+        "47e590f5-caa3-45d2-afab-b07cb57b0f96"
     ],
     "filterType": "GMSprite",
     "folderName": "Pawns",

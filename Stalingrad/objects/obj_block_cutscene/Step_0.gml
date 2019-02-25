@@ -57,6 +57,22 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 	}
 	
 	if (place_meeting(x + 1, y + 1, global.player)){
+		if (interact_instance != noone) && (instance_exists(interact_instance)){
+			interact_instance.interact = true;
+		}
+		
+		if (interact){
+			switch(interact_special){
+				case "train":
+					interact_instance = obj_controller_gameplay.cutscene_trainopening_inst;
+					break;
+			}
+		
+			if (!keyboard_check_pressed(ord("E"))){
+				exit;
+			}
+		}
+		
 		if (time >= 30){
 			global.cutscene_current = index;
 			
