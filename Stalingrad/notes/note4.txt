@@ -1,7 +1,7 @@
 Level one -> level two | level four
 Level two -> level one | level three
 Level three -> level two | level four
-Level four -> level one | level five | level six
+Level four -> level five | level six
 Level five -> level four | level six
 Level six -> level one | level four | level seven
 Level seven -> level six | level eight

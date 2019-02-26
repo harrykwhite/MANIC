@@ -14,7 +14,7 @@ if (instance_exists(global.player)){
 	global.player.flashlight_move = false;
 	global.player.flashlight_direction = 90;
 	
-	if (point_distance(global.player.x, global.player.y, xTo, yTo) < 12){
+	if (point_distance(global.player.x, global.player.y, xTo, yTo) < 20){
 		global.player.move_extSpd = 0;
 		global.player.sprite_index = spr_player_idle_1;
 		global.player.image_speed = 0;
@@ -34,9 +34,9 @@ if (instance_exists(global.player)){
 	if (global.cutscene_time[index] < 60){
 		global.cutscene_time[index] ++;
 	}else{
-		global.level_current = 5//3;
+		global.level_current = cutscene_traingoto;
 		global.game_level_opening_type = 1;
 		obj_controller_ui.area_next_fade = true;
-		obj_controller_ui.area_next_room = rm_level_6_00;
+		obj_controller_ui.area_next_room = global.level_room[cutscene_traingoto];
 	}
 }

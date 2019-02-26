@@ -23,8 +23,7 @@ if (instance_exists(global.player)){
 		}
 	}
 	
-	switch(room){
-			
+	/*switch(room){
 		case rm_level_1_00: global.player.flashlight_direction = 270; global.player.image_xscale = -1; break;
 		case rm_level_2_00: global.player.image_xscale = 1; break;
 		case rm_level_2_01: global.player.flashlight_direction = 270; global.player.image_xscale = -1; break;
@@ -49,7 +48,7 @@ if (instance_exists(global.player)){
 		case rm_level_9_00: global.player.flashlight_direction = 90; global.player.image_xscale = -1; break;
 		case rm_level_9_01: global.player.flashlight_direction = 90; global.player.image_xscale = -1; break;
 		case rm_level_9_02: global.player.flashlight_direction = 90; global.player.image_xscale = -1; break;
-	}
+	}*/
 	
 	if (point_distance(global.player.x, global.player.y, level.spawn_x, level.spawn_y) < 40){
 		global.player.move_xTo = -1;
@@ -68,6 +67,7 @@ if (instance_exists(global.player)){
 		global.player.move_xTo = level.spawn_x;
 		global.player.move_yTo = level.spawn_y;
 		global.player.move_extSpd = global.player.spd_max;
+		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, global.player.move_xTo, global.player.move_yTo);
 	}
 }else{
 	global.cutscene_current = -1;

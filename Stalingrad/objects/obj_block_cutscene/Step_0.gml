@@ -20,10 +20,7 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 	}*/
 	
 	if (global.level_current == 1){
-		if (global.game_objective_current != 2) && (index == 19){
-			exit;
-		}
-		if (global.boss_current != -1) && (index == 21){
+		if (global.boss_current != -1) && (index == 51){
 			exit;
 		}
 	}
@@ -57,28 +54,15 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 	}
 	
 	if (place_meeting(x + 1, y + 1, global.player)){
-		if (interact){
-			switch(interact_special){
-				case "train":
-					interact_message = "Board Train";
-					interact_instance = obj_controller_gameplay.cutscene_trainopening_inst;
-					break;
-			}
-			
-			if (interact_instance != noone) && (instance_exists(interact_instance)){
-				interact_instance.interact = true;
-				scr_ui_control_indicate(interact_message + " [E]");
-			}
-		
-			if (keyboard_check_pressed(ord("E"))){
-				obj_controller_ui.pausedialogue = true;
-			}
-			
-			exit;
-		}
-		
 		if (time >= 30){
 			global.cutscene_current = index;
+			
+			if (index == 52){
+				obj_controller_gameplay.cutscene_moveto_dir = moveto_dir;
+				obj_controller_gameplay.cutscene_moveto_room = moveto_room;
+				obj_controller_gameplay.cutscene_moveto_level = moveto_level;
+				obj_controller_gameplay.cutscene_moveto_type = moveto_type;
+			}
 			
 			if (special == "levelfourboss"){
 				var number, inst;

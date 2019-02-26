@@ -6,8 +6,13 @@ lighting = 1;
 
 spawn = false;
 spawn_time = 60 * 10;
+
 spawn_x = 572;
-spawn_y = 247;
+if (global.game_level_opening_type == 0){
+	spawn_y = 247;
+}else if (global.game_level_opening_type == 1){
+	spawn_y = room_height - 247;
+}
 
 // Spawn System
 scr_spawn_setup("windy", 1);

@@ -3,7 +3,7 @@ scr_ui_rank_display_setup();
 scr_ui_rank_display_update();
 
 // Screen Blend
-if (screenblend_draw ){
+if (screenblend_draw){
     if (screenblend_alpha < screenblend_endalpha){
         screenblend_alpha += screenblend_speed;
     }else{
@@ -72,130 +72,164 @@ if (!global.game_pause){
 	}
 }else{
 	// Pause
-	if (pausedialogue){
-		if (pausedialogue_time < 30){
-			pausedialogue_time ++;
-		}else{
-			if (keyboard_check_pressed(ord("E"))){
-				pausedialogue = false;
-				pausedialogue_time = 0;
+	if (!pausedialogue){
+		if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
+			if (pause_selected > 0){
+				pause_selected --;
+			}else{
+				pause_selected = pause_selectedmax - 1;
 			}
 		}
-	}
 	
-	if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
-		if (pause_selected > 0){
-			pause_selected --;
-		}else{
-			pause_selected = pause_selectedmax - 1;
+		if (keyboard_check_pressed(ord("S"))) or (keyboard_check_pressed(vk_down)){
+			if (pause_selected < pause_selectedmax - 1){
+				pause_selected ++;
+			}else{
+				pause_selected = 0;
+			}
 		}
-	}
 	
-	if (keyboard_check_pressed(ord("S"))) or (keyboard_check_pressed(vk_down)){
-		if (pause_selected < pause_selectedmax - 1){
-			pause_selected ++;
-		}else{
-			pause_selected = 0;
-		}
-	}
-	
-	if (pause_has_selected){
-		if (pause_has_selected_time < 1){
-			pause_has_selected_time += 0.025;
-		}else{
-			global.game_pause = false;
-			part_system_automatic_update(global.ps_bottom, false);
-			part_system_automatic_update(global.ps_front, false);
+		if (pause_has_selected){
+			if (pause_has_selected_time < 1){
+				pause_has_selected_time += 0.025;
+			}else{
+				global.game_pause = false;
+				part_system_automatic_update(global.ps_bottom, false);
+				part_system_automatic_update(global.ps_front, false);
 			
-			switch(pause_selected){
-				case 1:
-					part_system_clear(global.ps_front);
-					part_system_clear(global.ps_bottom);
-					global.weapon_slot[0] = global.sectionstart_weapon[0];
-					global.weapon_slotammo[0] = global.sectionstart_weaponammo[0];
+				switch(pause_selected){
+					case 1:
+						part_system_clear(global.ps_front);
+						part_system_clear(global.ps_bottom);
+						global.weapon_slot[0] = global.sectionstart_weapon[0];
+						global.weapon_slotammo[0] = global.sectionstart_weaponammo[0];
 					
-					global.weapon_slot[1] = global.sectionstart_weapon[1];
-					global.weapon_slotammo[1] = global.sectionstart_weaponammo[1];
+						global.weapon_slot[1] = global.sectionstart_weapon[1];
+						global.weapon_slotammo[1] = global.sectionstart_weaponammo[1];
 					
-					global.player_healthCurrent = global.sectionstart_playerhealth;
-					global.weapon_slotcurrent = 0;
-					room_restart();
-					break;
+						global.player_healthCurrent = global.sectionstart_playerhealth;
+						global.weapon_slotcurrent = 0;
+						room_restart();
+						break;
 				
-				case 2:
-					part_system_clear(global.ps_front);
-					part_system_clear(global.ps_bottom);
-					global.weapon_slot[0] = global.levelstart_weapon[0];
-					global.player_healthCurrent = global.player_healthMax;
-					if (global.weapon_slot[0] != -1){
-						global.weapon_slotammo[0] = global.weapon_ammomax[global.weapon_slot[0]];
-					}else{
-						global.weapon_slotammo[0] = -1;
-					}
+					case 2:
+						part_system_clear(global.ps_front);
+						part_system_clear(global.ps_bottom);
+						global.weapon_slot[0] = global.levelstart_weapon[0];
+						global.player_healthCurrent = global.player_healthMax;
+						if (global.weapon_slot[0] != -1){
+							global.weapon_slotammo[0] = global.weapon_ammomax[global.weapon_slot[0]];
+						}else{
+							global.weapon_slotammo[0] = -1;
+						}
 					
-					global.weapon_slot[1] = global.levelstart_weapon[1];
-					if (global.weapon_slot[1] != -1){
-						global.weapon_slotammo[1] = global.weapon_ammomax[global.weapon_slot[1]];
-					}else{
-						global.weapon_slotammo[1] = -1;
-					}
+						global.weapon_slot[1] = global.levelstart_weapon[1];
+						if (global.weapon_slot[1] != -1){
+							global.weapon_slotammo[1] = global.weapon_ammomax[global.weapon_slot[1]];
+						}else{
+							global.weapon_slotammo[1] = -1;
+						}
 					
-					global.weapon_slotcurrent = 0;
-					switch(global.level_current){
-						case 0:
-							room_goto(rm_level_1_00);
-							break;
+						global.weapon_slotcurrent = 0;
+						switch(global.level_current){
+							case 0:
+								room_goto(rm_level_1_00);
+								break;
 						
-						case 1:
-							room_goto(rm_level_2_00);
-							break;
+							case 1:
+								room_goto(rm_level_2_00);
+								break;
 						
-						case 2:
-							room_goto(rm_level_3_00);
-							break;
+							case 2:
+								room_goto(rm_level_3_00);
+								break;
 						
-						case 3:
-							room_goto(rm_level_4_00);
-							break;
+							case 3:
+								room_goto(rm_level_4_00);
+								break;
 						
-						case 4:
-							room_goto(rm_level_5_00);
-							break;
+							case 4:
+								room_goto(rm_level_5_00);
+								break;
 						
-						case 5:
-							room_goto(rm_level_6_00);
-							break;
+							case 5:
+								room_goto(rm_level_6_00);
+								break;
 						
-						case 6:
-							room_goto(rm_level_7_00);
-							break;
+							case 6:
+								room_goto(rm_level_7_00);
+								break;
 						
-						case 7:
-							room_goto(rm_level_8_00);
-							break;
-					}
-					break;
+							case 7:
+								room_goto(rm_level_8_00);
+								break;
+						}
+						break;
 				
-				case 3:
-					scr_fade_object_list_reset();
-					scr_global_set();
-					audio_stop_all();
-					room_goto(rm_title_0);
-					break;
+					case 3:
+						scr_fade_object_list_reset();
+						scr_global_set();
+						audio_stop_all();
+						room_goto(rm_title_0);
+						break;
+				}
+			}
+		}else{
+			if (keyboard_check_pressed(vk_enter)){
+				switch(pause_selected){
+					case 0:
+						global.game_pause = false;
+						pause_selected = 0;
+						break;
+			
+					default:
+						pause_has_selected = true;
+						pause_has_selected_time = 0;
+						break;
+				}
 			}
 		}
 	}else{
-		if (keyboard_check_pressed(vk_enter)){
-			switch(pause_selected){
-				case 0:
-					global.game_pause = false;
-					pause_selected = 0;
-					break;
-			
-				default:
-					pause_has_selected = true;
-					pause_has_selected_time = 0;
-					break;
+		// Pause Dialogue
+		if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
+			if (pausedialogue_option_selected > 0){
+				pausedialogue_option_selected --;
+			}else{
+				pausedialogue_option_selected = pausedialogue_option_max - 1;
+			}
+		}
+	
+		if (keyboard_check_pressed(ord("S"))) or (keyboard_check_pressed(vk_down)){
+			if (pausedialogue_option_selected < pausedialogue_option_max - 1){
+				pausedialogue_option_selected ++;
+			}else{
+				pausedialogue_option_selected = 0;
+			}
+		}
+	
+		if (pausedialogue_time < 20){
+			pausedialogue_time ++;
+		}else{
+			if (keyboard_check_pressed(ord("E"))){
+				global.game_pause = false;
+				pausedialogue = false;
+				pausedialogue_time = 0;
+				exit;
+			}
+		
+			if (keyboard_check_pressed(vk_enter)){
+				if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
+					global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
+				}
+				
+				if (pausedialogue_type_option_traingoto[pausedialogue_option_selected] != -1){
+					obj_controller_gameplay.cutscene_traingoto = pausedialogue_type_option_traingoto[pausedialogue_option_selected];
+				}
+				
+				global.game_pause = false;
+				pausedialogue_option_selected = 0;
+				pausedialogue_type = 0;
+				pausedialogue = false;
 			}
 		}
 	}

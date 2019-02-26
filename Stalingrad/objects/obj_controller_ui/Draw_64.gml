@@ -454,14 +454,16 @@ if (pause_text_update == false){
 }
 
 // Pause Dialogue
+var optxx = display_get_gui_width() / 2;
+var optyy = (display_get_gui_height() / 2) - ((30 * pausedialogue_option_max) / 2);
+
 if (pausedialogue){
-	global.game_pause = true;
 	if (pausedialogue_alpha < 1){
-		pausedialogue_alpha += 0.1;
+		pausedialogue_alpha += 0.2;
 	}
 }else{
 	if (pausedialogue_alpha > 0){
-		pausedialogue_alpha -= 0.1;
+		pausedialogue_alpha -= 0.2;
 	}
 }
 
@@ -469,15 +471,26 @@ draw_set_alpha(pausedialogue_alpha);
 draw_set_font(fnt_cambria_1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_set_colour(c_white);
 
 switch(pausedialogue_type){
 	case 0:
-		draw_text(display_get_gui_width() / 2, display_get_gui_height() / 2, "I haven't been given any dialogue yet!");
+		scr_text_shadow(display_get_gui_width() / 2, display_get_gui_height() / 2, pausedialogue_type_text, c_white);
+		break;
+	
+	case 1:
+		optyy += 45;
+		scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) - 30, pausedialogue_type_text, c_white);
+		for(var i = 0; i < pausedialogue_option_max; i++){
+			if (pausedialogue_option_selected == i){
+				scr_text_shadow(optxx, optyy + (i * 30), pausedialogue_type_option[i], make_colour_rgb(189, 23, 23));
+			}else{
+				scr_text_shadow(optxx, optyy + (i * 30), pausedialogue_type_option[i], c_white);
+			}
+		}
 		break;
 }
 
-draw_text((display_get_gui_width() / 2) + 220, (display_get_gui_height() / 2) + 220, "Resume [E]");
+scr_text_shadow((display_get_gui_width() / 2) + 220, (display_get_gui_height() / 2) + 220, "Resume [E]", c_white);
 draw_set_valign(fa_top);
 draw_set_alpha(1);
 

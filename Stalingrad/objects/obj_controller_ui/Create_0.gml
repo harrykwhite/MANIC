@@ -89,7 +89,13 @@ control_indicate_x = 0;
 
 pausedialogue = false;
 pausedialogue_alpha = 0;
-pausedialogue_type = 0;
+pausedialogue_type = 1;
 pausedialogue_time = 0;
+pausedialogue_option_selected = 0;
+pausedialogue_option_max = 0;
+pausedialogue_type_text = "I haven't been given dialogue yet!";
+pausedialogue_type_option[0] = -1;
+pausedialogue_type_option_cutscene[0] = -1;
+pausedialogue_type_option_traingoto[0] = -1;
 
 sprite_index = noone;

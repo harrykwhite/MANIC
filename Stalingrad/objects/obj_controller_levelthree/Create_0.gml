@@ -9,8 +9,13 @@ spawn_time = 60 * 8;
 
 switch(room){
 	case rm_level_3_00:
-		spawn_x = 295;
-		spawn_y = 170;
+		if (global.game_level_opening_type == 0){
+			spawn_x = 295;
+			spawn_y = 170;
+		}else{
+			spawn_x = 1600;
+			spawn_y = 1248;
+		}
 		
 		objective_title[0] = "Clear the area of 20 enemies";
 		objective_type[0] = ObjectiveType.Kill;

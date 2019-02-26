@@ -17,6 +17,11 @@ sectionstart_record_set = false;
 cutscene_conveyerbelt_x = 0;
 cutscene_conveyerbelt_y = 0;
 cutscene_trainopening_inst = noone;
+cutscene_traingoto = 0;
+cutscene_moveto_room = noone;
+cutscene_moveto_level = 0;
+cutscene_moveto_dir = 0;
+cutscene_moveto_type = 0;
 
 weaponlist = ds_list_create();
 weaponlist[| 0] = global.weapon_slot[global.weapon_slotcurrent];

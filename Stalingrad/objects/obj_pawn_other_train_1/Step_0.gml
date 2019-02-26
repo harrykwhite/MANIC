@@ -1,6 +1,35 @@
+interact = false;
 if (global.game_pause){
 	image_speed = 0;
 	exit;
+}
+
+if (instance_exists(global.player)) && (global.cutscene_current == -1){
+	if (interact_break > 0){
+		interact_break --;
+	}else{
+		if (count == cutscene_opening_count){
+			if (point_distance(x, y + 6, global.player.x, global.player.y) < 30){
+				if (global.player.y > y){
+					interact = true;
+					if (keyboard_check_pressed(ord("E"))){
+						global.game_pause = true;
+						interact_break = 10;
+						obj_controller_ui.pausedialogue = true;
+						obj_controller_ui.pausedialogue_type = 1;
+						obj_controller_ui.pausedialogue_type_text = "Select your destination";
+						obj_controller_ui.pausedialogue_type_option[0] = "Storage Facility";
+						obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
+						obj_controller_ui.pausedialogue_type_option_traingoto[0] = 3;
+						obj_controller_ui.pausedialogue_type_option[1] = "Train Station";
+						obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
+						obj_controller_ui.pausedialogue_type_option_traingoto[1] = 5;
+						obj_controller_ui.pausedialogue_option_max = 2;
+					}
+				}
+			}
+		}
+	}
 }
 
 if (open){

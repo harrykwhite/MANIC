@@ -4,7 +4,8 @@ destroy_on_active = true;
 respawnOnDeath = false;
 active = true;
 time = 0;
-interact = false;
-interact_special = "";
-interact_message = "";
-interact_instance = noone;
+
+moveto_dir = -1;
+moveto_level = -1;
+moveto_room = noone;
+moveto_type = -1;

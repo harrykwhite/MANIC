@@ -9,8 +9,13 @@ spawn_time = 60 * 10;
 
 switch(room){
 	case rm_level_2_00:
-		spawn_x = 188;
-		spawn_y = 298;
+		if (global.game_level_opening_type == 0){
+			spawn_x = 188;
+			spawn_y = 298;
+		}else{
+			spawn_x = 566;
+			spawn_y = 936;
+		}
 		
 		objective_title[0] = "Locate the farm owner";
 		objective_type[0] = noone;
@@ -25,9 +30,13 @@ switch(room){
 		break;
 	
 	case rm_level_2_01:
-		spawn_x = 368;
-		spawn_y = 160;
-		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 368;
+			spawn_y = 160;
+		}else{
+			spawn_x = 344;
+			spawn_y = 819;
+		}
 		objective_title[0] = "Clear the area of 15 enemies";
 		objective_type[0] = ObjectiveType.Kill;
 		objective_type_kill_number[0] = 15;
@@ -38,8 +47,13 @@ switch(room){
 		break;
 	
 	case rm_level_2_02:
-		spawn_x = room_width / 2;
-		spawn_y = 160;
+		if (global.game_level_opening_type == 0){
+			spawn_x = 358;
+			spawn_y = 160;
+		}else{
+			spawn_x = 358;
+			spawn_y = 614;
+		}
 		
 		objective_title[0] = "";
 		objective_type[0] = noone;
