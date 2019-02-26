@@ -79,6 +79,28 @@ if (health_current <= 0){
 		}
 		
 		if (object_index == obj_enemy_0){
+			switch(type){
+				case EnemyOneType.Grenadier:
+					global.game_firstgrenadier_killed = true;
+					break;
+				
+				case EnemyOneType.Crazy:
+					global.game_firstcrazy_killed = true;
+					break;
+				
+				case EnemyOneType.Sniper:
+					global.game_firstsniper_killed = true;
+					break;
+				
+				case EnemyOneType.Healer:
+					global.game_firsthealer_killed = true;
+					break;
+				
+				case EnemyOneType.Fly:
+					global.game_firstflyhead_killed = true;
+					break;
+			}
+			
 			if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper){
 				repeat(9){
 			        part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
@@ -101,6 +123,18 @@ if (health_current <= 0){
 				scr_effect_screenshake(5);
 				scr_sound_play_distance(snd_weapon_explode_0, false, 400);
 			}
+		}
+		
+		if (object_index == obj_enemy_2){
+			global.game_firstdog_killed = true;
+		}
+		
+		if (object_index == obj_thescorched){
+			global.game_boss_thescorched_killed = true;
+		}
+		
+		if (object_index == obj_thedogkeeper){
+			global.game_boss_thedogkeeper_killed = true;
 		}
 	}
 	

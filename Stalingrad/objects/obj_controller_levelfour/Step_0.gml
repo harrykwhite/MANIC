@@ -1,4 +1,5 @@
 scr_position_view();
+crazy_can_spawn = global.game_firstcrazy_killed;
 
 if (!global.game_pause){
 	
@@ -149,11 +150,13 @@ if (instance_exists(global.player)){
 							}
 						}
 					}
-				
-					if (chance(10)){
-						enemy.type = EnemyOneType.Crazy;
+					
+					if (crazy_can_spawn){
+						if (chance(10)){
+							enemy.type = EnemyOneType.Crazy;
+						}
 					}
-				
+					
 					if (weapon == PawnWeapon.Grenade){
 						enemy.type = EnemyOneType.Grenadier;
 					}

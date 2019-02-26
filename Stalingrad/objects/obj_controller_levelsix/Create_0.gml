@@ -71,4 +71,4 @@ train_time = 0;
 train_timemax = 10 * 60;
 trainobjective_time = 10 * 60;
 
-healer_can_spawn = false;
+healer_can_spawn = global.game_firsthealer_killed;

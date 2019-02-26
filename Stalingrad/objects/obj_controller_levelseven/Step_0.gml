@@ -1,4 +1,5 @@
 scr_position_view();
+fly_can_spawn = global.game_firstflyhead_killed;
 
 if (!global.game_pause){
 	

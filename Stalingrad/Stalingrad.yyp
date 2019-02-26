@@ -767,14 +767,6 @@
             }
         },
         {
-            "Key": "123e8dd7-eccf-4d2a-a19d-2749d0d56bc1",
-            "Value": {
-                "id": "28280d7d-38d1-49d3-a041-9f58c293db03",
-                "resourcePath": "scripts\\scr_cutscene_24\\scr_cutscene_24.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "126b0362-ba4c-41d4-93e2-03b87494a4d8",
             "Value": {
                 "id": "5158cf11-9813-412e-a224-c8d28920cabf",
@@ -4311,14 +4303,6 @@
             }
         },
         {
-            "Key": "6b63f43c-b59c-4e75-993b-73592eee80d2",
-            "Value": {
-                "id": "e9490aae-b19a-49be-9cb5-444e7ab70b04",
-                "resourcePath": "scripts\\scr_cutscene_23\\scr_cutscene_23.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "6b810584-0e46-4d03-b91e-1442759c1058",
             "Value": {
                 "id": "dc5b17dd-57a3-4f6a-8ff4-5e5fd18ea563",
@@ -6159,14 +6143,6 @@
             }
         },
         {
-            "Key": "9324ea79-6605-4cd8-ae7a-ec9e284df662",
-            "Value": {
-                "id": "4460396d-87dc-4e2f-ad99-16b08385cd34",
-                "resourcePath": "scripts\\scr_cutscene_14\\scr_cutscene_14.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "938ab7ae-9c74-415f-9deb-f15ea261dd23",
             "Value": {
                 "id": "9786c59e-3f63-4f59-b753-440cb74daa6e",
@@ -7443,14 +7419,6 @@
             "Value": {
                 "id": "36792073-728b-4e89-ba56-53b65be51889",
                 "resourcePath": "scripts\\scr_part_type_blood_3\\scr_part_type_blood_3.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "b1a83131-6676-4679-9e99-0f4e89bd1971",
-            "Value": {
-                "id": "7f2c817d-6fe5-46f1-b37a-70825c7ab176",
-                "resourcePath": "scripts\\scr_cutscene_17\\scr_cutscene_17.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -10484,13 +10452,9 @@
         "17522fcc-7b36-49b0-b7aa-627a2cddab6d",
         "8a3d3f88-f579-4693-9a52-babf6ce0c412",
         "51bad0fc-81b5-46de-aecc-d1743fdd3db9",
-        "9324ea79-6605-4cd8-ae7a-ec9e284df662",
         "da96bee7-61eb-4d3d-8856-6e097020a743",
-        "b1a83131-6676-4679-9e99-0f4e89bd1971",
         "aeb02f09-aaaa-47e9-883b-94af56917007",
         "d84588a4-dd90-4535-8ded-8b92511df3aa",
-        "6b63f43c-b59c-4e75-993b-73592eee80d2",
-        "123e8dd7-eccf-4d2a-a19d-2749d0d56bc1",
         "2b68dc90-a36a-4dff-b169-6889df02b130",
         "a3ac92bd-6e00-45dd-ad4a-ee6476313add",
         "94840e8c-e924-4597-9d11-2ebdb66e598e",

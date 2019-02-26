@@ -63,14 +63,10 @@ global.game_objective_current = 0;
 
 // Other
 global.cutscene_current = 2;
-fly_can_spawn = true;
+fly_can_spawn = global.game_firstflyhead_killed;
 sprite_index = noone;
 depth = -5;
 
 rain = audio_play_sound(m_ambience_rain_0, 3, true);
 audio_sound_gain(rain, 0, 0);
 audio_sound_gain(rain, 1, 8000);
-
-if (room == rm_level_7_00) || (room == rm_level_7_01){
-	fly_can_spawn = false;
-}

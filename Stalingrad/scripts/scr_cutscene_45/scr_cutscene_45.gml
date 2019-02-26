@@ -1,8 +1,6 @@
 ///scr_cutscene_45();
 var index = 45, xTo = 512, yTo = 1312;
-var to = noone;
 var eobj = noone;
-var levelobj = scr_get_level_object();
 
 if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake = false;
@@ -25,7 +23,6 @@ if (instance_exists(global.player)){
 			global.player.move_yTo = -1;
 			eobj.in_cutscene = false;
 			eobj.cutscene_prop = false;
-			levelobj.dog_can_spawn = true;
 		}else{
 			eobj.in_cutscene = true;
 		}

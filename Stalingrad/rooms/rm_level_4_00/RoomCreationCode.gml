@@ -12,6 +12,12 @@ if (global.game_level_opening_type == 1){
 	global.player.y = -40;
 }
 
+if (global.game_level_opening_type == 2){
+	global.player.y = room_width + 4;
+	obj_controller_camera.x = global.player.x;
+	obj_controller_camera.y = global.player.y;
+}
+
 if (global.player_companion != -1){
 	var comp = instance_create(global.player.x - 20, global.player.y - 20, global.companion[global.player_companion]);
 	if (global.player_companion_health != -1){

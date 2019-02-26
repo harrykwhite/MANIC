@@ -15,6 +15,19 @@ global.game_combat_active = true;
 global.game_combat_balance = 1;
 global.game_level_opening_type = 0;
 
+global.game_boss_thescorched_killed = false;
+global.game_boss_thedogkeeper_killed = false;
+global.game_firstdog_killed = false;
+global.game_firstgrenadier_killed = false;
+global.game_firstcrazy_killed = false;
+global.game_firstsniper_killed = false;
+global.game_firsthealer_killed = false;
+global.game_firstflyhead_killed = false;
+global.game_companion_farmer_found = false;
+global.game_companion_grenadier_found = false;
+global.game_companion_prisoner_found = false;
+global.game_companion_dog_found = false;
+
 global.boss_current = -1;
 
 if (room == rm_ini){

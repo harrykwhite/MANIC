@@ -27,6 +27,7 @@ if (instance_exists(global.player)){
 				global.player.move_xTo = -1;
 				global.player.move_yTo = -1;
 				global.player_companion = 3;
+				global.game_companion_dog_found = true;
 				cobj.in_cutscene = false;
 				cobj.cutscene_prop = false;
 			}

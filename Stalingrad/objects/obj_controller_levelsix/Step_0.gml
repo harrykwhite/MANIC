@@ -1,4 +1,5 @@
 scr_position_view();
+healer_can_spawn = global.game_firsthealer_killed;
 
 if (!global.game_pause){
 	

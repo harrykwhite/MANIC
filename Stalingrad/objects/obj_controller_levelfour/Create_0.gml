@@ -11,7 +11,11 @@ spawn_time = 60 * 10;
 switch(room){
 	case rm_level_4_00:
 		spawn_x = 463;
-		spawn_y = 183;
+		if (global.game_level_opening_type == 0){
+			spawn_y = 183;
+		}else if (global.game_level_opening_type == 2){
+			spawn_y = 620;
+		}
 		
 		#region Objective
 		objective_title[0] = "Clear the area of 15 enemies";
@@ -26,7 +30,11 @@ switch(room){
 	
 	case rm_level_4_01:
 		spawn_x = 888;
-		spawn_y = 183;
+		if (global.game_level_opening_type == 0){
+			spawn_y = 183;
+		}else if (global.game_level_opening_type == 1){
+			spawn_y = 694;
+		}
 		
 		#region Objective
 		objective_title[0] = "Deactivate all generator terminals (0 / 3)";
@@ -64,6 +72,8 @@ audio_sound_gain(wind, 1, 7000);
 // Other
 dogkeeper = noone;
 dogkeeper_failed = false;
+
+crazy_can_spawn = global.game_firstcrazy_killed;
 
 if (room == rm_level_4_00) && (global.game_level_opening_type == 1){
 	global.cutscene_current = 47;

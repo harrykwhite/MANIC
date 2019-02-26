@@ -60,7 +60,7 @@ rain_thunder_flash_amount[5] = 0.2;
 rain_thunder_flash[6] = m_ambience_thunder_6;
 rain_thunder_flash_amount[6] = 0.1;
 
-dog_can_spawn = false;
+dog_can_spawn = global.game_firstdog_killed;
 
 global.cutscene_current = 2;
 sprite_index = noone;

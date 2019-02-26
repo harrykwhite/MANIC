@@ -1,8 +1,6 @@
 ///scr_cutscene_35();
 var index = 35, xTo = 986, yTo = 768;
-var to = noone;
 var eobj = noone;
-var levelobj = scr_get_level_object();
 
 if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake = false;
@@ -25,7 +23,6 @@ if (instance_exists(global.player)){
 			global.player.move_yTo = -1;
 			eobj.sniper_in_cutscene = false;
 			eobj.sniper_cutscene_prop = false;
-			levelobj.sniper_can_spawn = true;
 		}else{
 			eobj.sniper_in_cutscene = true;
 		}

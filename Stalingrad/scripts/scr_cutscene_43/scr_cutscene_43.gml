@@ -19,7 +19,6 @@ if (instance_exists(global.player)){
 		global.cutscene_current = -1;
 		global.player.move_xTo = -1;
 		global.player.move_yTo = -1;
-		global.player_companion = 0;
 	}
 }else{
 	global.cutscene_current = -1;

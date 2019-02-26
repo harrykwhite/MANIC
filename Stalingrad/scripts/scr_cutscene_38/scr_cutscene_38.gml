@@ -1,8 +1,6 @@
 ///scr_cutscene_38();
 var index = 38, xTo = 416, yTo = 256;
-var to = noone;
 var eobj = noone;
-var levelobj = scr_get_level_object();
 
 if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake = false;
@@ -25,7 +23,6 @@ if (instance_exists(global.player)){
 			global.player.move_yTo = -1;
 			eobj.healer_in_cutscene = false;
 			eobj.healer_cutscene_prop = false;
-			levelobj.healer_can_spawn = true;
 		}else{
 			eobj.healer_in_cutscene = true;
 		}

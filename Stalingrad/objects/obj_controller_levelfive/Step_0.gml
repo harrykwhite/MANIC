@@ -1,4 +1,5 @@
 scr_position_view();
+sniper_can_spawn = global.game_firstsniper_killed;
 
 if (!global.game_pause){
 	

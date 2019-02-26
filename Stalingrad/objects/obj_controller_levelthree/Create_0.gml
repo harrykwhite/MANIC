@@ -14,7 +14,7 @@ switch(room){
 			spawn_y = 170;
 		}else{
 			spawn_x = 1600;
-			spawn_y = 1248;
+			spawn_y = 1218;
 		}
 		
 		objective_title[0] = "Clear the area of 20 enemies";
@@ -27,8 +27,13 @@ switch(room){
 		break;
 	
 	case rm_level_3_01:
-		spawn_x = 467;
-		spawn_y = 160;
+		if (global.game_level_opening_type == 0){
+			spawn_x = 467;
+			spawn_y = 160;
+		}else{
+			spawn_x = 924;
+			spawn_y = 760;
+		}
 		
 		objective_title[0] = "Clear the area of 10 enemies";
 		objective_type[0] = ObjectiveType.Kill;
@@ -40,8 +45,13 @@ switch(room){
 		break;
 	
 	case rm_level_3_02:
-		spawn_x = 220;
-		spawn_y = 308;
+		if (global.game_level_opening_type == 0){
+			spawn_x = 220;
+			spawn_y = 308;
+		}else{
+			spawn_x = 2167;
+			spawn_y = 640;
+		}
 		
 		objective_title[0] = "Clear the area of 20 enemies";
 		objective_type[0] = ObjectiveType.Kill;

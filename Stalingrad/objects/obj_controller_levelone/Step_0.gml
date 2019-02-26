@@ -1,4 +1,5 @@
 scr_position_view();
+dog_can_spawn = global.game_firstdog_killed;
 
 if (!global.game_pause){
 
