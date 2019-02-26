@@ -14,7 +14,7 @@ if (instance_exists(global.player)){
 	
 	if (instance_exists(cobj)){
 		global.player.flashlight_move = false;
-		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo - 30, yTo);
+		global.player.flashlight_direction = 180;
 		
 		xTo = global.player.x;
 		yTo = global.player.y;

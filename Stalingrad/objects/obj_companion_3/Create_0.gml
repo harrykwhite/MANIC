@@ -9,7 +9,7 @@ strength = 1;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
-mylight = instance_create(x, y, obj_companion_light);
+mylight = noone;
 
 burn = false;
 burn_x = x;

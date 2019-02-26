@@ -1815,14 +1815,6 @@
             }
         },
         {
-            "Key": "2b68dc90-a36a-4dff-b169-6889df02b130",
-            "Value": {
-                "id": "0eaf2ad1-0e61-49a3-8d3f-87a6049fae34",
-                "resourcePath": "scripts\\scr_cutscene_25\\scr_cutscene_25.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "2c49b80b-1086-4b7b-9ce1-d632219385b9",
             "Value": {
                 "id": "f1c368b4-af75-494f-9c85-760b226818ea",
@@ -3348,14 +3340,6 @@
                 "id": "6d101e5a-0bde-4d09-bd1f-64ea5c9a7df8",
                 "resourcePath": "sprites\\spr_enemy_0_headless_fly_idle_1\\spr_enemy_0_headless_fly_idle_1.yy",
                 "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "51bad0fc-81b5-46de-aecc-d1743fdd3db9",
-            "Value": {
-                "id": "4783661c-eaa6-439e-903a-6b25d4f985da",
-                "resourcePath": "scripts\\scr_cutscene_13\\scr_cutscene_13.yy",
-                "resourceType": "GMScript"
             }
         },
         {
@@ -5539,14 +5523,6 @@
             "Value": {
                 "id": "61a7489c-14cb-40e2-a2e1-dfc893da8d0b",
                 "resourcePath": "scripts\\collision_line_width\\collision_line_width.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "8a3d3f88-f579-4693-9a52-babf6ce0c412",
-            "Value": {
-                "id": "7dc7a9ea-77ad-416a-aead-3825b492a266",
-                "resourcePath": "scripts\\scr_cutscene_12\\scr_cutscene_12.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -8599,14 +8575,6 @@
             }
         },
         {
-            "Key": "d4280ad1-8407-4d38-8325-041a09b3a82a",
-            "Value": {
-                "id": "5011d31d-a3ac-41b0-b813-647f69674542",
-                "resourcePath": "scripts\\scr_cutscene_10\\scr_cutscene_10.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "d4289acc-80da-410c-beca-d283e17720b9",
             "Value": {
                 "id": "4c35a9a8-a9a9-49f2-a6c0-edd121cdf04e",
@@ -10448,14 +10416,10 @@
         "31fedca2-00f4-4f2d-8052-87a01fdce2eb",
         "1738b497-298f-424e-8987-1125657b74db",
         "21824d11-a523-467e-818a-1b2a71281c23",
-        "d4280ad1-8407-4d38-8325-041a09b3a82a",
         "17522fcc-7b36-49b0-b7aa-627a2cddab6d",
-        "8a3d3f88-f579-4693-9a52-babf6ce0c412",
-        "51bad0fc-81b5-46de-aecc-d1743fdd3db9",
         "da96bee7-61eb-4d3d-8856-6e097020a743",
         "aeb02f09-aaaa-47e9-883b-94af56917007",
         "d84588a4-dd90-4535-8ded-8b92511df3aa",
-        "2b68dc90-a36a-4dff-b169-6889df02b130",
         "a3ac92bd-6e00-45dd-ad4a-ee6476313add",
         "94840e8c-e924-4597-9d11-2ebdb66e598e",
         "1828f357-e471-44e2-a368-795bf621425b",

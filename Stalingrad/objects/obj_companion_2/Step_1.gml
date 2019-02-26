@@ -14,3 +14,7 @@ if (arm == -1){
 	arm = instance_create(x, y, obj_companion_arm_0);
 	arm.owner = id;
 }
+
+if (mylight == noone){
+	mylight = instance_create(x, y, obj_companion_light);
+}

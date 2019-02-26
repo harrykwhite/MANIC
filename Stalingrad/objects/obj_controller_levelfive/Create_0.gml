@@ -1,3 +1,4 @@
+// Variables
 background_01 = -1;
 background_02 = -1;
 
@@ -9,43 +10,14 @@ spawn_time = 60 * 8;
 
 switch(room){
 	case rm_level_5_00:
-		spawn_x = 982;
-		spawn_y = 1308;
-		break;
+		if (global.game_level_opening_type == 0){
+			spawn_x = 982;
+			spawn_y = 1308;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 864;
+			spawn_y = 194;
+		}
 	
-	case rm_level_5_01:
-		spawn_x = 1146;
-		spawn_y = 426;
-		break;
-	
-	case rm_level_5_02:
-		spawn_x = 940;
-		spawn_y = 253;
-		break;
-	
-	case rm_level_5_03:
-		spawn_x = 940;
-		spawn_y = 258;
-		break;
-	
-	case rm_level_5_04:
-		spawn_x = 940;
-		spawn_y = 253;
-		break;
-}
-
-// Spawn System
-scr_spawn_setup("underground", 1.2);
-spawn_pause_update = false;
-spawn_state_time_real = 0;
-spawn_rate_real = 1;
-spawn_cleared = false;
-
-// Objective System
-objective_update = false;
-
-switch(room){
-	case rm_level_5_00:
 		objective_title[0] = "Free all prisoners (0 / 4)";
 		objective_type[0] = noone;
 		
@@ -63,6 +35,14 @@ switch(room){
 		break;
 	
 	case rm_level_5_01:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 1146;
+			spawn_y = 426;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 157;
+			spawn_y = 432;
+		}
+		
 		objective_title[0] = "Clear the area of 10 enemies";
 		objective_type[0] = ObjectiveType.Kill;
 		objective_type_kill_number[0] = 10;
@@ -73,6 +53,14 @@ switch(room){
 		break;
 	
 	case rm_level_5_02:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 940;
+			spawn_y = 253;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 270;
+			spawn_y = 252;
+		}
+		
 		objective_title[0] = "Clear the area of 20 enemies";
 		objective_type[0] = ObjectiveType.Kill;
 		objective_type_kill_number[0] = 20;
@@ -83,6 +71,14 @@ switch(room){
 		break;
 	
 	case rm_level_5_03:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 940;
+			spawn_y = 258;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 154;
+			spawn_y = 688;
+		}
+		
 		objective_title[0] = "Free all prisoners (0 / 3)";
 		objective_type[0] = noone;
 		
@@ -97,6 +93,14 @@ switch(room){
 		break;
 	
 	case rm_level_5_04:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 940;
+			spawn_y = 253;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 616;
+			spawn_y = 656;
+		}
+		
 		objective_title[0] = "Clear the area of 20 enemies";
 		objective_type[0] = ObjectiveType.Kill;
 		objective_type_kill_number[0] = 20;
@@ -106,6 +110,14 @@ switch(room){
 		objective_type[1] = ObjectiveType.Clear;
 }
 
+scr_spawn_setup("underground", 1.2);
+spawn_pause_update = false;
+spawn_state_time_real = 0;
+spawn_rate_real = 1;
+spawn_cleared = false;
+
+// Objective System
+objective_update = false;
 global.game_objective_current = 0;
 
 // Other

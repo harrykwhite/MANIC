@@ -7,7 +7,7 @@ scale = random_range(0.975, 1.025);
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
-mylight = instance_create(x, y, obj_companion_light);
+mylight = noone;
 
 runaway_starttime = 0;
 runaway_time = 0;

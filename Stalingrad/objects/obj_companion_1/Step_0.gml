@@ -40,7 +40,7 @@ mylight.x = x;
 mylight.y = y;
 mylight.light[| eLight.X] = x;
 mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.35 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+mylight.light[| eLight.LutIntensity] = max((1.55 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 scr_pawn_update();

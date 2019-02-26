@@ -1,9 +1,16 @@
 if (!instance_exists(obj_player)){
-    instance_create(1146, room_height + 8, obj_player);
+    instance_create(1146, room_height + 4, obj_player);
 }
 
 global.player = obj_player;
 global.player_footstep_default = snd_character_footstep_wood;
+
+if (global.game_level_opening_type == 1){
+	global.player.x = -4;
+	global.player.y = 432;
+	obj_controller_camera.x = global.player.x;
+	obj_controller_camera.y = global.player.y;
+}
 
 if (global.player_companion != -1){
 	var comp = instance_create(global.player.x - 20, global.player.y + 20, global.companion[global.player_companion]);

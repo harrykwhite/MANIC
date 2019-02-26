@@ -57,7 +57,7 @@ if (instance_exists(target)){
 			if (bark_time > 0){
 				bark_time--;
 			}else{
-				scr_sound_play(snd_character_bark_0, false, 0.7, 1.3);
+				scr_sound_play_distance(snd_character_bark_0, false, 300);
 				bark_time = random_range(140, 260);
 			}
 		}

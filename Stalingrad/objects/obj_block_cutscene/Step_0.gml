@@ -33,12 +33,6 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 		}
 	}
 	
-	if (global.level_current == 4) && (room == rm_level_5_03){
-		if (global.game_objective_current != 3){
-			exit;
-		}                                                          
-	}
-	
 	if (global.level_current == 5) && (room == rm_level_6_01){
 		if (levelobj.objective_type[global.game_objective_current] != ObjectiveType.Clear) && (index != 26){
 			exit;

@@ -50,6 +50,8 @@ barrel_pause_break = 0;
 
 defense = 3;
 
+bark_time = random(30);
+
 move_speed = 0;
 move_speed_real = 0;
 move_speed_offset = random_range(0.75, 0.9);

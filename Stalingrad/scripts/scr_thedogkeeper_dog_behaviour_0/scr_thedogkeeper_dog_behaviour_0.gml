@@ -30,6 +30,15 @@ if (instance_exists(target)){
 		leash_length_offset = -20;
 		speed_multiplier += 0.5;
 	}else{
+		if (distance_to_point(target.x, target.y + 6) < 200){
+			if (bark_time > 0){
+				bark_time--;
+			}else{
+				scr_sound_play_distance(snd_character_bark_0, false, 300);
+				bark_time = random_range(140, 260);
+			}
+		}
+		
 		if (attack_time > 0){
 			attack_time --;
 		}else{
