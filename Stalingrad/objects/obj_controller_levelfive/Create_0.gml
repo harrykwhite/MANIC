@@ -98,7 +98,7 @@ switch(room){
 			spawn_y = 253;
 		}else if (global.game_level_opening_type == 1){
 			spawn_x = 616;
-			spawn_y = 656;
+			spawn_y = 626;
 		}
 		
 		objective_title[0] = "Clear the area of 20 enemies";

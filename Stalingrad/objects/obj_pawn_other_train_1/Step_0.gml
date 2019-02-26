@@ -95,7 +95,7 @@ if (open){
 
 x += spd * dir;
 
-if (spd > 0) || (leave){
+if (spd > 0) || ((leave) && (!stop_on_end)){
 	if (leave){
 		spd += 0.0075 * 1.35;
 	}else{

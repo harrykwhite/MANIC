@@ -104,7 +104,6 @@ if (global.weapon_slot_standalone == -1){
 
 	    // Movement
 	    if ((image_xscale == 1) && (sign(hspd)==1)) || ((image_xscale==-1) && (sign(hspd)=-1)) || (hspd == 0){ // Forwards - checks if the player is facing the dir of their movement.
-        
 	        move_back = false;
         
 	        if (global.player_weapon != -1){
@@ -119,7 +118,6 @@ if (global.weapon_slot_standalone == -1){
 	        }
 			
 	    }else{
-			
 	        move_back = true;
 	        spd_multiplier -= 0.2;
         
@@ -168,7 +166,6 @@ if (global.weapon_slot_standalone == -1){
 	    dash_direction = point_direction(0, 0, xaxis, yaxis);
 		
 		if (xaxis == 0) && (yaxis == 0){
-			
 			if (image_xscale == 1){
 				dash_direction = 360;
 			}else{
@@ -243,6 +240,12 @@ if (global.weapon_slot_standalone == -1){
 // Sprite Flip
 if (move_xTo == -1) && (move_yTo == -1) && (global.cutscene_current == -1){
 	if (mouse_x > x){
+		image_xscale = 1;
+	}else{
+		image_xscale = -1;
+	}
+}else{
+	if (move_xTo > x){
 		image_xscale = 1;
 	}else{
 		image_xscale = -1;

@@ -7,8 +7,6 @@ lighting = 1;
 
 spawn = false;
 spawn_time = 60 * 10;
-spawn_x = 656;
-spawn_y = 245;
 
 // Spawn System
 scr_spawn_setup("main", 1.25);
@@ -23,6 +21,9 @@ objective_special_boss_object = noone;
 
 switch(room){
 	case rm_level_6_00:
+		spawn_x = 656;
+		spawn_y = 245;
+		
 		objective_title[0] = "Clear the area of 15 enemies";
 		objective_type[0] = ObjectiveType.Kill;
 		objective_type_kill_number[0] = 15;
@@ -36,15 +37,17 @@ switch(room){
 
 		objective_title[3] = "Board the train"
 		objective_type[3] = ObjectiveType.Clear;
-		
-		if (global.game_level_opening_type == 1){
-			global.cutscene_current = 47;
-		}else{
-			global.cutscene_current = 2;
-		}
 		break;
 
 	case rm_level_6_01:
+		if (global.game_level_opening_type == 0){
+			spawn_x = -1;
+			spawn_y = -1;
+		}else{
+			spawn_x = 866;
+			spawn_y = 232;
+		}
+		
 		objective_title[0] = "Clear the area of 10 enemies";
 		objective_type[0] = ObjectiveType.Kill;
 		objective_type_kill_number[0] = 10;
@@ -52,11 +55,14 @@ switch(room){
 		
 		objective_title[1] = "Move east to leave the area";
 		objective_type[1] = ObjectiveType.Clear;
-		
-		global.cutscene_current = 47;
 		break;
 }
 
+if (global.game_level_opening_type == 1){
+	global.cutscene_current = 47;
+}else{
+	global.cutscene_current = 2;
+}
 global.game_objective_current = 0;
 
 // Other

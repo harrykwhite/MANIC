@@ -17,6 +17,7 @@ sprite_set = false;
 type = 0;
 interact = false;
 interact_break = 10;
+stop_on_end = false;
 
 if (x >= room_width){
 	dir = -1;

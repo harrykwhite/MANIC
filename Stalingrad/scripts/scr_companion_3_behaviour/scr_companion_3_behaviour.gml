@@ -113,7 +113,7 @@ if (instance_exists(global.player)){
 		bark_time--;
 	}else{
 		scr_sound_play_distance(snd_character_bark_0, false, 300);
-		bark_time = random_range(140, 260);
+		bark_time = random_range(400, 650);
 	}
 	
 	distTo = distance_to_point(move_xTo, move_yTo);

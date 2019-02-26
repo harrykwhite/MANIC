@@ -33,6 +33,8 @@ headless_y = y;
 headless_image = 0;
 
 defense = 4;
+
+bark_time = random(30);
 target = noone;
 
 bite_time = (60 * 1.25) + random_range(-20, 5);
@@ -44,7 +46,7 @@ bite_retreat_direction = 0;
 
 move_speed = 0;
 move_speed_real = 0;
-move_speed_offset = 1;
+move_speed_offset = 1.3;
 move_time = 0;
 move_xTo = x;
 move_yTo = y;

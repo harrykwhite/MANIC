@@ -33,20 +33,6 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1) && (activ
 		}
 	}
 	
-	if (global.level_current == 5) && (room == rm_level_6_01){
-		if (levelobj.objective_type[global.game_objective_current] != ObjectiveType.Clear) && (index != 26){
-			exit;
-		}
-	}else{
-		if (global.level_current == 5) && (instance_exists(obj_pawn_other_train_1)){
-			if (global.game_objective_current != 3) || (obj_pawn_other_train_1.spd > 0.1) exit;
-		}else if (global.level_current == 5){
-			if (index != 38){
-				exit;
-			}
-		}
-	}
-	
 	if (place_meeting(x + 1, y + 1, global.player)){
 		if (time >= 30){
 			global.cutscene_current = index;
