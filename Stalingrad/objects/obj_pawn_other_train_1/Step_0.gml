@@ -15,16 +15,74 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1){
 					if (keyboard_check_pressed(ord("E"))){
 						global.game_pause = true;
 						interact_break = 10;
-						obj_controller_ui.pausedialogue = true;
-						obj_controller_ui.pausedialogue_type = 1;
-						obj_controller_ui.pausedialogue_type_text = "Select your destination";
-						obj_controller_ui.pausedialogue_type_option[0] = "Storage Facility";
-						obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
-						obj_controller_ui.pausedialogue_type_option_traingoto[0] = 3;
-						obj_controller_ui.pausedialogue_type_option[1] = "Train Station";
-						obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
-						obj_controller_ui.pausedialogue_type_option_traingoto[1] = 5;
-						obj_controller_ui.pausedialogue_option_max = 2;
+						
+						switch(room){
+							case rm_level_1_00:
+								obj_controller_ui.pausedialogue = true;
+								obj_controller_ui.pausedialogue_type = 1;
+								obj_controller_ui.pausedialogue_type_text = "Select your destination";
+								obj_controller_ui.pausedialogue_type_option[0] = "Storage Facility";
+								obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[0] = 3;
+								obj_controller_ui.pausedialogue_type_option_trainroom[0] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = -1;
+								obj_controller_ui.pausedialogue_type_option[1] = "Train Station";
+								obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[1] = 5;
+								obj_controller_ui.pausedialogue_type_option_trainroom[1] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[1] = -1;
+								obj_controller_ui.pausedialogue_type_option[2] = "The Cemetary";
+								obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
+								obj_controller_ui.pausedialogue_type_option_trainroom[2] = rm_level_6_01;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = 0;
+								obj_controller_ui.pausedialogue_option_max = 3;
+								break;
+							
+							case rm_level_4_00:
+								obj_controller_ui.pausedialogue = true;
+								obj_controller_ui.pausedialogue_type = 1;
+								obj_controller_ui.pausedialogue_type_text = "Select your destination";
+								obj_controller_ui.pausedialogue_type_option[0] = "Ravaged Town";
+								obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
+								obj_controller_ui.pausedialogue_type_option_trainroom[0] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = -1;
+								obj_controller_ui.pausedialogue_type_option[1] = "Train Station";
+								obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[1] = 5;
+								obj_controller_ui.pausedialogue_type_option_trainroom[1] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[1] = -1;
+								obj_controller_ui.pausedialogue_type_option[2] = "The Cemetary";
+								obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
+								obj_controller_ui.pausedialogue_type_option_trainroom[2] = rm_level_6_01;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = 0;
+								obj_controller_ui.pausedialogue_option_max = 3;
+								break;
+							
+							case rm_level_6_00:
+								obj_controller_ui.pausedialogue = true;
+								obj_controller_ui.pausedialogue_type = 1;
+								obj_controller_ui.pausedialogue_type_text = "Select your destination";
+								obj_controller_ui.pausedialogue_type_option[0] = "Ravaged Town";
+								obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
+								obj_controller_ui.pausedialogue_type_option_trainroom[0] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = -1;
+								obj_controller_ui.pausedialogue_type_option[1] = "Storage Facility";
+								obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[1] = 3;
+								obj_controller_ui.pausedialogue_type_option_trainroom[1] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[1] = -1;
+								obj_controller_ui.pausedialogue_type_option[2] = "The Cemetary";
+								obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
+								obj_controller_ui.pausedialogue_type_option_trainroom[2] = rm_level_6_01;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = 0;
+								obj_controller_ui.pausedialogue_option_max = 3;
+								break;
+						}
 					}
 				}
 			}

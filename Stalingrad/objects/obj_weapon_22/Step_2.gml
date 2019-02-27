@@ -41,7 +41,7 @@ if (instance_exists(global.player)){
     
 	    if (throw_time > 0){
 	        if (throw_offset < 60){
-	            throw_offset += 2;
+	            throw_offset += 4;
 	        }
         
 	    }else{

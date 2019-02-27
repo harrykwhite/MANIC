@@ -1,0 +1,3 @@
+After time has passed, a train stops dropping by a horde of enemies. Once the enemies are killed,
+the driver gets out (the sniper) and fights you. Upon killing him, you get access into the train,
+and are able to travel back and forth between levels.

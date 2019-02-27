@@ -226,6 +226,8 @@ if (!global.game_pause){
 					obj_controller_gameplay.cutscene_traingoto = pausedialogue_type_option_traingoto[pausedialogue_option_selected];
 				}
 				
+				obj_controller_gameplay.cutscene_trainstart_type = pausedialogue_type_option_trainstart_type[pausedialogue_option_selected];
+				obj_controller_gameplay.cutscene_trainroom = pausedialogue_type_option_trainroom[pausedialogue_option_selected];
 				global.game_pause = false;
 				pausedialogue_option_selected = 0;
 				pausedialogue_type = 0;

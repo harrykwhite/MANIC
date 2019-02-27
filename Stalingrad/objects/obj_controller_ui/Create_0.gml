@@ -18,6 +18,9 @@ weaponammo_scaleTo = 1;
 
 ui_alpha = 1;
 
+redtint_alpha = 0;
+redtint_alphato = 0;
+
 pause_text_update = false;
 pause_text_alpha = 0;
 pause_selected = 0;
@@ -97,5 +100,7 @@ pausedialogue_type_text = "I haven't been given dialogue yet!";
 pausedialogue_type_option[0] = -1;
 pausedialogue_type_option_cutscene[0] = -1;
 pausedialogue_type_option_traingoto[0] = -1;
+pausedialogue_type_option_trainroom[0] = -1;
+pausedialogue_type_option_trainstart_type[0] = -1;
 
 sprite_index = noone;

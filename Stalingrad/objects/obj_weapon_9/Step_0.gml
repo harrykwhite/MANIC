@@ -36,13 +36,12 @@ if (instance_exists(global.player)) && (global.player_stamina_active ){
     
     if (mouse_check_button(mb_left)) || (mouse_check_button(mb_right)){
         if (throw_time < throw_time_max){ // Charge up the throwing metre.
-            throw_time++;
+            throw_time ++;
         }
         
         if (throw_alpha < 1){ // The alpha of the throw metre.
             throw_alpha += 0.1;
         }
-    
     }else{
         throw_time = 0;
         if (throw_alpha > 0){

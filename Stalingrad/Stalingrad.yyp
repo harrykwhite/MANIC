@@ -7847,6 +7847,14 @@
             }
         },
         {
+            "Key": "be93f858-0b03-45ae-8aea-d88f8dfe1b8a",
+            "Value": {
+                "id": "68d3472f-763f-4357-ab9b-f99bdf4de041",
+                "resourcePath": "notes\\train_sequence.yy",
+                "resourceType": "GMNotes"
+            }
+        },
+        {
             "Key": "bf9f3957-d85b-42fb-b0eb-357828989fe3",
             "Value": {
                 "id": "bc7254d0-96f3-4f18-83c5-f3bf02c4a7f7",

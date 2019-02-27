@@ -49,6 +49,8 @@ global.player = obj_player;
 global.player_respawn_x = 0;
 global.player_respawn_y = 0;
 
+global.worldtrain_room = rm_level_6_00;
+
 global.levelstart_weapon[0] = PlayerWeapon.Revolver;
 global.levelstart_weapon[1] = -1;
 

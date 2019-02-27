@@ -6,7 +6,7 @@ global.player = obj_player;
 global.player_footstep_default = snd_character_footstep_grass;
 
 if (global.game_level_opening_type == 1){
-	var train = instance_create(-217, 117, obj_pawn_other_train_1);
+	var train = instance_create(-267, 117, obj_pawn_other_train_1);
 	train.component_spawn = true;
 	global.player.x = -40;
 	global.player.y = -40;
