@@ -58,10 +58,14 @@ switch(room){
 		break;
 }
 
-if (global.game_level_opening_type == 1){
+if (global.game_level_opening_type == 1) && (room == rm_level_6_00){
 	global.cutscene_current = 47;
 }else{
-	global.cutscene_current = 2;
+	if (global.game_level_opening_type == 0) && (room == rm_level_6_01){
+		global.cutscene_current = 47;
+	}else{
+		global.cutscene_current = 2;
+	}
 }
 global.game_objective_current = 0;
 

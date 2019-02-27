@@ -28,8 +28,7 @@ pause_has_selected = false;
 pause_has_selected_time = 0;
 pause_selectoption[0] = "Resume";
 pause_selectoption[1] = "Restart Section";
-pause_selectoption[2] = "Restart Level";
-pause_selectoption[3] = "Exit to Titlescreen";
+pause_selectoption[2] = "Exit to Titlescreen";
 pause_selectedmax = array_length_1d(pause_selectoption);
 
 game_opening_intro = true;

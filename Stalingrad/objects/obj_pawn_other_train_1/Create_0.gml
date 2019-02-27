@@ -2,7 +2,7 @@ event_inherited();
 dir = 1;
 spd = 4;
 component_spawn = false;
-count = 0;
+count = -1;
 cutscene_opening_count = 1;
 explode = 60 * 18;
 mainsprite = noone;

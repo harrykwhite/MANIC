@@ -62,6 +62,10 @@ rain_thunder_flash_amount[6] = 0.1;
 
 dog_can_spawn = global.game_firstdog_killed;
 
-global.cutscene_current = 2;
+if (global.game_level_opening_type == 2){
+	global.cutscene_current = 47;
+}else{
+	global.cutscene_current = 2;
+}
 sprite_index = noone;
 depth = -5;

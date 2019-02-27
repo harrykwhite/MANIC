@@ -9,9 +9,8 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	var nearest_train_part = instance_nearest(global.player.x, global.player.y, obj_pawn_other_train_1);
-	xTo = nearest_train_part.x;
-	yTo = nearest_train_part.y + 4;
+	xTo = cutscene_trainopening_inst.x;
+	yTo = cutscene_trainopening_inst.y + 12;
 	global.cutscene_camera_x[index] = xTo;
 	global.cutscene_camera_y[index] = yTo;
 	global.player.flashlight_move = false;
@@ -23,22 +22,45 @@ if (instance_exists(global.player)){
 		global.player.image_speed = 0;
 		global.player.image_index = 0;
 		
-		if (global.cutscene_time[index] < 30){
+		if (global.cutscene_time[index] < 40){
 			global.cutscene_time[index] ++;
 		}else{
 			instance_destroy(global.player);
 		}
+		
+		/*switch(cutscene_moveto_level){
+			case 0:
+				cutscene_trainopening_inst.dir = -1;
+				break;
+		
+			case 3:
+				if (room == rm_level_1_00){
+					cutscene_trainopening_inst.dir = 1;
+				}else{
+					cutscene_trainopening_inst.dir = -1;
+				}
+				break;
+		
+			case 5:
+				if (room == rm_level_1_00) || (room == rm_level_4_00){
+					cutscene_trainopening_inst.dir = 1;
+				}else{
+					cutscene_trainopening_inst.dir = -1;
+				}
+				break;
+		}*/
 	}else{
 		global.player.move_xTo = xTo;
 		global.player.move_yTo = yTo;
 		global.player.move_extSpd = global.player.spd_max;
 	}
 }else{
-	if (global.cutscene_time[index] < 60){
+	if (global.cutscene_time[index] < 100){
 		global.cutscene_time[index] ++;
 	}else{
 		global.level_current = cutscene_traingoto;
 		obj_controller_ui.area_next_fade = true;
+		obj_pawn_other_train_1.leave = true;
 		
 		if (cutscene_trainstart_type == -1){
 			global.game_level_opening_type = 1;

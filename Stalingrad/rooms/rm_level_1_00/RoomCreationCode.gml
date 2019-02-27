@@ -11,6 +11,14 @@ if (global.game_level_opening_type == 1){
 	obj_controller_camera.y = room_height - 192;
 }
 
+if (global.game_level_opening_type == 2){
+	var train = instance_create(-115, 1984, obj_pawn_other_train_1);
+	train.component_spawn = true;
+	train.type = 1;
+	global.player.x = -40;
+	global.player.y = -40;
+}
+
 if (global.player_companion != -1){
 	var comp = instance_create(global.player.x - 20, global.player.y - 20, global.companion[global.player_companion]);
 	if (global.player_companion_health != -1){

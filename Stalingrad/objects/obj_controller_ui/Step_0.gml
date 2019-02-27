@@ -106,67 +106,14 @@ if (!global.game_pause){
 					
 						global.weapon_slot[1] = global.sectionstart_weapon[1];
 						global.weapon_slotammo[1] = global.sectionstart_weaponammo[1];
-					
+						
+						global.game_combat_state = CombatState.Idle;
 						global.player_healthCurrent = global.sectionstart_playerhealth;
 						global.weapon_slotcurrent = 0;
 						room_restart();
 						break;
-				
+					
 					case 2:
-						part_system_clear(global.ps_front);
-						part_system_clear(global.ps_bottom);
-						global.weapon_slot[0] = global.levelstart_weapon[0];
-						global.player_healthCurrent = global.player_healthMax;
-						if (global.weapon_slot[0] != -1){
-							global.weapon_slotammo[0] = global.weapon_ammomax[global.weapon_slot[0]];
-						}else{
-							global.weapon_slotammo[0] = -1;
-						}
-					
-						global.weapon_slot[1] = global.levelstart_weapon[1];
-						if (global.weapon_slot[1] != -1){
-							global.weapon_slotammo[1] = global.weapon_ammomax[global.weapon_slot[1]];
-						}else{
-							global.weapon_slotammo[1] = -1;
-						}
-					
-						global.weapon_slotcurrent = 0;
-						switch(global.level_current){
-							case 0:
-								room_goto(rm_level_1_00);
-								break;
-						
-							case 1:
-								room_goto(rm_level_2_00);
-								break;
-						
-							case 2:
-								room_goto(rm_level_3_00);
-								break;
-						
-							case 3:
-								room_goto(rm_level_4_00);
-								break;
-						
-							case 4:
-								room_goto(rm_level_5_00);
-								break;
-						
-							case 5:
-								room_goto(rm_level_6_00);
-								break;
-						
-							case 6:
-								room_goto(rm_level_7_00);
-								break;
-						
-							case 7:
-								room_goto(rm_level_8_00);
-								break;
-						}
-						break;
-				
-					case 3:
 						scr_fade_object_list_reset();
 						scr_global_set();
 						audio_stop_all();
@@ -229,8 +176,6 @@ if (!global.game_pause){
 				obj_controller_gameplay.cutscene_trainstart_type = pausedialogue_type_option_trainstart_type[pausedialogue_option_selected];
 				obj_controller_gameplay.cutscene_trainroom = pausedialogue_type_option_trainroom[pausedialogue_option_selected];
 				global.game_pause = false;
-				pausedialogue_option_selected = 0;
-				pausedialogue_type = 0;
 				pausedialogue = false;
 			}
 		}

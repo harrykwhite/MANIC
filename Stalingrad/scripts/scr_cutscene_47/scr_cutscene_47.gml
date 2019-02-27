@@ -10,6 +10,7 @@ if (instance_exists(obj_controller_camera)){
 
 if (cutscene_trainopening_inst != noone){
 	xTo = cutscene_trainopening_inst.x;
+	yTo = cutscene_trainopening_inst.y;
 	
 	if (cutscene_trainopening_inst.spd <= 0.2){
 		if (global.cutscene_time[index] < 60){
@@ -46,6 +47,7 @@ if (cutscene_trainopening_inst != noone){
 					global.player_respawn_y = global.player.y;
 					global.player.move_xTo = -1;
 					global.player.move_yTo = -1;
+					//obj_pawn_other_train_1.leave = true;
 				}
 			}
 		}

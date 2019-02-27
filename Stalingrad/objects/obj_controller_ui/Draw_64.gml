@@ -425,13 +425,13 @@ var offset = 30;
 
 if (global.game_pause) && (!pausedialogue){
 	if (pause_text_alpha < 1){
-		pause_text_alpha += 0.2;
+		pause_text_alpha += 0.15;
 	}
 }else{
 	pause_text_update = false;
 	
 	if (pause_text_alpha > 0){
-		pause_text_alpha -= 0.2;
+		pause_text_alpha -= 0.15;
 	}
 }
 
@@ -459,11 +459,15 @@ var optyy = (display_get_gui_height() / 2) - ((30 * pausedialogue_option_max) / 
 
 if (pausedialogue){
 	if (pausedialogue_alpha < 1){
-		pausedialogue_alpha += 0.2;
+		pausedialogue_alpha += 0.15;
 	}
 }else{
 	if (pausedialogue_alpha > 0){
-		pausedialogue_alpha -= 0.2;
+		pausedialogue_alpha -= 0.15;
+	}else{
+		pausedialogue_option_selected = 0;
+		pausedialogue_type = 0;
+		pausedialogue_alpha = 0;
 	}
 }
 

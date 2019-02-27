@@ -4,6 +4,10 @@ if (global.game_pause){
 	exit;
 }
 
+if (count == -1){
+	show_debug_message(string(x) + ", " + string(y));
+}
+
 if (instance_exists(global.player)) && (global.cutscene_current == -1){
 	if (interact_break > 0){
 		interact_break --;
@@ -47,7 +51,7 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1){
 								obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
 								obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
 								obj_controller_ui.pausedialogue_type_option_trainroom[0] = -1;
-								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = 2;
 								obj_controller_ui.pausedialogue_type_option[1] = "Train Station";
 								obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
 								obj_controller_ui.pausedialogue_type_option_traingoto[1] = 5;
@@ -69,7 +73,7 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1){
 								obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
 								obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
 								obj_controller_ui.pausedialogue_type_option_trainroom[0] = -1;
-								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = 2;
 								obj_controller_ui.pausedialogue_type_option[1] = "Storage Facility";
 								obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
 								obj_controller_ui.pausedialogue_type_option_traingoto[1] = 3;
@@ -102,8 +106,8 @@ if (open){
 	}
 	
 	if (open_pause){
-		if (open_time < 50){
-			if (global.cutscene_current == 22) || (global.cutscene_current == 47) || (global.cutscene_current == 51){
+		if (open_time < 30){
+			if (global.cutscene_current == 22) || (global.cutscene_current == 51){
 				open_time ++;
 			}
 			
