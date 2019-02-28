@@ -10,7 +10,7 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	eobj = levelobject.objective_special_boss_object;
+	eobj = levelobject.trainboss_leader;
 	
 	if (instance_exists(eobj)){
 		xTo = eobj.x;
@@ -19,7 +19,9 @@ if (instance_exists(global.player)){
 		global.player.flashlight_move = false;
 		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
 		
-		if (point_distance(global.player.x, global.player.y, xTo, yTo) < 125){
+		if (global.cutscene_time[index] < 40){
+			global.cutscene_time[index] ++;
+		}else{
 			global.cutscene_current = -1;
 			global.player.move_xTo = -1;
 			global.player.move_yTo = -1;

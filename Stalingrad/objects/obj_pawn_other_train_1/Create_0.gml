@@ -19,11 +19,16 @@ interact = false;
 interact_break = 10;
 stop_on_end = false;
 is_boss = false;
+leader = 0;
+component = 0;
 
+horde_dospawn = false;
+horde_leader_active = false;
 horde_spawn_time = 0;
 horde_spawn_time_max = 60 * 5;
 horde_spawn_opentime = 0;
 horde_spawn_opentime_max = 60 * 2;
+horde_spawn_wave = 0;
 
 if (x >= room_width){
 	dir = -1;

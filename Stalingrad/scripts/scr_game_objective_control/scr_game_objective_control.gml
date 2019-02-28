@@ -47,19 +47,6 @@ if (instance_exists(global.player)){
 							audio_play_sound(spawn_music_stinger[2], 3, false);
 						}
 					}
-					
-					if (global.level_current == 5) && (room != rm_level_6_01){
-						if (global.game_objective_current == 1){
-							while(!instance_exists(objective_special_boss_object)){
-								objective_special_boss_object = instance_create(camera_get_view_x(view_camera[0]) - 100, 280, obj_enemy_0);
-								objective_special_boss_object.type = EnemyOneType.TrainBoss;
-								objective_special_boss_object.weapon_index = PawnWeapon.SniperRifle;
-							}
-							
-							global.cutscene_current = 37;
-						}
-					}
-					
 					exit;
 				}
 			}

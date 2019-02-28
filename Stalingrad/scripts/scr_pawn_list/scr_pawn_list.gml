@@ -16,7 +16,7 @@ enum Boss{
 	EnemyHorde,
 	MotherRobot,
 	SniperRobot,
-	SniperRobotBoss,
+	TrainBoss,
 	TheScorched,
 	TheDogkeeper,
 }
@@ -33,7 +33,7 @@ global.boss_name[2] = "Sniper Robot";
 global.boss_music[2] = noone;
 global.boss_stinger[2] = noone;
 
-global.boss_name[3] = "Sniper Robot Leader";
+global.boss_name[3] = "Train Horde";
 global.boss_music[3] = m_boss_main_0;
 global.boss_stinger[3] = m_boss_stinger_0;
 

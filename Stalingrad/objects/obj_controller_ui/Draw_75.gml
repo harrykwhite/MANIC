@@ -75,7 +75,10 @@ if (area_next_fade){
 		area_next_fade = false;
 		area_next_alpha_speed = 0.01;
 		scr_fade_object_list_reset();
-		if (area_next_room != noone) room_goto(area_next_room);
+		if (area_next_room != noone){
+			scr_level_cleanup();
+			room_goto(area_next_room);
+		}
 	}
 }
 

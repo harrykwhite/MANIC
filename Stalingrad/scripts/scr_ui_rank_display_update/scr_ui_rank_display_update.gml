@@ -41,7 +41,7 @@ if (rank_display_draw){
 		
 		if (keyboard_check_pressed(vk_enter)) && (!instance_exists(obj_ef_flash)){
 			if ((STATE == GameState.Developer) || (global.game_playthrough)) && (STATE != GameState.Public){
-				scr_effect_flash_script(0.015, 1, c_black, scr_trigger_1);
+				//scr_effect_flash_script(0.015, 1, c_black, scr_trigger_1);
 			}else{
 				game_ending_screen = true;
 			}

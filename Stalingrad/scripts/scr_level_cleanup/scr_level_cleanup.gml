@@ -63,13 +63,4 @@ if (audio_is_playing(snd_weapon_flamethrower_active_0)){
 }
 
 scr_fade_object_list_reset();
-
-if (global.level_current < array_length_1d(global.level_name)){
-	global.level_current++;
-	scr_global_set();
-	room_goto(global.level_room[global.level_current]);
-}else{
-	global.level_current = 0;
-	scr_global_set();
-	room_goto(global.level_room[0]);
-}
+global.game_combat_state = CombatState.Idle;

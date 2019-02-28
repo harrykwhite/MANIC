@@ -82,24 +82,20 @@ if (!global.game_pause){
 	
 	// Train Arrival
 	if (global.cutscene_current == -1) && (room != rm_level_6_01){
-		if (train_time < train_timemax){
-			train_time++;
-		}else{
-			var xx = choose(-50, room_width + 50);
-			var yy = choose(228, 328);
-			var train;
-			
-			if (trainboss_spawned){
-				yy = 328;
+		if (!trainboss_spawned){
+			if (train_time < train_timemax){
+				train_time++;
+			}else{
+				var xx = choose(-50, room_width + 50);
+				var yy = choose(228, 328);
+				var train;
+				
+				train = instance_create(xx, yy, obj_pawn_other_train_0);
+				train.component_spawn = true;
+		
+				train_time = 0;
 			}
 			
-			train = instance_create(xx, yy, obj_pawn_other_train_0);
-			train.component_spawn = true;
-		
-			train_time = 0;
-		}
-		
-		if (!trainboss_spawned){
 			if (trainboss_time < trainboss_timemax){
 				trainboss_time ++;
 			}else{

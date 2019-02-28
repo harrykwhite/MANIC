@@ -1,6 +1,4 @@
 if (component_spawn){
-	var comp;
-	
 	switch(type){
 		case 0:
 			sprite_index = spr_train_0_part_2;
@@ -12,29 +10,30 @@ if (component_spawn){
 	}
 	
 	for(var i = 1; i < 5; i++){
-		comp = instance_create(x + ((i * 112) * -dir), y, obj_pawn_other_train_1);
-		comp.spd = spd;
-		comp.dir = dir;
-		comp.count = i - 1;
-		comp.type = type;
-		comp.is_boss = is_boss;
+		component[i - 1] = instance_create(x + ((i * 112) * -dir), y, obj_pawn_other_train_1);
+		component[i - 1].spd = spd;
+		component[i - 1].dir = dir;
+		component[i - 1].count = i - 1;
+		component[i - 1].type = type;
+		component[i - 1].is_boss = is_boss;
+		component[i - 1].leader = id;
 		
 		if (i - 1 == cutscene_opening_count){
-			obj_controller_gameplay.cutscene_trainopening_inst = comp;
+			obj_controller_gameplay.cutscene_trainopening_inst = component[i - 1];
 		}
 		
 		if (i == 4){
 			switch(type){
 				case 0:
-					comp.sprite_index = spr_train_0_part_1;
+					component[i - 1].sprite_index = spr_train_0_part_1;
 					break;
 				
 				case 1:
-					comp.sprite_index = spr_train_1_part_1;
+					component[i - 1].sprite_index = spr_train_1_part_1;
 					break;
 			}
 			
-			comp.mainsprite = comp.sprite_index;
+			component[i - 1].mainsprite = component[i - 1].sprite_index;
 		}
 	}
 	
