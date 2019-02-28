@@ -52,7 +52,7 @@ if (instance_exists(global.player)){
 						if (global.game_objective_current == 1){
 							while(!instance_exists(objective_special_boss_object)){
 								objective_special_boss_object = instance_create(camera_get_view_x(view_camera[0]) - 100, 280, obj_enemy_0);
-								objective_special_boss_object.type = EnemyOneType.SniperBoss;
+								objective_special_boss_object.type = EnemyOneType.TrainBoss;
 								objective_special_boss_object.weapon_index = PawnWeapon.SniperRifle;
 							}
 							

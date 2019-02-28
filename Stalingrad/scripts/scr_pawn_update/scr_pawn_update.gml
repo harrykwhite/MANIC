@@ -123,6 +123,10 @@ if (health_current <= 0){
 				scr_effect_screenshake(5);
 				scr_sound_play_distance(snd_weapon_explode_0, false, 400);
 			}
+			
+			if (type == EnemyOneType.TrainBoss){
+				global.game_boss_trainhorde_killed = true;
+			}
 		}
 		
 		if (object_index == obj_enemy_2){
@@ -167,7 +171,7 @@ if (health_current <= 0){
 			instance_create(x - 7, y + 2, obj_health_pack_0);
 			instance_create(x + 9, y + 4, obj_health_pack_0);
 			scr_weapon_ammo_spawn(choose(6, 7), 5, 6, x, y + 5);
-		}else if (type == EnemyOneType.SniperBoss){
+		}else if (type == EnemyOneType.TrainBoss){
 			dropchance = 100;
 			global.game_objective_current++;
 			obj_controller_ui.objective_text_set = false;

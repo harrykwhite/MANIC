@@ -28,7 +28,7 @@ if (health_current <= 0){
 				corpse.sprite_index = spr_enemy_0_healer_corpse_0;
 			}
 			
-			if (type == EnemyOneType.SniperBoss){
+			if (type == EnemyOneType.TrainBoss){
 				corpse.sprite_index = spr_enemy_0_sniperboss_corpse_0;
 			}
 			

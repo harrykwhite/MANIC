@@ -17,6 +17,7 @@ if (component_spawn){
 		comp.dir = dir;
 		comp.count = i - 1;
 		comp.type = type;
+		comp.is_boss = is_boss;
 		
 		if (i - 1 == cutscene_opening_count){
 			obj_controller_gameplay.cutscene_trainopening_inst = comp;
@@ -41,7 +42,7 @@ if (component_spawn){
 }
 
 if (!open_set){
-	if (count == cutscene_opening_count) && (global.cutscene_current != 47){
+	if (count == cutscene_opening_count) && (global.cutscene_current != 47) && (!is_boss){
 		open = true;
 		open_pause = false;
 	}

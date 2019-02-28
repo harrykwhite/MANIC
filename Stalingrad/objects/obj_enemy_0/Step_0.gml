@@ -2,7 +2,7 @@ if (light_brightness < 1){
 	light_brightness += 0.05;
 }
 
-if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.SniperBoss){
+if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.TrainBoss){
 	if (instance_exists(mylight)) && (mylight != noone){
 		mylight.x = x;
 		mylight.y = y - (9 * scale);
@@ -11,14 +11,14 @@ if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type ==
 		mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 		mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 	
-		if (type == EnemyOneType.SniperBoss){
+		if (type == EnemyOneType.TrainBoss){
 			mylight.y -= scale;
 			mylight.light[| eLight.Y] -= scale;
 		}
 	}
 }
 
-if (global.game_pause) || ((global.cutscene_current != -1) && (type != EnemyOneType.SniperBoss) &&
+if (global.game_pause) || ((global.cutscene_current != -1) && (type != EnemyOneType.TrainBoss) &&
 ((global.cutscene_current != 33) && (!grenadier_cutscene_prop))
 && ((global.cutscene_current != 34) && (!crazy_cutscene_prop))
 && ((global.cutscene_current != 35) && (!sniper_cutscene_prop))
@@ -101,7 +101,7 @@ if (headless){
 }else{
 	if (type == EnemyOneType.Crazy){
 		scr_enemy_0_behaviour_crazy();
-	}else if (type == EnemyOneType.SniperBoss){
+	}else if (type == EnemyOneType.TrainBoss){
 		scr_enemy_0_behaviour_sniperboss();
 	}else{
 		scr_enemy_0_behaviour();

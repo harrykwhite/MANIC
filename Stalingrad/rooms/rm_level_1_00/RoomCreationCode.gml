@@ -15,8 +15,8 @@ if (global.game_level_opening_type == 2){
 	var train = instance_create(-115, 1984, obj_pawn_other_train_1);
 	train.component_spawn = true;
 	train.type = 1;
-	global.player.x = -40;
-	global.player.y = -40;
+	global.player.x = -100;
+	global.player.y = -100;
 }
 
 if (global.player_companion != -1){

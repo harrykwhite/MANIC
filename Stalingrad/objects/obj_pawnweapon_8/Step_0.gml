@@ -1,4 +1,4 @@
-if (global.game_pause) || ((global.cutscene_current != -1) && (owner.type != EnemyOneType.SniperBoss) && ((global.cutscene_current != 33) && (!owner.grenadier_cutscene_prop))){
+if (global.game_pause) || ((global.cutscene_current != -1) && (owner.type != EnemyOneType.TrainBoss) && ((global.cutscene_current != 33) && (!owner.grenadier_cutscene_prop))){
 	image_speed = 0;
 	image_index = 0;
 	exit;
@@ -12,7 +12,7 @@ if (instance_exists(owner)){
 	var attack_time_multiplier = 1;
     alphaTo = 1;
 	
-	if (owner.type == EnemyOneType.SniperBoss){
+	if (owner.type == EnemyOneType.TrainBoss){
 		if (owner.health_current <= (owner.health_max / 2)){
 			attack_time_multiplier += 0.1;
 		}
@@ -69,7 +69,7 @@ if (instance_exists(owner)){
 			angle_offset = 10;
 			
 			if (owner.pawn == PawnType.Enemy){
-				if (owner.type == EnemyOneType.SniperBoss){
+				if (owner.type == EnemyOneType.TrainBoss){
 					if (owner.health_current >= (owner.health_max / 1.875)){
 						with(owner){
 							sniperboss_melee = true;

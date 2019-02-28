@@ -42,7 +42,7 @@ if (instance_exists(owner)){
 		
         angle_offset = -angle_offset;
 		
-		if (owner.type == EnemyOneType.SniperBoss){
+		if (owner.type == EnemyOneType.TrainBoss){
 			with(owner){
 				if (sniperboss_attack_counter < 4){
 					sniperboss_attack_counter ++;

@@ -82,40 +82,32 @@ if (!global.game_pause){
 	
 	// Train Arrival
 	if (global.cutscene_current == -1) && (room != rm_level_6_01){
-		if (global.game_objective_current == 0){
-			if (train_time < train_timemax){
-				train_time++;
-			}else{
-			
-				var xx = choose(-50, room_width + 50);
-				var yy = choose(228, 328);
-				var train;
-			
-				train = instance_create(xx, yy, obj_pawn_other_train_0);
-				train.component_spawn = true;
-			
-				train_time = 0;
-			}
-		}
-	
-		if (global.game_objective_current == 2){
-			if (trainobjective_time > 0){
-				trainobjective_time --;
-			}else{
-				global.game_objective_current = 3;
-				scr_game_objective_ui_update();
-				obj_controller_ui.objective_text_set = false;
-			}
-		}
-	
-		if (global.game_objective_current == 3) && (!instance_exists(obj_pawn_other_train_1)){
-			scr_game_objective_ui_update();
-			obj_controller_ui.objective_text_set = false;
-
+		if (train_time < train_timemax){
+			train_time++;
+		}else{
+			var xx = choose(-50, room_width + 50);
+			var yy = choose(228, 328);
 			var train;
-			train = instance_create(-80, 228, obj_pawn_other_train_1);
+			
+			if (trainboss_spawned){
+				yy = 328;
+			}
+			
+			train = instance_create(xx, yy, obj_pawn_other_train_0);
 			train.component_spawn = true;
+		
 			train_time = 0;
+		}
+		
+		if (!trainboss_spawned){
+			if (trainboss_time < trainboss_timemax){
+				trainboss_time ++;
+			}else{
+				trainboss_spawned = true;
+				var train = instance_create(-247, 224, obj_pawn_other_train_1);
+				train.component_spawn = true;
+				train.is_boss = true;
+			}
 		}
 	}
 }

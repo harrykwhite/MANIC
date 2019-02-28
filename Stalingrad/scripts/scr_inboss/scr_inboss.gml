@@ -25,7 +25,7 @@ if (instance_exists(obj_enemy_0)){
 			}
 		}
 		
-		if (inst.type == EnemyOneType.SniperBoss){
+		if (inst.type == EnemyOneType.TrainBoss){
 			global.boss_current = Boss.SniperRobotBoss;
 			return true;
 			exit;

@@ -17,6 +17,7 @@ global.game_level_opening_type = 0;
 
 global.game_boss_thescorched_killed = false;
 global.game_boss_thedogkeeper_killed = false;
+global.game_boss_trainhorde_killed = false;
 global.game_firstdog_killed = false;
 global.game_firstgrenadier_killed = false;
 global.game_firstcrazy_killed = false;

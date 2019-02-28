@@ -55,7 +55,7 @@ enum EnemyOneType{
 	Mother,
 	Crazy,
 	Fly,
-	SniperBoss,
+	TrainBoss,
 	Healer,
 }
 

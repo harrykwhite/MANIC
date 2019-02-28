@@ -4,7 +4,7 @@ if (destroy){
 	&& (!healer_cutscene_prop)
 	&& (!grenadier_cutscene_prop)
 	&& (!sniper_cutscene_prop){
-		if (type != EnemyOneType.SniperBoss){
+		if (type != EnemyOneType.TrainBoss){
 			instance_destroy();
 		}
 	}
@@ -27,6 +27,7 @@ if (!weapon_destroyed){
 if (arm == -1) || (!instance_exists(arm)){
 	arm = instance_create(x, y, obj_enemy_0_arm);
 	arm.owner = id;
+	show_debug_message("No arm found");
 }
 
 if (!typedet){
@@ -91,7 +92,7 @@ if (!typedet){
 			
 			break;
 			
-		case EnemyOneType.SniperBoss:
+		case EnemyOneType.TrainBoss:
 			scale = 1.1;
 			defense = 0;
 			health_max = 35;
@@ -99,7 +100,7 @@ if (!typedet){
 			break;
 	}
 	
-	if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.SniperBoss){
+	if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.TrainBoss){
 		mylight = instance_create(x, y - 9, obj_enemy_0_light);
 	}
 	

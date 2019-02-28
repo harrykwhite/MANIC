@@ -8,7 +8,48 @@ if (count == -1){
 	show_debug_message(string(x) + ", " + string(y));
 }
 
-if (instance_exists(global.player)) && (global.cutscene_current == -1){
+if (scr_enemy_count(true) <= 1){
+	if (count == cutscene_opening_count){
+		if (horde_spawn_time < horde_spawn_time_max){
+			horde_spawn_time ++;
+		}else{
+			if (horde_spawn_opentime == round(horde_spawn_opentime_max / 2)){
+				repeat(choose(4, 5)){
+					var enemy = instance_create(x + random_range(-30, 30), (y + 30) + random_range(-5, 15), obj_enemy_0);
+					enemy.weapon_index = choose(PawnWeapon.Axe, PawnWeapon.Crowbar, PawnWeapon.Rake);
+				}
+			}
+			
+			if (horde_spawn_opentime < horde_spawn_opentime_max){
+				horde_spawn_opentime ++;
+				open = true;
+			}else{
+				horde_spawn_time = 0;
+				horde_spawn_opentime = 0;
+				
+				open = false;
+				open_time = 0;
+				open_pause = false;
+				
+				close = true;
+				
+				switch(type){
+					case 0:
+						sprite_index = spr_train_0_part_0_door_open;
+						break;
+		
+					case 1:
+						sprite_index = spr_train_1_part_0_door_open;
+						break;
+				}
+				image_index = 0;
+				image_speed = 0;
+			}	
+		}
+	}
+}
+
+if (instance_exists(global.player)) && (global.cutscene_current == -1) && (!is_boss){
 	if (interact_break > 0){
 		interact_break --;
 	}else{
@@ -16,6 +57,7 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1){
 			if (point_distance(x, y + 6, global.player.x, global.player.y) < 30){
 				if (global.player.y > y){
 					interact = true;
+					scr_ui_control_indicate("Board Train [E]")
 					if (keyboard_check_pressed(ord("E"))){
 						global.game_pause = true;
 						interact_break = 10;
@@ -84,6 +126,28 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1){
 								obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
 								obj_controller_ui.pausedialogue_type_option_trainroom[2] = rm_level_6_01;
 								obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = 0;
+								obj_controller_ui.pausedialogue_option_max = 3;
+								break;
+							
+							case rm_level_6_01:
+								obj_controller_ui.pausedialogue = true;
+								obj_controller_ui.pausedialogue_type = 1;
+								obj_controller_ui.pausedialogue_type_text = "Select your destination";
+								obj_controller_ui.pausedialogue_type_option[0] = "Ravaged Town";
+								obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
+								obj_controller_ui.pausedialogue_type_option_trainroom[0] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = 2;
+								obj_controller_ui.pausedialogue_type_option[1] = "Storage Facility";
+								obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[1] = 3;
+								obj_controller_ui.pausedialogue_type_option_trainroom[1] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[1] = -1;
+								obj_controller_ui.pausedialogue_type_option[2] = "Train Station";
+								obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
+								obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
+								obj_controller_ui.pausedialogue_type_option_trainroom[2] = -1;
+								obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = -1;
 								obj_controller_ui.pausedialogue_option_max = 3;
 								break;
 						}
@@ -156,7 +220,6 @@ if (open){
 }
 
 x += spd * dir;
-
 if (spd > 0) || ((leave) && (!stop_on_end)){
 	if (leave){
 		spd += 0.0075 * 1.35;

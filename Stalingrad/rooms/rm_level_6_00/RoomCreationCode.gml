@@ -8,8 +8,8 @@ global.player_footstep_default = snd_character_footstep_grass;
 if (global.game_level_opening_type == 1){
 	var train = instance_create(-247, 224, obj_pawn_other_train_1);
 	train.component_spawn = true;
-	global.player.x = -40;
-	global.player.y = -40;
+	global.player.x = -100;
+	global.player.y = -100;
 }
 
 if (global.player_companion != -1){

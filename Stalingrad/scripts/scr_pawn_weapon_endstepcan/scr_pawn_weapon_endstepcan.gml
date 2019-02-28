@@ -2,7 +2,7 @@ if (instance_exists(owner)){
 	if (owner.pawn == PawnType.Enemy){
 		if (!global.game_pause)
 		|| ((global.cutscene_current == -1)
-		|| (owner.type == EnemyOneType.SniperBoss)
+		|| (owner.type == EnemyOneType.TrainBoss)
 		|| ((global.cutscene_current == 33) && (owner.grenadier_cutscene_prop))
 		|| ((global.cutscene_current == 34) && (owner.crazy_cutscene_prop))
 		|| ((global.cutscene_current == 35) && (owner.sniper_cutscene_prop))

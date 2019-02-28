@@ -29,7 +29,7 @@ if (i_time <= 0){
 	
 	if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog){
 		if (other.damage > 3) && (object_index == obj_enemy_0){
-			if (type != EnemyOneType.Mother) && (type != EnemyOneType.Sniper) && (type != EnemyOneType.SniperBoss){
+			if (type != EnemyOneType.Mother) && (type != EnemyOneType.Sniper) && (type != EnemyOneType.TrainBoss){
 				headless = true;
 			}
 		}

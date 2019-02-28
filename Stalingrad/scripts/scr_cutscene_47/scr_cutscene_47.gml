@@ -28,7 +28,7 @@ if (cutscene_trainopening_inst != noone){
 				global.player.y = cutscene_trainopening_inst.y + 30;
 			}
 			
-			global.player.move_xTo = global.player.x;
+			global.player.move_xTo = cutscene_trainopening_inst.x;
 			global.player.move_yTo = cutscene_trainopening_inst.y + 90;
 			global.player.move_extSpd = 0.8;
 			

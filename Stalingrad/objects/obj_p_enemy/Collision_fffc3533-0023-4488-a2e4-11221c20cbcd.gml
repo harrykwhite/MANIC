@@ -3,7 +3,7 @@ if (object_index == obj_enemy_0){
 		exit;
 	}
 	
-	if (type == EnemyOneType.SniperBoss){
+	if (type == EnemyOneType.TrainBoss){
 		exit;
 	}
 }

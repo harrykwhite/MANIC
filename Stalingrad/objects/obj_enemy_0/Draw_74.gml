@@ -27,7 +27,7 @@ if (hp < health_max){
 	}
 }
 
-if (type != EnemyOneType.Mother) && (type != EnemyOneType.Sniper) && (type != EnemyOneType.SniperBoss) && (type != EnemyOneType.Healer){
+if (type != EnemyOneType.Mother) && (type != EnemyOneType.Sniper) && (type != EnemyOneType.TrainBoss) && (type != EnemyOneType.Healer){
 	draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * GUI_POS_X, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * GUI_POS_Y, health_scale * obj_controller_camera.camera_zoom * scale, health_scale * obj_controller_camera.camera_zoom * scale, 0, c_white, health_alpha * 0.7);
 }else if (type == EnemyOneType.Healer){
 	draw_sprite_ext(spr_ui_hearts_1, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * GUI_POS_X, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * GUI_POS_Y, health_scale * obj_controller_camera.camera_zoom * scale, health_scale * obj_controller_camera.camera_zoom * scale, 0, c_white, health_alpha * 0.7);
