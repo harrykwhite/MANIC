@@ -123,13 +123,13 @@ if (instance_exists(global.player)){
 									weapon = instance_create(x, y, obj_pawnweapon_3);
 									weapon.owner = id;
 									weapon_index = PawnWeapon.Knife;
-									attack_time = attack_time_max * attack_time_offset;
+									attack_time = attack_time_max;
 								}else{
 									if (weapon.attack_time <= 0){
 										runaway_starttime = 2;
 									}
 									weapon.attack = true;
-									attack_time = attack_time_max * attack_time_offset;
+									attack_time = attack_time_max;
 								}
 							}
 						}
@@ -205,7 +205,7 @@ if (instance_exists(global.player)){
 						weapon = instance_create(x, y, global.pawnweapon_object[wind]);
 						weapon.owner = id;
 						weapon_index = wind;
-						attack_time = attack_time_max * attack_time_offset;
+						attack_time = attack_time_max;
 					}
 				}
 			}

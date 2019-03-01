@@ -19,7 +19,6 @@ instance_activate_object(obj_player_arm);
 instance_activate_object(obj_block_persistent);
 instance_activate_object(obj_artifact_pickup);
 instance_activate_object(obj_block_particle);
-instance_activate_object(obj_enemy_0_arm);
 instance_activate_object(obj_enemy_0_light);
 instance_activate_object(obj_pawn_other_train_0);
 instance_activate_object(obj_pawn_other_train_1);

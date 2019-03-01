@@ -110,6 +110,16 @@ if (global.player_companion != -1){
 	}
 }
 
+if (instance_exists(obj_pawn_other_train_1)){
+	if (obj_pawn_other_train_1.is_boss) && (room == rm_level_6_00){
+		instance_destroy(obj_pawn_other_train_1);
+		level.trainboss_time = 0;
+		level.trainboss_trainhead = noone;
+		level.trainboss_leader = noone;
+		level.trainboss_spawned = false;
+	}
+}
+
 if (audio_is_playing(snd_character_burn_0)){
 	audio_stop_sound(snd_character_burn_0);
 }

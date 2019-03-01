@@ -24,10 +24,9 @@ if (!weapon_destroyed){
     }
 }
 
-if (arm == -1) || (!instance_exists(arm)){
+if (arm == -1){
 	arm = instance_create(x, y, obj_enemy_0_arm);
 	arm.owner = id;
-	show_debug_message("No arm found");
 }
 
 if (!typedet){

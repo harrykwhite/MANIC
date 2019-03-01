@@ -3,7 +3,7 @@ special = "";
 destroy_on_active = true;
 respawnOnDeath = false;
 active = true;
-time = 0;
+time = 25;
 
 moveto_dir = -1;
 moveto_level = -1;

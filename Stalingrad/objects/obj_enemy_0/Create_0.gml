@@ -5,6 +5,9 @@ wait = 0;
 light_brightness = 0;
 scale = random_range(0.975, 1.025);
 destroy = false;
+sporadic = false;
+sporadic_timemax = random_range(30, 50);
+sporadic_time = sporadic_timemax;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
@@ -94,7 +97,6 @@ knockback_resist = 1;
 
 attack_time = 46;
 attack_time_offset = random_range(1.1, 1.4);
-attack_time *= attack_time_offset;
 
 health_max = 6;
 health_current = health_max;

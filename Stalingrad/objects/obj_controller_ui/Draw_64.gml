@@ -1,4 +1,5 @@
 var soffset = wave(0, 0.025, 3, 0, false);
+var counter = 0;
 
 // Weapon Slots
 var amount = array_length_1d(global.weapon_slot);
@@ -18,49 +19,53 @@ if (weaponslot_shake > 0.05){
 var shake = weaponslot_shake;
 
 if (instance_exists(global.player)){
-    for(var i = 0; i < amount; i++){
+    repeat(amount){
         
         // Weapon Slot Scale
-        if (weaponslot_scale[i] < 2.5){
-            weaponslot_scale[i] += 0.25;
+        if (weaponslot_scale[counter] < 2.5){
+            weaponslot_scale[counter] += 0.25;
         }else{
-            weaponslot_scale[i] = 2.5;
+            weaponslot_scale[counter] = 2.5;
         }
         
         // Drawing Slot
         var xx = 78;
-        var yy = 78 + (yspace * i);
+        var yy = 78 + (yspace * counter);
 		
-        if (global.weapon_slotcurrent == i){
+        if (global.weapon_slotcurrent == counter){
             draw_sprite_ext(spr_ui_weaponslot_1, 0, xx + random_range(-shake, shake), yy + random_range(-shake, shake), 3, 3, 0, -1, weapon_standalone_alpha * ui_alpha);
         }else{
             draw_sprite_ext(spr_ui_weaponslot_0, 0, xx, yy, 3, 3, 0, -1, weapon_standalone_alpha * ui_alpha);
         }
         
         // Drawing Weapon
-        if (global.weapon_slot[i] != -1) && (global.weapon_slot[i] != 4){
-            var spr = global.weapon_sprite[global.weapon_slot[i]];
+        if (global.weapon_slot[counter] != -1) && (global.weapon_slot[counter] != 4){
+            var spr = global.weapon_sprite[global.weapon_slot[counter]];
             
 			gpu_set_fog(true, c_gray, 0, 0);
-			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[i], weaponslot_scale[i], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
+			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
 			gpu_set_fog(false, c_black, 0, 0);
 			
             gpu_set_fog(true, c_white, 0, 0);
-            draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_scale[i], weaponslot_scale[i], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
+            draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_white, 0, 0);
 			
         }else{
             var spr = spr_weapon_4;
 
 			gpu_set_fog(true, c_dkgray, 0, 0);
-			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[i], weaponslot_scale[i], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
+			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
 			gpu_set_fog(false, c_black, 0, 0);
 			
             gpu_set_fog(true, c_gray, 0, 0);
-            draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_scale[i] + 0.25), (weaponslot_scale[i] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
+            draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_scale[counter] + 0.25), (weaponslot_scale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_black, 0, 0);
         }
+		
+		counter++;
     }
+	
+	counter = 0;
 }
 
 // Player Stamina
@@ -199,11 +204,13 @@ if (score_text_time > 0){
 	}
 }
 
-draw_set_alpha(score_text_alpha);
-draw_set_font(fnt_cambria_2);
-scr_text_shadow_transformed(59 + shake, ((display_get_gui_height() - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
-draw_set_alpha(1);
-draw_set_valign(fa_top);
+if (score_text_alpha > 0){
+	draw_set_alpha(score_text_alpha);
+	draw_set_font(fnt_cambria_2);
+	scr_text_shadow_transformed(59 + shake, ((display_get_gui_height() - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
+	draw_set_alpha(1);
+	draw_set_valign(fa_top);
+}
 
 // Weapon Ammo
 var w = global.weapon_slot[global.weapon_slotcurrent];
@@ -214,14 +221,14 @@ if (global.weapon_slot_standalone != -1){
 
 if (instance_exists(global.player)){
 	
-	for(var i = 0; i < 2; i++){
-		if (global.weapon_slot[i] != -1){
-			if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
+	repeat(2){
+		if (global.weapon_slot[counter] != -1){
+			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
 				var xx = 41, yy;
 				var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
-				var quantity = ceil(global.weapon_quantity[global.weapon_slot[i]]);
+				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
 				
-				switch(i){
+				switch(counter){
 					case 0:
 						yy = 85;
 						break;
@@ -238,7 +245,11 @@ if (instance_exists(global.player)){
 				draw_set_alpha(1);
 			}
 		}
+		
+		counter++;
 	}
+	
+	counter = 0;
 	
     if (w != -1){
 		if (instance_exists(global.weapon_object[w])){
@@ -291,7 +302,7 @@ if (instance_exists(global.player)){
     }
 }
 
-// Time Passed
+/* Time Passed
 var time_passed_text;
 var time_passed_minutes = (global.game_time_passed div 100) div 60;
 var time_passed_seconds = (global.game_time_passed div 100) - (60 * time_passed_minutes);
@@ -304,7 +315,7 @@ if (time_passed_seconds < 10){
 
 draw_set_halign(fa_center);
 draw_set_font(fnt_cambria_0);
-//scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) + 28, time_passed_text, c_white);
+scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) + 28, time_passed_text, c_white);*/
 
 // Level Text
 if (leveltext_alpha > 0){
@@ -322,8 +333,6 @@ if (leveltext_alpha > 0){
 
 	draw_set_halign(fa_center);
 	scr_text_shadow(xx, yy - (offset), string(leveltext_text), c_white);
-
-	draw_set_alpha(1);
 }
 
 // Control Indication
@@ -334,13 +343,17 @@ if (control_indicate){
 }else{
 	if (control_indicate_x > -388){
 		control_indicate_x -= 31;
+	}else{
+		control_indicate_text = "";
 	}
 }
 
-draw_set_font(fnt_cambria_2);
-draw_set_halign(fa_right);
-draw_set_alpha(0.8);
-scr_text_shadow(display_get_gui_width() - control_indicate_x, display_get_gui_height() - 64, control_indicate_text, c_white);
+if (control_indicate_text != ""){
+	draw_set_font(fnt_cambria_2);
+	draw_set_halign(fa_right);
+	draw_set_alpha(0.8);
+	scr_text_shadow(display_get_gui_width() - control_indicate_x, display_get_gui_height() - 64, control_indicate_text, c_white);
+}
 
 control_indicate = false;
 
@@ -383,17 +396,20 @@ if (rank_display_draw){
 	var x2 = (display_get_gui_width() / 2) + 300;
 	var length = array_length_1d(rank_string);
 
-	for(var i = 0; i < length; i++){
-	
-		if (rank_display[i]){
-			draw_set_alpha(rank_alpha[i]);
+	repeat(length){
+		if (rank_display[counter]){
+			draw_set_alpha(rank_alpha[counter]);
 			draw_set_halign(fa_left);
-			scr_text_shadow(x1, (370 + (50 * i)), string(rank_string[i]), c_white);
+			scr_text_shadow(x1, (370 + (50 * counter)), string(rank_string[counter]), c_white);
 		
 			draw_set_halign(fa_right);
-			scr_text_shadow(x2, (370 + (50 * i)), string(rank_score[i]) + "pts", make_colour_rgb(189, 23, 23));
+			scr_text_shadow(x2, (370 + (50 * counter)), string(rank_score[counter]) + "pts", make_colour_rgb(189, 23, 23));
 		}
+		
+		counter ++;
 	}
+	
+	counter = 0;
 	
 	if (rank_end_display){
 		draw_set_font(fnt_cambria_2);
@@ -435,15 +451,21 @@ if (global.game_pause) && (!pausedialogue){
 	}
 }
 
-draw_set_halign(fa_center);
-draw_set_font(fnt_cambria_1);
-draw_set_alpha(pause_text_alpha);
-for(var i = 0; i < pause_selectedmax; i++){
-	if (pause_selected == i){
-		scr_text_shadow(xx, yy + (i * offset), pause_selectoption[i], make_colour_rgb(189, 23, 23));
-	}else{
-		scr_text_shadow(xx, yy + (i * offset), pause_selectoption[i], c_white);
+if (pause_text_alpha > 0){
+	draw_set_alpha(pause_text_alpha);
+	draw_set_halign(fa_center);
+	draw_set_font(fnt_cambria_1);
+	repeat(pause_selectedmax){
+		if (pause_selected == counter){
+			scr_text_shadow(xx, yy + (counter * offset), pause_selectoption[counter], make_colour_rgb(189, 23, 23));
+		}else{
+			scr_text_shadow(xx, yy + (counter * offset), pause_selectoption[counter], c_white);
+		}
+		
+		counter ++;
 	}
+	
+	counter = 0;
 }
 
 if (pause_text_update == false){
@@ -471,32 +493,34 @@ if (pausedialogue){
 	}
 }
 
-draw_set_alpha(pausedialogue_alpha);
-draw_set_font(fnt_cambria_1);
-draw_set_halign(fa_center);
-draw_set_valign(fa_center);
+if (pausedialogue_alpha > 0){
+	draw_set_alpha(pausedialogue_alpha);
+	draw_set_font(fnt_cambria_1);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
 
-switch(pausedialogue_type){
-	case 0:
-		scr_text_shadow(display_get_gui_width() / 2, display_get_gui_height() / 2, pausedialogue_type_text, c_white);
-		break;
+	switch(pausedialogue_type){
+		case 0:
+			scr_text_shadow(display_get_gui_width() / 2, display_get_gui_height() / 2, pausedialogue_type_text, c_white);
+			break;
 	
-	case 1:
-		optyy += 45;
-		scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) - 30, pausedialogue_type_text, c_white);
-		for(var i = 0; i < pausedialogue_option_max; i++){
-			if (pausedialogue_option_selected == i){
-				scr_text_shadow(optxx, optyy + (i * 30), pausedialogue_type_option[i], make_colour_rgb(189, 23, 23));
-			}else{
-				scr_text_shadow(optxx, optyy + (i * 30), pausedialogue_type_option[i], c_white);
+		case 1:
+			optyy += 45;
+			scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) - 30, pausedialogue_type_text, c_white);
+			for(var counter = 0; counter < pausedialogue_option_max; counter++){
+				if (pausedialogue_option_selected == counter){
+					scr_text_shadow(optxx, optyy + (counter * 30), pausedialogue_type_option[counter], make_colour_rgb(189, 23, 23));
+				}else{
+					scr_text_shadow(optxx, optyy + (counter * 30), pausedialogue_type_option[counter], c_white);
+				}
 			}
-		}
-		break;
-}
+			break;
+	}
 
-scr_text_shadow((display_get_gui_width() / 2) + 220, (display_get_gui_height() / 2) + 220, "Resume [E]", c_white);
-draw_set_valign(fa_top);
-draw_set_alpha(1);
+	scr_text_shadow((display_get_gui_width() / 2) + 220, (display_get_gui_height() / 2) + 220, "Resume [E]", c_white);
+	draw_set_valign(fa_top);
+	draw_set_alpha(1);
+}
 
 // Level Screen Opening
 if (screen_fade_opening > 0){

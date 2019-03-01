@@ -126,6 +126,7 @@ if (health_current <= 0){
 			
 			if (type == EnemyOneType.TrainBoss){
 				global.game_boss_trainhorde_killed = true;
+				obj_pawn_other_train_1.is_boss = false;
 			}
 		}
 		

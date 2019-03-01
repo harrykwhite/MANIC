@@ -1,2 +1,2 @@
-instance_destroy(mylight);
-instance_destroy(flashlight);
+instance_destroy(obj_player_light);
+instance_destroy(obj_player_flashlight);

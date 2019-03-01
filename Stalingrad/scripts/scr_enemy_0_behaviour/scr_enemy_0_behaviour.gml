@@ -1,7 +1,7 @@
 var speed_multiplier = 1;
 var speed_final = 0;
 var wait_negate = true, wait_stop_movement = false;
-var face_player = false;
+var face_target = false;
 target = global.player;
 
 switch(type){
@@ -44,8 +44,21 @@ switch(type){
 if (instance_exists(target)){
 	var mindist = 27;
 	var weapon_exists = instance_exists(weapon) && weapon != -1;
-	move_xTo = target.x;
-	move_yTo = target.y + 6;
+	
+	if (sporadic){
+		if (sporadic_time < sporadic_timemax){
+			sporadic_time ++;
+		}else{
+			var dir_to = point_direction(x, y, target.x, target.y + 6);
+			move_xTo = x + lengthdir_x(200, dir_to + random_range(-20, 20));
+			move_yTo = y + lengthdir_y(200, dir_to + random_range(-20, 20));
+			sporadic_time = 0;
+			face_target = true;
+		}
+	}else{
+		move_xTo = target.x;
+		move_yTo = target.y + 6;
+	}
 	
 	if (type == EnemyOneType.Healer) && (healer_instance != noone) && (instance_exists(healer_instance)){
 		if (distance_to_object(healer_instance) < 7){
@@ -152,7 +165,7 @@ if (instance_exists(target)){
 		}
 	
 		if (weapon_exists){
-			weapon.dir = point_direction(x, y, move_xTo, move_yTo);
+			weapon.dir = point_direction(x, y, target.x, target.y + 6);
 			
 			if (type == EnemyOneType.Sniper){
 				if (weapon.attack_time < weapon.attack_time_max / 3){
@@ -161,7 +174,7 @@ if (instance_exists(target)){
 			}
 			
 			if (!collision_line(x, y, move_xTo, move_yTo, obj_p_solid, false, true)) && (global.cutscene_current == -1){
-				if (distance_to_point(move_xTo, move_yTo) < mindist + 10) && (livetime > 80){
+				if (distance_to_point(target.x, target.y + 6) < mindist + 10) && (livetime > 80){
 					if (type != EnemyOneType.Sniper){
 						if (attack_time > 0){
 							attack_time--;
@@ -231,7 +244,7 @@ if (instance_exists(target)){
 	}
 }else{
 	move_speed = 0;
-	face_player = false;
+	face_target = false;
 }
 
 // Off - screen movement.
@@ -298,7 +311,7 @@ if (move_speed_real < speed_final){
 mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
 
 // Facing
-if (!face_player){
+if (!face_target){
 	if (move_xTo > x){
 		image_xscale = scale;
 	}else{

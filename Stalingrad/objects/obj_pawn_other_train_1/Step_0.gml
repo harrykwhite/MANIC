@@ -6,11 +6,17 @@ if (global.game_pause){
 }
 
 if (count == -1){
-	show_debug_message(string(x) + ", " + string(y));
+	//show_debug_message(string(x) + ", " + string(y));
 }
 
-if (spd <= 0.2) && (instance_exists(global.player)) && (!instance_exists(level.trainboss_leader)){
-	if (scr_enemy_count(true) <= 1){
+while (spd <= 0.2) && (instance_exists(global.player)){
+	if (room == rm_level_6_00){
+		if (instance_exists(level.trainboss_leader)){
+			break;
+		}
+	}
+	
+	if (scr_enemy_count(true) <= 1) && (is_boss){
 		if (count == cutscene_opening_count){
 			if (horde_spawn_wave < 3){
 				if (horde_spawn_time < horde_spawn_time_max){
@@ -19,14 +25,14 @@ if (spd <= 0.2) && (instance_exists(global.player)) && (!instance_exists(level.t
 					if (horde_spawn_opentime == round(horde_spawn_opentime_max / 2)){
 						horde_dospawn = true;
 						if (horde_spawn_wave == 1){ leader.component[0].horde_dospawn = true };
-						if (horde_spawn_wave == 2){ leader.component[2].horde_dospawn = true };
+						if (horde_spawn_wave == 2){ leader.component[0].horde_dospawn = true; leader.component[2].horde_dospawn = true };
 					}
 			
 					if (horde_spawn_opentime < horde_spawn_opentime_max){
 						horde_spawn_opentime ++;
 						open = true;
 						if (horde_spawn_wave == 1){ leader.component[0].open = true };
-						if (horde_spawn_wave == 2){ leader.component[2].open = true };
+						if (horde_spawn_wave == 2){ leader.component[0].open = true; leader.component[2].open = true };
 					}else{
 						horde_spawn_time = 0;
 						horde_spawn_opentime = 0;	
@@ -51,7 +57,7 @@ if (spd <= 0.2) && (instance_exists(global.player)) && (!instance_exists(level.t
 					
 						for (var i = 0; i < 2; i++){
 							if (horde_spawn_wave == 1 + i){
-								with(leader.component[i * 2]){
+								with(leader.component[0]){
 									open = false;
 									open_time = 0;
 									open_pause = false;
@@ -69,6 +75,27 @@ if (spd <= 0.2) && (instance_exists(global.player)) && (!instance_exists(level.t
 									image_index = 0;
 									image_speed = 0;
 								}
+								
+								if (i == 1){
+									with(leader.component[2]){
+										open = false;
+										open_time = 0;
+										open_pause = false;
+										close = true;
+							
+										switch(type){
+											case 0:
+												sprite_index = spr_train_0_part_0_door_open;
+												break;
+		
+											case 1:
+												sprite_index = spr_train_1_part_0_door_open;
+												break;
+										}
+										image_index = 0;
+										image_speed = 0;
+									}
+								}
 							}
 						}
 					
@@ -77,6 +104,12 @@ if (spd <= 0.2) && (instance_exists(global.player)) && (!instance_exists(level.t
 				}
 			}else{
 				open = true;
+				is_boss = false;
+				
+				var length = array_length_1d(leader.component);
+				for(var i = 0; i < length; i++){
+					leader.component[i].is_boss = false;
+				}
 				
 				level.trainboss_leader = instance_create(x, y + 30, obj_enemy_0);
 				level.trainboss_leader.type = EnemyOneType.TrainBoss;
@@ -87,7 +120,7 @@ if (spd <= 0.2) && (instance_exists(global.player)) && (!instance_exists(level.t
 		}
 	}
 
-	if (global.cutscene_current == -1) && (!is_boss){
+	if (global.cutscene_current == -1) && (!is_boss) && (global.boss_current == -1){
 		if (interact_break > 0){
 			interact_break --;
 		}else{
@@ -195,6 +228,7 @@ if (spd <= 0.2) && (instance_exists(global.player)) && (!instance_exists(level.t
 			}
 		}
 	}
+	break;
 }
 
 if (open){
@@ -263,7 +297,11 @@ if (spd > 0) || ((leave) && (!stop_on_end)){
 	if (leave){
 		spd += 0.0075 * 1.35;
 	}else{
-		spd -= 0.0075;
+		if (is_boss){
+			spd -= 0.015;
+		}else{
+			spd -= 0.0075;
+		}
 	}
 }
 
@@ -276,10 +314,17 @@ if (dir == 1){
 }
 
 if (horde_dospawn){
-	repeat(choose(3, 4)){
-		var enemy = instance_create(x + random_range(-30, 30), (y + 30) + random_range(-5, 30), obj_enemy_0);
+	repeat(choose(2, 3)){
+		var xx = x + random_range(-35, 35);
+		var yy = y + 34 + random_range(-5, 35);
+		var enemy = instance_create(xx, yy, obj_enemy_0);
 		enemy.weapon_index = choose(PawnWeapon.Axe, PawnWeapon.Crowbar, PawnWeapon.Rake);
-		enemy.move_speed_offset = random_range(1.3, 1.45);
+		enemy.move_speed_offset = random_range(1.2, 1.45);
+		enemy.sporadic = true;
+		
+		repeat(2){
+			part_particles_create(global.ps_front, xx + random_range(-7, 7), yy + random_range(-18, 18), global.pt_spawn_0, 1);
+		}
 	}
 	horde_dospawn = false;
 }

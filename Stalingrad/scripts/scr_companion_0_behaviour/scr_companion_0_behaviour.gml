@@ -112,7 +112,7 @@ if (instance_exists(global.player)){
 								runaway_starttime = 2;
 							}
 							weapon.attack = true;
-							attack_time = attack_time_max * attack_time_offset;
+							attack_time = attack_time_max;
 						}
 					}
 				}

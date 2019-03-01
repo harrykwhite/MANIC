@@ -63,8 +63,6 @@ knockback_resist = 1;
 
 attack_time = 26;
 attack_time_max = attack_time;
-attack_time_offset = 1;
-attack_time *= attack_time_offset;
 
 dash = false;
 dashspeed = 0;

@@ -100,9 +100,10 @@ if (!global.game_pause){
 				trainboss_time ++;
 			}else{
 				trainboss_spawned = true;
-				var train = instance_create(-247, 224, obj_pawn_other_train_1);
-				train.component_spawn = true;
-				train.is_boss = true;
+				trainboss_trainhead = instance_create(-247, 224, obj_pawn_other_train_1);
+				trainboss_trainhead.component_spawn = true;
+				trainboss_trainhead.is_boss = true;
+				trainboss_trainhead.spd = 6;
 			}
 		}
 	}

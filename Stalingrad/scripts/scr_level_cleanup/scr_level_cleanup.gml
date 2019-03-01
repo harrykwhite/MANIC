@@ -1,3 +1,7 @@
+if (audio_is_playing(m_boss_main_0)){
+	audio_sound_gain(m_boss_main_0, 0, 2000);
+}
+
 if (audio_is_playing(m_combat_main_0)){
 	audio_sound_gain(m_combat_main_0, 0, 2000);
 }
@@ -64,3 +68,4 @@ if (audio_is_playing(snd_weapon_flamethrower_active_0)){
 
 scr_fade_object_list_reset();
 global.game_combat_state = CombatState.Idle;
+global.boss_current = -1;

@@ -118,12 +118,12 @@ if (instance_exists(global.player)){
 									weapon = instance_create(x, y, obj_pawnweapon_4);
 									weapon.owner = id;
 									weapon_index = PawnWeapon.Grenade;
-									attack_time = attack_time_max * attack_time_offset;
+									attack_time = attack_time_max;
 									exit;
 								}
 									
 								weapon.attack = true;
-								attack_time = attack_time_max * attack_time_offset;
+								attack_time = attack_time_max;
 							}
 						}
 					}

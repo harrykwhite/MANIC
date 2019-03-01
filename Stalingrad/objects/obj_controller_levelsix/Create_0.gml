@@ -81,9 +81,10 @@ train_time = 0;
 train_timemax = 10 * 60;
 trainobjective_time = 10 * 60;
 
+trainboss_trainhead = noone;
 trainboss_leader = noone;
 trainboss_time = 0;
-trainboss_timemax = 60 * 1//60;
+trainboss_timemax = 60 * 5//60;
 trainboss_spawned = false;
 
 healer_can_spawn = global.game_firsthealer_killed;
