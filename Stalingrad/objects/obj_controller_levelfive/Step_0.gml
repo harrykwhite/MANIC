@@ -28,14 +28,12 @@ if (lighting < lighting_level[global.game_combat_state]){
 global.ambientShadowIntensity = lighting;
 
 if (instance_exists(global.player)){
-	scr_game_objective_control();
-	
 	var heavygun_spawn_interval = 60 * 2.25;
 	var heavygun_spawn_max = 6;
 	var spawn_distance = 120;
 	var spawn_rate = spawn_rate_real;
 	
-	if (global.game_combat_active) && (!global.game_pause) && (objective_type[global.game_objective_current] != ObjectiveType.Clear) && ((global.boss_current == -1) || ((global.game_objective_current == 1))) && (global.game_objective_current != 4){
+	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}
@@ -45,7 +43,7 @@ if (instance_exists(global.player)){
 		}else{
 			spawn = true;
 			
-			if (global.game_objective_current == 1){
+			if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
 				spawn_time = heavygun_spawn_interval;
 			}else{
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
@@ -57,10 +55,9 @@ if (instance_exists(global.player)){
 		spawn_state_time_real++;
 	
 		if (spawn){
-			
 			var num;
 			
-			if (global.game_objective_current == 1){
+			if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
 				num = heavygun_spawn_interval;
 				spawn_distance = 85;
 			}else{
@@ -218,17 +215,6 @@ if (instance_exists(global.player)){
 		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 1000);
 		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 1000);
 	}
-}
-
-if (objective_type[global.game_objective_current] == ObjectiveType.Clear){
-	if (!spawn_cleared){
-		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 6000);
-		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 3000);
-		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 3000);
-		spawn_cleared = true;
-	}
-	
-	global.game_combat_state = CombatState.Idle;
 }
 
 global.game_combat_active = true;

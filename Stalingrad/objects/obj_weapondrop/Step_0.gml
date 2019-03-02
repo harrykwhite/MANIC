@@ -17,7 +17,7 @@ if (spd > 0){
 }
 
 if (spd > 0){
-	spd -= 0.35 ;
+	spd -= 0.35;
 	scr_motion_control(false);
 }else{
 	spd = 0;

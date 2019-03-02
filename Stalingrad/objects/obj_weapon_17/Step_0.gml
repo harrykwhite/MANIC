@@ -75,12 +75,11 @@ if (instance_exists(global.player)) && (global.player_stamina_active){
     
     // Pick up if player is near and E is pressed.
 	var mount = keyboard_check_pressed(ord("E"));
-	var bossActivate = false;
 	
     if (pickup){
         if (mount){
+			scr_player_stamina_drain(6);
 			if (!use_current){
-				scr_player_stamina_drain(6);
 				audio_play_sound(snd_weapon_pickup_0, 3, false);
 				use_current = true;
 				global.weapon_slot_standalone = index;
@@ -90,22 +89,9 @@ if (instance_exists(global.player)) && (global.player_stamina_active){
 					ammo = global.weapon_ammomax[global.weapon_slot_standalone];
 					global.weapon_slot_standalone_ammo = ammo;
 				}
-				
-				if (bossActivate){
-					if (global.game_objective_current == 0){
-						global.game_objective_current = 1;
-						with(scr_get_level_object()){
-							spawn_time = 60 * 2.5;
-						}
-					}
-				}
 			}else{
-				if (!bossActivate){
-					scr_player_stamina_drain(6);
-					use_current = false;
-					global.weapon_slot_standalone = -1;
-					weapon_slot_standalone = -1;
-				}
+				use_current = false;
+				global.weapon_slot_standalone = -1;
 			}
         }
 		

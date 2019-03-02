@@ -13,12 +13,6 @@ enum CombatState{
 	Climax,
 }
 
-enum ObjectiveType{
-	Location,
-	Kill,
-	Clear,
-}
-
 enum PawnType{
 	Enemy,
 	Boss,

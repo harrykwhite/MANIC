@@ -67,7 +67,7 @@ if (instance_exists(mylight)){
 	mylight.y = y;
 	mylight.light[| eLight.X] = x;
 	mylight.light[| eLight.Y] = y;
-	mylight.light[| eLight.Range] = 230 * light_brightness;
+	mylight.light[| eLight.Range] = 210 * light_brightness;
 	mylight.light[| eLight.LutIntensity] = 1.65 + (clamp(flash_time, 0, 2) / 10);
 	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }

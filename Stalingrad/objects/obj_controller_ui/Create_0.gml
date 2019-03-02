@@ -57,11 +57,6 @@ score_text_offset = 0;
 score_text_time = 0;
 score_text_alpha = 0;
 
-objective_text = "";
-objective_text_scale = 0;
-objective_text_set = false;
-objective_text_red_alpha = 0;
-
 leveltext_alpha = 0;
 leveltext_text = "";
 leveltext_time = 60 * 3.5;

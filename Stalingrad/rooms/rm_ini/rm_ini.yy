@@ -15,7 +15,7 @@
     "layers": [
         {
             "__type": "GMRInstanceLayer_Model:#YoYoStudio.MVCFormat",
-            "name": "Compatibility_Instances_Depth_0",
+            "name": "Control",
             "id": "55ba4048-55d5-4031-9f65-eae2aa5eb1e7",
             "depth": 0,
             "grid_x": 16,

@@ -10,12 +10,12 @@ if (full <= 0){
 	if (keyboard_check_pressed(ord("F"))){
 		window_set_fullscreen(!window_get_fullscreen());
 		full = 40;
-		
+
+		display_set_gui_size(720 * 2.5, 405 * 2.5);
 		if (!window_get_fullscreen()){
 			window_set_size(720 * wsize, 405 * wsize);
 			window_set_position((display_get_width() / 2) - ((720 * wsize) / 2), (display_get_height() / 2) - ((405 * wsize) / 2));
 		}
-		display_set_gui_size(720 * 2.5, floor(405 * 2.5));
 	}
 }else{
 	full--;
@@ -41,9 +41,6 @@ if (full <= 0){
 // Mouse
 if (room != rm_title_0){
 	while(!instance_exists(obj_controller_mouse)){
-		instance_create(0, 0, obj_controller_mouse);
+		instance_create(mouse_x, mouse_y, obj_controller_mouse);
 	}
 }
-
-// Scripts
-scr_game_update();

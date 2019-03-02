@@ -21,44 +21,6 @@ with(obj_block_persistent){
 	activate = true;
 }
 
-with(level){
-	if (objective_type[global.game_objective_current] == ObjectiveType.Kill){
-		objective_type_kill_number[global.game_objective_current] += 3;
-		objective_type_kill_number[global.game_objective_current] = clamp(objective_type_kill_number[global.game_objective_current], 0, objective_type_kill_number_max[global.game_objective_current]);
-		
-		if (global.level_current == 0){
-			objective_title[global.game_objective_current] = "Kill remaining " + string(objective_type_kill_number[global.game_objective_current]) + " enemies";
-		}else{
-			objective_title[global.game_objective_current] = "Clear the area of " + string(objective_type_kill_number[global.game_objective_current]) + " enemies";
-		}
-		
-		if (room == rm_level_5_02) && (global.game_objective_current == 1){
-			objective_type_kill_number[global.game_objective_current] = objective_type_kill_number_max[global.game_objective_current];
-			global.game_objective_current = 0;
-		}
-		
-		obj_controller_ui.objective_text_set = false;
-		scr_game_objective_ui_update();
-	}
-	
-	if (global.level_current == 1){
-		if (global.game_objective_current == 1){
-			global.game_objective_current = 0;
-			obj_controller_ui.objective_text_set = false;
-		}
-	}
-	
-	if (global.level_current == 5){
-		if (global.game_objective_current == 1){
-			global.game_objective_current = 0;
-			objective_type_kill_number[global.game_objective_current] = 3;
-			objective_title[global.game_objective_current] = "Clear the area of " + string(objective_type_kill_number[global.game_objective_current]) + " enemies";
-			obj_controller_ui.objective_text_set = false;
-			scr_game_objective_ui_update();
-		}
-	}
-}
-
 if (!instance_exists(obj_player)){
 	instance_create(0, 0, obj_player);
 	global.player = obj_player;
@@ -98,6 +60,7 @@ if (instance_exists(obj_controller_camera)){
 }
 
 // Other
+instance_activate_all();
 scr_enemy_destroy_all();
 scr_cutscene_block_restart_all();
 scr_weapondrop_destroy_all();

@@ -1,3 +1,4 @@
 index = 46;
-destroy_on_active = true;
-special = "levelfourbossrestart";
+reactivate_on_death = true;
+deactivate_on_activate = true;
+special = "levelfourbossrestart"

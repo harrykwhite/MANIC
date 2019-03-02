@@ -121,58 +121,6 @@ if (screenblend_alpha > 0){
     draw_set_alpha(1);
 }
 
-/* Objective Display
-objective_text_scale = clamp(objective_text_scale, 0, 1.25);
-
-var scale = objective_text_scale + wave(0, 0.025, 3, 0, false);
-scale = clamp(scale, 0, 1.25);
-draw_set_valign(fa_center);
-
-if (global.cutscene_current == -1){
-	draw_set_alpha((1 - pause_text_alpha) * 0.75);
-	draw_set_font(fnt_cambria_2);
-	draw_set_halign(fa_center);
-	scr_text_shadow_transformed((display_get_gui_width() / 2), (display_get_gui_height() - 70), objective_text, c_white, scale, scale, 0);
-	
-	var north = string_pos("north", objective_text);
-	var east = string_pos("east", objective_text);
-	var south = string_pos("south", objective_text);
-	var west = string_pos("west", objective_text);
-	var dirdraw = "";
-	var dirx = -62;
-	
-	if (north != 0){
-		dirdraw = "north";
-	}
-	
-	if (east != 0){
-		dirdraw = "east";
-	}
-	
-	if (south != 0){
-		dirdraw = "south";
-	}
-	
-	if (west != 0){
-		dirdraw = "west";
-	}
-	
-	if (string_pos("leave", objective_text) != 0){
-		dirx = -66;
-	}
-	
-	if (dirdraw != ""){
-		draw_set_colour(c_white);
-		draw_set_alpha((1 - pause_text_alpha) * 0.8);
-		draw_text_transformed((display_get_gui_width() / 2) + (dirx * scale), (display_get_gui_height() - 70), dirdraw, scale, scale, 0);
-	}
-	
-	draw_set_colour(make_colour_rgb(189, 23, 23));
-	draw_set_alpha(objective_text_red_alpha - pause_text_alpha);
-	draw_text_transformed((display_get_gui_width() / 2), (display_get_gui_height() - 70), objective_text, scale, scale, 0);
-	draw_set_alpha(1);
-}*/
-
 // Score Display
 var length = 7;
 var shake = wave(-score_shake, score_shake, 0.2, 0);
@@ -220,7 +168,6 @@ if (global.weapon_slot_standalone != -1){
 }
 
 if (instance_exists(global.player)){
-	
 	repeat(2){
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
@@ -324,7 +271,7 @@ if (leveltext_alpha > 0){
 	var xx = display_get_gui_width() / 2;
 	var yy = (display_get_gui_height() / 2) - 380;
 	var width = string_width(leveltext_text) + 20;
-	var height = 0.5;
+	var height = 2;
 	var offset = 34;
 
 	draw_set_colour(c_white);

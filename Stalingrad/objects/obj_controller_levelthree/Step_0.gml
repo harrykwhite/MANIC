@@ -27,10 +27,9 @@ if (lighting < lighting_level[global.game_combat_state]){
 global.ambientShadowIntensity = lighting;
 
 if (instance_exists(global.player)){
-	scr_game_objective_control();
 	var spawn_rate = spawn_rate_real;
 	
-	if (global.game_combat_active) && (!global.game_pause) && (objective_type[global.game_objective_current] != ObjectiveType.Clear) && (global.boss_current == -1) && (global.cutscene_current == -1){
+	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1){
 	
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
@@ -167,17 +166,6 @@ if (instance_exists(global.player)){
 		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 1000);
 		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 1000);
 	}
-}
-
-if (objective_type[global.game_objective_current] == ObjectiveType.Clear){
-	if (!spawn_cleared){
-		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 6000);
-		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 3000);
-		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 3000);
-		spawn_cleared = true;
-	}
-	
-	global.game_combat_state = CombatState.Idle;
 }
 
 global.game_combat_active = true;

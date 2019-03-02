@@ -35,7 +35,7 @@ if (blackbar_sizereal > 2){
 // Game Opening Intro
 if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
 	if (game_opening_intro){
-		var text = "MANIC";
+		var text = "Stalingrad";
 		
 		if (game_opening_intro_text_stage == 0){
 			text = "Geta Presents";

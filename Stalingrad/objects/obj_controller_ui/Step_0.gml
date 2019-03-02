@@ -17,14 +17,8 @@ if (screenblend_draw){
     }
 }
 
-// Objective Display
-objective_text_scale = approach(objective_text_scale, 1, 10);
-
 if (!global.game_pause){
 	pause_selected = 0;
-	if (objective_text_red_alpha > 0){
-		objective_text_red_alpha -= 0.0165;
-	}
 
 	// Title Text
 	if (global.cutscene_current == -1) &&

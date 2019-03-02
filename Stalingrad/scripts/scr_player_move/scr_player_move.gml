@@ -80,9 +80,7 @@ if (global.weapon_slot_standalone == -1){
 				scr_sound_play(footstep_sound, false, 0.8, 1.1);
 			}
 		}
-		
 	}else{
-		
 		footstep_time = 19;
 	}
 
@@ -103,7 +101,7 @@ if (global.weapon_slot_standalone == -1){
 	}else{
 
 	    // Movement
-	    if ((image_xscale == 1) && (sign(hspd)==1)) || ((image_xscale==-1) && (sign(hspd)=-1)) || (hspd == 0){ // Forwards - checks if the player is facing the dir of their movement.
+	    if ((image_xscale == 1) && (sign(hspd) == 1)) || ((image_xscale == -1) && (sign(hspd) == -1)) || (hspd == 0){ // Forwards - checks if the player is facing the dir of their movement.
 	        move_back = false;
         
 	        if (global.player_weapon != -1){

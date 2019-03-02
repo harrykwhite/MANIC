@@ -10,26 +10,10 @@ if (argument_count > 2){
 	prescript = argument[2];
 }
 
+global.depth_counter ++;
 with(obj_controller_all){
-	var yl = ds_depth_count;
-	
-	if (yl < 1){
-		ds_depth_num = 50 + instance_number(obj_p_depth) + instance_number(obj_p_depth_environhit) + instance_number(obj_p_depth_solid_shadow) + instance_number(obj_p_depth_solid_noshadow) + instance_number(obj_p_depth_decorative);
-		ds_grid_resize(ds_depth_grid, 4, ds_depth_num + 1);
-		
-		if (ds_depth_num <= 0){
-			exit;
-		}
-	}
-	
-	if (yl > ds_depth_num){
-		break;
-	}
-	
-	ds_depth_grid[# 0, yl] = inst;
-	ds_depth_grid[# 1, yl] = yy;
-	ds_depth_grid[# 2, yl] = script;
-	ds_depth_grid[# 3, yl] = prescript;
-
-	ds_depth_count++;
+	ds_depth_grid[# 0, global.depth_counter] = inst;
+	ds_depth_grid[# 1, global.depth_counter] = yy;
+	ds_depth_grid[# 2, global.depth_counter] = script;
+	ds_depth_grid[# 3, global.depth_counter] = prescript;
 }

@@ -25,21 +25,15 @@ if (instance_exists(global.player)){
 		
 		if (global.cutscene_time[index] < 180){
 			global.cutscene_time[index]++;
-			
 		}else{
-			
 			if (audio_is_playing(snd_other_typing_0)){
 				audio_stop_sound(snd_other_typing_0);
 			}
 			
-			global.game_objective_current = 4;
-			obj_controller_ui.objective_text_set = false;
-			scr_game_objective_ui_update();
 			global.cutscene_current = -1;
 			global.player_respawn_x = global.player.x;
 			global.player_respawn_y = global.player.y;
 		}
-		
 	}else{
 		
 		global.player.move_xTo = xTo;

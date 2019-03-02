@@ -21,17 +21,6 @@ spawn_state_time_real = 0;
 spawn_rate_real = 1;
 spawn_cleared = false;
 
-// Objective System
-objective_update = false;
-
-objective_title[0] = "Locate the generator room";
-objective_type[0] = noone;
-
-objective_title[1] = "Move south to leave the area";
-objective_type[1] = ObjectiveType.Clear;
-
-global.game_objective_current = 0;
-
 // Other
 rain = audio_play_sound(m_ambience_rain_0, 3, true);
 audio_sound_gain(rain, 0, 0);

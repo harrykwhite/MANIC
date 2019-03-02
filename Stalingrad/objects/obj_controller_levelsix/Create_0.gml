@@ -15,28 +15,10 @@ spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;
 
-// Objective System
-objective_update = false;
-objective_special_boss_object = noone;
-
 switch(room){
 	case rm_level_6_00:
 		spawn_x = 656;
 		spawn_y = 245;
-		
-		objective_title[0] = "Clear the area of 15 enemies";
-		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 15;
-		objective_type_kill_number_max[0] = objective_type_kill_number[0];
-
-		objective_title[1] = "";
-		objective_type[1] = noone;
-
-		objective_title[2] = "Wait for the train to arrive";
-		objective_type[2] = noone;
-
-		objective_title[3] = "Board the train"
-		objective_type[3] = ObjectiveType.Clear;
 		break;
 
 	case rm_level_6_01:
@@ -47,14 +29,6 @@ switch(room){
 			spawn_x = 866;
 			spawn_y = 232;
 		}
-		
-		objective_title[0] = "Clear the area of 10 enemies";
-		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 10;
-		objective_type_kill_number_max[0] = objective_type_kill_number[0];
-		
-		objective_title[1] = "Move east to leave the area";
-		objective_type[1] = ObjectiveType.Clear;
 		break;
 }
 
@@ -67,7 +41,6 @@ if (global.game_level_opening_type == 1) && (room == rm_level_6_00){
 		global.cutscene_current = 2;
 	}
 }
-global.game_objective_current = 0;
 
 // Other
 sprite_index = noone;
@@ -79,7 +52,6 @@ audio_sound_gain(wind, 1, 7000);
 
 train_time = 0;
 train_timemax = 10 * 60;
-trainobjective_time = 10 * 60;
 
 trainboss_trainhead = noone;
 trainboss_leader = noone;

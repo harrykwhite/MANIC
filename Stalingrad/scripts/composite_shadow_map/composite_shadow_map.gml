@@ -42,8 +42,8 @@ var cameraH = camera[eLightingCamera.Height];
 var counter = 0;
 var firstLight = true;
 
-surface_set_target(global.worldShadowMap);
 repeat(lightCount) {
+	
 	// Get the light's shadow map
 	var light = ds_list_find_value(lights, counter);
 	
@@ -131,8 +131,7 @@ repeat(lightCount) {
 	colorArray[3] = ((lightColor >> 24) & $FF) / $FF;	// A
 	
 	// Composite the light into the global shadow map
-	//surface_set_target(global.worldShadowMap);
-	
+	surface_set_target(global.worldShadowMap);
 	if(firstLight) {
 		// Clear the shadow map
 		draw_clear_alpha(c_black, 0);
@@ -201,13 +200,10 @@ repeat(lightCount) {
 	
 	// Reset
 	shader_reset();
-	
+	surface_reset_target();
 	counter++;
-	firstLight = false;
+	gpu_set_blendmode(bm_normal);
 }
-
-gpu_set_blendmode(bm_normal);
-surface_reset_target();
 
 // Post-composite step
 lighting_post_composite();

@@ -8,16 +8,16 @@ if (!global.game_pause){
 	if (random(8.5) < 1) part_particles_create(global.ps_front, random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0])), random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])), global.pt_dust_1, 1);
 
 	// Tumbleweed
-	if (random(70) < 1){
-		if (instance_exists(global.player)){
+	if (random(200) < 1){
+		if (instance_number(obj_environment_tumbleweed) < 5){
 			var xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
 			var yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
 			var safe = 0;
-			
+		
 			while(point_distance(xx, yy, global.player.x, global.player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
 				xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
 				yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
-			
+		
 				if (safe < 100){
 					safe ++;
 				}else{
@@ -52,11 +52,9 @@ if (lighting < lighting_level[global.game_combat_state]){
 global.ambientShadowIntensity = lighting;
 
 if (instance_exists(global.player)){
-	
-	scr_game_objective_control();
 	var spawn_rate = spawn_rate_real;
 	
-	if (global.game_combat_active) && (!global.game_pause) && (objective_type[global.game_objective_current] != ObjectiveType.Clear) && (global.boss_current == -1) && (global.cutscene_current == -1){
+	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1){
 	
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
@@ -193,17 +191,6 @@ if (instance_exists(global.player)){
 		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 1000);
 		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 1000);
 	}
-}
-
-if (objective_type[global.game_objective_current] == ObjectiveType.Clear){
-	if (!spawn_cleared){
-		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 6000);
-		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 3000);
-		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 3000);
-		spawn_cleared = true;
-	}
-	
-	global.game_combat_state = CombatState.Idle;
 }
 
 global.game_combat_active = true;

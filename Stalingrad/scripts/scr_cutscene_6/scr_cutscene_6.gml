@@ -30,8 +30,6 @@ if (instance_exists(global.player)){
 				global.game_companion_farmer_found = true;
 				cobj.in_cutscene = false;
 				cobj.cutscene_prop = false;
-				global.game_objective_current++;
-				obj_controller_ui.objective_text_set = false;
 			}
 		}else{
 			cobj.in_cutscene = true;

@@ -18,7 +18,7 @@
         "66947509-46ee-4ff2-8ea0-b59bdda06d0b"
     ],
     "filterType": "GMObject",
-    "folderName": "Demo",
+    "folderName": "Lighting Demo",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

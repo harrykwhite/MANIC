@@ -1,1 +1,1 @@
-ds_depth_count = 0;
+global.depth_counter = 0;

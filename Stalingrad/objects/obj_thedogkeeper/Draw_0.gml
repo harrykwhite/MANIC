@@ -7,7 +7,7 @@ if (arm != -1){
 		dogs_alive = 1;
 		
 		repeat(dog_count){
-			var thisdog = dog[i];
+			var thisdog = dog[counter];
 			
 			if (instance_exists(thisdog)){
 				var dir = point_direction(arm.x + lengthdir_x(9, move_dir), arm.y + lengthdir_y(9, move_dir), thisdog.x + (6 * thisdog.image_xscale), thisdog.y + 4);

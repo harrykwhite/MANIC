@@ -39,7 +39,7 @@ if (audio_is_playing(m_boss_main_0)){
 	}
 }
 
-if (!global.game_pause) && (global.boss_current == -1) && (objective_type[global.game_objective_current] != ObjectiveType.Clear){
+if (!global.game_pause) && (global.boss_current == -1){
 	switch(global.game_combat_state){
 		case CombatState.Idle:
 			if (spawn_state_time_real >= (60 * spawn_state_time[global.game_combat_state])){

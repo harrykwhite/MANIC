@@ -56,10 +56,13 @@ for(var i = 0; i < dog_count; i++){
 
 if (!dogs_downed){
 	scr_thedogkeeper_behaviour_0();
-	weapon_has = false;
 }else{
+	if (!weapon_has){
+		weapon_has = true;
+		exit;
+	}
+	
 	scr_thedogkeeper_behaviour_1();
-	weapon_has = true;
 }
 
 scr_pawn_update();

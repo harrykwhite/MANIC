@@ -11,7 +11,17 @@ if (instance_exists(obj_controller_camera)){
 
 if (instance_exists(global.player)){
 	if (levelobj.dogkeeper == noone){
-		levelobj.dogkeeper = instance_create(872, 500, obj_thedogkeeper);
+		var spawnx = 884;
+		var spawny = 378;
+		
+		if (global.player.y < room_height / 2){
+			spawny = 513;
+		}
+		
+		levelobj.dogkeeper = instance_create(spawnx, spawny, obj_thedogkeeper);
+		repeat(9){
+			part_particles_create(global.ps_front, spawnx + random_range(-7, 7), spawny + random_range(-18, 18), global.pt_spawn_0, 1);
+		}
 	}
 	
 	eobj = levelobj.dogkeeper;

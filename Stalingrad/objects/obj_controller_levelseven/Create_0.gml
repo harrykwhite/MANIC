@@ -15,9 +15,6 @@ spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;
 
-// Objective System
-objective_update = false;
-
 switch(room){
 	case rm_level_7_00:
 		if (global.game_level_opening_type == 0){
@@ -27,14 +24,6 @@ switch(room){
 			spawn_x = 1092;
 			spawn_y = 232;
 		}
-		
-		objective_title[0] = "Clear the area of 10 enemies";
-		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 10;
-		objective_type_kill_number_max[0] = objective_type_kill_number[0];
-
-		objective_title[1] = "Move east to the next area";
-		objective_type[1] = ObjectiveType.Clear;
 		break;
 	
 	case rm_level_7_01:
@@ -45,14 +34,6 @@ switch(room){
 			spawn_x = 352;
 			spawn_y = 544;
 		}
-		
-		objective_title[0] = "Clear the area of 10 enemies";
-		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 10;
-		objective_type_kill_number_max[0] = objective_type_kill_number[0];
-		
-		objective_title[1] = "Move south to the next area";
-		objective_type[1] = ObjectiveType.Clear;
 		break;
 	
 	case rm_level_7_02:
@@ -63,18 +44,8 @@ switch(room){
 			spawn_x = 352;
 			spawn_y = 548;
 		}
-		
-		objective_title[0] = "Clear the area of 10 enemies";
-		objective_type[0] = ObjectiveType.Kill;
-		objective_type_kill_number[0] = 10;
-		objective_type_kill_number_max[0] = objective_type_kill_number[0];
-		
-		objective_title[1] = "Move south to leave the area";
-		objective_type[1] = ObjectiveType.Clear;
 		break;
 }
-
-global.game_objective_current = 0;
 
 // Other
 global.cutscene_current = 2;

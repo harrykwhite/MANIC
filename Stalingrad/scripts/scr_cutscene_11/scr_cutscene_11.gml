@@ -25,7 +25,6 @@ if (instance_exists(global.player)){
 			global.cutscene_time[index] = 0;
 			global.player.move_xTo = -1;
 			global.player.move_yTo = -1;
-			global.game_objective_current = 1;
 			eobj.in_cutscene = false;
 			eobj.cutscene_prop = false;
 		}else{
