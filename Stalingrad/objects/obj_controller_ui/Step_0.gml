@@ -67,22 +67,6 @@ if (!global.game_pause){
 }else{
 	// Pause
 	if (!pausedialogue){
-		if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
-			if (pause_selected > 0){
-				pause_selected --;
-			}else{
-				pause_selected = pause_selectedmax - 1;
-			}
-		}
-	
-		if (keyboard_check_pressed(ord("S"))) or (keyboard_check_pressed(vk_down)){
-			if (pause_selected < pause_selectedmax - 1){
-				pause_selected ++;
-			}else{
-				pause_selected = 0;
-			}
-		}
-	
 		if (pause_has_selected){
 			if (pause_has_selected_time < 1){
 				pause_has_selected_time += 0.025;
@@ -116,6 +100,22 @@ if (!global.game_pause){
 				}
 			}
 		}else{
+			if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
+				if (pause_selected > 0){
+					pause_selected --;
+				}else{
+					pause_selected = pause_selectedmax - 1;
+				}
+			}
+	
+			if (keyboard_check_pressed(ord("S"))) or (keyboard_check_pressed(vk_down)){
+				if (pause_selected < pause_selectedmax - 1){
+					pause_selected ++;
+				}else{
+					pause_selected = 0;
+				}
+			}
+			
 			if (keyboard_check_pressed(vk_enter)){
 				switch(pause_selected){
 					case 0:

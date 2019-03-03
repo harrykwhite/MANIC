@@ -1,3 +1,5 @@
+var cart_lock = false;
+
 if (instance_exists(global.player)){
 	if (use_current){
         // Positioning
@@ -27,12 +29,7 @@ if (instance_exists(global.player)){
             shoot_can = false;
         }
     }else{
-		if (cart != noone){
-			x = cart.x + 15;
-			y = cart.y + 6;
-			image_angle = 90;
-			image_yscale = -1;
-		}
+		cart_lock = true;
 	}
 }else{
 	ammo = -1;
@@ -40,5 +37,14 @@ if (instance_exists(global.player)){
 	use_current = false;
 	shoot_can = false;
 	use_can_stop = false;
+	cart_lock = true;
 }
 
+if (cart_lock){
+	if (cart != noone){
+		x = cart.x + 15;
+		y = cart.y + 6;
+		image_angle = 90;
+		image_yscale = -1;
+	}
+}

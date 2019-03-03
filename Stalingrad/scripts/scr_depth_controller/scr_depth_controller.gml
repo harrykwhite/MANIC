@@ -10,10 +10,10 @@ if (argument_count > 2){
 	prescript = argument[2];
 }
 
-global.depth_counter ++;
 with(obj_controller_all){
-	ds_depth_grid[# 0, global.depth_counter] = inst;
-	ds_depth_grid[# 1, global.depth_counter] = yy;
-	ds_depth_grid[# 2, global.depth_counter] = script;
-	ds_depth_grid[# 3, global.depth_counter] = prescript;
+	ds_depth_count ++;
+	ds_depth_grid[# 0, ds_depth_count] = inst;
+	ds_depth_grid[# 1, ds_depth_count] = yy;
+	ds_depth_grid[# 2, ds_depth_count] = script;
+	ds_depth_grid[# 3, ds_depth_count] = prescript;
 }

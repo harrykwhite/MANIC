@@ -134,10 +134,20 @@ if (health_current <= 0){
 		
 		if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
+			with(obj_block_cutscene){
+				if (index == 11){
+					instance_destroy();
+				}
+			}
 		}
 		
 		if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
+			with(obj_block_cutscene){
+				if (index == 46){
+					instance_destroy();
+				}
+			}
 		}
 	}
 	

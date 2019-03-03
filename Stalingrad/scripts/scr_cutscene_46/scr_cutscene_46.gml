@@ -12,10 +12,10 @@ if (instance_exists(obj_controller_camera)){
 if (instance_exists(global.player)){
 	if (levelobj.dogkeeper == noone){
 		var spawnx = 884;
-		var spawny = 378;
+		var spawny = 308;
 		
 		if (global.player.y < room_height / 2){
-			spawny = 513;
+			spawny = 713;
 		}
 		
 		levelobj.dogkeeper = instance_create(spawnx, spawny, obj_thedogkeeper);
@@ -33,7 +33,7 @@ if (instance_exists(global.player)){
 		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
 		global.boss_current = Boss.TheDogkeeper;
 		
-		if (global.cutscene_time[index] > 100){
+		if (global.cutscene_time[index] > 90){
 			global.cutscene_current = -1;
 			global.cutscene_time[index] = 0;
 			global.player.move_xTo = -1;

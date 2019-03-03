@@ -1,5 +1,3 @@
-var cart_dir = 0, cart_dist = 0;
-
 sprite_index = spr_player_idle_2_top;
 if (minecart_sprite != spr_pawn_minecart_0) && (minecart_sprite != spr_pawn_minecart_1){
 	minecart_sprite = spr_pawn_minecart_0;
@@ -21,43 +19,58 @@ if (mouse_x > x){
 	image_xscale = -1;
 }
 
-if (keyboard_check(ord("D"))){
-	if (minecart_speed < 2.5){
-		minecart_speed += 0.1;
+if (!minecart_pressing){
+	if (minecart_dir == 180) or (minecart_dir == 90){
+		minecart_sign = -1;
+	}else if (minecart_dir = 0) or (minecart_dir == 270){
+		minecart_sign = 1;
+	}
+}
+
+if (keyboard_check(ord("D")) or keyboard_check(ord("W"))){
+	if (minecart_speed < 4 * minecart_sign){
+		minecart_speed += 0.01 * minecart_sign;
 	}
 	
-	minecart_speed = clamp(minecart_speed, 0, 2.5);
-	minecart_left = false;
-	if (!minecart_right){
-		if (minecart.trail_current < array_length_1d(minecart.trail_x) - 1){
-			minecart.trail_current ++;
-		}else{
-			minecart.trail_current = 0;
-		}
-		minecart_right = true;
-	}
-}else if (keyboard_check(ord("A"))){
-	if (minecart_speed > -2.5){
-		minecart_speed -= 0.1;
+	minecart_pressing = true;
+}else if (keyboard_check(ord("A")) or keyboard_check(ord("S"))){
+	if (minecart_speed > -4 * minecart_sign){
+		minecart_speed -= 0.01 * minecart_sign;
 	}
 	
-	minecart_speed = clamp(minecart_speed, -2.5, 0);
-	minecart_right = false;
-	if (!minecart_left){
-		if (minecart.trail_current > 0){
-			minecart.trail_current --;
-		}else{
-			minecart.trail_current = array_length_1d(minecart.trail_x) - 1;
-		}
-		minecart_left = true;
-	}
+	minecart_pressing = true;
 }else{
 	if (minecart_speed > 0){
-		minecart_speed -= 0.02;
+		minecart_speed -= 0.005;
 	}
 	
 	if (minecart_speed < 0){
-		minecart_speed += 0.02;
+		minecart_speed += 0.005;
+	}
+	
+	minecart_pressing = false;
+}
+
+if (minecart_bounce_break > 0){
+	minecart_bounce_break --;
+}else{
+	var cartx = sprite_get_bbox_left(minecart_sprite);
+	var carty = sprite_get_bbox_top(minecart_sprite);
+	var cartw = sprite_get_bbox_right(minecart_sprite) - cartx;
+	var carth = sprite_get_bbox_bottom(minecart_sprite) - carty;
+
+	var mblocklist = ds_list_create();
+	var mblocktotal = collision_rectangle_list(minecart.x - (minecart.sprite_width / 2) + cartx, minecart.y - (minecart.sprite_height/ 2) + carty, minecart.x - (minecart.sprite_width / 2) + cartx + cartw, minecart.y - (minecart.sprite_height/ 2) + carty + carth, obj_block_minecart, false, false, mblocklist, false);
+	if (mblocktotal > 0){
+		for(var i = 0; i < mblocktotal; i++){
+			var mblock = mblocklist[| i];
+			
+			if (mblock.image_angle != minecart_dir){
+				minecart_dir = mblock.image_angle;
+				minecart_bounce_break = 15;
+				break;
+			}
+		}
 	}
 }
 
@@ -67,52 +80,19 @@ if (minecart_speed != 0) || (minecart_speed != 0){
 	image_speed = 0;
 }
 
-var offset = -10;
-	if (x > minecart.rect_x1 + ((minecart.rect_x2 - minecart.rect_x1) / 2)){
-		offset = 10;
-	}
-	cart_dir = point_direction(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);
-	cart_dist = point_distance(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);
-
-if (cart_dist < 4){
-	if (minecart_speed > 0){
-		if (minecart_update_interval < 1){
-			minecart_update_interval ++;
-		}else{
-			minecart_update_interval = 0;
-			if (minecart.trail_current < array_length_1d(minecart.trail_x) - 1){
-				minecart.trail_current ++;
-			}else{
-				minecart.trail_current = 0;
-			}
-		}
-	}else if (minecart_speed < 0){
-		if (minecart_update_interval < 1){
-			minecart_update_interval ++;
-		}else{
-			minecart_update_interval = 0;
-			if (minecart.trail_current > 0){
-				minecart.trail_current --;
-			}else{
-				minecart.trail_current = array_length_1d(minecart.trail_x) - 1;
-			}
-		}
-	}
-	
-	minecart.trail_current = clamp(minecart.trail_current, 0, array_length_1d(minecart.trail_x) - 1);
-	var offset = -10;
-	if (x > minecart.rect_x1 + ((minecart.rect_x2 - minecart.rect_x1) / 2)){
-		offset = 10;
-	}
-	cart_dir = point_direction(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);
-	cart_dist = point_distance(x, y, minecart.trail_x[minecart.trail_current] + offset, minecart.trail_y[minecart.trail_current]);
-}
-
-if ((cart_dir > 90 - 20) && (cart_dir < 90 + 20)) || ((cart_dir > 270 - 20) && (cart_dir < 270 + 20)){
+if ((minecart_dir > 90 - 20) && (minecart_dir < 90 + 20)) || ((minecart_dir > 270 - 20) && (minecart_dir < 270 + 20)){
 	minecart_sprite = spr_pawn_minecart_1;
 }else{
 	minecart_sprite = spr_pawn_minecart_0;
 }
 
-x += lengthdir_x(abs(minecart_speed), cart_dir);
-y += lengthdir_y(abs(minecart_speed), cart_dir);
+x += lengthdir_x(abs(minecart_speed), minecart_dir) * sign(minecart_speed);
+y += lengthdir_y(abs(minecart_speed), minecart_dir) * sign(minecart_speed);
+
+minecart.x = x;
+minecart.y = y;
+minecart.minecart_speed = minecart_speed;
+minecart.minecart_bounce_break = minecart_bounce_break;
+minecart.minecart_dir = minecart_dir;
+minecart.image_index = minecart_sprite_image;
+minecart.sprite_index = minecart_sprite;

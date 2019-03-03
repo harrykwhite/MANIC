@@ -1,6 +1,6 @@
 fade_in = true;
 fade_out = false;
-angle_offset = 0;
+angle_offset = -30;
 
 shoot_can = true;
 shoot_speed = 22;

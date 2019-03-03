@@ -98,4 +98,8 @@ switch(room){
 	case rm_level_9_02:
 		global.level_current = 8;
 		break;
+	
+	case rm_level_10_00:
+		global.level_current = 9;
+		break;
 }

@@ -32,7 +32,7 @@ global.level_artifact_number[3] = 3;
 global.level_displaynum[3] = "Four";
 
 global.level_name[4] = "Human Prison";
-global.level_room[4] = rm_level_5_00;
+global.level_room[4] = rm_level_5_04;
 global.level_artifact_current[4] = 0;
 global.level_artifact_number[4] = 7;
 global.level_displaynum[4] = "Five";
@@ -60,3 +60,9 @@ global.level_room[8] = rm_level_9_00;
 global.level_artifact_current[8] = 0;
 global.level_artifact_number[8] = 4;
 global.level_displaynum[8] = "Nine";
+
+global.level_name[9] = "Finale";
+global.level_room[9] = rm_level_10_00;
+global.level_artifact_current[9] = 0;
+global.level_artifact_number[9] = 0;
+global.level_displaynum[9] = "Ten";

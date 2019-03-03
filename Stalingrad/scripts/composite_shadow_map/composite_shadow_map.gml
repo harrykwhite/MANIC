@@ -8,18 +8,6 @@ var lightCount = ds_list_size(lights);
 // Pre-composite step
 lighting_pre_composite();
 
-/*if(lightCount == 0) {
-	// They mostly come at night...mostly...
-	show_debug_message("composite_shadow_map(lights): ignoring action, there are no lights");
-	return false;
-}
-
-if(!shadow_casters_exist()) {
-	// There are no shadow casters
-	show_debug_message("composite_shadow_map(lights): ignoring action, there are no shadow casters");
-	return;
-}*/
-
 // Ensure that we have a valid shadow map surface
 var has_shadow_map = shadow_map_ensure_exists(eShadowMap.Global);
 if(!has_shadow_map) {
@@ -39,13 +27,9 @@ var cameraW = camera[eLightingCamera.Width];
 var cameraH = camera[eLightingCamera.Height];
 
 // Composite all shadow maps into a single texture
-var counter = 0;
-var firstLight = true;
-
-repeat(lightCount) {
-	
+for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	// Get the light's shadow map
-	var light = ds_list_find_value(lights, counter);
+	var light = ds_list_find_value(lights, i);
 	
 	// Can this light be culled?
 	if(light_cull(light, camera)) {
@@ -132,6 +116,7 @@ repeat(lightCount) {
 	
 	// Composite the light into the global shadow map
 	surface_set_target(global.worldShadowMap);
+	
 	if(firstLight) {
 		// Clear the shadow map
 		draw_clear_alpha(c_black, 0);
@@ -200,9 +185,8 @@ repeat(lightCount) {
 	
 	// Reset
 	shader_reset();
-	surface_reset_target();
-	counter++;
 	gpu_set_blendmode(bm_normal);
+	surface_reset_target();
 }
 
 // Post-composite step
