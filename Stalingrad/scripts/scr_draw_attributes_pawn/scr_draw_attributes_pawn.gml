@@ -16,9 +16,11 @@ if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
 	gpu_set_fog(false, c_black, 0, 0);
 }
 
-gpu_set_fog(true, c_white, 0, 0);
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, -1, whiteflash_alpha);
-gpu_set_fog(false, c_black, 0, 0);
+if (whiteflash_alpha > 0){
+	gpu_set_fog(true, c_white, 0, 0);
+	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, -1, whiteflash_alpha);
+	gpu_set_fog(false, c_black, 0, 0);
+}
 
 if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_companion_0) || (object_index == obj_companion_1) || (object_index == obj_companion_2) || (object_index == obj_companion_3){
 	if (burn){

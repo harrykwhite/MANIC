@@ -16,13 +16,19 @@ if (instance_exists(global.player)){
 	    image_angle = point_direction(global.player.x, global.player.y, mouse_x, mouse_y);
 	    x = obj_player_arm.x + lengthdir_x(attack_offset + 12, image_angle);
 	    y = obj_player_arm.y + lengthdir_y(attack_offset + 12, image_angle);
-    
+		
+		if (start_offset > 0){
+			start_offset = approach(start_offset, 0, 40);
+		}
+	
 	    if (mouse_x > x){
 	        image_yscale = 1;
+			image_angle += start_offset;
 	    }else{
 	        image_yscale = -1;
+			image_angle -= start_offset;
 	    }
-    
+		
 	    // Arm
 	    if (instance_exists(obj_player_arm)){
 	        obj_player_arm.x = obj_player_arm.x + lengthdir_x(attack_offset, image_angle);

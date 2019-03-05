@@ -1,4 +1,4 @@
-var alpha = 0.08;
+var alpha = 0.04;
 
 draw_set_colour(c_white);
 draw_set_alpha(alpha);

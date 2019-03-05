@@ -8,7 +8,7 @@ if (instance_exists(owner)){
 		image_yscale = 1;
 	
 		if (throw_offset > 0){
-			throw_offset -= 1;
+			throw_offset --;
 		}
 	}
 }

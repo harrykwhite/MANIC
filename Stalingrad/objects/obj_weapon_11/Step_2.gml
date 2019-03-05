@@ -26,12 +26,16 @@ if (instance_exists(global.player)){
 	    }else if (angle_offset < 0){
 	        angle_offset += 0.5;
 	    }
+		
+		if (start_offset > 0){
+			start_offset = approach(start_offset, 0, 40);
+		}
     
 	    // Throw Offset
 	    if (image_yscale == 1){
-	        image_angle = mdir + angle_offset;
+	        image_angle = mdir + angle_offset + start_offset;
 	    }else{
-	        image_angle = mdir - angle_offset;
+	        image_angle = mdir - angle_offset - start_offset;
 	    }
 	}
     

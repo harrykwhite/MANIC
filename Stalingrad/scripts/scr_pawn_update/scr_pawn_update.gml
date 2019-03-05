@@ -41,6 +41,8 @@ if (object_index == obj_enemy_0){
 }
 
 // Death
+var doexplode = false;
+
 if (health_current <= 0){
 	var eoffsetx = 12;
 	var eoffsety = 18;
@@ -100,48 +102,25 @@ if (health_current <= 0){
 			}
 			
 			if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper){
-				repeat(9){
-			        part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
-			    }
-	
-				repeat(2){
-			        part_particles_create(global.ps_front, x + random_range(-42, 42), y + random_range(-42, 42), global.pt_smoke_2, 1);
-			    }
-    
-				part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
-	
-				var fl = instance_create(x, y, obj_block_light);
-				fl.mylight[0] = noone; fl.size[0] = 100;
-				fl.fadeSpeed = 0.015;
-				
-			    instance_destroy();
-			    scr_damage_custom(2, 1, 45, 45, 3, true, true, true, true);
-				scr_damage_custom(1, 1, 55, 55, 3, true, true, true, true);
-				scr_effect_vignette_flash(c_white, 0.4, 0.02);
-				scr_effect_screenshake(5);
-				scr_sound_play_distance(snd_weapon_explode_0, false, 400);
+				doexplode = true;
 			}
 			
 			if (type == EnemyOneType.TrainBoss){
 				global.game_boss_trainhorde_killed = true;
 				obj_pawn_other_train_1.is_boss = false;
 			}
-		}
-		
-		if (object_index == obj_enemy_2){
+		}else if (object_index == obj_enemy_2){
 			global.game_firstdog_killed = true;
-		}
-		
-		if (object_index == obj_thescorched){
+		}else if (object_index == obj_enemy_3){
+			doexplode = true;
+		}else if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
 			with(obj_block_cutscene){
 				if (index == 11){
 					instance_destroy();
 				}
 			}
-		}
-		
-		if (object_index == obj_thedogkeeper){
+		}else if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
 			with(obj_block_cutscene){
 				if (index == 46){
@@ -153,6 +132,28 @@ if (health_current <= 0){
 	
 	if (pawn == PawnType.Companion){
 		global.cutscene_current = 39;
+	}
+	
+	if (doexplode){
+		repeat(9){
+			part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
+		}
+	
+		repeat(2){
+			part_particles_create(global.ps_front, x + random_range(-42, 42), y + random_range(-42, 42), global.pt_smoke_2, 1);
+		}
+    
+		part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
+	
+		var fl = instance_create(x, y, obj_block_light);
+		fl.mylight[0] = noone; fl.size[0] = 100;
+		fl.fadeSpeed = 0.015;
+	
+		scr_damage_custom(2, 1, 45, 45, 3, true, true, true, true);
+		scr_damage_custom(1, 1, 55, 55, 3, true, true, true, true);
+		scr_effect_vignette_flash(c_white, 0.4, 0.02);
+		scr_effect_screenshake(5);
+		scr_sound_play_distance(snd_weapon_explode_0, false, 400);
 	}
 	
 	if (object_index == obj_enemy_0){

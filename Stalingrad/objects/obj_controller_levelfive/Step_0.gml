@@ -1,3 +1,4 @@
+var player_exists = instance_exists(global.player);
 scr_position_view();
 sniper_can_spawn = global.game_firstsniper_killed;
 
@@ -8,8 +9,10 @@ if (!global.game_pause){
 	if (random(10) < 1) part_particles_create(global.ps_front, random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0])), random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])), global.pt_dust_1, 1);
 	
 	// Fog
-	if (random(14) < 1){
-		part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+	if (random(2.5) < 1){
+		if (part_particles_count(global.pt_smoke_3) < 40){
+			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+		}
 	}
 }
 
@@ -27,7 +30,7 @@ if (lighting < lighting_level[global.game_combat_state]){
 
 global.ambientShadowIntensity = lighting;
 
-if (instance_exists(global.player)){
+if (player_exists){
 	var heavygun_spawn_interval = 60 * 2.25;
 	var heavygun_spawn_max = 6;
 	var spawn_distance = 120;

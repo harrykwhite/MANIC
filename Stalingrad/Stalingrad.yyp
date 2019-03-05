@@ -671,6 +671,14 @@
             }
         },
         {
+            "Key": "0ff160df-81b3-4bcd-a118-bcb545c01dae",
+            "Value": {
+                "id": "d369ff9d-bb8b-493d-beee-c52a46b97ced",
+                "resourcePath": "objects\\obj_enemy_3\\obj_enemy_3.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "1099eadc-1a5f-4f76-aa6f-7851b6120cfa",
             "Value": {
                 "id": "5bb71a28-d8c2-4394-a731-50787c5dc2fe",
@@ -1807,6 +1815,14 @@
             }
         },
         {
+            "Key": "2b355c3f-44d7-493f-bf80-0bfa945467d4",
+            "Value": {
+                "id": "c3561824-7b39-4101-a7fd-0a7a2f1ca5f0",
+                "resourcePath": "views\\2b355c3f-44d7-493f-bf80-0bfa945467d4.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "2b632845-0c66-4db9-be2f-9959e626ff12",
             "Value": {
                 "id": "de88292a-469f-46bf-a248-7896918dc908",
@@ -2892,6 +2908,14 @@
                 "id": "1a746f96-5343-474e-840a-6abc87513d99",
                 "resourcePath": "sounds\\snd_weapon_shotgun_0\\snd_weapon_shotgun_0.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "45a0a2fc-7fef-4414-85a9-ad67cc57702e",
+            "Value": {
+                "id": "9b497539-6151-4be2-8117-57d98f3bf53c",
+                "resourcePath": "views\\45a0a2fc-7fef-4414-85a9-ad67cc57702e.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -5463,6 +5487,14 @@
             }
         },
         {
+            "Key": "88cd7e28-0229-4029-aa5d-c906183e8516",
+            "Value": {
+                "id": "69eca613-7401-45e7-a26a-8477653ef687",
+                "resourcePath": "sprites\\spr_enemy_3_stand_0\\spr_enemy_3_stand_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "88fb3107-7e2d-4b12-805c-c4208eba3e41",
             "Value": {
                 "id": "d219648f-c2db-44f0-a2ec-296e992091c2",
@@ -5860,6 +5892,14 @@
                 "id": "f4432a8c-70d4-46e8-a681-5012a3dbebdb",
                 "resourcePath": "sprites\\spr_destroyedbuilding_5\\spr_destroyedbuilding_5.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "900813e7-9439-4356-a1f8-f22bbbae009e",
+            "Value": {
+                "id": "00768d01-3b9a-40d6-8143-218929035c51",
+                "resourcePath": "scripts\\scr_enemy_3_behaviour\\scr_enemy_3_behaviour.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -8007,6 +8047,14 @@
             }
         },
         {
+            "Key": "c6bea744-1bc2-40d4-bdb9-00c137ca657f",
+            "Value": {
+                "id": "de00043b-907e-4445-a959-c19a3214c7a3",
+                "resourcePath": "views\\c6bea744-1bc2-40d4-bdb9-00c137ca657f.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "c6cbc128-c956-4f9f-a1de-433b9e4a593a",
             "Value": {
                 "id": "4adfe713-4bdb-4960-b241-c911389df921",
@@ -8124,6 +8172,14 @@
                 "id": "8c10477b-9b54-4c95-b35e-7c372b2c35ca",
                 "resourcePath": "objects\\obj_p_solid\\obj_p_solid.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "ca637f7c-1868-4b05-a264-b1c5b6e12d31",
+            "Value": {
+                "id": "914893b5-eba4-4a1a-a88f-301076eeeca3",
+                "resourcePath": "sprites\\spr_enemy_3_0\\spr_enemy_3_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -8644,6 +8700,14 @@
                 "id": "50f79cf5-f3f3-4654-ae7b-190077734e98",
                 "resourcePath": "sprites\\spr_light_spot\\spr_light_spot.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "daa61d57-0e74-4cc9-9684-6a7bbd4559c3",
+            "Value": {
+                "id": "fad43300-a900-41e4-b370-902ce32cefb1",
+                "resourcePath": "rooms\\rm_level_10_01\\rm_level_10_01.yy",
+                "resourceType": "GMRoom"
             }
         },
         {
@@ -10172,6 +10236,7 @@
         "6c63a0d2-95cc-4908-9ffb-da9c6ebb0391",
         "1bf9f349-6ee8-4b56-b0cd-08aff9fe532d",
         "527150d8-a02c-460f-942f-1dc8671b8760",
+        "900813e7-9439-4356-a1f8-f22bbbae009e",
         "4669adfa-e6d1-477a-8294-8fd4bce450d0",
         "fd3ac2d9-7404-45d8-886b-8f7c2a86419e",
         "f0f8edcb-a032-476e-82d4-6e3588e52341",

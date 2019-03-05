@@ -186,7 +186,7 @@ switch(ctype){
 						if (inst.hit_time <= 0){
 							isEnv = true;
 							inst.flash = 0.8;
-							scr_sound_play(snd_object_box_hit_0, false, 0.8, 1.2);
+							scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 220, 0.8, 1.2);
 					
 							switch(obj){
 								case obj_proj_1:

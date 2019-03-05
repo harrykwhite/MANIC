@@ -48,7 +48,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	// Footstep Sound
-	if (global.level_current != 2) && (global.level_current != 4) && (room != rm_level_7_02){
+	if (global.level_current != 2) && (global.level_current != 4) && (global.level_current != 9){
 		footstep_wood = layer_tilemap_get_id("InteriorFloorWood");
 	
 		if (layer_tilemap_exists(layer_get_id("InteriorFloorWood"), footstep_wood)){

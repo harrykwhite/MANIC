@@ -82,8 +82,6 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 isVisible = true;
 
 minecart = noone;
-minecart_sign = 1;
-minecart_pressing = false;
 minecart_bounce_break = 0;
 minecart_dir = 0;
 minecart_speed = 0;

@@ -1,3 +1,4 @@
+var player_exists = instance_exists(global.player);
 scr_position_view();
 fly_can_spawn = global.game_firstflyhead_killed;
 
@@ -9,24 +10,26 @@ if (!global.game_pause){
 	
 	// Tumbleweed
 	if (random(180) < 1){
-		if (instance_number(obj_environment_tumbleweed) < 5){
-			var xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
-			var yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
-			var safe = 0;
+		if (player_exists){
+			if (instance_number(obj_environment_tumbleweed) < 5){
+				var xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
+				var yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
+				var safe = 0;
 		
-			while(point_distance(xx, yy, global.player.x, global.player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
-				xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
-				yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
+				while(point_distance(xx, yy, global.player.x, global.player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
+					xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
+					yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
 		
-				if (safe < 100){
-					safe ++;
-				}else{
-					break;
+					if (safe < 100){
+						safe ++;
+					}else{
+						break;
+					}
 				}
-			}
 			
-			if (safe < 100){
-				instance_create(xx, yy, obj_environment_tumbleweed);
+				if (safe < 100){
+					instance_create(xx, yy, obj_environment_tumbleweed);
+				}
 			}
 		}
 	}
@@ -41,8 +44,10 @@ if (!global.game_pause){
 	}
 	
 	// Fog
-	if (random(3.5) < 1){
-		part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+	if (random(2.5) < 1){
+		if (part_particles_count(global.pt_smoke_3) < 40){
+			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+		}
 	}
 }
 
@@ -60,7 +65,7 @@ if (lighting < lighting_level[global.game_combat_state]){
 
 global.ambientShadowIntensity = lighting;
 
-if (instance_exists(global.player)){
+if (player_exists){
 	var spawn_rate = spawn_rate_real;
 	
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1){

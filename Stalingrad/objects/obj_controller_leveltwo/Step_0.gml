@@ -1,3 +1,4 @@
+var player_exists = instance_exists(global.player);
 scr_position_view();
 
 if (!global.game_pause){
@@ -13,15 +14,17 @@ if (!global.game_pause){
 			var xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
 			var yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
 			var safe = 0;
+			
+			if (player_exists){
+				while(point_distance(xx, yy, global.player.x, global.player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
+					xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
+					yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
 		
-			while(point_distance(xx, yy, global.player.x, global.player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
-				xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
-				yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
-		
-				if (safe < 100){
-					safe ++;
-				}else{
-					break;
+					if (safe < 100){
+						safe ++;
+					}else{
+						break;
+					}
 				}
 			}
 			
@@ -33,7 +36,9 @@ if (!global.game_pause){
 
 	// Fog
 	if (random(3) < 1){
-	    part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+		if (part_particles_count(global.pt_smoke_3) < 40){
+			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+		}
 	}
 }
 
@@ -51,7 +56,7 @@ if (lighting < lighting_level[global.game_combat_state]){
 
 global.ambientShadowIntensity = lighting;
 
-if (instance_exists(global.player)){
+if (player_exists){
 	var spawn_rate = spawn_rate_real;
 	
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1){

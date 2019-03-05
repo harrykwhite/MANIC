@@ -19,26 +19,14 @@ if (mouse_x > x){
 	image_xscale = -1;
 }
 
-if (!minecart_pressing){
-	if (minecart_dir == 180) or (minecart_dir == 90){
-		minecart_sign = -1;
-	}else if (minecart_dir = 0) or (minecart_dir == 270){
-		minecart_sign = 1;
+if (keyboard_check(ord("D"))){
+	if (minecart_speed < 4){
+		minecart_speed += 0.01;
 	}
-}
-
-if (keyboard_check(ord("D")) or keyboard_check(ord("W"))){
-	if (minecart_speed < 4 * minecart_sign){
-		minecart_speed += 0.01 * minecart_sign;
+}else if (keyboard_check(ord("A"))){
+	if (minecart_speed > -4){
+		minecart_speed -= 0.01;
 	}
-	
-	minecart_pressing = true;
-}else if (keyboard_check(ord("A")) or keyboard_check(ord("S"))){
-	if (minecart_speed > -4 * minecart_sign){
-		minecart_speed -= 0.01 * minecart_sign;
-	}
-	
-	minecart_pressing = true;
 }else{
 	if (minecart_speed > 0){
 		minecart_speed -= 0.005;
@@ -47,8 +35,6 @@ if (keyboard_check(ord("D")) or keyboard_check(ord("W"))){
 	if (minecart_speed < 0){
 		minecart_speed += 0.005;
 	}
-	
-	minecart_pressing = false;
 }
 
 if (minecart_bounce_break > 0){

@@ -1,14 +1,9 @@
 is_boss = false;
-spd *= 0.97;
 var level = scr_get_level_object();
 interact = false;
 if (global.game_pause){
 	image_speed = 0;
 	exit;
-}
-
-if (count == -1){
-	show_debug_message(string(x) + ", " + string(y));
 }
 
 while (spd <= 0.2) && (instance_exists(global.player)){

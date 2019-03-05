@@ -21,16 +21,20 @@ if (instance_exists(global.player)){
 	    }
     
 	    if (angle_offset > 0){
-	        angle_offset -= 1;
+	        angle_offset --;
 	    }else if (angle_offset < 0){
 	        angle_offset ++;
 	    }
+		
+		if (start_offset > 0){
+			start_offset = approach(start_offset, 0, 40);
+		}
     
 	    // Direction
 	    if (image_yscale == 1){
-	        image_angle=(mdir + throw_offset)+angle_offset;
+	        image_angle=(mdir + throw_offset) + angle_offset + start_offset;
 	    }else{
-	        image_angle=(mdir - throw_offset)-angle_offset;
+	        image_angle=(mdir - throw_offset) - angle_offset - start_offset;
 	    }
         
 	    if (mouse_x > x){

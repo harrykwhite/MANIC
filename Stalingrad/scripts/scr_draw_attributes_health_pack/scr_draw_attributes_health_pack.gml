@@ -4,7 +4,7 @@ draw_sprite(sprite_index, image_index, x, y);
 gpu_set_fog(false, c_black, 0, 0);
 draw_set_alpha(1);
 
-if (glow ){
+if (glow){
 	if (glow_alpha < 1){
 		glow_alpha += 0.05;
 	}
