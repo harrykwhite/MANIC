@@ -17,4 +17,11 @@ moveto_dir = -1;
 moveto_level = -1;
 moveto_room = noone;
 moveto_type = -1;
+
+look_x = 0;
+look_y = 0;
+look_time = 0;
+look_object = noone;
+look_prop = false;
+look_boss = -1;
 image_alpha = 0;

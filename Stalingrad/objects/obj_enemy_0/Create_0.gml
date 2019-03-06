@@ -105,16 +105,8 @@ health_scale = 1;
 
 target = global.player;
 
-grenadier_cutscene_prop = false;
-grenadier_in_cutscene = false;
-crazy_cutscene_prop = false;
-crazy_in_cutscene = false;
-sniper_cutscene_prop = false;
-sniper_in_cutscene = false;
-fly_cutscene_prop = false;
-fly_in_cutscene = false;
-healer_cutscene_prop = false;
-healer_in_cutscene = false;
+in_cutscene = false;
+cutscene_prop = false;
 
 var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;

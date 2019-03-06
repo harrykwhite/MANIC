@@ -32,6 +32,15 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1){
 			
 			global.cutscene_current = index;
 			
+			if (index == 40){
+				obj_controller_gameplay.cutscene_look_x = look_x;
+				obj_controller_gameplay.cutscene_look_y = look_y;
+				obj_controller_gameplay.cutscene_look_time = look_time;
+				obj_controller_gameplay.cutscene_look_object = look_object;
+				obj_controller_gameplay.cutscene_look_prop = look_prop;
+				obj_controller_gameplay.cutscene_look_boss = look_boss;
+			}
+			
 			if (index == 52){
 				obj_controller_gameplay.cutscene_moveto_dir = moveto_dir;
 				obj_controller_gameplay.cutscene_moveto_room = moveto_room;

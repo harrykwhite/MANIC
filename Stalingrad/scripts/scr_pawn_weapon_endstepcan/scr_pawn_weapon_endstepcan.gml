@@ -3,11 +3,11 @@ if (instance_exists(owner)){
 		if (!global.game_pause)
 		|| ((global.cutscene_current == -1)
 		|| (owner.type == EnemyOneType.TrainBoss)
-		|| ((global.cutscene_current == 33) && (owner.grenadier_cutscene_prop))
-		|| ((global.cutscene_current == 34) && (owner.crazy_cutscene_prop))
-		|| ((global.cutscene_current == 35) && (owner.sniper_cutscene_prop))
-		|| ((global.cutscene_current == 36) && (owner.fly_cutscene_prop))
-		|| ((global.cutscene_current == 38) && (owner.healer_cutscene_prop))){
+		|| ((global.cutscene_current == 33) && (owner.cutscene_prop))
+		|| ((global.cutscene_current == 34) && (owner.cutscene_prop))
+		|| ((global.cutscene_current == 35) && (owner.cutscene_prop))
+		|| ((global.cutscene_current == 36) && (owner.cutscene_prop))
+		|| ((global.cutscene_current == 38) && (owner.cutscene_prop))){
 			return true; exit;
 		}
 	}

@@ -14,6 +14,12 @@ bonus_killamount = 0;
 levelstart_record_set = false;
 sectionstart_record_set = false;
 
+cutscene_look_x = 0;
+cutscene_look_y = 0;
+cutscene_look_time = 120;
+cutscene_look_object = noone;
+cutscene_look_prop = false;
+cutscene_look_boss = -1;
 cutscene_conveyerbelt_x = 0;
 cutscene_conveyerbelt_y = 0;
 cutscene_trainopening_inst = noone;

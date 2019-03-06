@@ -25,4 +25,3 @@ scr_pawn_status_handler();
 scr_enemy_3_behaviour();
 
 scr_pawn_update();
-image_yscale = scale;

@@ -100,8 +100,7 @@ if (instance_exists(target)){
 			if (weapon.type != WeaponType.Melee){
 				mindist = 115;
 				
-				if ((grenadier_cutscene_prop) && (grenadier_in_cutscene))
-				|| ((sniper_cutscene_prop) && (sniper_in_cutscene)){
+				if ((cutscene_prop) && (in_cutscene)){
 					mindist = 30;
 				}
 			}else{
@@ -275,26 +274,8 @@ if (instance_exists(nbarrel)) && (barrel_pause_break <= 0){
 }
 
 // Cutscene
-if (grenadier_cutscene_prop){
-	if (!grenadier_in_cutscene){
-		speed_multiplier = 0;
-	}
-}
-
-if (sniper_cutscene_prop){
-	if (!sniper_in_cutscene){
-		speed_multiplier = 0;
-	}
-}
-
-if (fly_cutscene_prop){
-	if (!fly_in_cutscene){
-		speed_multiplier = 0;
-	}
-}
-
-if (healer_cutscene_prop){
-	if (!healer_in_cutscene){
+if (cutscene_prop){
+	if (!in_cutscene){
 		speed_multiplier = 0;
 	}
 }

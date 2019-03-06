@@ -3,7 +3,7 @@ if (other.enemy){
 }
 
 if (object_index == obj_enemy_0){
-	if (grenadier_cutscene_prop) || (crazy_cutscene_prop) || (sniper_cutscene_prop) || (fly_cutscene_prop) || (healer_cutscene_prop){
+	if (cutscene_prop) || (cutscene_prop) || (cutscene_prop) || (cutscene_prop) || (cutscene_prop){
 		exit;
 	}
 }

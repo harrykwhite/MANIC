@@ -107,7 +107,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 }
 
 // Offscreen movement
-if (!crazy_cutscene_prop){
+if (!cutscene_prop){
 	x = clamp(x, 22, room_width - 22);
 	y = clamp(y, 22, room_height - 22);
 
@@ -135,7 +135,7 @@ if (crazy_dash){
 }
 
 // Cutscene
-if (crazy_cutscene_prop){
+if (cutscene_prop){
 	if (!crazy_in_cutscene){
 		speed_multiplier = 0;
 		crazy_dash = false;

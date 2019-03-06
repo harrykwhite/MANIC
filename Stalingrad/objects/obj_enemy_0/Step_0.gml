@@ -18,12 +18,7 @@ if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type ==
 	}
 }
 
-if (global.game_pause) || ((global.cutscene_current != -1) && (type != EnemyOneType.TrainBoss) &&
-((global.cutscene_current != 33) && (!grenadier_cutscene_prop))
-&& ((global.cutscene_current != 34) && (!crazy_cutscene_prop))
-&& ((global.cutscene_current != 35) && (!sniper_cutscene_prop))
-&& ((global.cutscene_current != 36) && (!fly_cutscene_prop))
-&& ((global.cutscene_current != 38) && (!healer_cutscene_prop))){
+if (global.game_pause) || ((cutscene_prop) && (!in_cutscene)) || ((global.cutscene_current != -1) && (!in_cutscene)){
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);
@@ -44,48 +39,8 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 
-if (grenadier_cutscene_prop){
-	if (grenadier_in_cutscene){
-		if (burn) || (burn_time > 0){
-			scr_draw_burn_die(6, 18, x, y, 5);
-			burn = false;
-			burn_time = 0;
-		}
-	}
-}
-
-if (crazy_cutscene_prop){
-	if (crazy_in_cutscene){
-		if (burn) || (burn_time > 0){
-			scr_draw_burn_die(6, 18, x, y, 5);
-			burn = false;
-			burn_time = 0;
-		}
-	}
-}
-
-if (sniper_cutscene_prop){
-	if (sniper_in_cutscene){
-		if (burn) || (burn_time > 0){
-			scr_draw_burn_die(6, 18, x, y, 5);
-			burn = false;
-			burn_time = 0;
-		}
-	}
-}
-
-if (fly_cutscene_prop){
-	if (fly_in_cutscene){
-		if (burn) || (burn_time > 0){
-			scr_draw_burn_die(6, 18, x, y, 5);
-			burn = false;
-			burn_time = 0;
-		}
-	}
-}
-
-if (healer_cutscene_prop){
-	if (healer_in_cutscene){
+if (cutscene_prop){
+	if (in_cutscene){
 		if (burn) || (burn_time > 0){
 			scr_draw_burn_die(6, 18, x, y, 5);
 			burn = false;

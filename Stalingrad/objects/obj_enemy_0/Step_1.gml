@@ -1,9 +1,5 @@
 if (destroy){
-	if (!fly_cutscene_prop)
-	&& (!crazy_cutscene_prop)
-	&& (!healer_cutscene_prop)
-	&& (!grenadier_cutscene_prop)
-	&& (!sniper_cutscene_prop){
+	if (!cutscene_prop){
 		if (type != EnemyOneType.TrainBoss){
 			instance_destroy();
 		}

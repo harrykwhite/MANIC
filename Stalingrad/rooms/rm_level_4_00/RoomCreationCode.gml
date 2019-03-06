@@ -13,7 +13,7 @@ if (global.game_level_opening_type == 1){
 }
 
 if (global.game_level_opening_type == 2){
-	global.player.y = room_width + 4;
+	global.player.y = room_height + 4;
 	obj_controller_camera.x = global.player.x;
 	obj_controller_camera.y = global.player.y;
 }

@@ -1,6 +1,6 @@
 if (global.game_pause) || (global.cutscene_current != -1){
 	if (owner.object_index == obj_enemy_0){
-		if (!owner.fly_cutscene_prop){
+		if (!owner.cutscene_prop){
 			image_speed = 0;
 			exit;
 		}

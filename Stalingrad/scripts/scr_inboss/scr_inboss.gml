@@ -18,7 +18,7 @@ if (instance_exists(obj_enemy_0)){
 		}
 		
 		if (inst.type == EnemyOneType.Sniper){
-			if (!inst.sniper_cutscene_prop){
+			if (!inst.cutscene_prop){
 				global.boss_current = Boss.SniperRobot;
 				return true;
 				exit;

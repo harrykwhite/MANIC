@@ -113,6 +113,7 @@ if (health_current <= 0){
 			global.game_firstdog_killed = true;
 		}else if (object_index == obj_enemy_3){
 			doexplode = true;
+			global.game_firstturret_killed = true;
 		}else if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
 			with(obj_block_cutscene){
@@ -131,7 +132,13 @@ if (health_current <= 0){
 	}
 	
 	if (pawn == PawnType.Companion){
-		global.cutscene_current = 39;
+		global.cutscene_current = 40;
+		obj_controller_gameplay.cutscene_look_x = x;
+		obj_controller_gameplay.cutscene_look_y = y;
+		obj_controller_gameplay.cutscene_look_object = obj_companion_corpse;
+		obj_controller_gameplay.cutscene_look_boss = -1;
+		obj_controller_gameplay.cutscene_look_time = 60;
+		obj_controller_gameplay.cutscene_look_prop = false;
 	}
 	
 	if (doexplode){

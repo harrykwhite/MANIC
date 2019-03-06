@@ -1,5 +1,5 @@
 ///scr_cutscene_46();
-var index = 46, xTo = 872, yTo = 530;
+var index = 46, xTo = 884, yTo = 530, spawnx = 884, spawny = 308;
 var to = noone;
 var eobj = noone;
 var levelobj = scr_get_level_object();
@@ -10,14 +10,14 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
+	if (global.player.y < room_height / 2){
+		spawny = 713;
+	}
+	
+	xTo = spawnx;
+	yTo = spawny;
+	
 	if (levelobj.dogkeeper == noone){
-		var spawnx = 884;
-		var spawny = 308;
-		
-		if (global.player.y < room_height / 2){
-			spawny = 713;
-		}
-		
 		levelobj.dogkeeper = instance_create(spawnx, spawny, obj_thedogkeeper);
 		repeat(9){
 			part_particles_create(global.ps_front, spawnx + random_range(-7, 7), spawny + random_range(-18, 18), global.pt_spawn_0, 1);

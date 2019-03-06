@@ -14,7 +14,7 @@ switch(room){
 		if (global.game_level_opening_type == 0){
 			spawn_y = 183;
 		}else if (global.game_level_opening_type == 2){
-			spawn_y = 620;
+			spawn_y = 600;
 		}
 		break;
 	

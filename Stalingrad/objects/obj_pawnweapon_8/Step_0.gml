@@ -1,4 +1,4 @@
-if (global.game_pause) || ((global.cutscene_current != -1) && (owner.type != EnemyOneType.TrainBoss) && ((global.cutscene_current != 33) && (!owner.grenadier_cutscene_prop))){
+if (global.game_pause) || ((global.cutscene_current != -1) && (owner.type != EnemyOneType.TrainBoss) && ((global.cutscene_current != 33) && (!owner.cutscene_prop))){
 	image_speed = 0;
 	image_index = 0;
 	exit;
@@ -18,7 +18,7 @@ if (instance_exists(owner)){
 		}
 	}
 	
-	if (!owner.burn) && (!owner.sniper_cutscene_prop){
+	if (!owner.burn) && (!owner.cutscene_prop){
 		if (line_alpha < 1){
 			line_alpha += 0.02 * attack_time_multiplier;
 		}

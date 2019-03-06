@@ -24,6 +24,7 @@ global.game_firstcrazy_killed = false;
 global.game_firstsniper_killed = false;
 global.game_firsthealer_killed = false;
 global.game_firstflyhead_killed = false;
+global.game_firstturret_killed = false;
 global.game_companion_farmer_found = false;
 global.game_companion_grenadier_found = false;
 global.game_companion_prisoner_found = false;
