@@ -6,12 +6,16 @@ destroy = false;
 damage = 1;
 strength = 1;
 
-shoot_time = 0;
-shoot_buildup_time = 0;
+shoot_time = 10;
+shoot_buildup_time = 90;
+shoot_burst_count = 0;
+shoot_in_burst = false;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
-mylight = noone;
+mylight = instance_create(x, y, obj_enemy_3_light);
+flash_time = 0;
+light_brightness = 0;
 
 burn = false;
 burn_x = x;
@@ -33,7 +37,7 @@ i_blendTime = 0;
 
 knockback_speed = 0;
 knockback_direction = 0;
-knockback_resist = 1;
+knockback_resist = 0.4;
 
 cutscene_prop = false;
 in_cutscene = false;

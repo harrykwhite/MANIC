@@ -160,7 +160,7 @@ if (health_current <= 0){
 		scr_damage_custom(1, 1, 55, 55, 3, true, true, true, true);
 		scr_effect_vignette_flash(c_white, 0.4, 0.02);
 		scr_effect_screenshake(5);
-		scr_sound_play_distance(snd_weapon_explode_0, false, 400);
+		scr_sound_play_distance(snd_weapon_explode_0, false, 600);
 	}
 	
 	if (object_index == obj_enemy_0){

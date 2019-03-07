@@ -26,6 +26,7 @@ if (instance_exists(global.player)){
 		global.cutscene_time[index] ++;
 		if (has_look_object) && (cutscene_look_prop){
 			cutscene_look_object.in_cutscene = true;
+			cutscene_look_object.cutscene_prop = true;
 		}
 	}else{
 		global.cutscene_time[index] = 0;
@@ -38,6 +39,7 @@ if (instance_exists(global.player)){
 		}
 		cutscene_look_object = noone;
 		cutscene_look_boss = -1;
+		cutscene_look_prop = false;
 	}
 	
 	global.cutscene_camera_x[index] = xTo;

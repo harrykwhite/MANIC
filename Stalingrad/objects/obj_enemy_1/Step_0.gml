@@ -1,4 +1,9 @@
-if (global.game_pause) || (global.cutscene_current != -1){
+var ispaused = false;
+if (global.game_pause){
+	ispaused = true;
+}
+
+if (ispaused){
 	if (owner.object_index == obj_enemy_0){
 		if (!owner.cutscene_prop){
 			image_speed = 0;

@@ -1,11 +1,15 @@
 if (object_index == obj_enemy_0){
-	if (cutscene_prop) || (cutscene_prop) || (cutscene_prop) || (cutscene_prop) || (cutscene_prop){
+	if (cutscene_prop){
 		exit;
 	}
 	
 	if (type == EnemyOneType.TrainBoss){
 		exit;
 	}
+}
+
+if (object_index == obj_enemy_3){
+	exit;
 }
 
 if (health_current > 0){

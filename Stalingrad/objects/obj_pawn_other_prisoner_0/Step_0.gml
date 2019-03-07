@@ -1,3 +1,9 @@
+if (global.game_pause) || (global.cutscene_current != -1){
+	path_speed = 0;
+}else{
+	path_speed = spd;
+}
+
 image_xscale = facing * scale;
 
 if (room == rm_level_5_03){

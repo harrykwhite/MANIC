@@ -1,5 +1,19 @@
 event_inherited();
 
+if (object_index == obj_enemy_0){
+	if (cutscene_prop){
+		exit;
+	}
+	
+	if (type == EnemyOneType.TrainBoss){
+		exit;
+	}
+}
+
+if (object_index == obj_enemy_3){
+	exit;
+}
+
 var damage = 2;
 if (other.minecart_speed > 2){
 	damage = 4;

@@ -136,7 +136,7 @@ if (crazy_dash){
 
 // Cutscene
 if (cutscene_prop){
-	if (!crazy_in_cutscene){
+	if (!in_cutscene){
 		speed_multiplier = 0;
 		crazy_dash = false;
 	}

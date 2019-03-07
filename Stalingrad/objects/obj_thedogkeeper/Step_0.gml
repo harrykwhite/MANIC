@@ -9,7 +9,18 @@ mylight.light[| eLight.Y] = y;
 mylight.light[| eLight.LutIntensity] = max((1.25 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1);
 mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
-if (global.game_pause) || ((global.cutscene_current != -1) && ((cutscene_prop) && (!in_cutscene))){
+var ispaused = false;
+if (global.game_pause){
+	ispaused = true;
+}
+
+if (global.cutscene_current != -1){
+	if (!in_cutscene){
+		ispaused = true;
+	}
+}
+
+if (ispaused){
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);

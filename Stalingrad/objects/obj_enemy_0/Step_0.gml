@@ -10,7 +10,7 @@ if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type ==
 		mylight.light[| eLight.Y] = y - (9 * scale);
 		mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 		mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
-	
+		
 		if (type == EnemyOneType.TrainBoss){
 			mylight.y -= scale;
 			mylight.light[| eLight.Y] -= scale;
@@ -18,7 +18,18 @@ if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type ==
 	}
 }
 
-if (global.game_pause) || ((cutscene_prop) && (!in_cutscene)) || ((global.cutscene_current != -1) && (!in_cutscene)){
+var ispaused = false;
+if (global.game_pause){
+	ispaused = true;
+}
+
+if (global.cutscene_current != -1){
+	if (!in_cutscene){
+		ispaused = true;
+	}
+}
+
+if (ispaused){
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);

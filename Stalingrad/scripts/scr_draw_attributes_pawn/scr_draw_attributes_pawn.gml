@@ -1,19 +1,26 @@
 if (i_blendTime > 0){
-	gpu_set_fog(true, make_colour_rgb(163, 42, 45), 0, 0);
+	var colour = make_colour_rgb(163, 42, 45);
+	if (object_index == obj_enemy_3){
+		colour = c_white
+	}
+	
+	gpu_set_fog(true, colour, 0, 0);
 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, ((1-(1 / i_blendTime)) * image_alpha) + 0.1);
 	gpu_set_fog(false, c_black, 0, 0);
 }
 
-if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
-	if (!global.game_pause){
-	    if (random(3)<1){
-	        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
-	    }
-	}
+if (object_index != obj_enemy_3){
+	if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
+		if (!global.game_pause){
+		    if (random(3)<1){
+		        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
+		    }
+		}
     
-	gpu_set_fog(true, make_colour_rgb(117, 39, 39), 0, 0);
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, -1, wave(0.15, 0.25, 2, 0));
-	gpu_set_fog(false, c_black, 0, 0);
+		gpu_set_fog(true, make_colour_rgb(117, 39, 39), 0, 0);
+		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, -1, wave(0.15, 0.25, 2, 0));
+		gpu_set_fog(false, c_black, 0, 0);
+	}
 }
 
 if (whiteflash_alpha > 0){

@@ -38,6 +38,7 @@ if (instance_exists(owner)){
 				
 				scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
 				scr_effect_screenshake(2);
+				owner.light_brightness = 8;
 				
 				part_type_direction(global.pt_flash_0, dir - 15, dir + 15, 0, 0);
 				repeat(1) part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);

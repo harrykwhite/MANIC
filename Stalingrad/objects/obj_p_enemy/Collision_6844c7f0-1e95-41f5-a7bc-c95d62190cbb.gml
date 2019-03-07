@@ -2,19 +2,13 @@ if (other.enemy){
 	exit;
 }
 
-if (object_index == obj_enemy_0){
-	if (cutscene_prop) || (cutscene_prop) || (cutscene_prop) || (cutscene_prop) || (cutscene_prop){
-		exit;
-	}
-}
-
 if (object_index == obj_enemy_1){
 	if (owner != global.player) && (owner != noone){
 		exit;
 	}
 }
 
-if (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper){
+if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_index == obj_enemy_3) ||  (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper){
 	if (cutscene_prop){
 		exit;
 	}
@@ -47,7 +41,12 @@ if (i_time <= 0){
 		}
 	}
 	
-	scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+	if (object_index == obj_enemy_3){
+		scr_sound_play(snd_object_metal_hit_0, false, 0.8, 1.2);
+		scr_effect_object(other.x, other.y, obj_ef_blood, spr_ef_metal_0, 0, 1);
+	}else{
+		scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+	}
 }
 
 instance_destroy(other);
