@@ -12,7 +12,7 @@ if (object_index == obj_enemy_1){
 	}
 }
 
-if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_index == obj_enemy_3) || (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper){
+if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_index == obj_enemy_3){
 	if (cutscene_prop){
 		exit;
 	}
@@ -22,8 +22,12 @@ if (i_time <= 0){
 	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.strength, random(360), 5);
 	
 	if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog){
-		if (other.damage > 3) && (object_index == obj_enemy_0){
-			if (type != EnemyOneType.Mother) && (type != EnemyOneType.Sniper) && (type != EnemyOneType.TrainBoss){
+		if (other.damage > 3){
+			if (object_index == obj_enemy_0){
+				if (type != EnemyOneType.Mother) && (type != EnemyOneType.Sniper) && (type != EnemyOneType.TrainBoss){
+					headless = true;
+				}
+			}else if (object_index == obj_enemy_2){
 				headless = true;
 			}
 		}

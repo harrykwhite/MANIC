@@ -3543,14 +3543,6 @@
             }
         },
         {
-            "Key": "58157be5-f90f-4c70-b452-95778b29686f",
-            "Value": {
-                "id": "14900eee-1cc0-404c-b268-61fd9458b8d3",
-                "resourcePath": "sprites\\spr_enemy_0_walk_01\\spr_enemy_0_walk_01.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "583dcdaa-5fa0-4a54-9d52-7391bde8c9f0",
             "Value": {
                 "id": "ed596e85-f213-4c52-9f29-6a2870f65105",

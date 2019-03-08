@@ -42,11 +42,9 @@ if (instance_exists(obj_thescorched)){
 }
 
 if (instance_exists(obj_thedogkeeper)){
-	if (!obj_thedogkeeper.cutscene_prop){
-		global.boss_current = Boss.TheDogkeeper;
-		return true;
-		exit;
-	}
+	global.boss_current = Boss.TheDogkeeper;
+	return true;
+	exit;
 }
 
 if (instance_exists(obj_pawn_other_train_1)){

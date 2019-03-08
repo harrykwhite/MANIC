@@ -1,15 +1,13 @@
-if (object_index == obj_enemy_0){
+if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_index == obj_enemy_3){
 	if (cutscene_prop){
 		exit;
 	}
 	
-	if (type == EnemyOneType.TrainBoss){
-		exit;
+	if (object_index == obj_enemy_0){
+		if (type == EnemyOneType.TrainBoss){
+			exit;
+		}
 	}
-}
-
-if (object_index == obj_enemy_3){
-	exit;
 }
 
 if (health_current > 0){

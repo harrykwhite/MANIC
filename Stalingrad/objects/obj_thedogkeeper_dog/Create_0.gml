@@ -66,9 +66,6 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_resist = 1;
 
-cutscene_prop = false;
-in_cutscene = false;
-
 health_max = 6;
 health_current = health_max;
 health_alpha = 0;

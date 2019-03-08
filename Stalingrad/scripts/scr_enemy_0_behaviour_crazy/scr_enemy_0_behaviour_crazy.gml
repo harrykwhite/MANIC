@@ -77,7 +77,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 				crazy_dash = true;
 				crazy_dashdirection = point_direction(x, y, move_xTo, move_yTo) + random_range(-5, 5);
 				crazy_dashspeed = 5.2;
-				crazy_dashtime = 6;
+				crazy_dashtime = 8;
 				crazy_dashbreak = 0;
 			}
 		}

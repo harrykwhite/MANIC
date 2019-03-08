@@ -9,7 +9,7 @@ spd = 0;
 dir = 0;
 
 flash = 0;
-mylight = instance_create(x, y - 3, obj_barrel_1_light);
+mylight = instance_create(x, y - 5, obj_barrel_1_light);
 
 image_speed = 0;
 

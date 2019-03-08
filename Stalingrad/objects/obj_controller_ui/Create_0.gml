@@ -59,8 +59,14 @@ score_text_alpha = 0;
 
 leveltext_alpha = 0;
 leveltext_text = "";
-leveltext_time = 60 * 3.5;
 leveltext_other = false;
+leveltext_time = 0;
+var levels = array_length_1d(global.level_name);
+for(var i = 0; i < levels; i++){
+	if (room == global.level_room[i]){
+		leveltext_time = 60 * 3.5;
+	}
+}
 
 weaponslot_shake = 0;
 for (var i = 0; i < weaponalength; i++){
