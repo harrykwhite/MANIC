@@ -1,4 +1,4 @@
-/// @desc Gets whether the provided light is culled (true) or not (false) for the current camera
+/// @desc Gets whether the provided light is culled (true) || not (false) for the current camera
 /// @arg light The light to check
 /// @arg camera The camera to cull against; this is lighting_get_active_camera, NOT a GMS2 camera!
 /// @returns True if the light is culled, otherwise false

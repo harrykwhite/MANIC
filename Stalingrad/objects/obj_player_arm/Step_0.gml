@@ -56,10 +56,10 @@ if (instance_exists(global.player)) && (wcurrent!=-1){
 	    var dir = point_direction(global.player.x, global.player.y, mouse_x, mouse_y);
 		
 		if ((global.weapon_type[wcurrent] == WeaponType.Ranged)
-		or (global.weapon_type[wcurrent] == WeaponType.Throwing)
-		or (global.weapon_object[wcurrent].index == PlayerWeapon.Knife)
-		or (global.weapon_object[wcurrent].index == PlayerWeapon.Rake)
-		or (global.weapon_object[wcurrent].index == PlayerWeapon.Spear))
+		|| (global.weapon_type[wcurrent] == WeaponType.Throwing)
+		|| (global.weapon_object[wcurrent].index == PlayerWeapon.Knife)
+		|| (global.weapon_object[wcurrent].index == PlayerWeapon.Rake)
+		|| (global.weapon_object[wcurrent].index == PlayerWeapon.Spear))
 		and ((global.weapon_object[wcurrent].index != PlayerWeapon.MountedMachineGun)
 		and (global.weapon_object[wcurrent].index != PlayerWeapon.MountedMachineGunCart)){
 			if (global.player.image_xscale == 1){

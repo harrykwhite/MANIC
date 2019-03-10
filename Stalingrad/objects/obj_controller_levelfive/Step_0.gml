@@ -59,9 +59,8 @@ if (player_exists){
 	
 		if (spawn){
 			var num;
-			
 			if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
-				num = heavygun_spawn_interval;
+				num = heavygun_spawn_max;
 				spawn_distance = 85;
 			}else{
 				num = spawn_max[global.game_combat_state];
@@ -183,8 +182,7 @@ if (player_exists){
 			spawn = false;
 		}
 		
-	}else if (global.game_pause ){
-		
+	}else if (global.game_pause){
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
 			audio_pause_sound(spawn_music_main[CombatState.Idle]);
 		}

@@ -4,6 +4,7 @@ flash_time = 0;
 light_brightness = 0;
 scale = random_range(0.675, 0.75);
 destroy = false;
+buzz = noone;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.1;

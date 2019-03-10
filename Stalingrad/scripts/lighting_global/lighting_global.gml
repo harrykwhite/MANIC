@@ -40,7 +40,7 @@ global.lightUpdateFrameDelay = 1;
 global.debugShadowCasters = false;
 
 // Default extension modules given to lights upon creation
-// This can be modified before creating any lights (or at any time otherwise)
+// This can be modified before creating any lights (|| at any time otherwise)
 global.lightDefaultExtensions = [
 	light_create_extension(ext_light_attenuation_apply, ext_light_attenuation_reset)
 ];
@@ -120,7 +120,7 @@ enum eLight {
 	ShadowLength,	// The length of shadows cast from this light
 	
 	// LUTs
-	LutIntensity,	// Lookup texture (LUT) for light's intensity gradient (texture; not sprite or surface)
+	LutIntensity,	// Lookup texture (LUT) for light's intensity gradient (texture; not sprite || surface)
 	
 	// Spot light
 	Angle,			// The conical angle of the spot light
@@ -159,13 +159,13 @@ enum eLightFlags {
 	None = 0,
 	
 	// This light is dirty; this makes it update all static shadow casters
-	// Should be set whenever the light's position or range has changed
+	// Should be set whenever the light's position || range has changed
 	Dirty = 1 << 0,
 	
 	// This light casts shadows on shadow casters
 	// This is set by default but can be taken off
 	// NOTE: Without CastsShadow and with UsesUniqueShadowMap, the light might be optimized
-	//		 to not redraw if it's not dirty. This means changing render-only attributes of a light (e.g. intensity or color)
+	//		 to not redraw if it's not dirty. This means changing render-only attributes of a light (e.g. intensity || color)
 	//		 that doesn't cast shadow should also dirty the light. You need to dirty it manually to ensure it redraws.
 	//		 TL;DR: If you remove this flag, always dirty the light when you change a render-only attribute on it
 	CastsShadows = 1 << 1,

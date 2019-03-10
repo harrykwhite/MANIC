@@ -100,7 +100,7 @@ if (!global.game_pause){
 				}
 			}
 		}else{
-			if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
+			if (keyboard_check_pressed(ord("W"))) || (keyboard_check_pressed(vk_up)){
 				if (pause_selected > 0){
 					pause_selected --;
 				}else{
@@ -108,7 +108,7 @@ if (!global.game_pause){
 				}
 			}
 	
-			if (keyboard_check_pressed(ord("S"))) or (keyboard_check_pressed(vk_down)){
+			if (keyboard_check_pressed(ord("S"))) || (keyboard_check_pressed(vk_down)){
 				if (pause_selected < pause_selectedmax - 1){
 					pause_selected ++;
 				}else{
@@ -132,7 +132,7 @@ if (!global.game_pause){
 		}
 	}else{
 		// Pause Dialogue
-		if (keyboard_check_pressed(ord("W"))) or (keyboard_check_pressed(vk_up)){
+		if (keyboard_check_pressed(ord("W"))) || (keyboard_check_pressed(vk_up)){
 			if (pausedialogue_option_selected > 0){
 				pausedialogue_option_selected --;
 			}else{
@@ -140,7 +140,7 @@ if (!global.game_pause){
 			}
 		}
 	
-		if (keyboard_check_pressed(ord("S"))) or (keyboard_check_pressed(vk_down)){
+		if (keyboard_check_pressed(ord("S"))) || (keyboard_check_pressed(vk_down)){
 			if (pausedialogue_option_selected < pausedialogue_option_max - 1){
 				pausedialogue_option_selected ++;
 			}else{

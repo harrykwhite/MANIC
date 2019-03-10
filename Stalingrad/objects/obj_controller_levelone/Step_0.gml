@@ -68,7 +68,6 @@ global.ambientShadowIntensity = lighting;
 if (player_exists){
 	var spawn_rate = spawn_rate_real;
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1){
-	
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}
@@ -81,7 +80,7 @@ if (player_exists){
 			spawn_time /= spawn_rate;
 		}
 		
-		spawn_state_time_real++;
+		spawn_state_time_real ++;
 		
 		if (spawn){
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
@@ -126,7 +125,7 @@ if (player_exists){
 				
 				var enemy;
 				
-				if (chance(80)) or (!dog_can_spawn){
+				if (chance(80)) || (!dog_can_spawn){
 					enemy = instance_create(xpos, ypos, obj_enemy_0);
 					
 					if (spawn_rate > 1){
@@ -168,7 +167,7 @@ if (player_exists){
 			spawn = false;
 		}
 		
-	}else if (global.game_pause ){
+	}else if (global.game_pause){
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
 			audio_pause_sound(spawn_music_main[CombatState.Idle]);
 		}

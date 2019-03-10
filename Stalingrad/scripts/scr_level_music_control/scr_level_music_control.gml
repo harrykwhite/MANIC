@@ -57,7 +57,7 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 				audio_sound_gain(spawn_music_main[CombatState.Buildup], 1, 12000);
 			}else{
 				// Idle Music
-				if (!audio_is_playing(spawn_music_main[CombatState.Idle])) or (audio_sound_get_gain(spawn_music_main[CombatState.Idle]) <= 0){
+				if (!audio_is_playing(spawn_music_main[CombatState.Idle])) || (audio_sound_get_gain(spawn_music_main[CombatState.Idle]) <= 0){
 					audio_stop_sound(spawn_music_main[CombatState.Idle]);
 					audio_play_sound(spawn_music_main[CombatState.Idle], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);

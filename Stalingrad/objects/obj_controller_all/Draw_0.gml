@@ -48,3 +48,4 @@ repeat(size){
 }
 
 ds_grid_clear(ds_depth_grid, noone);
+ds_depth_count = 0;

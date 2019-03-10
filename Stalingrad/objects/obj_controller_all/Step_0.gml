@@ -11,11 +11,7 @@ if (full <= 0){
 		window_set_fullscreen(!window_get_fullscreen());
 		full = 40;
 
-		display_set_gui_size(720 * 2.5, 405 * 2.5);
-		if (!window_get_fullscreen()){
-			window_set_size(720 * wsize, 405 * wsize);
-			window_set_position((display_get_width() / 2) - ((720 * wsize) / 2), (display_get_height() / 2) - ((405 * wsize) / 2));
-		}
+		scr_display_update();
 	}
 }else{
 	full--;

@@ -375,7 +375,7 @@ if (rank_display_draw){
 }
 
 // Pause Backdrop
-if (pausedialogue_alpha > 0) or (pause_text_alpha > 0){
+if (pausedialogue_alpha > 0) || (pause_text_alpha > 0){
 	draw_set_colour(c_black);
 	draw_set_alpha((pause_text_alpha + pausedialogue_alpha) * 0.5);
 	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);

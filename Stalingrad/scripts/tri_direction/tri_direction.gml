@@ -1,4 +1,4 @@
-/// @desc Gets the direction of a triangle (clockwise or counter-clockwise)
+/// @desc Gets the direction of a triangle (clockwise || counter-clockwise)
 /// @arg a The first vertex in the triangle
 /// @arg b The second vertex in the triangle
 /// @arg c The third vertex in the triangle

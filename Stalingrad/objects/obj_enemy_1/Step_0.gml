@@ -15,6 +15,25 @@ if (ispaused){
 	}
 }
 
+if (instance_exists(global.player)) && (!global.game_pause){
+	if (distance_to_object(global.player) < 60){
+		if (buzz == noone){
+			buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
+		}
+		scr_sound_set_distance(buzz, 60);
+	}else{
+		if (audio_is_playing(buzz)){
+			audio_stop_sound(buzz);
+			buzz = noone;
+		}
+	}
+}else{
+	if (audio_is_playing(buzz)){
+		audio_stop_sound(buzz);
+		buzz = noone;
+	}
+}
+
 image_speed = 1;
 livetime++;
 
