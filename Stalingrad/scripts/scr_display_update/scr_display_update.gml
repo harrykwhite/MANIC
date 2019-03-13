@@ -31,5 +31,5 @@ for(var i = 0; i < room_count; i++){
 }
 
 surface_resize(application_surface, ideal_width, ideal_height);
-display_set_gui_size(ideal_width * 1.5, ideal_height * 1.5);
+display_set_gui_size(ideal_width * 1.25, ideal_height * 1.25);
 window_set_size(ideal_width, ideal_height);

@@ -1,5 +1,5 @@
-var wrange = 100;
-var hrange = 100;
+var wrange = 50;
+var hrange = 50;
 
 instance_deactivate_layer("Main");
 instance_deactivate_layer("InteriorFadeObjects");

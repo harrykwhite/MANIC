@@ -6,7 +6,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (global.game_pause == false) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){ // If the mouse left button is pressed and the game is not paused.
+if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){ // If the mouse left button is pressed and the game is not paused.
 	
     if (mouse_check_button_pressed(mb_left)) && (shoot_can ){ // If the ammo is greater then one and the canshoot value is true.
         

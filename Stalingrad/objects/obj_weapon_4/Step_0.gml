@@ -6,7 +6,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active ) && (global.game_pause == false){
+if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active ) && (!global.game_pause){
     var xpos = x + lengthdir_x(29, mdir);
     var ypos = y + lengthdir_y(29, mdir);
 	

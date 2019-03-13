@@ -1,1 +1,1 @@
-scr_depth_controller(y + 35, scr_draw_attributes_crackedwall);
+scr_render_me(y + 35);

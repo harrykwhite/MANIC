@@ -1,1 +1,0 @@
-scr_depth_controller(y - 20, -1);

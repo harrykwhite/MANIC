@@ -12,7 +12,7 @@ if (instance_exists(global.player)==false) || (instance_number(object_index)>1){
 if (instance_exists(global.player)){
     
     // Position
-	if (global.game_pause == false){
+	if (!global.game_pause){
 	    image_angle = point_direction(global.player.x, global.player.y, mouse_x, mouse_y) + attack_range_current;
 	    x = obj_player_arm.x + lengthdir_x(attack_offset + 3, image_angle);
 	    y = obj_player_arm.y + lengthdir_y(attack_offset + 3, image_angle);

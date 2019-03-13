@@ -14,4 +14,4 @@ if (sprite == -1){
 	}
 }
 
-scr_depth_controller(y - (50 + offset), scr_draw_attributes_weapon_drop, -1);
+scr_render_me(y - (50 + offset));

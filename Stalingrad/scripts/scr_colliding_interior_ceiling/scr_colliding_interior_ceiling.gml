@@ -26,7 +26,6 @@ switch(global.level_current){
 	
 	default:
 		list[0] = obj_destroyedbuilding_3;
-		list[1] = obj_destroyedbuilding_4;
 		break;
 }
 

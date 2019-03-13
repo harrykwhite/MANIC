@@ -27,6 +27,7 @@ if (ispaused){
 	}
 }
 
+global.player_companion = 0;
 global.player_companion_health = health_current;
 livetime++;
 

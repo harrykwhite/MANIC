@@ -43,7 +43,7 @@ if (!typedet){
 		case EnemyOneType.Mother:
 			scale = 1.2;
 			defense = 2;
-			health_max = 11;
+			health_max = 9;
 			health_current = health_max;
 			attack_time_offset = 0.6;
 			knockback_resist = 0.4;
@@ -57,7 +57,7 @@ if (!typedet){
 		case EnemyOneType.Sniper:
 			scale = 1.1;
 			defense = 2;
-			health_max = 9;
+			health_max = 8;
 			health_current = health_max;
 			break;
 		

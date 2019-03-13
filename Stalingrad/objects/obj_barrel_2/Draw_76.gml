@@ -1,1 +1,1 @@
-scr_depth_controller(y + 2, scr_draw_attributes_environhit);
+scr_render_me(y + 2);

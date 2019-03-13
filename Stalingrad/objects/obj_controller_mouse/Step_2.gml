@@ -1,4 +1,4 @@
-if (global.game_pause == false){
+if (!global.game_pause){
 	x = mouse_x;
 	y = mouse_y;
 }

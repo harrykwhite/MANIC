@@ -31,9 +31,6 @@ if (lighting < lighting_level[global.game_combat_state]){
 global.ambientShadowIntensity = lighting;
 
 if (player_exists){
-	var heavygun_spawn_interval = 60 * 2.25;
-	var heavygun_spawn_max = 6;
-	var spawn_distance = 120;
 	var spawn_rate = spawn_rate_real;
 	
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1){
@@ -45,28 +42,18 @@ if (player_exists){
 			spawn_time -= spawn_rate;
 		}else{
 			spawn = true;
-			
-			if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
-				spawn_time = heavygun_spawn_interval;
-			}else{
-				spawn_time = 60 * spawn_interval[global.game_combat_state];
-			}
-			
+			spawn_time = 60 * spawn_interval[global.game_combat_state];
 			spawn_time /= spawn_rate;
 		}
 		
 		spawn_state_time_real++;
 	
 		if (spawn){
-			var num;
 			if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
-				num = heavygun_spawn_max;
 				spawn_distance = 85;
-			}else{
-				num = spawn_max[global.game_combat_state];
 			}
 			
-			if (scr_enemy_count(false) < num){
+			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
 				var xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
 				var ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
 				var spawn_trial = 0;

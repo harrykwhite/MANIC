@@ -1,5 +1,5 @@
 if (!instance_exists(obj_player)){
-    instance_create(982, 1498, obj_player);
+    instance_create(982, 1488, obj_player);
 }
 
 global.player = obj_player;

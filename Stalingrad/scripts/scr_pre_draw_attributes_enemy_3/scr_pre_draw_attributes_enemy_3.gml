@@ -1,0 +1,13 @@
+// Drawing Shadow
+draw_sprite_ext(spr_enemy_3_stand_0, 0, x, y, image_yscale, scale, 0, c_white, 1);
+
+if (i_blendTime > 0){
+	var colour = make_colour_rgb(163, 42, 45);
+	if (object_index == obj_enemy_3){
+		colour = c_white
+	}
+	
+	gpu_set_fog(true, colour, 0, 0);
+	draw_sprite_ext(spr_enemy_3_stand_0, 0, x, y, image_yscale, scale, 0, c_white, ((1-(1 / i_blendTime)) * image_alpha) + 0.1);
+	gpu_set_fog(false, c_black, 0, 0);
+}

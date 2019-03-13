@@ -68,7 +68,7 @@
             "blendMode": 0,
             "isLocked": false,
             "name": "Shadow",
-            "opacity": 17,
+            "opacity": 20,
             "visible": true
         }
     ],

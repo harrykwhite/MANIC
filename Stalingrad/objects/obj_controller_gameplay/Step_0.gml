@@ -56,7 +56,7 @@ if (global.cutscene_current == -1) && (instance_exists(global.player)){
 // Value Controlling
 global.player_healthCurrent = clamp(global.player_healthCurrent, 0, global.player_healthMax);
 
-if (global.game_pause == false){
+if (!global.game_pause){
 	
 	// Game Time
 	global.game_time_passed++;

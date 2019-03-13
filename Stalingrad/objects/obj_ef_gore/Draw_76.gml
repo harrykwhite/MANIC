@@ -1,1 +1,1 @@
-scr_depth_controller(y - 100, -1);
+scr_render_me(y - 100);

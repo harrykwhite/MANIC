@@ -49,7 +49,7 @@ if (instance_exists(global.player)){
 						var drop = instance_create(dropx, dropy + 10, obj_weapondrop);
 						drop.index = PlayerWeapon.Axe;
 						drop.spd = 10;
-						drop.dir = 270 + random_range(-10, 10);
+						drop.dir = 90 + random_range(-10, 10);
 						drop.angle = 30;
 					}
 					

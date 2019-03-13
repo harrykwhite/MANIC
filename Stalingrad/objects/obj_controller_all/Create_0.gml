@@ -1,7 +1,8 @@
 scr_part_setup();
 
-ds_depth_grid = ds_grid_create(4, 1);
-ds_depth_count = 0;
+ds_depth_grid_height = 700;
+ds_depth_grid = ds_grid_create(2, ds_depth_grid_height);
+ds_depth_counter = 0;
 
 full = 0;
 part = 0;

@@ -34,6 +34,13 @@
                     "mvc": "1.0",
                     "FrameId": "df1806dc-ac34-4e17-a16e-8b8cfe33a894",
                     "LayerId": "9d61060c-7609-4f88-92e9-07780d02c557"
+                },
+                {
+                    "id": "15349088-8e60-4c1c-8c87-bb136eec63a1",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "df1806dc-ac34-4e17-a16e-8b8cfe33a894",
+                    "LayerId": "90677030-f9bb-4656-95f4-9e98b82a4d11"
                 }
             ]
         },
@@ -56,6 +63,13 @@
                     "mvc": "1.0",
                     "FrameId": "f65c14c6-c23d-438d-8760-a17635210bbc",
                     "LayerId": "9d61060c-7609-4f88-92e9-07780d02c557"
+                },
+                {
+                    "id": "d224a978-ea07-45f0-bb27-1ba2436745a6",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "f65c14c6-c23d-438d-8760-a17635210bbc",
+                    "LayerId": "90677030-f9bb-4656-95f4-9e98b82a4d11"
                 }
             ]
         },
@@ -78,6 +92,13 @@
                     "mvc": "1.0",
                     "FrameId": "e2d34e9d-a8c5-4442-8c46-80b03c32d824",
                     "LayerId": "9d61060c-7609-4f88-92e9-07780d02c557"
+                },
+                {
+                    "id": "4f3fda28-ba14-4825-becf-100e0ee1df40",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "e2d34e9d-a8c5-4442-8c46-80b03c32d824",
+                    "LayerId": "90677030-f9bb-4656-95f4-9e98b82a4d11"
                 }
             ]
         }
@@ -95,6 +116,17 @@
             "isLocked": false,
             "name": "default",
             "opacity": 100,
+            "visible": true
+        },
+        {
+            "id": "90677030-f9bb-4656-95f4-9e98b82a4d11",
+            "modelName": "GMImageLayer",
+            "mvc": "1.0",
+            "SpriteId": "1168defd-fd77-4e0b-b58b-bd62685251cd",
+            "blendMode": 0,
+            "isLocked": false,
+            "name": "Shadow",
+            "opacity": 20,
             "visible": true
         }
     ],

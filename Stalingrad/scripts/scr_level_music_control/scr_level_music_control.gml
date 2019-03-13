@@ -97,7 +97,6 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 			break;
 	
 		case CombatState.Climax:
-	
 			if (spawn_state_time_real >= (60 * spawn_state_time[global.game_combat_state])){
 				spawn_state_time_real = 0;
 				spawn_rate_real += 0.5;
@@ -114,7 +113,7 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 		
 			break;
 	}
-}else if (global.boss_current != -1){
+}else if (global.boss_current == -1){
 	audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
@@ -124,7 +123,7 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 }
 
 // Restoring Music after Pause
-if (global.game_pause == false){
+if (!global.game_pause){
 	if (spawn_pause_update ){
 		spawn_pause_update = global.game_pause;
 		

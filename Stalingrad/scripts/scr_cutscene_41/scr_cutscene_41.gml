@@ -26,7 +26,6 @@ if (instance_exists(global.player)){
 				global.cutscene_current = -1;
 				global.player.move_xTo = -1;
 				global.player.move_yTo = -1;
-				global.player_companion = 1;
 				global.game_companion_grenadier_found = true;
 				cobj.in_cutscene = false;
 				cobj.cutscene_prop = false;

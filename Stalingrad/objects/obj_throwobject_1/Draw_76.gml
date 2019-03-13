@@ -1,1 +1,1 @@
-scr_depth_controller(y - 40, scr_draw_attributes_grenade);
+scr_render_me(y - 40);

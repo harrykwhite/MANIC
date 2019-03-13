@@ -1,1 +1,1 @@
-scr_depth_controller(y, scr_draw_attributes_pawn, scr_pre_draw_attributes_pawn);
+scr_render_me(y);

@@ -81,7 +81,8 @@ if (player_exists){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}
-	if (spawn_time > 0){
+		
+		if (spawn_time > 0){
 			spawn_time -= spawn_rate;
 		}else{
 			spawn = true;

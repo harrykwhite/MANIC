@@ -1,3 +1,4 @@
+// Drawing effects
 if (i_blendTime > 0){
 	gpu_set_fog(true, make_colour_rgb(163, 42, 45), 0, 0);
 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, (1-(1 / i_blendTime)) * image_alpha * (1 - whiteflash_alpha));
@@ -6,7 +7,7 @@ if (i_blendTime > 0){
 
 if (global.player_healthCurrent <= 2){
 	var glowAlpha = wave(0.15, 0.25, 2, 0);
-	if (global.game_pause == false) && (global.cutscene_current == -1){
+	if (!global.game_pause) && (global.cutscene_current == -1){
 	    if (random(3)<1){
 	        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
 	    }

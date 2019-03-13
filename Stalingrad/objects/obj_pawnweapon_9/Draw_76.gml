@@ -1,3 +1,3 @@
 if (instance_exists(owner)){
-	scr_depth_controller(owner.y + 8, -1);
+	scr_render_me(owner.y + 8);
 }

@@ -6,7 +6,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (global.game_pause == false) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){ // If the mouse left button is pressed and the game is not paused.
+if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){ // If the mouse left button is pressed and the game is not paused.
     if (mouse_check_button_pressed(mb_left)) && (shoot_can ){ // If the ammo is greater then one and the canshoot value is true.
 		scr_player_knockback_initiate(0.5, mdir);
 		scr_camera_to_player();
@@ -18,7 +18,7 @@ if (global.game_pause == false) && (global.weapon_slotammo[global.weapon_slotcur
         
         var xpos = x + lengthdir_x(16, mdir) + lengthdir_x(1, up(mdir));
         var ypos = y + lengthdir_y(16, mdir) + lengthdir_y(1, up(mdir));
-		image_speed = 1 ;
+		image_speed = 1;
 		
         part_type_direction(global.pt_smoke_5, mdir - 17, mdir + 17, 0, 0);
         repeat(1) part_particles_create(global.ps_front, xpos + lengthdir_x(10, mdir) + random_range(-3, 3), ypos + lengthdir_y(10, mdir) + random_range(-3, 3), global.pt_smoke_5, 1);
@@ -36,7 +36,7 @@ if (global.game_pause == false) && (global.weapon_slotammo[global.weapon_slotcur
 		
 		line_alpha = -0.7;
         shoot_can = false;
-        shoot_time = 36; // The amount of frames in between the next shot.
+        shoot_time = 28; // The amount of frames in between the next shot.
         shoot_bounceback = -3; // Bounce the weapon sprite back a few pixels.
         angle_offset = 16;
     }

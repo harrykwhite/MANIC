@@ -10,7 +10,7 @@ if (instance_exists(global.player)==false) || (instance_number(object_index)>1){
 
 // Positioning
 if (instance_exists(global.player)){
-	if (global.game_pause == false){
+	if (!global.game_pause){
 	    var mdir = point_direction(global.player.x, global.player.y, mouse_x, mouse_y);
     
 	    if (instance_exists(obj_player_arm)){
