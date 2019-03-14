@@ -35,7 +35,6 @@ if (instance_exists(global.player)) && (!global.game_pause){
 }
 
 image_speed = 1;
-livetime++;
 
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);

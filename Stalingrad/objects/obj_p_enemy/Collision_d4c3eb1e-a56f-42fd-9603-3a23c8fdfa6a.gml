@@ -8,7 +8,7 @@ if (object_index == obj_enemy_0){
 	}
 }
 
-if (object_index == obj_enemy_3){
+if (object_index == obj_enemy_3) || (object_index == obj_giantturret){
 	exit;
 }
 

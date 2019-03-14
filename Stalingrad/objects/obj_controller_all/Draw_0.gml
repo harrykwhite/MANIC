@@ -5,7 +5,6 @@ if (!ds_exists(ds_depth_grid, ds_type_list)){
 var grid = ds_depth_grid;
 var height = ds_depth_grid_height;
 var yy = 0;
-var h = 
 ds_grid_sort(grid, 1, true);
 
 repeat(height){
@@ -18,3 +17,4 @@ repeat(height){
 }
 
 ds_depth_counter = 0;
+ds_grid_clear(grid, noone);

@@ -94,8 +94,6 @@ target = global.player;
 var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;
 
-livetime = 0;
-
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;
 image_yscale = scale;

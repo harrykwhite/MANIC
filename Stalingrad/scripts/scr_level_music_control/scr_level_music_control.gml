@@ -17,9 +17,11 @@ if (global.boss_current != -1){
 			obj_controller_ui.leveltext_other = true;
 			obj_controller_ui.leveltext_text = string(global.boss_name[global.boss_current]);
 			
-			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
-			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
-			audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
+			if (global.level_current != 9){
+				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
+				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
+				audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
+			}
 		}
 		
 		while(audio_sound_get_gain(bossmusic) <= 0.01){
@@ -113,7 +115,7 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 		
 			break;
 	}
-}else if (global.boss_current == -1){
+}else if (global.boss_current == -1) && (global.level_current != 9){
 	audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
@@ -124,13 +126,15 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 
 // Restoring Music after Pause
 if (!global.game_pause){
-	if (spawn_pause_update ){
+	if (spawn_pause_update){
 		spawn_pause_update = global.game_pause;
 		
 		// Play other music.
-		audio_resume_sound(spawn_music_main[CombatState.Idle]);
-		audio_resume_sound(spawn_music_main[CombatState.Buildup]);
-		audio_resume_sound(spawn_music_main[CombatState.Climax]);
+		if (global.level_current != 9){
+			audio_resume_sound(spawn_music_main[CombatState.Idle]);
+			audio_resume_sound(spawn_music_main[CombatState.Buildup]);
+			audio_resume_sound(spawn_music_main[CombatState.Climax]);
+		}
 		
 		if (global.level_current == 0) || (global.level_current == 6){
 			audio_resume_sound(rain);
@@ -144,7 +148,6 @@ if (!global.game_pause){
 			audio_resume_sound(bossmusic);
 		}
 	}
-	
 }else{
 	spawn_pause_update = true;
 }

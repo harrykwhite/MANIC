@@ -34,7 +34,6 @@ health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 
-livetime = 0;
 owner = noone;
 
 image_xscale = scale;

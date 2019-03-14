@@ -28,7 +28,6 @@ if (ispaused){
 	}
 }
 
-livetime++;
 burn = true;
 
 whiteflash_alpha -= whiteflash_alphadec;

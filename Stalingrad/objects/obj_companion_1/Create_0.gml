@@ -81,7 +81,5 @@ health_scale = 1;
 var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;
 
-livetime = 0;
-
 image_xscale = scale;
 image_yscale = scale;

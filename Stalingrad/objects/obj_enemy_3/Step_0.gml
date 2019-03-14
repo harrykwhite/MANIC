@@ -44,8 +44,6 @@ if (ispaused){
 	}
 }
 
-livetime++;
-
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 

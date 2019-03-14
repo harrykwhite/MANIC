@@ -19,6 +19,7 @@ enum Boss{
 	TrainBoss,
 	TheScorched,
 	TheDogkeeper,
+	GiantTurret,
 }
 
 global.boss_name[0] = "Enemy Horde";
@@ -44,6 +45,10 @@ global.boss_stinger[4] = m_boss_stinger_0;
 global.boss_name[5] = "The Dog Keeper";
 global.boss_music[5] = m_boss_main_0;
 global.boss_stinger[5] = m_boss_stinger_0;
+
+global.boss_name[6] = "";
+global.boss_music[6] = m_boss_main_0;
+global.boss_stinger[6] = m_boss_stinger_0;
 
 // Enumerators
 enum EnemyOneType{

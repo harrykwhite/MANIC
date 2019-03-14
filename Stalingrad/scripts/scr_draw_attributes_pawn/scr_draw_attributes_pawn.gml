@@ -1,6 +1,6 @@
 if (i_blendTime > 0){
 	var colour = make_colour_rgb(163, 42, 45);
-	if (object_index == obj_enemy_3){
+	if (object_index == obj_enemy_3) || (object_index == obj_giantturret){
 		colour = c_white
 	}
 	

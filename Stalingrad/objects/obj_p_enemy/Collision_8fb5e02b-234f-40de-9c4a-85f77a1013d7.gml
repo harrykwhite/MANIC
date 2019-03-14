@@ -52,7 +52,7 @@ if (i_time <= 0){
 		}
 	}
 	
-	if (object_index == obj_enemy_3){
+	if (object_index == obj_enemy_3) || (object_index == obj_giantturret){
 		scr_sound_play(snd_object_metal_hit_0, false, 0.8, 1.2);
 		scr_effect_object(other.x, other.y, obj_ef_blood, spr_ef_metal_0, 0, 1);
 	}else{
