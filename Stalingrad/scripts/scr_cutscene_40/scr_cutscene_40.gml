@@ -18,10 +18,6 @@ if (instance_exists(global.player)){
 	global.player.flashlight_move = false;
 	global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
 	
-	if (cutscene_look_boss != -1){
-		global.boss_current = cutscene_look_boss;
-	}
-	
 	if (global.cutscene_time[index] < cutscene_look_time){
 		global.cutscene_time[index] ++;
 		if (has_look_object) && (cutscene_look_prop){

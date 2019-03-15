@@ -61,6 +61,7 @@ if (health_current <= 0){
     scr_effect_freeze(5);
     scr_effect_screenshake(4);
 	scr_effect_vignette_flash(c_white, 0.3, 0.02);
+	scr_effect_grain(0.4);
     
     instance_destroy();
 	audio_play_sound(snd_other_kick_0, 3, false);

@@ -1,5 +1,6 @@
 if (global.game_pause) || (global.cutscene_current != -1){
 	path_speed = 0;
+	image_speed = 0;
 }else{
 	path_speed = spd;
 }

@@ -27,9 +27,9 @@ if (shoot_current!=-1) && (!global.game_pause) && (global.weapon_slotammo[global
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
         part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);
-		repeat(1) part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
+		part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
         part_type_direction(global.pt_smoke_5, dir - 17, dir + 17, 0, 0);
-		repeat(1) part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+		part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
         
 		if (!collision_line(x, y, xpos, ypos, obj_p_solid, false, true)){
 	        shoot = instance_create(xpos, ypos, obj_proj_0);

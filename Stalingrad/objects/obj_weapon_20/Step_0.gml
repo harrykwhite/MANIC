@@ -40,9 +40,9 @@ if (mouse_check_button(mb_left)) && (!global.game_pause){
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
 		part_type_direction(global.pt_flash_0, dir - 15, dir + 15, 0, 0);
-		repeat(1) part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
+		part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
         part_type_direction(global.pt_smoke_5, dir - 15, dir + 15, 0, 0);
-		repeat(1) part_particles_create(global.ps_front, xpos + lengthdir_x(8, dir) + random_range(-3, 3), ypos + lengthdir_y(8, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+		part_particles_create(global.ps_front, xpos + lengthdir_x(8, dir) + random_range(-3, 3), ypos + lengthdir_y(8, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
 		scr_mouse_control(MouseType.LargeCircle, 2, 20);
 		
 		repeat(choose(2, 4)){

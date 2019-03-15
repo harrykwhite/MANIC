@@ -23,7 +23,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
 		image_speed = 1 ;
 		
         part_type_direction(global.pt_smoke_5, mdir - 17, mdir + 17, 0, 0);
-        repeat(1) part_particles_create(global.ps_front, xpos + lengthdir_x(10, mdir) + random_range(-3, 3), ypos + lengthdir_y(10, mdir) + random_range(-3, 3), global.pt_smoke_5, 1);
+        part_particles_create(global.ps_front, xpos + lengthdir_x(10, mdir) + random_range(-3, 3), ypos + lengthdir_y(10, mdir) + random_range(-3, 3), global.pt_smoke_5, 1);
 		scr_mouse_control(MouseType.SmallCrosshair, 2.5, 15);
 		
 		if (!collision_line(x, y, xpos, ypos, obj_p_solid, false, true)){

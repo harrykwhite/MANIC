@@ -9,10 +9,10 @@ if (i_blendTime > 0){
 	gpu_set_fog(false, c_black, 0, 0);
 }
 
-if (object_index != obj_enemy_3){
+if (object_index != obj_enemy_3) && (object_index != obj_giantturret){
 	if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
 		if (!global.game_pause){
-		    if (random(3)<1){
+		    if (random(3) < 1){
 		        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
 		    }
 		}

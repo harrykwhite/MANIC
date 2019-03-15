@@ -6,12 +6,6 @@ if (moveto_dir != -1){
 	interact_special = "moveto";
 }
 
-if (special == "levelfourbossrestart"){
-	if (!obj_controller_levelfour.dogkeeper_failed){
-		exit;
-	}
-}
-
 if (!active){
 	exit;
 }

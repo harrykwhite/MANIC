@@ -1,3 +1,15 @@
+if (global.cutscene_current == 40){
+	if (obj_controller_gameplay.cutscene_look_boss != -1){
+		global.boss_current = obj_controller_gameplay.cutscene_look_boss;
+		return true;
+	}
+}
+
+if (global.cutscene_current == 46){
+	global.boss_current = Boss.TheDogkeeper;
+	return true;
+}
+
 if (instance_exists(obj_enemy_0)){
 	var count = instance_number(obj_enemy_0);
 	var inst;

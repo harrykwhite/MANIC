@@ -1,5 +1,5 @@
 ///scr_cutscene_46();
-var index = 46, xTo = 884, yTo = 530, spawnx = 884, spawny = 308;
+var index = 46, xTo = 884, yTo = 530, spawnx = 884, spawny = 508;
 var to = noone;
 var eobj = noone;
 var levelobj = scr_get_level_object();
@@ -10,10 +10,6 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(global.player)){
-	if (global.player.y < room_height / 2){
-		spawny = 713;
-	}
-	
 	xTo = spawnx;
 	yTo = spawny;
 	
@@ -31,7 +27,6 @@ if (instance_exists(global.player)){
 		
 		global.player.flashlight_move = false;
 		global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
-		global.boss_current = Boss.TheDogkeeper;
 		
 		if (global.cutscene_time[index] > 90){
 			global.cutscene_current = -1;

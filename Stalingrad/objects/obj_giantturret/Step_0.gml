@@ -32,9 +32,17 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 
+state = 0;
+if (health_current <= 56) { state = 1; }
+if (health_current <= 32) { state = 2; }
+
 switch(state){
 	case 0:
 		scr_giantturret_behaviour_0();
+		break;
+	
+	case 1:
+		scr_giantturret_behaviour_1();
 		break;
 }
 

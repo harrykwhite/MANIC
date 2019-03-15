@@ -9,6 +9,9 @@ attack = 0;
 attack_time = 0;
 attack_time_max = 1;
 
+shoot_time = 0;
+shoot_burst = 0;
+
 flamethrower_angle = 0;
 flamethrower_angle_increment = 0;
 flamethrower_time = 30;
@@ -38,7 +41,7 @@ whiteflash_alphadec = 0.075;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 100;
+health_max = 80;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

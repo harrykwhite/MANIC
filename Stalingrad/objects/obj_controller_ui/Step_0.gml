@@ -30,7 +30,7 @@ if (!global.game_pause){
 	(room == rm_level_6_00) ||
 	(room == rm_level_7_00) ||
 	(room == rm_level_8_00)){
-		if (leveltext_other == false){
+		if (!leveltext_other){
 			if (global.level_current < array_length_1d(global.level_name)){
 				leveltext_text = string(global.level_name[global.level_current]);
 			}else{

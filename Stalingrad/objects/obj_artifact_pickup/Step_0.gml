@@ -33,19 +33,17 @@ if (instance_exists(global.player)){
 			scr_effect_screenshake(1);
 			global.level_artifact_current[global.level_current]++;
 			
-			if (instance_exists(obj_controller_ui)){
-				obj_controller_ui.leveltext_alpha = 0;
-				obj_controller_ui.leveltext_time = 60 * 3.5;
-				obj_controller_ui.leveltext_other = true;
-				obj_controller_ui.leveltext_text =
-				string(global.level_artifact_current[global.level_current]) +
-				" of " + string(global.level_artifact_number[global.level_current]) +
-				" artifacts found.";
-				
-				var amount = 3000;
-				scr_points_display("ARTIFACT +" + string(amount));
-				global.game_score_artifacts += amount;
-			}
+			obj_controller_ui.leveltext_alpha = 0;
+			obj_controller_ui.leveltext_time = 60 * 3.5;
+			obj_controller_ui.leveltext_other = true;
+			obj_controller_ui.leveltext_text =
+			string(global.level_artifact_current[global.level_current]) +
+			" of " + string(global.level_artifact_number[global.level_current]) +
+			" artifacts found.";
+			
+			var amount = 3000;
+			scr_points_display("ARTIFACT +" + string(amount));
+			global.game_score_artifacts += amount;
 		}
     }
 }

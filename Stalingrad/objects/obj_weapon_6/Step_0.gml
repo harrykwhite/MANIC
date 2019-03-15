@@ -24,7 +24,7 @@ if ((mouse_check_button_pressed(mb_left)) || (shoot_continue_time > 0)) && (!glo
 	        part_type_direction(global.pt_flash_0, dir - 25, dir + 25, 0, 0);
 			repeat(2) part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
 	        part_type_direction(global.pt_smoke_5, dir - 25, dir + 25, 0, 0);
-			repeat(1) part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+			part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
 		}
 		
 		scr_player_knockback_initiate(0.5, mdir);
