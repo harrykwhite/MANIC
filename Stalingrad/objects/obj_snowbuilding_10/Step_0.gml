@@ -1,4 +1,4 @@
-image_alpha = scr_interior_fade(image_alpha);
+scr_interior_fade();
 depth_offset = 1400;
 
 if (image_alpha > 0.2){

@@ -1,21 +1,15 @@
-var alpha = argument0;
-
 if (fadeOwner == noone){
-	fadeOwner = instance_place(x, y, obj_interior_fade);
+	fadeOwner = instance_place(x + sprite_width / 2, y + sprite_height / 2, obj_interior_fade);
 }
 
 if (fadeOwner != noone){
 	if (fadeOwner.fade){
-		if (alpha > 0){
-			alpha -= 0.05;
+		if (image_alpha > 0){
+			image_alpha -= 0.05;
 		}
-	
 	}else{
-		if (alpha < 1){
-			alpha += 0.05;
+		if (image_alpha < 1){
+			image_alpha += 0.05;
 		}
-	
 	}
 }
-
-return alpha;

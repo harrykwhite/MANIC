@@ -20,7 +20,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
         
         var xpos = x + lengthdir_x(20, mdir) + lengthdir_x(6, up(mdir));
         var ypos = y + lengthdir_y(20, mdir) + lengthdir_y(6, up(mdir));
-		image_speed = 1 ;
+		image_speed = 1;
 		
         part_type_direction(global.pt_smoke_5, mdir - 17, mdir + 17, 0, 0);
         part_particles_create(global.ps_front, xpos + lengthdir_x(10, mdir) + random_range(-3, 3), ypos + lengthdir_y(10, mdir) + random_range(-3, 3), global.pt_smoke_5, 1);

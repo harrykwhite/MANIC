@@ -16,7 +16,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
 		scr_player_flash(6);
 		scr_camera_to_player();
 		scr_ui_alpha_reset();
-        image_speed = 1 ;
+        image_speed = 1;
 		
         var xpos = x + lengthdir_x(15, mdir) + lengthdir_x(2, up(mdir));
         var ypos = y + lengthdir_y(15, mdir) + lengthdir_y(2, up(mdir));

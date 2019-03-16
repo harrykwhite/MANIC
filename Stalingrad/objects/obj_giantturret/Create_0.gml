@@ -9,13 +9,21 @@ attack = 0;
 attack_time = 0;
 attack_time_max = 1;
 
-shoot_time = 0;
+shoot_time = 30;
 shoot_burst = 0;
+shoot_dir = 0;
 
 flamethrower_angle = 0;
-flamethrower_angle_increment = 0;
+flamethrower_angle_wait = 80;
 flamethrower_time = 30;
+flamethrower_angle_sign = 1;
 
+for(var i = 0; i < 4; i++){
+	var dir = (90 * i) + 45;
+	flamethrower[i] = instance_create(x + lengthdir_x(60, dir), y + lengthdir_y(60, dir), obj_giantturret_flamethrower);
+	flamethrower[i].turret = id;
+	flamethrower[i].shoot_dir = dir + 45;
+}
 light_brightness = 0;
 mylight = instance_create(x, y, obj_giantturret_light);
 

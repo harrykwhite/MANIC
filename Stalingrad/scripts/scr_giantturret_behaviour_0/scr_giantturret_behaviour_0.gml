@@ -5,37 +5,39 @@ if (instance_exists(target)){
 	if (attack == 0){
 		attack_time_max = 60 * 15;
 		
-		flamethrower_angle += flamethrower_angle_increment;
-		flamethrower_angle_increment += 0.005;
-		flamethrower_angle_increment = min(0.25, flamethrower_angle_increment);
+		if (flamethrower_angle_sign == 1){
+			if (flamethrower_angle < 90){
+				flamethrower_angle += 0.45;
+				flamethrower_angle_wait = 80;
+			}else{
+				if (flamethrower_angle_wait > 0){
+					flamethrower_angle_wait --;
+				}else{
+					flamethrower_angle_sign = -1;
+				}
+			}
+		}else if (flamethrower_angle_sign == -1){
+			if (flamethrower_angle > 0){
+				flamethrower_angle -= 0.45;
+				flamethrower_angle_wait = 80;
+			}else{
+				if (flamethrower_angle_wait > 0){
+					flamethrower_angle_wait --;
+				}else{
+					flamethrower_angle_sign = 1;
+				}
+			}
+		}
 		
 		if (flamethrower_time > 0){
 			flamethrower_time --;
 		}else{
 			for(var i = 0; i < 4; i++){
-				var ang = flamethrower_angle + (i * 90);
-				var xpos = x + lengthdir_x(22, ang);
-				var ypos = y + lengthdir_y(22, ang);
-				
-				part_type_direction(global.pt_flash_0, ang - 15, ang + 15, 0, 0);
-				part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
-			    part_type_direction(global.pt_smoke_5, ang - 15, ang + 15, 0, 0);
-				part_particles_create(global.ps_front, xpos + lengthdir_x(8, ang) + random_range(-3, 3), ypos + lengthdir_y(8, ang) + random_range(-3, 3), global.pt_smoke_5, 1);
-				
-				repeat(choose(3, 4)){
-					shoot = instance_create(xpos, ypos, obj_proj_5);
-					shoot.dir = ang + random_range(-1, 1);
-					shoot.image_xscale = 0.9;
-					shoot.image_yscale = 0.9;
-					shoot.image_angle = shoot.dir;
-					shoot.damage = 2;
-					shoot.strength = 1.5;
-					shoot.spd = random_range(13, 18);
-					shoot.creator = id;
-					shoot.enemy = true;
+				if (instance_exists(flamethrower[i])){
+					flamethrower[i].shoot = true;
 				}
 			}
-		
+			
 			flamethrower_time = 6;
 		}
 		
@@ -65,10 +67,10 @@ if (instance_exists(target)){
 			attack = 0;
 		}
 		
-		shoot_time = 5;
+		shoot_time = 30;
 		flamethrower_angle = 0;
-		flamethrower_angle_increment = 0;
-		flamethrower_time = 5;
+		flamethrower_angle_wait = 80;
+		flamethrower_time = 30;
 		attack_time = 0;
 	}
 }

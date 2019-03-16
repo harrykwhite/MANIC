@@ -18,7 +18,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
 		scr_player_flash(8);
 		scr_camera_to_player();
 		scr_ui_alpha_reset();
-        image_speed = 1 ;
+        image_speed = 1;
 		
         var xpos = x + lengthdir_x(22, mdir) + lengthdir_x(1, up(mdir));
         var ypos = y + lengthdir_y(22, mdir) + lengthdir_y(1, up(mdir));
@@ -40,7 +40,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
 		}
 		
         shoot_can = false;
-        shoot_time = 50 ;
+        shoot_time = 50;
         shoot_bounceback = -2;
         angle_offset = 30;
 		line_alpha = -5.2;

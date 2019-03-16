@@ -97,7 +97,7 @@ if (instance_exists(nbarrel)) && (barrel_pause_break <= 0){
 }
 
 // Moving
-speed_final = move_speed * speed_multiplier * move_speed_offset ;
+speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
     move_speed_real += 0.2;

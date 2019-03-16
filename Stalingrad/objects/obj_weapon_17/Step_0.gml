@@ -18,7 +18,7 @@ if (use_current){
             
             var xpos = x + lengthdir_x(12, mdir);
 	        var ypos = y + lengthdir_y(12, mdir);
-			image_speed = 1 ;
+			image_speed = 1;
 			
 	        var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 			part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);

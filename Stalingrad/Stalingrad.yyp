@@ -247,6 +247,14 @@
             }
         },
         {
+            "Key": "05c22188-9249-4357-8348-793b11b80f44",
+            "Value": {
+                "id": "f27874e3-46b5-49f7-ac49-e9550d617457",
+                "resourcePath": "scripts\\scr_giantturret_flamethrower_0\\scr_giantturret_flamethrower_0.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "05d61271-b2d3-402f-8bfe-f94ab1a48ecb",
             "Value": {
                 "id": "6880f5c6-6c23-43a0-afbc-311b7211919f",
@@ -5023,14 +5031,6 @@
             }
         },
         {
-            "Key": "7f7eebd1-c987-4de1-8837-aaf7dd5dd702",
-            "Value": {
-                "id": "8546a8a9-a9bf-4e64-b0e8-e856e186e36a",
-                "resourcePath": "sprites\\spr_ui_grain_0\\spr_ui_grain_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "7fd9ef3d-384e-46c2-b327-938b043c1014",
             "Value": {
                 "id": "68ca0494-4dd9-4e82-bdc4-3a76e3e50a1a",
@@ -5468,6 +5468,14 @@
                 "id": "966deae1-c4d5-482e-a1ce-f1b75a943fca",
                 "resourcePath": "scripts\\scr_cutscene_2\\scr_cutscene_2.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "890e27e7-6c6f-4656-88e6-875450d5f66d",
+            "Value": {
+                "id": "e73b345e-5615-4486-9175-1fd6a2f2aaaf",
+                "resourcePath": "objects\\obj_giantturret_flamethrower\\obj_giantturret_flamethrower.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -7343,6 +7351,14 @@
             }
         },
         {
+            "Key": "b2c24b54-329a-4b3c-896d-9daaebcb0f9a",
+            "Value": {
+                "id": "12651b42-6f00-4419-bed0-b7f1c200dde0",
+                "resourcePath": "sprites\\spr_ui_grain\\spr_ui_grain.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b312ef56-c1cf-419e-9bf5-7d021886b978",
             "Value": {
                 "id": "fe7214fd-0994-4ccc-87c1-1d00aa528f54",
@@ -9103,6 +9119,14 @@
             }
         },
         {
+            "Key": "e96fe8ba-e251-4b65-aaab-b1c2670a7ccd",
+            "Value": {
+                "id": "84c8ada6-4e0e-4ce4-bb38-8af792d64a8d",
+                "resourcePath": "sprites\\spr_giantturret_flamethrower_0\\spr_giantturret_flamethrower_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "e98bbada-6ebd-4980-a995-ed140438a658",
             "Value": {
                 "id": "0b3eac87-723c-4f56-bb74-4c2476688ce6",
@@ -9759,6 +9783,14 @@
             }
         },
         {
+            "Key": "f8ac991c-b5c3-4283-b9f0-21887914627d",
+            "Value": {
+                "id": "1e556224-526e-4144-abac-1138dde74788",
+                "resourcePath": "sprites\\spr_giantturret_gun_0\\spr_giantturret_gun_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f8b18b0d-2d1a-4812-9e11-a11e69069fb3",
             "Value": {
                 "id": "aa370feb-f477-4cd3-b3cd-ad0ebdf1831c",
@@ -10156,6 +10188,7 @@
         "f22da100-001d-4cd5-83fc-ab4be3fe5fcf",
         "c679daf0-a894-4dd3-a7cb-f37ccadb1ee3",
         "38eafad1-bdb8-4613-bf46-110ae90066eb",
+        "05c22188-9249-4357-8348-793b11b80f44",
         "fcece1a5-15fd-40e9-8a52-0b7f9bf96f6f",
         "2cfc68c7-7748-4dda-b686-d491498c3ee3",
         "5c9e839b-1101-4ad4-ac2f-074ec92d5c39",

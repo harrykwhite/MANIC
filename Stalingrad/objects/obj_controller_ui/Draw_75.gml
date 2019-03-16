@@ -12,10 +12,12 @@ if (redtint_alpha < redtint_alphato){
 	redtint_alpha -= 0.025;
 }
 
-draw_set_colour(c_maroon);
-draw_set_alpha(redtint_alpha);
-draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
-draw_set_alpha(1);
+if (redtint_alpha > 0){
+	draw_set_colour(c_maroon);
+	draw_set_alpha(redtint_alpha);
+	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+	draw_set_alpha(1);
+}
 
 // Black Bars
 if (blackbar_draw) || (global.cutscene_current != -1){
@@ -68,6 +70,8 @@ if (global.level_current == 0) && (STATE == GameState.Public){
 }
 
 // Area Next
+var alpha = area_next_alpha + pause_has_selected_time;
+
 if (area_next_fade){
 	if (area_next_alpha < 1){
 		area_next_alpha += area_next_alpha_speed;
@@ -82,7 +86,9 @@ if (area_next_fade){
 	}
 }
 
-draw_set_colour(c_black);
-draw_set_alpha(area_next_alpha + pause_has_selected_time);
-draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
-draw_set_alpha(1);
+if (alpha > 0){
+	draw_set_colour(c_black);
+	draw_set_alpha(alpha);
+	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+	draw_set_alpha(1);
+}

@@ -3,7 +3,7 @@ if (global.game_pause){
 	ispaused = true;
 }
 
-if (global.cutscene_current != -1){
+if (global.cutscene_current != -1) && (global.cutscene_current != 52){
 	if (!in_cutscene){
 		ispaused = true;
 	}

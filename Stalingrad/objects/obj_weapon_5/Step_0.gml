@@ -49,7 +49,7 @@ if (shoot_current!=-1) && (!global.game_pause) && (global.weapon_slotammo[global
             shoot_time = 7; // The amount of frames in between the next shot.
         }else{
             shoot_current = -1;
-            shoot_time = 55;
+            shoot_time = 40;
         }
     }
 }

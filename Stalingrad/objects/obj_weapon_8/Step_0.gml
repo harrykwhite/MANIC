@@ -17,7 +17,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
         scr_mouse_control(MouseType.Crosshair, 2.5, 20);
         scr_weapon_ammo_use(index, 1);
-		image_speed = 1 ;
+		image_speed = 1;
         
         var xpos = x + lengthdir_x(17, mdir) + lengthdir_x(2, up(mdir));
         var ypos = y + lengthdir_y(17, mdir) + lengthdir_y(2, up(mdir));

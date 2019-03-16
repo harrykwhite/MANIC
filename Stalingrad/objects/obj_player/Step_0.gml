@@ -48,7 +48,7 @@ script_execute(state);
 
 // Animation
 if (img_index < image_number){
-    img_index += img_speed ;
+    img_index += img_speed;
 }else{
     img_index = 0;
 }

@@ -33,8 +33,8 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 scr_pawn_status_handler();
 
 state = 0;
-if (health_current <= 56) { state = 1; }
-if (health_current <= 32) { state = 2; }
+if (health_current <= 50) { state = 1; }
+if (health_current <= 25) { state = 2; }
 
 switch(state){
 	case 0:

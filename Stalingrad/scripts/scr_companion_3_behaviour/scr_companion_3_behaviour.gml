@@ -21,7 +21,7 @@ if (instance_exists(global.player)){
 				}
 			}
 		
-			if (distance_to_object(global.player) > 70){
+			if (distance_to_object(global.player) > 70) || (global.cutscene_current == 52){
 				move_xTo = global.player.x;
 				move_yTo = global.player.y;
 				move_speed = 1.8;

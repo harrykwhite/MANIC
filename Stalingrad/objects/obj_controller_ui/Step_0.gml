@@ -52,7 +52,7 @@ if (!global.game_pause){
 		
 	}else{
 		if (leveltext_alpha > 0){
-			leveltext_alpha -= 0.05 ;
+			leveltext_alpha -= 0.05;
 		}
 	}
 
@@ -214,11 +214,11 @@ if (game_ending_screen){
 	}
 	
 	if (game_ending_screen_alpha < 1){
-		game_ending_screen_alpha += 0.01 ;
+		game_ending_screen_alpha += 0.01;
 	}else{
 		
 		if (game_ending_screen_text_alpha < 1){
-			game_ending_screen_text_alpha += 0.01 ;
+			game_ending_screen_text_alpha += 0.01;
 		}
 	}
 }

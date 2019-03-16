@@ -1,29 +1,28 @@
 if (global.game_pause) || (global.cutscene_current != -1){
-	exit;
+	if (global.cutscene_current != 7){
+		exit;
+	}
 }
 
 var hit = false;
-time++;
+time ++;
 
 if (spd > 0){
+	spd -= 0.35;
 	spd = max(0, spd);
+	scr_motion_control(false);
 	image_alpha = 0;
-
-	for(var i = 0; i < spd + 20; i++){
-		if (collision_line(xprevious, yprevious, x + lengthdir_x(i, dir), y + lengthdir_y(i, dir), obj_p_solid, false, true)){
-			hit = true;
+	
+	if (global.cutscene_current != 7){
+		for(var i = 0; i < spd + 20; i ++){
+			if (collision_line(xprevious, yprevious, x + lengthdir_x(i, dir), y + lengthdir_y(i, dir), obj_p_solid, false, true)){
+				hit = true;
+			}
 		}
 	}
 }
 
-if (spd > 0){
-	spd -= 0.35;
-	scr_motion_control(false);
-}else{
-	spd = 0;
-}
-
-angle += (spd * 2) ;
+angle += (spd * 2);
 
 if (hit){
 	if (bounce_time <= 0) && (spd > 0){
@@ -40,7 +39,6 @@ if (bounce_time > 0){
 
 // Pickup
 if (instance_exists(global.player)){
-	
     if (distance_to_object(global.player) < pickup_range){
         pickup = true;
 		scr_ui_control_indicate(string(global.weapon_name[index]) + " [E]");

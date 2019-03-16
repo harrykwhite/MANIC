@@ -11,6 +11,7 @@ vignette_flash_alpha_speed = 0;
 vignette_flash_colour = c_white;
 
 grain_alpha = 0;
+grain_image = 0;
 
 areacleared_alpha = 0;
 areacleared_time = 0;

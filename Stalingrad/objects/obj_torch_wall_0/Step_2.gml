@@ -1,4 +1,4 @@
-/* TODO: add bright and flicker states
+// TODO: add bright and flicker states
 
 mylight.x = x;
 mylight.y = y;

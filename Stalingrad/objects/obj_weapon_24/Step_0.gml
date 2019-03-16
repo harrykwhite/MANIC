@@ -34,13 +34,13 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active ) && (
 
 if (attack_active ){
     if (attack_offset < 7.5){
-        attack_offset += 2.5 ;
+        attack_offset += 2.5;
     }else{
         attack_active = false;
     }
 }else{
     if (attack_offset > 0){
-        attack_offset -= 2.5 ;
+        attack_offset -= 2.5;
     }
 }
 

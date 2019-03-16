@@ -53,7 +53,7 @@ if (instance_exists(global.player)){
 					}
 				}
 		
-				if (distance_to_object(global.player) > 70){
+				if (distance_to_object(global.player) > 70) || (global.cutscene_current == 52){
 					move_xTo = global.player.x;
 					move_yTo = global.player.y;
 					move_speed = 1.8;
@@ -294,7 +294,7 @@ if (dashbreak > 0){
 }
 
 // Moving
-speed_final = move_speed * speed_multiplier * move_speed_offset ;
+speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
     move_speed_real += 0.2;

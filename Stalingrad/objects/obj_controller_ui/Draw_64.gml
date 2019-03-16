@@ -44,7 +44,7 @@ if (instance_exists(global.player)){
             
 			gpu_set_fog(true, c_gray, 0, 0);
 			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
-			gpu_set_fog(false, c_black, 0, 0);
+			//gpu_set_fog(false, c_black, 0, 0);
 			
             gpu_set_fog(true, c_white, 0, 0);
             draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
@@ -55,7 +55,7 @@ if (instance_exists(global.player)){
 
 			gpu_set_fog(true, c_dkgray, 0, 0);
 			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
-			gpu_set_fog(false, c_black, 0, 0);
+			//gpu_set_fog(false, c_black, 0, 0);
 			
             gpu_set_fog(true, c_gray, 0, 0);
             draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_scale[counter] + 0.25), (weaponslot_scale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
@@ -85,7 +85,6 @@ if (instance_exists(global.player)){
     
     draw_set_alpha(weapon_standalone_alpha * ui_alpha);
     draw_healthbar(xx, yy, xx + width, yy + height, sc / sm * 100, c_white, col, col, 3, false, false);
-	draw_set_alpha(1);
 }
 
 // Player Hit
@@ -96,10 +95,6 @@ if (playerhit_alpha > 0){
     gpu_set_fog(true, playerhit_colour, 0, 1);
     draw_sprite_stretched(spr_ui_vignette_0, 0, 0, 0, display_get_gui_width(), display_get_gui_height());
     gpu_set_fog(false, c_black, 0, 0);
-	draw_set_alpha(1);
-	
-}else{
-    playerhit_alpha = 0;
 }
 
 // Vignette Flash
@@ -110,7 +105,6 @@ if (vignette_flash_alpha > 0){
     gpu_set_fog(true, vignette_flash_colour, 0, 1);
     draw_sprite_stretched(spr_ui_vignette_0, 0, 0, 0, display_get_gui_width(), display_get_gui_height());
     gpu_set_fog(false, c_black, 0, 0);
-	draw_set_alpha(1);
 }
 
 // Screen Blend
@@ -118,20 +112,19 @@ if (screenblend_alpha > 0){
     draw_set_alpha(screenblend_alpha);
     draw_set_colour(screenblend_colour);
     draw_rectangle(-5, -5, display_get_gui_width()+5, display_get_gui_height()+5, false);
-    draw_set_alpha(1);
 }
 
 // Score Display
 var length = 7;
 var shake = wave(-score_shake, score_shake, 0.2, 0);
 
+draw_set_alpha(1);
 draw_set_font(fnt_cambria_2);
 draw_set_halign(fa_left);
 scr_text_shadow_transformed(58 + shake, (display_get_gui_height() - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35) + soffset, (score_scale * 1.35) + soffset, 0);
 
 // Score Text Display
 if (score_text_time > 0){
-	
 	score_text_time--;
 	
 	if (score_text_alpha < 1){
@@ -156,7 +149,6 @@ if (score_text_alpha > 0){
 	draw_set_alpha(score_text_alpha);
 	draw_set_font(fnt_cambria_2);
 	scr_text_shadow_transformed(59 + shake, ((display_get_gui_height() - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
-	draw_set_alpha(1);
 	draw_set_valign(fa_top);
 }
 
@@ -189,7 +181,6 @@ if (instance_exists(global.player)){
 				draw_set_font(fnt_cambria_0);
 				draw_set_alpha(ui_alpha);
 				scr_text_shadow_transformed(xx, yy, "x" + string(quantity), col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
-				draw_set_alpha(1);
 			}
 		}
 		
@@ -242,8 +233,6 @@ if (instance_exists(global.player)){
 				if (global.weapon_ammotype[w] == AmmoType.Darts){
 					scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
 				}
-				
-				draw_set_alpha(1);
 	        }
 		}
     }
@@ -466,7 +455,6 @@ if (pausedialogue_alpha > 0){
 
 	scr_text_shadow((display_get_gui_width() / 2) + 220, (display_get_gui_height() / 2) + 220, "Resume [E]", c_white);
 	draw_set_valign(fa_top);
-	draw_set_alpha(1);
 }
 
 // Level Screen Opening

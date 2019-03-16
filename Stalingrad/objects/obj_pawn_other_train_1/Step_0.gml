@@ -127,7 +127,6 @@ while (spd <= 0.2) && (instance_exists(global.player)){
 						interact = true;
 						scr_ui_control_indicate("Board Train [E]")
 						if (keyboard_check_pressed(ord("E"))){
-							global.game_pause = true;
 							interact_break = 10;
 						
 							switch(room){

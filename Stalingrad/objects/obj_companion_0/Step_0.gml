@@ -4,7 +4,7 @@ if (global.game_pause){
 }
 
 if (global.cutscene_current != -1){
-	if (!in_cutscene){
+	if (!in_cutscene) && (global.cutscene_current != 52){
 		ispaused = true;
 	}
 }else{

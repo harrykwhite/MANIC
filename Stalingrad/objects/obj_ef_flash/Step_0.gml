@@ -1,6 +1,6 @@
 if (fade == false){
     if (alpha < 1){
-        alpha += increase_speed ;
+        alpha += increase_speed;
     }else{
         alpha = 1;
         fade = true;
@@ -11,7 +11,7 @@ if (fade == false){
     }
 }else{
     if (alpha > 0){
-        alpha -= decrease_speed ;
+        alpha -= decrease_speed;
     }else{
         alpha = 0;
         instance_destroy();
