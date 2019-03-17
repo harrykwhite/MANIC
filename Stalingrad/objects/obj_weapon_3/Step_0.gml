@@ -47,7 +47,7 @@ if (global.player_stamina_active){
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 
 		    instance_destroy();
-		    global.weapon_slot[global.weapon_slotcurrent]=-1;
+		    global.weapon_slot[global.weapon_slotcurrent] = -1;
 		}
     }
 }

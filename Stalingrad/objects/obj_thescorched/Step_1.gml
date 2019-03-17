@@ -12,19 +12,6 @@ if (weapon_has){
 }
 
 if (destroy){
-	health_current = health_max;
-	weapon_has = false;
-	state = 0;
-	cutscene_prop = true;
-	in_cutscene = false;
-	release_count = 0;
-	release_time = 45;
-	release_offset = 0;
-	light_brightness = 0;
-	run_x = x;
-	run_y = y;
-	run_count = 0;
-	
 	if (weapon != -1){
 		instance_destroy(weapon);
 		weapon = -1;
@@ -37,5 +24,6 @@ if (destroy){
 	
 	x = xstart;
 	y = ystart;
+	event_perform(ev_create, 0);
 	destroy = false;
 }

@@ -30,6 +30,10 @@ if (ispaused){
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
+poison = false;
+bleed = false;
+headless = false;
+
 scr_pawn_status_handler();
 
 state = 0;

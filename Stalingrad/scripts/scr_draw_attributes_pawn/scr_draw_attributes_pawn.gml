@@ -1,6 +1,6 @@
 if (i_blendTime > 0){
 	var colour = make_colour_rgb(163, 42, 45);
-	if (object_index == obj_enemy_3) || (object_index == obj_giantturret){
+	if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 		colour = c_white
 	}
 	
@@ -9,7 +9,7 @@ if (i_blendTime > 0){
 	gpu_set_fog(false, c_black, 0, 0);
 }
 
-if (object_index != obj_enemy_3) && (object_index != obj_giantturret){
+if (object_index != obj_enemy_3) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
 	if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
 		if (!global.game_pause){
 		    if (random(3) < 1){

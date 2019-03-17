@@ -1,7 +1,9 @@
+
+
 if (shoot){
 	var ang = turret.flamethrower_angle + shoot_dir;
-	var xpos = x + lengthdir_x(22, ang);
-	var ypos = y + lengthdir_y(22, ang);
+	var xpos = x + lengthdir_x(1, ang);
+	var ypos = y + lengthdir_y(1, ang);
 	
 	part_type_direction(global.pt_flash_0, ang - 15, ang + 15, 0, 0);
 	part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);

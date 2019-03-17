@@ -1,4 +1,5 @@
-var player_exists = instance_exists(global.player);
+var player = global.player;
+var player_exists = instance_exists(player);
 scr_position_view();
 
 if (!global.game_pause){
@@ -55,23 +56,7 @@ if (player_exists){
 				var ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
 				var spawn_trial = 0;
 				
-				if (random(2) < 1){
-					var barrel;
-					
-					if (instance_exists(obj_barrel_3)){
-						barrel = instance_nearest(xpos, ypos, obj_barrel_3);
-						xpos = barrel.x + random_range(-50, 50);
-						ypos = barrel.y + random_range(-50, 50);
-					}
-					
-					if (instance_exists(obj_barrel_2)){
-						barrel = instance_nearest(xpos, ypos, obj_barrel_2);
-						xpos = barrel.x + random_range(-50, 50);
-						ypos = barrel.y + random_range(-50, 50);
-					}
-				}
-				
-				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, global.player.x, global.player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, global.player.x, global.player.y) < 80){
+				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80){
 					xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
 					ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
 					spawn_trial++;

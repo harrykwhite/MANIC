@@ -15,35 +15,12 @@ if (weapon_has){
 
 if (destroy){
 	levelobj.dogkeeper_failed = true;
-	health_current = health_max;
-	weapon_has = false;
-	cutscene_prop = true;
-	in_cutscene = false;
-	light_brightness = 0;
 	
 	for(var i = 0; i < 3; i++){
 		if (instance_exists(dog[i])){
 			instance_destroy(dog[i]);
 		}
 	}
-	
-	dog_count = 3;
-	dogs_downed = false;
-	dogs_alive = 3;
-	dog[0] = instance_create(x, y, obj_thedogkeeper_dog);
-	dog[0].keeper = id;
-	dog[0].leash_length = 80;
-	dog[0].leash_offset = -25;
-
-	dog[1] = instance_create(x, y, obj_thedogkeeper_dog);
-	dog[1].keeper = id;
-	dog[1].leash_length = 100;
-	dog[1].leash_offset = 0;
-
-	dog[2] = instance_create(x, y, obj_thedogkeeper_dog);
-	dog[2].keeper = id;
-	dog[2].leash_length = 80;
-	dog[2].leash_offset = 25;
 	
 	if (weapon != -1){
 		instance_destroy(weapon);
@@ -57,5 +34,6 @@ if (destroy){
 	
 	x = xstart;
 	y = ystart;
+	event_perform(ev_create, 0);
 	destroy = false;
 }

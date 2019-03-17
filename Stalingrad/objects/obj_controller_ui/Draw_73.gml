@@ -13,12 +13,12 @@ if (grain_alpha > 0){
 			var _x = xx + xpos;
 			var _y = yy + ypos;
 		
-			draw_set_alpha(random_range(0.040, 0.070) * grain_alpha);
+			draw_set_alpha(random_range(0.07, 0.1) * grain_alpha);
 			draw_sprite(spr_ui_grain, grain_image, _x, _y);
 		}
 	}
 	
-	grain_image += 0.5;
+	grain_image ++;
 	grain_alpha -= 0.005;
 	draw_set_alpha(1);
 }

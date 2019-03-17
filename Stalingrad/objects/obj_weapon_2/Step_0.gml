@@ -27,14 +27,12 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
         part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
 		scr_mouse_control(MouseType.Crosshair, 2, 20);
 		
-		if (!collision_line(x, y, xpos, ypos, obj_p_solid, false, true)){
-	        shoot = instance_create(xpos, ypos, obj_proj_0);
-			shoot.damage = shoot_damage;
-			shoot.strength = shoot_strength;
-	        shoot.dir = dir + random_range(-shoot_range, shoot_range);
-			shoot.spd = 18;
-			shoot.image_angle = shoot.dir;
-		}
+		shoot = instance_create(xpos, ypos, obj_proj_0);
+		shoot.damage = shoot_damage;
+		shoot.strength = shoot_strength;
+	    shoot.dir = dir + random_range(-shoot_range, shoot_range);
+		shoot.spd = 18;
+		shoot.image_angle = shoot.dir;
         
         shoot_can = false;
         shoot_time = 15;
@@ -63,11 +61,11 @@ if (global.player_stamina_active ){
 		    throw.damage = throw_damage;
 		    throw.dir = mdir;
 		    throw.image_angle = throw.dir;
-		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent]; // Set the ammo of the weapon drop to the ammo of this weapon. That way, when picked up again, it will have the same ammo reading.
+		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 			throw.ammodetermined = true;
 
 		    instance_destroy();
-		    global.weapon_slot[global.weapon_slotcurrent]=-1;
+		    global.weapon_slot[global.weapon_slotcurrent] = -1;
 		}
     }
 }

@@ -3,7 +3,7 @@ draw_sprite_ext(spr_enemy_3_stand_0, 0, x, y, image_yscale, scale, 0, c_white, 1
 
 if (i_blendTime > 0){
 	var colour = make_colour_rgb(163, 42, 45);
-	if (object_index == obj_enemy_3) || (object_index == obj_giantturret){
+	if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 		colour = c_white
 	}
 	

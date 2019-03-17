@@ -1,6 +1,6 @@
 var xx = (mouse_x - camera_get_view_x(view_camera[0])) * GUI_POS_X;
 var yy = (mouse_y - camera_get_view_y(view_camera[0])) * GUI_POS_Y;
-var scale = 3;
+var scale = 2.25;
 var counter = 0;
 
 switch(mouse){

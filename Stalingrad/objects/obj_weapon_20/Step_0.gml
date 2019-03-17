@@ -85,11 +85,11 @@ if (global.player_stamina_active ){
 		    throw.damage = throw_damage;
 		    throw.dir = mdir;
 		    throw.image_angle = throw.dir;
-		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent]; // Set the ammo of the weapon drop to the ammo of this weapon. That way, when picked up again, it will have the same ammo reading.
+		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 			throw.ammodetermined = true;
 
 		    instance_destroy();
-		    global.weapon_slot[global.weapon_slotcurrent]=-1;
+		    global.weapon_slot[global.weapon_slotcurrent] = -1;
 		}
     }
 }

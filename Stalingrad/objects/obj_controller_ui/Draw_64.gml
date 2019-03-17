@@ -1,9 +1,11 @@
 var soffset = wave(0, 0.025, 3, 0, false);
 var counter = 0;
+var dwidth = display_get_gui_width();
+var dheight = display_get_gui_height();
 
 // Weapon Slots
 var amount = array_length_1d(global.weapon_slot);
-var yspace = 98;
+var yspace = 74;
 var weapon_standalone_alpha = 1;
 
 if (global.weapon_slot_standalone != -1){
@@ -22,10 +24,10 @@ if (instance_exists(global.player)){
     repeat(amount){
         
         // Weapon Slot Scale
-        if (weaponslot_scale[counter] < 2.5){
+        if (weaponslot_scale[counter] < 1.875){
             weaponslot_scale[counter] += 0.25;
         }else{
-            weaponslot_scale[counter] = 2.5;
+            weaponslot_scale[counter] = 1.875;
         }
         
         // Drawing Slot
@@ -33,9 +35,9 @@ if (instance_exists(global.player)){
         var yy = 78 + (yspace * counter);
 		
         if (global.weapon_slotcurrent == counter){
-            draw_sprite_ext(spr_ui_weaponslot_1, 0, xx + random_range(-shake, shake), yy + random_range(-shake, shake), 3, 3, 0, -1, weapon_standalone_alpha * ui_alpha);
+            draw_sprite_ext(spr_ui_weaponslot_1, 0, xx + random_range(-shake, shake), yy + random_range(-shake, shake), 2.25, 2.25, 0, -1, weapon_standalone_alpha * ui_alpha);
         }else{
-            draw_sprite_ext(spr_ui_weaponslot_0, 0, xx, yy, 3, 3, 0, -1, weapon_standalone_alpha * ui_alpha);
+            draw_sprite_ext(spr_ui_weaponslot_0, 0, xx, yy, 2.25, 2.25, 0, -1, weapon_standalone_alpha * ui_alpha);
         }
         
         // Drawing Weapon
@@ -44,7 +46,6 @@ if (instance_exists(global.player)){
             
 			gpu_set_fog(true, c_gray, 0, 0);
 			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
-			//gpu_set_fog(false, c_black, 0, 0);
 			
             gpu_set_fog(true, c_white, 0, 0);
             draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
@@ -55,7 +56,6 @@ if (instance_exists(global.player)){
 
 			gpu_set_fog(true, c_dkgray, 0, 0);
 			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
-			//gpu_set_fog(false, c_black, 0, 0);
 			
             gpu_set_fog(true, c_gray, 0, 0);
             draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_scale[counter] + 0.25), (weaponslot_scale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
@@ -73,10 +73,10 @@ if (instance_exists(global.player)){
     var sc = global.player_stamina_current;
     var sm = global.player_stamina_max;
     
-    var xx = 134;
-    var yy = 37;
+    var xx = 116;
+    var yy = 78 - 28;
     var width = 3;
-    var height = 182;
+    var height = 137;
     var col = c_white;
     
     if (global.player_stamina_active == false){
@@ -93,7 +93,7 @@ if (playerhit_alpha > 0){
     
 	draw_set_alpha(playerhit_alpha);
     gpu_set_fog(true, playerhit_colour, 0, 1);
-    draw_sprite_stretched(spr_ui_vignette_0, 0, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_sprite_stretched(spr_ui_vignette_0, 0, 0, 0, dwidth, dheight);
     gpu_set_fog(false, c_black, 0, 0);
 }
 
@@ -103,7 +103,7 @@ if (vignette_flash_alpha > 0){
 	
 	draw_set_alpha(vignette_flash_alpha);
     gpu_set_fog(true, vignette_flash_colour, 0, 1);
-    draw_sprite_stretched(spr_ui_vignette_0, 0, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_sprite_stretched(spr_ui_vignette_0, 0, 0, 0, dwidth, dheight);
     gpu_set_fog(false, c_black, 0, 0);
 }
 
@@ -111,7 +111,7 @@ if (vignette_flash_alpha > 0){
 if (screenblend_alpha > 0){
     draw_set_alpha(screenblend_alpha);
     draw_set_colour(screenblend_colour);
-    draw_rectangle(-5, -5, display_get_gui_width()+5, display_get_gui_height()+5, false);
+    draw_rectangle(-5, -5, dwidth+5, dheight+5, false);
 }
 
 // Score Display
@@ -121,7 +121,7 @@ var shake = wave(-score_shake, score_shake, 0.2, 0);
 draw_set_alpha(1);
 draw_set_font(fnt_cambria_2);
 draw_set_halign(fa_left);
-scr_text_shadow_transformed(58 + shake, (display_get_gui_height() - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35) + soffset, (score_scale * 1.35) + soffset, 0);
+scr_text_shadow_transformed(58 + shake, (dheight - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35) + soffset, (score_scale * 1.35) + soffset, 0);
 
 // Score Text Display
 if (score_text_time > 0){
@@ -148,7 +148,7 @@ if (score_text_time > 0){
 if (score_text_alpha > 0){
 	draw_set_alpha(score_text_alpha);
 	draw_set_font(fnt_cambria_2);
-	scr_text_shadow_transformed(59 + shake, ((display_get_gui_height() - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
+	scr_text_shadow_transformed(59 + shake, ((dheight - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
 	draw_set_valign(fa_top);
 }
 
@@ -192,8 +192,8 @@ if (instance_exists(global.player)){
     if (w != -1){
 		if (instance_exists(global.weapon_object[w])){
 	        if (global.weapon_type[w] == WeaponType.Ranged){
-	            var xx = 154;
-	            var yy = 39;
+	            var xx = 139;
+	            var yy = 78 - 28;
 	            var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
 
 	            var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
@@ -251,21 +251,21 @@ if (time_passed_seconds < 10){
 
 draw_set_halign(fa_center);
 draw_set_font(fnt_cambria_0);
-scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) + 28, time_passed_text, c_white);*/
+scr_text_shadow(dwidth / 2, (dheight / 2) + 28, time_passed_text, c_white);*/
 
 // Level Text
 if (leveltext_alpha > 0){
 	draw_set_font(fnt_cambria_2);
 
-	var xx = display_get_gui_width() / 2;
-	var yy = (display_get_gui_height() / 2) - 380;
+	var xx = dwidth / 2;
+	var yy = 160;
 	var width = string_width(leveltext_text) + 20;
 	var height = 2;
 	var offset = 34;
 
 	draw_set_colour(c_white);
 	draw_set_alpha(leveltext_alpha);
-	draw_rectangle((display_get_gui_width() - xx) - (width / 2), yy, (display_get_gui_width() - xx) + (width / 2), yy + height, false);
+	draw_rectangle((dwidth - xx) - (width / 2), yy, (dwidth - xx) + (width / 2), yy + height, false);
 
 	draw_set_halign(fa_center);
 	scr_text_shadow(xx, yy - (offset), string(leveltext_text), c_white);
@@ -288,12 +288,12 @@ if (control_indicate_text != ""){
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_right);
 	draw_set_alpha(0.8);
-	scr_text_shadow(display_get_gui_width() - control_indicate_x, display_get_gui_height() - 64, control_indicate_text, c_white);
+	scr_text_shadow(dwidth - control_indicate_x, dheight - 64, control_indicate_text, c_white);
 }
 
 control_indicate = false;
 
-// Area Cleared
+/* Area Cleared
 if (areacleared_time > 0){
 	if (areacleared_alpha < 1){
 		areacleared_alpha += 0.1;
@@ -306,15 +306,15 @@ if (areacleared_time > 0){
 }
 
 if (areacleared_alpha > 0){
-	var xx = display_get_gui_width() / 2;
-	var yy = display_get_gui_height() / 2;
+	var xx = dwidth / 2;
+	var yy = dheight / 2;
 	yy -= 150;
 	
 	draw_set_font(fnt_cambria_4);
 	draw_set_halign(fa_center);
 	draw_set_alpha(0.8 * areacleared_alpha * 0.8);
 	scr_text_shadow(xx, yy, "AREA CLEARED", c_white);
-}
+}*/
 
 // Level Results / Ranking
 if (rank_display_draw){
@@ -323,13 +323,13 @@ if (rank_display_draw){
 	draw_set_alpha(rank_display_alpha);
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
-	scr_text_shadow(display_get_gui_width() / 2, 214, string(levelname), c_white);
-	draw_rectangle(0, 274, display_get_gui_width(), 274 + (3), false);
+	scr_text_shadow(dwidth / 2, 214, string(levelname), c_white);
+	draw_rectangle(0, 274, dwidth, 274 + (3), false);
 	
 	draw_set_font(fnt_cambria_1);
 	
-	var x1 = (display_get_gui_width() / 2) - 300;
-	var x2 = (display_get_gui_width() / 2) + 300;
+	var x1 = (dwidth / 2) - 300;
+	var x2 = (dwidth / 2) + 300;
 	var length = array_length_1d(rank_string);
 
 	repeat(length){
@@ -351,15 +351,15 @@ if (rank_display_draw){
 		draw_set_font(fnt_cambria_2);
 		draw_set_halign(fa_center);
 		draw_set_alpha(rank_end_alpha);
-		scr_text_shadow((display_get_gui_width() / 2) - 40, (370 + (50 * (length + 2))), "Grade", c_white);
+		scr_text_shadow((dwidth / 2) - 40, (370 + (50 * (length + 2))), "Grade", c_white);
 		
-		var scale = 1.15;
+		var scale = 0.85;
 		
 		draw_set_font(fnt_cambria_2);
-		scr_text_shadow_transformed((display_get_gui_width() / 2) + 60, (370 + (50 * (length + 2))) - 4, string(scr_rank_to_string(rank)), c_white, scale, scale, 0);
+		scr_text_shadow_transformed((dwidth / 2) + 60, (370 + (50 * (length + 2))) - 4, string(scr_rank_to_string(rank)), c_white, scale, scale, 0);
 		
 		draw_set_font(fnt_cambria_0);
-		scr_text_shadow(display_get_gui_width() / 2, (370 + (50 * (length + 2))) + 50, "Press Enter to Continue", c_white);
+		scr_text_shadow(dwidth / 2, (370 + (50 * (length + 2))) + 50, "Press Enter to Continue", c_white);
 	}
 }
 
@@ -367,12 +367,12 @@ if (rank_display_draw){
 if (pausedialogue_alpha > 0) || (pause_text_alpha > 0){
 	draw_set_colour(c_black);
 	draw_set_alpha((pause_text_alpha + pausedialogue_alpha) * 0.5);
-	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+	draw_rectangle(0, 0, dwidth, dheight, false);
 }
 
 // Pause
-var xx = display_get_gui_width() / 2;
-var yy = (display_get_gui_height() / 2) - ((30 * pause_selectedmax) / 2);
+var xx = dwidth / 2;
+var yy = (dheight / 2) - ((30 * pause_selectedmax) / 2);
 var offset = 30;
 
 if (global.game_pause) && (!pausedialogue){
@@ -412,8 +412,8 @@ if (pause_text_update == false){
 }
 
 // Pause Dialogue
-var optxx = display_get_gui_width() / 2;
-var optyy = (display_get_gui_height() / 2) - ((30 * pausedialogue_option_max) / 2);
+var optxx = dwidth / 2;
+var optyy = (dheight / 2) - ((30 * pausedialogue_option_max) / 2);
 
 if (pausedialogue){
 	if (pausedialogue_alpha < 1){
@@ -437,12 +437,12 @@ if (pausedialogue_alpha > 0){
 
 	switch(pausedialogue_type){
 		case 0:
-			scr_text_shadow(display_get_gui_width() / 2, display_get_gui_height() / 2, pausedialogue_type_text, c_white);
+			scr_text_shadow(dwidth / 2, dheight / 2, pausedialogue_type_text, c_white);
 			break;
 	
 		case 1:
 			optyy += 45;
-			scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) - 30, pausedialogue_type_text, c_white);
+			scr_text_shadow(dwidth / 2, (dheight / 2) - 30, pausedialogue_type_text, c_white);
 			for(var counter = 0; counter < pausedialogue_option_max; counter++){
 				if (pausedialogue_option_selected == counter){
 					scr_text_shadow(optxx, optyy + (counter * 30), pausedialogue_type_option[counter], make_colour_rgb(189, 23, 23));
@@ -453,7 +453,7 @@ if (pausedialogue_alpha > 0){
 			break;
 	}
 
-	scr_text_shadow((display_get_gui_width() / 2) + 220, (display_get_gui_height() / 2) + 220, "Resume [E]", c_white);
+	scr_text_shadow((dwidth / 2) + 220, (dheight / 2) + 220, "Resume [E]", c_white);
 	draw_set_valign(fa_top);
 }
 
@@ -463,7 +463,7 @@ if (screen_fade_opening > 0){
 	
 	draw_set_alpha(screen_fade_opening);
 	draw_set_colour(c_black);
-	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+	draw_rectangle(0, 0, dwidth, dheight, false);
 }
 
 draw_set_alpha(1);

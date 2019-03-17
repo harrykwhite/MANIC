@@ -1,5 +1,6 @@
-if (instance_exists(global.player)){
-	if (distance_to_point(global.player.x, global.player.y - 6) < 35){
+var player = global.player;
+if (instance_exists(player)){
+	if (distance_to_point(player.x, player.y - 6) < 35){
 		interact = true;
 	}else{
 		interact = false;

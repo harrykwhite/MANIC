@@ -24,7 +24,7 @@ if (instance_exists(target)){
 		    var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.dir = shoot_dir;
 		    bullet.image_angle = shoot_dir;
-			bullet.spd = 13;
+			bullet.spd = 12;
 			bullet.damage = 1;
 			bullet.strength = 1.25;
 			bullet.enemy = true;
@@ -32,7 +32,7 @@ if (instance_exists(target)){
 			
 			if (shoot_burst < 2){
 				shoot_burst ++;
-				shoot_time = 9;
+				shoot_time = 6;
 			}else{
 				shoot_burst = 0;
 				shoot_time = 70;
@@ -87,7 +87,7 @@ if (instance_exists(target)){
 		
 	// Break
 	}else if (attack == 2){
-		attack_time_max = 60 * 2;
+		attack_time_max = 60 * 2.5;
 	}
 	
 	if (attack_time < attack_time_max){

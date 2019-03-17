@@ -7,14 +7,15 @@ image_speed = 1;
 
 // Finding Player
 var w_index = global.weapon_slot[global.weapon_slotcurrent];
+var player = global.player;
 
 attract = false;
 
-if (instance_exists(global.player)){
+if (instance_exists(player)){
     if (w_index != -1){
 		if (global.weapon_type[w_index] == WeaponType.Ranged){
 	        if (instance_exists(global.weapon_object[w_index])){
-	            if (distance_to_object(global.player) < 30) && (!collision_line(x, y, global.player.x, global.player.y, obj_p_solid, false, true)){
+	            if (distance_to_object(player) < 30) && (!collision_line(x, y, player.x, player.y, obj_p_solid, false, true)){
 	                if (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] == AmmoType.Arrows){
 						attract = true;
 						enemy = false;
@@ -26,12 +27,12 @@ if (instance_exists(global.player)){
 }
 
 // Moving to Player
-if (instance_exists(global.player)) && (global.weapon_slot[global.weapon_slotcurrent]!=-1){
+if (instance_exists(player)) && (global.weapon_slot[global.weapon_slotcurrent]!=-1){
     if (attract){
-        dir = point_direction(x, y, global.player.x, global.player.y);
+        dir = point_direction(x, y, player.x, player.y);
         spd += 0.145;
 		
-        if (place_meeting(x + 1, y + 1, global.player)){
+        if (place_meeting(x + 1, y + 1, player)){
             instance_destroy();
             scr_weapon_ammo_add(global.weapon_slot[global.weapon_slotcurrent], 1);
             scr_effect_screenshake(1);

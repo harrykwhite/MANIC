@@ -1,19 +1,13 @@
 if (destroy){
-	health_current = health_max;
-	weapon_has = false;
-	shoot_time = 30;
-	shoot_dir = 0;
-	flamethrower_angle = 0;
-	flamethrower_angle_sign = 1;
-	flamethrower_angle_wait = 80;
-	flamethrower_time = 30;
-	state = 0;
-	active = false;
-	cutscene_prop = true;
-	in_cutscene = false;
-	light_brightness = 0;
+	var fcount = array_length_1d(flamethrower);
+	for(var i = 0; i < fcount; i++){
+		if (instance_exists(flamethrower[i])){
+			instance_destroy(flamethrower[i]);
+		}
+	}
 	
 	x = xstart;
 	y = ystart;
+	event_perform(ev_create, 0);
 	destroy = false;
 }

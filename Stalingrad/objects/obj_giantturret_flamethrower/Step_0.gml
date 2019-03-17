@@ -13,6 +13,10 @@ if (global.cutscene_current != -1){
 	}
 }
 
+if (!turret.active){
+	ispaused = true;
+}
+
 if (ispaused){
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){

@@ -27,14 +27,12 @@ if (use_current){
 			part_type_direction(global.pt_smoke_5, dir - 17, dir + 17, 0, 0);
 			part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
 			
-			if (!collision_line(x, y, xpos, ypos, obj_p_solid, false, true)){
-		        shoot = instance_create(xpos, ypos, obj_proj_0);
-				shoot.damage = shoot_damage;
-				shoot.strength = shoot_strength;
-		        shoot.dir = dir + random_range(-shoot_range, shoot_range);
-				shoot.spd = 20;
-				shoot.image_angle = shoot.dir;
-			}
+		    shoot = instance_create(xpos, ypos, obj_proj_0);
+			shoot.damage = shoot_damage;
+			shoot.strength = shoot_strength;
+		    shoot.dir = dir + random_range(-shoot_range, shoot_range);
+			shoot.spd = 20;
+			shoot.image_angle = shoot.dir;
             
             shoot_can = false;
             shoot_time = 7;

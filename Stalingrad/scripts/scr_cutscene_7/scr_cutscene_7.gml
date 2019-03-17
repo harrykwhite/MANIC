@@ -46,11 +46,12 @@ if (instance_exists(global.player)){
 					global.cutscene_time[index] ++;
 					
 					if (global.cutscene_time[index] == 155){
+						audio_play_sound(snd_weapon_swing_0, 3, false);
 						var drop = instance_create(dropx, dropy + 10, obj_weapondrop);
 						drop.index = PlayerWeapon.Machete;
-						drop.spd = 7;
+						drop.spd = 20;
 						drop.dir = 270 + random_range(-10, 10);
-						drop.angle = 30;
+						drop.angle = 0;
 					}
 					
 					global.cutscene_camera_x[index] = dropx;

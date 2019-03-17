@@ -14,7 +14,7 @@ if (i_time < 1) && (other.spd > 0) && (other.enemy == false){
 	scr_bonuspoints_update(BonusPoints.WeaponThrow);
 	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.spd / 10, other.dir, 7);
 	
-	if (object_index != obj_enemy_3) && (object_index != obj_giantturret){
+	if (object_index != obj_enemy_3) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 14);
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_gore_0, 6);
 		scr_effect_object(other.x, other.y, obj_ef_blood, spr_ef_blood_0, 0, 1);
@@ -45,7 +45,7 @@ if (i_time < 1) && (other.spd > 0) && (other.enemy == false){
 	
 	scr_effect_screenshake(4);
 	scr_effect_freeze(10);
-	if (object_index == obj_enemy_3) || (object_index == obj_giantturret){
+	if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 		scr_sound_play(snd_object_metal_hit_0, false, 0.8, 1.2);
 		scr_effect_object(other.x, other.y, obj_ef_blood, spr_ef_metal_0, 0, 1);
 	}else{
