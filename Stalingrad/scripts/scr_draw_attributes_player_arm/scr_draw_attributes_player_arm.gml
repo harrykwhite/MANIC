@@ -1,23 +1,47 @@
+var wv = wave(0.15, 0.25, 2, 0);
+var player = global.player;
+
+shader_set(sh_pawntint);
+var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");
+var shader_red = shader_get_uniform(sh_pawntint, "_red");
+var shader_green = shader_get_uniform(sh_pawntint, "_green");
+var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
+var r = 0, g = 0, b = 0, a = 0;
+
 if (global.player_healthCurrent <= 2){
-    gpu_set_fog(true, make_colour_rgb(117, 39, 39), 0, 0);
-    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, wave(0.15, 0.25, 2, 0) * image_alpha * (1 - global.player.whiteflash_alpha));
-    gpu_set_fog(false, c_black, 0, 0);
+    a = wv;
+	r = color_get_red(make_color_rgb(76, 53, 53));
+	g = color_get_green(make_color_rgb(76, 53, 53));
+	b = color_get_blue(make_color_rgb(76, 53, 53));
 }
 
-if (global.player.burn){
-	gpu_set_fog(true, c_white, 0, 0);
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.125 * image_alpha);
-	gpu_set_fog(false, c_black, 0, 0);
+if (player.burn){
+	a = wv;
+	r = 255;
+	g = 255;
+	b = 255;
 }
 
-if (global.player.poison){
-	gpu_set_fog(true, c_white, 0, 0);
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.1 * image_alpha);
-	gpu_set_fog(false, c_black, 0, 0);
+if (player.poison){
+	a = wv;
+	r = 255;
+	g = 255;
+	b = 255;
 }
 
-if (global.player.whiteflash_alpha > 0){
-	gpu_set_fog(true, c_white, 0, 0);
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, global.player.whiteflash_alpha * image_alpha);
-	gpu_set_fog(false, c_black, 0, 0);
+if (player.whiteflash_alpha > 0){
+	a = player.whiteflash_alpha;
+	r = 255;
+	g = 255;
+	b = 255;
 }
+
+if (r > 0) || (g > 0) || (b > 0) || (a > 0){
+	shader_set_uniform_f(shader_alpha, a);
+	shader_set_uniform_f(shader_red, r);
+	shader_set_uniform_f(shader_green, g);
+	shader_set_uniform_f(shader_blue, b);
+	draw_self();
+}
+
+shader_reset();

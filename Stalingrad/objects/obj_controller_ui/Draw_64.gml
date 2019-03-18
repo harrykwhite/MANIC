@@ -73,8 +73,8 @@ if (instance_exists(global.player)){
     var sc = global.player_stamina_current;
     var sm = global.player_stamina_max;
     
-    var xx = 116;
-    var yy = 78 - 28;
+    var xx = 122;
+    var yy = 78 - 30;
     var width = 3;
     var height = 137;
     var col = c_white;
@@ -192,8 +192,8 @@ if (instance_exists(global.player)){
     if (w != -1){
 		if (instance_exists(global.weapon_object[w])){
 	        if (global.weapon_type[w] == WeaponType.Ranged){
-	            var xx = 139;
-	            var yy = 78 - 28;
+	            var xx = 134;
+	            var yy = 78 - 30;
 	            var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
 
 	            var ammo = global.weapon_slotammo[global.weapon_slotcurrent];

@@ -1,28 +1,59 @@
 if (instance_exists(owner)){
-	if (owner.health_current <= floor(owner.health_max / 3)){
-	    gpu_set_fog(true, make_colour_rgb(117, 39, 39), 0, 0);
-	    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, wave(0.15, 0.25, 2, 0) * image_alpha * (1 - owner.whiteflash_alpha));
-	    gpu_set_fog(false, c_black, 0, 0);
+	var is_metal = false;
+	var wv = wave(0.15, 0.25, 2, 0);
+	
+	if (owner.object_index == obj_enemy_3) || (owner.object_index == obj_giantturret) || (owner.object_index == obj_giantturret_flamethrower){
+		is_metal = true;
 	}
 	
-	if (owner.burn_time){
-		gpu_set_fog(true, c_white, 0, 0);
-		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.125 * image_alpha);
-		gpu_set_fog(false, c_black, 0, 0);
+	shader_set(sh_pawntint);
+	var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");
+	var shader_red = shader_get_uniform(sh_pawntint, "_red");
+	var shader_green = shader_get_uniform(sh_pawntint, "_green");
+	var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
+	var r = 0, g = 0, b = 0, a = 0;
+	
+	if (owner.health_current <= floor(owner.health_max / 3)){
+	    a = wv;
+		r = color_get_red(make_color_rgb(76, 53, 53));
+		g = color_get_green(make_color_rgb(76, 53, 53));
+		b = color_get_blue(make_color_rgb(76, 53, 53));
+	}
+	
+	if (owner.burn){
+		a = wv;
+		r = 255;
+		g = 255;
+		b = 255;
 	}
 	
 	if (owner.object_index != obj_thescorched){
-		if (owner.poison_time){
-			gpu_set_fog(true, c_white, 0, 0);
-			draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.1 * image_alpha);
-			gpu_set_fog(false, c_black, 0, 0);
+		if (owner.poison){
+			a = wv;
+			r = 255;
+			g = 255;
+			b = 255;
 		}
 	}
-
+	
+	if (owner.i_blendTime > 0){
+		var colour = make_color_rgb(76, 53, 53);
+		if (is_metal){
+			colour = c_white;
+		}
+	
+		var alpha = 1 - (1 / owner.i_blendTime);
+		a = alpha;
+		r = color_get_red(colour);
+		g = color_get_green(colour);
+		b = color_get_blue(colour);
+	}
+	
 	if (owner.whiteflash_alpha > 0){
-		gpu_set_fog(true, c_white, 0, 0);
-		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, owner.whiteflash_alpha * image_alpha);
-		gpu_set_fog(false, c_black, 0, 0);
+		a = owner.whiteflash_alpha;
+		r = 255;
+		g = 255;
+		b = 255;
 	}
 
 	if (owner.weapon != -1){
@@ -31,7 +62,6 @@ if (instance_exists(owner)){
 			var angle;
 		
 			if (global.weapon_heavy[wcurrent]) && (global.cutscene_current == -1){
-			
 		        if (image_yscale == -owner.scale){
 		            angle = clamp(image_angle, 130, 220);
 		        }else{
@@ -41,33 +71,19 @@ if (instance_exists(owner)){
 		                angle = max(image_angle, 320);
 		            }
 		        }
-			
+				
 		        draw_sprite_ext(sprite_index, 1, x + lengthdir_x(4, angle), (y - 1) + lengthdir_y(4, angle), 1, image_yscale, angle, c_white, 1);
-			
-		        if (owner.health_current <= floor(owner.health_max / 3)){
-		            gpu_set_fog(true, make_colour_hsv(0, 60, 60), 0, 0);
-		            draw_sprite_ext(sprite_index, 1, x + lengthdir_x(4, angle), (y - 1) + lengthdir_y(4, angle), 1, image_yscale, angle, c_white, wave(0.15, 0.25, 2, 0));
-		            gpu_set_fog(false, c_black, 0, 0);
-		        }
-		
-				if (owner.burn){
-					gpu_set_fog(true, c_white, 0, 0);
-					draw_sprite_ext(sprite_index, 1, x + lengthdir_x(4, angle), (y - 1) + lengthdir_y(4, angle), 1, image_yscale, angle, c_white, 0.225);
-					gpu_set_fog(false, c_black, 0, 0);
-				}
-			
-				if (owner.poison){
-					gpu_set_fog(true, c_white, 0, 0);
-					draw_sprite_ext(sprite_index, 1, x + lengthdir_x(4, angle), (y - 1) + lengthdir_y(4, angle), 1, image_yscale, angle, c_white, 0.15);
-					gpu_set_fog(false, c_black, 0, 0);
-				}
-			
-				if (owner.whiteflash_alpha > 0){
-					gpu_set_fog(true, c_white, 0, 0);
-					draw_sprite_ext(sprite_index, 1, x + lengthdir_x(4, angle), (y - 1) + lengthdir_y(4, angle), 1, image_yscale, angle, c_white, owner.whiteflash_alpha * image_alpha);
-					gpu_set_fog(false, c_black, 0, 0);
-				}
 		    }
 		}
 	}
+	
+	if (r > 0) || (g > 0) || (b > 0) || (a > 0){
+		shader_set_uniform_f(shader_alpha, a);
+		shader_set_uniform_f(shader_red, r);
+		shader_set_uniform_f(shader_green, g);
+		shader_set_uniform_f(shader_blue, b);
+		draw_self();
+	}
+	
+	shader_reset();
 }

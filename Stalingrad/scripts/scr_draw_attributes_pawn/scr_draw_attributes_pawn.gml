@@ -1,56 +1,131 @@
-if (i_blendTime > 0){
-	var colour = make_colour_rgb(163, 42, 45);
-	if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
-		colour = c_white
-	}
-	
-	gpu_set_fog(true, colour, 0, 0);
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, ((1-(1 / i_blendTime)) * image_alpha) + 0.1);
-	gpu_set_fog(false, c_black, 0, 0);
+var is_metal = false;
+var wv = wave(0.15, 0.25, 2, 0);
+
+if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
+	is_metal = true;
 }
 
-if (object_index != obj_enemy_3) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
+shader_set(sh_pawntint);
+var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");
+var shader_red = shader_get_uniform(sh_pawntint, "_red");
+var shader_green = shader_get_uniform(sh_pawntint, "_green");
+var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
+var r = 0, g = 0, b = 0, a = 0;
+
+if (!is_metal){
 	if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
 		if (!global.game_pause){
 		    if (random(3) < 1){
 		        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
 		    }
 		}
-    
-		gpu_set_fog(true, make_colour_rgb(117, 39, 39), 0, 0);
-		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, -1, wave(0.15, 0.25, 2, 0));
-		gpu_set_fog(false, c_black, 0, 0);
+		
+		a = wv;
+		r = color_get_red(make_color_rgb(76, 53, 53));
+		g = color_get_green(make_color_rgb(76, 53, 53));
+		b = color_get_blue(make_color_rgb(76, 53, 53));
 	}
+}
+
+var wradius = 6;
+var hradius = 18;
+var xx = x;
+var yy = y;
+
+if (object_index == obj_enemy_1){
+	wradius = 6;
+	hradius = 6;
+	xx = x;
+	yy = y - 10;
+}
+
+if (object_index == obj_enemy_2) || (object_index == obj_companion_3) || (object_index == obj_thedogkeeper_dog){
+	wradius = 12;
+	hradius = 6;
+}
+
+if (object_index == obj_enemy_3) || (object_index == obj_giantturret_flamethrower){
+	wradius = 9;
+	hradius = 11;
+}
+
+if (object_index == obj_giantturret){
+	wradius = 34;
+	hradius = 12;
+}
+
+if (burn){
+	if (!global.game_pause){
+		if (random(3) < 1){
+			part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_fire_0, 1);
+		}
+
+		if (random(5) < 1){
+			part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_fire_2, 1);
+		}
+	}
+	
+	a = wv;
+	r = 255;
+	g = 255;
+	b = 255;
+}
+
+if (!is_metal){
+	if (poison){
+		if (!global.game_pause){
+			if (random(2.5) < 1){
+				part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_poison_0, 1);
+			}
+
+			if (random(3.5) < 1){
+				part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_poison_1, 1);
+			}
+		}
+		
+		a = wv;
+		r = 255;
+		g = 255;
+		b = 255;
+	}
+}
+
+if (i_blendTime > 0){
+	var colour = make_color_rgb(76, 53, 53);
+	if (is_metal){
+		colour = c_white;
+	}
+	
+	var alpha = 1 - (1 / i_blendTime);
+	a = alpha;
+	r = color_get_red(colour);
+	g = color_get_green(colour);
+	b = color_get_blue(colour);
 }
 
 if (whiteflash_alpha > 0){
-	gpu_set_fog(true, c_white, 0, 0);
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, -1, whiteflash_alpha);
-	gpu_set_fog(false, c_black, 0, 0);
+	a = whiteflash_alpha;
+	r = 255;
+	g = 255;
+	b = 255;
 }
 
-if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_companion_0) || (object_index == obj_companion_1) || (object_index == obj_companion_2) || (object_index == obj_companion_3){
-	if (burn){
-		scr_draw_burn(6, 18, x, y + 3, image_alpha);
-	}
+if (r > 0) || (g > 0) || (b > 0) || (a > 0){
+	shader_set_uniform_f(shader_alpha, a);
+	shader_set_uniform_f(shader_red, r);
+	shader_set_uniform_f(shader_green, g);
+	shader_set_uniform_f(shader_blue, b);
+	draw_self();
+}
 
-	if (poison){
-		scr_draw_poison(6, 18, x, y + 3, image_alpha);
-	}
-	
-	if (headless){
-		headless_image += 0.35;
-		
-		if (object_index != obj_enemy_2) && (object_index != obj_companion_3) && (object_index != obj_thedogkeeper_dog){
-			draw_sprite_ext(spr_enemy_0_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, 1);
-		}else{
-			draw_sprite_ext(spr_enemy_2_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, 1);
-		}
-	}
-}else if (object_index == obj_enemy_1){
-	if (burn){
-		scr_draw_burn(6, 6, x, y - 10, image_alpha);
-	}
+shader_reset();
 
-	scr_draw_poison(6, 6, x, y - 10, image_alpha);
+if (headless){
+	headless_image += 0.35;
+
+	if (object_index != obj_enemy_2) && (object_index != obj_companion_3) && (object_index != obj_thedogkeeper_dog){
+		draw_sprite_ext(spr_enemy_0_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, 1);
+	}else{
+		draw_sprite_ext(spr_enemy_2_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, 1);
+	}
 }
