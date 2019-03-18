@@ -1,3 +1,8 @@
+if (!canmove){
+	sprite_index = spr_player_idle_1;
+	image_speed = 0;
+	exit;
+}
 flashlight_move = true;
 
 // Blend Time

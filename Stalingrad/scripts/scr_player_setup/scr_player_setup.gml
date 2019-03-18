@@ -10,6 +10,7 @@ xaxis = 0;
 yaxis = 0;
 len = 0;
 dir = 0;
+canmove = true;
 
 // Light
 flashlight_move = false;

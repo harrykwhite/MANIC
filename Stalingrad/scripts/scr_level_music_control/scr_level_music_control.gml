@@ -149,5 +149,7 @@ if (!global.game_pause){
 		}
 	}
 }else{
-	spawn_pause_update = true;
+	if (!obj_controller_ui.pausedialogue){
+		spawn_pause_update = true;
+	}
 }

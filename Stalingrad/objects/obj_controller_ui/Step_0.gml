@@ -64,6 +64,25 @@ if (!global.game_pause){
 	if (score_current < global.game_score){
 		score_current += 50;
 	}
+	
+	// Pause Dialogue
+	if (keyboard_check_pressed(ord("W"))) || (keyboard_check_pressed(vk_up)){
+		if (pausedialogue_option_selected > 0){
+			pausedialogue_option_selected --;
+		}else{
+			pausedialogue_option_selected = pausedialogue_option_max - 1;
+		}
+	}
+	
+	if (keyboard_check_pressed(ord("S"))) || (keyboard_check_pressed(vk_down)){
+		if (pausedialogue_option_selected < pausedialogue_option_max - 1){
+			pausedialogue_option_selected ++;
+		}else{
+			pausedialogue_option_selected = 0;
+		}
+	}
+	
+	
 }else{
 	// Pause
 	if (!pausedialogue){
@@ -131,33 +150,16 @@ if (!global.game_pause){
 			}
 		}
 	}else{
-		// Pause Dialogue
-		if (keyboard_check_pressed(ord("W"))) || (keyboard_check_pressed(vk_up)){
-			if (pausedialogue_option_selected > 0){
-				pausedialogue_option_selected --;
-			}else{
-				pausedialogue_option_selected = pausedialogue_option_max - 1;
-			}
-		}
-	
-		if (keyboard_check_pressed(ord("S"))) || (keyboard_check_pressed(vk_down)){
-			if (pausedialogue_option_selected < pausedialogue_option_max - 1){
-				pausedialogue_option_selected ++;
-			}else{
-				pausedialogue_option_selected = 0;
-			}
-		}
-	
 		if (pausedialogue_time < 20){
 			pausedialogue_time ++;
 		}else{
 			if (keyboard_check_pressed(ord("E"))){
-				global.game_pause = false;
 				pausedialogue = false;
 				pausedialogue_time = 0;
+				global.game_pause = false;
 				exit;
 			}
-		
+	
 			if (keyboard_check_pressed(vk_enter)){
 				if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
 					global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
@@ -166,11 +168,11 @@ if (!global.game_pause){
 				if (pausedialogue_type_option_traingoto[pausedialogue_option_selected] != -1){
 					obj_controller_gameplay.cutscene_traingoto = pausedialogue_type_option_traingoto[pausedialogue_option_selected];
 				}
-				
+			
 				obj_controller_gameplay.cutscene_trainstart_type = pausedialogue_type_option_trainstart_type[pausedialogue_option_selected];
 				obj_controller_gameplay.cutscene_trainroom = pausedialogue_type_option_trainroom[pausedialogue_option_selected];
-				global.game_pause = false;
 				pausedialogue = false;
+				global.game_pause = false;
 			}
 		}
 	}

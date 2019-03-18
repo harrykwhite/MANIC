@@ -45,7 +45,7 @@ if (instance_exists(global.player)){
 	}
     
     if (global.player.state == scr_player_dash) || (global.cutscene_current != -1){
-        if (visible ){
+        if (visible){
             fade_out = true;
         }
         
