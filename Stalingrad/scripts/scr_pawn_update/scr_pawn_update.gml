@@ -17,8 +17,8 @@ if (i_time > 0){
     i_time = 0;
 }
 
-if (i_blendTime > 0){
-    i_blendTime--;
+if (i_blend_time > 0){
+    i_blend_time--;
 }else{
     blend = -1;
 }

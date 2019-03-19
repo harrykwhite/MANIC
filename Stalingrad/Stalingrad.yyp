@@ -4199,14 +4199,6 @@
             }
         },
         {
-            "Key": "6958e1c3-0bd4-472d-963e-a6a64970fa6b",
-            "Value": {
-                "id": "b4458103-f4e9-4633-bf6c-3a90de792ed7",
-                "resourcePath": "shaders\\sh_screentint\\sh_screentint.yy",
-                "resourceType": "GMShader"
-            }
-        },
-        {
             "Key": "696bead5-70d8-46cd-b1a1-bd16457e94d7",
             "Value": {
                 "id": "e79d3ec3-00b3-4b30-8264-212ee849a199",

@@ -1,5 +1,5 @@
 var is_metal = false;
-var wv = wave(0.15, 0.25, 2, 0);
+var wv = wave(0.05, 0.15, 2, 0);
 
 if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 	is_metal = true;
@@ -21,9 +21,9 @@ if (!is_metal){
 		}
 		
 		a = wv;
-		r = color_get_red(make_color_rgb(76, 53, 53));
-		g = color_get_green(make_color_rgb(76, 53, 53));
-		b = color_get_blue(make_color_rgb(76, 53, 53));
+		r = 80;
+		g = 0;
+		b = 0;
 	}
 }
 
@@ -90,13 +90,13 @@ if (!is_metal){
 	}
 }
 
-if (i_blendTime > 0){
-	var colour = make_color_rgb(76, 53, 53);
+if (i_blend_time > 0){
+	var colour = make_color_rgb(120, 0, 0);
 	if (is_metal){
 		colour = c_white;
 	}
 	
-	var alpha = 1 - (1 / i_blendTime);
+	var alpha = 1 - (1 / i_blend_time);
 	a = alpha;
 	r = color_get_red(colour);
 	g = color_get_green(colour);

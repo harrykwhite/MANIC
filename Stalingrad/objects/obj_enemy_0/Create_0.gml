@@ -89,7 +89,7 @@ move_xTo = x;
 move_yTo = y;
 
 i_time = 0;
-i_blendTime = 0;
+i_blend_time = 0;
 
 knockback_speed = 0;
 knockback_direction = 0;

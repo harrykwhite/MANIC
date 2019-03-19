@@ -19,6 +19,7 @@ if (interact){
 			obj_controller_ui.pausedialogue = true;
 			obj_controller_ui.pausedialogue_type = 0;
 			obj_controller_ui.pausedialogue_type_text = text;
+			global.game_pause = true;
 		}
 	}else{
 		if (!obj_controller_ui.pausedialogue){

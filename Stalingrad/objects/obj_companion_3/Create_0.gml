@@ -52,7 +52,7 @@ move_xTo = x;
 move_yTo = y;
 
 i_time = 0;
-i_blendTime = 0;
+i_blend_time = 0;
 
 heal_time_max = 60 * 1.35;
 heal_time = heal_time_max;

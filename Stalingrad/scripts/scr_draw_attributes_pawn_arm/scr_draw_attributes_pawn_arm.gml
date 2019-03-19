@@ -1,6 +1,7 @@
 if (instance_exists(owner)){
 	var is_metal = false;
-	var wv = wave(0.15, 0.25, 2, 0);
+	var wv = wave(0.05, 0.15, 2, 0);
+	var set = false;
 	
 	if (owner.object_index == obj_enemy_3) || (owner.object_index == obj_giantturret) || (owner.object_index == obj_giantturret_flamethrower){
 		is_metal = true;
@@ -15,9 +16,9 @@ if (instance_exists(owner)){
 	
 	if (owner.health_current <= floor(owner.health_max / 3)){
 	    a = wv;
-		r = color_get_red(make_color_rgb(76, 53, 53));
-		g = color_get_green(make_color_rgb(76, 53, 53));
-		b = color_get_blue(make_color_rgb(76, 53, 53));
+		r = 80;
+		g = 0;
+		b = 0;
 	}
 	
 	if (owner.burn){
@@ -36,13 +37,13 @@ if (instance_exists(owner)){
 		}
 	}
 	
-	if (owner.i_blendTime > 0){
-		var colour = make_color_rgb(76, 53, 53);
+	if (owner.i_blend_time > 0){
+		var colour = make_color_rgb(120, 0, 0);
 		if (is_metal){
 			colour = c_white;
 		}
 	
-		var alpha = 1 - (1 / owner.i_blendTime);
+		var alpha = 1 - (1 / owner.i_blend_time);
 		a = alpha;
 		r = color_get_red(colour);
 		g = color_get_green(colour);
@@ -72,17 +73,28 @@ if (instance_exists(owner)){
 		            }
 		        }
 				
-		        draw_sprite_ext(sprite_index, 1, x + lengthdir_x(4, angle), (y - 1) + lengthdir_y(4, angle), 1, image_yscale, angle, c_white, 1);
+				
+				if (r > 0) || (g > 0) || (b > 0) || (a > 0){
+					shader_set_uniform_f(shader_alpha, a);
+					shader_set_uniform_f(shader_red, r);
+					shader_set_uniform_f(shader_green, g);
+					shader_set_uniform_f(shader_blue, b);
+					draw_sprite_ext(sprite_index, 1, x + lengthdir_x(4, angle), (y - 1) + lengthdir_y(4, angle), 1, image_yscale, angle, c_white, 1);
+					draw_self();
+					set = true;
+				}
 		    }
 		}
 	}
 	
-	if (r > 0) || (g > 0) || (b > 0) || (a > 0){
-		shader_set_uniform_f(shader_alpha, a);
-		shader_set_uniform_f(shader_red, r);
-		shader_set_uniform_f(shader_green, g);
-		shader_set_uniform_f(shader_blue, b);
-		draw_self();
+	if (!set){
+		if (r > 0) || (g > 0) || (b > 0) || (a > 0){
+			shader_set_uniform_f(shader_alpha, a);
+			shader_set_uniform_f(shader_red, r);
+			shader_set_uniform_f(shader_green, g);
+			shader_set_uniform_f(shader_blue, b);
+			draw_self();
+		}
 	}
 	
 	shader_reset();

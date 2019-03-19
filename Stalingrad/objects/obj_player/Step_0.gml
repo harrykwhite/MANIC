@@ -6,10 +6,10 @@ if (!canmove){
 flashlight_move = true;
 
 // Blend Time
-if (i_blendTime > 0){
-    i_blendTime--;
+if (i_blend_time > 0){
+    i_blend_time--;
 }else{
-    i_blendTime = 0;
+    i_blend_time = 0;
     blend = -1;
 }
 

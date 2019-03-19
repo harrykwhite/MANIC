@@ -11,7 +11,7 @@ health_current -= dmg;
 knockback_speed = kbs;
 knockback_direction = kbd;
 i_time = it;
-i_blendTime = 5;
+i_blend_time = 5;
 health_scale = 1.5;
 
 var corpse = noone;

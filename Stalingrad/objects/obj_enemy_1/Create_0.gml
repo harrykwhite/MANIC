@@ -23,7 +23,7 @@ move_time = 0;
 move_speed = random_range(1.6, 2.3);
 
 i_time = 16;
-i_blendTime = 0;
+i_blend_time = 0;
 
 knockback_speed = 0;
 knockback_direction = 0;

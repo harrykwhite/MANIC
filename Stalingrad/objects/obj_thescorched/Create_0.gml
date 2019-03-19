@@ -57,7 +57,7 @@ move_yTo = y;
 move_away_time = 20 + random_range(-10, 10);
 
 i_time = 0;
-i_blendTime = 0;
+i_blend_time = 0;
 flash_time = 0;
 
 knockback_speed = 0;

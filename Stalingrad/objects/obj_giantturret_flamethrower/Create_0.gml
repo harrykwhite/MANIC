@@ -28,7 +28,7 @@ bleed = false;
 defense = 0;
 
 i_time = 0;
-i_blendTime = 0;
+i_blend_time = 0;
 
 knockback_speed = 0;
 knockback_direction = 0;

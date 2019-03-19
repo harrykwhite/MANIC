@@ -3,8 +3,8 @@ if (grain_alpha > 0){
 	var ypos = camera_get_view_y(view_camera[0]);
 	var width = camera_get_view_width(view_camera[0]);
 	var height = camera_get_view_height(view_camera[0]);
-	var cellwidth = 144;
-	var cellheight = 144;
+	var cellwidth = 32;
+	var cellheight = 32;
 	var light = false;
 	draw_set_colour(c_white);
 
@@ -14,7 +14,7 @@ if (grain_alpha > 0){
 			var _y = yy + ypos;
 		
 			draw_set_alpha(random_range(0.07, 0.1) * grain_alpha);
-			draw_sprite(spr_ui_grain, grain_image, _x, _y);
+			draw_rectangle(_x, _y, cellwidth - 1, cellheight - 1, false);
 		}
 	}
 	

@@ -27,25 +27,54 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		
 		var armx = obj_player_arm.x + lengthdir_x(4, angle);
 		var army = obj_player_arm.y - 1 + lengthdir_y(4, angle);
+		draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 1);
 		
-        draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 1);
-        
+		var wv = wave(0.05, 0.15, 2, 0);
+		
+		shader_set(sh_pawntint);
+		var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");
+		var shader_red = shader_get_uniform(sh_pawntint, "_red");
+		var shader_green = shader_get_uniform(sh_pawntint, "_green");
+		var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
+		var r = 0, g = 0, b = 0, a = 0;
+		
         if (global.player_healthCurrent <= 2){
-            gpu_set_fog(true, make_colour_rgb(117, 39, 39), 0, 0);
-            draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, wave(0.15, 0.25, 2, 0));
-			gpu_set_fog(false, c_black, 0, 0);
+            a = wv;
+			r = 80;
+			g = 0;
+			b = 0;
 		}
 		
-		if (global.player.burn){
-			gpu_set_fog(true, c_white, 0, 0);
-			draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 0.125);
-			gpu_set_fog(false, c_black, 0, 0);
+		if (burn) || (poison){
+			a = wv;
+			r = 255;
+			g = 255;
+			b = 255;
 		}
 		
-		if (global.player.poison){
-			gpu_set_fog(true, c_white, 0, 0);
-			draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 0.1);
-			gpu_set_fog(false, c_black, 0, 0);
+		if (i_blend_time > 0){
+			var alpha = 1 - (1 / i_blend_time);
+			a = alpha;
+			r = 80;
+			g = 0;
+			b = 0;
 		}
+		
+		if (whiteflash_alpha > 0){
+			a = whiteflash_alpha;
+			r = 255;
+			g = 255;
+			b = 255;
+		}
+		
+		if (r > 0) || (g > 0) || (b > 0) || (a > 0){
+			shader_set_uniform_f(shader_alpha, a);
+			shader_set_uniform_f(shader_red, r);
+			shader_set_uniform_f(shader_green, g);
+			shader_set_uniform_f(shader_blue, b);
+			draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 1);
+		}
+		
+		shader_reset();
     }
 }

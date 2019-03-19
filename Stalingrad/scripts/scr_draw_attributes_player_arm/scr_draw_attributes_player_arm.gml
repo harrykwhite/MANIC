@@ -1,4 +1,4 @@
-var wv = wave(0.15, 0.25, 2, 0);
+var wv = wave(0.05, 0.15, 2, 0);
 var player = global.player;
 
 shader_set(sh_pawntint);
@@ -10,9 +10,9 @@ var r = 0, g = 0, b = 0, a = 0;
 
 if (global.player_healthCurrent <= 2){
     a = wv;
-	r = color_get_red(make_color_rgb(76, 53, 53));
-	g = color_get_green(make_color_rgb(76, 53, 53));
-	b = color_get_blue(make_color_rgb(76, 53, 53));
+	r = 80;
+	g = 0;
+	b = 0;
 }
 
 if (player.burn){

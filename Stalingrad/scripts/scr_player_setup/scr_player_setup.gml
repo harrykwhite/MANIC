@@ -69,7 +69,7 @@ poison_time = -1;
 poison_cycle_amount = 0;
 
 // Blend and Invincibility
-i_blendTime = 0;
+i_blend_time = 0;
 i_time = 0;
 
 // Colliders
