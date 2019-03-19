@@ -415,6 +415,14 @@
             }
         },
         {
+            "Key": "094bdc05-ea82-424e-8ced-70f459511df2",
+            "Value": {
+                "id": "307d0371-a4c4-453e-97c9-e13a7ed4a8fb",
+                "resourcePath": "objects\\obj_proj_8\\obj_proj_8.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "09520cb4-cab0-4e1f-b16f-caef40a7f19c",
             "Value": {
                 "id": "2043c3c9-d8a9-4939-b025-50b2d5f7404c",
@@ -2452,6 +2460,14 @@
                 "id": "67a7d188-598f-45ed-8038-3bfe53f04984",
                 "resourcePath": "sprites\\spr_fence_0\\spr_fence_0.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "39af22f6-023f-479b-9ef9-fdd8d430f0c0",
+            "Value": {
+                "id": "cd04fb66-3728-4946-9813-ce9772f5adc6",
+                "resourcePath": "scripts\\scr_part_type_smoke_8\\scr_part_type_smoke_8.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -5847,6 +5863,14 @@
             }
         },
         {
+            "Key": "9007cfb4-96d5-48be-bc0b-9befa2e46ebc",
+            "Value": {
+                "id": "f315492e-31ad-4cf3-864d-b22899c0db54",
+                "resourcePath": "scripts\\scr_giantturret_behaviour_2\\scr_giantturret_behaviour_2.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "900813e7-9439-4356-a1f8-f22bbbae009e",
             "Value": {
                 "id": "00768d01-3b9a-40d6-8143-218929035c51",
@@ -8503,6 +8527,14 @@
             }
         },
         {
+            "Key": "d7d551cf-43d2-41dc-8928-bdd1b9ee4e44",
+            "Value": {
+                "id": "c7cf0cf7-89c8-4ff7-b5ff-73b57a0e9a3e",
+                "resourcePath": "sprites\\spr_proj_8\\spr_proj_8.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "d8254958-e8e0-4a8a-8b08-b3bc13ea32cc",
             "Value": {
                 "id": "ab3c6d67-37c8-4134-912f-1f4db775c40a",
@@ -10172,6 +10204,7 @@
         "f22da100-001d-4cd5-83fc-ab4be3fe5fcf",
         "c679daf0-a894-4dd3-a7cb-f37ccadb1ee3",
         "38eafad1-bdb8-4613-bf46-110ae90066eb",
+        "9007cfb4-96d5-48be-bc0b-9befa2e46ebc",
         "05c22188-9249-4357-8348-793b11b80f44",
         "fcece1a5-15fd-40e9-8a52-0b7f9bf96f6f",
         "2cfc68c7-7748-4dda-b686-d491498c3ee3",
@@ -10261,6 +10294,7 @@
         "3ecc77d4-6bcc-405f-b8bb-4aa07d0fccd8",
         "6a52f49f-3538-4fc9-9502-0ba156e9e480",
         "216c0e90-7b7e-44ac-a88c-447616c61746",
+        "39af22f6-023f-479b-9ef9-fdd8d430f0c0",
         "04dee12f-7e25-421d-aad5-41635fc11b4e",
         "3f33801e-52b3-4894-92fb-54dd77afab8f",
         "eb31e0f7-d83e-4cab-a413-2cb63c1064f4",

@@ -67,7 +67,9 @@ if (instance_exists(target)){
 			attack = 0;
 		}
 		
-		shoot_time = 30;
+		shoot_time = 90;
+		shoot_burst = 0;
+		shoot_buildup_time = 0;
 		flamethrower_angle = 0;
 		flamethrower_angle_wait = 80;
 		flamethrower_time = 30;

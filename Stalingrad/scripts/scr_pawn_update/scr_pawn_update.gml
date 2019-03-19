@@ -129,6 +129,8 @@ if (health_current <= 0){
 					instance_destroy();
 				}
 			}
+		}else if (object_index == obj_giantturret) || (obj_giantturret_flamethrower){
+			doexplode = true;
 		}
 	}
 	

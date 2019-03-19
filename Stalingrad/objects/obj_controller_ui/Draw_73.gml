@@ -6,7 +6,7 @@ if (grain_alpha > 0){
 	var cellwidth = 32;
 	var cellheight = 32;
 	var light = false;
-	draw_set_colour(c_white);
+	draw_set_colour(c_ltgray);
 
 	for(var yy = 0; yy < height; yy += cellheight){
 		for(var xx = 0; xx < width; xx += cellwidth){
@@ -14,7 +14,7 @@ if (grain_alpha > 0){
 			var _y = yy + ypos;
 		
 			draw_set_alpha(random_range(0.07, 0.1) * grain_alpha);
-			draw_rectangle(_x, _y, cellwidth - 1, cellheight - 1, false);
+			draw_rectangle(_x, _y, _x + cellwidth - 1, _y + cellheight - 1, false);
 		}
 	}
 	

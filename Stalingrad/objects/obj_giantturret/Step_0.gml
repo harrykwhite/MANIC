@@ -48,6 +48,10 @@ switch(state){
 	case 1:
 		scr_giantturret_behaviour_1();
 		break;
+	
+	case 2:
+		scr_giantturret_behaviour_2();
+		break;
 }
 
 scr_pawn_update();

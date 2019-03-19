@@ -32,6 +32,7 @@ scr_part_type_smoke_4();
 scr_part_type_smoke_5();
 scr_part_type_smoke_6();
 scr_part_type_smoke_7();
+scr_part_type_smoke_8();
 
 scr_part_type_wood_0();
 scr_part_type_wood_1();

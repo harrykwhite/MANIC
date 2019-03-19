@@ -9,9 +9,10 @@ attack = 0;
 attack_time = 0;
 attack_time_max = 1;
 
-shoot_time = 30;
+shoot_time = 90;
 shoot_burst = 0;
 shoot_dir = 0;
+shoot_buildup_time = 0;
 
 flamethrower_angle = 0;
 flamethrower_angle_wait = 80;

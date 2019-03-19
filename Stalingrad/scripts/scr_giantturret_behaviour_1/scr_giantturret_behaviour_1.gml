@@ -5,6 +5,12 @@ if (instance_exists(target)){
 	
 	// Shooting
 	if (attack == 0){
+		attack_time_max = 60 * 8.5;
+		
+		if (shoot_buildup_time < 90){
+			shoot_buildup_time ++;
+		}
+		
 		if (shoot_time > 0){
 			shoot_time --;
 		}else{
@@ -24,7 +30,7 @@ if (instance_exists(target)){
 		    var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.dir = shoot_dir;
 		    bullet.image_angle = shoot_dir;
-			bullet.spd = 12;
+			bullet.spd = 11;
 			bullet.damage = 1;
 			bullet.strength = 1.25;
 			bullet.enemy = true;
@@ -100,14 +106,19 @@ if (instance_exists(target)){
 		}
 		
 		if (attack == 2){
-			var drop = instance_create(x, y, obj_weapondrop);
-			drop.index = choose(PlayerWeapon.Katana, PlayerWeapon.Spear, PlayerWeapon.AssaultRifle, PlayerWeapon.QuickGun);
-			drop.spd = 9;
-			drop.dir = random(360);
-			drop.angle = 0;
+			if (instance_number(obj_weapondrop) < 3){
+				audio_play_sound(snd_weapon_swing_0, 3, false);
+				var drop = instance_create(x, y, obj_weapondrop);
+				drop.index = choose(PlayerWeapon.Katana, PlayerWeapon.Spear, PlayerWeapon.AssaultRifle, PlayerWeapon.QuickGun);
+				drop.spd = 11;
+				drop.dir = random(360);
+				drop.angle = 0;
+			}
 		}
 		
-		shoot_time = 30;
+		shoot_time = 90;
+		shoot_burst = 0;
+		shoot_buildup_time = 0;
 		flamethrower_angle = 0;
 		flamethrower_angle_wait = 80;
 		flamethrower_time = 30;

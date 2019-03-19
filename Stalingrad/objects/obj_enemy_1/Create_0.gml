@@ -13,6 +13,7 @@ mylight = noone;
 defense = 0;
 burn = false;
 poison = true;
+headless = false;
 
 bleed = false;
 bleed_time = 0;
