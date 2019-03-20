@@ -46,7 +46,12 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		}
 		
 		if (burn) || (poison){
-			a = wv;
+			if (burn){
+				a = wv;
+			}else{
+				a = wv * 0.7;
+			}
+			
 			r = 255;
 			g = 255;
 			b = 255;

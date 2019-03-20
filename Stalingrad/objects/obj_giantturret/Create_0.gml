@@ -9,7 +9,7 @@ attack = 0;
 attack_time = 0;
 attack_time_max = 1;
 
-shoot_time = 90;
+shoot_time = 120;
 shoot_burst = 0;
 shoot_dir = 0;
 shoot_buildup_time = 0;
@@ -50,7 +50,7 @@ whiteflash_alphadec = 0.075;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 80;
+health_max = 100;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

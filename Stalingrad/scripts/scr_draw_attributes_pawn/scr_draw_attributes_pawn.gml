@@ -72,18 +72,23 @@ if (burn){
 }
 
 if (!is_metal){
+	var coffset = 0;
+	if (object_index == obj_enemy_1){
+		coffset = 3;
+	}
+	
 	if (poison){
 		if (!global.game_pause){
-			if (random(2.5) < 1){
+			if (random(2.5 + coffset) < 1){
 				part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_poison_0, 1);
 			}
 
-			if (random(3.5) < 1){
+			if (random(3.5 + coffset) < 1){
 				part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_poison_1, 1);
 			}
 		}
 		
-		a = wv;
+		a = wv * 0.7;
 		r = 255;
 		g = 255;
 		b = 255;
@@ -91,7 +96,7 @@ if (!is_metal){
 }
 
 if (i_blend_time > 0){
-	var colour = make_color_rgb(120, 0, 0);
+	var colour = make_color_rgb(80, 0, 0);
 	if (is_metal){
 		colour = c_white;
 	}

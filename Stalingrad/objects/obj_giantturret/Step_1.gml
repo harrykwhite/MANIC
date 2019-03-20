@@ -6,6 +6,10 @@ if (destroy){
 		}
 	}
 	
+	if (instance_exists(mylight)){
+		instance_destroy(mylight);
+	}
+	
 	x = xstart;
 	y = ystart;
 	event_perform(ev_create, 0);

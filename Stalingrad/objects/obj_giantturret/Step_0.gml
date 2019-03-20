@@ -36,9 +36,27 @@ headless = false;
 
 scr_pawn_status_handler();
 
+var sprev = state;
 state = 0;
-if (health_current <= 50) { state = 1; }
-if (health_current <= 25) { state = 2; }
+if (health_current <= 67) { state = 1; }
+if (health_current <= 33) { state = 2; }
+
+if (state != sprev){
+	shoot_time = 120;
+	shoot_burst = 0;
+	shoot_buildup_time = 0;
+	flamethrower_angle = 0;
+	flamethrower_angle_wait = 80;
+	flamethrower_time = 30;
+	attack_time = 0;
+	attack = 0;
+	
+	for(var i = 0; i < 4; i++){
+		if (instance_exists(flamethrower[i])){
+			flamethrower[i].shoot = false;
+		}
+	}
+}
 
 switch(state){
 	case 0:

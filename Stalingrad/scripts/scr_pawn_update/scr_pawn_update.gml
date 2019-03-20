@@ -65,7 +65,6 @@ if (health_current <= 0){
     
     instance_destroy();
 	audio_play_sound(snd_other_kick_0, 3, false);
-	audio_play_sound(snd_character_death_0, 3, false);
 	
 	if (mylight != noone){
 		instance_destroy(mylight);
@@ -164,6 +163,13 @@ if (health_current <= 0){
 		scr_effect_vignette_flash(c_white, 0.4, 0.02);
 		scr_effect_screenshake(5);
 		scr_sound_play_distance(snd_weapon_explode_0, false, 600);
+		
+		if (object_index == obj_giantturret_flamethrower){
+			instance_create(x + random_range(-6, 6), y + random_range(3, 5), obj_health_pack_1);
+			scr_weapon_ammo_spawn(choose(4, 6), 7, 5, x, y + 2);
+		}
+	}else{
+		scr_sound_play_distance(snd_character_death_0, false, 600);
 	}
 	
 	if (object_index == obj_enemy_0){
@@ -199,7 +205,9 @@ if (health_current <= 0){
 			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
 			global.boss_current = -1;
 		}else{
-			if (chance(29)) scr_weapon_ammo_spawn(choose(2, 4), 5, 6, x, y + 5);
+			if (chance(29)){
+				scr_weapon_ammo_spawn(choose(2, 4), 5, 6, x, y + 5);
+			}
 		}
 	
 		if (weapon.index != PawnWeapon.Knife) && (weapon.index != -1){

@@ -30,7 +30,7 @@ if (hp < health_max){
 var width = 86;
 var height = 8;
 var xx = x;
-var yy = y + 36;
+var yy = y + 22;
 
 var x1 = ((xx - camera_get_view_x(view_camera[0])) * GUI_POS_X) - (width / 2);
 var y1 = ((yy - camera_get_view_y(view_camera[0])) * GUI_POS_Y) - (height / 2);

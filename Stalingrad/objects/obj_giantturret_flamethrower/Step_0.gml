@@ -13,8 +13,10 @@ if (global.cutscene_current != -1){
 	}
 }
 
-if (!turret.active){
-	ispaused = true;
+if (instance_exists(turret)){
+	if (!turret.active){
+		ispaused = true;
+	}
 }
 
 if (ispaused){

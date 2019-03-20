@@ -33,13 +33,14 @@ if (i_time < 1) && (other.spd > 0) && (other.enemy == false){
 		if (object_index != obj_enemy_1){
 			with(other){
 				instance_destroy();
-			
-				if (other.object_index != obj_enemy_3){
-					part_type_direction(global.pt_blood_5, image_angle - 20, image_angle + 20, 0, 0);
-					part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
-					repeat(8)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
-				}
+				part_type_direction(global.pt_blood_5, image_angle - 20, image_angle + 20, 0, 0);
+				part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
+				repeat(8)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
 			}
+		}
+	}else{
+		with(other){
+			instance_destroy();
 		}
 	}
 	

@@ -38,7 +38,7 @@ if (burn){
 }
 
 if (poison){
-	a = wv;
+	a = wv * 0.7;
 	r = 255;
 	g = 255;
 	b = 255;

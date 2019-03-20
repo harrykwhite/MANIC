@@ -7199,14 +7199,6 @@
             }
         },
         {
-            "Key": "af573f4b-e624-416b-9025-e9edbf6acb1e",
-            "Value": {
-                "id": "a2cd7ed2-f33b-4e36-a6b0-79c0b68f528a",
-                "resourcePath": "sprites\\spr_grass\\spr_grass.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "af59833d-6dfd-4fc5-8465-c460afee2dd9",
             "Value": {
                 "id": "9ed6d0ff-b4e7-4292-9e3c-229f0577f1f7",
@@ -7708,14 +7700,6 @@
                 "id": "8ce6edb8-3e07-4ee8-aaac-96fa29074905",
                 "resourcePath": "objects\\obj_torch_wall_0_light\\obj_torch_wall_0_light.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "bc65e744-f0ba-4656-8555-855a8da91b43",
-            "Value": {
-                "id": "1aeabe06-477a-4d48-a256-8e5a2711bd3f",
-                "resourcePath": "views\\bc65e744-f0ba-4656-8555-855a8da91b43.yy",
-                "resourceType": "GMFolder"
             }
         },
         {
@@ -8299,14 +8283,6 @@
             "Value": {
                 "id": "868bc1a6-417d-4db4-9466-5827cf7ab392",
                 "resourcePath": "sprites\\spr_enemy_0_idle_0\\spr_enemy_0_idle_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "cf825c14-0ff1-4a51-a106-5135b943b681",
-            "Value": {
-                "id": "3c618b22-155f-45d7-bbb9-d9a1cd60c59a",
-                "resourcePath": "sprites\\spr_box\\spr_box.yy",
                 "resourceType": "GMSprite"
             }
         },

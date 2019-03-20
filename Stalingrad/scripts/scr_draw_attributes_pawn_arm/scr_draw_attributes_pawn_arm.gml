@@ -30,7 +30,7 @@ if (instance_exists(owner)){
 	
 	if (owner.object_index != obj_thescorched){
 		if (owner.poison){
-			a = wv;
+			a = wv * 0.7;
 			r = 255;
 			g = 255;
 			b = 255;
@@ -38,7 +38,7 @@ if (instance_exists(owner)){
 	}
 	
 	if (owner.i_blend_time > 0){
-		var colour = make_color_rgb(120, 0, 0);
+		var colour = make_color_rgb(80, 0, 0);
 		if (is_metal){
 			colour = c_white;
 		}

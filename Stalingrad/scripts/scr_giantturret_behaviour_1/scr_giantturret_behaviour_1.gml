@@ -7,7 +7,7 @@ if (instance_exists(target)){
 	if (attack == 0){
 		attack_time_max = 60 * 8.5;
 		
-		if (shoot_buildup_time < 90){
+		if (shoot_buildup_time < 120){
 			shoot_buildup_time ++;
 		}
 		
@@ -47,7 +47,7 @@ if (instance_exists(target)){
 		
 	// Flamethrower
 	}else if (attack == 1){
-		attack_time_max = 60 * 15;
+		attack_time_max = 60 * 11;
 		
 		if (flamethrower_angle_sign == 1){
 			if (flamethrower_angle < 90){
@@ -116,7 +116,7 @@ if (instance_exists(target)){
 			}
 		}
 		
-		shoot_time = 90;
+		shoot_time = 120;
 		shoot_burst = 0;
 		shoot_buildup_time = 0;
 		flamethrower_angle = 0;
