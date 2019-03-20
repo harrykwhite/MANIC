@@ -2,8 +2,12 @@
 global.enemy[0] = obj_enemy_0;
 global.enemy[1] = obj_enemy_1;
 global.enemy[2] = obj_enemy_2;
-global.enemy[3] = obj_thescorched;
-global.enemy[4] = obj_thedogkeeper;
+global.enemy[3] = obj_enemy_3;
+global.enemy[4] = obj_thescorched;
+global.enemy[5] = obj_thedogkeeper;
+global.enemy[6] = obj_giantturret;
+global.enemy[7] = obj_giantturret_flamethrower;
+global.enemy[8] = obj_antagonist;
 
 // Companion Pawns
 global.companion[0] = obj_companion_0;
@@ -20,6 +24,7 @@ enum Boss{
 	TheScorched,
 	TheDogkeeper,
 	GiantTurret,
+	Antagonist,
 }
 
 global.boss_name[0] = "Enemy Horde";
@@ -46,9 +51,13 @@ global.boss_name[5] = "The Dog Keeper";
 global.boss_music[5] = m_boss_main_0;
 global.boss_stinger[5] = m_boss_stinger_0;
 
-global.boss_name[6] = "";
+global.boss_name[6] = "Giant Turret";
 global.boss_music[6] = m_boss_main_0;
 global.boss_stinger[6] = m_boss_stinger_0;
+
+global.boss_name[7] = "Antagonist";
+global.boss_music[7] = m_boss_main_0;
+global.boss_stinger[7] = m_boss_stinger_0;
 
 // Enumerators
 enum EnemyOneType{

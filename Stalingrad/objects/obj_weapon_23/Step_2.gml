@@ -1,4 +1,4 @@
-if (instance_exists(global.player)==false) || (instance_number(object_index)>1){
+if (!instance_exists(global.player)) || (instance_number(object_index) > 1){
     instance_destroy();
 }else{
     if (global.player.image_xscale == 1){

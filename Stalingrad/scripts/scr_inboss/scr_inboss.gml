@@ -62,5 +62,10 @@ if (instance_exists(obj_giantturret)){
 	}
 }
 
+if (instance_exists(obj_antagonist)){
+	global.boss_current = Boss.Antagonist;
+	return true;
+}
+
 global.boss_current = -1;
 return false;

@@ -1,4 +1,4 @@
-if ((global.cutscene_current != -1) && (global.cutscene_current != 39)) || (global.game_pause){
+if (global.game_pause){
 	exit;
 }
 

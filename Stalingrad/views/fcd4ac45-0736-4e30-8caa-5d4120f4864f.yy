@@ -10,7 +10,8 @@
         "834fd313-297f-42a7-be90-e77b26865bb6",
         "1effa054-af4c-4d03-b762-0d5316a25f0d",
         "fa182284-a431-47b4-9aac-04b24d662d2e",
-        "53056d41-34bd-4138-9c70-59a767de1300"
+        "53056d41-34bd-4138-9c70-59a767de1300",
+        "e83ee497-f828-4012-b3b8-661f71fd2709"
     ],
     "filterType": "GMSprite",
     "folderName": "Enemy 2",

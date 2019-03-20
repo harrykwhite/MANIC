@@ -128,7 +128,31 @@ if (health_current <= 0){
 					instance_destroy();
 				}
 			}
-		}else if (object_index == obj_giantturret) || (obj_giantturret_flamethrower){
+		}else if (object_index == obj_giantturret){
+			doexplode = true;
+			
+			for(var i = 0; i < 4; i ++){
+				if (instance_exists(flamethrower[i])){
+					flamethrower[i].health_current = 0;
+				}
+			}
+			
+			var antag = instance_create(x, y, obj_antagonist);
+			antag.arena_x = 292;
+			antag.arena_y = 306;
+			antag.arena_width = 430;
+			antag.arena_height = 276;
+			
+			global.cutscene_current = 40;
+			with(obj_controller_gameplay){
+				cutscene_look_x = other.x;
+				cutscene_look_y = other.y;
+				cutscene_look_time = 45;
+				cutscene_look_object = antag;
+				cutscene_look_prop = true;
+				cutscene_look_boss = Boss.Antagonist;
+			}
+		}else if (obj_giantturret_flamethrower){
 			doexplode = true;
 		}
 	}
@@ -209,7 +233,7 @@ if (health_current <= 0){
 				scr_weapon_ammo_spawn(choose(2, 4), 5, 6, x, y + 5);
 			}
 		}
-	
+		
 		if (weapon.index != PawnWeapon.Knife) && (weapon.index != -1){
 		    if (chance(dropchance)){
 				var xx, yy, angle, ind, w;

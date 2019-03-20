@@ -11,7 +11,9 @@
         "dec6d516-6522-425f-a18d-aed4288ff4a8",
         "29d32d1f-0d8a-4749-b1cb-3a84374eb83e",
         "890e27e7-6c6f-4656-88e6-875450d5f66d",
-        "cae2167d-06ef-49e6-bd68-cda2cb0a4917"
+        "cae2167d-06ef-49e6-bd68-cda2cb0a4917",
+        "7751b80f-7fb7-4763-a493-3894f221ad91",
+        "a22b0636-4359-4bb0-985b-f90d360074c2"
     ],
     "filterType": "GMObject",
     "folderName": "Boss",

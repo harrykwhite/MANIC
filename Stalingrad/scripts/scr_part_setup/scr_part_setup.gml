@@ -24,6 +24,8 @@ scr_part_type_blood_5();
 scr_part_type_gore_0();
 scr_part_type_gore_0_perm();
 
+scr_part_type_bodypart_0();
+
 scr_part_type_smoke_0();
 scr_part_type_smoke_1();
 scr_part_type_smoke_2();
