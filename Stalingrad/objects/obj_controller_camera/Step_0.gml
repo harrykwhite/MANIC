@@ -3,7 +3,7 @@ var xx, yy;
 var mdist = distance_to_point(mouse_x, mouse_y);
 
 if (global.weapon_slot_standalone == -1){
-	if (global.weapon_slot[global.weapon_slotcurrent]!=-1){
+	if (global.weapon_slot[global.weapon_slotcurrent]!= -1){
 	    camera_radius = global.weapon_camerarange[global.weapon_slot[global.weapon_slotcurrent]];
 	}else{
 	    camera_radius = -1;

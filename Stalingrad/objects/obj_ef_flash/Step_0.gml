@@ -5,7 +5,7 @@ if (fade == false){
         alpha = 1;
         fade = true;
         
-        if (script!=-1){
+        if (script!= -1){
             script_execute(script);
         }
     }

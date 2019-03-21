@@ -87,8 +87,8 @@ if (global.weapon_slot_standalone == -1){
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
 	    move_back = false;
 
-	    if (global.player_weapon!=-1){
-	        if (global.weapon_heavy[global.player_weapon]==false){
+	    if (global.player_weapon != -1){
+	        if (global.weapon_heavy[global.player_weapon] == false){
 	            sprite_index = spr_player_idle_0;
 	        }else{
 	            sprite_index = spr_player_idle_2;
@@ -105,7 +105,7 @@ if (global.weapon_slot_standalone == -1){
 	        move_back = false;
         
 	        if (global.player_weapon != -1){
-	            if (global.weapon_heavy[global.player_weapon]==false){
+	            if (global.weapon_heavy[global.player_weapon] == false){
 	                sprite_index = spr_player_walk_0;
 	            }else{
 	                sprite_index = spr_player_walk_2;
@@ -119,8 +119,8 @@ if (global.weapon_slot_standalone == -1){
 	        move_back = true;
 	        spd_multiplier -= 0.2;
         
-	        if (global.player_weapon!=-1){
-	            if (global.weapon_heavy[global.player_weapon]==false){
+	        if (global.player_weapon != -1){
+	            if (global.weapon_heavy[global.player_weapon] == false){
 	                sprite_index = spr_player_backwards_0;
 	            }else{
 	                sprite_index = spr_player_backwards_2;

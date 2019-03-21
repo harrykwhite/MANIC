@@ -1,5 +1,6 @@
 // Changing Combat States
 var bossmusic = noone;
+var level = global.level_current;
 
 if (global.boss_current != -1){
 	bossmusic = global.boss_music[global.boss_current];
@@ -17,7 +18,7 @@ if (global.boss_current != -1){
 			obj_controller_ui.leveltext_other = true;
 			obj_controller_ui.leveltext_text = string(global.boss_name[global.boss_current]);
 			
-			if (global.level_current != 9){
+			if (level != 9){
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 				audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
@@ -41,7 +42,7 @@ if (audio_is_playing(m_boss_main_0)){
 	}
 }
 
-if (!global.game_pause) && (global.boss_current == -1) && (global.level_current != 9){
+if (!global.game_pause) && (global.boss_current == -1) && (level != 9){
 	switch(global.game_combat_state){
 		case CombatState.Idle:
 			if (spawn_state_time_real >= (60 * spawn_state_time[global.game_combat_state])){
@@ -115,7 +116,7 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 		
 			break;
 	}
-}else if (global.boss_current == -1) && (global.level_current != 9){
+}else if (global.boss_current == -1) && (level != 9){
 	audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
@@ -126,30 +127,26 @@ if (!global.game_pause) && (global.boss_current == -1) && (global.level_current 
 
 // Restoring Music after Pause
 if (!global.game_pause){
-	if (spawn_pause_update){
-		spawn_pause_update = global.game_pause;
+	if (!spawn_pause_update){
+		spawn_pause_update = true;
 		
 		// Play other music.
-		if (global.level_current != 9){
+		if (level != 9){
 			audio_resume_sound(spawn_music_main[CombatState.Idle]);
 			audio_resume_sound(spawn_music_main[CombatState.Buildup]);
 			audio_resume_sound(spawn_music_main[CombatState.Climax]);
 		}
 		
-		if (global.level_current == 0) || (global.level_current == 6){
+		if (level == 0) || (level == 6){
 			audio_resume_sound(rain);
 		}
 		
-		if (global.level_current == 3) || (global.level_current == 5) || (global.level_current == 7){
+		if (level == 3) || (level == 5) || (level == 7){
 			audio_resume_sound(wind);
 		}
 		
 		if (bossmusic != noone){
 			audio_resume_sound(bossmusic);
 		}
-	}
-}else{
-	if (!obj_controller_ui.pausedialogue){
-		spawn_pause_update = true;
 	}
 }

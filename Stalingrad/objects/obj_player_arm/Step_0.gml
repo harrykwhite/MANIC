@@ -6,7 +6,7 @@ if (global.weapon_slot_standalone != -1){
 
 image_alpha = 1;
 
-if (instance_exists(global.player)) && (wcurrent!=-1){
+if (instance_exists(global.player)) && (wcurrent!= -1){
     
 	if (global.player.state == scr_player_dash){
         image_alpha = 0;
@@ -101,7 +101,7 @@ if (instance_exists(global.player)) && (wcurrent!=-1){
             
 	        }else{
 	            x = global.player.x + 3;
-	            y=(global.player.y - 4)+yoffset;
+	            y = (global.player.y - 4)+yoffset;
             
 				if (global.player.move_xTo == -1) && (global.player.move_yTo == -1){
 					if (global.weapon_type[wcurrent] == WeaponType.Throwing){

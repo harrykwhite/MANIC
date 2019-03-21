@@ -24,10 +24,10 @@ if (instance_exists(global.player)){
     repeat(amount){
         
         // Weapon Slot Scale
-        if (weaponslot_scale[counter] < 1.875){
-            weaponslot_scale[counter] += 0.25;
+        if (weaponslot_weaponscale[counter] < 1.875){
+            weaponslot_weaponscale[counter] += 0.25;
         }else{
-            weaponslot_scale[counter] = 1.875;
+            weaponslot_weaponscale[counter] = 1.875;
         }
         
         // Drawing Slot
@@ -35,9 +35,23 @@ if (instance_exists(global.player)){
         var yy = 78 + (yspace * counter);
 		
         if (global.weapon_slotcurrent == counter){
-            draw_sprite_ext(spr_ui_weaponslot_1, 0, xx + random_range(-shake, shake), yy + random_range(-shake, shake), 2.25, 2.25, 0, -1, weapon_standalone_alpha * ui_alpha);
-        }else{
-            draw_sprite_ext(spr_ui_weaponslot_0, 0, xx, yy, 2.25, 2.25, 0, -1, weapon_standalone_alpha * ui_alpha);
+			draw_sprite_ext(spr_ui_weaponslot_1, 0, xx + random_range(-shake, shake), yy + random_range(-shake, shake), 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
+			
+			if (global.weapon_slotscale[counter] < 1.075){
+				global.weapon_slotscale[counter] += 0.025;
+			}
+		}else{
+			if (global.weapon_slotscale[counter] > 1){
+				global.weapon_slotscale[counter] -= 0.025;
+			}
+			
+            if (counter > 0){
+				if (global.weapon_slotcurrent == counter - 1){
+					//yy += 10 * global.weapon_slotscale[counter - 1];
+				}
+			}
+			
+			draw_sprite_ext(spr_ui_weaponslot_0, 0, xx, yy, 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
         }
         
         // Drawing Weapon
@@ -45,20 +59,20 @@ if (instance_exists(global.player)){
             var spr = global.weapon_sprite[global.weapon_slot[counter]];
             
 			gpu_set_fog(true, c_gray, 0, 0);
-			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
+			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
 			
             gpu_set_fog(true, c_white, 0, 0);
-            draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
+            draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_white, 0, 0);
 			
         }else{
             var spr = spr_weapon_4;
-
+			
 			gpu_set_fog(true, c_dkgray, 0, 0);
-			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_scale[counter], weaponslot_scale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
+			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
 			
             gpu_set_fog(true, c_gray, 0, 0);
-            draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_scale[counter] + 0.25), (weaponslot_scale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
+            draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_black, 0, 0);
         }
 		

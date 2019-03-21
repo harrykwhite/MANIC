@@ -27,7 +27,7 @@ if (instance_exists(player)){
 }
 
 // Moving to Player
-if (instance_exists(player)) && (global.weapon_slot[global.weapon_slotcurrent]!=-1){
+if (instance_exists(player)) && (global.weapon_slot[global.weapon_slotcurrent]!= -1){
     if (attract){
         dir = point_direction(x, y, player.x, player.y);
         spd += 0.125;

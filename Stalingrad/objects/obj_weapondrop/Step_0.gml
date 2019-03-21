@@ -90,7 +90,7 @@ if (instance_exists(global.player)){
 						
 						if (instance_exists(obj_controller_ui)){
 			                obj_controller_ui.weaponslot_shake = 3;
-			                obj_controller_ui.weaponslot_scale[i] = 0;
+			                obj_controller_ui.weaponslot_weaponscale[i] = 0;
 			            }
 						
 						exit;
@@ -99,7 +99,7 @@ if (instance_exists(global.player)){
 				
 				if (instance_exists(obj_controller_ui)){
 	                obj_controller_ui.weaponslot_shake = 3;
-	                obj_controller_ui.weaponslot_scale[global.weapon_slotcurrent] = 0;
+	                obj_controller_ui.weaponslot_weaponscale[global.weapon_slotcurrent] = 0;
 	            }
 				
 				if (instance_exists(global.weapon_object[oldweapon])){

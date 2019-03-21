@@ -199,6 +199,8 @@ if (player_exists){
 				}
 			}
 		}
+		
+		spawn_pause_update = false;
 	}
 	
 }else{

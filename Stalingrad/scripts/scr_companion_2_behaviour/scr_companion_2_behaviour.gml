@@ -255,7 +255,7 @@ if (instance_exists(global.player)){
 	
 	distTo = distance_to_point(move_xTo, move_yTo);
 	if (weapon_does_exist){
-		if (distTo > 10){
+		if (distTo > 20){
 			weapon.dir = point_direction(x, y, move_xTo, move_yTo);
 		}
 	}

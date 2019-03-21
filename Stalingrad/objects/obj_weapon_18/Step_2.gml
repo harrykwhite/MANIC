@@ -32,9 +32,9 @@ if (instance_exists(global.player)){
     
 	    // Direction
 	    if (image_yscale == -0.8){
-	        image_angle= mdir + angle_offset + start_offset;
+	        image_angle = mdir + angle_offset + start_offset;
 	    }else{
-	        image_angle= mdir - angle_offset - start_offset;
+	        image_angle = mdir - angle_offset - start_offset;
 	    }
         
 	    if (mouse_x > x){

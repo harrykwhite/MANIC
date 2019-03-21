@@ -17,8 +17,10 @@ if (instance_exists(global.player)) && (global.cutscene_current == -1){
 				interact_active = true;
 				if (interact_special == "moveto"){
 					if (global.boss_current != -1){
-						interact_active = false;
-						exit;
+						if (global.boss_current != Boss.MotherRobot) && (global.boss_current != Boss.SniperRobot){
+							interact_active = false;
+							exit;
+						}
 					}
 					
 					scr_ui_control_indicate(global.level_name[moveto_level] + " [E]");

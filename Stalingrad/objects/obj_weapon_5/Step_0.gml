@@ -6,11 +6,11 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (mouse_check_button_pressed(mb_left)) && (shoot_can) && (shoot_current==-1){
+if (mouse_check_button_pressed(mb_left)) && (shoot_can) && (shoot_current == -1){
     shoot_current = 0;
 }
 
-if (shoot_current!=-1) && (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
+if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
     if (shoot_can){
         scr_player_knockback_initiate(0.5, mdir);
         scr_effect_screenshake(1);

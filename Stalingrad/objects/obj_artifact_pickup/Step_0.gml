@@ -36,7 +36,7 @@ if (instance_exists(global.player)){
 			obj_controller_ui.leveltext_alpha = 0;
 			obj_controller_ui.leveltext_time = 60 * 3.5;
 			obj_controller_ui.leveltext_other = true;
-			obj_controller_ui.leveltext_text =
+			obj_controller_ui.leveltext_text  = 
 			string(global.level_artifact_current[global.level_current]) +
 			" of " + string(global.level_artifact_number[global.level_current]) +
 			" artifacts found.";

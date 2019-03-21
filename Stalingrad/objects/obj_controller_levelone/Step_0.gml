@@ -182,6 +182,8 @@ if (player_exists){
 		if (audio_is_playing(rain)){
 			audio_pause_sound(rain);
 		}
+		
+		spawn_pause_update = false;
 	}
 }else{
 	spawn_state_time_real = 0;

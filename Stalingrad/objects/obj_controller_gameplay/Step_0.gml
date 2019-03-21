@@ -112,7 +112,7 @@ if (!global.game_pause){
 }
 
 // Score
-global.game_score =
+global.game_score  = 
 global.game_score_bonus +
 global.game_score_artifacts +
 global.game_score_deaths +

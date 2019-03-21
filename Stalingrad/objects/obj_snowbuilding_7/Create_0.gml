@@ -1,2 +1,2 @@
 fadeOwner = noone;
-depth_offset = 450 * image_yscale;
+depth_offset = 100 * image_yscale;

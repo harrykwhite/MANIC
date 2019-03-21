@@ -267,6 +267,8 @@ if (player_exists){
 		if (audio_is_playing(wind)){
 			audio_pause_sound(wind);
 		}
+		
+		spawn_pause_update = false;
 	}
 	
 }else{

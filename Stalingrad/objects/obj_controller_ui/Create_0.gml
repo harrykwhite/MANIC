@@ -73,7 +73,7 @@ for(var i = 0; i < levels; i ++){
 
 weaponslot_shake = 0;
 for (var i = 0; i < weaponalength; i ++){
-    weaponslot_scale[i]=0;
+    weaponslot_weaponscale[i] = 0;
 }
 
 blackbar_draw = false;
