@@ -19,7 +19,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
 if (mouse_check_button(mb_left)) && (!global.game_pause){
-    if (shoot_can ) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
+    if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
         scr_player_knockback_initiate(0.1, mdir);
 		scr_player_flash(5);
 		scr_ui_alpha_reset();
@@ -72,7 +72,7 @@ if (mouse_check_button(mb_left)) && (!global.game_pause){
 // Throwing Weapon
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (global.player_stamina_active ){
+if (global.player_stamina_active){
     if (mouse_check_button_pressed(mb_right)){
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);

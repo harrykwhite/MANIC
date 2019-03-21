@@ -22,7 +22,7 @@ if (global.cutscene_current == -1) && (!deactivated){
 
 if (spawn) && (!stop){
 	if (time < timemax){
-		time++;
+		time ++;
 	}else{
 		time = 0;
 		instance_create(x + 51, y + 7, obj_environment_enemy_mask_0);

@@ -31,7 +31,7 @@ dist += off;
 xxTo = xx + lengthdir_x(dist, dir);
 yyTo = yy + lengthdir_y(dist, dir);
 
-if (gui ){
+if (gui){
 	if (thickness == 0){
 		draw_line(xx * GUI_POS_X, yy * GUI_POS_Y, xxTo * GUI_POS_X, yyTo * GUI_POS_Y);
 	}else{

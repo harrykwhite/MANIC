@@ -1,6 +1,6 @@
 if (destroy){
 	var fcount = array_length_1d(flamethrower);
-	for(var i = 0; i < fcount; i++){
+	for(var i = 0; i < fcount; i ++){
 		if (instance_exists(flamethrower[i])){
 			instance_destroy(flamethrower[i]);
 		}

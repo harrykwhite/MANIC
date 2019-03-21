@@ -58,8 +58,8 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		}
 		
 		if (i_blend_time > 0){
-			var alpha = 1 - (1 / i_blend_time);
-			a = alpha;
+			var alpha = (i_blend_time / 5);
+			a = alpha * 0.75;
 			r = 80;
 			g = 0;
 			b = 0;

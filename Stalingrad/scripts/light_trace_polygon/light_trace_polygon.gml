@@ -110,14 +110,14 @@ for(var i = 0; i < vertex_count; ++i) {
 		var v4 = [vx + lengthdir_x(shadow_length, langle), vy + lengthdir_y(shadow_length, langle)];
 		
 		// Create a triangle between v1,v2,v3
-		shadow_array[@ shadow_index++] = v1;
-		shadow_array[@ shadow_index++] = v2;
-		shadow_array[@ shadow_index++] = v3;
+		shadow_array[@ shadow_index ++] = v1;
+		shadow_array[@ shadow_index ++] = v2;
+		shadow_array[@ shadow_index ++] = v3;
 	
 		// Create a triangle between v3,v4,v2
-		shadow_array[@ shadow_index++] = v3;
-		shadow_array[@ shadow_index++] = v4;
-		shadow_array[@ shadow_index++] = v2;
+		shadow_array[@ shadow_index ++] = v3;
+		shadow_array[@ shadow_index ++] = v4;
+		shadow_array[@ shadow_index ++] = v2;
 		
 		// Start next line where this ended
 		v1 = v3;
@@ -130,12 +130,12 @@ for(var i = 0; i < vertex_count; ++i) {
 //
 
 // Create a triangle between v1,v2,v3
-shadow_array[@ shadow_index++] = v1;
-shadow_array[@ shadow_index++] = v2;
-shadow_array[@ shadow_index++] = shadow_array[0];
+shadow_array[@ shadow_index ++] = v1;
+shadow_array[@ shadow_index ++] = v2;
+shadow_array[@ shadow_index ++] = shadow_array[0];
 // Create a triangle between v3,v4,v2
-shadow_array[@ shadow_index++] = shadow_array[0];
-shadow_array[@ shadow_index++] = shadow_array[1];
-shadow_array[@ shadow_index++] = v2;
+shadow_array[@ shadow_index ++] = shadow_array[0];
+shadow_array[@ shadow_index ++] = shadow_array[1];
+shadow_array[@ shadow_index ++] = v2;
 
 return shadow_array;

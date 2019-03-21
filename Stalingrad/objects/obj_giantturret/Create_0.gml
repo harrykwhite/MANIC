@@ -19,7 +19,7 @@ flamethrower_angle_wait = 80;
 flamethrower_time = 30;
 flamethrower_angle_sign = 1;
 
-for(var i = 0; i < 4; i++){
+for(var i = 0; i < 4; i ++){
 	var dir = (90 * i) + 45;
 	flamethrower[i] = instance_create(x + lengthdir_x(60, dir), y + lengthdir_y(60, dir), obj_giantturret_flamethrower);
 	flamethrower[i].turret = id;

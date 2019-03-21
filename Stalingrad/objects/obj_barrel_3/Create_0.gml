@@ -18,5 +18,5 @@ if (random(3) < 1){
 }
 
 while(place_meeting(x, y - 2, obj_p_solid)){
-	y++;
+	y ++;
 }

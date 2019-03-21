@@ -52,7 +52,7 @@ while (spd <= 0.2) && (instance_exists(global.player)){
 						image_index = 0;
 						image_speed = 0;
 					
-						for (var i = 0; i < 2; i++){
+						for (var i = 0; i < 2; i ++){
 							if (horde_spawn_wave == 1 + i){
 								with(leader.component[0]){
 									open = false;
@@ -104,7 +104,7 @@ while (spd <= 0.2) && (instance_exists(global.player)){
 				is_boss = false;
 				
 				var length = array_length_1d(leader.component);
-				for(var i = 0; i < length; i++){
+				for(var i = 0; i < length; i ++){
 					leader.component[i].is_boss = false;
 				}
 				

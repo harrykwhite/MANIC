@@ -34,7 +34,7 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 scr_pawn_status_handler();
 
 var counter = 0;
-for(var i = 0; i < dog_count; i++){
+for(var i = 0; i < dog_count; i ++){
 	if (instance_exists(dog[i])){
 		if (dogs_alive == 2){
 			switch(counter){
@@ -53,7 +53,7 @@ for(var i = 0; i < dog_count; i++){
 			dog[i].leash_length = 100;
 		}
 		
-		counter++;
+		counter ++;
 	}
 }
 

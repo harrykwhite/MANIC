@@ -31,7 +31,7 @@ time ++;
 
 // Bouncing
 if (bounce_time <= 0) && (spd > 0){
-	for(var i = 0; i < 5; i++){
+	for(var i = 0; i < 5; i ++){
 	    if (place_meeting(x + lengthdir_x(i, dir), y + lengthdir_y(i, dir), obj_p_solid)){
 	        dir = dir - 180;
 	        bounce_time = 15;

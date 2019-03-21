@@ -47,7 +47,7 @@ if (player_exists){
 			spawn_time /= spawn_rate;
 		}
 		
-		spawn_state_time_real++;
+		spawn_state_time_real ++;
 	
 		if (spawn){
 			if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
@@ -62,7 +62,7 @@ if (player_exists){
 				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80){
 					xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
 					ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
-					spawn_trial++;
+					spawn_trial ++;
 				
 					if (spawn_trial > 1000){
 						spawn_trial = 0;

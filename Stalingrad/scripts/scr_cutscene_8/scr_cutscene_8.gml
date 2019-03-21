@@ -24,7 +24,7 @@ if (instance_exists(global.player)){
 		}
 		
 		if (global.cutscene_time[index] < 180){
-			global.cutscene_time[index]++;
+			global.cutscene_time[index] ++;
 		}else{
 			if (audio_is_playing(snd_other_typing_0)){
 				audio_stop_sound(snd_other_typing_0);

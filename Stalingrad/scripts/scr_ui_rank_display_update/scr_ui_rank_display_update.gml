@@ -1,7 +1,7 @@
 if (rank_display_draw){
 	var length = array_length_1d(rank_alpha);
 
-	for(var i = 0; i < length; i++){
+	for(var i = 0; i < length; i ++){
 	
 		if (rank_display[i]){
 			if (rank_alpha[i] < 1){
@@ -18,7 +18,7 @@ if (rank_display_draw){
 	
 		var alldrawn = true;
 	
-		for(var i = 0; i < length; i++){
+		for(var i = 0; i < length; i ++){
 	
 			if (rank_display[i] == false){
 				rank_display[i] = true;

@@ -20,7 +20,7 @@ if (instance_exists(global.player)){
 		global.player.move_extSpd = 0;
 		
 		if (global.cutscene_time[index] < 120){
-			global.cutscene_time[index]++;
+			global.cutscene_time[index] ++;
 			if (!audio_is_playing(snd_other_typing_0)){
 				audio_play_sound(snd_other_typing_0, 3, false);
 			}

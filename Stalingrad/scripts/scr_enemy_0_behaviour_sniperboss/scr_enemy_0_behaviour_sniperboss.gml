@@ -4,7 +4,7 @@ target = global.player;
 
 if (instance_exists(target)){
 	var csize = array_length_1d(global.companion);
-	for(var i = 0; i < csize; i++){
+	for(var i = 0; i < csize; i ++){
 		if (instance_exists(global.companion[i])){
 			var nearest = instance_nearest(x, y, global.companion[i]);
 			if (distance_to_object(nearest) < 50){
@@ -51,7 +51,7 @@ if (instance_exists(target)){
 					move_yTo = target.y + lengthdir_y(20, random(360));
 				
 					if (tries < 100){
-						tries++;
+						tries ++;
 					}else{
 						break;
 					}
@@ -85,7 +85,7 @@ if (instance_exists(target)){
 					move_yTo = target.y + random_range(-120, 120);
 				
 					if (tries < 100){
-						tries++;
+						tries ++;
 					}else{
 						break;
 					}

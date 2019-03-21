@@ -62,7 +62,7 @@ if (instance_exists(global.player)){
             gpu_set_fog(false, c_black, 0, 0);
         }
 		
-		counter++;
+		counter ++;
     }
 	
 	counter = 0;
@@ -169,11 +169,11 @@ if (instance_exists(global.player)){
 				
 				switch(counter){
 					case 0:
-						yy = 85;
+						yy = 64;
 						break;
 					
 					case 1:
-						yy = 190;
+						yy = 143;
 						break;
 				}
 				
@@ -184,7 +184,7 @@ if (instance_exists(global.player)){
 			}
 		}
 		
-		counter++;
+		counter ++;
 	}
 	
 	counter = 0;
@@ -192,7 +192,7 @@ if (instance_exists(global.player)){
     if (w != -1){
 		if (instance_exists(global.weapon_object[w])){
 	        if (global.weapon_type[w] == WeaponType.Ranged){
-	            var xx = 134;
+	            var xx = 136;
 	            var yy = 78 - 30;
 	            var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
 
@@ -259,9 +259,9 @@ if (leveltext_alpha > 0){
 
 	var xx = dwidth / 2;
 	var yy = 160;
-	var width = string_width(leveltext_text) + 20;
-	var height = 2;
-	var offset = 34;
+	var width = string_width(leveltext_text) + 30;
+	var height = 1;
+	var offset = 25;
 
 	draw_set_colour(c_white);
 	draw_set_alpha(leveltext_alpha);
@@ -443,7 +443,7 @@ if (pausedialogue_alpha > 0){
 		case 1:
 			optyy += 45;
 			scr_text_shadow(dwidth / 2, (dheight / 2) - 30, pausedialogue_type_text, c_white);
-			for(var counter = 0; counter < pausedialogue_option_max; counter++){
+			for(var counter = 0; counter < pausedialogue_option_max; counter ++){
 				if (pausedialogue_option_selected == counter){
 					scr_text_shadow(optxx, optyy + (counter * 30), pausedialogue_type_option[counter], make_colour_rgb(189, 23, 23));
 				}else{

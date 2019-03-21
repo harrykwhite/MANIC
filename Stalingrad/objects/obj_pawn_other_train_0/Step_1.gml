@@ -11,7 +11,7 @@ if (component_spawn){
 			break;
 	}
 	
-	for(var i = 1; i < 9; i++){
+	for(var i = 1; i < 9; i ++){
 		comp = instance_create(x + ((i * 112) * -dir), y, obj_pawn_other_train_0);
 		comp.spd = spd;
 		comp.dir = dir;

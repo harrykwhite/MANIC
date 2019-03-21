@@ -6,7 +6,7 @@ if (in_minecart){
 // Breaking Dash
 var inst, len;
 
-for(var i = 0; i < (dash_speed ) + 1; i++){
+for(var i = 0; i < (dash_speed) + 1; i ++){
 	
 	inst = instance_place(x + lengthdir_x(i, dash_direction), y + lengthdir_y(i, dash_direction), obj_p_solid);
 	
@@ -16,7 +16,7 @@ for(var i = 0; i < (dash_speed ) + 1; i++){
 			scr_env_objects();
 			len = array_length_1d(envobject);
 		
-			for(var e = 0; e < len; e++){
+			for(var e = 0; e < len; e ++){
 			
 				if (inst.object_index == envobject[e]){
 				

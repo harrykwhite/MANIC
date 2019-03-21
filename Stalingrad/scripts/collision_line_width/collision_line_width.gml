@@ -18,7 +18,7 @@ var dir = point_direction(x1, y1, x2, y2);
 var r = false;
 
 if (width > 1){
-	for(var off = 0; off < width; off++){
+	for(var off = 0; off < width; off ++){
 	
 		if (collision_line(x1 + lengthdir_x(off, dir - 90), y1 + lengthdir_y(off, dir - 90), x2 + lengthdir_x(off, dir + 90), y2 + lengthdir_y(off, dir + 90), obj, false, true)){
 			r = true;

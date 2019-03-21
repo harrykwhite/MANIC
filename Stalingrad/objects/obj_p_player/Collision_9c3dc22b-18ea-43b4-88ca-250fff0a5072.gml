@@ -4,7 +4,7 @@ if (object_index != obj_player){
 	}
 }
 
-if (i_time < 1) && (other.damage_player ){
+if (i_time < 1) && (other.damage_player){
 	if (object_index == global.player){
 		scr_player_damage(other.damage, other.strength, random(360), 6);
 	}else{

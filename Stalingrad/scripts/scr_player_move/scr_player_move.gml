@@ -133,7 +133,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	// Knockback
-	if (knockback ) && (move_xTo == -1) && (move_yTo == -1) && (global.cutscene_current == -1){
+	if (knockback) && (move_xTo == -1) && (move_yTo == -1) && (global.cutscene_current == -1){
 		for(var i = knockback_speed + 3; i > -1; i--){
 		    if (place_meeting(x + lengthdir_x(i, knockback_direction), y + lengthdir_y(i, knockback_direction), obj_p_solid)) || (knockback_speed <= 0.2){
 				knockback_speed = 0;

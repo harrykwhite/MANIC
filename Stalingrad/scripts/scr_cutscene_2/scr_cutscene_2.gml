@@ -56,7 +56,7 @@ if (instance_exists(global.player)){
 		global.player.move_extSpd = 0;
 		
 		if (global.cutscene_time[index] < 50){
-			global.cutscene_time[index]++;
+			global.cutscene_time[index] ++;
 		}else{
 			global.cutscene_current = -1;
 			global.cutscene_time[index] = 0;

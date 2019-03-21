@@ -21,11 +21,11 @@ var num = 0, onum = 0;
 var templist = ds_list_create();
 
 if (width != 1){
-	for(var off = 0; off < width; off++){
+	for(var off = 0; off < width; off ++){
 	
 		num += collision_line_list(x1 + lengthdir_x(off, dir + 90), y1 + lengthdir_y(off, dir + 90), x2 + lengthdir_x(off, dir + 90), y2 + lengthdir_y(off, dir + 90), obj, false, true, templist, true);
 	
-		for(var i = onum; i < num; i++){
+		for(var i = onum; i < num; i ++){
 			list[| i] = templist[| i - onum];
 		}
 	
@@ -37,7 +37,7 @@ if (width != 1){
 	
 		num += collision_line_list(x1 + lengthdir_x(off, dir + 90), y1 + lengthdir_y(off, dir + 90), x2 + lengthdir_x(off, dir + 90), y2 + lengthdir_y(off, dir + 90), obj, false, true, templist, true);
 	
-		for(var i = onum; i < num; i++){
+		for(var i = onum; i < num; i ++){
 			list[| i] = templist[| i - onum];
 		}
 	

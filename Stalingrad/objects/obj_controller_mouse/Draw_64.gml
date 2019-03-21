@@ -14,7 +14,7 @@ switch(mouse){
 			draw_set_colour(c_white);
 			draw_line_width(xx + lengthdir_x(space / 2, selfir), yy + lengthdir_y(space / 2, selfir), xx + lengthdir_x((space / 2) + length, selfir), yy + lengthdir_y((space / 2) + length, selfir), scale);
 			draw_set_alpha(1);
-			counter++;
+			counter ++;
 		}
 		
 		break;
@@ -29,7 +29,7 @@ switch(mouse){
 			draw_set_colour(c_white);
 			draw_line_width(xx + lengthdir_x(space / 2, selfir), yy + lengthdir_y(space / 2, selfir), xx + lengthdir_x((space / 2) + length, selfir), yy + lengthdir_y((space / 2) + length, selfir), scale);
 			draw_set_alpha(1);
-			counter++;
+			counter ++;
 		}
 		
 		break;
@@ -62,7 +62,7 @@ switch(mouse){
 			draw_set_colour(make_colour_rgb(255, 32, 32));
 			draw_line_width(xx + lengthdir_x(space / 2, selfir), yy + lengthdir_y(space / 2, selfir), xx + lengthdir_x((space / 2) + length, selfir), yy + lengthdir_y((space / 2) + length, selfir), scale);
 			draw_set_alpha(1);
-			counter++;
+			counter ++;
 		}
 		
 		break;

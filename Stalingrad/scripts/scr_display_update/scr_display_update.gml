@@ -15,16 +15,16 @@ if (display_get_height() mod ideal_height != 0){
 }
 
 if (ideal_width & 1){
-	ideal_width++;
+	ideal_width ++;
 }
 
 if (ideal_height & 1){
-	ideal_height++;
+	ideal_height ++;
 }
 
 var room_count = room_last;
 
-for(var i = 0; i < room_count; i++){
+for(var i = 0; i < room_count; i ++){
 	if (room_exists(i)){
 		room_set_viewport(i, 0, true, 0, 0, ideal_width, ideal_height);
 	}

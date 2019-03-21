@@ -17,7 +17,7 @@ if (instance_exists(owner)){
 
     if (attack){
 		if (throw_offset < 40){
-			throw_offset++;
+			throw_offset ++;
 		}else{
 	        scr_effect_screenshake(1);       
 	        instance_destroy();

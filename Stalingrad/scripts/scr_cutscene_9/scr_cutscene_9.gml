@@ -8,7 +8,7 @@ if (instance_exists(obj_controller_camera)){
 
 if (instance_exists(global.player)){
 	if (global.cutscene_time[index] < 60){
-		global.cutscene_time[index]++;
+		global.cutscene_time[index] ++;
 		
 		global.cutscene_camera_x[index] = 779;
 		global.cutscene_camera_y[index] = 984;

@@ -18,9 +18,9 @@ if (maxdist == -1){
 	maxdist = 1000;
 }
 
-for(var i = 0; i < maxdist; i++){
+for(var i = 0; i < maxdist; i ++){
 	
-	for(var len = 0; len < 5; len++){
+	for(var len = 0; len < 5; len ++){
 		if (collision_line(xprevious, yprevious, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), parent, false, true)){
 			
 			if (!precise){

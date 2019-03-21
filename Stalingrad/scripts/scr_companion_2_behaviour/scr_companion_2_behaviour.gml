@@ -14,7 +14,7 @@ if (instance_exists(global.player)){
 		if (!in_cutscene){
 			if (!instance_exists(target) || (target == noone)){
 				var enemyCount = array_length_1d(global.enemy);
-				for(var i = 0; i < enemyCount; i++){
+				for(var i = 0; i < enemyCount; i ++){
 					if (instance_exists(global.enemy[i])){
 						target = instance_nearest(x, y, global.enemy[i]);
 				
@@ -81,7 +81,7 @@ if (instance_exists(global.player)){
 								move_yTo = global.player.y + lengthdir_y(35, random(360));
 							
 								if (attempts < 200){
-									attempts++;
+									attempts ++;
 								}else{
 									break;
 								}
@@ -242,7 +242,7 @@ if (instance_exists(global.player)){
 							move_yTo = global.player.y + lengthdir_y(35, random(360));
 							
 							if (attempts < 200){
-								attempts++;
+								attempts ++;
 							}else{
 								break;
 							}

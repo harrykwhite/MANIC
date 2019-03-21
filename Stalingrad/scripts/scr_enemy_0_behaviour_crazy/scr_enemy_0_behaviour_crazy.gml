@@ -5,7 +5,7 @@ target = global.player;
 if (instance_exists(target)) && (instance_exists(weapon)){
 	if (companion_attack_break < 240){
 		var csize = array_length_1d(global.companion);
-		for(var i = 0; i < csize; i++){
+		for(var i = 0; i < csize; i ++){
 			if (instance_exists(global.companion[i])){
 				var nearest = instance_nearest(x, y, global.companion[i]);
 				if (distance_to_object(nearest) < 38){
@@ -15,7 +15,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 					crazy_attackbreak = 34;
 					
 					if (companion_attack_time < companion_attack_time_max){
-						companion_attack_time++;
+						companion_attack_time ++;
 					}else{
 						companion_attack_time = 0;
 						companion_attack_break = 0;
@@ -24,7 +24,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 			}
 		}
 	}else{
-		companion_attack_break++;
+		companion_attack_break ++;
 	}
 	
 	if (crazy_runback){

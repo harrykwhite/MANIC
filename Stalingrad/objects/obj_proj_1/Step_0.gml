@@ -3,4 +3,4 @@ if (global.game_pause){
 	exit;
 }
 
-image_speed = 3.5 * (1.5 );
+image_speed = 3.5 * (1.5);

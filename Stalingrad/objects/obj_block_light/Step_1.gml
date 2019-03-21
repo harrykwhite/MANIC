@@ -1,6 +1,6 @@
 var light_count = array_length_1d(mylight);
 
-for(var i = 0; i < light_count; i++){
+for(var i = 0; i < light_count; i ++){
 	if (mylight[i] == noone){
 		mylight[i] = instance_create(x, y, obj_light);
 		mylight[i].Light_Type = "Point Light";

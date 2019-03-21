@@ -6,7 +6,7 @@ var list = ds_list_create();
 var count = collision_rectangle_list(rectx, recty, rectx + rectw, recty + recth, obj_p_explosive, false, true, list, false);
 
 if (count > 0){
-	for(var i = 0; i < count; i++){
+	for(var i = 0; i < count; i ++){
 		list[| i].explode = true;
 		explode_anim = true;
 	}

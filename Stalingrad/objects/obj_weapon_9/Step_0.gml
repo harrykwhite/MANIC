@@ -6,7 +6,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (instance_exists(global.player)) && (global.player_stamina_active ){
+if (instance_exists(global.player)) && (global.player_stamina_active){
     if (mouse_check_button_released(mb_left)) || (mouse_check_button_released(mb_right)){
         if (throw_time == throw_time_max){
 			if (!collision_line(global.player.x, global.player.y, x + lengthdir_x(3, mdir), y + lengthdir_y(3, mdir), obj_p_solid, false, true)){

@@ -16,7 +16,7 @@ if (burn){
 	if (burn_time > 0){
 		burn_time--;
 	}else{
-		if (burn_start ) && (object_index != obj_thescorched){
+		if (burn_start) && (object_index != obj_thescorched){
 			if (burn_cycle > 0){
 				burn_cycle--;
 				burn_time = 55;

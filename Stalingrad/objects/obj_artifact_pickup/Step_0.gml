@@ -31,7 +31,7 @@ if (instance_exists(global.player)){
 			scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
 			scr_player_stamina_drain(6);
 			scr_effect_screenshake(1);
-			global.level_artifact_current[global.level_current]++;
+			global.level_artifact_current[global.level_current] ++;
 			
 			obj_controller_ui.leveltext_alpha = 0;
 			obj_controller_ui.leveltext_time = 60 * 3.5;

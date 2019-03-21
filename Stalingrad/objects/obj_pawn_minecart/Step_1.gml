@@ -29,7 +29,7 @@ if (instance_exists(global.player)){
 			var mblocklist = ds_list_create();
 			var mblocktotal = collision_rectangle_list(x - (sprite_width / 2) + cartx, y - (sprite_height/ 2) + carty, x - (sprite_width / 2) + cartx + cartw, y - (sprite_height / 2) + carty + carth, obj_block_minecart, false, false, mblocklist, false);
 			if (mblocktotal > 0){
-				for(var i = 0; i < mblocktotal; i++){
+				for(var i = 0; i < mblocktotal; i ++){
 					var mblock = mblocklist[| i];
 			
 					if (mblock.image_angle != minecart_dir){

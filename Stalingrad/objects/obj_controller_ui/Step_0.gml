@@ -23,13 +23,15 @@ if (!global.game_pause){
 	// Title Text
 	if (global.cutscene_current == -1) &&
 	((room == rm_level_1_00) ||
-	(room == rm_level_2_00) ||
-	(room == rm_level_3_00) ||
-	(room == rm_level_4_00) ||
-	(room == rm_level_5_00) ||
-	(room == rm_level_6_00) ||
-	(room == rm_level_7_00) ||
-	(room == rm_level_8_00)){
+	 (room == rm_level_2_00) ||
+	 (room == rm_level_3_00) ||
+	 (room == rm_level_4_00) ||
+	 (room == rm_level_5_00) ||
+	 (room == rm_level_6_00) ||
+	 (room == rm_level_7_00) ||
+	 (room == rm_level_8_00) ||
+	 (room == rm_level_9_00) ||
+	 (room == rm_level_10_00)){
 		if (!leveltext_other){
 			if (global.level_current < array_length_1d(global.level_name)){
 				leveltext_text = string(global.level_name[global.level_current]);

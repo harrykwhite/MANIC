@@ -7,7 +7,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
 if ((mouse_check_button_pressed(mb_left)) || (shoot_continue_time > 0)) && (!global.game_pause){
-    if ((shoot_can ) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0)) || (shoot_continue_time > 0){
+    if ((shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0)) || (shoot_continue_time > 0){
         var xpos = x + lengthdir_x(19, mdir) + lengthdir_x(3, up(mdir));
 	    var ypos = y + lengthdir_y(19, mdir) + lengthdir_y(3, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
@@ -53,7 +53,7 @@ if ((mouse_check_button_pressed(mb_left)) || (shoot_continue_time > 0)) && (!glo
 // Throwing Weapon
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (global.player_stamina_active ){
+if (global.player_stamina_active){
     if (mouse_check_button_pressed(mb_right)){
 		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){

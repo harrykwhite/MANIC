@@ -13,7 +13,7 @@ repeat(height){
 		event_user(0);
 	}
 	
-	yy++;
+	yy ++;
 }
 
 ds_depth_counter = 0;

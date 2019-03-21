@@ -368,7 +368,7 @@ global.weapon_slotcurrent = 0;
 
 if (room == rm_ini){
 	var count = array_length_1d(global.weapon_name);
-	for(var i = 0; i < count; i++){
+	for(var i = 0; i < count; i ++){
 		global.weapon_collected[i] = false;
 	}
 }

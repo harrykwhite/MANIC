@@ -16,7 +16,7 @@ if (spd > 0.1){
 
 // Cutscene
 if (time_end_cutscene < 60 * 1.3){
-	time_end_cutscene++;
+	time_end_cutscene ++;
 }else{
 	global.cutscene_current = -1;
 	global.player_companion = -1;

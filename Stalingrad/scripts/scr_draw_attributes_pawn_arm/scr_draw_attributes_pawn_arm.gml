@@ -44,7 +44,7 @@ if (instance_exists(owner)){
 		}
 	
 		var alpha = 1 - (1 / owner.i_blend_time);
-		a = alpha;
+		a = alpha * 0.75;
 		r = color_get_red(colour);
 		g = color_get_green(colour);
 		b = color_get_blue(colour);

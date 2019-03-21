@@ -3,7 +3,7 @@ scr_inboss()
 
 // Recording level and section start data
 if (!levelstart_record_set){
-	if (room == rm_level_1_00) || (room == rm_level_2_00) || (room == rm_level_3_00) || (room == rm_level_4_00) || (room == rm_level_5_00) || (room == rm_level_6_00) || (room == rm_level_7_00) || (room == rm_level_8_00){
+	if (room == rm_level_1_00) || (room == rm_level_2_00) || (room == rm_level_3_00) || (room == rm_level_4_00) || (room == rm_level_5_00) || (room == rm_level_6_00) || (room == rm_level_7_00) || (room == rm_level_8_00) || (room == rm_level_9_00) || (room == rm_level_10_00){
 		global.levelstart_weapon[0] = global.weapon_slot[0];
 		global.levelstart_weapon[1] = global.weapon_slot[1];
 		levelstart_record_set = true;
@@ -59,12 +59,12 @@ global.player_healthCurrent = clamp(global.player_healthCurrent, 0, global.playe
 if (!global.game_pause){
 	
 	// Game Time
-	global.game_time_passed++;
+	global.game_time_passed ++;
 	
 	// Player Stamina
 	if (global.player_stamina_break <= 0){
 	    if (global.player_stamina_current < global.player_stamina_max){
-	        global.player_stamina_current++;
+	        global.player_stamina_current ++;
 	    }else{
 	        global.player_stamina_active = true;
 	    }

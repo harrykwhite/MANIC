@@ -53,7 +53,7 @@ switch(global.level_current){
 
 length = array_length_1d(list);
 
-for(var i = 0; i < length; i++){
+for(var i = 0; i < length; i ++){
 	inst = instance_place(xx, yy - 4, list[i]);
 	
 	if (singular_ceiling){

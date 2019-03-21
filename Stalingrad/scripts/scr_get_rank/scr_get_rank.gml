@@ -40,7 +40,7 @@ var interval = 3200, s = true;
 		break;
 }*/
 
-for(var i = 0; i < 15; i++){
+for(var i = 0; i < 15; i ++){
 	if (within(total, i * interval, ((i + 1) * interval) - 1)){
 		rank = i;
 		s = false;

@@ -22,7 +22,7 @@ len /= interval;
 
 var dir = point_direction(x1, y1, x2, y2);
 
-for(var i = 0; i < len; i++){
+for(var i = 0; i < len; i ++){
 	
 	var xx = (x1 + lengthdir_x(i * interval, dir));
 	var yy = (y1 + lengthdir_y(i * interval, dir));

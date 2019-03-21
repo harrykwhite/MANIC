@@ -16,7 +16,7 @@ if (weapon_has){
 if (destroy){
 	levelobj.dogkeeper_failed = true;
 	
-	for(var i = 0; i < 3; i++){
+	for(var i = 0; i < 3; i ++){
 		if (instance_exists(dog[i])){
 			instance_destroy(dog[i]);
 		}

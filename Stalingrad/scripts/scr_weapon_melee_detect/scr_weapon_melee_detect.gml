@@ -72,7 +72,7 @@ switch(ctype){
 		var num = enemylinelength;
 		
 		if (num > 0){
-			for(var i = 0; i < num; i++){
+			for(var i = 0; i < num; i ++){
 				var inst = enemyline[| i];
 				
 				if (inst.i_time <= 0){
@@ -132,7 +132,7 @@ switch(ctype){
 		num = playerlinelength;
 		
 		if (num > 0){
-			for(var i = 0; i < num; i++){
+			for(var i = 0; i < num; i ++){
 				var inst = playerline[| i];
 				
 				if (inst.i_time < 1){
@@ -179,14 +179,14 @@ switch(ctype){
 	case "env":
 		var num = envlinelength;
 		if (num > 0){
-			for(var i = 0; i < num; i++){
+			for(var i = 0; i < num; i ++){
 				var inst = envline[| i], xEnd, yEnd, isEnv;
 				len = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst) + 10;
 				xEnd = xx + lengthdir_x(len, dir);
 				yEnd = yy + lengthdir_y(len, dir);
 				isEnv = false;
 				
-				for(var s = 0; s < slength; s++){
+				for(var s = 0; s < slength; s ++){
 					if (inst.object_index == envobject[s]){
 						if (inst.hit_time <= 0){
 							isEnv = true;

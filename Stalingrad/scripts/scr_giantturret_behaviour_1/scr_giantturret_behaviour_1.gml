@@ -77,7 +77,7 @@ if (instance_exists(target)){
 			flamethrower_time --;
 		}else{
 			var has_flamethrowers = false;
-			for(var i = 0; i < 4; i++){
+			for(var i = 0; i < 4; i ++){
 				if (instance_exists(flamethrower[i])){
 					has_flamethrowers  = true;
 					flamethrower[i].shoot = true;

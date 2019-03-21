@@ -14,5 +14,5 @@ mylight = instance_create(x, y - 5, obj_barrel_1_light);
 image_speed = 0;
 
 while(place_meeting(x, y - 2, obj_p_solid)){
-	y++;
+	y ++;
 }

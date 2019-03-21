@@ -101,8 +101,8 @@ if (i_blend_time > 0){
 		colour = c_white;
 	}
 	
-	var alpha = 1 - (1 / i_blend_time);
-	a = alpha;
+	var alpha = (i_blend_time / 5);
+	a = alpha * 0.75;
 	r = color_get_red(colour);
 	g = color_get_green(colour);
 	b = color_get_blue(colour);

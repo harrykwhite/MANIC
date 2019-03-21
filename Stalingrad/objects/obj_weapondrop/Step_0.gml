@@ -69,7 +69,7 @@ if (instance_exists(global.player)){
 				scr_ui_alpha_reset();
 				obj_controller_mouse.mouse_scale = 2;
 				
-				for(var i = 0; i < 2; i++){
+				for(var i = 0; i < 2; i ++){
 					if (global.weapon_slot[i] == index){
 						if (i != global.weapon_slotcurrent) {
 							with(obj_controller_gameplay) { scr_weapon_switch(); }

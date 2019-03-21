@@ -6,7 +6,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active ) && (!global.game_pause){
+if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!global.game_pause){
     var xpos = x + lengthdir_x(53, mdir);
     var ypos = y + lengthdir_y(53, mdir);
 	
@@ -32,7 +32,7 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active ) && (
     }
 }
 
-if (attack_active ){
+if (attack_active){
     if (attack_offset < 7.5){
         attack_offset += 2.5;
     }else{
@@ -49,7 +49,7 @@ attack_offset = clamp(attack_offset, 0, 7.5);
 // Throwing Weapon
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (global.player_stamina_active ){
+if (global.player_stamina_active){
     if (mouse_check_button_pressed(mb_right)){
 		
 		if (!collision_line(x, y, x + lengthdir_x(28, mdir), y + lengthdir_y(28, mdir), obj_p_solid, false, true)){

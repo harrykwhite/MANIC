@@ -28,7 +28,7 @@ if (object_index == obj_enemy_0){
 	var length = array_length_1d(fly);
 
 	if (health_current <= floor(health_max / 3)){
-		for(var i = 0; i < length; i++){
+		for(var i = 0; i < length; i ++){
 			if (fly[i] == noone){
 				if (random(100) <= 1) fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
 				break;
@@ -73,7 +73,7 @@ if (health_current <= 0){
 	if (pawn == PawnType.Enemy){
 		if (object_index != obj_enemy_1){
 			if (instance_exists(obj_controller_gameplay)){
-				obj_controller_gameplay.bonus_killamount++;
+				obj_controller_gameplay.bonus_killamount ++;
 				obj_controller_gameplay.bonus_killtime = 80;
 			}
 		}

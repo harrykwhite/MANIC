@@ -51,7 +51,7 @@ if (instance_exists(global.player)) && (!global.game_pause){
 		);
     
 	    if (camera_screenshake_amount > 0.035){
-	        camera_screenshake_amount -= (0.1 );
+	        camera_screenshake_amount -= (0.1);
 		
 	    }else{
 	        camera_screenshake_amount = 0;

@@ -18,7 +18,7 @@ if(__LIGHTING_ERROR_CHECKS && (!ds_exists(light, ds_type_list) || ds_list_size(l
 //
 
 // This light is being rebuilt this frame
-++global.worldRebuiltLights;
+ ++global.worldRebuiltLights;
 
 // Get the light's attributes
 var light_x = light[| eLight.X];
@@ -207,7 +207,7 @@ with(obj_shadow_caster) {
 	
 	if(shadow == undefined) {
 		// Count this shadow caster as active
-		++global.worldActiveShadowCasters;
+		 ++global.worldActiveShadowCasters;
 		
 		// Trace a shadow for this object
 		shadow = light_trace_polygon(id, light);
@@ -230,13 +230,13 @@ with(obj_shadow_caster) {
 	var len = array_length_1d(shadow);
 	// There's at least 3 vertices in the array, so add those outside loop
 	var k = 0;
-	var vertex = shadow[k++];
+	var vertex = shadow[k ++];
 	vertex_position(vbuffer, vertex[eVertex.X] - offset_x, vertex[eVertex.Y] - offset_y);
 	vertex_argb(vbuffer, $FF000000);
-	vertex = shadow[k++];
+	vertex = shadow[k ++];
 	vertex_position(vbuffer, vertex[eVertex.X] - offset_x, vertex[eVertex.Y] - offset_y);
 	vertex_argb(vbuffer, $FF000000);
-	vertex = shadow[k++];
+	vertex = shadow[k ++];
 	vertex_position(vbuffer, vertex[eVertex.X] - offset_x, vertex[eVertex.Y] - offset_y);
 	vertex_argb(vbuffer, $FF000000);
 	// Add the rest in a loop

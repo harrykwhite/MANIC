@@ -4,7 +4,7 @@ if (STATE == GameState.Developer){
 	scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) - 174, "Stalingrad Development Build", c_white);
 	draw_set_font(fnt_cambria_0);
 	
-	for(var i = 0; i < smax + 2; i++){
+	for(var i = 0; i < smax + 2; i ++){
 		
 		var str, yyoff = 0;
 		

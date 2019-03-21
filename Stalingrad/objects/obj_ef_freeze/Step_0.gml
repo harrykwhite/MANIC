@@ -1,7 +1,7 @@
 room_speed = framespeed;
 
 if (time < 1){
-	time++;
+	time ++;
 }else{
 	room_speed = 60;
 	instance_destroy();

@@ -15,7 +15,7 @@ if (contact){
 	
 	var length = array_length_1d(contactlist);
 	
-	for(var i = 0; i < length; i++){
+	for(var i = 0; i < length; i ++){
 		move_contact_object(dir, spd, contactlist[i]);
 	}
 

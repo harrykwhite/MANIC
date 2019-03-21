@@ -51,7 +51,7 @@ if (state != sprev){
 	attack_time = 0;
 	attack = 0;
 	
-	for(var i = 0; i < 4; i++){
+	for(var i = 0; i < 4; i ++){
 		if (instance_exists(flamethrower[i])){
 			flamethrower[i].shoot = false;
 		}

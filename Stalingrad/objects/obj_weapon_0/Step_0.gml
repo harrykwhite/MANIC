@@ -54,7 +54,7 @@ if (mouse_check_button_pressed(mb_left)){
 // Throwing Weapon
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
-if (global.player_stamina_active ){
+if (global.player_stamina_active){
     if (mouse_check_button_pressed(mb_right)){
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);

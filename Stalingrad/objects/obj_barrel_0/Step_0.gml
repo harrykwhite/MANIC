@@ -11,7 +11,7 @@ if (spd > 0.01){
 	col_length = array_length_1d(col_list);
 	can_move = true;
 	
-	for(var i = 0; i < col_length; i++){
+	for(var i = 0; i < col_length; i ++){
 		if (place_meeting(x + lengthdir_x(spd + 2, dir), y + lengthdir_y(spd + 2, dir), col_list[i])){
 			can_move = false;
 			break;

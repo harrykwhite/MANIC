@@ -32,7 +32,7 @@ if (instance_exists(target)){
 		if (flamethrower_time > 0){
 			flamethrower_time --;
 		}else{
-			for(var i = 0; i < 4; i++){
+			for(var i = 0; i < 4; i ++){
 				if (instance_exists(flamethrower[i])){
 					flamethrower[i].shoot = true;
 				}

@@ -3,7 +3,7 @@ if (global.game_pause){
 	exit;
 }
 
-if (bend ){
+if (bend){
 	sprite_index = spr_grass_small_1_bent;
 	if (time <= 0){
 		shake = 1;
