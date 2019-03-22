@@ -2,5 +2,5 @@ dir = 0;
 spd = 0;
 enemy = false;
 pierce = false;
-creator = global.player;
+creator = obj_player;
 damage_change = 0;

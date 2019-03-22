@@ -1,4 +1,4 @@
-var player = global.player;
+var player = obj_player;
 var player_exists = instance_exists(player);
 scr_position_view();
 crazy_can_spawn = global.game_firstcrazy_killed;

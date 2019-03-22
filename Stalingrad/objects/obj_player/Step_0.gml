@@ -3,6 +3,7 @@ if (!canmove){
 	image_speed = 0;
 	exit;
 }
+
 flashlight_move = true;
 
 // Blend Time
@@ -21,6 +22,10 @@ if (global.cutscene_current != -1){
 if (global.game_pause){
 	image_speed = 0;
 	flashlight_move = false;
+	
+	if (audio_is_playing(heartbeat)){
+		audio_stop_sound(heartbeat);
+	}
 	
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);

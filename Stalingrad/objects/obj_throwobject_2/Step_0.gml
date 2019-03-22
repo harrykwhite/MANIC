@@ -55,6 +55,6 @@ if (explode){
     scr_damage_custom_toxic(45, 45, 140, damage_companion);
     scr_effect_screenshake(6);
 	scr_effect_freeze(5);
-	scr_effect_vignette_flash(c_white, 0.35, 0.02);
+	scr_effect_vignette_flash(c_ltgray, 0.35, 0.01);
 	scr_sound_play_distance(snd_weapon_explode_0, false, 500);
 }

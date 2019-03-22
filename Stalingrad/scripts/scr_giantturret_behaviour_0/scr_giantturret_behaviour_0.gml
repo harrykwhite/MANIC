@@ -1,4 +1,4 @@
-target = global.player;
+target = obj_player;
 
 if (instance_exists(target)){
 	// Flamethrower

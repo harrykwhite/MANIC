@@ -7,7 +7,7 @@ if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake_amount = 0;
 }
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	var has_look_object = (cutscene_look_object != noone) && (instance_exists(cutscene_look_object));
 	
 	if (has_look_object){
@@ -15,8 +15,8 @@ if (instance_exists(global.player)){
 		yTo = cutscene_look_object.y;
 	}
 	
-	global.player.flashlight_move = false;
-	global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
+	obj_player.flashlight_move = false;
+	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
 	
 	if (global.cutscene_time[index] < cutscene_look_time){
 		global.cutscene_time[index] ++;
@@ -27,8 +27,8 @@ if (instance_exists(global.player)){
 	}else{
 		global.cutscene_time[index] = 0;
 		global.cutscene_current = -1;
-		global.player.move_xTo = -1;
-		global.player.move_yTo = -1;
+		obj_player.move_xTo = -1;
+		obj_player.move_yTo = -1;
 		if (has_look_object) && (cutscene_look_prop){
 			cutscene_look_object.in_cutscene = false;
 			cutscene_look_object.cutscene_prop = false;

@@ -5,7 +5,7 @@
     "name": "f83418a8-b319-4014-b320-b353a5368dd7",
     "children": [
         "4ed52afd-427a-41d0-8bd3-32937edd4630",
-        "7d4b4704-f49a-423d-a1b0-8e339d8f016f"
+        "21a3dc3c-43c4-4c99-a3eb-ad91a1e5b38d"
     ],
     "filterType": "GMSprite",
     "folderName": "Hearts",

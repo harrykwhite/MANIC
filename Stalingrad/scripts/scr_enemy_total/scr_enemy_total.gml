@@ -1,6 +1,6 @@
 // Enemy Total
 var listSize = array_length_1d(global.enemy);
-var total = 0, player = global.player;
+var total = 0, player = obj_player;
 
 if (instance_exists(player)){
 	for(var i = 0; i < listSize; i ++){

@@ -1,6 +1,5 @@
-if (global.game_pause) || (global.cutscene_current != -1){
+if (global.game_pause){
 	image_speed = 0;
-	image_index = 0;
 	exit;
 }
 
@@ -45,8 +44,8 @@ if (instance_exists(owner)){
 					throw.dir = dir - (owner.image_xscale * throw_offset);
 				}
 			}else{
-				if (instance_exists(global.player)){
-					throw.dir = point_direction(x, y, global.player.x, global.player.y);
+				if (instance_exists(obj_player)){
+					throw.dir = point_direction(x, y, obj_player.x, obj_player.y);
 				}else{
 					throw.dir = dir - (owner.image_xscale * throw_offset);
 				}

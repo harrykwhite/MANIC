@@ -1,7 +1,3 @@
-if (global.game_pause) || (global.cutscene_current != -1){
-	exit;
-}
-
 if (instance_exists(owner)){
 	if (scr_pawn_weapon_endstepcan()){
 		dir = dir + (owner.image_xscale * throw_offset);

@@ -2,7 +2,7 @@ var speed_multiplier = 1;
 var speed_final = 0;
 var wait_negate = true, wait_stop_movement = false;
 var face_player = false;
-target = global.player;
+target = obj_player;
 
 if (instance_exists(target)){
 	if (companion_attack_break > 240){

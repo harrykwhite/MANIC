@@ -15,7 +15,7 @@ if (durability_time > 0){
 	durability_time--;
 }
 
-if (collision_rectangle(xstart - wrange - 8, ystart - hrange - 8, xstart + wrange + 8, ystart + hrange + 8, global.player, false, true)){
+if (collision_rectangle(xstart - wrange - 8, ystart - hrange - 8, xstart + wrange + 8, ystart + hrange + 8, obj_player, false, true)){
 	shake = 0;
 	x = xstart;
 	y = ystart;

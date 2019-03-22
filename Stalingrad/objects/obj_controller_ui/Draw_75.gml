@@ -16,19 +16,19 @@ if (redtint_alpha > 0){
 	draw_set_colour(c_maroon);
 	draw_set_alpha(redtint_alpha);
 	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
-	draw_set_alpha(1);
 }
 
 // Black Bars
 if (blackbar_draw) || (global.cutscene_current != -1){
-    blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 10);
+    blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 5);
 }else{
-	blackbar_sizereal = approach(blackbar_sizereal, 0, 10);
+	blackbar_sizereal = approach(blackbar_sizereal, 0, 5);
 }
 
 blackbar_sizereal = clamp(blackbar_sizereal, 0, blackbar_size);
 
 if (blackbar_sizereal > 2){
+	draw_set_alpha(1);
 	draw_set_colour(c_black);
 	draw_rectangle(-10, -10, display_get_gui_width() + 10, blackbar_sizereal, false);
 	draw_rectangle(-10, display_get_gui_height() + 10, display_get_gui_width() + 10, (display_get_gui_height() + 10) - (blackbar_sizereal + 10), false);
@@ -90,5 +90,6 @@ if (alpha > 0){
 	draw_set_colour(c_black);
 	draw_set_alpha(alpha);
 	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
-	draw_set_alpha(1);
 }
+
+draw_set_alpha(1);

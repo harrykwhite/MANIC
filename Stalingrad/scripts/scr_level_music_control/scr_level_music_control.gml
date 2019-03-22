@@ -1,6 +1,7 @@
 // Changing Combat States
 var bossmusic = noone;
 var level = global.level_current;
+var paused = global.game_pause;
 
 if (global.boss_current != -1){
 	bossmusic = global.boss_music[global.boss_current];
@@ -42,7 +43,7 @@ if (audio_is_playing(m_boss_main_0)){
 	}
 }
 
-if (!global.game_pause) && (global.boss_current == -1) && (level != 9){
+if (!paused) && (global.boss_current == -1) && (level != 9){
 	switch(global.game_combat_state){
 		case CombatState.Idle:
 			if (spawn_state_time_real >= (60 * spawn_state_time[global.game_combat_state])){
@@ -116,7 +117,7 @@ if (!global.game_pause) && (global.boss_current == -1) && (level != 9){
 		
 			break;
 	}
-}else if (global.boss_current == -1) && (level != 9){
+}else if (!paused){
 	audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
@@ -126,7 +127,7 @@ if (!global.game_pause) && (global.boss_current == -1) && (level != 9){
 }
 
 // Restoring Music after Pause
-if (!global.game_pause){
+if (!paused){
 	if (!spawn_pause_update){
 		spawn_pause_update = true;
 		

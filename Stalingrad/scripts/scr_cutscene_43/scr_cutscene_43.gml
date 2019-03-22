@@ -7,18 +7,18 @@ if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake_amount = 0;
 }
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	global.cutscene_camera_x[index] = xTo;
 	global.cutscene_camera_y[index] = yTo;
-	global.player.flashlight_move = false;
-	global.player.flashlight_direction = point_direction(global.player.x, global.player.y, xTo, yTo);
+	obj_player.flashlight_move = false;
+	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
 	
 	if (global.cutscene_time[index] < 70){
 		global.cutscene_time[index] ++;
 	}else{
 		global.cutscene_current = -1;
-		global.player.move_xTo = -1;
-		global.player.move_yTo = -1;
+		obj_player.move_xTo = -1;
+		obj_player.move_yTo = -1;
 	}
 }else{
 	global.cutscene_current = -1;

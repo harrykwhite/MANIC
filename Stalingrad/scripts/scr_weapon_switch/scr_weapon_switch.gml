@@ -13,7 +13,7 @@ if (global.weapon_slot_standalone == -1){
 
 	if (new_weaponslot != -1) {
 	    if (!instance_exists(global.weapon_object[new_weaponslot])) {
-	        var new_weapon = instance_create(global.player.x, global.player.y, global.weapon_object[new_weaponslot]); // Create the new weapon object.
+	        var new_weapon = instance_create(obj_player.x, obj_player.y, global.weapon_object[new_weaponslot]); // Create the new weapon object.
 	    }
 	}
 	
@@ -33,3 +33,5 @@ if (old_weaponslot != -1) {
         with(global.weapon_object[old_weaponslot]) instance_destroy();
     }
 }
+
+obj_controller_ui.weaponammo_x = 0;

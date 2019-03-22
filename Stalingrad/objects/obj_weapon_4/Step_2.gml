@@ -1,7 +1,7 @@
-if (!instance_exists(global.player)) || (instance_number(object_index) > 1){
+if (!instance_exists(obj_player)) || (instance_number(object_index) > 1){
     instance_destroy();
 }else{
-    if (global.player.image_xscale == 1){
+    if (obj_player.image_xscale == 1){
         image_yscale = 1;
     }else{
         image_yscale = -1;
@@ -9,11 +9,11 @@ if (!instance_exists(global.player)) || (instance_number(object_index) > 1){
 }
 
 // Positioning and Visibility
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
     
     // Position
 	if (!global.game_pause){
-	    image_angle = point_direction(global.player.x, global.player.y, mouse_x, mouse_y);
+	    image_angle = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
 	    x = obj_player_arm.x + lengthdir_x(attack_offset + 12, image_angle);
 	    y = obj_player_arm.y + lengthdir_y(attack_offset + 12, image_angle);
 		
@@ -36,7 +36,7 @@ if (instance_exists(global.player)){
 	    }
 	}
     
-    if (global.player.state == scr_player_dash) || (global.cutscene_current != -1){
+    if (obj_player.state == scr_player_dash) || (global.cutscene_current != -1){
         if (visible){
             fade_out = true;
         }

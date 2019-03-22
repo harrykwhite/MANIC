@@ -69,6 +69,6 @@ if (explode){
 	scr_damage_custom(round(damage / 1.5), 1, 60, 60, 3, damage_enemy, !damage_enemy, damage_companion, true);
     scr_effect_screenshake(6);
 	scr_effect_freeze(5);
-	scr_effect_vignette_flash(c_white, 0.4, 0.02);
+	scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
 	scr_sound_play_distance(snd_weapon_explode_0, false, 400);
 }

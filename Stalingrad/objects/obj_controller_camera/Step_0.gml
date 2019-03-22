@@ -11,15 +11,15 @@ if (global.weapon_slot_standalone == -1){
 }
 
 // Camera
-if (instance_exists(global.player)) && (!global.game_pause){
+if (instance_exists(obj_player)) && (!global.game_pause){
 	camera_speed = 0.085;
     if (global.cutscene_current == -1){
         if (camera_radius != -1) && (!camera_move_to_player){
-            xx = global.player.x + lengthdir_x(min(camera_radius, mdist), dir);
-            yy = global.player.y + lengthdir_y(min(camera_radius, mdist), dir);
+            xx = obj_player.x + lengthdir_x(min(camera_radius, mdist), dir);
+            yy = obj_player.y + lengthdir_y(min(camera_radius, mdist), dir);
         }else{
-            xx = global.player.x;
-            yy = global.player.y;
+            xx = obj_player.x;
+            yy = obj_player.y;
         }
     }else{
         xx = global.cutscene_camera_x[global.cutscene_current];

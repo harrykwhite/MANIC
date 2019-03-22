@@ -1,7 +1,7 @@
 var mdir;
 
-if (instance_exists(global.player)){
-	mdir = point_direction(global.player.x, global.player.y, mouse_x, mouse_y);
+if (instance_exists(obj_player)){
+	mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
 	
 	if (use_current){
 		
@@ -13,8 +13,8 @@ if (instance_exists(global.player)){
 	        image_angle = mdir;
 	        var xpos = stand.x - lengthdir_x(13, mdir);
 	        var ypos = (stand.y + 2) - lengthdir_y(13, mdir);
-	        global.player.x = xpos;
-			global.player.y = ypos;
+	        obj_player.x = xpos;
+			obj_player.y = ypos;
 		
 			// Bounce Back
 			x = stand.x + lengthdir_x(shoot_bounceback, image_angle);

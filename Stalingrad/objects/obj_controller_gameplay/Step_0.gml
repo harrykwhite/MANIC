@@ -28,7 +28,7 @@ if (global.cutscene_current != -1){
 }
 
 // Game Pausing
-if (global.cutscene_current == -1) && (instance_exists(global.player)){
+if (global.cutscene_current == -1) && (instance_exists(obj_player)){
     if (keyboard_check_pressed(vk_escape)){
         global.game_pause = !global.game_pause;
 		part_system_automatic_update(global.ps_bottom, !global.game_pause);
@@ -80,7 +80,7 @@ if (!global.game_pause){
 	}
 	
 	// Weapon Switching
-	if (instance_exists(global.player)){
+	if (instance_exists(obj_player)){
     
 	    // Switching
 		var weapon;
@@ -91,7 +91,7 @@ if (!global.game_pause){
 			weapon = global.weapon_object[4];
 		}
 		
-		if (global.cutscene_current == -1) && (global.player.move_xTo == -1 && (global.player.move_yTo == -1)){
+		if (global.cutscene_current == -1) && (obj_player.move_xTo == -1 && (obj_player.move_yTo == -1)){
 			if (global.weapon_slot_standalone == -1){
 				if (instance_exists(weapon)){
 					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){ if (weapon.attack_time > 0){exit;}}

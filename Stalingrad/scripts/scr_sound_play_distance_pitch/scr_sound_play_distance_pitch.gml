@@ -9,9 +9,9 @@ var radius = argument2;
 var pmin = argument3;
 var pmax = argument4;
 
-if (instance_exists(global.player)){
-    if (distance_to_object(global.player) < radius){
-        var vol = 1 - (distance_to_object(global.player) / radius);
+if (instance_exists(obj_player)){
+    if (distance_to_object(obj_player) < radius){
+        var vol = 1 - (distance_to_object(obj_player) / radius);
     }else{
         var vol = 0;
     }

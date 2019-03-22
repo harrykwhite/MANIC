@@ -4,9 +4,9 @@ var snd = argument0;
 var radius = argument1;
 var vol = 0;
 
-if (instance_exists(global.player)){
-    if (distance_to_object(global.player) < radius){
-        vol = 1 - (distance_to_object(global.player) / radius);
+if (instance_exists(obj_player)){
+    if (distance_to_object(obj_player) < radius){
+        vol = 1 - (distance_to_object(obj_player) / radius);
     }
     
 	vol = clamp(vol, 0, 1);

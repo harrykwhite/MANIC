@@ -62,6 +62,10 @@ if (audio_is_playing(snd_character_burn_0)){
 	audio_sound_gain(snd_character_burn_0, 0, 2000);
 }
 
+if (audio_is_playing(snd_other_heartbeat_0)){
+	audio_sound_gain(snd_other_heartbeat_0, 0, 2000);
+}
+
 if (audio_is_playing(snd_weapon_flamethrower_active_0)){
 	audio_sound_gain(snd_weapon_flamethrower_active_0, 0, 2000);
 }

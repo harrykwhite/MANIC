@@ -48,7 +48,6 @@ global.game_score_deaths = 4000;
 global.game_score_artifacts = 0;
 global.game_score_wpnvariation = 0;
 
-global.player = obj_player;
 global.player_respawn_x = 0;
 global.player_respawn_y = 0;
 global.player_healthMax = 6;

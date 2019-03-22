@@ -1,7 +1,7 @@
 var speed_multiplier = 1;
 var speed_final = 0;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	if (distance_to_point(move_xTo, move_yTo) > 10){
 		move_speed = 1.85;
 	}else{
@@ -97,7 +97,7 @@ if (instance_exists(weapon)){
 	}
 }
 
-if (speed_final < 0.1) || (!instance_exists(global.player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final < 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else if (speed_final >= 0.1) && (speed_final <= 0.75){
     image_speed = 0.15;

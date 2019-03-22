@@ -8,16 +8,16 @@ if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake_amount = 0;
 }
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	
 	global.cutscene_camera_x[index] = 577;
 	global.cutscene_camera_y[index] = 503;
-	global.player.flashlight_move = false;
+	obj_player.flashlight_move = false;
 	
-	if (point_distance(global.player.x, global.player.y, xTo, yTo) < 15){
-		global.player.move_xTo = -1;
-		global.player.move_yTo = -1;
-		global.player.move_extSpd = 0;
+	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 15){
+		obj_player.move_xTo = -1;
+		obj_player.move_yTo = -1;
+		obj_player.move_extSpd = 0;
 		
 		if (!audio_is_playing(snd_other_typing_0)){
 			audio_play_sound(snd_other_typing_0, 3, false);
@@ -31,23 +31,23 @@ if (instance_exists(global.player)){
 			}
 			
 			global.cutscene_current = -1;
-			global.player_respawn_x = global.player.x;
-			global.player_respawn_y = global.player.y;
+			global.player_respawn_x = obj_player.x;
+			global.player_respawn_y = obj_player.y;
 		}
 	}else{
 		
-		global.player.move_xTo = xTo;
-		global.player.move_yTo = yTo;
-		global.player.move_extSpd = global.player.spd_max;
+		obj_player.move_xTo = xTo;
+		obj_player.move_yTo = yTo;
+		obj_player.move_extSpd = obj_player.spd_max;
 	}
 	
-	dir = point_direction(global.player.x, global.player.y, xTo, yTo);
-	global.player.flashlight_direction = dir;
+	dir = point_direction(obj_player.x, obj_player.y, xTo, yTo);
+	obj_player.flashlight_direction = dir;
 	
 	if (dir > 270) || (dir < 90){
-		global.player.image_xscale = 1;
+		obj_player.image_xscale = 1;
 	}else{
-		global.player.image_xscale = -1;
+		obj_player.image_xscale = -1;
 	}
 	
 }else{

@@ -54,7 +54,7 @@ if (death){
     scr_damage_custom_toxic(50, 50, 140, true);
     scr_effect_screenshake(3);
 	scr_effect_freeze(5);
-	scr_effect_vignette_flash(c_white, 0.3, 0.02);
+	scr_effect_vignette_flash(c_ltgray, 0.3, 0.01);
 	scr_sound_play_distance(snd_object_box_break_0, false, 500);
 	var brk = instance_create(x, y, obj_break); brk.shake = 4; brk.sprite_index = spr_barrel_0_break;
 }

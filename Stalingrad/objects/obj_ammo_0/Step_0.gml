@@ -4,7 +4,7 @@ if (global.game_pause){
 
 // Finding Player
 var w_index = global.weapon_slot[global.weapon_slotcurrent];
-var player = global.player;
+var player = obj_player;
 
 attract = false;
 

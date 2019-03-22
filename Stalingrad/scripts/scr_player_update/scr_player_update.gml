@@ -103,6 +103,28 @@ if (global.player_healthCurrent < 3){
 	}
 }
 
+// Heartbeat
+if (global.player_healthCurrent <= 2){
+	var vol = 0.7;
+	if (!audio_is_playing(snd_other_heartbeat_0)){
+		heartbeat = audio_play_sound(snd_other_heartbeat_0, 3, true);
+	}
+	
+	if (global.player_healthCurrent == 1){
+		vol = 1;
+	}
+	
+	audio_sound_gain(heartbeat, vol, 2000);
+}else{
+	if (audio_is_playing(snd_other_heartbeat_0)){
+		audio_sound_gain(snd_other_heartbeat_0, 0, 1000);
+		
+		if (audio_sound_get_gain(snd_other_heartbeat_0) <= 0){
+			audio_stop_sound(snd_other_heartbeat_0);
+		}
+	}
+}
+
 // Death
 if (global.player_healthCurrent <= 0){
     scr_effect_blackbar();

@@ -1,5 +1,5 @@
 if (object_index == obj_enemy_1){
-	if (owner != global.player) && (owner != noone){
+	if (owner != obj_player) && (owner != noone){
 		exit;
 	}
 }

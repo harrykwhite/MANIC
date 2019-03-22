@@ -3,7 +3,7 @@ explode_anim = false;
 bounce_time = 0;
 damage = 5;
 time = 0;
-creator = global.player;
+creator = obj_player;
 scale = 1;
 
 damage_enemy = true;

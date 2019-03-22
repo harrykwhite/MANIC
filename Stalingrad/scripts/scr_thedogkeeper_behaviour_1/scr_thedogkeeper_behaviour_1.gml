@@ -1,20 +1,20 @@
 var speed_multiplier = 1;
 var speed_final = 0;
 var face_player = true;
-target = global.player;
+target = obj_player;
 
 if (instance_exists(target)){
 	if (move_time > 0){
 		move_time--;
 	}else{
-		move_xTo = global.player.x + random_range(-50, 50);
-		move_yTo = global.player.y + random_range(-50, 50);
+		move_xTo = obj_player.x + random_range(-50, 50);
+		move_yTo = obj_player.y + random_range(-50, 50);
 		weapon.attack = true;
 		move_time = weapon.attack_time_max / 4;
 		
 		while(distance_to_point(move_xTo, move_yTo) < 20){
-			move_xTo = global.player.x + random_range(-50, 50);
-			move_yTo = global.player.y + random_range(-50, 50);
+			move_xTo = obj_player.x + random_range(-50, 50);
+			move_yTo = obj_player.y + random_range(-50, 50);
 		}
 	}
 	

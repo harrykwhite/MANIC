@@ -1,7 +1,7 @@
 /// @param amount
 var amount = argument0;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
     global.player_healthCurrent += amount;
-	global.player.health_scale = 1.5;
+	obj_player.health_scale = 1.5;
 }

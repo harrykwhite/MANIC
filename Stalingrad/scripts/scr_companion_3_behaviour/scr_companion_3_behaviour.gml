@@ -3,7 +3,7 @@ var face_player = false;
 var speed_final;
 var distTo = 0;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	if (!in_cutscene){
 		if (!instance_exists(target) || (target == noone)){
 			var enemyCount = array_length_1d(global.enemy);
@@ -21,12 +21,12 @@ if (instance_exists(global.player)){
 				}
 			}
 		
-			if (distance_to_object(global.player) > 70) || (global.cutscene_current == 52){
-				move_xTo = global.player.x;
-				move_yTo = global.player.y;
+			if (distance_to_object(obj_player) > 70) || (global.cutscene_current == 52){
+				move_xTo = obj_player.x;
+				move_yTo = obj_player.y;
 				move_speed = 1.8;
 				
-				if (distance_to_object(global.player) > 100){
+				if (distance_to_object(obj_player) > 100){
 					move_speed = 2.1;
 				}
 			
@@ -41,12 +41,12 @@ if (instance_exists(global.player)){
 						move_time--;
 					}else{
 						var attempts = 0;
-						move_xTo = global.player.x + lengthdir_x(45, random(360));
-						move_yTo = global.player.y + lengthdir_y(45, random(360));
+						move_xTo = obj_player.x + lengthdir_x(45, random(360));
+						move_yTo = obj_player.y + lengthdir_y(45, random(360));
 					
 						while(distance_to_point(move_xTo, move_yTo) < 15) || (collision_line(x, y, move_xTo, move_yTo, obj_p_solid, false, true)){
-							move_xTo = global.player.x + lengthdir_x(45, random(360));
-							move_yTo = global.player.y + lengthdir_y(45, random(360));
+							move_xTo = obj_player.x + lengthdir_x(45, random(360));
+							move_yTo = obj_player.y + lengthdir_y(45, random(360));
 							
 							if (attempts < 200){
 								attempts ++;
@@ -99,14 +99,14 @@ if (instance_exists(global.player)){
 			}
 		}
 	}else{
-		if (distance_to_object(global.player) > 37){
+		if (distance_to_object(obj_player) > 37){
 			move_speed = 1;
 		}else{
 			move_speed = 0;
 		}
 		
-		move_xTo = global.player.x;
-		move_yTo = global.player.y;
+		move_xTo = obj_player.x;
+		move_yTo = obj_player.y;
 	}
 	
 	if (bark_time > 0){
@@ -150,7 +150,7 @@ if (face_player == false){
 		}
 	}
 }else{
-	if (global.player.x > x){
+	if (obj_player.x > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;
@@ -164,7 +164,7 @@ if (speed_final > 0.1){
 	sprite_index = spr_companion_3_idle_0;
 }
 
-if (speed_final < 0.1) || (!instance_exists(global.player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final < 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else if (speed_final >= 0.1) && (speed_final <= 0.75){
     image_speed = 0.15;

@@ -1351,6 +1351,14 @@
             }
         },
         {
+            "Key": "21a3dc3c-43c4-4c99-a3eb-ad91a1e5b38d",
+            "Value": {
+                "id": "16713f5a-1498-46ca-9c34-53c3ae56fd02",
+                "resourcePath": "sprites\\spr_ui_hearts_1\\spr_ui_hearts_1.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "21b3560f-ab69-4e06-828a-a8f70f392430",
             "Value": {
                 "id": "39753a8d-e032-4908-a160-443686671c0c",
@@ -4964,14 +4972,6 @@
                 "id": "80a9cf1d-b3d0-4204-8d67-fa162c64d909",
                 "resourcePath": "scripts\\scr_distance_to_camera\\scr_distance_to_camera.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "7d4b4704-f49a-423d-a1b0-8e339d8f016f",
-            "Value": {
-                "id": "56273712-ea7c-470b-91ac-f0f161c6e3b4",
-                "resourcePath": "sprites\\spr_ui_hearts_1\\spr_ui_hearts_1.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -9172,6 +9172,14 @@
                 "id": "746b652f-4582-49d4-aad9-1d9cb5819282",
                 "resourcePath": "sprites\\spr_ef_blood_3\\spr_ef_blood_3.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "ea808c92-0896-4d11-8c29-bb5b700af889",
+            "Value": {
+                "id": "ef8ef869-2a9d-408b-a2e8-72e55c5c4451",
+                "resourcePath": "sounds\\snd_other_heartbeat_0\\snd_other_heartbeat_0.yy",
+                "resourceType": "GMSound"
             }
         },
         {

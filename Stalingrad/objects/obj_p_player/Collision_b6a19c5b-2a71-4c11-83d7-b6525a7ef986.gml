@@ -3,7 +3,7 @@ if (!other.enemy){
 }
 
 if (i_time < 1){
-	if (object_index == global.player){
+	if (object_index == obj_player){
 		scr_player_damage(other.damage, other.strength, other.dir, 6);
 	}else{
 		scr_pawn_damage(other.damage, other.strength, other.dir, 6);

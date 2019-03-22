@@ -18,8 +18,8 @@ if (fscale < 1){
 	fscale += 0.01;
 }
 
-if (instance_exists(global.player)){
-	if (distance_to_object(global.player) < 60){
+if (instance_exists(obj_player)){
+	if (distance_to_object(obj_player) < 60){
 		if (buzz == noone){
 			buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
 		}

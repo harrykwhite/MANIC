@@ -9,15 +9,15 @@ if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake_amount = 0;
 }
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	global.cutscene_camera_x[index] = cutscene_conveyerbelt_x;
 	global.cutscene_camera_y[index] = cutscene_conveyerbelt_y;
-	global.player.flashlight_move = false;
+	obj_player.flashlight_move = false;
 	
-	if (point_distance(global.player.x, global.player.y, xTo, yTo) < 24){
-		global.player.move_xTo = -1;
-		global.player.move_yTo = -1;
-		global.player.move_extSpd = 0;
+	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 24){
+		obj_player.move_xTo = -1;
+		obj_player.move_yTo = -1;
+		obj_player.move_extSpd = 0;
 		
 		if (global.cutscene_time[index] < 120){
 			global.cutscene_time[index] ++;
@@ -66,12 +66,12 @@ if (instance_exists(global.player)){
 			}
 		}
 	}else{
-		global.player.move_xTo = xTo;
-		global.player.move_yTo = yTo;
-		global.player.move_extSpd = global.player.spd_max;
+		obj_player.move_xTo = xTo;
+		obj_player.move_yTo = yTo;
+		obj_player.move_extSpd = obj_player.spd_max;
 	}
 
-	global.player.flashlight_direction = 90;
+	obj_player.flashlight_direction = 90;
 }else{
 	global.cutscene_current = -1;
 	global.cutscene_time[index] = 0;

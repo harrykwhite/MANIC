@@ -17,6 +17,6 @@ if (death){
     instance_destroy();
     scr_effect_screenshake(3);
 	scr_effect_freeze(8);
-	scr_effect_vignette_flash(c_white, 0.1, 0.02);
+	scr_effect_vignette_flash(c_ltgray, 0.1, 0.01);
 	var brk = instance_create(x, y, obj_break); brk.shake = 3; brk.sprite_index = spr_prisonbar_3_break;
 }

@@ -1,4 +1,4 @@
-target = global.player;
+target = obj_player;
 
 if (instance_exists(target)){
 	if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (shoot_in_burst){

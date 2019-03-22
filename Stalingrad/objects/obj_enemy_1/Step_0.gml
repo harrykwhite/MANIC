@@ -15,8 +15,8 @@ if (ispaused){
 	}
 }
 
-if (instance_exists(global.player)) && (!global.game_pause){
-	if (distance_to_object(global.player) < 60){
+if (instance_exists(obj_player)) && (!global.game_pause){
+	if (distance_to_object(obj_player) < 60){
 		if (buzz == noone){
 			buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
 		}
@@ -41,14 +41,14 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 if (distance_to_point(move_xTo, move_yTo) < 10) || (move_time <= 0){
 	if (owner == noone) || (!instance_exists(owner)){
-		if (instance_exists(global.player)){
-			owner = global.player;
+		if (instance_exists(obj_player)){
+			owner = obj_player;
 			move_speed *= random_range(0.675, 0.8);
 		}
 	}
 	
 	if (instance_exists(owner) && (owner != noone)){
-		if (owner == global.player){
+		if (owner == obj_player){
 			move_xTo = owner.x + random_range(-18, 18);
 			move_yTo = owner.y + random_range(-18, 18);
 		}else{

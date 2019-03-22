@@ -1,7 +1,7 @@
 var speed_multiplier = 1;
 var speed_final = 0;
 bleed = true;
-target = global.player;
+target = obj_player;
 
 if (instance_exists(target)){
 	if (distance_to_point(move_xTo, move_yTo) > 10){

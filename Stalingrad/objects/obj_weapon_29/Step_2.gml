@@ -1,10 +1,10 @@
 var cart_lock = false;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	if (use_current){
         // Positioning
 		if (!global.game_pause){
-			var mdir = point_direction(global.player.x, global.player.y, mouse_x, mouse_y);
+			var mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
     
 		    if (instance_exists(obj_player_arm)){
 		        x = obj_player_arm.x + lengthdir_x(20 + shoot_bounceback, image_angle);

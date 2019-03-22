@@ -81,6 +81,7 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 
 // Other
 isVisible = true;
+heartbeat = noone;
 
 minecart = noone;
 minecart_bounce_break = 0;

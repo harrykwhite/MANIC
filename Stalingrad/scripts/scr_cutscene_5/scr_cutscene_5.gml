@@ -6,7 +6,7 @@ if (instance_exists(obj_controller_camera)){
 	obj_controller_camera.camera_screenshake_amount = 0;
 }
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 
 	if (global.cutscene_time[index] < 120){
 		global.cutscene_time[index] ++;

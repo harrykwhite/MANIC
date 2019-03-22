@@ -8,8 +8,8 @@ if (hp < health_max){
 		health_alpha += 0.02;
 	}
 	
-	if (instance_exists(global.player)){
-		if (distance_to_object(global.player) > 260){
+	if (instance_exists(obj_player)){
+		if (distance_to_object(obj_player) > 260){
 			if (health_alpha > 0.4){
 				health_alpha -= 0.1;
 			}else if (health_alpha < 0.4){

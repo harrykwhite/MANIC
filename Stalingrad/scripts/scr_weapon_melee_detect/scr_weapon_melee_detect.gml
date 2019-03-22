@@ -84,7 +84,7 @@ switch(ctype){
 					scr_effect_freeze(15);
 				
 					if (inst.object_index == obj_enemy_1){
-						if (inst.owner != global.player) && (inst.owner != noone){
+						if (inst.owner != obj_player) && (inst.owner != noone){
 							continue;
 						}
 					}
@@ -150,7 +150,7 @@ switch(ctype){
 					scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 					
 					with(inst){
-						if (inst.object_index == global.player){
+						if (inst.object_index == obj_player){
 							scr_player_damage(damage, strength, dir, 6);
 						}else{
 							scr_pawn_damage(damage, strength, dir, 6);

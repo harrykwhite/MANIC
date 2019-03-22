@@ -1,7 +1,7 @@
 explode = false;
 explode_anim = false;
 bounce_time = 0;
-creator = global.player;
+creator = obj_player;
 scale = 1;
 
 time = 0;

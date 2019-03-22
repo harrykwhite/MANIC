@@ -23,15 +23,14 @@ with(obj_block_persistent){
 
 if (!instance_exists(obj_player)){
 	instance_create(0, 0, obj_player);
-	global.player = obj_player;
 }
 
 ini_open("save_respawn.ini");
-global.player.x = global.player_respawn_x;
-global.player.y = global.player_respawn_y;
+obj_player.x = global.player_respawn_x;
+obj_player.y = global.player_respawn_y;
 ini_close();
 
-var safe = instance_create(global.player.x, global.player.y, obj_block_safezone);
+var safe = instance_create(obj_player.x, obj_player.y, obj_block_safezone);
 safe.image_xscale = 4;
 safe.image_yscale = 4;
 safe.x -= (safe.sprite_width * 0.5);
@@ -47,14 +46,14 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 	var weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
 	
 	if (!instance_exists(weapon)){
-		instance_create(global.player.x, global.player.y, weapon);
+		instance_create(obj_player.x, obj_player.y, weapon);
 	}
 }
 
 // Camera
 if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.x = global.player.x;
-	obj_controller_camera.y = global.player.y;
+	obj_controller_camera.x = obj_player.x;
+	obj_controller_camera.y = obj_player.y;
 	obj_controller_camera.camera_screenshake = false;
 	obj_controller_camera.camera_screenshake_amount = 0;
 }
@@ -67,7 +66,7 @@ scr_weapondrop_destroy_all();
 
 if (global.player_companion != -1){
 	instance_destroy(global.companion[global.player_companion]);
-	var comp = instance_create(global.player.x - 24, global.player.y, global.companion[global.player_companion]);
+	var comp = instance_create(obj_player.x - 24, obj_player.y, global.companion[global.player_companion]);
 	if (global.player_companion_health != -1){
 		comp.health_current = global.player_companion_health;
 	}

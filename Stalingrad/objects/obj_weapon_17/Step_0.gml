@@ -58,7 +58,7 @@ if (shoot_time > 0){
 }
 
 // Pickup and Put Down
-if (distance_to_object(global.player) < pickup_range){
+if (distance_to_object(obj_player) < pickup_range){
 	pickup = true;
 	
 	if (!use_current){
@@ -69,7 +69,7 @@ if (distance_to_object(global.player) < pickup_range){
 	pickup = false;
 }
 
-if (instance_exists(global.player)) && (global.player_stamina_active){
+if (instance_exists(obj_player)) && (global.player_stamina_active){
     
     // Pick up if player is near and E is pressed.
 	var mount = keyboard_check_pressed(ord("E"));

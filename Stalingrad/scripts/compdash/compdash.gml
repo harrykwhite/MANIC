@@ -2,7 +2,7 @@ var speed_multiplier = 1;
 var face_player = false;
 var speed_final;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	var weapon_does_exist = false;
 	
 	if (weapon != -1){
@@ -23,12 +23,12 @@ if (instance_exists(global.player)){
 				}
 			}
 		
-			if (distance_to_object(global.player) > 70) || (global.cutscene_current == 52){
-				move_xTo = global.player.x;
-				move_yTo = global.player.y;
+			if (distance_to_object(obj_player) > 70) || (global.cutscene_current == 52){
+				move_xTo = obj_player.x;
+				move_yTo = obj_player.y;
 				move_speed = 1;
 			
-				if (distance_to_object(global.player) > 95){
+				if (distance_to_object(obj_player) > 95){
 					if (dashbreak <= 0){
 						dash = true;
 						dashdirection = point_direction(x, y, move_xTo, move_yTo);
@@ -48,12 +48,12 @@ if (instance_exists(global.player)){
 						move_speed = 0;
 						move_time--;
 					}else{
-						move_xTo = global.player.x + lengthdir_x(20, random(360));
-						move_yTo = global.player.y + lengthdir_y(20, random(360));
+						move_xTo = obj_player.x + lengthdir_x(20, random(360));
+						move_yTo = obj_player.y + lengthdir_y(20, random(360));
 					
 						while(distance_to_point(move_xTo, move_yTo) < 7){
-							move_xTo = global.player.x + lengthdir_x(20, random(360));
-							move_yTo = global.player.y + lengthdir_y(20, random(360));
+							move_xTo = obj_player.x + lengthdir_x(20, random(360));
+							move_yTo = obj_player.y + lengthdir_y(20, random(360));
 						}
 					}
 				}
@@ -85,9 +85,9 @@ if (instance_exists(global.player)){
 			move_xTo = target.x;
 			move_yTo = target.y;
 		
-			if (distance_to_object(global.player) > 235){
-				move_xTo = global.player.x;
-				move_yTo = global.player.y;
+			if (distance_to_object(obj_player) > 235){
+				move_xTo = obj_player.x;
+				move_yTo = obj_player.y;
 				move_speed = 1;
 				if (dashbreak <= 0){
 					dash = true;
@@ -99,8 +99,8 @@ if (instance_exists(global.player)){
 			}
 		}
 	}else{
-		move_xTo = global.player.x;
-		move_yTo = global.player.y;
+		move_xTo = obj_player.x;
+		move_yTo = obj_player.y;
 		move_speed = 1;
 		
 		if (dashbreak <= 0){
@@ -178,7 +178,7 @@ if (face_player == false){
 		image_xscale = -scale;
 	}
 }else{
-	if (global.player.x > x){
+	if (obj_player.x > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;
@@ -203,7 +203,7 @@ if (instance_exists(weapon)){
 	}
 }
 
-if (speed_final < 0.1) || (!instance_exists(global.player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final < 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else if (speed_final >= 0.1) && (speed_final <= 0.75){
     image_speed = 0.15;

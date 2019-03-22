@@ -10,14 +10,15 @@ if (!active){
 	exit;
 }
 
-if (instance_exists(global.player)) && (global.cutscene_current == -1){	
-	if (place_meeting(x + 1, y + 1, global.player)){
+if (instance_exists(obj_player)) && (global.cutscene_current == -1){	
+	if (place_meeting(x + 1, y + 1, obj_player)){
 		if (time >= 30){
 			if (interact){
 				interact_active = true;
 				if (interact_special == "moveto"){
-					if (global.boss_current != -1){
-						if (global.boss_current != Boss.MotherRobot) && (global.boss_current != Boss.SniperRobot){
+					var boss = global.boss_current;
+					if (boss != -1){
+						if (boss != Boss.MotherRobot) && (boss != Boss.SniperRobot){
 							interact_active = false;
 							exit;
 						}

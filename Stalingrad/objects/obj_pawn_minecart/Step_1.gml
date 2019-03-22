@@ -1,9 +1,9 @@
 var mysprite = spr_pawn_minecart_0;
 visible = true;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	// Movement
-	if (!global.player.in_minecart){
+	if (!obj_player.in_minecart){
 		if (image_index < sprite_get_number(sprite_index)){
 			image_index += sprite_get_speed(sprite_index);
 		}else{
@@ -60,26 +60,26 @@ if (instance_exists(global.player)){
 	// Equip
 	var pickup_range = 10;
 	var pressed = keyboard_check_pressed(ord("E"));
-	var isme = global.player.minecart == id;
+	var isme = obj_player.minecart == id;
 	
 	if (isme){
-		x = global.player.x;
-		y = global.player.y;
+		x = obj_player.x;
+		y = obj_player.y;
 	}
 	
 	if (global.player_stamina_active){
-		if (global.player.in_minecart){
+		if (obj_player.in_minecart){
 			if (isme){
 				visible = false;
 
 				if (pressed){
-					sprite_index = global.player.minecart_sprite;
-					global.player.minecart = noone;
-					global.player.minecart_sprite = noone;
-					global.player.minecart_sprite_image = 0;
-					global.player.in_minecart = false;
-					global.player.state = scr_player_move;
-					global.player.sprite_index = spr_player_idle_2;
+					sprite_index = obj_player.minecart_sprite;
+					obj_player.minecart = noone;
+					obj_player.minecart_sprite = noone;
+					obj_player.minecart_sprite_image = 0;
+					obj_player.in_minecart = false;
+					obj_player.state = scr_player_move;
+					obj_player.sprite_index = spr_player_idle_2;
 					scr_player_stamina_drain(6);
 					
 					if (instance_exists(gun)){
@@ -88,7 +88,7 @@ if (instance_exists(global.player)){
 				}
 			}
 		}else{
-			if (distance_to_object(global.player) < pickup_range){
+			if (distance_to_object(obj_player) < pickup_range){
 				if (mysprite == spr_pawn_minecart_0){
 					mysprite = spr_pawn_minecart_0_interact;
 				}else if (mysprite == spr_pawn_minecart_1){
@@ -102,15 +102,15 @@ if (instance_exists(global.player)){
 				}
 			
 				if (pressed){
-					global.player.minecart = id;
-					global.player.in_minecart = true;
-					global.player.minecart_speed = minecart_speed;
-					global.player.minecart_bounce_break = minecart_bounce_break;
-					global.player.minecart_dir = minecart_dir;
-					global.player.minecart_sprite = sprite_index;
-					global.player.minecart_sprite_image = image_index;
-					global.player.x = x;
-					global.player.y = y;
+					obj_player.minecart = id;
+					obj_player.in_minecart = true;
+					obj_player.minecart_speed = minecart_speed;
+					obj_player.minecart_bounce_break = minecart_bounce_break;
+					obj_player.minecart_dir = minecart_dir;
+					obj_player.minecart_sprite = sprite_index;
+					obj_player.minecart_sprite_image = image_index;
+					obj_player.x = x;
+					obj_player.y = y;
 					scr_player_stamina_drain(6);
 					if (instance_exists(gun)){
 						gun.interact_activate = true;

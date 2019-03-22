@@ -38,8 +38,8 @@ if (bounce_time > 0){
 }
 
 // Pickup
-if (instance_exists(global.player)){
-    if (distance_to_object(global.player) < pickup_range){
+if (instance_exists(obj_player)){
+    if (distance_to_object(obj_player) < pickup_range){
         pickup = true;
 		scr_ui_control_indicate(string(global.weapon_name[index]) + " [E]");
     }else{
@@ -117,7 +117,7 @@ if (instance_exists(global.player)){
 				}
 				
 				if (weapon_dropindex != 4) && (weapon_dropindex != -1){ // If it is not a knife.
-					var drop = instance_create(global.player.x + random_range(-6, 6), global.player.y + random_range(-6, 6), obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
+					var drop = instance_create(obj_player.x + random_range(-6, 6), obj_player.y + random_range(-6, 6), obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
 					drop.index = weapon_dropindex;
 					drop.ammo = dropammo;
 					drop.angle = angle + random_range(-30, 30);

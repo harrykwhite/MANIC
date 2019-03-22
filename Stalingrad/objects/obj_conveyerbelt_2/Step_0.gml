@@ -7,7 +7,7 @@ sprite_index = spr_conveyerbelt_2;
 image_speed = 1;
 
 if (global.cutscene_current == -1) && (!deactivated){
-	if (place_meeting(x, y + 15, global.player)){
+	if (place_meeting(x, y + 15, obj_player)){
 		scr_ui_control_indicate("Interact [E]");
 		sprite_index = spr_conveyerbelt_2_interact;
 		

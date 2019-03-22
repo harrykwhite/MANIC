@@ -17,7 +17,7 @@ if (open){
 }else{
 	sprite_index = spr_prisonbar_4;
 	if (global.cutscene_current == -1){
-		if (place_meeting(x, y + 15, global.player)){
+		if (place_meeting(x, y + 15, obj_player)){
 			scr_ui_control_indicate("Unlock [E]");
 			sprite_index = spr_prisonbar_4_interact;
 		

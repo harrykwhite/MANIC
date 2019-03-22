@@ -7,7 +7,7 @@ image_speed = 1;
 
 // Finding Player
 var w_index = global.weapon_slot[global.weapon_slotcurrent];
-var player = global.player;
+var player = obj_player;
 
 attract = false;
 

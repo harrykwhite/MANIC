@@ -11,7 +11,7 @@ other.owner_offset_x = clamp(x - other.x, -7, 7);
 other.owner_offset_y = clamp(y - other.y, -7, 7);
 
 if (i_time < 1){
-	if (object_index == global.player){
+	if (object_index == obj_player){
 		scr_player_damage(other.damage, other.strength, other.dir, 6);
 	}else{
 		scr_pawn_damage(other.damage, other.strength, other.dir, 6);

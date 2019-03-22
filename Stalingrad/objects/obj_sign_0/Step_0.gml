@@ -1,6 +1,6 @@
-var player = global.player;
+var player = obj_player;
 if (instance_exists(player)){
-	if (distance_to_point(player.x, player.y - 6) < 35){
+	if (point_distance(x, y - 6, player.x, player.y) < 14){
 		interact = true;
 	}else{
 		interact = false;

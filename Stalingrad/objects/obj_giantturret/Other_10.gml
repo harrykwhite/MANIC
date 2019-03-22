@@ -1,13 +1,13 @@
 draw_self();
 scr_draw_attributes_pawn();
 
-if (instance_exists(global.player)){
-	shoot_dir = point_direction(x, y, global.player.x, global.player.y);
+if (instance_exists(obj_player)){
+	shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
 	
 	if (shoot_buildup_time < 120){
 		draw_set_alpha(shoot_buildup_time / 120);
 		draw_set_color(c_red);
-		draw_line(x, y, global.player.x, global.player.y);
+		draw_line(x, y, obj_player.x, obj_player.y);
 		draw_set_alpha(1);
 	}
 }

@@ -1,3 +1,3 @@
-if (instance_exists(global.player)){
-	scr_render_me(global.player.y + 3);
+if (instance_exists(obj_player)){
+	scr_render_me(obj_player.y + 3);
 }

@@ -21,7 +21,7 @@ if (!global.game_pause){
 	pause_selected = 0;
 
 	// Title Text
-	if (global.cutscene_current == -1) &&
+	/*if (global.cutscene_current == -1) &&
 	((room == rm_level_1_00) ||
 	 (room == rm_level_2_00) ||
 	 (room == rm_level_3_00) ||
@@ -56,7 +56,7 @@ if (!global.game_pause){
 		if (leveltext_alpha > 0){
 			leveltext_alpha -= 0.05;
 		}
-	}
+	}*/
 
 	// Score
 	score_scale = approach(score_scale, 1, 20);

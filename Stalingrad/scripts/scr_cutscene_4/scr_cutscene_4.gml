@@ -22,12 +22,12 @@ switch(global.cutscene_time[index]){
 	case 0: 
 		
 		// Make the player move to the portal.
-		if (instance_exists(global.player)){
-			global.player.move_xTo = global.player.x;
-			global.player.move_yTo = room_height + 40;
-			global.player.move_extSpd = global.player.spd_max;
+		if (instance_exists(obj_player)){
+			obj_player.move_xTo = obj_player.x;
+			obj_player.move_yTo = room_height + 40;
+			obj_player.move_extSpd = obj_player.spd_max;
 			
-			if (point_distance(global.player.x, global.player.y, global.player.move_xTo, global.player.move_yTo) < 40){
+			if (point_distance(obj_player.x, obj_player.y, obj_player.move_xTo, obj_player.move_yTo) < 40){
 				global.cutscene_time[index] = 1;
 				
 				if (instance_exists(obj_controller_ui)){
@@ -41,8 +41,8 @@ switch(global.cutscene_time[index]){
 	case 1:
 		
 		// Make the player fade out and be destroyed.
-		if (instance_exists(global.player)){
-			instance_destroy(global.player);
+		if (instance_exists(obj_player)){
+			instance_destroy(obj_player);
 			level.prison_explode_time_sec = -1;
 			
 		}else{

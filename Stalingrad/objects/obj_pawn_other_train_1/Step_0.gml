@@ -6,7 +6,7 @@ if (global.game_pause){
 	exit;
 }
 
-while (spd <= 0.2) && (instance_exists(global.player)){
+while (spd <= 0.2) && (instance_exists(obj_player)){
 	if (room == rm_level_6_00){
 		if (instance_exists(level.trainboss_leader)){
 			break;
@@ -122,8 +122,8 @@ while (spd <= 0.2) && (instance_exists(global.player)){
 			interact_break --;
 		}else{
 			if (count == cutscene_opening_count){
-				if (point_distance(x, y + 6, global.player.x, global.player.y) < 30){
-					if (global.player.y > y){
+				if (point_distance(x, y + 6, obj_player.x, obj_player.y) < 30){
+					if (obj_player.y > y){
 						interact = true;
 						scr_ui_control_indicate("Board Train [E]")
 						if (keyboard_check_pressed(ord("E"))){

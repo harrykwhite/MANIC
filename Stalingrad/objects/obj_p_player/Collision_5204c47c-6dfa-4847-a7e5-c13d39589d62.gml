@@ -1,5 +1,5 @@
 if (global.player_healthCurrent > 0){
-	if (object_index == global.player){
+	if (object_index == obj_player){
 		scr_player_damage(global.player_healthMax, 2, random(360), 6);
 	}else{
 		scr_pawn_damage(global.player_healthMax, 2, random(360), 6);

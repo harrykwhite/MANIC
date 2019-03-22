@@ -2,7 +2,7 @@ var speed_multiplier = 1;
 var speed_final = 0;
 bleed = true;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	if (object_index != obj_companion_3){
 		if (instance_exists(weapon)){
 			weapon.dir = point_direction(x, y, move_xTo, move_yTo);
@@ -98,7 +98,7 @@ if (object_index != obj_companion_3){
 	}
 }
 
-if (speed_final < 0.1) || (!instance_exists(global.player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final < 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else if (speed_final >= 0.1) && (speed_final <= 0.75){
     image_speed = 0.15;

@@ -7,7 +7,7 @@ if (argument_count > 2){
 	offset = argument[2];
 }
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	
 	var x1 = (sprite_get_bbox_left(sprite_index) - 12) - offset;
 	var y1 = (sprite_get_bbox_top(sprite_index) - 12) - offset;

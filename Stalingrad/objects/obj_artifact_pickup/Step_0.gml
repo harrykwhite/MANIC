@@ -16,8 +16,8 @@ if (global.game_pause) || (global.cutscene_current != -1){
 }
 
 // Pickup
-if (instance_exists(global.player)){
-    if (distance_to_object(global.player) < pickup_range){
+if (instance_exists(obj_player)){
+    if (distance_to_object(obj_player) < pickup_range){
         pickup = true;
 		scr_ui_control_indicate("Artifact [E]");
     }else{

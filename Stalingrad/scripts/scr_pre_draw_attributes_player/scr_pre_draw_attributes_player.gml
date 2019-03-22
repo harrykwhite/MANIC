@@ -29,7 +29,7 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		var army = obj_player_arm.y - 1 + lengthdir_y(4, angle);
 		draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 1);
 		
-		var wv = wave(0.05, 0.15, 2, 0);
+		var wv = wave(0.05, 0.1, 2, 0);
 		
 		shader_set(sh_pawntint);
 		var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");
@@ -39,8 +39,8 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		var r = 0, g = 0, b = 0, a = 0;
 		
         if (global.player_healthCurrent <= 2){
-            a = wv;
-			r = 80;
+            a = wv * 0.5;
+			r = 255;
 			g = 0;
 			b = 0;
 		}
@@ -59,8 +59,8 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		
 		if (i_blend_time > 0){
 			var alpha = (i_blend_time / 5);
-			a = alpha * 0.75;
-			r = 80;
+			a = alpha * 0.5;
+			r = 255;
 			g = 0;
 			b = 0;
 		}

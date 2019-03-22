@@ -2,11 +2,10 @@ if (!instance_exists(obj_player)){
     instance_create(502, 1096, obj_player);
 }
 
-global.player = obj_player;
 global.player_footstep_default = snd_character_footstep_wood;
 
 if (global.player_companion != -1){
-	var comp = instance_create(global.player.x - 20, global.player.y - 20, global.companion[global.player_companion]);
+	var comp = instance_create(obj_player.x - 20, obj_player.y - 20, global.companion[global.player_companion]);
 	if (global.player_companion_health != -1){
 		comp.health_current = global.player_companion_health;
 	}

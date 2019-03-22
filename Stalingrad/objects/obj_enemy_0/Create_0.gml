@@ -103,7 +103,7 @@ health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 
-target = global.player;
+target = obj_player;
 
 in_cutscene = false;
 cutscene_prop = false;

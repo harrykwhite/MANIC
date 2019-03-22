@@ -1,5 +1,5 @@
 var xpos, ypos;
-target = global.player;
+target = obj_player;
 
 if (instance_exists(target)){
 	
@@ -14,7 +14,7 @@ if (instance_exists(target)){
 		if (shoot_time > 0){
 			shoot_time --;
 		}else{
-			shoot_dir = point_direction(x, y, global.player.x, global.player.y);
+			shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
 			xpos = x + lengthdir_x(22, shoot_dir);
 			ypos = y + lengthdir_y(22, shoot_dir);
 			
@@ -131,7 +131,7 @@ if (instance_exists(target)){
 			shoot_time --;
 		}else{
 			if (instance_number(obj_proj_8) < 4){
-				shoot_dir = point_direction(x, y, global.player.x, global.player.y);
+				shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
 				xpos = x + lengthdir_x(22, shoot_dir);
 				ypos = y + lengthdir_y(22, shoot_dir);
 			
@@ -150,7 +150,7 @@ if (instance_exists(target)){
 				rocket.strength = 1.25;
 				rocket.enemy = true;
 				rocket.creator = id;
-				rocket.target = global.player;
+				rocket.target = obj_player;
 			}
 			
 			shoot_time = 60;

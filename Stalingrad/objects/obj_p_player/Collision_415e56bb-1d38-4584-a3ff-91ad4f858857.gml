@@ -1,7 +1,7 @@
 if (i_time < 1) && (other.bite_to){
 	var dir = point_direction(other.x, other.y, x, y);
 	
-	if (object_index == global.player){
+	if (object_index == obj_player){
 		scr_player_damage(other.damage, other.strength, dir, 50);
 	}else{
 		scr_pawn_damage(other.damage, other.strength, dir, 60);

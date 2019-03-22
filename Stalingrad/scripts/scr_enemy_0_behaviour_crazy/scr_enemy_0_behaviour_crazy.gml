@@ -1,6 +1,6 @@
 var speed_multiplier = 1;
 var speed_final = 0;
-target = global.player;
+target = obj_player;
 
 if (instance_exists(target)) && (instance_exists(weapon)){
 	if (companion_attack_break < 240){

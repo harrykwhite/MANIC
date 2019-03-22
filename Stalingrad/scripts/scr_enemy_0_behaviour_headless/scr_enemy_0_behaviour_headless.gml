@@ -1,7 +1,7 @@
 var speed_multiplier = 1;
 var speed_final = 0;
 bleed = true;
-target = global.player;
+target = obj_player;
 
 switch(type){
 	case EnemyOneType.Fast:

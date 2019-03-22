@@ -20,7 +20,7 @@ if (weaponslot_shake > 0.05){
 
 var shake = weaponslot_shake;
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
     repeat(amount){
         
         // Weapon Slot Scale
@@ -83,7 +83,7 @@ if (instance_exists(global.player)){
 }
 
 // Player Stamina
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
     var sc = global.player_stamina_current;
     var sm = global.player_stamina_max;
     
@@ -173,7 +173,7 @@ if (global.weapon_slot_standalone != -1){
 	w = global.weapon_slot_standalone;
 }
 
-if (instance_exists(global.player)){
+if (instance_exists(obj_player)){
 	repeat(2){
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
@@ -206,16 +206,20 @@ if (instance_exists(global.player)){
     if (w != -1){
 		if (instance_exists(global.weapon_object[w])){
 	        if (global.weapon_type[w] == WeaponType.Ranged){
-	            var xx = 136;
+	            var xx = 131 + weaponammo_x;
 	            var yy = 78 - 30;
 	            var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
-
+				
 	            var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 	            var maxammo = global.weapon_ammomax[global.weapon_slot[global.weapon_slotcurrent]];
 	            
 				if (global.weapon_slot_standalone != -1){
 					ammo = global.weapon_slot_standalone_ammo;
 					maxammo = global.weapon_ammomax[global.weapon_slot_standalone];
+				}
+				
+				if (weaponammo_x < 5){
+					weaponammo_x += 2.5;
 				}
 				
 				weaponammo_scale = approach(weaponammo_scale, weaponammo_scaleTo, 20);
@@ -247,7 +251,9 @@ if (instance_exists(global.player)){
 				if (global.weapon_ammotype[w] == AmmoType.Darts){
 					scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
 				}
-	        }
+	        }else{
+				weaponammo_x = 0;
+			}
 		}
     }
 }

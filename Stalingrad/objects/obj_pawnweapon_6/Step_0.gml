@@ -1,6 +1,5 @@
-if (global.game_pause) || (global.cutscene_current != -1){
+if (global.game_pause){
 	image_speed = 0;
-	image_index = 0;
 	exit;
 }
 

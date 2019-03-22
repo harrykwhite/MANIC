@@ -21,8 +21,8 @@ if (!audio_is_playing(sound)) || (index == noone){
 
 dist = point_distance(x, y, centerx, centery);
 	
-if (distance_to_object(global.player) < radius){
-	vol = 1 - (distance_to_object(global.player) / radius);
+if (distance_to_object(obj_player) < radius){
+	vol = 1 - (distance_to_object(obj_player) / radius);
 }else{
 	vol = 0;
 }

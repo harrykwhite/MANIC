@@ -18,6 +18,7 @@ areacleared_time = 0;
 
 weaponammo_scale = 1;
 weaponammo_scaleTo = 1;
+weaponammo_x = 0;
 
 ui_alpha = 1;
 
