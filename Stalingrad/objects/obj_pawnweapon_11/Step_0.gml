@@ -34,7 +34,7 @@ if (instance_exists(owner)){
 			shoot_continue_time = 2;
 			angle_offset = 20;
 			
-			scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
+			scr_sound_play(snd_weapon_shotgun_0, false, 0.8, 1.2);
 			scr_effect_screenshake(2);
 			owner.light_brightness = 8;
 			

@@ -77,7 +77,7 @@ if (area_next_fade){
 		area_next_alpha += area_next_alpha_speed;
 	}else{
 		area_next_fade = false;
-		area_next_alpha_speed = 0.01;
+		area_next_alpha_speed = 0.02;
 		scr_fade_object_list_reset();
 		if (area_next_room != noone){
 			scr_level_cleanup();

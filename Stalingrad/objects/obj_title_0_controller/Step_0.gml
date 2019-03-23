@@ -11,7 +11,7 @@ if (fade){
 }else{
 	if (fade_opening){
 		if (fade_alpha > 0){
-			fade_alpha -= 0.035;
+			fade_alpha -= 0.05;
 		}else{
 			fade_alpha = 0;
 			fade_opening = false;

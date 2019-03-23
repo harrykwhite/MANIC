@@ -8,7 +8,6 @@ if (instance_exists(obj_controller_camera)){
 }
 
 if (instance_exists(obj_player)){
-
 	global.cutscene_camera_x[index] = level.spawn_x;
 	global.cutscene_camera_y[index] = level.spawn_y;
 	obj_player.flashlight_move = false;
@@ -50,12 +49,12 @@ if (instance_exists(obj_player)){
 		case rm_level_9_02: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
 	}*/
 	
-	if (point_distance(obj_player.x, obj_player.y, level.spawn_x, level.spawn_y) < 40){
+	if (point_distance(obj_player.x, obj_player.y, level.spawn_x, level.spawn_y) < 60){
 		obj_player.move_xTo = -1;
 		obj_player.move_yTo = -1;
 		obj_player.move_extSpd = 0;
 		
-		if (global.cutscene_time[index] < 50){
+		if (global.cutscene_time[index] < 40){
 			global.cutscene_time[index] ++;
 		}else{
 			global.cutscene_current = -1;

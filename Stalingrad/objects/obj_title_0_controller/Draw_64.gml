@@ -5,7 +5,6 @@ if (STATE == GameState.Developer){
 	draw_set_font(fnt_cambria_0);
 	
 	for(var i = 0; i < smax + 2; i ++){
-		
 		var str, yyoff = 0;
 		
 		if (i != smax + 1){

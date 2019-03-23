@@ -31,7 +31,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
 	    shoot.dir = dir + random_range(-shoot_range, shoot_range);
-		shoot.spd = 18;
+		shoot.spd = shoot_speed;
 		shoot.image_angle = shoot.dir;
         
         shoot_can = false;

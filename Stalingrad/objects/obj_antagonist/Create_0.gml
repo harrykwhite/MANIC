@@ -3,6 +3,9 @@ blend = -1;
 scale = 1.1;
 destroy = false;
 state = 0;
+state_time = 0;
+state_time_max = 0;
+type = -1;
 
 light_brightness = 0;
 mylight = instance_create(x, y, obj_antagonist_light);
@@ -13,6 +16,8 @@ shoot_delay = 0;
 run_x = x;
 run_y = y;
 run_time = 0;
+run_away_time = 0;
+run_away_direction = 0;
 
 dash = false;
 dash_time = random_range(80, 120);
@@ -20,8 +25,8 @@ dash_speed = 6;
 dash_direction = 0;
 
 weapon = -1;
-weapon_has = false;
-weapon_index = 0;
+weapon_has = true;
+weapon_index = PawnWeapon.Machete;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
@@ -50,7 +55,6 @@ move_speed_real = 0;
 move_speed_offset = random_range(0.75, 0.9);
 move_xTo = x;
 move_yTo = y;
-move_away_time = 20 + random_range(-10, 10);
 
 i_time = 0;
 i_blend_time = 0;

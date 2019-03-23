@@ -3,6 +3,10 @@ var bossmusic = noone;
 var level = global.level_current;
 var paused = global.game_pause;
 
+if (room == rm_level_10_00) || (room == rm_level_10_01){
+	level = 9;
+}
+
 if (global.boss_current != -1){
 	bossmusic = global.boss_music[global.boss_current];
 	

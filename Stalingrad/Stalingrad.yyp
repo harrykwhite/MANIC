@@ -5655,6 +5655,14 @@
             }
         },
         {
+            "Key": "8c71048d-d7bc-4e11-8b58-a3905e452621",
+            "Value": {
+                "id": "b5078536-e180-4f4f-bf1d-d149bd38e143",
+                "resourcePath": "objects\\obj_pawnweapon_12\\obj_pawnweapon_12.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "8cbf82fa-fdcc-4a7b-9ba8-b20e886e85cd",
             "Value": {
                 "id": "a88661ef-1d89-4867-a6e1-5ede254dff3a",

@@ -18,8 +18,6 @@ if (global.player_companion != -1){
 	}
 }
 
-scr_effect_flash(1, 0.01, c_black);
-
 while(!instance_exists(obj_controller_mouse)){
     instance_create(mouse_x, mouse_y, obj_controller_mouse);
 }

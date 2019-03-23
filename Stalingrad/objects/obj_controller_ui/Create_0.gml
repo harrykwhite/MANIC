@@ -50,7 +50,7 @@ game_ending_screen_text_alpha = 0;
 
 area_next_fade = false;
 area_next_alpha = 0;
-area_next_alpha_speed = 0.01;
+area_next_alpha_speed = 0.02;
 area_next_room = noone;
 
 score_current = global.game_score;

@@ -479,7 +479,7 @@ if (pausedialogue_alpha > 0){
 
 // Level Screen Opening
 if (screen_fade_opening > 0){
-	screen_fade_opening -= 0.0035;
+	screen_fade_opening -= 0.0075;
 	
 	draw_set_alpha(screen_fade_opening);
 	draw_set_colour(c_black);

@@ -2,6 +2,7 @@ var speed_multiplier = 1;
 var speed_final = 0;
 var wait_negate = true, wait_stop_movement = false;
 var face_player = true;
+var weapon_exists = instance_exists(weapon);
 target = obj_player;
 
 if (instance_exists(target)){
@@ -9,10 +10,18 @@ if (instance_exists(target)){
 		var dist = distance_to_point(run_x, run_y);
 		var dir = point_direction(x, y, run_x, run_y);
 		move_speed = 2.5;
+		state_time_max = 60 * 10;
 		
 		/*if (dist < 50){
 			move_speed += 1 - (dist / 50);
 		}*/
+		
+		if (weapon_exists){
+			weapon.dir = point_direction(x, y, target.x, target.y);
+			if (distance_to_object(target) < 40){
+				weapon.attack = true;
+			}
+		}
 		
 		if (!dash){
 			if (run_time > 0) && (dist > 15){
@@ -33,6 +42,80 @@ if (instance_exists(target)){
 				run_time = random_range(40, 50);
 			}
 		}
+	}else if (state == 1){
+		var dir_to_target = point_direction(x, y, target.x, target.y);
+		move_speed = 3;
+		state_time_max = 60 * 7;
+		
+		if (run_away_time < 180){
+			if (run_away_time == 0){
+				run_away_direction = dir_to_target - 180;
+			}
+			
+			if (distance_to_object(target) > 250){
+				run_away_time = 180;
+				run_away_direction = 0;
+			}else{
+				if (!dash){
+					if (dash_time > 0){
+						dash_time --;
+					}else{
+						dash = true;
+						dash_direction = run_away_direction;
+						dash_time = 7;
+					}
+				}
+			
+				move_xTo = x + lengthdir_x(100, run_away_direction);
+				move_yTo = y + lengthdir_y(100, run_away_direction);
+			}
+			
+			
+			if (weapon_exists){
+				weapon.dir = point_direction(x, y, move_xTo, move_yTo);
+			}
+		}else{
+			move_speed = 0;
+			move_xTo = target.x;
+			move_yTo = target.y;
+			
+			if (weapon_exists){
+				weapon.dir = point_direction(x, y, move_xTo, move_yTo);
+				weapon.attack = true;
+			}
+		}
+	}
+	
+	if (state_time < state_time_max){
+		state_time ++;
+	}else{
+		if (state < 1){
+			state ++;
+		}else{
+			state = 0;
+		}
+		
+		switch(state){
+			case 0:
+				weapon_index = PawnWeapon.Machete;
+				break;
+			
+			case 1:
+				weapon_index = PawnWeapon.Revolver;
+				break;
+		}
+		
+		if (weapon_exists){
+			instance_destroy(weapon);
+		}
+		
+		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
+        weapon.owner = id;
+        weapon.alphaTo = 0;
+		
+		run_away_time = 0;
+		run_away_direction = 0;
+		state_time = 0;
 	}
 }else{
 	move_speed = 0;
@@ -112,10 +195,20 @@ if (face_player == false){
 }
 
 // Animation
-if (speed_final > 0.1){
-	sprite_index = spr_thescorched_walk_1;
-}else{
-	sprite_index = spr_thescorched_idle_1;
+if (instance_exists(weapon)){
+	var Idle0, Walk0;
+	var Idle1, Walk1;
+	var Idle2, Walk2;
+	
+	Idle0 = spr_enemy_0_idle_0; Walk0 = spr_enemy_0_walk_0;
+	Idle1 = spr_enemy_0_idle_1; Walk1 = spr_enemy_0_walk_1;
+	Idle2 = spr_enemy_0_idle_2; Walk2 = spr_enemy_0_walk_2;
+	
+	if (speed_final < 0.1){
+		scr_pawn_sprite_weapon(global.pawnweapon_realindex[weapon_index], Idle1, Idle0, Idle2);
+	}else{
+		scr_pawn_sprite_weapon(global.pawnweapon_realindex[weapon_index], Walk1, Walk0, Walk2);
+	}
 }
 
 if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){

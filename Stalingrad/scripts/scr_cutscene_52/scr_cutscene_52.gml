@@ -10,22 +10,22 @@ if (instance_exists(obj_controller_camera)){
 if (instance_exists(obj_player)){
 	switch(cutscene_moveto_dir){
 		case 0:
-			xTo = room_width + 60;
+			xTo = room_width + 100;
 			yTo = obj_player.y;
 			break;
 		
 		case 1:
-			yTo = -60;
+			yTo = -100;
 			xTo = obj_player.x;
 			break;
 		
 		case 2:
-			xTo = -60;
+			xTo = -100;
 			yTo = obj_player.y;
 			break;
 		
 		case 3:
-			yTo = room_height + 60;
+			yTo = room_height + 100;
 			xTo = obj_player.x;
 			break;
 	}
@@ -35,7 +35,7 @@ if (instance_exists(obj_player)){
 	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
 	
-	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 90){
+	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 130){
 		obj_controller_ui.area_next_fade = true;
 		obj_controller_ui.area_next_room = cutscene_moveto_room;
 		global.game_level_opening_type = cutscene_moveto_type;
