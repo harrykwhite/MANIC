@@ -5,8 +5,6 @@ var face_player = false;
 target = obj_player;
 
 if (instance_exists(target)){
-	var mindist = 27;
-	
 	if (state == 0){
 		move_speed = 2;
 		

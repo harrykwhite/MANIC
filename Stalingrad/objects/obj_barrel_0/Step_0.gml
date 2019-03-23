@@ -3,16 +3,15 @@ flash -= 0.15;
 flash = clamp(flash, 0, 1);
 
 // Motion
-if (spd > 0.01){
+if (spd > 0.375){
 	var col_list, col_length, can_move;
-	col_list[0] = obj_p_solid;
-	col_list[1] = obj_p_enemy;
-	col_list[2] = obj_p_player;
+	col_list[0] = obj_p_enemy;
+	col_list[1] = obj_p_player;
 	col_length = array_length_1d(col_list);
 	can_move = true;
 	
 	for(var i = 0; i < col_length; i ++){
-		if (place_meeting(x + lengthdir_x(spd + 2, dir), y + lengthdir_y(spd + 2, dir), col_list[i])){
+		if (place_meeting(x + lengthdir_x(spd + 1, dir), y + lengthdir_y(spd, dir), col_list[i])){
 			can_move = false;
 			break;
 		}
@@ -21,11 +20,15 @@ if (spd > 0.01){
 	if (can_move){
 		x += lengthdir_x(spd, dir);
 		y += lengthdir_y(spd, dir);
-	}else{
-		spd = 0;
 	}
 	
 	spd *= 0.9;
+}else{
+	if (point_distance(x, y, xstart, ystart) > 1){
+		var dirto = point_direction(x, y, xstart, ystart);
+		x += lengthdir_x(abs(xstart - x) * 0.1, dirto);
+		y += lengthdir_y(abs(ystart - y) * 0.1, dirto);
+	}
 }
 
 // Hit Control

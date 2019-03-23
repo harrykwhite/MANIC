@@ -9,4 +9,4 @@ part_type_alpha3(pt, 1, 0.7, 0);
 part_type_gravity(pt, 0.035, 270);
 part_type_speed(pt, 1.1, 1.5, -0.03, 0);
 part_type_life(pt, 40, 50);
-part_type_size(pt, 0.03, 0.035, -0.0005, 0.001);
+part_type_size(pt, 0.035, 0.04, -0.0005, 0.001);

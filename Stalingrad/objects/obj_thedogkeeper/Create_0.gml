@@ -84,7 +84,7 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_resist = 0;
 
-health_max = 35;
+health_max = 50;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

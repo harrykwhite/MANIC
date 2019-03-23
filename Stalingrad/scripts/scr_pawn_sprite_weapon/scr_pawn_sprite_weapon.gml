@@ -8,10 +8,10 @@ var onearm = argument2;
 var noarm = argument3;
 
 if (weaponi != -1){
-	if (global.weapon_heavy[weaponi] == false){
+	if (!global.weapon_heavy[weaponi]){
 		sprite_index = onearm;
 	}else{
-		sprite_index = noarm;
+		sprite_index = botharm;
 	}
 }else{
 	sprite_index = noarm;

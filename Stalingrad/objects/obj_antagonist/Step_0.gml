@@ -32,6 +32,7 @@ whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
+scr_antagonist_behaviour_0();
 
 scr_pawn_update();
 image_yscale = scale;

@@ -52,6 +52,7 @@ if (!typedet){
 		case EnemyOneType.Grenadier:
 			scale = random_range(1.1, 1.125);
 			defense = 1;
+			sprite_index = spr_enemy_0_light_idle_0;
 			break;
 		
 		case EnemyOneType.Sniper:
@@ -59,11 +60,13 @@ if (!typedet){
 			defense = 2;
 			health_max = 8;
 			health_current = health_max;
+			sprite_index = spr_enemy_0_light_idle_0;
 			break;
 		
 		case EnemyOneType.Crazy:
 			defense = 0;
 			attack_time_offset = 0.6;
+			sprite_index = spr_enemy_0_brain_idle_0;
 			break;
 		
 		case EnemyOneType.Healer:
@@ -72,6 +75,7 @@ if (!typedet){
 			defense = 3;
 			scale -= 0.1;
 			knockback_resist = 0.4;
+			sprite_index = spr_enemy_0_healer_idle_0;
 			break;
 		
 		case EnemyOneType.Fly:
@@ -85,6 +89,7 @@ if (!typedet){
 				fly.owner = self;
 			}
 			
+			sprite_index = spr_enemy_0_fly_idle_0;
 			break;
 			
 		case EnemyOneType.TrainBoss:
@@ -92,6 +97,7 @@ if (!typedet){
 			defense = 0;
 			health_max = 35;
 			health_current = health_max;
+			sprite_index = spr_enemy_0_sniperboss_idle_0;
 			break;
 	}
 	

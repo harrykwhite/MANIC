@@ -5,7 +5,7 @@
     "name": "path_prisoner_escape_0",
     "closed": false,
     "hsnap": 0,
-    "kind": 0,
+    "kind": 1,
     "points": [
         {
             "id": "b704a214-e16f-44b7-a594-59e27e007e10",
@@ -35,7 +35,7 @@
             "id": "63cdacb3-c2a1-4df3-90aa-4cc6d9f44f98",
             "modelName": "GMPathPoint",
             "mvc": "1.0",
-            "x": 960,
+            "x": 1016,
             "y": 1096,
             "speed": 100
         },
@@ -43,11 +43,11 @@
             "id": "267aa7a9-d9a6-4549-a848-8d749e6fdf35",
             "modelName": "GMPathPoint",
             "mvc": "1.0",
-            "x": 960,
+            "x": 1016,
             "y": 1560,
             "speed": 100
         }
     ],
-    "precision": 4,
+    "precision": 5,
     "vsnap": 0
 }

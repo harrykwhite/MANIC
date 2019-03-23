@@ -147,7 +147,7 @@ if (health_current <= 0){
 			with(obj_controller_gameplay){
 				cutscene_look_x = other.x;
 				cutscene_look_y = other.y;
-				cutscene_look_time = 45;
+				cutscene_look_time = 35;
 				cutscene_look_object = antag;
 				cutscene_look_prop = true;
 				cutscene_look_boss = Boss.Antagonist;

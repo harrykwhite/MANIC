@@ -5,7 +5,7 @@
     "name": "path_prisoner_escape_5",
     "closed": false,
     "hsnap": 0,
-    "kind": 0,
+    "kind": 1,
     "points": [
         {
             "id": "7796f84f-6547-4f98-8691-6aed79e8ccc0",

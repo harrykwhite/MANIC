@@ -441,7 +441,7 @@
             "depth": 500,
             "grid_x": 8,
             "grid_y": 8,
-            "hierarchyFrozen": true,
+            "hierarchyFrozen": false,
             "hierarchyVisible": true,
             "inheritLayerDepth": false,
             "inheritLayerSettings": false,
@@ -451,7 +451,7 @@
 
             ],
             "m_parentID": "00000000-0000-0000-0000-000000000000",
-            "m_serialiseFrozen": true,
+            "m_serialiseFrozen": false,
             "modelName": "GMRPathLayer",
             "pathId": "408ed477-fe5c-4d18-91a7-b53c2853c97f",
             "mvc": "1.0",

@@ -163,24 +163,6 @@ if (!onscreen(x, y)){
 	speed_multiplier = 0;
 }
 
-// Dash
-if (sniperboss_dash){
-	image_speed = 0;
-	
-	if (sniperboss_dashtime > 0){
-		sniperboss_dashtime --;
-	}else{
-		sniperboss_dash = false;
-	}
-
-	var trail = scr_effect_trail(sprite_index, 0.8, 0.075, 0, image_xscale, 1, 0.01, 0.5, (sniperboss_dashdirection - 180) + random_range(-30, 30));
-	if (health_current <= floor(health_max / 3)) || (bleed){
-		trail.special = "LowHealth";
-	}
-	
-	part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-12, 12), global.pt_smoke_1, 2);
-}
-
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
@@ -191,9 +173,19 @@ if (move_speed_real < speed_final){
 }
 
 if (sniperboss_dash){
-	if (!place_meeting(x + lengthdir_x(sniperboss_dashspeed + 1, sniperboss_dashdirection), y + lengthdir_y(sniperboss_dashspeed + 1, sniperboss_dashdirection), obj_p_solid)){
+	image_speed = 0;
+
+	var trail = scr_effect_trail(sprite_index, 0.8, 0.075, 0, image_xscale, 1, 0.01, 0.5, (sniperboss_dashdirection - 180) + random_range(-30, 30));
+	if (health_current <= floor(health_max / 3)) || (bleed){
+		trail.special = "LowHealth";
+	}
+	
+	part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-12, 12), global.pt_smoke_1, 2);
+	
+	if (!place_meeting(x + lengthdir_x(sniperboss_dashspeed + 1, sniperboss_dashdirection), y + lengthdir_y(sniperboss_dashspeed + 1, sniperboss_dashdirection), obj_p_solid) && (sniperboss_dashtime > 0)){
 		x += lengthdir_x(sniperboss_dashspeed, sniperboss_dashdirection);
 		y += lengthdir_y(sniperboss_dashspeed, sniperboss_dashdirection);
+		sniperboss_dashtime --;
 	}else{
 		sniperboss_dash = false;
 	}

@@ -25,6 +25,7 @@ for(var i = 0; i < 4; i ++){
 	flamethrower[i].turret = id;
 	flamethrower[i].shoot_dir = dir + 45;
 }
+
 light_brightness = 0;
 mylight = instance_create(x, y, obj_giantturret_light);
 
@@ -50,7 +51,7 @@ whiteflash_alphadec = 0.075;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 100;
+health_max = 10//100;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

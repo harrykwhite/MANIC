@@ -117,7 +117,7 @@ if (!paused) && (global.boss_current == -1) && (level != 9){
 		
 			break;
 	}
-}else if (!paused){
+}else if (!paused) && (level != 9){
 	audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);

@@ -7,13 +7,17 @@ state = 0;
 light_brightness = 0;
 mylight = instance_create(x, y, obj_antagonist_light);
 
-arena_x = 0;
-arena_y = 0;
-arena_width = 0;
-arena_height = 0;
-
 shoot_time = 0;
 shoot_delay = 0;
+
+run_x = x;
+run_y = y;
+run_time = 0;
+
+dash = false;
+dash_time = random_range(80, 120);
+dash_speed = 6;
+dash_direction = 0;
 
 weapon = -1;
 weapon_has = false;
@@ -22,7 +26,7 @@ weapon_index = 0;
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 
-burn = true;
+burn = false;
 burn_x = x;
 burn_y = y;
 burn_start = false;
@@ -59,7 +63,7 @@ knockback_resist = 0;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 60;
+health_max = 80;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
