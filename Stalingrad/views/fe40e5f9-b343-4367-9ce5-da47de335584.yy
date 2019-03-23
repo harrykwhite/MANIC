@@ -9,7 +9,8 @@
         "5a557202-3f74-43a1-ab3e-e6c2afe00d06",
         "819742e4-850e-4341-b8b0-3b7fd11d9423",
         "ed096356-f8f1-43b6-a576-aa6dcde46fb5",
-        "3fa749cc-6a80-4828-847f-56c1e5cf6a17"
+        "3fa749cc-6a80-4828-847f-56c1e5cf6a17",
+        "7643322c-8be9-4359-ac7a-158d7683587d"
     ],
     "filterType": "GMSprite",
     "folderName": "Companion 3",

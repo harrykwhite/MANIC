@@ -33,10 +33,10 @@ if (spd > 0.375){
 	
 	spd *= 0.9;
 }else{
-	if (point_distance(x, y, xstart, ystart) > 1){
-		var dirto = point_direction(x, y, xstart, ystart);
-		x += lengthdir_x(abs(xstart - x) * 0.1, dirto);
-		y += lengthdir_y(abs(ystart - y) * 0.1, dirto);
+	if (point_distance(x, y, basex, basey) > 1){
+		var dirto = point_direction(x, y, basex, basey);
+		x += lengthdir_x(abs(basex - x) * 0.1, dirto);
+		y += lengthdir_y(abs(basey - y) * 0.1, dirto);
 	}
 }
 

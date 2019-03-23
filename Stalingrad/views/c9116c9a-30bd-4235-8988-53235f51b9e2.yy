@@ -12,7 +12,9 @@
         "7ff1277a-37e9-4a5d-8348-77e67f6be10d",
         "9808255c-6606-4e0a-9c8e-d66d0c807309",
         "72095bbe-f10c-4c59-ac83-9967c8db4fcb",
-        "8d488f36-4502-4e07-b3c3-db526d3561dd"
+        "4f7a406a-d4e3-4a7b-9cdb-7dca8ad4f5bb",
+        "8d488f36-4502-4e07-b3c3-db526d3561dd",
+        "ef5ea376-51fe-4cb3-9c64-4720643bcea4"
     ],
     "filterType": "GMSprite",
     "folderName": "The DogKeeper",

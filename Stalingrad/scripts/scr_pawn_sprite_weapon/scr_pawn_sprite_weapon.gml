@@ -11,7 +11,7 @@ if (weaponi != -1){
 	if (!global.weapon_heavy[weaponi]){
 		sprite_index = onearm;
 	}else{
-		sprite_index = botharm;
+		sprite_index = noarm;
 	}
 }else{
 	sprite_index = noarm;

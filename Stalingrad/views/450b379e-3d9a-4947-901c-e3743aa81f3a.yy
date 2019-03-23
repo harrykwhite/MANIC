@@ -17,7 +17,8 @@
         "6dedec68-0195-402d-bcc1-5a9119cbf63f",
         "f2eee905-8fc1-4777-94f4-1092f912f0a7",
         "c31b1bcc-82d4-465d-9a1b-93abab2ddd90",
-        "dd4b735d-bf56-43b9-bb23-e4877e80a409"
+        "dd4b735d-bf56-43b9-bb23-e4877e80a409",
+        "65335015-9f83-4a34-af0d-4730c65852c6"
     ],
     "filterType": "GMSprite",
     "folderName": "Companion 1",
