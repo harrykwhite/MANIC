@@ -21,7 +21,6 @@ if (instance_exists(owner)){
 		
 		scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
 		scr_effect_screenshake(2);
-		owner.light_brightness = 8;
 		angle_offset = 8;
 		
 		part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);
@@ -36,8 +35,8 @@ if (instance_exists(owner)){
 		shoot = instance_create(xpos, ypos, obj_proj_0);
 		shoot.damage = 1;
 		shoot.strength = 1;
-		shoot.dir = dir + random_range(-2, 2);
-		shoot.spd = 15;
+		shoot.dir = dir + random_range(-1, 1);
+		shoot.spd = 14;
 		shoot.image_angle = shoot.dir;
 		shoot.creator = owner;
 		shoot.enemy = isEnemy;

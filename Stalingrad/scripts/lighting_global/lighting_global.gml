@@ -280,7 +280,7 @@ global.worldDirtyShadowCasters = ds_list_create();
 // The custom camera [X, Y, Width, Height] to use, if any
 // If undefined then it uses the active view camera
 // Set this with lighting_update_camera
-global.worldCustomCamera = undefined;
+global.worldCustomCamera = -1;
 
 // Reused vertex arrays
 global.lightVertexArrayMap = ds_map_create();

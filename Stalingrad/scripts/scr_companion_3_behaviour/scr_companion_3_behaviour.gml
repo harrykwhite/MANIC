@@ -141,7 +141,7 @@ if (move_speed_real < speed_final){
 mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
 
 // Facing
-if (face_player == false){
+if (!face_player){
 	if (distTo > 15){
 		if (move_xTo > x){
 			image_xscale = scale;

@@ -4,6 +4,7 @@
 
 var lights = argument0;
 var lightCount = ds_list_size(lights);
+var _lightShadowMap = global.lightShadowMap;
 
 // Pre-composite step
 lighting_pre_composite();
@@ -32,10 +33,10 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	var light = ds_list_find_value(lights, i);
 	
 	// Can this light be culled?
-	if(light_cull(light, camera)) {
-		// Yes, no reason to draw it
-		continue;
-	}
+	//if(light_cull(light, camera)) {
+	//	// Yes, no reason to draw it
+	//	continue;
+	//}
 	
 	// Get the type of the light
 	var lightType = light[| eLight.Type];
@@ -87,7 +88,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 		}
 		
 		// Use the global shadow map
-		shadowMap = global.lightShadowMap;
+		shadowMap = _lightShadowMap;
 		
 		// Set light's position in texels on the global light shadow map
 		lightTexelX = (light[| eLight.X] - cameraX) / cameraW;
@@ -166,7 +167,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	shader_set_uniform_i(global.u_LightType, lightType);
 	
 	// Apply extension modules
-	light_enumerate_extensions(light, eLightExtension.Apply);
+	//light_enumerate_extensions(light, eLightExtension.Apply);
 	
 	// If the light uses its own shadow map, convert to local space
 	var offsetx = 0, offsety = 0;
@@ -181,7 +182,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	draw_surface(shadowMap, offsetx, offsety);
 	
 	// Reset extension modules
-	light_enumerate_extensions(light, eLightExtension.Reset);
+	//light_enumerate_extensions(light, eLightExtension.Reset);
 	
 	// Reset
 	shader_reset();

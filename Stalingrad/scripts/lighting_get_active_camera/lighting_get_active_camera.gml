@@ -1,7 +1,7 @@
 /// @desc Gets the active camera
 /// @returns The active camera port [X, Y, Width, Height]
 
-if (global.worldCustomCamera == undefined) {
+if (global.worldCustomCamera == -1) {
 	// Get active view camera
 	var camera = camera_get_active();
 	var cameraX = camera_get_view_x(camera);

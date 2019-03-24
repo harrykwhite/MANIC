@@ -8,7 +8,5 @@ if (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != Amm
 	global.weapon_slotammo[global.weapon_slotcurrent] = clamp(global.weapon_slotammo[global.weapon_slotcurrent], 0, global.weapon_ammomax[global.weapon_slot[global.weapon_slotcurrent]]);
 }
 
-if (instance_exists(obj_controller_ui)){
-	obj_controller_ui.weaponammo_scale = 1.2;
-	obj_controller_ui.weaponammo_scaleTo = 1;
-}
+obj_controller_ui.weaponammo_scale = 1.2;
+obj_controller_ui.weaponammo_scaleTo = 1;

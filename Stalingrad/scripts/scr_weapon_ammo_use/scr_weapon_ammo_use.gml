@@ -17,7 +17,5 @@ if (global.weapon_slot_standalone == -1){
 	}
 }
 
-if (instance_exists(obj_controller_ui)){
-	obj_controller_ui.weaponammo_scale = 1.2;
-	obj_controller_ui.weaponammo_scaleTo = 1;
-}
+obj_controller_ui.weaponammo_scale = 1.2;
+obj_controller_ui.weaponammo_scaleTo = 1;

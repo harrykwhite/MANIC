@@ -177,17 +177,17 @@ if (instance_exists(obj_player)){
 	repeat(2){
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
-				var xx = 41, yy;
+				var xx = 51, yy;
 				var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
 				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
 				
 				switch(counter){
 					case 0:
-						yy = 64;
+						yy = 92 - 4;
 						break;
 					
 					case 1:
-						yy = 143;
+						yy = 166 - 4;
 						break;
 				}
 				
@@ -294,11 +294,11 @@ if (leveltext_alpha > 0){
 // Control Indication
 if (control_indicate){
 	if (control_indicate_x < 48){
-		control_indicate_x += 31;
+		control_indicate_x = approach(control_indicate_x, 48, 20);
 	}
 }else{
 	if (control_indicate_x > -388){
-		control_indicate_x -= 31;
+		control_indicate_x = approach(control_indicate_x, -388, 10);
 	}else{
 		control_indicate_text = "";
 	}

@@ -91,40 +91,40 @@ enum PawnWeapon{
 
 // Pawn Weapons
 global.pawnweapon_object[0] = obj_pawnweapon_0;
-global.pawnweapon_realindex[0] = PlayerWeapon.Stick;
+global.pawnweapon_playerindex[0] = PlayerWeapon.Stick;
 
 global.pawnweapon_object[1] = obj_pawnweapon_1;
-global.pawnweapon_realindex[1] = PlayerWeapon.Crowbar;
+global.pawnweapon_playerindex[1] = PlayerWeapon.Crowbar;
 
 global.pawnweapon_object[2] = obj_pawnweapon_2;
-global.pawnweapon_realindex[2] = PlayerWeapon.Machete;
+global.pawnweapon_playerindex[2] = PlayerWeapon.Machete;
 
 global.pawnweapon_object[3] = obj_pawnweapon_3;
-global.pawnweapon_realindex[3] = PlayerWeapon.Knife;
+global.pawnweapon_playerindex[3] = PlayerWeapon.Knife;
 
 global.pawnweapon_object[4] = obj_pawnweapon_4;
-global.pawnweapon_realindex[4] = PlayerWeapon.Grenade;
+global.pawnweapon_playerindex[4] = PlayerWeapon.Grenade;
 
 global.pawnweapon_object[5] = obj_pawnweapon_5;
-global.pawnweapon_realindex[5] = PlayerWeapon.Axe;
+global.pawnweapon_playerindex[5] = PlayerWeapon.Axe;
 
 global.pawnweapon_object[6] = obj_pawnweapon_6;
-global.pawnweapon_realindex[6] = PlayerWeapon.Rake;
+global.pawnweapon_playerindex[6] = PlayerWeapon.Rake;
 
 global.pawnweapon_object[7] = obj_pawnweapon_7;
-global.pawnweapon_realindex[7] = PlayerWeapon.Sledgehammer;
+global.pawnweapon_playerindex[7] = PlayerWeapon.Sledgehammer;
 
 global.pawnweapon_object[8] = obj_pawnweapon_8;
-global.pawnweapon_realindex[8] = PlayerWeapon.SniperRifle;
+global.pawnweapon_playerindex[8] = PlayerWeapon.SniperRifle;
 
 global.pawnweapon_object[9] = obj_pawnweapon_9;
-global.pawnweapon_realindex[9] = PlayerWeapon.Spear;
+global.pawnweapon_playerindex[9] = PlayerWeapon.Spear;
 
 global.pawnweapon_object[10] = obj_pawnweapon_10;
-global.pawnweapon_realindex[10] = PlayerWeapon.Flamethrower;
+global.pawnweapon_playerindex[10] = PlayerWeapon.Flamethrower;
 
 global.pawnweapon_object[11] = obj_pawnweapon_11;
-global.pawnweapon_realindex[11] = PlayerWeapon.Shotgun;
+global.pawnweapon_playerindex[11] = PlayerWeapon.Shotgun;
 
 global.pawnweapon_object[12] = obj_pawnweapon_12;
-global.pawnweapon_realindex[12] = PlayerWeapon.Revolver;
+global.pawnweapon_playerindex[12] = PlayerWeapon.Revolver;

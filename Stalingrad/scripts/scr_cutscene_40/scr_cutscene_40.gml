@@ -2,10 +2,8 @@
 var index = 40, xTo = cutscene_look_x, yTo = cutscene_look_y;
 var to = noone;
 
-if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.camera_screenshake = false;
-	obj_controller_camera.camera_screenshake_amount = 0;
-}
+obj_controller_camera.camera_screenshake = false;
+obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
 	var has_look_object = (cutscene_look_object != noone) && (instance_exists(cutscene_look_object));

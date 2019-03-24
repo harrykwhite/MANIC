@@ -2,10 +2,8 @@
 var index = 52, xTo = 0, yTo = 0;
 var to = noone;
 
-if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.camera_screenshake = false;
-	obj_controller_camera.camera_screenshake_amount = 0;
-}
+obj_controller_camera.camera_screenshake = false;
+obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
 	switch(cutscene_moveto_dir){

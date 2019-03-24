@@ -5,10 +5,8 @@ var level = scr_get_level_object();
 global.cutscene_camera_x[index] = 967;
 global.cutscene_camera_y[index] = room_height;
 
-if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.camera_screenshake = false;
-	obj_controller_camera.camera_screenshake_amount = 0;
-}
+obj_controller_camera.camera_screenshake = false;
+obj_controller_camera.camera_screenshake_amount = 0;
 
 with(level){
 	
@@ -29,10 +27,7 @@ switch(global.cutscene_time[index]){
 			
 			if (point_distance(obj_player.x, obj_player.y, obj_player.move_xTo, obj_player.move_yTo) < 40){
 				global.cutscene_time[index] = 1;
-				
-				if (instance_exists(obj_controller_ui)){
-					obj_controller_ui.playerlight_draw = false;
-				}
+				obj_controller_ui.playerlight_draw = false;
 			}
 		}
 		
@@ -48,9 +43,7 @@ switch(global.cutscene_time[index]){
 		}else{
 			
 			// Activate the results screen on obj_controller_ui.
-			if (instance_exists(obj_controller_ui)){
-				obj_controller_ui.rank_display_draw = true;
-			}
+			obj_controller_ui.rank_display_draw = true;
 		}
 		
 		break;

@@ -61,7 +61,7 @@ if (instance_exists(owner)){
 
 		if (owner.weapon != -1){
 			if (instance_exists(owner.weapon)){
-			    var wcurrent = global.pawnweapon_realindex[owner.weapon.index];
+			    var wcurrent = global.pawnweapon_playerindex[owner.weapon.index];
 				var angle;
 		
 				if (global.weapon_heavy[wcurrent]) && (global.cutscene_current == -1){

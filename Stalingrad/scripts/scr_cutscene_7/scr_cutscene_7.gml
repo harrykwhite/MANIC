@@ -4,10 +4,8 @@ var xTo = cutscene_conveyerbelt_x, yTo = cutscene_conveyerbelt_y;
 var dir = 0;
 var levelobj = scr_get_level_object();
 
-if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.camera_screenshake = false;
-	obj_controller_camera.camera_screenshake_amount = 0;
-}
+obj_controller_camera.camera_screenshake = false;
+obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
 	global.cutscene_camera_x[index] = cutscene_conveyerbelt_x;

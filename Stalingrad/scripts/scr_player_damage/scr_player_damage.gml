@@ -17,9 +17,7 @@ speed_offset = 1.5;
 speed_offset_change = 0.1;
 health_scale = 1.5;
 
-if (instance_exists(obj_controller_ui)){
-    obj_controller_ui.playerhit_alpha = 0.75;
-}
+obj_controller_ui.playerhit_alpha = 0.75;
 
 if (global.player_healthCurrent <= 0){
 	var d = instance_create(x, y - 16, obj_player_death);

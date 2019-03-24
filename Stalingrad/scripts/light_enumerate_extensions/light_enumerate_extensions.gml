@@ -1,4 +1,4 @@
-/// @desc Enumerate and apply all extension modules of a given light
+/*/// @desc Enumerate and apply all extension modules of a given light
 /// @arg light The light to enumerate extensions of
 /// @arg ext_script The script of the extension module to execute
 
@@ -12,4 +12,4 @@ if(extensions != undefined) {
 		var ext = ds_list_find_value(extensions, i);
 		script_execute(ext[ext_script], light);
 	}
-}
+}*/

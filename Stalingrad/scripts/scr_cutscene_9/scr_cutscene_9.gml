@@ -1,10 +1,8 @@
 ///scr_cutscene_9();
 var index = 9;
 
-if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.camera_screenshake = false;
-	obj_controller_camera.camera_screenshake_amount = 0;
-}
+obj_controller_camera.camera_screenshake = false;
+obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
 	if (global.cutscene_time[index] < 60){

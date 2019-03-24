@@ -2,10 +2,8 @@
 var index = 43, xTo = 656, yTo = 320;
 var to = noone;
 
-if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.camera_screenshake = false;
-	obj_controller_camera.camera_screenshake_amount = 0;
-}
+obj_controller_camera.camera_screenshake = false;
+obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
 	global.cutscene_camera_x[index] = xTo;

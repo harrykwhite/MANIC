@@ -58,7 +58,7 @@ if (move_speed_real < speed_final){
 mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
 
 // Facing
-if (face_player == false){
+if (!face_player){
 	if (move_xTo > x){
 		image_xscale = scale;
 	}else{
@@ -83,9 +83,9 @@ if (instance_exists(weapon)){
 	Idle2 = spr_thedogkeeper_idle_1; Walk2 = spr_thedogkeeper_walk_1;
 	
 	if (speed_final < 0.1){
-		scr_pawn_sprite_weapon(global.pawnweapon_realindex[weapon_index], Idle1, Idle0, Idle2);
+		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
-		scr_pawn_sprite_weapon(global.pawnweapon_realindex[weapon_index], Walk1, Walk0, Walk2);
+		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 

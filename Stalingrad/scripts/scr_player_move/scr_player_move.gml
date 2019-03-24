@@ -1,6 +1,6 @@
 // Variables
 var spd_multiplier = spd_offset;
-var footstep_wood, footstep_road;
+var footstep_wood, footstep_road, footstep_tile;
 
 footstep_sound = global.player_footstep_default;
 
@@ -49,19 +49,27 @@ if (global.weapon_slot_standalone == -1){
 
 	// Footstep Sound
 	if (global.level_current != 2) && (global.level_current != 4) && (global.level_current != 9){
-		footstep_wood = layer_tilemap_get_id("InteriorFloorWood");
-	
-		if (layer_tilemap_exists(layer_get_id("InteriorFloorWood"), footstep_wood)){
+		if (layer_exists("InteriorFloorWood")){
+			footstep_wood = layer_tilemap_get_id("InteriorFloorWood");
 			if (tilemap_get_at_pixel(footstep_wood, x, y + 18)){
 				footstep_sound = snd_character_footstep_wood;
 			}
 		}
 		
-		if (room == rm_level_8_02){
-			footstep_road = layer_tilemap_get_id("Road");
-			if (layer_tilemap_exists(layer_get_id("Road"), footstep_road)){
-				if (tilemap_get_at_pixel(footstep_road, x, y + 18)){
-					footstep_sound = snd_character_footstep_wood;
+		if (layer_exists("InteriorFloorTile")){
+			footstep_tile = layer_tilemap_get_id("InteriorFloorTile");
+			if (tilemap_get_at_pixel(footstep_tile, x, y + 18)){
+				footstep_sound = snd_character_footstep_wood;
+			}
+		}
+		
+		if (room == rm_level_8_02) || (room == rm_level_9_00) || (room == rm_level_9_01) || (room == rm_level_9_02){
+			if (layer_exists("Road")){
+				footstep_road = layer_tilemap_get_id("Road");
+				if (layer_tilemap_exists(layer_get_id("Road"), footstep_road)){
+					if (tilemap_get_at_pixel(footstep_road, x, y + 18)){
+						footstep_sound = snd_character_footstep_wood;
+					}
 				}
 			}
 		}
@@ -185,9 +193,9 @@ if (global.weapon_slot_standalone == -1){
 			if ((xaxis == 0) && (yaxis == 0)){
 			    len = 0;
 			}else{
-			    if (len<(spd_max * spd_multiplier)){
+			    if (len < (spd_max * spd_multiplier)){
 			        len += spd_build * spd_multiplier;
-			    }else if (len>(spd_max * spd_multiplier)){
+			    }else if (len > (spd_max * spd_multiplier)){
 			        len -= 0.05;
 			    }
 			}

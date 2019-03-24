@@ -2263,6 +2263,14 @@
             }
         },
         {
+            "Key": "35ee6d6a-ba82-42cb-b60c-58c98ab7bc86",
+            "Value": {
+                "id": "45877c56-ed83-45e8-88ec-a0ac424f5262",
+                "resourcePath": "shaders\\sh_screentint\\sh_screentint.yy",
+                "resourceType": "GMShader"
+            }
+        },
+        {
             "Key": "35ee72c5-ffad-4aef-b513-06601390376c",
             "Value": {
                 "id": "80b24cfb-6739-477f-ac7d-d93be03d79e2",
@@ -6591,6 +6599,14 @@
             }
         },
         {
+            "Key": "9edacb6e-5c94-4df7-bd55-ee975cccba57",
+            "Value": {
+                "id": "8fd271a2-3d11-4c6e-8394-1a96133e1107",
+                "resourcePath": "sprites\\spr_giantturret_idle_3\\spr_giantturret_idle_3.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "9ef7ccec-28d3-409f-80d4-6e597381129b",
             "Value": {
                 "id": "aa3d57bf-1e0c-4f3e-80cb-d4d9c4b31ef8",
@@ -8364,6 +8380,14 @@
                 "id": "1be7865c-0355-4458-9cc0-e24c3a67c1ac",
                 "resourcePath": "views\\cebb73d6-c6b5-4f52-b7c0-2f65337f943f.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "cee64cdd-154e-475c-8c50-ce3ebeb06ffb",
+            "Value": {
+                "id": "5835ed18-1106-4c89-9853-cfc95a136e54",
+                "resourcePath": "sprites\\spr_giantturret_idle_1\\spr_giantturret_idle_1.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -10203,6 +10227,14 @@
             "Value": {
                 "id": "e46fe2ac-57e3-49df-a3d7-dc4aaaa2ee4c",
                 "resourcePath": "sprites\\spr_enemy_2_corpse_0\\spr_enemy_2_corpse_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "fe399dea-66bb-4a91-a1c6-753d6bd131bf",
+            "Value": {
+                "id": "f6cfc04e-3968-4f41-915a-4cb2be58de8e",
+                "resourcePath": "sprites\\spr_giantturret_idle_2\\spr_giantturret_idle_2.yy",
                 "resourceType": "GMSprite"
             }
         },

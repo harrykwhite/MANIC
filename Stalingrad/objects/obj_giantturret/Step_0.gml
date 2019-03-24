@@ -37,9 +37,10 @@ headless = false;
 scr_pawn_status_handler();
 
 var sprev = state;
-state = 0;
-if (health_current <= 67) { state = 1; }
-if (health_current <= 33) { state = 2; }
+state = 0; sprite_index = spr_giantturret_idle_0;
+if (health_current <= 67) { state = 1; sprite_index = spr_giantturret_idle_1; }
+if (health_current <= 33) { state = 2; sprite_index = spr_giantturret_idle_2; }
+if (health_current <= 7)  { sprite_index = spr_giantturret_idle_3; }
 
 if (state != sprev){
 	shoot_time = 120;

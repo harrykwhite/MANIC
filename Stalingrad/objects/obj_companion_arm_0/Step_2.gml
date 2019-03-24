@@ -5,7 +5,7 @@ if (!instance_exists(owner)){
 }
 
 if (instance_exists(owner.weapon)){
-	wcurrent = global.pawnweapon_realindex[owner.weapon.index];
+	wcurrent = global.pawnweapon_playerindex[owner.weapon.index];
 }
 
 image_alpha = 1;

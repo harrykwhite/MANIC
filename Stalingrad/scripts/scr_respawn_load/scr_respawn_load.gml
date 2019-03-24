@@ -51,12 +51,10 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 }
 
 // Camera
-if (instance_exists(obj_controller_camera)){
-	obj_controller_camera.x = obj_player.x;
-	obj_controller_camera.y = obj_player.y;
-	obj_controller_camera.camera_screenshake = false;
-	obj_controller_camera.camera_screenshake_amount = 0;
-}
+obj_controller_camera.x = obj_player.x;
+obj_controller_camera.y = obj_player.y;
+obj_controller_camera.camera_screenshake = false;
+obj_controller_camera.camera_screenshake_amount = 0;
 
 // Other
 instance_activate_all();

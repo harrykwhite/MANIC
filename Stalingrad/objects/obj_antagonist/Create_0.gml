@@ -28,6 +28,10 @@ weapon = -1;
 weapon_has = true;
 weapon_index = PawnWeapon.Machete;
 
+weapon_change_time = 0;
+weapon_change_time_max = 60 * 2;
+weapon_change_origin = weapon_index;
+
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 
@@ -43,6 +47,9 @@ burn_sound_paused = false;
 poison = false;
 bleed = false;
 headless = false; 
+
+throw_weapon_time = 0;
+throw_weapon_time_max = 40;
 
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
@@ -66,6 +73,7 @@ knockback_resist = 0;
 
 cutscene_prop = false;
 in_cutscene = false;
+active = false;
 
 health_max = 80;
 health_current = health_max;

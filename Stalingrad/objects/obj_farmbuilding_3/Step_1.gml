@@ -8,7 +8,7 @@ if (!dec_set){
 		for(var i = 0; i < decnum; i ++){
 			var inst = declist[| i];
 			inst.ceiling = id;
-			inst.renderat = y + depth_offset + 10;
+			inst.renderat = y + depth_offset + 200;
 		}
 	}
 	

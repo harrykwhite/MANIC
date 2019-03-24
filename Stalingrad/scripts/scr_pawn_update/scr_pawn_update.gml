@@ -72,10 +72,8 @@ if (health_current <= 0){
 	
 	if (pawn == PawnType.Enemy){
 		if (object_index != obj_enemy_1){
-			if (instance_exists(obj_controller_gameplay)){
-				obj_controller_gameplay.bonus_killamount ++;
-				obj_controller_gameplay.bonus_killtime = 80;
-			}
+			obj_controller_gameplay.bonus_killamount ++;
+			obj_controller_gameplay.bonus_killtime = 80;
 		}
 		
 		if (object_index == obj_enemy_0){
@@ -242,7 +240,7 @@ if (health_current <= 0){
 					xx = weapon.x;
 					yy = weapon.y;
 					angle = weapon.image_angle + random_range(-30, 30);
-					ind = global.pawnweapon_realindex[weapon_index];
+					ind = global.pawnweapon_playerindex[weapon_index];
 				
 					if (ind == PlayerWeapon.Grenade){
 						if (random(2.5) < 1) && (global.level_current >= 5){
