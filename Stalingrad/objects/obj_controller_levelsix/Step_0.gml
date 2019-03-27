@@ -44,7 +44,7 @@ if (!global.game_pause){
 	// Fog
 	if (random(3.5) < 1){
 		if (part_particles_count(global.pt_smoke_3) < 40){
-			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
 		}
 	}
 
@@ -52,27 +52,27 @@ if (!global.game_pause){
 	if (room == rm_level_6_01){
 		// Rain
 		if (random(2) < 1){
-			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(-350, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])-10, global.pt_rain_0, 1);
+			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(-350, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) - 10, global.pt_rain_0, 1);
 		}
 	
 		if (random(5) < 1){
-		    part_particles_create(global.ps_bottom, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), choose(global.pt_rain_1, global.pt_rain_2), 1);
+		    part_particles_create(global.ps_bottom, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), choose(global.pt_rain_1, global.pt_rain_2), 1);
 		}
 		
 		// Snow
-		part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(-350, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])-10, global.pt_snow_0, 1);
+		part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(-350, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) - 10, global.pt_snow_0, 1);
 
 		if (random(8) < 1){
-		    part_particles_create(global.ps_bottom, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_snow_1, 1);
+		    part_particles_create(global.ps_bottom, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), global.pt_snow_1, 1);
 		}
 	}else{
 		// Snow
 		repeat(4){
-		    part_particles_create(global.ps_front, camera_get_view_x(view_camera[0])+random_range(-350, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])-10, global.pt_snow_0, 1);
+		    part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(-350, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) - 10, global.pt_snow_0, 1);
 		}
 
 		if (random(2) < 1){
-		    part_particles_create(global.ps_bottom, camera_get_view_x(view_camera[0])+random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0])+random_range(0, camera_get_view_height(view_camera[0])), global.pt_snow_1, 1);
+		    part_particles_create(global.ps_bottom, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), global.pt_snow_1, 1);
 		}
 	}
 }

@@ -13,6 +13,9 @@ mylight.light[| eLight.Y] = y;
 mylight.light[| eLight.LutIntensity] = max((1.55 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
+obj_controller_ui.bosshealth_value_current = health_current + 80;
+obj_controller_ui.bosshealth_value_max = health_max + 80;
+
 var ispaused = false;
 if (global.game_pause){
 	ispaused = true;
@@ -23,6 +26,8 @@ if (!active){
 }
 
 if (ispaused){
+	image_xscale = sign(image_xscale) * scale;
+	image_yscale = scale;
 	image_speed = 0;
 	exit;
 }

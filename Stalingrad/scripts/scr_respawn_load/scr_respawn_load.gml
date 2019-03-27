@@ -89,3 +89,6 @@ if (audio_is_playing(snd_weapon_flamethrower_active_0)){
 }
 
 obj_controller_gameplay.deactivate_time = 0;
+obj_controller_ui.bosshealth_value_current = 0;
+obj_controller_ui.bosshealth_value_max = 0;
+obj_controller_ui.bosshealth_width_current = -10;

@@ -2,6 +2,11 @@ if (light_brightness < 1){
 	light_brightness += 0.05;
 }
 
+if (type == EnemyOneType.TrainBoss){
+	obj_controller_ui.bosshealth_value_current = health_current;
+	obj_controller_ui.bosshealth_value_max = health_max + (18 * 6);
+}
+
 if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.TrainBoss){
 	if (instance_exists(mylight)) && (mylight != noone){
 		mylight.x = x;
@@ -34,6 +39,8 @@ if (global.cutscene_current != -1){
 }
 
 if (ispaused){
+	image_xscale = sign(image_xscale) * scale;
+	image_yscale = scale;
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);

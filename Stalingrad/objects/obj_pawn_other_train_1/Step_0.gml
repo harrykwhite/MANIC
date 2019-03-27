@@ -1,4 +1,3 @@
-is_boss = false;
 var level = scr_get_level_object();
 interact = false;
 if (global.game_pause){
@@ -49,6 +48,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 								sprite_index = spr_train_1_part_0_door_open;
 								break;
 						}
+						
 						image_index = 0;
 						image_speed = 0;
 					
@@ -129,7 +129,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 						if (keyboard_check_pressed(ord("E"))){
 							interact_break = 10;
 							global.game_pause = true;
-						
+							
 							switch(room){
 								case rm_level_1_00:
 									obj_controller_ui.pausedialogue = true;
@@ -311,19 +311,49 @@ if (dir == 1){
 }
 
 if (horde_dospawn){
-	repeat(choose(2, 3)){
-		var xx = x + random_range(-35, 35);
-		var yy = y + 34 + random_range(-5, 35);
+	repeat(3){
+		var xx = x + random_range(-25, 25);
+		var yy = y + 34 + random_range(-5, 25);
 		var enemy = instance_create(xx, yy, obj_enemy_0);
 		enemy.weapon_index = choose(PawnWeapon.Axe, PawnWeapon.Crowbar, PawnWeapon.Rake);
 		enemy.move_speed_offset = random_range(1.2, 1.45);
 		enemy.sporadic = true;
+		
+		for(var i = 0; i < 18; i ++){
+			if (leader.boss_entity[i] == noone){
+				leader.boss_entity[i] = enemy;
+				break;
+			}
+		}
 		
 		repeat(2){
 			part_particles_create(global.ps_front, xx + random_range(-7, 7), yy + random_range(-18, 18), global.pt_spawn_0, 1);
 		}
 	}
 	horde_dospawn = false;
+}
+
+if (is_boss) && (count == -1){
+	var bosshp = 0;
+	var leaderhp = 45;
+	
+	if (instance_exists(level.trainboss_leader)){
+		leaderhp = level.trainboss_leader.health_current;
+	}
+	
+	for(var i = 0; i < 18; i ++){
+		if (boss_entity[i] == noone){
+			bosshp += 6;
+			continue;
+		}
+		
+		if (instance_exists(boss_entity[i])){
+			bosshp += boss_entity[i].health_current;
+		}
+	}
+	
+	obj_controller_ui.bosshealth_value_current = leaderhp + bosshp;
+	obj_controller_ui.bosshealth_value_max = 45 + (18 * 6);
 }
 
 // Light

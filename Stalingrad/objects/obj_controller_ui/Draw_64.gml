@@ -291,6 +291,39 @@ if (leveltext_alpha > 0){
 	scr_text_shadow(xx, yy - (offset), string(leveltext_text), c_white);
 }
 
+// Boss Health
+if (!global.game_pause){
+	if (global.boss_current != -1) && (global.cutscene_current == -1){
+		bosshealth_width_current = approach(bosshealth_width_current, bosshealth_width_to, 5);
+	}else{
+		bosshealth_width_current = approach(bosshealth_width_current, -10, 5);
+	}
+}
+
+if (bosshealth_value_current < bosshealth_value_previous){
+	bosshealth_flash = 1;
+}
+
+if (bosshealth_flash > 0.01){
+	bosshealth_flash *= 0.915;
+}
+
+if (bosshealth_width_current > 0){
+	var xx = dwidth / 2;
+	var yy = dheight - 30;
+	var w = bosshealth_width_current;
+	var h = 12;
+	
+	draw_set_alpha(1);
+	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), c_dkgray, c_ltgray, c_ltgray, 0, true, false);
+	draw_set_alpha(bosshealth_flash * 0.6);
+	draw_set_colour(c_white);
+	draw_rectangle(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), false);
+	draw_set_alpha(1);
+}
+
+bosshealth_value_previous = bosshealth_value_current;
+
 // Control Indication
 if (control_indicate){
 	if (control_indicate_x < 48){
@@ -470,6 +503,8 @@ if (pausedialogue_alpha > 0){
 					scr_text_shadow(optxx, optyy + (counter * 30), pausedialogue_type_option[counter], c_white);
 				}
 			}
+			
+			scr_text_shadow((dwidth / 2) + 80, (dheight / 2) + 220, "Select [Enter]", c_white);
 			break;
 	}
 

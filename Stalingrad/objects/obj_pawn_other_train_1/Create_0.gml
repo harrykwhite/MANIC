@@ -12,7 +12,6 @@ open_time = 0;
 open_pause = false;
 open_set = false;
 close = false;
-//mylight = noone;
 sprite_set = false;
 type = 0;
 interact = false;
@@ -21,6 +20,10 @@ stop_on_end = false;
 is_boss = false;
 leader = 0;
 component = 0;
+
+for(var i = 0; i < 18; i ++){
+	boss_entity[i] = noone;
+}
 
 horde_dospawn = false;
 horde_leader_active = false;

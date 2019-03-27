@@ -15,6 +15,8 @@ if (global.game_pause){
 }
 
 if (ispaused){
+	image_xscale = sign(image_xscale) * scale;
+	image_yscale = scale;
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);

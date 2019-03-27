@@ -1,7 +1,21 @@
 if (destroy){
 	if (!cutscene_prop){
-		if (type != EnemyOneType.TrainBoss){
-			instance_destroy();
+		instance_destroy();
+		if (type == EnemyOneType.TrainBoss){
+			with(obj_controller_levelsix){
+				train_time = 0;
+				train_timemax = 10 * 60;
+
+				trainboss_trainhead = noone;
+				trainboss_leader = noone;
+				trainboss_time = 0;
+				trainboss_timemax = 60 * 5//60;
+				trainboss_spawned = false;
+			}
+			
+			if (instance_exists(obj_pawn_other_train_1)){
+				instance_destroy(obj_pawn_other_train_1);
+			}
 		}
 	}
 	
@@ -95,7 +109,7 @@ if (!typedet){
 		case EnemyOneType.TrainBoss:
 			scale = 1.1;
 			defense = 0;
-			health_max = 35;
+			health_max = 45;
 			health_current = health_max;
 			sprite_index = spr_enemy_0_sniperboss_idle_0;
 			break;

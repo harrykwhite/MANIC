@@ -1,5 +1,5 @@
 if (!dec_set){
-	depth_offset = 100 * image_yscale;
+	depth_offset = 200 * image_yscale;
 	
 	var declist = ds_list_create();
 	var decnum = collision_rectangle_list(x - 4, y - 4, x + sprite_width + 4, y + sprite_height + 4, obj_p_decorative, false, true, declist, false);

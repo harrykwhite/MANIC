@@ -6,8 +6,8 @@ destroy = false;
 damage = 1;
 strength = 1;
 
-shoot_time = 10;
-shoot_buildup_time = 120;
+shoot_time = 0;
+shoot_buildup_time = 60;
 shoot_burst_count = 0;
 shoot_in_burst = false;
 

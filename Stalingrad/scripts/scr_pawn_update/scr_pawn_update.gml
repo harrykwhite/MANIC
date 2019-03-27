@@ -150,7 +150,7 @@ if (health_current <= 0){
 				cutscene_look_prop = true;
 				cutscene_look_boss = Boss.Antagonist;
 			}
-		}else if (obj_giantturret_flamethrower){
+		}else if (object_index == obj_giantturret_flamethrower){
 			doexplode = true;
 		}
 	}

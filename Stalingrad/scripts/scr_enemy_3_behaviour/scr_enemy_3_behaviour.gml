@@ -4,12 +4,6 @@ if (instance_exists(target)){
 	if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (shoot_in_burst){
 		image_angle = point_direction(x, y, target.x, target.y);
 		
-		if (target.x > x){
-			image_yscale = scale;
-		}else{
-			image_yscale = -scale;
-		}
-		
 		if (shoot_buildup_time > 0){
 			shoot_buildup_time --;
 		}else{
@@ -37,7 +31,7 @@ if (instance_exists(target)){
 				
 				if (shoot_burst_count < 2){
 					shoot_burst_count ++;
-					shoot_time = 7;
+					shoot_time = 5;
 					shoot_in_burst = true;
 				}else{
 					shoot_burst_count = 0;
@@ -48,9 +42,15 @@ if (instance_exists(target)){
 		}
 	}else{
 		shoot_time = 0;
-		shoot_buildup_time = 0;
+		shoot_buildup_time = 60;
 	}
 }else{
 	shoot_time = 0;
 	shoot_buildup_time = 0;
+}
+
+if (image_angle < 90) or (image_angle > 270){
+	image_yscale = scale;
+}else{
+	image_yscale = -scale;
 }

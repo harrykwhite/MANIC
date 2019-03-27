@@ -1,8 +1,11 @@
 draw_self();
 scr_draw_attributes_pawn();
 
-var counter = 0, spritecounter = 0;
+var counter = 0, spritecounter = 0, hpcur = 0, hpmax = 0;
 dogs_alive = 1;
+
+hpcur += health_current;
+hpmax += health_max;
 
 if (arm != -1){
 	if (instance_exists(arm)){
@@ -21,6 +24,9 @@ if (arm != -1){
 					draw_sprite_ext(spr_thedogkeeper_lead_0, 0, arm.x + lengthdir_x(9, move_dir) + lengthdir_x(6 * sp, dir), arm.y + lengthdir_y(9, move_dir) + lengthdir_y(6 * sp, dir), 1, 1, dir, c_white, 1);
 					spritecounter ++;
 				}
+				
+				hpcur += thisdog.health_current;
+				hpmax += thisdog.health_max;
 				
 				dogs_downed = false;
 				dogs_alive ++;
