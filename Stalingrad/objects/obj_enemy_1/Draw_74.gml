@@ -1,7 +1,6 @@
 // Health
 var hp = health_current;
-var scale = 0.9;
-health_scale = approach(health_scale, 1, 50);
+health_scale = approach(health_scale, 1, 40);
 
 if (hp < health_max){
 	if (health_alpha < 1){
@@ -27,6 +26,12 @@ if (hp < health_max){
 	}
 }
 
+if (health_flash > 0.01){
+	health_flash *= 0.9;
+}else{
+	health_flash = 0;
+}
+
 var width = 30;
 var height = 5;
 var xx = x;
@@ -38,5 +43,7 @@ var x2 = ((xx - camera_get_view_x(view_camera[0])) * GUI_POS_X) + (width / 2);
 var y2 = ((yy - camera_get_view_y(view_camera[0])) * GUI_POS_Y) + (height / 2);
 
 draw_set_alpha(health_alpha * 0.7);
+draw_healthbar(x1, y1, x2, y2, (hp / health_max) * 100, c_dkgray, c_ltgray, c_ltgray, 0, true, false);
+draw_set_alpha(health_alpha * 0.7 * (health_flash * 0.5));
 draw_healthbar(x1, y1, x2, y2, (hp / health_max) * 100, c_dkgray, c_ltgray, c_ltgray, 0, true, false);
 draw_set_alpha(1);

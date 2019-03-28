@@ -1,7 +1,7 @@
 target = obj_player;
 
 if (instance_exists(target)){
-	if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (shoot_in_burst){
+	if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true) && (distance_to_object(target) < 300)) || (shoot_in_burst){
 		image_angle = point_direction(x, y, target.x, target.y);
 		
 		if (shoot_buildup_time > 0){
@@ -24,7 +24,7 @@ if (instance_exists(target)){
 				var bullet = instance_create(x, y, obj_proj_0);
 				bullet.enemy = true;
 				bullet.damage = 1;
-				bullet.spd = 15;
+				bullet.spd = 13;
 				bullet.strength = 1;
 				bullet.dir = image_angle;
 				bullet.image_angle = bullet.dir;

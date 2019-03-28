@@ -11,7 +11,6 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!
     var ypos = y + lengthdir_y(59, mdir);
 	
     if (attack_can){
-		
 		scr_camera_to_player();
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
         scr_mouse_control(MouseType.SmallCircle, 3, 20);

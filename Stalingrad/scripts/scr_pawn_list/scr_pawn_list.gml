@@ -87,6 +87,7 @@ enum PawnWeapon{
 	Flamethrower,
 	Shotgun,
 	Revolver,
+	Katana,
 }
 
 // Pawn Weapons
@@ -128,3 +129,6 @@ global.pawnweapon_playerindex[11] = PlayerWeapon.Shotgun;
 
 global.pawnweapon_object[12] = obj_pawnweapon_12;
 global.pawnweapon_playerindex[12] = PlayerWeapon.Revolver;
+
+global.pawnweapon_object[13] = obj_pawnweapon_13;
+global.pawnweapon_playerindex[13] = PlayerWeapon.Katana;

@@ -71,5 +71,4 @@ if (audio_is_playing(snd_weapon_flamethrower_active_0)){
 }
 
 scr_fade_object_list_reset();
-global.game_combat_state = CombatState.Idle;
 global.boss_current = -1;

@@ -13,8 +13,8 @@ mylight.light[| eLight.Y] = y;
 mylight.light[| eLight.LutIntensity] = max((1.55 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
-obj_controller_ui.bosshealth_value_current = health_current + 80;
-obj_controller_ui.bosshealth_value_max = health_max + 80;
+obj_controller_ui.bosshealth_value_current = health_current;
+obj_controller_ui.bosshealth_value_max = health_max;
 
 var ispaused = false;
 if (global.game_pause){
@@ -43,9 +43,9 @@ scr_pawn_status_handler();
 
 var sprev = state;
 state = 0; sprite_index = spr_giantturret_idle_0;
-if (health_current <= 67) { state = 1; sprite_index = spr_giantturret_idle_1; }
-if (health_current <= 33) { state = 2; sprite_index = spr_giantturret_idle_2; }
-if (health_current <= 7)  { sprite_index = spr_giantturret_idle_3; }
+if (health_current <= 120) { state = 1; sprite_index = spr_giantturret_idle_1; }
+if (health_current <= 60) { state = 2; sprite_index = spr_giantturret_idle_2; }
+if (health_current <= 15)  { state = 2; sprite_index = spr_giantturret_idle_3; }
 
 if (state != sprev){
 	shoot_time = 120;

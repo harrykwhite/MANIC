@@ -1,1 +1,1 @@
-scr_render_me(renderat);
+scr_render_me(y + depth_offset);

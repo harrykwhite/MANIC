@@ -18,5 +18,6 @@ quantity = 1;
 drop = false;
 pack = false;
 damage = 0;
+is_cutscene = false;
 
 image_alpha = 0;

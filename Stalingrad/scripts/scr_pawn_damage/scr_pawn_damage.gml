@@ -13,6 +13,7 @@ knockback_direction = kbd;
 i_time = it;
 i_blend_time = 5;
 health_scale = 1.5;
+health_flash = 1;
 
 var corpse = noone;
 

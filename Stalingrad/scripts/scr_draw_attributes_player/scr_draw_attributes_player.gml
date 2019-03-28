@@ -34,7 +34,7 @@ if (drawshader){
 			}
 		
 			if (random(5) < 1){
-				part_particles_create(global.ps_front, x + random_range(-6, 6), y + 3 + random_range(-18, 18), global.pt_fire_2, 1);
+				part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-18, 18), global.pt_fire_2, 1);
 			}
 		}
 	}
@@ -49,11 +49,11 @@ if (drawshader){
 	
 		if (!global.game_pause){
 			if (random(2.5) < 1){
-				part_particles_create(global.ps_front, px + random_range(-wradius, wradius), py + random_range(-hradius, hradius), global.pt_poison_0, 1);
+				part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-18, 18), global.pt_poison_0, 1);
 			}
 
 			if (random(3.5) < 1){
-				part_particles_create(global.ps_front, px + random_range(-wradius, wradius), py + random_range(-hradius, hradius), global.pt_poison_1, 1);
+				part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-18, 18), global.pt_poison_1, 1);
 			}
 		}
 	}

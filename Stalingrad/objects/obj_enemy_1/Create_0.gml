@@ -34,6 +34,7 @@ health_max = 2;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
+health_flash = 0;
 
 owner = noone;
 

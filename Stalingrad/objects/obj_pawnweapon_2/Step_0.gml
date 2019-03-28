@@ -31,7 +31,7 @@ if (instance_exists(owner)){
 			isEnemy = false;
 		}
 	    
-		scr_weapon_melee_detect(isEnemy, x, y, dir, scr_pawn_weapon_damage(0), 2.25, 29 + 10, obj_proj_2);
+		scr_weapon_melee_detect(isEnemy, x, y, dir, scr_pawn_weapon_damage(0), 1, 29 + 10, obj_proj_2);
         
         owner.knockback_speed = -1;
         owner.knockback_direction = dir;

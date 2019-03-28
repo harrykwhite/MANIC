@@ -94,8 +94,8 @@ if (player_exists){
 		
 				var weapon;
 				
-				if (chance(85)){
-					weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
+				if (chance(80)){
+					weapon = choose(PawnWeapon.Spear, PawnWeapon.Katana, PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
 				}else{
 					weapon = choose(PawnWeapon.Grenade);
 				}

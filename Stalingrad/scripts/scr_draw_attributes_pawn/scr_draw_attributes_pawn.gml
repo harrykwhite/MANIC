@@ -77,7 +77,7 @@ if (drawshader){
 	if (!is_metal){
 		var coffset = 0;
 		if (object_index == obj_enemy_1){
-			coffset = 6;
+			coffset = 10;
 		}
 	
 		if (poison){

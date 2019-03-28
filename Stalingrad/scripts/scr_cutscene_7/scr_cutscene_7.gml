@@ -1,8 +1,6 @@
 ///scr_cutscene_7();
 var index = 7;
 var xTo = cutscene_conveyerbelt_x, yTo = cutscene_conveyerbelt_y;
-var dir = 0;
-var levelobj = scr_get_level_object();
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
@@ -46,10 +44,11 @@ if (instance_exists(obj_player)){
 					if (global.cutscene_time[index] == 155){
 						audio_play_sound(snd_weapon_swing_0, 3, false);
 						var drop = instance_create(dropx, dropy + 10, obj_weapondrop);
-						drop.index = PlayerWeapon.Machete;
-						drop.spd = 20;
-						drop.dir = 270 + random_range(-10, 10);
+						drop.index = PlayerWeapon.WireCables;
+						drop.spd = 5;
+						drop.dir = 270 + random_range(-5, 5);
 						drop.angle = 0;
+						drop.is_cutscene = true;
 					}
 					
 					global.cutscene_camera_x[index] = dropx;

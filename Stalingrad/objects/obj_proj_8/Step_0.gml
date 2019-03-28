@@ -8,14 +8,8 @@ if (place_meeting(x + 1, y + 1, obj_p_solid)){
 }
 
 if (instance_exists(target)){
-	var dir_to_target = floor(point_direction(x, y, target.x, target.y));
-	
-	if (dir < dir_to_target){
-		dir ++;
-	}else if (dir > dir_to_target){
-		dir --;
-	}
-	
+	var dir_to_target = point_direction(x, y, target.x, target.y);
+	dir += sign(angle_difference(dir, dir_to_target));
 	image_angle = dir;
 }
 
@@ -26,6 +20,8 @@ part_particles_create(global.ps_front, x + lengthdir_x(-5, dir), y + lengthdir_y
 x += lengthdir_x(spd, dir);
 y += lengthdir_y(spd, dir);
 
+part_particles_create(global.ps_front, x, y, global.pt_fire_0, 1);
+
 if (explode){
     repeat(9){
         part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
@@ -34,6 +30,14 @@ if (explode){
 	repeat(2){
         part_particles_create(global.ps_front, x + random_range(-42, 42), y + random_range(-42, 42), global.pt_smoke_2, 1);
     }
+	
+	repeat(2){
+		part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_fire_0, 1);
+	}
+	
+	repeat(2){
+		part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_fire_2, 1);
+	}
     
 	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
 	

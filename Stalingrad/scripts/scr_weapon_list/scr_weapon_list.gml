@@ -36,6 +36,7 @@ enum PlayerWeapon{
 	FlareRifle,
 	DartGun,
 	MountedMachineGunCart,
+	WireCables,
 }
 
 enum AmmoType{
@@ -317,9 +318,9 @@ global.weapon_object[26] = obj_weapon_26;
 global.weapon_sprite[26] = spr_weapon_26;
 global.weapon_type[26] = WeaponType.Ranged;
 global.weapon_heavy[26] = true;
-global.weapon_ammomax[26] = 18;
+global.weapon_ammomax[26] = 15;
 global.weapon_ammotype[26] = AmmoType.Bullets;
-global.weapon_camerarange[26] = 18;
+global.weapon_camerarange[26] = 15;
 global.weapon_mouse[26] = MouseType.Crosshair;
 global.weapon_dualhanded[26] = false;
 
@@ -355,6 +356,15 @@ global.weapon_ammotype[29] = AmmoType.Bullets;
 global.weapon_camerarange[29] = 35;
 global.weapon_mouse[29] = MouseType.Crosshair;
 global.weapon_dualhanded[29] = false;
+
+global.weapon_name[30] = "Wire Cables";
+global.weapon_object[30] = obj_weapon_30;
+global.weapon_sprite[30] = spr_weapon_30;
+global.weapon_type[30] = WeaponType.Melee;
+global.weapon_heavy[30] = false;
+global.weapon_camerarange[30] = 15;
+global.weapon_mouse[30] = MouseType.SmallCircle;
+global.weapon_dualhanded[30] = false;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];

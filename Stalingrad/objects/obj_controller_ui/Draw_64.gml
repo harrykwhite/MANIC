@@ -293,7 +293,7 @@ if (leveltext_alpha > 0){
 
 // Boss Health
 if (!global.game_pause){
-	if (global.boss_current != -1) && (global.cutscene_current == -1){
+	if (global.boss_current != -1) && (global.boss_current != Boss.SniperRobot) && (global.boss_current != Boss.MotherRobot) && (global.cutscene_current == -1) && (blackbar_sizereal <= 40){
 		bosshealth_width_current = approach(bosshealth_width_current, bosshealth_width_to, 5);
 	}else{
 		bosshealth_width_current = approach(bosshealth_width_current, -10, 5);

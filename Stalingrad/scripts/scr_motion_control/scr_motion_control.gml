@@ -12,15 +12,12 @@ if (argument_count > 0){
 }
 
 if (contact){
-	
 	var length = array_length_1d(contactlist);
 	
 	for(var i = 0; i < length; i ++){
 		move_contact_object(dir, spd, contactlist[i]);
 	}
-
 }else{
-	
 	x += lengthdir_x(spd, dir);
 	y += lengthdir_y(spd, dir);
 }

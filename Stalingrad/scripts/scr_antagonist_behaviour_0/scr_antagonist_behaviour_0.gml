@@ -230,7 +230,7 @@ if (instance_exists(target)){
 				if (maxstate == 3){
 					weapon_index = weapon_change_origin;
 				}else{
-					weapon_index = choose(PawnWeapon.Machete, PawnWeapon.Axe, PawnWeapon.Sledgehammer);
+					weapon_index = choose(PawnWeapon.Katana, PawnWeapon.Axe, PawnWeapon.Sledgehammer);
 				}
 				break;
 			
@@ -239,7 +239,7 @@ if (instance_exists(target)){
 				break;
 			
 			case 3:
-				weapon_index = choose(PawnWeapon.Machete, PawnWeapon.Axe, PawnWeapon.Sledgehammer);
+				weapon_index = choose(PawnWeapon.Katana, PawnWeapon.Axe, PawnWeapon.Sledgehammer);
 				break;
 		}
 		

@@ -8,10 +8,11 @@ if(dirty || tick >= global.lightUpdateFrameDelay || global.worldShadowMap == und
 	exists = composite_shadow_map(global.worldLights);
 	dirty = false;
 	tick = 0;
+}else{
+	exists = surface_exists(global.worldShadowMap);
 }
-else exists = surface_exists(global.worldShadowMap);
 
-if(exists) {
+if (exists){
 	// Get the active camera
 	var camera = lighting_get_active_camera();
 	// Draw the shadow map

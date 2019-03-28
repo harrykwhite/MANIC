@@ -1,6 +1,6 @@
 dir = 0;
 spd = 0;
-enemy = false;
+enemy = true;
 creator = obj_player;
 target = noone;
 explode = false;

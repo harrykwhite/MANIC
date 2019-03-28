@@ -5,7 +5,7 @@ if (!isVisible){
 // Health
 var hp = global.player_healthCurrent;
 var scale = 0.9;
-health_scale = approach(health_scale, 1, 50);
+health_scale = approach(health_scale, 1, 40);
 
 if (global.cutscene_current == -1){
 	if (health_alpha < 1){

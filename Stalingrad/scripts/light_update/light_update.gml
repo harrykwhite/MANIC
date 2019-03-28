@@ -26,9 +26,9 @@ var light_y = light[| eLight.Y];
 var light_range = light[| eLight.Range];
 var light_flags = light[| eLight.Flags];
 var light_type = light[| eLight.Type];
-var light_direction = light[| eLight.Direction];
+//var light_direction = light[| eLight.Direction];
 var dirty = light_flags & eLightFlags.Dirty;
-var static_storage = light[| eLight.StaticStorage];
+//var static_storage = light[| eLight.StaticStorage];
 var out_of_range_map = light[| eLight.ShadowCastersOutOfRange];
 var culled_shadow_casters = light[| eLight.CulledShadowCasters];
 var ignore_set = light[| eLight.IgnoreSet];
@@ -57,8 +57,8 @@ vertex_begin(vbuffer, global.lightVertexFormat);
 
 // Get the camera we're rendering with to cull against
 var camera = lighting_get_active_camera();
-var camera_right = camera[0] + camera[2];
-var camera_bottom = camera[1] + camera[3];
+//var camera_right = camera[0] + camera[2];
+//var camera_bottom = camera[1] + camera[3];
 
 // Get the direction from the light to the center of the camera
 var light_shadow_map;

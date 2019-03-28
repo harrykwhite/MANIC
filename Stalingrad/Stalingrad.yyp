@@ -1183,6 +1183,14 @@
             }
         },
         {
+            "Key": "1d6c9ca7-05ec-4ced-a50a-7ac70279fa6a",
+            "Value": {
+                "id": "7ab65cdc-2cda-4a2f-8a0e-2709c2f77469",
+                "resourcePath": "views\\1d6c9ca7-05ec-4ced-a50a-7ac70279fa6a.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "1d8f6f3c-ade9-48d0-ad5a-ebbd0926dafe",
             "Value": {
                 "id": "2150a42a-8a65-4bd7-81ef-c8b5aaea8e40",
@@ -6111,6 +6119,14 @@
             }
         },
         {
+            "Key": "920defd1-8f12-4584-9cab-680e9d50b744",
+            "Value": {
+                "id": "549bfe42-1a9e-4161-b15d-437acc2880f7",
+                "resourcePath": "objects\\obj_pawnweapon_13\\obj_pawnweapon_13.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "922ea43d-74ab-486f-b052-8cb021264e2b",
             "Value": {
                 "id": "12d81329-f870-4aba-9ac5-32cb2b394204",
@@ -6876,14 +6892,6 @@
                 "id": "603b3721-200e-4aa5-acf0-3361e05164fb",
                 "resourcePath": "objects\\obj_p_environhit\\obj_p_environhit.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "a58dcb3e-3e54-490c-acf9-f537e01a3ba5",
-            "Value": {
-                "id": "0ff20872-da49-4fb4-8703-0bdee0757249",
-                "resourcePath": "views\\a58dcb3e-3e54-490c-acf9-f537e01a3ba5.yy",
-                "resourceType": "GMFolder"
             }
         },
         {
@@ -8228,6 +8236,14 @@
                 "id": "24dd4261-aa93-40a1-ac65-48b66d5351b0",
                 "resourcePath": "objects\\obj_giantturret_light\\obj_giantturret_light.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "caeafb7c-d5a7-4fe8-8473-c0cebf91e88e",
+            "Value": {
+                "id": "53c16de4-6292-4ab8-94ee-03123e9273f2",
+                "resourcePath": "sprites\\spr_weapon_30\\spr_weapon_30.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -10039,14 +10055,6 @@
             }
         },
         {
-            "Key": "fb3e2695-5e08-4651-8697-9ebbd6b722d1",
-            "Value": {
-                "id": "b68175a5-33d3-431e-a99d-cbed8552e1ce",
-                "resourcePath": "scripts\\scr_draw_light\\scr_draw_light.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "fb66ace5-536e-48cb-8b36-78e4720c85a1",
             "Value": {
                 "id": "37939727-f009-4a9e-b95c-72668bf94849",
@@ -10295,6 +10303,14 @@
             }
         },
         {
+            "Key": "ff8b14bc-f778-4b3f-b192-db5bb830516b",
+            "Value": {
+                "id": "18f4a95f-a33d-4d47-a755-a038bea95802",
+                "resourcePath": "objects\\obj_weapon_30\\obj_weapon_30.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "ffe234ed-c006-49b6-8888-7ea4c9508551",
             "Value": {
                 "id": "b8334eb3-7db5-47c3-9e75-8b53d5926cfa",
@@ -10378,7 +10394,6 @@
         "d4acf90d-324b-493e-8641-85636a2cc3e0",
         "8a1f87a3-befb-4dec-9e8a-3471c93423ff",
         "008974bb-803a-48c4-9c47-506a1827acf2",
-        "fb3e2695-5e08-4651-8697-9ebbd6b722d1",
         "a0a67779-16bf-4f25-a3bd-2474af21752a",
         "9a278f67-3be7-4aa3-ae9c-eeab7302ca57",
         "8512be01-e0fc-43f2-8712-8491c50fdbe4",

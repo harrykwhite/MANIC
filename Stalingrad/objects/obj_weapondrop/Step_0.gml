@@ -1,5 +1,9 @@
+if (global.cutscene_current == -1){
+	is_cutscene = false;
+}
+
 if (global.game_pause) || (global.cutscene_current != -1){
-	if (global.cutscene_current != 7){
+	if (!global.game_pause) && (!is_cutscene){
 		exit;
 	}
 }
@@ -8,12 +12,15 @@ var hit = false;
 time ++;
 
 if (spd > 0){
+	x += lengthdir_x(spd, dir);
+	y += lengthdir_y(spd, dir);
+	
 	spd -= 0.35;
 	spd = max(0, spd);
-	scr_motion_control(false);
+	
 	image_alpha = 0;
 	
-	if (global.cutscene_current != 7){
+	if (!is_cutscene){
 		for(var i = 0; i < spd + 20; i ++){
 			if (collision_line(xprevious, yprevious, x + lengthdir_x(i, dir), y + lengthdir_y(i, dir), obj_p_solid, false, true)){
 				hit = true;
@@ -56,8 +63,7 @@ if (instance_exists(obj_player)){
 	            
 				var oldweapon = global.weapon_slot[global.weapon_slotcurrent];
 				var exists = false;
-				var dropammo = global.weapon_slotammo[global.weapon_slotcurrent];;
-				var alength = array_length_1d(global.weapon_slot);
+				var dropammo = global.weapon_slotammo[global.weapon_slotcurrent];
 				var sound = snd_weapon_pickup_1;
 				
 				if (global.weapon_type[index] == WeaponType.Ranged){
@@ -103,7 +109,6 @@ if (instance_exists(obj_player)){
 		        }
 				
 				global.weapon_slot[global.weapon_slotcurrent] = index;
-				var weapon = instance_create(x, y, global.weapon_object[index]); // Create the new weapon.
 				var weapon_dropindex;
 				
 				if (!exists){

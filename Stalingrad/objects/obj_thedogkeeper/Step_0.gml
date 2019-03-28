@@ -9,6 +9,9 @@ mylight.light[| eLight.Y] = y;
 mylight.light[| eLight.LutIntensity] = max((1.25 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1);
 mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
+obj_controller_ui.bosshealth_value_current = health_current;
+obj_controller_ui.bosshealth_value_max = health_max;
+
 var ispaused = false;
 if (global.game_pause){
 	ispaused = true;

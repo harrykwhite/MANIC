@@ -76,6 +76,7 @@ health_max = 6;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
+health_flash = 0;
 
 var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;

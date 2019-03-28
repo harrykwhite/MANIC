@@ -37,15 +37,16 @@ i_blend_time = 0;
 
 knockback_speed = 0;
 knockback_direction = 0;
-knockback_resist = 0.4;
+knockback_resist = 0;
 
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 12;
+health_max = 8;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
+health_flash = 0;
 
 target = obj_player;
 
