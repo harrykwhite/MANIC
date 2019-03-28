@@ -68,7 +68,9 @@ image_speed = 0;
 
 if (isVisible){
 	if (light_brightness < 1){
-		light_brightness += 0.025;
+		light_brightness += 0.05;
+	}else if (light_brightness > 1){
+		light_brightness -= 0.05;
 	}
 }
 

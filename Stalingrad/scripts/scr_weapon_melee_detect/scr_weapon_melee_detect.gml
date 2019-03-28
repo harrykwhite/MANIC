@@ -118,7 +118,7 @@ switch(ctype){
 					
 					if (inst.object_index == obj_enemy_3) || (inst.object_index == obj_giantturret) || (inst.object_index == obj_giantturret_flamethrower){
 						scr_sound_play(snd_object_metal_hit_0, false, 0.8, 1.2);
-						scr_effect_object(inst.x, inst.y, obj_ef_blood, spr_ef_metal_0, 0, 1);
+						scr_effect_object(xEnd, yEnd, obj_ef_blood, spr_ef_metal_0, 0, 1);
 					}else{
 						scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 					}

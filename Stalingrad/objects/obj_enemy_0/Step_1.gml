@@ -9,7 +9,7 @@ if (destroy){
 				trainboss_trainhead = noone;
 				trainboss_leader = noone;
 				trainboss_time = 0;
-				trainboss_timemax = 60 * 5//60;
+				trainboss_timemax = 60 * 25;
 				trainboss_spawned = false;
 			}
 			

@@ -1,5 +1,7 @@
 if (light_brightness < 1){
 	light_brightness += 0.05;
+}else if (light_brightness > 1){
+	light_brightness -= 0.05;
 }
 
 if (global.cutscene_current == 40) && (obj_controller_gameplay.cutscene_look_object == id){
@@ -26,8 +28,11 @@ if (!active){
 }
 
 if (ispaused){
-	image_xscale = sign(image_xscale) * scale;
-	image_yscale = scale;
+	if (abs(image_xscale) != scale) || (abs(image_yscale) != scale){
+		image_xscale = sign(image_xscale) * scale;
+		image_yscale = scale;
+	}
+	
 	image_speed = 0;
 	exit;
 }
@@ -43,9 +48,9 @@ scr_pawn_status_handler();
 
 var sprev = state;
 state = 0; sprite_index = spr_giantturret_idle_0;
-if (health_current <= 120) { state = 1; sprite_index = spr_giantturret_idle_1; }
-if (health_current <= 60) { state = 2; sprite_index = spr_giantturret_idle_2; }
-if (health_current <= 15)  { state = 2; sprite_index = spr_giantturret_idle_3; }
+if (health_current <= 90) { state = 1; sprite_index = spr_giantturret_idle_1; }
+if (health_current <= 45) { state = 2; sprite_index = spr_giantturret_idle_2; }
+if (health_current <= 11)  { state = 2; sprite_index = spr_giantturret_idle_3; }
 
 if (state != sprev){
 	shoot_time = 120;

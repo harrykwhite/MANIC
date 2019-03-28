@@ -20,7 +20,7 @@ if (instance_exists(target)){
 			
 			scr_effect_screenshake(2);
 			scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
-			light_brightness = 8;
+			light_brightness = 1.25;
 			
 			part_type_direction(global.pt_flash_0, shoot_dir - 17, shoot_dir + 17, 0, 0);
 			part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
@@ -38,10 +38,10 @@ if (instance_exists(target)){
 			
 			if (shoot_burst < 2){
 				shoot_burst ++;
-				shoot_time = 6;
+				shoot_time = 4;
 			}else{
 				shoot_burst = 0;
-				shoot_time = 60;
+				shoot_time = 30;
 			}
 		}
 		
@@ -137,7 +137,7 @@ if (instance_exists(target)){
 			
 				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_shoot_3, false, 0.8, 1.2);
-				light_brightness = 8;
+				light_brightness = 1.25;
 				
 		        part_type_direction(global.pt_smoke_5, shoot_dir - 17, shoot_dir + 17, 0, 0);
 				part_particles_create(global.ps_front, xpos + lengthdir_x(5, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(5, shoot_dir) + random_range(-3, 3), global.pt_smoke_5, 1);

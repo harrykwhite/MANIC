@@ -14,10 +14,6 @@ if (instance_exists(obj_player)){
 			minecart_speed -= 0.005;
 		}
 
-		if (minecart_speed < 0){
-			minecart_speed += 0.005;
-		}
-
 		if (minecart_bounce_break > 0){
 			minecart_bounce_break --;
 		}else{
@@ -34,14 +30,14 @@ if (instance_exists(obj_player)){
 			
 					if (mblock.image_angle != minecart_dir){
 						minecart_dir = mblock.image_angle;
-						minecart_bounce_break = 15;
+						minecart_bounce_break = 1;
 						break;
 					}
 				}
 			}
 		}
 
-		if (minecart_speed != 0) || (minecart_speed != 0){
+		if (minecart_speed != 0){
 			image_speed = 1;
 		}else{
 			image_speed = 0;
@@ -53,8 +49,8 @@ if (instance_exists(obj_player)){
 			mysprite = spr_pawn_minecart_0;
 		}
 
-		x += lengthdir_x(abs(minecart_speed), minecart_dir) * sign(minecart_speed);
-		y += lengthdir_y(abs(minecart_speed), minecart_dir) * sign(minecart_speed);
+		x += lengthdir_x(minecart_speed, minecart_dir);
+		y += lengthdir_y(minecart_speed, minecart_dir);
 	}
 	
 	// Equip

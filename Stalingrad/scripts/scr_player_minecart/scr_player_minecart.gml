@@ -23,17 +23,17 @@ if (keyboard_check(ord("D"))){
 	if (minecart_speed < 4){
 		minecart_speed += 0.01;
 	}
+	
+	minecart_real_dir = minecart_dir;
 }else if (keyboard_check(ord("A"))){
-	if (minecart_speed > -4){
-		minecart_speed -= 0.01;
+	if (minecart_speed < 4){
+		minecart_speed += 0.01;
 	}
+	
+	minecart_real_dir = minecart_dir - 180;
 }else{
 	if (minecart_speed > 0){
 		minecart_speed -= 0.005;
-	}
-	
-	if (minecart_speed < 0){
-		minecart_speed += 0.005;
 	}
 }
 
@@ -53,7 +53,7 @@ if (minecart_bounce_break > 0){
 			
 			if (mblock.image_angle != minecart_dir){
 				minecart_dir = mblock.image_angle;
-				minecart_bounce_break = 15;
+				minecart_bounce_break = 1;
 				break;
 			}
 		}
@@ -66,19 +66,19 @@ if (minecart_speed != 0) || (minecart_speed != 0){
 	image_speed = 0;
 }
 
-if ((minecart_dir > 90 - 20) && (minecart_dir < 90 + 20)) || ((minecart_dir > 270 - 20) && (minecart_dir < 270 + 20)){
+if ((minecart_real_dir > 90 - 20) && (minecart_real_dir < 90 + 20)) || ((minecart_real_dir > 270 - 20) && (minecart_real_dir < 270 + 20)){
 	minecart_sprite = spr_pawn_minecart_1;
 }else{
 	minecart_sprite = spr_pawn_minecart_0;
 }
 
-x += lengthdir_x(abs(minecart_speed), minecart_dir) * sign(minecart_speed);
-y += lengthdir_y(abs(minecart_speed), minecart_dir) * sign(minecart_speed);
+x += lengthdir_x(minecart_speed, minecart_real_dir);
+y += lengthdir_y(minecart_speed, minecart_real_dir);
 
 minecart.x = x;
 minecart.y = y;
 minecart.minecart_speed = minecart_speed;
 minecart.minecart_bounce_break = minecart_bounce_break;
-minecart.minecart_dir = minecart_dir;
+minecart.minecart_dir = minecart_real_dir;
 minecart.image_index = minecart_sprite_image;
 minecart.sprite_index = minecart_sprite;

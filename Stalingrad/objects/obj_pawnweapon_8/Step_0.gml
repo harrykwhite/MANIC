@@ -39,7 +39,7 @@ if (instance_exists(owner)){
 		
 		scr_effect_screenshake(2);
 		scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
-		owner.light_brightness = 8;
+		owner.light_brightness = 1.25;
 		
 		part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);
 		part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
@@ -53,7 +53,7 @@ if (instance_exists(owner)){
 		proj = instance_create(xpos, ypos, obj_proj_0);
 		proj.dir = dir;
 		proj.image_angle = dir;
-		proj.spd = 11;
+		proj.spd = 13;
 		proj.damage = scr_pawn_weapon_damage(-1);
 		proj.strength = 2;
 		proj.enemy = isEnemy;

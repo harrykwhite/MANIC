@@ -1,5 +1,7 @@
 if (light_brightness < 1){
 	light_brightness += 0.05;
+}else if (light_brightness > 1){
+	light_brightness -= 0.05;
 }
 
 if (type == EnemyOneType.TrainBoss){
@@ -30,7 +32,9 @@ if (global.game_pause){
 
 if (global.cutscene_current != -1){
 	if (!in_cutscene){
-		ispaused = true;
+		if (type != EnemyOneType.TrainBoss){
+			ispaused = true;
+		}
 	}
 }else{
 	if (cutscene_prop){
@@ -39,8 +43,11 @@ if (global.cutscene_current != -1){
 }
 
 if (ispaused){
-	image_xscale = sign(image_xscale) * scale;
-	image_yscale = scale;
+	if (abs(image_xscale) != scale) || (abs(image_yscale) != scale){
+		image_xscale = sign(image_xscale) * scale;
+		image_yscale = scale;
+	}
+	
 	image_speed = 0;
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);

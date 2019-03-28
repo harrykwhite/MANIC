@@ -39,8 +39,23 @@ safe.y -= (safe.sprite_height * 0.5);
 global.player_healthCurrent = global.player_healthMax;
 
 global.weapon_slotcurrent = 0;
-global.weapon_slot[0] = PlayerWeapon.Revolver;
-global.weapon_slot[1] = -1;
+
+for(var i = 0; i < 2; i ++){
+	if (room == rm_level_10_01){
+		global.weapon_slot[i] = obj_controller_levelten.weaponstart[i];
+		global.weapon_slotammo[i] = obj_controller_levelten.weaponstart_ammo[i];
+		
+		if (global.weapon_type[obj_controller_levelten.weaponstart[i]] == WeaponType.Throwing){
+			global.weapon_quantity[obj_controller_levelten.weaponstart[i]] = obj_controller_levelten.weaponstart_quantity[i];
+		}
+	}else{
+		if (i == 0){
+			global.weapon_slot[i] = PlayerWeapon.Revolver;
+		}else{
+			global.weapon_slot[i] = -1;
+		}
+	}
+}
 
 if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 	var weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];

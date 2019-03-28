@@ -26,6 +26,8 @@ switch(room){
 }
 
 // Other
+weaponstart_set = false;
+
 global.cutscene_current = 2;
 sprite_index = noone;
 depth = -5;
