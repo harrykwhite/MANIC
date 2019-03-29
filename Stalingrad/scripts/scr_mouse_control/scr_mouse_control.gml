@@ -1,4 +1,3 @@
-///scr_mouse_control(type, scale, scaleSpeed);
 ///@param type
 ///@param scale
 ///@param scaleSpeed

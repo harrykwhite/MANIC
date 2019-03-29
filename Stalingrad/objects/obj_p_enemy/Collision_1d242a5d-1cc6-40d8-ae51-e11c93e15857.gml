@@ -17,6 +17,10 @@ if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_ind
 if (i_time <= 0){
 	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.strength, other.dir, 3);
 	
+	if (other.creator == obj_player){
+		scr_mouse_cross();
+	}
+	
 	if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper){
 		part_particles_create(global.ps_front, other.x, other.y, global.pt_blood_0, 3);
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10);

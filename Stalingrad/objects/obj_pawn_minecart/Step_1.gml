@@ -14,29 +14,23 @@ if (instance_exists(obj_player)){
 			minecart_speed -= 0.005;
 		}
 
-		if (minecart_bounce_break > 0){
-			minecart_bounce_break --;
-		}else{
-			var cartx = sprite_get_bbox_left(sprite_index);
-			var carty = sprite_get_bbox_top(sprite_index);
-			var cartw = sprite_get_bbox_right(sprite_index) - cartx;
-			var carth = sprite_get_bbox_bottom(sprite_index) - carty;
+		var cartx = sprite_get_bbox_left(sprite_index);
+		var carty = sprite_get_bbox_top(sprite_index);
+		var cartw = sprite_get_bbox_right(sprite_index) - cartx;
+		var carth = sprite_get_bbox_bottom(sprite_index) - carty;
 
-			var mblocklist = ds_list_create();
-			var mblocktotal = collision_rectangle_list(x - (sprite_width / 2) + cartx, y - (sprite_height/ 2) + carty, x - (sprite_width / 2) + cartx + cartw, y - (sprite_height / 2) + carty + carth, obj_block_minecart, false, false, mblocklist, false);
-			if (mblocktotal > 0){
-				for(var i = 0; i < mblocktotal; i ++){
-					var mblock = mblocklist[| i];
-			
-					if (mblock.image_angle != minecart_dir){
-						minecart_dir = mblock.image_angle;
-						minecart_bounce_break = 1;
-						break;
-					}
+		var mblocklist = ds_list_create();
+		var mblocktotal = collision_rectangle_list(x - (sprite_width / 2) + cartx, y - (sprite_height/ 2) + carty, x - (sprite_width / 2) + cartx + cartw, y - (sprite_height / 2) + carty + carth, obj_block_minecart, false, false, mblocklist, false);
+		if (mblocktotal > 0){
+		for(var i = 0; i < mblocktotal; i ++){
+			var mblock = mblocklist[| i];
+				if (mblock.image_angle != minecart_dir){
+					minecart_dir = mblock.image_angle;
+					break;
 				}
 			}
 		}
-
+		
 		if (minecart_speed != 0){
 			image_speed = 1;
 		}else{
@@ -101,7 +95,6 @@ if (instance_exists(obj_player)){
 					obj_player.minecart = id;
 					obj_player.in_minecart = true;
 					obj_player.minecart_speed = minecart_speed;
-					obj_player.minecart_bounce_break = minecart_bounce_break;
 					obj_player.minecart_dir = minecart_dir;
 					obj_player.minecart_sprite = sprite_index;
 					obj_player.minecart_sprite_image = image_index;

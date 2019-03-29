@@ -9,8 +9,8 @@ if (place_meeting(x + 1, y + 1, obj_p_solid)){
 
 if (instance_exists(target)){
 	var dir_to_target = point_direction(x, y, target.x, target.y);
-	dir += sign(angle_difference(dir, dir_to_target));
-	image_angle = dir;
+	dir = dir_to_target;
+	image_angle = dir_to_target;
 }
 
 part_type_speed(global.pt_smoke_8, 2, 4, -0.1, 0);

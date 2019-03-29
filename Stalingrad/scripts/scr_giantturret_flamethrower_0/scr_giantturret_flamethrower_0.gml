@@ -18,7 +18,6 @@ if (instance_exists(turret)){
 			flame.damage = 2;
 			flame.strength = 1.5;
 			flame.spd = random_range(10, 14);
-			flame.creator = id;
 			flame.enemy = true;
 		}
 	

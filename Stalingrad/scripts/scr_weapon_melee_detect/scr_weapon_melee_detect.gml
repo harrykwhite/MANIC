@@ -53,14 +53,11 @@ if (envdist < len){
 }
 
 if (!enemyproj){
-	
 	if (enemydist < len){
 		len = enemydist;
 		ctype = "enemy";
-	}  
-	
+	}
 }else{
-
 	if (playerdist < len){
 		len = playerdist;
 		ctype = "player";
@@ -79,10 +76,10 @@ switch(ctype){
 					len = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy);
 					xEnd = xx + lengthdir_x(len, dir);
 					yEnd = yy + lengthdir_y(len, dir);
-				
+					
 					scr_effect_screenshake(2);
 					scr_effect_freeze(15);
-				
+					
 					if (inst.object_index == obj_enemy_1){
 						if (inst.owner != obj_player) && (inst.owner != noone){
 							continue;
@@ -104,7 +101,7 @@ switch(ctype){
 							var spurt = instance_create(inst.x + random_range(-5, 5), inst.y + random_range(-8, 8), obj_ef_bloodspurt);
 							spurt.dir = dir + random_range(-38, 38);
 						}
-					
+						
 					    part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3);
 					    part_particles_create(global.ps_bottom, inst.x, inst.y + 6, global.pt_blood_1, 10);
 						part_particles_create(global.ps_bottom, inst.x, inst.y + 6, global.pt_blood_3, 3);
@@ -121,6 +118,10 @@ switch(ctype){
 						scr_effect_object(xEnd, yEnd, obj_ef_blood, spr_ef_metal_0, 0, 1);
 					}else{
 						scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+					}
+					
+					if (string_char_at(object_get_name(object_index), 4) != "p"){
+						scr_mouse_cross();
 					}
 				}
 			}

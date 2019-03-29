@@ -1,7 +1,7 @@
 global.pt_bodypart_0 = part_type_create();
 var pt = global.pt_bodypart_0;
 
-part_type_alpha3(pt, 1, 1, 0);
+part_type_alpha1(pt, 1);
 part_type_direction(pt, 0, 360, 0, 0);
 part_type_orientation(pt, 0, 360, 0, 0, 0);
 part_type_speed(pt, 1, 2, -0.065, 0);

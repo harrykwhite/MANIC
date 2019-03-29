@@ -30,11 +30,10 @@ if (instance_exists(target)){
 		    var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.dir = shoot_dir;
 		    bullet.image_angle = shoot_dir;
-			bullet.spd = 13;
+			bullet.spd = 11;
 			bullet.damage = 1;
 			bullet.strength = 1.25;
 			bullet.enemy = true;
-			bullet.creator = id;
 			
 			if (shoot_burst < 2){
 				shoot_burst ++;

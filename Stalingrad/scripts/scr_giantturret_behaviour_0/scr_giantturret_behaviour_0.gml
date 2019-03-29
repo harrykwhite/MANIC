@@ -43,12 +43,10 @@ if (instance_exists(target)){
 		
 	// Enemy spawning
 	}else if (attack == 1){
-		var ecount = instance_number(obj_p_enemy);
-		
-		while(ecount < 5){
+		while(instance_number(obj_p_enemy) < 9){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Axe, PawnWeapon.Crowbar);
-			ecount = instance_number(obj_p_enemy);
+			enemy.type = EnemyOneType.Normal;
 			
 			repeat(9){
 				part_particles_create(global.ps_front, enemy.x + random_range(-7, 7), enemy.y + random_range(-18, 18), global.pt_spawn_0, 1);

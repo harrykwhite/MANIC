@@ -6519,6 +6519,14 @@
             }
         },
         {
+            "Key": "9b4d6b5b-9463-4ef6-9134-c2138a0939ab",
+            "Value": {
+                "id": "2e3638ae-6f5f-4445-b79c-746c848d99a8",
+                "resourcePath": "scripts\\scr_mouse_cross\\scr_mouse_cross.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "9b5784bf-b838-4dbb-ab78-2f62825f6d26",
             "Value": {
                 "id": "23304870-d667-44a5-a56c-5570b4e4a1af",
@@ -10545,6 +10553,7 @@
         "5e5ffd77-57a0-4344-8b7e-c0baf0ffb7dc",
         "6720c961-d518-45a3-8c42-eaf3eb02144a",
         "3600c458-d00c-4fa2-bc10-892cc9b8a4ac",
+        "9b4d6b5b-9463-4ef6-9134-c2138a0939ab",
         "fd13fd6c-e99f-4c08-9a01-c40b3b21c2bf",
         "187f3b19-a1f5-4746-8272-66262621d9d6",
         "b038885c-f157-47cb-83bd-e3cbe986fc31",

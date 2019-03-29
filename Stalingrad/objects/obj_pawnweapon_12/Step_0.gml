@@ -38,8 +38,8 @@ if (instance_exists(owner)){
 		shoot.dir = dir + random_range(-1, 1);
 		shoot.spd = 14;
 		shoot.image_angle = shoot.dir;
-		shoot.creator = owner;
 		shoot.enemy = isEnemy;
+		shoot.creator = owner;
 		
 	    owner.knockback_speed = -1;
 	    owner.knockback_direction = dir;

@@ -61,7 +61,7 @@ global.level_artifact_current[8] = 0;
 global.level_artifact_number[8] = 4;
 global.level_displaynum[8] = "Nine";
 
-global.level_name[9] = "Command Post";
+global.level_name[9] = "City Headquarters";
 global.level_room[9] = rm_level_10_00;
 global.level_artifact_current[9] = 0;
 global.level_artifact_number[9] = 0;

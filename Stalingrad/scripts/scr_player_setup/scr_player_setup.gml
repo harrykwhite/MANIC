@@ -84,7 +84,6 @@ isVisible = true;
 heartbeat = noone;
 
 minecart = noone;
-minecart_bounce_break = 0;
 minecart_dir = 0;
 minecart_real_dir = 0;
 minecart_speed = 0;

@@ -13,6 +13,7 @@ mouse_scaleTo = 1;
 mouse_scaleSpeed = 20;
 mouse_alpha = 0;
 mouse_angle = 0;
+mouse_cross = 0;
 
 x = mouse_x;
 y = mouse_y;

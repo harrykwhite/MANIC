@@ -61,7 +61,7 @@ global.boss_stinger[7] = m_boss_stinger_0;
 
 // Enumerators
 enum EnemyOneType{
-	Ordinary,
+	Normal,
 	Fast,
 	Large,
 	Grenadier,

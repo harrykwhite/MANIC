@@ -10,13 +10,13 @@ if (instance_exists(target)){
 	var halfhealth = health_current < health_max / 2;
 	
 	if (weapon_exists){
-		weapon_exists = instance_exists(weapon)
+		weapon_exists = instance_exists(weapon);
 	}
 	
 	if (state == 0){
 		var dist = distance_to_point(run_x, run_y);
 		var dir = point_direction(x, y, run_x, run_y);
-		move_speed = 2.5 + (0.75 * halfhealth);
+		move_speed = 2 + (0.75 * halfhealth);
 		state_time_max = 60 * 10;
 		
 		/*if (dist < 50){
@@ -25,7 +25,7 @@ if (instance_exists(target)){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
-			if (distance_to_object(target) < 40){
+			if (distance_to_object(target) < 30){
 				weapon.attack = true;
 			}
 		}
@@ -45,15 +45,15 @@ if (instance_exists(target)){
 				}
 			}else{
 				var dir = random(360);
-				var len = random_range(70, 110);
+				var len = random_range(95, 130);
 				run_x = target.x + lengthdir_x(len, dir);
 				run_y = target.y + lengthdir_y(len, dir);
-				run_time = random_range(40, 50);
+				run_time = 40;
 			}
 		}
 	}else if (state == 1){
 		var nearest_barrel_from_target = instance_nearest(target.x, target.y, obj_barrel_2);
-		move_speed = 3 + (0.75 * halfhealth);
+		move_speed = 2.5 + (0.75 * halfhealth);
 		state_time_max = 60 * 7;
 		
 		if (run_away_time < 180){
@@ -100,10 +100,6 @@ if (instance_exists(target)){
 			}
 		}
 	}else if (state == 2){
-		// change back to melee
-		// check if weapon exists
-		// throw current weapon
-		// wait
 		var isranged = global.weapon_type[global.pawnweapon_playerindex[weapon_index]] == WeaponType.Ranged;
 		state_time_max = 60 * 1.85;
 		move_speed = 0;
@@ -114,29 +110,30 @@ if (instance_exists(target)){
 			if (throw_weapon_time < throw_weapon_time_max){
 				throw_weapon_time ++;
 			}else{
-				instance_destroy(weapon);
-				weapon = -1;
-				
 				var drop = instance_create(x, y, obj_weapondrop);
 				drop.index = global.pawnweapon_playerindex[weapon_index];
-				drop.spd = 12;
-				drop.dir = dir_to_target + random_range(-5, 5);
+				drop.spd = 10;
+				drop.angle = weapon.dir;
+				drop.dir = dir_to_target + random_range(-3, 3);
 				drop.enemy = true;
-				drop.damage = 3;
+				drop.damage = 2;
 				
-				if (isranged){
+				if (drop.index == PlayerWeapon.Revolver){
 					drop.ammo = random(4);
 				}
 				
 				scr_effect_screenshake(1);
 				scr_sound_play(snd_weapon_swing_0, false, 0.9, 1.1);
+				
+				weapon = -1;
+				instance_destroy(weapon);
 			}
 		}
 	}else if (state == 3){
 		var dist = distance_to_point(run_x, run_y);
 		var dir = point_direction(x, y, run_x, run_y);
 		var isranged = global.weapon_type[global.pawnweapon_playerindex[weapon_index]] == WeaponType.Ranged;
-		move_speed = 3.5;
+		move_speed = 3;
 		state_time_max = 60 * 8;
 		
 		if (weapon_exists){

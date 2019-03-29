@@ -56,8 +56,8 @@ if (instance_exists(owner)){
 			shoot.damage = scr_pawn_weapon_damage(1);
 			shoot.strength = 1.5;
 			shoot.spd = random_range(10, 15);
-			shoot.creator = owner;
 			shoot.enemy = isEnemy;
+			shoot.creator = owner;
 		}
 		
 	    owner.knockback_speed = -1;

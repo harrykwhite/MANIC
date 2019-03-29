@@ -12,6 +12,12 @@ if (global.cutscene_current != -1){
 
 mouse_alpha = clamp(mouse_alpha, 0, 1);
 
+if (mouse_cross > 0.01){
+	mouse_cross *= 0.9;
+}else{
+	mouse_cross = 0;
+}
+
 if (instance_exists(obj_player)){
 	// Mouse Type
 	var index = global.weapon_slot[global.weapon_slotcurrent];

@@ -30,11 +30,10 @@ if (instance_exists(target)){
 		    var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.dir = shoot_dir;
 		    bullet.image_angle = shoot_dir;
-			bullet.spd = 13;
+			bullet.spd = 11;
 			bullet.damage = 1;
 			bullet.strength = 1.25;
 			bullet.enemy = true;
-			bullet.creator = id;
 			
 			if (shoot_burst < 2){
 				shoot_burst ++;
@@ -93,12 +92,9 @@ if (instance_exists(target)){
 	
 	// Enemy spawning
 	}else if (attack == 2){
-		var ecount = instance_number(obj_p_enemy);
-		
-		while(ecount < 5){
+		while(instance_number(obj_p_enemy) < 9){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Grenade);
-			ecount = instance_number(obj_p_enemy);
 			
 			if (random(3) < 1){
 				enemy.type = EnemyOneType.Crazy;
@@ -149,7 +145,6 @@ if (instance_exists(target)){
 				rocket.damage = 3;
 				rocket.strength = 1.25;
 				rocket.enemy = true;
-				rocket.creator = id;
 				rocket.target = obj_player;
 			}
 			

@@ -13,7 +13,7 @@ whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 mylight = noone;
 
-type = EnemyOneType.Ordinary;
+type = EnemyOneType.Normal;
 typedet = false;
 
 sniperboss_opening = true;

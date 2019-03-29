@@ -4,7 +4,7 @@
 ///@param object
 ///@param thickness
 ///@param gui
-///@param off
+///@param offset
 var xx = argument[0];
 var yy = argument[1];
 var dir = argument[2];
@@ -18,7 +18,7 @@ if (argument_count == 7){
 	off = argument[6];
 }
 
-while(!collision_line(xx, yy, xx + lengthdir_x(dist, dir), yy + lengthdir_y(dist, dir), obj_p_solid, false, true)){
+while(!collision_line(xx, yy, xx + lengthdir_x(dist, dir), yy + lengthdir_y(dist, dir), obj, false, true)){
 	dist += jump;
 	
 	if (dist > 2000){

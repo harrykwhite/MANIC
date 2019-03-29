@@ -90,7 +90,7 @@ if (player_exists){
 					if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 						enemy.move_speed_offset = 1.45;
 						enemy.attack_time = 45;
-						enemy.type = EnemyOneType.Ordinary
+						enemy.type = EnemyOneType.Normal
 					}else{
 						if (spawn_rate > 0.9){
 							if (chance(15)){
