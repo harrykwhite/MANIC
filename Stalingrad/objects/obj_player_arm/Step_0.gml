@@ -32,11 +32,13 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 	        }
 	    }else if (obj_player.state == scr_player_move){
 			// Move
-	        if (img == 1) || (img == 2) || (img == 3){
-				yoffset = 1;
-			}else{
-				yoffset = 0;
-			}
+	        if (img == 2) || (img == 4) || (img == 9) || (img == 11){
+	            yoffset = 1;
+	        }else if (img == 3) || (img == 10){
+	            yoffset = 2;
+	        }else{
+	            yoffset = 0;
+	        }
 	    }
     
 	    // Weapon Position -------------------------------------------------------------------------------------------------
