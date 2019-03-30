@@ -93,8 +93,6 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
-	    move_back = false;
-
 	    if (global.player_weapon != -1){
 	        if (!global.weapon_heavy[global.player_weapon]){
 	            sprite_index = spr_player_idle_0;
@@ -105,39 +103,17 @@ if (global.weapon_slot_standalone == -1){
 	    }else{
 	        sprite_index = spr_player_idle_1;
 	    }
-    
 	}else{
-
 	    // Movement
-	    if ((image_xscale == 1) && (sign(hspd) == 1)) || ((image_xscale == -1) && (sign(hspd) == -1)) || (hspd == 0){ // Forwards - checks if the player is facing the dir of their movement.
-	        move_back = false;
-        
-	        if (global.player_weapon != -1){
-	            if (!global.weapon_heavy[global.player_weapon]){
-	                sprite_index = spr_player_walk_0;
-	            }else{
-	                sprite_index = spr_player_walk_2;
-	            }
-            
-	        }else{
-	            sprite_index = spr_player_walk_1;
-	        }
-			
-	    }else{
-	        move_back = true;
-	        spd_multiplier -= 0.2;
-        
-	        if (global.player_weapon != -1){
-	            if (!global.weapon_heavy[global.player_weapon]){
-	                sprite_index = spr_player_backwards_0;
-	            }else{
-	                sprite_index = spr_player_backwards_2;
-	            }
-            
-	        }else{
-	            sprite_index = spr_player_backwards_1;
-	        }
-	    }
+	     if (global.player_weapon != -1){
+			if (!global.weapon_heavy[global.player_weapon]){
+				sprite_index = spr_player_walk_0;
+			}else{
+				sprite_index = spr_player_walk_2;
+			}
+	     }else{
+			sprite_index = spr_player_walk_1;
+	     }
 	}
 
 	// Knockback

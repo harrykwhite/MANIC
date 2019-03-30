@@ -23,33 +23,20 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 		// Bobbing -----------------------------------------------------------------------------------------------------
 	    var img = floor(obj_player.img_index);
     
-	    // IDLE
+	    // Idle
 	    if (obj_player.hspd == 0) && (obj_player.vspd == 0) && (obj_player.state == scr_player_move){
 	        if (img == 1){
 	            yoffset = 1;
 	        }else{
 	            yoffset = 0;
 	        }
-	    }else if (obj_player.state == scr_player_move) && (!obj_player.move_back){
-    
-	        // MOVE
-	        if (img == 2) || (img == 4) || (img == 9) || (img == 11){
-	            yoffset = 1;
-	        }else if (img == 3) || (img == 10){
-	            yoffset = 2;
-	        }else{
-	            yoffset = 0;
-	        }
-	    }else if (obj_player.move_back){
-    
-	        // BACKWARDS
-	        if (img == 0) || (img == 2) || (img == 7) || (img == 9){
-	            yoffset = 1;
-	        }else if (img == 1) || (img == 8){
-	            yoffset = 2;
-	        }else{
-	            yoffset = 0;
-	        }
+	    }else if (obj_player.state == scr_player_move){
+			// Move
+	        if (img == 1) || (img == 2) || (img == 3){
+				yoffset = 1;
+			}else{
+				yoffset = 0;
+			}
 	    }
     
 	    // Weapon Position -------------------------------------------------------------------------------------------------

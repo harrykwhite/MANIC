@@ -4,7 +4,6 @@ spd_max = 1.6;
 spd_offset = 1;
 spd_offset_change = 0.05;
 move_time = 0;
-move_back = false;
 flash_time = 0;
 xaxis = 0;
 yaxis = 0;
