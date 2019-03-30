@@ -97,7 +97,7 @@ if (global.weapon_slot_standalone == -1){
 
 	    if (global.player_weapon != -1){
 	        if (global.weapon_heavy[global.player_weapon] == false){
-	            sprite_index = spr_player_idle_0;
+	            sprite_index = spr_player_idle_01;
 	        }else{
 	            sprite_index = spr_player_idle_2;
 	        }
