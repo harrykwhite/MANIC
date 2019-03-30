@@ -30,7 +30,7 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 	        }else{
 	            yoffset = 0;
 	        }
-	    }else if (obj_player.state == scr_player_move) && (obj_player.move_back == false){
+	    }else if (obj_player.state == scr_player_move) && (!obj_player.move_back){
     
 	        // MOVE
 	        if (img == 2) || (img == 4) || (img == 9) || (img == 11){

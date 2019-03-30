@@ -72,7 +72,7 @@ if (global.player_stamina_active){
 }
 
 // Timer
-if (attack_can == false){
+if (!attack_can){
 	attack_time = max(attack_time, 0.1);
 }
 

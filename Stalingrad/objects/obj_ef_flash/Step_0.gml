@@ -1,4 +1,4 @@
-if (fade == false){
+if (!fade){
     if (alpha < 1){
         alpha += increase_speed;
     }else{

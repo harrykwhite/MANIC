@@ -65,7 +65,7 @@ if (instance_exists(obj_player)){
         shoot_can = false;
         throw_time = 0;
         
-    }else if (visible == false){
+    }else if (!visible){
         fade_in = true;
     }
     

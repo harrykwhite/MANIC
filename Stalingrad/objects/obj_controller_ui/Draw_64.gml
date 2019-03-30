@@ -93,7 +93,7 @@ if (instance_exists(obj_player)){
     var height = 137;
     var col = c_white;
     
-    if (global.player_stamina_active == false){
+    if (!global.player_stamina_active){
         col = c_ltgray;
     }
     
@@ -457,7 +457,7 @@ if (pause_text_alpha > 0){
 	counter = 0;
 }
 
-if (pause_text_update == false){
+if (!pause_text_update){
 	if (global.game_pause) || (global.cutscene_current != -1){
 		pause_text_offset = 0;
 		pause_text_update = true;

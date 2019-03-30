@@ -47,7 +47,7 @@ if (attack_active){
 attack_offset = clamp(attack_offset, 0, 10);
 
 // Timer
-if (attack_can == false){
+if (!attack_can){
 	attack_time = max(attack_time, 0.1);
 }
 

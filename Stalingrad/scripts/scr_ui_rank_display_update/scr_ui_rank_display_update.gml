@@ -20,7 +20,7 @@ if (rank_display_draw){
 	
 		for(var i = 0; i < length; i ++){
 	
-			if (rank_display[i] == false){
+			if (!rank_display[i]){
 				rank_display[i] = true;
 				alldrawn = false;
 				break;

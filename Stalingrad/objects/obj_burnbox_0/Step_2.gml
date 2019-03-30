@@ -3,7 +3,7 @@ if (owner != noone){
 		x = owner.x;
 		y = owner.y;
 		
-		if (owner.burn == false){
+		if (!owner.burn){
 			instance_destroy();
 		}
 		
