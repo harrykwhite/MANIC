@@ -24,6 +24,7 @@ if (open){
 			if (keyboard_check_pressed(ord("E"))){
 				open = true;
 				scr_effect_screenshake(1);
+				scr_sound_play(snd_object_prisondoor_open_0, false, 0.9, 1.1);
 				
 				if (instance_exists(inst_40C9D2CD) && (id == inst_3ABFBF5A)) {
 					inst_40C9D2CD.path_can_start = true;

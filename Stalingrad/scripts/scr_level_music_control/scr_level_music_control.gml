@@ -2,12 +2,17 @@
 var bossmusic = noone;
 var level = global.level_current;
 var paused = global.game_pause;
+var inrealboss = global.boss_current != -1;
+
+if (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.SniperRobot){
+	inrealboss = false;
+}
 
 if (room == rm_level_10_00) || (room == rm_level_10_01){
 	level = 9;
 }
 
-if (global.boss_current != -1){
+if (inrealboss){
 	bossmusic = global.boss_music[global.boss_current];
 	
 	if (bossmusic != noone){
@@ -47,7 +52,7 @@ if (audio_is_playing(m_boss_main_0)){
 	}
 }
 
-if (!paused) && (global.boss_current == -1) && (level != 9){
+if (!paused) && (!inrealboss) && (level != 9){
 	switch(global.game_combat_state){
 		case CombatState.Idle:
 			if (spawn_state_time_real >= (60 * spawn_state_time[global.game_combat_state])){

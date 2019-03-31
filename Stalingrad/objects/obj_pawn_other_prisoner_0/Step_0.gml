@@ -15,7 +15,7 @@ if (room == rm_level_5_03){
 
 if (path_started){
 	sprite_index = spr_prisoner_walk_0;
-	image_speed = 0.22;
+	image_speed = 0.24;
 }else{
 	sprite_index = spr_prisoner_idle_0;
 	image_speed = 0;

@@ -7303,6 +7303,14 @@
             }
         },
         {
+            "Key": "afcae53d-2c0a-4894-8470-fb639e6f74dc",
+            "Value": {
+                "id": "a7e61c31-49bb-46ae-b27f-32a73aa539d0",
+                "resourcePath": "sounds\\snd_object_prisondoor_open_0\\snd_object_prisondoor_open_0.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "afce09af-7599-4f58-b4fd-9196e567085e",
             "Value": {
                 "id": "8f829adf-9c0f-4b82-8787-8492ca018a9a",
