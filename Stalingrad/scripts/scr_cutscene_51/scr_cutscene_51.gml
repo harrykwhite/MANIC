@@ -1,7 +1,6 @@
 ///scr_cutscene_51();
 var index = 51;
 var xTo = 0, yTo = 0;
-var dir = 0;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;

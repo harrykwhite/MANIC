@@ -50,10 +50,6 @@ if (player_exists){
 		spawn_state_time_real ++;
 	
 		if (spawn){
-			if (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun){
-				spawn_distance = 85;
-			}
-			
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
 				var xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
 				var ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);

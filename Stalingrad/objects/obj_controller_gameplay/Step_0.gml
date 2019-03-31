@@ -100,7 +100,7 @@ if (!global.game_pause){
 					if (mouse_wheel_up()) || (mouse_wheel_down()){
 						obj_controller_mouse.mouse_scale = 2;
 						scr_weapon_switch();
-						scr_ui_alpha_reset();
+						
 					}
 				}
 			}else{

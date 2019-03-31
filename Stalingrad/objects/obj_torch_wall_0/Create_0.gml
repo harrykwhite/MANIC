@@ -1,6 +1,5 @@
 image_speed = 0.5;
 flicker = false;
-bright = false;
 
 if (random(100) < 2){
 	flicker = true;

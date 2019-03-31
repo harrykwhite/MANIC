@@ -13,7 +13,7 @@ if (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
 		scr_player_knockback_initiate(0.5, mdir);
 		scr_camera_to_player();
 		scr_player_flash(7);
-		scr_ui_alpha_reset();
+		
         scr_effect_screenshake(1);
         scr_sound_play(snd_weapon_shoot_1, false, 0.9, 1.2);
         scr_weapon_ammo_use(index, 1);

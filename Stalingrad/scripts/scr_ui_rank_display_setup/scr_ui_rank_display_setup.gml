@@ -30,7 +30,6 @@ if (!rank_display_draw){
 
 	rank_end_display = false;
 	rank_end_alpha = 0;
-	rank_end_x = 0;
 
 	levelname = global.level_name[global.level_current];
 }

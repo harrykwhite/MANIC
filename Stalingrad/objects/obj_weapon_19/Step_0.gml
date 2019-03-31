@@ -11,7 +11,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
     if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
         scr_player_knockback_initiate(0.5, mdir);
 		scr_player_flash(3);
-		scr_ui_alpha_reset();
+		
 		scr_camera_to_player(1);
         scr_effect_screenshake(3);
         scr_weapon_ammo_use(index, 1);

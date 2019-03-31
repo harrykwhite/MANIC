@@ -18,7 +18,7 @@ if (arm != -1){
 				var spritecount = dist div 6;
 				
 				repeat(spritecount){
-					draw_sprite_ext(spr_thedogkeeper_lead_0, 0, arm.x + lengthdir_x(9, move_dir) + lengthdir_x(6 * sp, dir), arm.y + lengthdir_y(9, move_dir) + lengthdir_y(6 * sp, dir), 1, 1, dir, c_white, 1);
+					draw_sprite_ext(spr_thedogkeeper_lead_0, 0, arm.x + lengthdir_x(9, move_dir) + lengthdir_x(6 * spritecounter, dir), arm.y + lengthdir_y(9, move_dir) + lengthdir_y(6 * spritecount, dir), 1, 1, dir, c_white, 1);
 					spritecounter ++;
 				}
 				

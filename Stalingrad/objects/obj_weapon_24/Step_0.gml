@@ -16,7 +16,7 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!
         scr_mouse_control(MouseType.SmallCircle, 3, 20);
         scr_player_knockback_initiate(1, mdir);
         scr_player_stamina_drain(5);
-		scr_ui_alpha_reset();
+		
         attack_active = true;
         attack_range_current = random_range(-attack_range, attack_range);
 		

@@ -27,7 +27,6 @@ switch(global.cutscene_time[index]){
 			
 			if (point_distance(obj_player.x, obj_player.y, obj_player.move_xTo, obj_player.move_yTo) < 40){
 				global.cutscene_time[index] = 1;
-				obj_controller_ui.playerlight_draw = false;
 			}
 		}
 		
@@ -38,10 +37,7 @@ switch(global.cutscene_time[index]){
 		// Make the player fade out and be destroyed.
 		if (instance_exists(obj_player)){
 			instance_destroy(obj_player);
-			level.prison_explode_time_sec = -1;
-			
 		}else{
-			
 			// Activate the results screen on obj_controller_ui.
 			obj_controller_ui.rank_display_draw = true;
 		}

@@ -57,13 +57,21 @@ scr_player_update();
 script_execute(state);
 
 // Animation
-if (img_index < image_number){
-    img_index += img_speed;
+if (sign(img_speed) == 1){
+	if (img_index < image_number){
+	    img_index += img_speed;
+	}else{
+	    img_index = 0;
+	}
 }else{
-    img_index = 0;
+	if (img_index > 0){
+	    img_index += img_speed;
+	}else{
+	    img_index = image_number;
+	}
 }
 
-image_index = floor(img_index);
+image_index = floor(clamp(img_index, 0, image_number));
 image_speed = 0;
 
 if (isVisible){

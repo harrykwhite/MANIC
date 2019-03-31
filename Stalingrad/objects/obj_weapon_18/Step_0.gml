@@ -11,7 +11,7 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
     if (mouse_check_button_pressed(mb_left)) || (mouse_check_button_pressed(mb_right)){
 		if (!collision_line(obj_player.x, obj_player.y, x + lengthdir_x(3, mdir), y + lengthdir_y(3, mdir), obj_p_solid, false, true)){
 	        scr_player_stamina_drain(20);
-			scr_ui_alpha_reset();
+			
 			scr_effect_screenshake(1);
 	        scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
 			global.weapon_quantity[index]--;

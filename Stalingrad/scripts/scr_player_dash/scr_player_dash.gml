@@ -30,7 +30,6 @@ for(var i = 0; i < (dash_speed) + 1; i ++){
 		
 		state = scr_player_move;
 	    dash_length_current = 0;
-	    dash_charge = 0;
 	    exit;
 	}
 }

@@ -11,7 +11,6 @@ if(__LIGHTING_ERROR_CHECKS) {
 		show_debug_message("lighting_global(): lighting already initialised");
 		return;
 	}
-	global.lighting_global_initialised = true;
 }
 
 //	#####################################

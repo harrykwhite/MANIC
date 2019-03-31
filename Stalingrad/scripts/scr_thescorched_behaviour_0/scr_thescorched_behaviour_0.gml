@@ -1,6 +1,5 @@
 var speed_multiplier = 1.1;
 var speed_final = 0;
-var wait_negate = true, wait_stop_movement = false;
 var face_player = false;
 target = obj_player;
 

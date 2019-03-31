@@ -35,7 +35,6 @@ dash_time = 30;
 // Footstep
 footstep_sound = -1;
 footstep_time = 0;
-footstep_flip = 1;
 
 // Health
 health_alpha = 0;

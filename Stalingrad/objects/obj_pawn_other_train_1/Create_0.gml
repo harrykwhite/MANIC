@@ -26,7 +26,6 @@ for(var i = 0; i < 18; i ++){
 }
 
 horde_dospawn = false;
-horde_leader_active = false;
 horde_spawn_time = 60;
 horde_spawn_time_max = 60 * 2;
 horde_spawn_opentime = 0;

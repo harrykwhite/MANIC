@@ -33,7 +33,6 @@ if(__LIGHTING_ERROR_CHECKS) {
 // Get the light's attributes
 var light_x = light[| eLight.X];
 var light_y = light[| eLight.Y];
-var light_range = light[| eLight.Range];
 var light_type = light[| eLight.Type];
 var light_direction = light[| eLight.Direction];
 var shadow_length = min(sc_shadow_length, light[| eLight.ShadowLength]);

@@ -16,7 +16,7 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!
         scr_mouse_control(MouseType.SmallCrosshair, 1.75, 20);
         scr_player_knockback_initiate(0.25, mdir);
         scr_player_stamina_drain(2);
-		scr_ui_alpha_reset();
+		
         attack_active = true;
 		
 		s = instance_create(xpos, ypos, obj_proj_3);

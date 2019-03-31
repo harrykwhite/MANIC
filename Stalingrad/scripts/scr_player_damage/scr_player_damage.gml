@@ -13,8 +13,6 @@ knockback_direction = kbd;
 blend = c_red;
 i_time = it;
 i_blend_time = 5;
-speed_offset = 1.5;
-speed_offset_change = 0.1;
 health_scale = 1.5;
 
 obj_controller_ui.playerhit_alpha = 0.75;

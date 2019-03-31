@@ -72,7 +72,7 @@ if (instance_exists(obj_player)){
 				
 				scr_sound_play(sound, false, 0.8, 1.2);
 				scr_player_stamina_drain(6);
-				scr_ui_alpha_reset();
+				
 				obj_controller_mouse.mouse_scale = 2;
 				
 				for(var i = 0; i < 2; i ++){
@@ -139,8 +139,6 @@ if (instance_exists(obj_player)){
 	            }
 	
 				global.weapon_collected[index] = true;
-				global.weapon_slottime[global.weapon_slotcurrent] = 0;
-				global.weapon_slottimeup[global.weapon_slotcurrent] = false;
 				
 	            instance_destroy(); // Destroy this weapondrop object as it has been picked up.
 				

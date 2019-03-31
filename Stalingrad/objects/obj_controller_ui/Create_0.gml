@@ -1,8 +1,6 @@
 // Setup
 var weaponalength = array_length_1d(global.weapon_slot);
 
-playerhp_alpha = 0;
-
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
 

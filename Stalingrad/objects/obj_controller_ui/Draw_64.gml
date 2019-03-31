@@ -459,7 +459,6 @@ if (pause_text_alpha > 0){
 
 if (!pause_text_update){
 	if (global.game_pause) || (global.cutscene_current != -1){
-		pause_text_offset = 0;
 		pause_text_update = true;
 	}
 }

@@ -12,7 +12,7 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!
     if (attack_can){
 		scr_camera_to_player();
         scr_effect_screenshake(2);
-		scr_ui_alpha_reset();
+		
         scr_mouse_control(MouseType.SmallCircle, 2.5, 25);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
         scr_player_knockback_initiate(0.8, mdir);

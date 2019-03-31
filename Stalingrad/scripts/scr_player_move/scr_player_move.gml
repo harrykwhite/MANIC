@@ -1,7 +1,6 @@
 // Variables
 var spd_multiplier = spd_offset;
 var footstep_wood, footstep_road, footstep_tile;
-
 footstep_sound = global.player_footstep_default;
 
 if (spd_offset > 1){
@@ -77,7 +76,6 @@ if (global.weapon_slot_standalone == -1){
 	
 	// Player Sprite
 	if ((hspd != 0) || (vspd != 0)){
-	
 		if (footstep_time > 0){
 			footstep_time--;
 		}else{
@@ -139,7 +137,7 @@ if (global.weapon_slot_standalone == -1){
 		dash_length = 55;
 		dash_speed = spd_max * 3.65;
 		dash_time = 20;
-		scr_ui_alpha_reset();
+		
 		scr_effect_screenshake(2);
 		scr_effect_vignette_flash(c_ltgray, 0.064, 0.004);
 		scr_sound_play(snd_character_dash_0, false, 0.8, 1.2);
@@ -207,6 +205,12 @@ if (global.weapon_slot_standalone == -1){
 	
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
 		img_speed = 0.05;
+	}else{
+		if (xaxis != 0){
+			if (sign(xaxis) != sign(image_xscale)){
+				img_speed *= -1;
+			}
+		}
 	}
 	
 	vspd = lengthdir_y(len, dir);

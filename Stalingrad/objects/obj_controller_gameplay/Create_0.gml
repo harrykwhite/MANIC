@@ -1,10 +1,5 @@
 deactivate_time = 0;
 
-ds_enemylist = 0;
-
-combat_mprevious = 0;
-combat_mnew = 0;
-
 pause_time = 0;
 corpse_active_time = 30;
 

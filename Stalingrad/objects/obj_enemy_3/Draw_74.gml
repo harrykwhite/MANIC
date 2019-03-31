@@ -1,6 +1,5 @@
 // Health
 var hp = health_current;
-var scale = 0.9;
 health_scale = approach(health_scale, 1, 40);
 
 if (hp < health_max){

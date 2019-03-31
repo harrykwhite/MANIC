@@ -34,7 +34,7 @@ if (instance_exists(player)) && (global.weapon_slot[global.weapon_slotcurrent]!=
 		
         if (place_meeting(x + 1, y + 1, player)){
             instance_destroy();
-            scr_weapon_ammo_add(global.weapon_slot[global.weapon_slotcurrent], 1);
+            scr_weapon_ammo_add(1);
             scr_effect_screenshake(1);
 			scr_sound_play(snd_weapon_ammo_pickup_0, false, 0.8, 1.2);
 		}

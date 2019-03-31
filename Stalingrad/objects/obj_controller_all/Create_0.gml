@@ -7,7 +7,6 @@ ds_depth_counter = 0;
 full = 0;
 part = 0;
 wsize = 2;
-wsize_time = 10;
 
 debug = false;
 sprite_index = noone;

@@ -56,8 +56,6 @@ i_blend_time = 0;
 
 heal_time_max = 60 * 1.35;
 heal_time = heal_time_max;
-heal_self_time_max = 60 * 0.9;
-heal_self_time = heal_self_time_max;
 
 knockback_speed = 0;
 knockback_direction = 0;

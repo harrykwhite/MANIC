@@ -124,7 +124,6 @@ global.weapon_sprite[7] = spr_weapon_7;
 global.weapon_type[7] = WeaponType.Melee;
 global.weapon_heavy[7] = false;
 global.weapon_camerarange[7] = 15;
-global.weapon_canburn[7] = false;
 global.weapon_mouse[7] = MouseType.SmallCircle;
 global.weapon_dualhanded[7] = false;
 

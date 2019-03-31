@@ -1,7 +1,5 @@
-/// @param index
 /// @param  amount
-var index = argument0;
-var amount = argument1;
+var amount = argument0;
 
 global.weapon_slotammo[global.weapon_slotcurrent] += amount;
 if (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Fuel) && (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Explosives) && (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Arrows) && (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Darts){

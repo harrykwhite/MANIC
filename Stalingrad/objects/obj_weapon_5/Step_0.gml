@@ -19,7 +19,7 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
         scr_mouse_control(MouseType.Crosshair, 2.5, 20);
         scr_weapon_ammo_use(index, 1);
-		scr_ui_alpha_reset();
+		
 		image_speed = 3;
         
         var xpos = x + lengthdir_x(20, mdir) + lengthdir_x(3, up(mdir));

@@ -17,7 +17,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
         scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
 		scr_player_flash(8);
 		scr_camera_to_player();
-		scr_ui_alpha_reset();
+		
         image_speed = 1;
 		
         var xpos = x + lengthdir_x(22, mdir) + lengthdir_x(1, up(mdir));

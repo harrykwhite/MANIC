@@ -22,7 +22,7 @@ if (mouse_check_button(mb_left)) && (!global.game_pause){
     if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
         scr_player_knockback_initiate(0.1, mdir);
 		scr_player_flash(5);
-		scr_ui_alpha_reset();
+		
         scr_weapon_ammo_use(index, 1);
 		image_speed = 1;
 		

@@ -1,4 +1,3 @@
-var levelobj = scr_get_level_object();
 interact_active = false;
 
 if (index == 52){

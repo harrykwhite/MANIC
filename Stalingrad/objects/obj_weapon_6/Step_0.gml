@@ -30,7 +30,7 @@ if ((mouse_check_button_pressed(mb_left)) || (shoot_continue_time > 0)) && (!glo
 		scr_player_knockback_initiate(0.5, mdir);
         scr_effect_screenshake(2);
         scr_mouse_control(MouseType.LargeCircle, 3, 12);
-		scr_ui_alpha_reset();
+		
         image_speed = 1;
         
 		repeat(3){
