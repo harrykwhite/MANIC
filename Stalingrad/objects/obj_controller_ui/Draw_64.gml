@@ -295,7 +295,7 @@ if (leveltext_alpha > 0){
 if (!global.game_pause){
 	if (global.boss_current != -1) && (global.boss_current != Boss.SniperRobot) && (global.boss_current != Boss.MotherRobot) && (global.cutscene_current == -1) && (blackbar_sizereal <= 40){
 		bosshealth_width_current = approach(bosshealth_width_current, bosshealth_width_to, 5);
-	}else{
+	}else if (global.cutscene_current == -1){
 		bosshealth_width_current = approach(bosshealth_width_current, -10, 5);
 	}
 }

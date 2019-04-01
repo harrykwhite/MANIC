@@ -47,12 +47,12 @@ if (instance_exists(owner)){
 				isEnemy = false;
 			}
 
-			repeat(2){
+			repeat(3){
 			    shoot = instance_create(xpos, ypos, obj_proj_0);
 				shoot.damage = 1;
 				shoot.damage_change = -0.25;
 				shoot.strength = 1;
-			    shoot.dir = dir + random_range(-5, 5);
+			    shoot.dir = dir + random_range(-8, 8);
 				shoot.spd = 18;
 				shoot.image_angle = shoot.dir;
 				shoot.enemy = isEnemy;

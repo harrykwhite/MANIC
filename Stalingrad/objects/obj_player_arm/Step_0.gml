@@ -90,7 +90,7 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
             
 	        }else{
 	            x = obj_player.x + 3;
-	            y = (obj_player.y - 4)+yoffset;
+	            y = (obj_player.y - 4) + yoffset;
             
 				if (obj_player.move_xTo == -1) && (obj_player.move_yTo == -1){
 					if (global.weapon_type[wcurrent] == WeaponType.Throwing){

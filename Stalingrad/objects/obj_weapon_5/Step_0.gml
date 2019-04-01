@@ -18,7 +18,7 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
 		scr_camera_to_player(3);
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
         scr_mouse_control(MouseType.Crosshair, 2.5, 20);
-        scr_weapon_ammo_use(index, 1);
+        scr_weapon_ammo_use(1);
 		
 		image_speed = 3;
         

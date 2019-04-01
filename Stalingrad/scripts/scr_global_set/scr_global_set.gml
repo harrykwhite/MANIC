@@ -5,14 +5,11 @@ scr_pawn_list();
 scr_cutscene_list();
 scr_artifact_list();
 
-global.game_startup = true;
 global.game_pause = false;
-global.game_titlescreen = false;
 global.game_playthrough = false;
 
 global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
-global.game_combat_balance = 1;
 global.game_level_opening_type = 0;
 
 global.game_boss_thescorched_killed = false;

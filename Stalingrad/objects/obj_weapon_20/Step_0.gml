@@ -23,7 +23,7 @@ if (mouse_check_button(mb_left)) && (!global.game_pause){
         scr_player_knockback_initiate(0.1, mdir);
 		scr_player_flash(5);
 		
-        scr_weapon_ammo_use(index, 1);
+        scr_weapon_ammo_use(1);
 		image_speed = 1;
 		
 		if (!started){

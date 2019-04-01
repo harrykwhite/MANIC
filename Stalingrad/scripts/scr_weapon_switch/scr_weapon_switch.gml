@@ -13,7 +13,7 @@ if (global.weapon_slot_standalone == -1){
 
 	if (new_weaponslot != -1) {
 	    if (!instance_exists(global.weapon_object[new_weaponslot])) {
-	        var new_weapon = instance_create(obj_player.x, obj_player.y, global.weapon_object[new_weaponslot]); // Create the new weapon object.
+	        instance_create(obj_player.x, obj_player.y, global.weapon_object[new_weaponslot]); // Create the new weapon object.
 	    }
 	}
 	

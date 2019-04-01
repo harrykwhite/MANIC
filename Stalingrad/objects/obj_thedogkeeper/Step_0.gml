@@ -43,27 +43,29 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 
-var counter = 0;
-for(var i = 0; i < dog_count; i ++){
-	if (instance_exists(dog[i])){
-		if (dogs_alive == 2){
-			switch(counter){
-				case 0:
-					dog[i].leash_offset = 20;
-					dog[i].leash_length = 80;
-					break;
+if (dogs_alive < dog_count){
+	var counter = 0;
+	for(var i = 0; i < dog_count; i ++){
+		if (instance_exists(dog[i])){
+			if (dogs_alive == 2){
+				switch(counter){
+					case 0:
+						dog[i].leash_offset = 22;
+						dog[i].leash_length = 80;
+						break;
 			
-				case 1:
-					dog[i].leash_offset = -20;
-					dog[i].leash_length = 80;
-					break;
+					case 1:
+						dog[i].leash_offset = -22;
+						dog[i].leash_length = 80;
+						break;
+				}
+			}else if (dogs_alive == 1){
+				dog[i].leash_offset = 0;
+				dog[i].leash_length = 100;
 			}
-		}else if (dogs_alive == 1){
-			dog[i].leash_offset = 0;
-			dog[i].leash_length = 100;
-		}
 		
-		counter ++;
+			counter ++;
+		}
 	}
 }
 

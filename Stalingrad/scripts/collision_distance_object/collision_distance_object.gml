@@ -23,8 +23,7 @@ var len = 0;
 var jump = 2;
 
 while(inroom(x1, y1)){
-	
-	if (!collision_line_width(xorigin, yorigin, x1, y1, width, obj, true)){
+	if (!collision_line_width(xorigin, yorigin, x1, y1, width, obj)){
 	    x1 += lengthdir_x(jump, dir);
 	    y1 += lengthdir_y(jump, dir);
 		len += jump;

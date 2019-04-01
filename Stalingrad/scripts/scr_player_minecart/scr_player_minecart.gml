@@ -43,7 +43,7 @@ var cartw = sprite_get_bbox_right(minecart_sprite) - cartx;
 var carth = sprite_get_bbox_bottom(minecart_sprite) - carty;
 
 var mblocklist = ds_list_create();
-var mblocktotal = collision_rectangle_list(minecart.x - (minecart.sprite_width / 2) + cartx, minecart.y - (minecart.sprite_height/ 2) + carty, minecart.x - (minecart.sprite_width / 2) + cartx + cartw, minecart.y - (minecart.sprite_height/ 2) + carty + carth, obj_block_minecart, false, false, mblocklist, false);
+var mblocktotal = collision_rectangle_list(minecart.x - (minecart.sprite_width / 2) + cartx, minecart.y - (minecart.sprite_height/ 2) + carty, minecart.x - (minecart.sprite_width / 2) + cartx + cartw, minecart.y - (minecart.sprite_height/ 2) + carty + carth, obj_block_direction, false, false, mblocklist, false);
 if (mblocktotal > 0){
 	for(var i = 0; i < mblocktotal; i ++){
 		var mblock = mblocklist[| i];

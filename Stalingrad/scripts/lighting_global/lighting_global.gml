@@ -74,13 +74,6 @@ global.worldActiveShadowCasters = 0;
 // Macro to perform various error checks, can be turned on/off by changing value (true/false)
 #macro __LIGHTING_ERROR_CHECKS false
 
-// The step size to move along the traced line from light source to shadow caster
-#macro __LIGHT_LINE_SHADOW_CASTER_STEP 0.01
-
-// The default far vertex for shadows, this is the default on both lights and shadow casters
-// Actual shadow cast is min(light shadow length, shadow caster shadow length)
-#macro __WORLD_DEFAULT_SHADOW_FAR_VERTEX 32000
-
 // The shader used to blend each light onto the world shadow map
 #macro __LIGHT_SHADER sh_blend_light
 

@@ -44,13 +44,13 @@ if (owner.weapon != -1){
 }
 
 if (owner.image_xscale == owner.scale){
-	x = (owner.x - 3) + lengthdir_x(outlength, image_angle);
-	y = ((owner.y - 4) + yoffset) + lengthdir_y(outlength, image_angle);
+	x = (owner.x - (3 * owner.scale)) + lengthdir_x(outlength, image_angle);
+	y = ((owner.y - (4 * owner.scale)) + yoffset) + lengthdir_y(outlength, image_angle);
 
 	image_yscale = owner.scale;
 }else{
-	x = (owner.x + 3) + lengthdir_x(outlength, image_angle);
-	y = ((owner.y - 4) + yoffset) + lengthdir_y(outlength, image_angle);
+	x = (owner.x + (3 * owner.scale)) + lengthdir_x(outlength, image_angle);
+	y = ((owner.y - (4 * owner.scale)) + yoffset) + lengthdir_y(outlength, image_angle);
 
 	image_yscale = -owner.scale;
 }

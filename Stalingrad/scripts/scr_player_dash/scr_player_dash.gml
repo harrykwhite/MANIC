@@ -4,7 +4,7 @@ if (in_minecart){
 }
 
 // Breaking Dash
-var inst, len;
+var inst;
 
 for(var i = 0; i < (dash_speed) + 1; i ++){
 	

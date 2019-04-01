@@ -16,7 +16,7 @@ if ((mouse_check_button_pressed(mb_left)) || (shoot_continue_time > 0)) && (!glo
 			shoot_continue_time = 3;
 			shoot_bounceback = -5;
 			angle_offset = 20;
-			scr_weapon_ammo_use(index, 1);
+			scr_weapon_ammo_use(1);
 			scr_player_flash(8);
 			scr_camera_to_player();
 			scr_sound_play(snd_weapon_shotgun_0, false, 0.8, 1.2);

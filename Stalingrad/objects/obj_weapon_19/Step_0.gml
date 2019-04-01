@@ -14,7 +14,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
 		
 		scr_camera_to_player(1);
         scr_effect_screenshake(3);
-        scr_weapon_ammo_use(index, 1);
+        scr_weapon_ammo_use(1);
         scr_sound_play(snd_weapon_flare_0, false, 0.8, 1.2);
 		image_speed = 1;
 		

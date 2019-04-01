@@ -1,7 +1,5 @@
-/// @param index
 /// @param  amount
-var index = argument0;
-var amount = argument1;
+var amount = argument0;
 
 if (global.weapon_slot_standalone == -1){
 	global.weapon_slotammo[global.weapon_slotcurrent] -= amount;

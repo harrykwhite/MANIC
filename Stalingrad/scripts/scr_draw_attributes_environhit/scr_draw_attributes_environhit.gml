@@ -1,7 +1,7 @@
 if (flash > 0){
 	if (!scr_ceiling_at(x, y)){
-		gpu_set_fog(true, c_white, 0, 0);
-		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, flash);
+		gpu_set_fog(true, make_colour_rgb(227, 227, 227), 0, 0);
+		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, flash * 0.9);
 		if (object_index == obj_barrel_2) || (object_index == obj_barrel_3){
 			if (explode){
 				draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, ((scale / 1.2) + 0.4) * 0.7);

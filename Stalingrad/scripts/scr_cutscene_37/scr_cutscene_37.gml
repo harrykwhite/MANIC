@@ -1,6 +1,5 @@
 ///scr_cutscene_37();
 var index = 37, xTo = 0, yTo = 0;
-var to = noone;
 var eobj = noone;
 var levelobject = scr_get_level_object();
 

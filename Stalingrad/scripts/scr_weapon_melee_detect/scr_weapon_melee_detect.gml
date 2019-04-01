@@ -38,9 +38,9 @@ var enemyline = ds_list_create();
 var playerline = ds_list_create();
 var envline = ds_list_create();
 
-var enemylinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, enemyline, obj_p_enemy, false);
-var playerlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, playerline, obj_p_player, false);
-var envlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, envline, obj_p_solid, false);
+var enemylinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, enemyline, obj_p_enemy);
+var playerlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, playerline, obj_p_player);
+var envlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, envline, obj_p_solid);
 
 var ctype = "default";
 var enemydist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy, width);

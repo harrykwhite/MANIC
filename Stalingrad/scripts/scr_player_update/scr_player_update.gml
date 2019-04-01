@@ -6,7 +6,7 @@ if (global.player_weapon != -1){
     weapon = global.weapon_object[global.player_weapon];
     
     if (!instance_exists(weapon)){
-        var obj = instance_create(x, y, weapon);
+        instance_create(x, y, weapon);
     }
 }else{
 	global.weapon_slot[global.weapon_slotcurrent] = 4;

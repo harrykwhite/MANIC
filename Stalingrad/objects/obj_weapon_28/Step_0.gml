@@ -16,7 +16,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
 		
         scr_effect_screenshake(2);
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
-        scr_weapon_ammo_use(index, 1);
+        scr_weapon_ammo_use(1);
         
         var xpos = x + lengthdir_x(20, mdir) + lengthdir_x(6, up(mdir));
         var ypos = y + lengthdir_y(20, mdir) + lengthdir_y(6, up(mdir));

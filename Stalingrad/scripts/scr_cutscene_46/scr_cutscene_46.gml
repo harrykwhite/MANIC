@@ -1,6 +1,5 @@
 ///scr_cutscene_46();
 var index = 46, xTo = 884, yTo = 530, spawnx = 884, spawny = 508;
-var to = noone;
 var eobj = noone;
 var levelobj = scr_get_level_object();
 
@@ -26,7 +25,7 @@ if (instance_exists(obj_player)){
 		obj_player.flashlight_move = false;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
 		
-		if (global.cutscene_time[index] > 90){
+		if (global.cutscene_time[index] > 130){
 			global.cutscene_current = -1;
 			global.cutscene_time[index] = 0;
 			obj_player.move_xTo = -1;

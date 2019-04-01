@@ -4,7 +4,6 @@
 ///@param y2
 ///@param width
 ///@param object
-///@param notme
 var x1 = argument0;
 var y1 = argument1;
 var x2 = argument2;
@@ -12,7 +11,6 @@ var y2 = argument3;
 
 var width = argument4;
 var obj = argument5;
-var notme = argument6;
 
 var dir = point_direction(x1, y1, x2, y2);
 var r = false;

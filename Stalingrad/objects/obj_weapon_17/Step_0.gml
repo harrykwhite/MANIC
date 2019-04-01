@@ -13,7 +13,7 @@ if (use_current){
             scr_effect_screenshake(2);
 			scr_player_flash(6);
 			scr_sound_play(snd_weapon_shoot_2, false, 0.6, 0.9);
-            scr_weapon_ammo_use(index, 1);
+            scr_weapon_ammo_use(1);
 			
             
             var xpos = x + lengthdir_x(12, mdir);

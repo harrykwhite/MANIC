@@ -42,7 +42,7 @@ poison_time = 0;
 poison_start = false;
 
 bleed = false;
-headless = false; 
+headless = false;
 
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
@@ -51,12 +51,12 @@ defense = 0;
 arm = -1;
 
 dog_count = 3;
-dogs_downed = false;
 dogs_alive = 3;
+dogs_downed = false;
 dog[0] = instance_create(x, y, obj_thedogkeeper_dog);
 dog[0].keeper = id;
 dog[0].leash_length = 80;
-dog[0].leash_offset = -25;
+dog[0].leash_offset = -35;
 
 dog[1] = instance_create(x, y, obj_thedogkeeper_dog);
 dog[1].keeper = id;
@@ -66,7 +66,7 @@ dog[1].leash_offset = 0;
 dog[2] = instance_create(x, y, obj_thedogkeeper_dog);
 dog[2].keeper = id;
 dog[2].leash_length = 80;
-dog[2].leash_offset = 25;
+dog[2].leash_offset = 35;
 
 move_speed = 0;
 move_speed_real = 0;

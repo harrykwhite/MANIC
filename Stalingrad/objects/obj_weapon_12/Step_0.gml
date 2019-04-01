@@ -11,7 +11,7 @@ if (mouse_check_button_pressed(mb_left)) && (!global.game_pause){
         scr_player_knockback_initiate(1.25, mdir);
         scr_effect_screenshake(2);
         scr_mouse_control(MouseType.SmallCircle, 5, 20);
-        scr_weapon_ammo_use(index, 1);
+        scr_weapon_ammo_use(1);
         scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
 		scr_player_flash(6);
 		scr_camera_to_player();

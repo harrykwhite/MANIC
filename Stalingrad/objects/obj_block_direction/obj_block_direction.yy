@@ -2,7 +2,7 @@
     "id": "79828774-c2e4-4e16-9a47-c8aea4911eae",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_block_minecart",
+    "name": "obj_block_direction",
     "eventList": [
         
     ],
@@ -26,6 +26,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "5dd4ab5f-6dc1-489d-900e-6ce1bd7e1d03",
+    "spriteId": "3e0b6c9d-7e96-4901-81f5-ea4d75291b47",
     "visible": false
 }

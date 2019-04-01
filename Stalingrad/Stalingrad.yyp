@@ -2703,6 +2703,14 @@
             }
         },
         {
+            "Key": "3e0b6c9d-7e96-4901-81f5-ea4d75291b47",
+            "Value": {
+                "id": "59f34109-bca1-487f-8b46-052ec43f206d",
+                "resourcePath": "sprites\\spr_block_direction\\spr_block_direction.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "3ecc77d4-6bcc-405f-b8bb-4aa07d0fccd8",
             "Value": {
                 "id": "b0b23d8f-7b21-4e51-acf9-63e56e878a53",
@@ -3807,14 +3815,6 @@
             }
         },
         {
-            "Key": "5dd4ab5f-6dc1-489d-900e-6ce1bd7e1d03",
-            "Value": {
-                "id": "ca620c74-4a2a-4c58-a286-507f0b0a7e25",
-                "resourcePath": "sprites\\spr_block_minecart\\spr_block_minecart.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "5e3634e1-ae62-480f-911c-cf8e719de232",
             "Value": {
                 "id": "29c872de-9813-4c78-8d10-ed063688fca0",
@@ -4874,7 +4874,7 @@
             "Key": "79828774-c2e4-4e16-9a47-c8aea4911eae",
             "Value": {
                 "id": "93350c50-ec80-440b-b597-b30570a109c1",
-                "resourcePath": "objects\\obj_block_minecart\\obj_block_minecart.yy",
+                "resourcePath": "objects\\obj_block_direction\\obj_block_direction.yy",
                 "resourceType": "GMObject"
             }
         },
