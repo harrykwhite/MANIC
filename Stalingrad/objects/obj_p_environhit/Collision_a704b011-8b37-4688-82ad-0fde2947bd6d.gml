@@ -1,5 +1,5 @@
-if (object_index == obj_barrel_2){
-	destroy = true;
+if (object_index == obj_barrel_2) || (object_index == obj_barrel_3){
+	explode = true;
 }else{
 	if (hit_time <= 0){
 		flash = 0.8;
