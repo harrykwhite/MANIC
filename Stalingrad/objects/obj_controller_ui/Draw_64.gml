@@ -1,3 +1,27 @@
+// Player goggle effect
+if (instance_exists(obj_player)){
+	if (scr_player_has_upgrade(PlayerUpgrade.Goggles)){
+		var enemycount = instance_number(obj_p_enemy);
+		var mindist = 250;
+		
+		gpu_set_fog(true, c_maroon, 0, 0);
+		for(var i = 0; i < enemycount; i ++){
+			var inst = instance_find(obj_p_enemy, i);
+			var alpha = 0.5;
+			alpha *= (distance_to_object(obj_player) + 100) / mindist;
+			
+			var xx = (inst.x - camera_get_view_x(view_camera[0])) * GUI_SCALE_X;
+			var yy = (inst.y - camera_get_view_y(view_camera[0])) * GUI_SCALE_Y;
+			
+			with(inst){
+				draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale * GUI_SCALE_X, image_yscale * GUI_SCALE_Y, image_angle, c_white, alpha * image_alpha);
+			}
+		}
+		gpu_set_fog(false, c_black, 0, 0);
+	}
+}
+
+// Variables
 var soffset = wave(0, 0.025, 3, 0, false);
 var counter = 0;
 var dwidth = display_get_gui_width();

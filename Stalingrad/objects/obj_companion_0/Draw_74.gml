@@ -33,7 +33,7 @@ if (health_flash > 0.01){
 	health_flash = 0;
 }
 
-draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * GUI_POS_X, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * GUI_POS_Y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7);
+draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * GUI_SCALE_X, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * GUI_SCALE_Y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7);
 gpu_set_fog(true, c_white, 0, 0);
-draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * GUI_POS_X, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * GUI_POS_Y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7 * (health_flash * 0.5));
+draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * GUI_SCALE_X, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * GUI_SCALE_Y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7 * (health_flash * 0.5));
 gpu_set_fog(false, c_white, 0, 0);

@@ -4,6 +4,7 @@ scr_level_list();
 scr_pawn_list();
 scr_cutscene_list();
 scr_artifact_list();
+scr_upgrade_list();
 
 global.game_pause = false;
 global.game_playthrough = false;

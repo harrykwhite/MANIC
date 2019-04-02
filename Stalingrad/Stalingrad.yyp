@@ -2111,6 +2111,14 @@
             }
         },
         {
+            "Key": "32955e55-e3ad-4b0d-8841-2b18a54d7294",
+            "Value": {
+                "id": "992c8462-3230-46a0-9c45-6bd3b53b0457",
+                "resourcePath": "scripts\\scr_player_has_upgrade\\scr_player_has_upgrade.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3295e890-abbd-4a21-a43e-667590002cc1",
             "Value": {
                 "id": "d74b3aab-5baa-46ea-8400-cfa1fc2cb8c4",
@@ -3395,6 +3403,14 @@
             "Value": {
                 "id": "6d101e5a-0bde-4d09-bd1f-64ea5c9a7df8",
                 "resourcePath": "sprites\\spr_enemy_0_headless_fly_idle_1\\spr_enemy_0_headless_fly_idle_1.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "5159c333-e5ed-4576-ad93-c0ea478d92d2",
+            "Value": {
+                "id": "b9cdb292-3761-4097-aa77-1de277bd7e8d",
+                "resourcePath": "sprites\\spr_player_upgrade_goggles_0\\spr_player_upgrade_goggles_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -5167,6 +5183,14 @@
             }
         },
         {
+            "Key": "810f24e9-092b-43c2-be62-7e5c2f3cad59",
+            "Value": {
+                "id": "44201f86-009c-42e9-8851-f5c4ded72aa8",
+                "resourcePath": "views\\810f24e9-092b-43c2-be62-7e5c2f3cad59.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "81398d03-cacb-431b-ab6f-7092ce9fdea0",
             "Value": {
                 "id": "9287da68-7ad2-412f-894c-f4955f6e8c99",
@@ -5380,6 +5404,14 @@
                 "id": "bbb068a0-c59d-49d3-8442-a0b8635f4c0a",
                 "resourcePath": "objects\\obj_player_flashlight\\obj_player_flashlight.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "85f3181d-287c-42b1-b38c-05c68f665cf0",
+            "Value": {
+                "id": "46115214-3a96-4211-9e35-1f5d1525940c",
+                "resourcePath": "sprites\\spr_player_upgrade_goggles_0_corpse\\spr_player_upgrade_goggles_0_corpse.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -8719,6 +8751,14 @@
             }
         },
         {
+            "Key": "da86945e-1563-4e26-9c65-a1d538ccf072",
+            "Value": {
+                "id": "e9a03ed0-897e-4272-b791-b38313ace73a",
+                "resourcePath": "scripts\\scr_upgrade_add\\scr_upgrade_add.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "da9f4560-9a5e-407a-b40d-8a617c95bbbc",
             "Value": {
                 "id": "f3d89fdb-d51e-41bb-b31c-af75cd752686",
@@ -9895,6 +9935,14 @@
             }
         },
         {
+            "Key": "f84c781f-1507-41e1-90da-d7ac6a9025f6",
+            "Value": {
+                "id": "50f6bb85-ac29-4878-9056-aa287f5c7be3",
+                "resourcePath": "scripts\\scr_upgrade_list\\scr_upgrade_list.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "f86553b4-71ed-437e-bf50-3f61f690be69",
             "Value": {
                 "id": "7e925873-456f-4ae1-bf47-ab89960ddb72",
@@ -10554,7 +10602,10 @@
         "96f4bff8-2475-4671-aaa3-560c526b5b5e",
         "8b55b162-56be-4003-8bd5-a205e1d41a38",
         "5035b5e3-ede6-4618-ba46-ec884e20b009",
-        "26559651-a76f-43ec-9bf3-5be35499d73d"
+        "26559651-a76f-43ec-9bf3-5be35499d73d",
+        "f84c781f-1507-41e1-90da-d7ac6a9025f6",
+        "da86945e-1563-4e26-9c65-a1d538ccf072",
+        "32955e55-e3ad-4b0d-8841-2b18a54d7294"
     ],
     "tutorial": ""
 }

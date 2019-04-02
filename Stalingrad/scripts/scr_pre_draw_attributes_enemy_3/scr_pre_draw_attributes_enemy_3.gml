@@ -1,4 +1,3 @@
-// Drawing Shadow
 draw_sprite_ext(spr_enemy_3_stand_0, 0, x, y, image_yscale, scale, 0, c_white, 1);
 
 if (i_blend_time > 0){

@@ -11,8 +11,8 @@ if (interact_active) && (interact_special == "moveto"){
 if (arrow_time > 0){
 	var worldx = clamp(x + (sprite_width / 2), 40, room_width - 40);
 	var worldy = clamp(y + (sprite_height / 2), 40, room_height - 40);
-	var xx = worldx - camera_get_view_x(view_camera[0]); xx *= GUI_POS_X;
-	var yy = worldy - camera_get_view_y(view_camera[0]); yy *= GUI_POS_Y;
+	var xx = worldx - camera_get_view_x(view_camera[0]); xx *= GUI_SCALE_X;
+	var yy = worldy - camera_get_view_y(view_camera[0]); yy *= GUI_SCALE_Y;
 	
 	if (moveto_dir == 0){
 		xx += arrow_time * 2;
