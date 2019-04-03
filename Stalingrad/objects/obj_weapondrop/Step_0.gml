@@ -78,7 +78,7 @@ if (instance_exists(obj_player)){
 				for(var i = 0; i < 2; i ++){
 					if (global.weapon_slot[i] == index){
 						if (i != global.weapon_slotcurrent) {
-							with(obj_controller_gameplay) { scr_weapon_switch(); }
+							with(obj_controller_gameplay) { scr_weapon_switch(true, i); }
 						}
 						
 						if (global.weapon_type[index] == WeaponType.Ranged){

@@ -5,6 +5,36 @@ if (in_minecart){
 	}
 }
 
+// Upgrades
+var upgrades = global.player_upgrades;
+var usize = ds_list_size(upgrades);
+
+if (usize > 0){
+	var uoffset = 0;
+	if (sprite_index == spr_player_idle_0) || (sprite_index == spr_player_idle_1) || (sprite_index == spr_player_idle_2){
+		if (image_index == 1){
+			uoffset = 1;
+		}
+	}
+	
+	if (sprite_index == spr_player_walk_0) || (sprite_index == spr_player_walk_1) || (sprite_index == spr_player_walk_2){
+		if (image_index == 2) || (image_index == 4) || (image_index == 9) || (image_index == 11){
+			uoffset = 1;
+		}
+		
+		if (image_index == 3) || (image_index == 10){
+			uoffset = 2;
+		}
+	}
+	
+	for(var i = 0; i < usize; i ++){
+		var upgrade = upgrades[| i];
+		if (global.upgrade_behind[upgrade]){
+			draw_sprite_ext(global.upgrade_sprite[upgrade], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+		}
+	}
+}
+
 // Drawing Arm
 var wcurrent = global.weapon_slot[global.weapon_slotcurrent];
 var angle = 0;

@@ -2,13 +2,13 @@
 if (instance_exists(obj_player)){
 	if (scr_player_has_upgrade(PlayerUpgrade.Goggles)){
 		var enemycount = instance_number(obj_p_enemy);
-		var mindist = 250;
 		
 		gpu_set_fog(true, c_maroon, 0, 0);
 		for(var i = 0; i < enemycount; i ++){
 			var inst = instance_find(obj_p_enemy, i);
 			var alpha = 0.5;
-			alpha *= (distance_to_object(obj_player) + 100) / mindist;
+			
+			alpha *= ((point_distance(inst.x, inst.y, obj_player.x, obj_player.y) + 100) / 400);
 			
 			var xx = (inst.x - camera_get_view_x(view_camera[0])) * GUI_SCALE_X;
 			var yy = (inst.y - camera_get_view_y(view_camera[0])) * GUI_SCALE_Y;
@@ -28,7 +28,7 @@ var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
 // Weapon Slots
-var amount = array_length_1d(global.weapon_slot);
+var amount = global.weapon_slotmax;
 var yspace = 74;
 var weapon_standalone_alpha = 1;
 
@@ -201,19 +201,9 @@ if (instance_exists(obj_player)){
 	repeat(2){
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
-				var xx = 51, yy;
+				var xx = 51, yy = (74 * (counter + 1)) - 4;
 				var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
 				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
-				
-				switch(counter){
-					case 0:
-						yy = 92 - 4;
-						break;
-					
-					case 1:
-						yy = 166 - 4;
-						break;
-				}
 				
 				draw_set_halign(fa_left);
 				draw_set_font(fnt_cambria_0);

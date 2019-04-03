@@ -373,9 +373,15 @@ global.weapon_slot[1] = -1;
 global.weapon_slotammo[1] = -1;
 global.weapon_slotscale[1] = 1;
 
+global.weapon_slot[2] = -1;
+global.weapon_slotammo[2] = -1;
+global.weapon_slotscale[2] = 1;
+
 global.weapon_slot_standalone = -1;
 global.weapon_slot_standalone_ammo = -1;
 global.weapon_slotcurrent = 0;
+global.weapon_slotprevious = 1;
+global.weapon_slotmax = 2;
 
 if (room == rm_ini){
 	var count = array_length_1d(global.weapon_name);

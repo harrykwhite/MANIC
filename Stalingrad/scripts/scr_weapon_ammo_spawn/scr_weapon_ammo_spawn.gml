@@ -45,30 +45,39 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 repeat(amount){
 	var ammo;
 	var tobject = object;
+	var slotcount = global.weapon_slotmax;
 	
-	if (global.weapon_slot[!global.weapon_slotcurrent] != -1){
-		if (global.weapon_ammotype[global.weapon_slot[!global.weapon_slotcurrent]]){
-			if (random(4) < 1){
-				switch(global.weapon_ammotype[global.weapon_slot[!global.weapon_slotcurrent]]){
-					case AmmoType.Bullets:
-						tobject = obj_ammo_0;
-						break;
+	for(var i = 0; i < slotcount; i ++){
+		if (global.weapon_slotcurrent == i){
+			continue;
+		}
 		
-					case AmmoType.Fuel:
-						tobject = obj_ammo_1;
-						break;
+		if (global.weapon_slot[i] != -1){
+			if (global.weapon_ammotype[global.weapon_slot[i]]){
+				if (random(4) < 1){
+					switch(global.weapon_ammotype[global.weapon_slot[i]]){
+						case AmmoType.Bullets:
+							tobject = obj_ammo_0;
+							break;
 		
-					case AmmoType.Explosives:
-						tobject = obj_ammo_2;
-						break;
+						case AmmoType.Fuel:
+							tobject = obj_ammo_1;
+							break;
+		
+						case AmmoType.Explosives:
+							tobject = obj_ammo_2;
+							break;
 				
-					case AmmoType.Arrows:
-						tobject = obj_ammo_3;
-						break;
+						case AmmoType.Arrows:
+							tobject = obj_ammo_3;
+							break;
 				
-					case AmmoType.Darts:
-						tobject = obj_ammo_4;
-						break;
+						case AmmoType.Darts:
+							tobject = obj_ammo_4;
+							break;
+					}
+					
+					break;
 				}
 			}
 		}

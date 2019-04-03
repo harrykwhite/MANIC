@@ -33,6 +33,30 @@ if (i_time > 0){
     i_time = 0;
 }
 
+// Upgrades
+global.weapon_slotmax = 2;
+if (scr_player_has_upgrade(PlayerUpgrade.Backpack)){
+	global.weapon_slotmax = 3;
+}
+
+if (global.weapon_slotmax == 2){
+	var realslotcount = array_length_1d(global.weapon_slot);
+	
+	for(var i = 3; i < realslotcount; i ++){
+		if (global.weapon_slot[i] != -1){
+			global.weapon_slot[i] = -1;
+			global.weapon_slotammo[i] = -1;
+			global.weapon_slotscale[i] = 1;
+		}
+	}
+}
+
+if (global.weapon_slotcurrent > global.weapon_slotmax - 1){
+	with(obj_controller_gameplay){
+		scr_weapon_switch(true, 0);
+	}
+}
+
 // Burn
 if (burn){
 	if (burn_time == -1){

@@ -97,15 +97,16 @@ if (!global.game_pause){
 					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){ if (weapon.attack_time > 0){exit;}}
 					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){ if (weapon.shoot_time > 0){exit;}}
 					
-					if (mouse_wheel_up()) || (mouse_wheel_down()){
+					if (mouse_wheel_up()){
 						obj_controller_mouse.mouse_scale = 2;
-						scr_weapon_switch();
-						
+						scr_weapon_switch(false);
+					}else if (mouse_wheel_down()){
+						obj_controller_mouse.mouse_scale = 2;
+						scr_weapon_switch(true);
 					}
 				}
 			}else{
-				obj_controller_mouse.mouse_scale = 2;
-				scr_weapon_switch();
+				scr_weapon_switch(true);
 			}
 		}
 	}

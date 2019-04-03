@@ -1,6 +1,5 @@
 ///scr_cutscene_28();
 var index = 28, xTo = room_width, yTo = 232;
-var to = noone;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
