@@ -5,8 +5,8 @@ if (global.game_pause) || (global.cutscene_current != -1){
 }
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
-var xpos = x + lengthdir_x(27, mdir);
-var ypos = y + lengthdir_y(27, mdir);
+var xpos = x + lengthdir_x(28, mdir);
+var ypos = y + lengthdir_y(28, mdir);
 
 if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!global.game_pause){
     if (attack_can){
@@ -19,11 +19,11 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!
         scr_player_stamina_drain(5);
         angle_offset = -angle_offset;
 		
-	    s = instance_create(xpos, ypos, obj_proj_2);
+	    s = instance_create(xpos, ypos, obj_proj_3);
 	    s.image_angle = mdir;
 	    s.depth = depth + 1;
 	    
-		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 27, obj_proj_2);
+		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 27, obj_proj_3);
         
         attack_time = 8;
         attack_can = false;

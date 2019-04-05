@@ -1,3 +1,4 @@
+scr_pre_draw_attributes_pawn();
 draw_self();
 scr_draw_attributes_pawn();
 
@@ -18,7 +19,7 @@ if (arm != -1){
 				var spritecounter = 0;
 				
 				repeat(spritecount){
-					draw_sprite_ext(spr_thedogkeeper_lead_0, 0, arm.x + lengthdir_x(6, move_dir) + lengthdir_x(6 * spritecounter, dir), arm.y + lengthdir_y(6, move_dir) + lengthdir_y(6 * spritecounter, dir), 1, 1, dir, c_white, 1);
+					draw_sprite_ext(spr_thedogkeeper_lead_0, 0, arm.x + lengthdir_x(9, move_dir) + lengthdir_x(6 * spritecounter, dir), arm.y + lengthdir_y(9, move_dir) + lengthdir_y(6 * spritecounter, dir), 1, 1, dir, c_white, 1);
 					spritecounter ++;
 				}
 				

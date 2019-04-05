@@ -14,6 +14,10 @@ if (instance_exists(obj_player)){
 		exit;
 	}
 	
+	if (obj_controller_ui.level_opening_time > 10){
+		exit;
+	}
+	
 	if (obj_controller_ui.game_opening_intro){
 		if (obj_controller_ui.game_opening_intro_alpha >= 1){
 			exit;

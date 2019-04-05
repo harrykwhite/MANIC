@@ -48,7 +48,7 @@ headless_image = 0;
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
 
-defense = 4;
+defense = 3;
 
 bark_time = random(30);
 

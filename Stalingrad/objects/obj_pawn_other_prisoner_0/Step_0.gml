@@ -12,7 +12,7 @@ if (domove){
 	var dirdiff = angle_difference(dir, dir_to);
 	dir += min(abs(dirdiff), 6) * -sign(dirdiff);
 	
-	if (dir < 90) || (dir > 270){
+	if (dir_to < 90) || (dir_to > 270){
 		facing = 1;
 	}else{
 		facing = -1;

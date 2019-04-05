@@ -21,6 +21,7 @@ if (instance_exists(obj_player)){
 	if (instance_exists(eobj)){
 		xTo = eobj.x;
 		yTo = eobj.y;
+		eobj.in_cutscene = true;
 		
 		obj_player.flashlight_move = false;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
@@ -30,6 +31,8 @@ if (instance_exists(obj_player)){
 			global.cutscene_time[index] = 0;
 			obj_player.move_xTo = -1;
 			obj_player.move_yTo = -1;
+			eobj.in_cutscene = false;
+			eobj.cutscene_prop = false;
 		}else{
 			global.cutscene_time[index] ++;
 		}

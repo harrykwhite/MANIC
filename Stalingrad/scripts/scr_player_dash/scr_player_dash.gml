@@ -45,7 +45,7 @@ image_speed = 0;
 
 trail = scr_effect_trail(sprite_index, 0.8, 0.075, 0, image_xscale, 1, 0.01, 0.5, (dash_direction - 180) + random_range(-30, 30));
 
-if (global.player_healthCurrent <= 2){
+if (global.player_health_current <= 2){
 	trail.special = "LowHealth";
 }
 

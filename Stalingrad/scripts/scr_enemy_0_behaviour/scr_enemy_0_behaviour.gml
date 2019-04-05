@@ -108,7 +108,7 @@ if (instance_exists(target)){
 			}
 		}
 	
-		if (global.player_healthCurrent < 4){
+		if (global.player_health_current < 4){
 			speed_multiplier -= 0.2;
 		}
 		
@@ -184,7 +184,7 @@ if (instance_exists(target)){
 								time = 32;
 							}
 				
-							if (global.player_healthCurrent < 3){
+							if (global.player_health_current < 3){
 								time *= 2;
 							}
 				

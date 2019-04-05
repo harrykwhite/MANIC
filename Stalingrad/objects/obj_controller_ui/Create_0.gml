@@ -40,6 +40,33 @@ game_opening_intro_text_alpha = -0.25;
 game_opening_intro_text_stage = 0;
 game_opening_intro_text_time = 60 * 4;
 
+upgrade_indicate_index = 0;
+upgrade_indicate_time = 0;
+upgrade_indicate_alpha = 0;
+
+level_opening = false;
+level_opening_text_alpha = 0;
+level_opening_alpha = 1;
+level_opening_time = 0;
+level_opening_active = false;
+
+var levelcount = array_length_1d(global.level_name);
+for(var i = 0; i < levelcount; i ++){
+	if (global.level_current == 0) && ((STATE == GameState.Public) or (global.game_playthrough)){
+		break;
+	}
+	
+	if (room == global.level_room[i]){
+		if (!global.level_entered[i]){
+			level_opening = true;
+			level_opening_active = true;
+			level_opening_time = 60 * 4;
+			global.level_entered[i] = true;
+			break;
+		}
+	}
+}
+
 screen_fade_opening = 1.15;
 
 game_ending_screen = false;
@@ -64,7 +91,7 @@ leveltext_text = "";
 leveltext_other = false;
 leveltext_time = 0;
 var levels = array_length_1d(global.level_name);
-for(var i = 0; i < levels; i ++){
+for(var i = 1; i < levels; i ++){ // Skip level one, as this already has an intro
 	if (room == global.level_room[i]){
 		leveltext_time = 60 * 3.5;
 	}

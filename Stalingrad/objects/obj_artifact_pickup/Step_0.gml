@@ -1,13 +1,13 @@
-if (parent != -1) && (onscreen(x, y)){
+depth_offset = 0;
+if (parent != -1){
 	if (!instance_exists(parent)){
-		angle = angle + random_range(-15, 15);
-		x = x + random_range(-3, 3);
-		y = y + random_range(-2, 2);
+		angle += random_range(-15, 15);
+		x = xstart + random_range(-3, 3);
+		y = ystart + random_range(-2, 2);
 		
-		depth_offset = 0;
 		parent = -1;
 	}else{
-		depth_offset = -70;
+		depth_offset = -40;
 	}
 }
 

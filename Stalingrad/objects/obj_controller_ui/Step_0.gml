@@ -2,6 +2,31 @@ scr_position_view();
 scr_ui_rank_display_setup();
 scr_ui_rank_display_update();
 
+// Level opening
+if (level_opening){
+	if (level_opening_time > 0){
+		level_opening_time --;
+		
+		if (level_opening_text_alpha < 1.25){
+			level_opening_text_alpha += 0.015;
+		}
+	}else{
+		level_opening_time = 0;
+		
+		if (level_opening_alpha > 0){
+			level_opening_alpha -= 0.015;
+		}else{
+			level_opening_active = false;
+		}
+		
+		if (level_opening_text_alpha > 0){
+			level_opening_text_alpha -= 0.015;
+		}else{
+			level_opening = false;
+		}
+	}
+}
+
 // Screen Blend
 if (screenblend_draw){
     if (screenblend_alpha < screenblend_endalpha){
@@ -88,7 +113,7 @@ if (!global.game_pause){
 						global.weapon_slotammo[1] = global.sectionstart_weaponammo[1];
 						
 						global.game_combat_state = CombatState.Idle;
-						global.player_healthCurrent = global.sectionstart_playerhealth;
+						global.player_health_current = global.sectionstart_playerhealth;
 						global.weapon_slotcurrent = 0;
 						room_restart();
 						break;
@@ -189,7 +214,7 @@ if (game_opening_intro){
 		game_opening_intro_text_time -= game_opening_intro_speed;
 		
 		if (game_opening_intro_text_time <= 0){
-			game_opening_intro_text_alpha -= 0.01 * game_opening_intro_speed;
+			game_opening_intro_text_alpha -= 0.0075 * game_opening_intro_speed;
 			
 			if (game_opening_intro_text_stage == 0){
 				if (game_opening_intro_text_alpha <= 0){

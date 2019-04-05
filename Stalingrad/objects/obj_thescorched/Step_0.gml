@@ -19,6 +19,12 @@ if (global.game_pause){
 	ispaused = true;
 }
 
+if (cutscene_prop){
+	if (!in_cutscene){
+		ispaused = true;
+	}
+}
+
 if (ispaused){
 	if (abs(image_xscale) != scale) || (abs(image_yscale) != scale){
 		image_xscale = sign(image_xscale) * scale;

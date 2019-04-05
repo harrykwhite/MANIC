@@ -7,7 +7,7 @@ image_speed = 0.035;
 
 // Picking Up
 if (place_meeting(x + 1, y + 1, obj_player)){
-    if (global.player_healthCurrent < global.player_healthMax){
+    if (global.player_health_current < global.player_health_max){
 		obj_player.whiteflash_alpha = 0.7;
         scr_player_heal(3);
 		scr_effect_screenshake(1);

@@ -19,26 +19,28 @@ if (argument_count > 1){
 }
 
 if (global.weapon_slot[global.weapon_slotcurrent] != -1){
-	switch(global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]]){
-		case AmmoType.Bullets:
-			object = obj_ammo_0;
-			break;
+	if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){
+		switch(global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]]){
+			case AmmoType.Bullets:
+				object = obj_ammo_0;
+				break;
 		
-		case AmmoType.Fuel:
-			object = obj_ammo_1;
-			break;
+			case AmmoType.Fuel:
+				object = obj_ammo_1;
+				break;
 		
-		case AmmoType.Explosives:
-			object = obj_ammo_2;
-			break;
+			case AmmoType.Explosives:
+				object = obj_ammo_2;
+				break;
 		
-		case AmmoType.Arrows:
-			object = obj_ammo_3;
-			break;
+			case AmmoType.Arrows:
+				object = obj_ammo_3;
+				break;
 			
-		case AmmoType.Darts:
-			object = obj_ammo_4;
-			break;
+			case AmmoType.Darts:
+				object = obj_ammo_4;
+				break;
+		}
 	}
 }
 
@@ -53,6 +55,10 @@ repeat(amount){
 		}
 		
 		if (global.weapon_slot[i] != -1){
+			if (global.weapon_type[global.weapon_slot[i]] != WeaponType.Ranged){
+				continue;
+			}
+			
 			if (global.weapon_ammotype[global.weapon_slot[i]]){
 				if (random(4) < 1){
 					switch(global.weapon_ammotype[global.weapon_slot[i]]){

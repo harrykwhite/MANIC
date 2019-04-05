@@ -68,7 +68,7 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
 		var r = 0, g = 0, b = 0, a = 0;
 		
-        if (global.player_healthCurrent <= 2){
+        if (global.player_health_current <= 2){
             a = wv * 0.5;
 			r = 255;
 			g = 0;

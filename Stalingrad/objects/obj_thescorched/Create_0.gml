@@ -64,7 +64,7 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_resist = 0;
 
-cutscene_prop = false;
+cutscene_prop = true;
 in_cutscene = false;
 
 health_max = 80;

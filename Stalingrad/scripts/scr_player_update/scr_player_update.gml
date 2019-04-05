@@ -57,6 +57,11 @@ if (global.weapon_slotcurrent > global.weapon_slotmax - 1){
 	}
 }
 
+global.player_health_max = 6;
+if (scr_player_has_upgrade(PlayerUpgrade.Chestplate)){
+	global.player_health_max = 12;
+}
+
 // Burn
 if (burn){
 	if (burn_time == -1){
@@ -74,7 +79,7 @@ if (burn){
 			burn_cycle_amount--;
 			burn_time = 70;
 			
-			if (global.player_healthCurrent > 1){
+			if (global.player_health_current > 1){
 				scr_player_damage(1, 0, 0, 5);
 				scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 			}
@@ -114,7 +119,7 @@ if (poison){
 // Flies
 var length = array_length_1d(fly);
 
-if (global.player_healthCurrent < 3){
+if (global.player_health_current < 3){
 	
 	for(var i = 0; i < length; i ++){
 		if (fly[i] == noone){
@@ -128,13 +133,13 @@ if (global.player_healthCurrent < 3){
 }
 
 // Heartbeat
-if (global.player_healthCurrent <= 2){
+if (global.player_health_current <= 2){
 	var vol = 0.7;
 	if (!audio_is_playing(snd_other_heartbeat_0)){
 		heartbeat = audio_play_sound(snd_other_heartbeat_0, 3, true);
 	}
 	
-	if (global.player_healthCurrent == 1){
+	if (global.player_health_current == 1){
 		vol = 1;
 	}
 	
@@ -150,7 +155,7 @@ if (global.player_healthCurrent <= 2){
 }
 
 // Death
-if (global.player_healthCurrent <= 0){
+if (global.player_health_current <= 0){
     scr_effect_blackbar();
     scr_effect_flash_script(0.0075, 1, c_black, scr_trigger_0);
 	scr_sound_play(m_combat_stinger_3, false, 1, 1);

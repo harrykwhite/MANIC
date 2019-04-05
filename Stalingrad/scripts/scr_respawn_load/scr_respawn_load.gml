@@ -36,7 +36,7 @@ safe.image_yscale = 4;
 safe.x -= (safe.sprite_width * 0.5);
 safe.y -= (safe.sprite_height * 0.5);
 
-global.player_healthCurrent = global.player_healthMax;
+global.player_health_current = global.player_health_max;
 
 global.weapon_slotcurrent = 0;
 

@@ -3,12 +3,12 @@ if (instance_exists(obj_player)){
 	if (scr_player_has_upgrade(PlayerUpgrade.Goggles)){
 		var enemycount = instance_number(obj_p_enemy);
 		
-		gpu_set_fog(true, c_maroon, 0, 0);
+		gpu_set_fog(true, c_red, 0, 0);
 		for(var i = 0; i < enemycount; i ++){
 			var inst = instance_find(obj_p_enemy, i);
-			var alpha = 0.5;
+			var alpha = 0.35;
 			
-			alpha *= ((point_distance(inst.x, inst.y, obj_player.x, obj_player.y) + 100) / 400);
+			alpha *= (point_distance(inst.x, inst.y, obj_player.x, obj_player.y) / 400);
 			
 			var xx = (inst.x - camera_get_view_x(view_camera[0])) * GUI_SCALE_X;
 			var yy = (inst.y - camera_get_view_y(view_camera[0])) * GUI_SCALE_Y;
@@ -201,7 +201,7 @@ if (instance_exists(obj_player)){
 	repeat(2){
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
-				var xx = 51, yy = (74 * (counter + 1)) - 4;
+				var xx = 51, yy = (74 * (counter + 1)) + 12;
 				var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
 				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
 				
@@ -337,6 +337,30 @@ if (bosshealth_width_current > 0){
 }
 
 bosshealth_value_previous = bosshealth_value_current;
+
+// Upgrade Indication
+if (upgrade_indicate_time > 0){
+	upgrade_indicate_time --;
+	if (upgrade_indicate_alpha < 1){
+		upgrade_indicate_alpha += 0.05;
+	}
+}else{
+	if (upgrade_indicate_alpha > 0){
+		upgrade_indicate_alpha -= 0.05;
+	}
+}
+
+if (upgrade_indicate_alpha > 0){
+	draw_set_alpha(upgrade_indicate_alpha);
+	
+	draw_set_halign(fa_center);
+	draw_set_font(fnt_cambria_3);
+	scr_text_shadow(dwidth / 2, dheight - 120, global.upgrade_name[upgrade_indicate_index], c_white);
+	draw_set_font(fnt_cambria_1);
+	scr_text_shadow(dwidth / 2, dheight - 90, global.upgrade_description[upgrade_indicate_index], c_white);
+	
+	draw_set_alpha(1);
+}
 
 // Control Indication
 if (control_indicate){

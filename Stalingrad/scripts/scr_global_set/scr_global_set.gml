@@ -48,8 +48,8 @@ global.game_score_wpnvariation = 0;
 
 global.player_respawn_x = 0;
 global.player_respawn_y = 0;
-global.player_healthMax = 6;
-global.player_healthCurrent = global.player_healthMax;
+global.player_health_max = 12;
+global.player_health_current = global.player_health_max;
 
 global.worldtrain_room = rm_level_6_00;
 

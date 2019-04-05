@@ -1,5 +1,5 @@
 var player = obj_player;
-var drawshader = (global.player_healthCurrent <= 2) || (player.burn) || (player.poison) || (player.whiteflash_alpha > 0);
+var drawshader = (global.player_health_current <= 2) || (player.burn) || (player.poison) || (player.whiteflash_alpha > 0);
 
 if (drawshader){
 	shader_set(sh_pawntint);
@@ -10,7 +10,7 @@ if (drawshader){
 	var r = 0, g = 0, b = 0, a = 0;
 	var wv = wave(0.05, 0.1, 2, 0);
 
-	if (global.player_healthCurrent <= 2){
+	if (global.player_health_current <= 2){
 	    a = wv * 0.5;
 		r = 255;
 		g = 0;

@@ -1,2 +1,2 @@
-index = Artifacts.Note;
+index = Artifacts.Knife;
 angle = 30;

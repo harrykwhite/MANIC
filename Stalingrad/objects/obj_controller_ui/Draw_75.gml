@@ -1,3 +1,6 @@
+var dwidth = display_get_gui_width();
+var dheight = display_get_gui_height();
+
 // Red Tint
 redtint_alphato = 0;
 if (global.game_combat_state == CombatState.Buildup){
@@ -15,7 +18,7 @@ if (redtint_alpha < redtint_alphato){
 if (redtint_alpha > 0){
 	draw_set_colour(c_maroon);
 	draw_set_alpha(redtint_alpha);
-	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+	draw_rectangle(0, 0, dwidth, dheight, false);
 }
 
 // Black Bars
@@ -30,14 +33,14 @@ blackbar_sizereal = clamp(blackbar_sizereal, 0, blackbar_size);
 if (blackbar_sizereal > 2){
 	draw_set_alpha(1);
 	draw_set_colour(c_black);
-	draw_rectangle(-10, -10, display_get_gui_width() + 10, blackbar_sizereal, false);
-	draw_rectangle(-10, display_get_gui_height() + 10, display_get_gui_width() + 10, (display_get_gui_height() + 10) - (blackbar_sizereal + 10), false);
+	draw_rectangle(-10, -10, dwidth + 10, blackbar_sizereal, false);
+	draw_rectangle(-10, dheight + 10, dwidth + 10, (dheight + 10) - (blackbar_sizereal + 10), false);
 }
 
 // Game Opening Intro
 if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
 	if (game_opening_intro){
-		var text = "Stalingrad";
+		var text = "HEAVEN'S MASSACRE";
 		
 		if (game_opening_intro_text_stage == 0){
 			text = "Geta Presents";
@@ -45,12 +48,12 @@ if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_p
 		
 		draw_set_alpha(game_opening_intro_alpha);
 		draw_set_colour(c_black);
-		draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+		draw_rectangle(0, 0, dwidth, dheight, false);
 		
 		draw_set_alpha(game_opening_intro_text_alpha);
 		draw_set_font(fnt_cambria_1);
 		draw_set_halign(fa_center);
-		scr_text_shadow(display_get_gui_width() / 2, display_get_gui_height() / 2, text, c_white);
+		scr_text_shadow(dwidth / 2, dheight / 2, text, c_white);
 	}
 }
 
@@ -59,14 +62,29 @@ if (global.level_current == 0) && (STATE == GameState.Public){
 	if (game_ending_screen){
 		draw_set_alpha(game_ending_screen_alpha);
 		draw_set_colour(c_black);
-		draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+		draw_rectangle(0, 0, dwidth, dheight, false);
 		
 		draw_set_alpha(game_ending_screen_text_alpha);
 		draw_set_font(fnt_cambria_1);
-		scr_text_shadow(display_get_gui_width() / 2, display_get_gui_height() / 2, "Thanks for playing!", c_white);
+		scr_text_shadow(dwidth / 2, dheight / 2, "Thanks for playing!", c_white);
 		draw_set_font(fnt_cambria_0);
-		scr_text_shadow(display_get_gui_width() / 2, (display_get_gui_height() / 2) + 60, "That's the end of the demo. If you have any questions\nmake sure to contact us at getagamesteam@gmail.com.", c_white);
+		scr_text_shadow(dwidth / 2, (dheight / 2) + 60, "That's the end of the demo. If you have any questions\nmake sure to contact us at getagamesteam@gmail.com.", c_white);
 	}
+}
+
+// Level opening
+if (level_opening){
+	draw_set_alpha(level_opening_alpha);
+	draw_set_colour(c_black);
+	draw_rectangle(0, 0, dwidth, dheight, false);
+	
+	draw_set_alpha(level_opening_text_alpha);
+	draw_set_halign(fa_center);
+	draw_set_font(fnt_cambria_3);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 25, string(global.level_name[global.level_current]), c_white);
+	//draw_rectangle((dwidth / 2) - 110, (dheight / 2) + 8, (dwidth / 2) + 110, (dheight / 2) + 8 + 1, false);
+	draw_set_font(fnt_cambria_1);
+	scr_text_shadow((dwidth / 2), (dheight / 2) + 13, "PART " + string(global.level_current + 1), c_white);
 }
 
 // Area Next
@@ -89,7 +107,7 @@ if (area_next_fade){
 if (alpha > 0){
 	draw_set_colour(c_black);
 	draw_set_alpha(alpha);
-	draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+	draw_rectangle(0, 0, dwidth, dheight, false);
 }
 
 draw_set_alpha(1);

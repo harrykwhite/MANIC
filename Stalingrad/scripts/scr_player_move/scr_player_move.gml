@@ -26,15 +26,19 @@ if (global.weapon_slot_standalone == -1){
 	image_angle = 0;
 
 	// Speed
+	if (scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
+		spd_multiplier += 0.15;
+	}
+	
 	if (global.weapon_heavy[global.weapon_slot[global.weapon_slotcurrent]]){
 	    spd_multiplier -= 0.1;
 	}
 
-	if (global.player_healthCurrent <= 2){
+	if (global.player_health_current <= 2){
 	    spd_multiplier += 0.1;
 	}
 	
-	if (global.player_healthCurrent <= 4){
+	if (global.player_health_current <= 4){
 		spd_multiplier += 0.05;
 	}
 

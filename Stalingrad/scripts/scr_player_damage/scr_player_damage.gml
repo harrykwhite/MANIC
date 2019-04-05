@@ -7,7 +7,7 @@ var kbs = argument1;
 var kbd = argument2;
 var it = argument3;
 
-global.player_healthCurrent -= dmg;
+global.player_health_current -= dmg;
 knockback_speed = kbs;
 knockback_direction = kbd;
 blend = c_red;
@@ -17,7 +17,7 @@ health_scale = 1.5;
 
 obj_controller_ui.playerhit_alpha = 0.75;
 
-if (global.player_healthCurrent <= 0){
+if (global.player_health_current <= 0){
 	var d = instance_create(x, y - 16, obj_player_death);
 	d.spd = min(1.5, (kbs * 2));
 	d.dir = kbd;

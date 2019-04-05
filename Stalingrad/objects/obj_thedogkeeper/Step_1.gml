@@ -14,6 +14,7 @@ if (weapon_has){
 }
 
 if (destroy){
+	levelobj.dogkeeper = noone;
 	levelobj.dogkeeper_failed = true;
 	
 	for(var i = 0; i < 3; i ++){
@@ -32,8 +33,5 @@ if (destroy){
 		arm = -1;
 	}
 	
-	x = xstart;
-	y = ystart;
-	event_perform(ev_create, 0);
-	destroy = false;
+	instance_destroy();
 }

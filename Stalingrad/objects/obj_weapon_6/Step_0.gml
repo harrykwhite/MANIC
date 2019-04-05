@@ -5,9 +5,10 @@ if (global.game_pause) || (global.cutscene_current != -1){
 }
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
+var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 
 if ((mouse_check_button_pressed(mb_left)) || (shoot_continue_time > 0)) && (!global.game_pause){
-    if ((shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0)) || (shoot_continue_time > 0){
+    if ((shoot_can) && (ammo > 0)) || (shoot_continue_time > 0){
         var xpos = x + lengthdir_x(19, mdir) + lengthdir_x(3, up(mdir));
 	    var ypos = y + lengthdir_y(19, mdir) + lengthdir_y(3, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
@@ -16,7 +17,12 @@ if ((mouse_check_button_pressed(mb_left)) || (shoot_continue_time > 0)) && (!glo
 			shoot_continue_time = 3;
 			shoot_bounceback = -5;
 			angle_offset = 20;
-			scr_weapon_ammo_use(1);
+			
+			if (ammo == 1){
+				shoot_continue_time = 1;
+			}
+			
+			scr_weapon_ammo_use(2);
 			scr_player_flash(8);
 			scr_camera_to_player();
 			scr_sound_play(snd_weapon_shotgun_0, false, 0.8, 1.2);

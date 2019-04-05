@@ -34,6 +34,7 @@ if (ispaused){
 
 global.player_companion = 2;
 global.player_companion_health = health_current;
+global.game_companion_prisoner_found = true;
 
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);

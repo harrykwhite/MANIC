@@ -15,7 +15,7 @@ if (!sectionstart_record_set){
 	global.sectionstart_weapon[1] = global.weapon_slot[1];
 	global.sectionstart_weaponammo[0] = global.weapon_slotammo[0];
 	global.sectionstart_weaponammo[1] = global.weapon_slotammo[1];
-	global.sectionstart_playerhealth = global.player_healthCurrent;
+	global.sectionstart_playerhealth = global.player_health_current;
 	sectionstart_record_set = true;
 }
 
@@ -54,7 +54,7 @@ if (global.cutscene_current == -1) && (instance_exists(obj_player)){
 }
 
 // Value Controlling
-global.player_healthCurrent = clamp(global.player_healthCurrent, 0, global.player_healthMax);
+global.player_health_current = clamp(global.player_health_current, 0, global.player_health_max);
 
 if (!global.game_pause){
 	

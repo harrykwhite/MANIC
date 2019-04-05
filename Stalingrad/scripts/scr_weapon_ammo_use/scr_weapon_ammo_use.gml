@@ -1,6 +1,12 @@
 /// @param  amount
 var amount = argument0;
 
+if (scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){
+	if (chance(30)){
+		exit;
+	}
+}
+
 if (global.weapon_slot_standalone == -1){
 	global.weapon_slotammo[global.weapon_slotcurrent] -= amount;
 	
