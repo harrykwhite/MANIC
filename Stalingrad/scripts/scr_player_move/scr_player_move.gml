@@ -148,10 +148,11 @@ if (global.weapon_slot_standalone == -1){
 			if (dash_count < 1){
 				dash_count ++;
 				dash_time = 2;
+				dash_time_short = 16;
 				scr_sound_play(snd_character_dash_0, false, 0.9, 1);
 			}else{
 				dash_count = 0;
-				dash_time = 50;
+				dash_time = 37;
 				scr_sound_play(snd_character_dash_0, false, 1.15, 1.25);
 			}
 		}else{
@@ -176,10 +177,17 @@ if (global.weapon_slot_standalone == -1){
 	    exit;
 	}
 	
-	if (dash_time > -25){
-		dash_time --;
+	if (dash_time_short > 0){
+		dash_time_short --;
 	}else{
-		dash_count = 1;
+		if (dash_count != 0){
+			dash_time = 37 - 16;
+			dash_count = 0;
+		}
+	}
+	
+	if (dash_time > 0){
+		dash_time --;
 	}
 	
 	// Movement

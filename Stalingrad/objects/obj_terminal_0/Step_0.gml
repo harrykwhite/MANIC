@@ -1,6 +1,6 @@
 var player = obj_player;
 if (instance_exists(player)){
-	if (point_distance(x + (sprite_width / 2), y + (sprite_height / 2), player.x, player.y) < 40){
+	if (point_distance(x + (sprite_width / 2), y + (sprite_height / 2), player.x, player.y) < 30){
 		interact = true;
 	}else{
 		interact = false;

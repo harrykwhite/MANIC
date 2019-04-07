@@ -13,6 +13,8 @@ global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
 global.game_level_opening_type = 0;
 
+global.game_max_corpse_count = 15;
+
 global.game_boss_thescorched_killed = false;
 global.game_boss_thedogkeeper_killed = false;
 global.game_boss_trainhorde_killed = false;

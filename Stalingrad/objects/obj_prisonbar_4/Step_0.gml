@@ -16,16 +16,16 @@ if (open){
 	}
 }else{
 	sprite_index = spr_prisonbar_4;
-	if (global.cutscene_current == -1){
+	if (global.cutscene_current == -1) && (!locked){
 		if (place_meeting(x, y + 15, obj_player)){
 			scr_ui_control_indicate("Unlock [E]");
 			sprite_index = spr_prisonbar_4_interact;
-		
+			
 			if (keyboard_check_pressed(ord("E"))){
-				open = true;
 				scr_effect_screenshake(1);
 				scr_sound_play(snd_object_prisondoor_open_0, false, 0.9, 1.1);
 				
+				open = true;
 				if (instance_exists(inst_40C9D2CD) && (id == inst_3ABFBF5A)) {
 					inst_40C9D2CD.domove = true;
 				}

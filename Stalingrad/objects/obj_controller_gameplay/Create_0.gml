@@ -9,6 +9,7 @@ bonus_killamount = 0;
 levelstart_record_set = false;
 sectionstart_record_set = false;
 
+corpse_queue = ds_queue_create();
 cutscene_look_x = 0;
 cutscene_look_y = 0;
 cutscene_look_time = 120;

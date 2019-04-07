@@ -6,7 +6,7 @@ if (flicker){
 		flicker_time = random_range(180, 420);
 		
 		if (!show_light){
-			flicker_time *= 0.25;
+			flicker_time *= 0.1;
 		}
 	}
 }

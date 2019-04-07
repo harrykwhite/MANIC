@@ -283,6 +283,7 @@ if (!drawammo){
 	stats_y = approach(stats_y, 82, 30);
 }
 
+draw_set_alpha(1);
 draw_set_font(fnt_cambria_n1);
 draw_set_halign(fa_left);
 scr_text_shadow(136, stats_y, "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]), make_colour_hsv(0, 0, colour_get_value(c_white) - 7));

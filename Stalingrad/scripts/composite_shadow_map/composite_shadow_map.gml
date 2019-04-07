@@ -41,10 +41,10 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	var light = ds_list_find_value(lights, i);
 	
 	// Can this light be culled?
-	//if(light_cull(light, camera)) {
-	//	// Yes, no reason to draw it
-	//	continue;
-	//}
+	if(light_cull(light, camera)) {
+		// Yes, no reason to draw it
+		continue;
+	}
 	
 	// Get the type of the light
 	var lightType = light[| eLight.Type];

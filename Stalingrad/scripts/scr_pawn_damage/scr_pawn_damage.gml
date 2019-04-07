@@ -196,5 +196,9 @@ if (health_current <= 0){
 		corpse.move = true;
 		corpse.image_xscale = image_xscale;
 		corpse.image_yscale = image_yscale;
+		
+		with(obj_controller_gameplay){
+			ds_queue_enqueue(corpse_queue, corpse);
+		}
 	}
 }
