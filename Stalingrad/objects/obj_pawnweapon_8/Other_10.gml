@@ -23,7 +23,7 @@ if (!global.game_pause) && (global.cutscene_current == -1){
 	
 	draw_set_alpha(clamp(line_alpha, 0, 1) * 0.7);
 	draw_line_break(xx, yy, dir, obj_p_solid, 1, false, -6);
+	draw_set_alpha(1);
 }
 
-draw_set_alpha(1);
 draw_self();

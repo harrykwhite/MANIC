@@ -1,2 +1,2 @@
-index = Artifacts.Syringe;
+index = Collectables.Syringe;
 angle = 20;

@@ -74,6 +74,7 @@ if (!typedet){
 			defense = 2;
 			health_max = 8;
 			health_current = health_max;
+			knockback_resist = 0.6;
 			sprite_index = spr_enemy_0_light_idle_0;
 			break;
 		

@@ -106,11 +106,12 @@ if (!global.game_pause){
 					case 1:
 						part_system_clear(global.ps_front);
 						part_system_clear(global.ps_bottom);
-						global.weapon_slot[0] = global.sectionstart_weapon[0];
-						global.weapon_slotammo[0] = global.sectionstart_weaponammo[0];
-					
-						global.weapon_slot[1] = global.sectionstart_weapon[1];
-						global.weapon_slotammo[1] = global.sectionstart_weaponammo[1];
+						
+						var rslotcount = array_length_1d(global.weapon_slot);
+						for(var i = 0; i < rslotcount; i ++){
+							global.weapon_slot[i] = global.sectionstart_weapon[i];
+							global.weapon_slotammo[i] = global.sectionstart_weaponammo[i];
+						}
 						
 						global.game_combat_state = CombatState.Idle;
 						global.player_health_current = global.sectionstart_playerhealth;
@@ -226,7 +227,6 @@ if (game_opening_intro){
 		}else{
 			game_opening_intro_text_alpha += 0.01 * game_opening_intro_speed;
 		}
-		
 	}else{
 		game_opening_intro = false;
 	}
@@ -234,7 +234,6 @@ if (game_opening_intro){
 
 // Game Ending Screen
 if (game_ending_screen){
-	
 	if (global.level_current != 0) || (STATE == GameState.Developer){
 		game_ending_screen = false;
 	}
@@ -242,7 +241,6 @@ if (game_ending_screen){
 	if (game_ending_screen_alpha < 1){
 		game_ending_screen_alpha += 0.01;
 	}else{
-		
 		if (game_ending_screen_text_alpha < 1){
 			game_ending_screen_text_alpha += 0.01;
 		}

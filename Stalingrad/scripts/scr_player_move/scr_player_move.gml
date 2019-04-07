@@ -27,7 +27,7 @@ if (global.weapon_slot_standalone == -1){
 
 	// Speed
 	if (scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
-		spd_multiplier += 0.15;
+		spd_multiplier += 0.2;
 	}
 	
 	if (global.weapon_heavy[global.weapon_slot[global.weapon_slotcurrent]]){
@@ -142,11 +142,26 @@ if (global.weapon_slot_standalone == -1){
 		dash_speed = spd_max * 3.65;
 		dash_time = 20;
 		
+		if (scr_player_has_upgrade(PlayerUpgrade.KneePads)){
+			dash_speed *= 1.3;
+			
+			if (dash_count < 1){
+				dash_count ++;
+				dash_time = 2;
+				scr_sound_play(snd_character_dash_0, false, 0.9, 1);
+			}else{
+				dash_count = 0;
+				dash_time = 50;
+				scr_sound_play(snd_character_dash_0, false, 1.15, 1.25);
+			}
+		}else{
+			scr_sound_play(snd_character_dash_0, false, 0.8, 1.2);
+		}
+		
 		scr_effect_screenshake(2);
 		scr_effect_vignette_flash(c_ltgray, 0.064, 0.004);
-		scr_sound_play(snd_character_dash_0, false, 0.8, 1.2);
 		
-	    dash_length_current = 0;
+		dash_length_current = 0;
 	    dash_direction = point_direction(0, 0, xaxis, yaxis);
 		
 		if (xaxis == 0) && (yaxis == 0){
@@ -161,10 +176,12 @@ if (global.weapon_slot_standalone == -1){
 	    exit;
 	}
 	
-	if (dash_time > 0){
+	if (dash_time > -25){
 		dash_time --;
+	}else{
+		dash_count = 1;
 	}
-
+	
 	// Movement
 	if (move_xTo == -1) && (move_yTo == -1){
 		if (global.cutscene_current == -1){
@@ -197,9 +214,9 @@ if (global.weapon_slot_standalone == -1){
 				spd = spd_max;
 			}
 			
-		    if (len<(spd * spd_multiplier)){
+		    if (len < (spd * spd_multiplier)){
 		        len += spd_build * spd_multiplier;
-		    }else if (len>(spd * spd_multiplier)){
+		    }else if (len > (spd * spd_multiplier)){
 		        len -= 0.05;
 		    }
 		}

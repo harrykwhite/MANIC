@@ -1,5 +1,5 @@
 var yy = wave(-1, -3, 1, 0);
-var sprite = global.upgrade_sprite[index];
+var sprite = global.upgrade_sprite_pickup[index];
 
 gpu_set_fog(true, c_black, 0, 0);
 draw_sprite_ext(sprite, image_angle, x, y, 1.25, 1.25, angle, c_white, 0.175);

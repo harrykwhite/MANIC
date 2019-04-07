@@ -28,7 +28,7 @@ switch(room){
 		break;
 }
 
-scr_spawn_setup("windy", 1.15);
+scr_spawn_setup("windy", 1.45);
 spawn_pause_update = false;
 spawn_state_time_real = 0;
 spawn_rate_real = 1;

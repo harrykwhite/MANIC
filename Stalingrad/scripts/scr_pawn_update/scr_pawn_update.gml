@@ -61,7 +61,7 @@ if (health_current <= 0){
     scr_effect_freeze(5);
     scr_effect_screenshake(4);
 	scr_effect_vignette_flash(c_ltgray, 0.3, 0.01);
-	scr_effect_grain(0.4);
+	//scr_effect_grain(0.4);
     
     instance_destroy();
 	audio_play_sound(snd_other_kick_0, 3, false);
@@ -107,7 +107,7 @@ if (health_current <= 0){
 				global.game_boss_trainhorde_killed = true;
 				obj_pawn_other_train_1.is_boss = false;
 				
-				var udrop = instance_create(x, y - 4, obj_upgrade_pickup);
+				var udrop = instance_create(x, y, obj_upgrade_pickup);
 				udrop.index = PlayerUpgrade.Chestplate;
 				udrop.angle = random_range(-10, 10);
 				
@@ -121,10 +121,6 @@ if (health_current <= 0){
 		}else if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
 			
-			var udrop = instance_create(x, y, obj_upgrade_pickup);
-			udrop.index = PlayerUpgrade.Goggles;
-			udrop.angle = random_range(-10, 10);
-			
 			with(obj_block_cutscene){
 				if (index == 11){
 					instance_destroy();
@@ -133,7 +129,7 @@ if (health_current <= 0){
 		}else if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
 			
-			var udrop = instance_create(x, y - 4, obj_upgrade_pickup);
+			var udrop = instance_create(x, y, obj_upgrade_pickup);
 			udrop.index = PlayerUpgrade.RunningBoots;
 			udrop.angle = random_range(-10, 10);
 			

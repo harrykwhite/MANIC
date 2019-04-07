@@ -1,9 +1,7 @@
-scr_pre_draw_attributes_pawn();
 draw_self();
 scr_draw_attributes_pawn();
 
 var linealpha = shoot_buildup_time / 120;
-
 if (instance_exists(obj_player)){
 	shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
 	

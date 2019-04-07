@@ -1,2 +1,2 @@
-index = Artifacts.Cross;
+index = Collectables.Cross;
 angle = -10;

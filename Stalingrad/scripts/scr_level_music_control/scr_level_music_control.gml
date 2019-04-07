@@ -23,11 +23,6 @@ if (inrealboss){
 			audio_sound_gain(bossmusic, 0.02, 0);
 			setToGain = true;
 			
-			obj_controller_ui.leveltext_alpha = 0;
-			obj_controller_ui.leveltext_time = 60 * 3.5;
-			obj_controller_ui.leveltext_other = true;
-			obj_controller_ui.leveltext_text = string(global.boss_name[global.boss_current]);
-			
 			if (level != 9){
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);

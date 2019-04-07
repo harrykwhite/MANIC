@@ -3,7 +3,7 @@ scr_weapon_list();
 scr_level_list();
 scr_pawn_list();
 scr_cutscene_list();
-scr_artifact_list();
+scr_collectable_list();
 scr_upgrade_list();
 
 global.game_pause = false;
@@ -43,27 +43,29 @@ global.fade_object_group[0, 0] = noone;
 global.game_score = 0;
 global.game_score_bonus = 0;
 global.game_score_deaths = 4000;
-global.game_score_artifacts = 0;
+global.game_score_collectables = 0;
 global.game_score_wpnvariation = 0;
 
 global.player_respawn_x = 0;
 global.player_respawn_y = 0;
 global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
+global.player_key_count = 0;
 
 global.worldtrain_room = rm_level_6_00;
 
-global.levelstart_weapon[0] = PlayerWeapon.Revolver;
-global.levelstart_weapon[1] = -1;
+var rslotcount = array_length_1d(global.weapon_slot);
+for(var i = 0; i < rslotcount; i ++){
+	global.sectionstart_weapon[i] = global.weapon_slot[i];
+	
+	if (global.weapon_slot[i] != -1){
+		global.sectionstart_weaponammo[i] = global.weapon_ammomax[global.weapon_slot[i]];
+	}else{
+		global.sectionstart_weaponammo[i] = -1;
+	}
+}
 
-global.sectionstart_weapon[0] = PlayerWeapon.Revolver;
-global.sectionstart_weapon[1] = -1;
-global.sectionstart_weaponammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
-global.sectionstart_weaponammo[1] = -1;
 global.sectionstart_playerhealth = 0;
-
-global.leveldata_weapon_ammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
-global.leveldata_weapon_ammo[1] = -1;
 
 part_system_clear(global.ps_bottom);
 part_system_clear(global.ps_front);

@@ -6,6 +6,7 @@ time = 0;
 scale = 1;
 
 damage_enemy = true;
+damage_player = true;
 damage_companion = false;
 creator = obj_player;
 

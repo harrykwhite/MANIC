@@ -5,6 +5,7 @@ if (instance_exists(target)){
 		dir_to = point_direction(x, y, target.x, target.y);
 		var dirdiff = angle_difference(dir, dir_to);
 		dir += min(abs(dirdiff), 10) * -sign(dirdiff);
+		image_angle = dir;
 		
 		if (shoot_buildup_time > 0){
 			shoot_buildup_time --;

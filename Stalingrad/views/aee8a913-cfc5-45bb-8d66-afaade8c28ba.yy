@@ -11,7 +11,7 @@
         "ce76d72a-dac7-4bfc-8839-ca77a2ae6f41"
     ],
     "filterType": "GMSprite",
-    "folderName": "Artifacts",
+    "folderName": "Collectables",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

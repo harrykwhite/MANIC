@@ -1,5 +1,4 @@
 var scale = random_range(0.95, 1.1);
-event_inherited();
 interact = false;
 interact_break = 10;
 text = "I haven't been given any dialogue yet!";

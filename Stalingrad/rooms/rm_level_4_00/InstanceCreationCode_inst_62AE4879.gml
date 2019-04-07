@@ -1,2 +1,2 @@
 index = PlayerWeapon.Shotgun;
-angle = 50;
+angle = 20;

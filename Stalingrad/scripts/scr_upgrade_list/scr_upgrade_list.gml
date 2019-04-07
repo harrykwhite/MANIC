@@ -5,6 +5,7 @@ enum PlayerUpgrade{
 	AmmoPack,
 	GasMask,
 	RunningBoots,
+	KneePads,
 }
 
 global.upgrade_name[0] = "Goggles";
@@ -48,5 +49,12 @@ global.upgrade_sprite[5] = spr_player_upgrade_runningboots_0;
 global.upgrade_sprite_corpse[5] = spr_player_upgrade_runningboots_0_corpse;
 global.upgrade_sprite_pickup[5] = spr_player_upgrade_runningboots_0_pickup;
 global.upgrade_behind[5] = false;
+
+global.upgrade_name[6] = "Knee Pads";
+global.upgrade_description[6] = "Provides the ability to double dash";
+global.upgrade_sprite[6] = spr_player_upgrade_kneepads_0;
+global.upgrade_sprite_corpse[6] = spr_player_upgrade_kneepads_0_corpse;
+global.upgrade_sprite_pickup[6]= spr_player_upgrade_kneepads_0_pickup;
+global.upgrade_behind[6] = false;
 
 global.player_upgrades = ds_list_create();

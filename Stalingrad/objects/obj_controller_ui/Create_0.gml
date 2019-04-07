@@ -14,6 +14,8 @@ grain_image = 0;
 areacleared_alpha = 0;
 areacleared_time = 0;
 
+stats_y = 0;
+
 weaponammo_scale = 1;
 weaponammo_scaleTo = 1;
 weaponammo_x = 0;

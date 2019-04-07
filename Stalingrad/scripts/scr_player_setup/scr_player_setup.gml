@@ -31,6 +31,7 @@ dash_length_current = 0;
 dash_speed = 0;
 dash_direction = 0;
 dash_time = 30;
+dash_count = 0;
 
 // Footstep
 footstep_sound = -1;

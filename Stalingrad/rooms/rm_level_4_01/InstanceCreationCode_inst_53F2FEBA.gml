@@ -1,2 +1,2 @@
-index = Artifacts.Note;
+index = Collectables.Note;
 angle = 35;

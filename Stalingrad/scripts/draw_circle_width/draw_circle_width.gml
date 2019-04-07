@@ -28,7 +28,7 @@ for (i = 0; i < 360; i += 360 / lod)
 };
 
 //Obs.
-//A large outline width can cause artifacts, especially on low resolutions.
+//A large outline width can cause collectables, especially on low resolutions.
 //Experiment with different values, || alternatively try increasing the size of the application surface.
 
 //Find the latest version of draw_circle_width at:

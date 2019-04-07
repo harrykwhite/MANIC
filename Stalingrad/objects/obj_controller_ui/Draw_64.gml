@@ -192,6 +192,7 @@ if (score_text_alpha > 0){
 
 // Weapon Ammo
 var w = global.weapon_slot[global.weapon_slotcurrent];
+var drawammo = false;
 
 if (global.weapon_slot_standalone != -1){
 	w = global.weapon_slot_standalone;
@@ -202,7 +203,7 @@ if (instance_exists(obj_player)){
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
 				var xx = 51, yy = (74 * (counter + 1)) + 12;
-				var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
+				var col = make_color_hsv(0, 0, (colour_get_value(c_white) - 7) + weaponammo_scale);
 				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
 				
 				draw_set_halign(fa_left);
@@ -222,11 +223,12 @@ if (instance_exists(obj_player)){
 	        if (global.weapon_type[w] == WeaponType.Ranged){
 	            var xx = 131 + weaponammo_x;
 	            var yy = 78 - 30;
-	            var col = make_color_hsv(0, 0, (color_get_value(c_white) - 7) + weaponammo_scale);
+	            var col = make_color_hsv(0, 0, (colour_get_value(c_white) - 7) + weaponammo_scale);
 				
 	            var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 	            var maxammo = global.weapon_ammomax[global.weapon_slot[global.weapon_slotcurrent]];
-	            
+	            drawammo = true;
+				
 				if (global.weapon_slot_standalone != -1){
 					ammo = global.weapon_slot_standalone_ammo;
 					maxammo = global.weapon_ammomax[global.weapon_slot_standalone];
@@ -237,33 +239,35 @@ if (instance_exists(obj_player)){
 				}
 				
 				weaponammo_scale = approach(weaponammo_scale, weaponammo_scaleTo, 20);
-            
+				
 	            if (ammo == 0){
 	                col = c_red;
 	            }
-            
+				
 	            draw_set_halign(fa_left);
 	            draw_set_font(fnt_cambria_2);
 				draw_set_alpha(ui_alpha);
 				
-				if (global.weapon_ammotype[w] == AmmoType.Bullets){
-					scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
-				}
-				
-				if (global.weapon_ammotype[w] == AmmoType.Fuel){
-					scr_text_shadow_transformed(xx, yy, string(ammo) + " fuel", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
-				}
-				
-				if (global.weapon_ammotype[w] == AmmoType.Explosives){
-					scr_text_shadow_transformed(xx, yy, string(ammo) + " explosives", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
-				}
-				
-				if (global.weapon_ammotype[w] == AmmoType.Arrows){
-					scr_text_shadow_transformed(xx, yy, string(ammo) + " arrows", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
-				}
-				
-				if (global.weapon_ammotype[w] == AmmoType.Darts){
-					scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+				switch(global.weapon_ammotype[w]){
+					case AmmoType.Bullets:
+						scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						break;
+					
+					case AmmoType.Fuel:
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " fuel", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						break;
+					
+					case AmmoType.Explosives:
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " explosives", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						break;
+					
+					case AmmoType.Arrows:
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " arrows", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						break;
+					
+					case AmmoType.Darts:
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						break;
 				}
 	        }else{
 				weaponammo_x = 0;
@@ -271,6 +275,17 @@ if (instance_exists(obj_player)){
 		}
     }
 }
+
+// Collectables
+if (!drawammo){
+	stats_y = approach(stats_y, 46, 30);
+}else{
+	stats_y = approach(stats_y, 82, 30);
+}
+
+draw_set_font(fnt_cambria_n1);
+draw_set_halign(fa_left);
+scr_text_shadow(136, stats_y, "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]), make_colour_hsv(0, 0, colour_get_value(c_white) - 7));
 
 /* Time Passed
 var time_passed_text;
@@ -328,7 +343,6 @@ if (bosshealth_width_current > 0){
 	var w = bosshealth_width_current;
 	var h = 12;
 	
-	draw_set_alpha(1);
 	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), c_dkgray, c_ltgray, c_ltgray, 0, true, false);
 	draw_set_alpha(bosshealth_flash * 0.6);
 	draw_set_colour(c_white);
@@ -355,9 +369,9 @@ if (upgrade_indicate_alpha > 0){
 	
 	draw_set_halign(fa_center);
 	draw_set_font(fnt_cambria_3);
-	scr_text_shadow(dwidth / 2, dheight - 120, global.upgrade_name[upgrade_indicate_index], c_white);
+	scr_text_shadow(dwidth / 2, dheight - 249, global.upgrade_name[upgrade_indicate_index], c_white);
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow(dwidth / 2, dheight - 90, global.upgrade_description[upgrade_indicate_index], c_white);
+	scr_text_shadow(dwidth / 2, dheight - 220, global.upgrade_description[upgrade_indicate_index], c_white);
 	
 	draw_set_alpha(1);
 }

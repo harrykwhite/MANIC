@@ -1,2 +1,2 @@
-index = Artifacts.Key;
+index = Collectables.Key;
 angle = 230;

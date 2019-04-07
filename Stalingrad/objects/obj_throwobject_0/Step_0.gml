@@ -60,8 +60,8 @@ if (explode){
 	fl.fadeSpeed = 0.015;
 	
     instance_destroy();
-    scr_damage_custom(damage, 1, 45, 45, 3, damage_enemy, !damage_enemy, damage_companion, true);
-	scr_damage_custom(round(damage / 2), 1, 60, 60, 3, damage_enemy, !damage_enemy, damage_companion, true);
+    scr_damage_custom(damage, 1, 45, 45, 3, damage_enemy, damage_player, damage_companion, true);
+	scr_damage_custom(round(damage / 2), 1, 60, 60, 3, damage_enemy, damage_player, damage_companion, true);
     scr_effect_screenshake(6);
 	scr_effect_freeze(5);
 	scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);

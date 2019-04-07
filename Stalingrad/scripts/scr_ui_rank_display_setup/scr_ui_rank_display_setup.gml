@@ -10,10 +10,10 @@ if (!rank_display_draw){
 	rank_display[1] = false;
 	rank_score[1] = global.game_score_wpnvariation;
 
-	rank_string[2] = "Artifacts";
+	rank_string[2] = "Collectables";
 	rank_alpha[2] = 0;
 	rank_display[2] = false;
-	rank_score[2] = global.game_score_artifacts;
+	rank_score[2] = global.game_score_collectables;
 	
 	rank_string[3] = "Bonus Points";
 	rank_alpha[3] = 0;

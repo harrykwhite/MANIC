@@ -2,19 +2,13 @@ scr_position_view();
 scr_inboss()
 
 // Recording level and section start data
-if (!levelstart_record_set){
-	if (room == rm_level_1_00) || (room == rm_level_2_00) || (room == rm_level_3_00) || (room == rm_level_4_00) || (room == rm_level_5_00) || (room == rm_level_6_00) || (room == rm_level_7_00) || (room == rm_level_8_00) || (room == rm_level_9_00) || (room == rm_level_10_00){
-		global.levelstart_weapon[0] = global.weapon_slot[0];
-		global.levelstart_weapon[1] = global.weapon_slot[1];
-		levelstart_record_set = true;
-	}
-}
-
 if (!sectionstart_record_set){
-	global.sectionstart_weapon[0] = global.weapon_slot[0];
-	global.sectionstart_weapon[1] = global.weapon_slot[1];
-	global.sectionstart_weaponammo[0] = global.weapon_slotammo[0];
-	global.sectionstart_weaponammo[1] = global.weapon_slotammo[1];
+	var rslotcount = array_length_1d(global.weapon_slot);
+	for(var i = 0; i < rslotcount; i ++){
+		global.sectionstart_weapon[i] = global.weapon_slot[i];
+		global.sectionstart_weaponammo[i] = global.weapon_slotammo[i];
+	}
+	
 	global.sectionstart_playerhealth = global.player_health_current;
 	sectionstart_record_set = true;
 }
@@ -115,7 +109,7 @@ if (!global.game_pause){
 // Score
 global.game_score  = 
 global.game_score_bonus +
-global.game_score_artifacts +
+global.game_score_collectables +
 global.game_score_deaths +
 global.game_score_wpnvariation;
 

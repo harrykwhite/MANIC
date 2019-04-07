@@ -8,6 +8,7 @@ time = 0;
 timemax = 0;
 
 damage_enemy = true;
+damage_player = true;
 damage_companion = false;
 creator = obj_player;
 

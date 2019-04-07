@@ -39,6 +39,9 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_resist = 0;
 
+dir = image_angle;
+dir_to = dir;
+
 cutscene_prop = false;
 in_cutscene = false;
 

@@ -1,2 +1,2 @@
-index = Artifacts.Knife;
+index = Collectables.Knife;
 angle = 310;
