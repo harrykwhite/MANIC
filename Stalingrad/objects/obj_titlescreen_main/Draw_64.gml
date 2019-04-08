@@ -1,7 +1,16 @@
+draw_set_colour(c_black);
+draw_set_alpha(0.25);
+draw_rectangle((display_get_gui_width() / 2) - 220, 0, (display_get_gui_width() / 2) + 220, display_get_gui_height(), false);
+draw_set_alpha(1);
+
 if (STATE == GameState.Developer){
+	var titlescale = wave(1.3, 1.35, 4, 0);
+	
 	draw_set_font(fnt_cambria_4);
 	draw_set_halign(fa_center);
-	scr_text_shadow((display_get_gui_width() / 2), (display_get_gui_height() / 2) - 154, "MANIC", c_white);
+	draw_set_valign(fa_middle);
+	scr_text_shadow_transformed((display_get_gui_width() / 2), (display_get_gui_height() / 2) - 158, "MANIC", c_white, titlescale, titlescale, 0);
+	draw_set_valign(fa_top);
 	draw_set_font(fnt_cambria_2);
 	
 	if (!in_settings) && (!in_levelselect){
@@ -31,7 +40,7 @@ if (STATE == GameState.Developer){
 			for(var i = 0; i <= omax; i ++){
 				var str = "";
 				var adjust_str = "";
-				var isbool = false;
+				var isbool = false, isres = false;
 				
 				var value_cur = 0;
 				var value_min = 0;
@@ -61,6 +70,7 @@ if (STATE == GameState.Developer){
 				}
 				
 				isbool = string_pos("[BOOL]", adjust_str) != 0;
+				isres = string_pos("[RESOLUTION]", adjust_str) != 0;
 				if (isbool){
 					if (!value_cur){
 						adjust_str = "Disabled";
@@ -69,13 +79,15 @@ if (STATE == GameState.Developer){
 					}
 				}
 				
-				if (isbool) || (value_cur < value_max){
-					adjust_str += " >";
+				if (isres){
+					var resolutions = scr_resolution_options();
+					adjust_str = ds_list_find_value(resolutions, value_cur);
+					
+					ds_list_destroy(resolutions);
 				}
 				
-				if (isbool) || (value_cur > value_min){
-					adjust_str = string_insert("< ", adjust_str, 0);
-				}
+				adjust_str += " >";
+				adjust_str = string_insert("< ", adjust_str, 0);
 				
 				if (selected == i){
 					draw_set_halign(fa_left);

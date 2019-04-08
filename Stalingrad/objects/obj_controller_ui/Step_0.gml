@@ -120,6 +120,8 @@ if (!global.game_pause){
 						break;
 					
 					case 2:
+						global.player_companion = -1;
+						global.player_companion_health = -1;
 						scr_fade_object_list_reset();
 						scr_global_set();
 						audio_stop_all();

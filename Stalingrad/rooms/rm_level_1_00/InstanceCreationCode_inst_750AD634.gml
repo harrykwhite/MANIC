@@ -1,1 +1,0 @@
-index = PlayerUpgrade.AmmoPack;

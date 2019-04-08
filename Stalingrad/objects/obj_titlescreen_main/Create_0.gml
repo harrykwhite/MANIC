@@ -49,19 +49,12 @@ option_setting_gameplay_value_max[2] = 30;
 option_setting_gameplay_value_interval[2] = 5;
 option_setting_gameplay_unit[2] = "";
 
-option_setting_gameplay[3] = "Max Decal";
-option_setting_gameplay_value[3] = 30;
-option_setting_gameplay_value_min[3] = 10;
-option_setting_gameplay_value_max[3] = 60;
-option_setting_gameplay_value_interval[3] = 5;
-option_setting_gameplay_unit[3] = "";
-
-option_setting_gameplay[4] = "Flashing";
-option_setting_gameplay_value[4] = 100;
-option_setting_gameplay_value_min[4] = 0;
-option_setting_gameplay_value_max[4] = 100;
-option_setting_gameplay_value_interval[4] = 10;
-option_setting_gameplay_unit[4] = "%";
+option_setting_gameplay[3] = "Flashing";
+option_setting_gameplay_value[3] = 100;
+option_setting_gameplay_value_min[3] = 0;
+option_setting_gameplay_value_max[3] = 100;
+option_setting_gameplay_value_interval[3] = 10;
+option_setting_gameplay_unit[3] = "%";
 #endregion
 
 #region Options -> Settings -> Display
@@ -73,11 +66,11 @@ option_setting_display_value_interval[0] = 1;
 option_setting_display_unit[0] = "[BOOL]";
 
 option_setting_display[1] = "Resolution";
-option_setting_display_value[1] = 0;
+option_setting_display_value[1] = 4;
 option_setting_display_value_min[1] = 0;
-option_setting_display_value_max[1] = 1;
+option_setting_display_value_max[1] = 4;
 option_setting_display_value_interval[1] = 1;
-option_setting_display_unit[1] = "[BOOL]";
+option_setting_display_unit[1] = "[RESOLUTION]";
 #endregion
 
 #region Options -> Settings -> Audio
