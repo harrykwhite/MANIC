@@ -211,7 +211,7 @@ if (game_opening_intro){
 	}
 	
 	if (game_opening_intro_alpha > 0){
-		game_opening_intro_alpha -= 0.005 * game_opening_intro_speed;
+		game_opening_intro_alpha -= 0.004 * game_opening_intro_speed;
 		game_opening_intro_text_time -= game_opening_intro_speed;
 		
 		if (game_opening_intro_text_time <= 0){
@@ -219,7 +219,7 @@ if (game_opening_intro){
 			
 			if (game_opening_intro_text_stage == 0){
 				if (game_opening_intro_text_alpha <= 0){
-					game_opening_intro_text_time = 60 * 3.85;
+					game_opening_intro_text_time = 60 * 2.9;
 					game_opening_intro_text_stage = 1;
 					game_opening_intro_text_alpha = -0.15;
 				}

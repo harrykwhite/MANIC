@@ -40,10 +40,12 @@ if (blackbar_sizereal > 2){
 // Game Opening Intro
 if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
 	if (game_opening_intro){
-		var text = "HEAVEN'S MASSACRE";
-		
+		var text = "MANIC";
 		if (game_opening_intro_text_stage == 0){
 			text = "Geta Presents";
+			draw_set_font(fnt_cambria_1);
+		}else{
+			draw_set_font(fnt_cambria_3);
 		}
 		
 		draw_set_alpha(game_opening_intro_alpha);
@@ -51,7 +53,6 @@ if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_p
 		draw_rectangle(0, 0, dwidth, dheight, false);
 		
 		draw_set_alpha(game_opening_intro_text_alpha);
-		draw_set_font(fnt_cambria_1);
 		draw_set_halign(fa_center);
 		scr_text_shadow(dwidth / 2, dheight / 2, text, c_white);
 	}

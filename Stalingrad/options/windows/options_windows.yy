@@ -10,7 +10,7 @@
     "option_windows_copyright_info": "",
     "option_windows_description_info": "",
     "option_windows_display_cursor": false,
-    "option_windows_display_name": "Heaven's Massacre Alpha",
+    "option_windows_display_name": "MANIC ALPHA",
     "option_windows_enable_steam": false,
     "option_windows_executable_name": "Stalingrad Alpha",
     "option_windows_icon": "${options_dir}\\windows\\icons\\icon.ico",

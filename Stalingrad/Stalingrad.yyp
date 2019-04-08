@@ -1311,14 +1311,6 @@
             }
         },
         {
-            "Key": "1fbdb23f-d7f2-40fd-b790-0d1443ea2b6c",
-            "Value": {
-                "id": "0c0d6d32-b173-4c0a-82e5-b7f51606ecfc",
-                "resourcePath": "fonts\\fnt_cambria_0\\fnt_cambria_0.yy",
-                "resourceType": "GMFont"
-            }
-        },
-        {
             "Key": "20251f32-9b45-40ef-9577-9c49beaef196",
             "Value": {
                 "id": "f794f885-a570-491b-b64e-b7e94faa11bf",
@@ -2791,6 +2783,14 @@
             }
         },
         {
+            "Key": "3f383ca9-17f5-41e2-8fe7-0e6e007471b2",
+            "Value": {
+                "id": "a970a754-ea66-4b29-98fd-edb509f0d6ff",
+                "resourcePath": "sprites\\sprite449\\sprite449.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "3f716796-36ed-4038-93fc-b72b4ff625a8",
             "Value": {
                 "id": "ce0b28e6-93b3-4481-a90a-0dac05bb3131",
@@ -3202,7 +3202,7 @@
             "Key": "49a26dd9-45e6-43b0-ab4e-e1985b632298",
             "Value": {
                 "id": "0c1ef1f8-a4b7-4ab8-b577-de2e7c18b80e",
-                "resourcePath": "objects\\obj_title_0_controller\\obj_title_0_controller.yy",
+                "resourcePath": "objects\\obj_titlescreen_main\\obj_titlescreen_main.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -3444,6 +3444,14 @@
                 "id": "c71ad6dc-a5cc-4e14-96bb-a2f42e4fd487",
                 "resourcePath": "sprites\\spr_decorative_1\\spr_decorative_1.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "511114af-515b-4ad9-82b9-b8bc35fe2b03",
+            "Value": {
+                "id": "b17c15f5-42de-456e-8fd6-bdf146745ec2",
+                "resourcePath": "fonts\\fnt_cambria_6\\fnt_cambria_6.yy",
+                "resourceType": "GMFont"
             }
         },
         {
@@ -5759,6 +5767,14 @@
             }
         },
         {
+            "Key": "8b531ab0-2acc-4575-abe0-c34560a41db8",
+            "Value": {
+                "id": "c38e6eb1-c374-487f-a7a5-b36339d7d10a",
+                "resourcePath": "fonts\\fnt_cambria_5\\fnt_cambria_5.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "8b55b162-56be-4003-8bd5-a205e1d41a38",
             "Value": {
                 "id": "cb9bd343-5ca0-43a5-a726-9742900a7c1d",
@@ -6484,6 +6500,14 @@
                 "id": "a4ac166a-7df2-46ba-b253-997eb21dd50f",
                 "resourcePath": "objects\\obj_snowbuilding_1\\obj_snowbuilding_1.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "97d10d7e-46df-4bdf-90ef-d26bd60d3c3f",
+            "Value": {
+                "id": "df90c1f0-a619-494a-9df2-f1acb1b7d8cc",
+                "resourcePath": "fonts\\fnt_cambria_0\\fnt_cambria_0.yy",
+                "resourceType": "GMFont"
             }
         },
         {
@@ -9580,6 +9604,14 @@
                 "id": "797873d8-b539-4bcb-bbda-457a462d4b1d",
                 "resourcePath": "sprites\\spr_enemy_0_light_walk_0\\spr_enemy_0_light_walk_0.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "ebc8b764-83f1-48e2-9cf6-8287cbcc6ea2",
+            "Value": {
+                "id": "8f56d95d-3db1-45b5-9d18-542a62bfdf4d",
+                "resourcePath": "fonts\\fnt_cambria_7\\fnt_cambria_7.yy",
+                "resourceType": "GMFont"
             }
         },
         {

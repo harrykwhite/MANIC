@@ -278,7 +278,7 @@ if (instance_exists(obj_player)){
 
 // Collectables
 if (!drawammo){
-	stats_y = approach(stats_y, 46, 30);
+	stats_y = approach(stats_y, 48, 30);
 }else{
 	stats_y = approach(stats_y, 82, 30);
 }
