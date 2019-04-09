@@ -8,7 +8,7 @@ var mdir = point_direction(x, y, mouse_x, mouse_y);
 sprite_index = spr_weapon_29;
 
 if (use_current){
-    if (mouse_check_button(mb_left)){
+    if (mouse_check_button(obj_controller_all.key_attack)){
         if (shoot_can) && (global.weapon_slot_standalone_ammo > 0){
             scr_effect_screenshake(2);
 			scr_player_flash(6);
@@ -40,7 +40,7 @@ if (use_current){
         }
     }
 	
-	if (mouse_check_button_pressed(mb_left)){
+	if (mouse_check_button_pressed(obj_controller_all.key_attack)){
 		if (global.weapon_slot_standalone_ammo <= 0){
 			scr_sound_play(snd_weapon_click_0, false, 0.8, 1);
 		}

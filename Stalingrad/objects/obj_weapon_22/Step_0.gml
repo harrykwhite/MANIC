@@ -34,12 +34,12 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
         }
     }
     
-    if (mouse_check_button(mb_left)) || (mouse_check_button(mb_right)){
-        if (throw_time < throw_time_max){ // Charge up the throwing metre.
+    if (mouse_check_button(obj_controller_all.key_attack)) || (mouse_check_button(obj_controller_all.key_throw)){
+        if (throw_time < throw_time_max){
             throw_time ++;
         }
         
-        if (throw_alpha < 1){ // The alpha of the throw metre.
+        if (throw_alpha < 1){
             throw_alpha += 0.1;
         }
     

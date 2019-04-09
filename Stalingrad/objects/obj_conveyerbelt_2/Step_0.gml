@@ -8,10 +8,10 @@ image_speed = 1;
 
 if (global.cutscene_current == -1) && (!deactivated){
 	if (place_meeting(x, y + 15, obj_player)){
-		scr_ui_control_indicate("Interact [E]");
+		scr_ui_control_indicate("Interact");
 		sprite_index = spr_conveyerbelt_2_interact;
 		
-		if (keyboard_check_pressed(ord("E"))){
+		if (keyboard_check_pressed(obj_controller_all.key_interact)){
 			obj_controller_gameplay.cutscene_conveyerbelt_x = x + (sprite_width / 2);
 			obj_controller_gameplay.cutscene_conveyerbelt_y = y + 45;
 			global.cutscene_current = 7;

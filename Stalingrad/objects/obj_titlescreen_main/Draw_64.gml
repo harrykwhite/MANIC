@@ -13,6 +13,16 @@ if (STATE == GameState.Developer){
 	draw_set_valign(fa_top);
 	draw_set_font(fnt_cambria_2);
 	
+	if (searching_for_input){
+		var str = "Searching for keyboard input...";
+		
+		if (searching_for_input_mouse){
+			str = "Searching for mouse input...";
+		}
+		
+		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 150, str, c_white);
+	}
+	
 	if (!in_settings) && (!in_levelselect){
 		for(var i = 0; i <= option_max; i ++){
 			var str = option[i];
@@ -35,6 +45,8 @@ if (STATE == GameState.Developer){
 				omax = option_setting_display_max;
 			}else if (in_settings_audio){
 				omax = option_setting_audio_max;
+			}else if (in_settings_controls){
+				omax = option_setting_controls_max;
 			}
 			
 			for(var i = 0; i <= omax; i ++){
@@ -67,6 +79,18 @@ if (STATE == GameState.Developer){
 					
 					str = option_setting_audio[i];
 					adjust_str = string(value_cur) + option_setting_audio_unit[i];
+				}else if (in_settings_controls){
+					value_cur = option_setting_controls_value[i];
+					value_min = 0;
+					value_max = 0;
+					
+					str = option_setting_controls[i];
+					
+					if (!option_setting_controls_ismouse[i]){
+						adjust_str = scr_keycheck_string(value_cur);
+					}else{
+						adjust_str = scr_mousecheck_string(value_cur);
+					}
 				}
 				
 				isbool = string_pos("[BOOL]", adjust_str) != 0;
@@ -86,8 +110,10 @@ if (STATE == GameState.Developer){
 					ds_list_destroy(resolutions);
 				}
 				
-				adjust_str = string(adjust_str) + " >";
-				adjust_str = string_insert("< ", adjust_str, 0);
+				if (!in_settings_controls){
+					adjust_str = string(adjust_str) + " >";
+					adjust_str = string_insert("< ", adjust_str, 0);
+				}
 				
 				if (selected == i){
 					draw_set_halign(fa_left);

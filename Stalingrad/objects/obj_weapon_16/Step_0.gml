@@ -8,7 +8,7 @@ var mdir = point_direction(x, y, mouse_x, mouse_y);
 var xpos = x + lengthdir_x(35, mdir);
 var ypos = y + lengthdir_y(35, mdir);
 
-if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!global.game_pause){
+if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player_stamina_active) && (!global.game_pause){
     if (attack_can){
 		scr_camera_to_player();
         scr_effect_screenshake(3);
@@ -30,7 +30,7 @@ if (mouse_check_button_pressed(mb_left)) && (global.player_stamina_active) && (!
 }
 
 if (global.player_stamina_active){
-    if (mouse_check_button_pressed(mb_right)){
+    if (mouse_check_button_pressed(obj_controller_all.key_throw)){
 		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);

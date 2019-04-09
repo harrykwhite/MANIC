@@ -8,7 +8,7 @@ var mdir = point_direction(x, y, mouse_x, mouse_y);
 sprite_index = spr_weapon_17;
 
 if (use_current){
-    if (mouse_check_button(mb_left)){
+    if (mouse_check_button(obj_controller_all.key_attack)){
         if (shoot_can) && (global.weapon_slot_standalone_ammo > 0){
             scr_effect_screenshake(2);
 			scr_player_flash(6);
@@ -40,7 +40,7 @@ if (use_current){
         }
     }
 	
-	if (mouse_check_button_pressed(mb_left)){
+	if (mouse_check_button_pressed(obj_controller_all.key_attack)){
 		if (global.weapon_slot_standalone_ammo <= 0){
 			scr_sound_play(snd_weapon_click_0, false, 0.8, 1);
 		}
@@ -63,7 +63,7 @@ if (distance_to_object(obj_player) < pickup_range){
 	
 	if (!use_current){
 		sprite_index = spr_weapon_17_interact;
-		scr_ui_control_indicate(global.weapon_name[index] + " [E]");
+		scr_ui_control_indicate(global.weapon_name[index] + "");
 	}
 }else{
 	pickup = false;
@@ -72,7 +72,7 @@ if (distance_to_object(obj_player) < pickup_range){
 if (instance_exists(obj_player)) && (global.player_stamina_active){
     
     // Pick up if player is near and E is pressed.
-	var mount = keyboard_check_pressed(ord("E"));
+	var mount = keyboard_check_pressed(obj_controller_all.key_interact);
 	
     if (pickup){
         if (mount){

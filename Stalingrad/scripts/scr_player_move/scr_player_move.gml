@@ -19,6 +19,12 @@ if (in_minecart){
 if (global.weapon_slot_standalone == -1){
 	
 	// Axis
+	var key_right = keyboard_check(obj_controller_all.key_right);
+	var key_left = keyboard_check(obj_controller_all.key_left);
+	var key_up = keyboard_check(obj_controller_all.key_up);
+	var key_down = keyboard_check(obj_controller_all.key_down);
+	var key_dash = keyboard_check_pressed(obj_controller_all.key_dash);
+	
 	xaxis = key_right - key_left;
 	yaxis = key_down - key_up;
 	
@@ -137,7 +143,7 @@ if (global.weapon_slot_standalone == -1){
 		knockback_speed = 0;
 	}
 	
-	if (key_space) && (dash_time <= 0) && (global.cutscene_current == -1) && (move_xTo == -1) && (move_yTo == -1){
+	if (key_dash) && (dash_time <= 0) && (global.cutscene_current == -1) && (move_xTo == -1) && (move_yTo == -1){
 		dash_length = 55;
 		dash_speed = spd_max * 3.65;
 		dash_time = 20;

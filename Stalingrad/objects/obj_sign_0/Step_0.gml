@@ -11,10 +11,10 @@ if (instance_exists(player)){
 
 if (interact){
 	sprite_index = spr_sign_0_interact;
-	scr_ui_control_indicate("Read [E]");
+	scr_ui_control_indicate("Read");
 	
 	if (interact_break <= 0){
-		if (keyboard_check_pressed(ord("E"))){
+		if (keyboard_check_pressed(obj_controller_all.key_interact)){
 			interact_break = 15;
 			obj_controller_ui.pausedialogue = true;
 			obj_controller_ui.pausedialogue_type = 0;

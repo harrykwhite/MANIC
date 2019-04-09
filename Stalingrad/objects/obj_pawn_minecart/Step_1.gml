@@ -49,7 +49,7 @@ if (instance_exists(obj_player)){
 	
 	// Equip
 	var pickup_range = 10;
-	var pressed = keyboard_check_pressed(ord("E"));
+	var pressed = keyboard_check_pressed(obj_controller_all.key_interact);
 	var isme = obj_player.minecart == id;
 	
 	if (isme){
@@ -85,7 +85,7 @@ if (instance_exists(obj_player)){
 					mysprite = spr_pawn_minecart_1_interact;
 				}
 				
-				scr_ui_control_indicate("Minecart [E]");
+				scr_ui_control_indicate("Minecart");
 		
 				if (instance_exists(gun)){
 					gun.interact = true;

@@ -23,10 +23,10 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 						}
 					}
 					
-					scr_ui_control_indicate(global.level_name[moveto_level] + " [E]");
+					scr_ui_control_indicate(global.level_name[moveto_level] + "");
 				}
 				
-				if (!keyboard_check_pressed(ord("E"))){
+				if (!keyboard_check_pressed(obj_controller_all.key_interact)){
 					exit;
 				}
 			}

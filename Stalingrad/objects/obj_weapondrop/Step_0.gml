@@ -48,7 +48,7 @@ if (bounce_time > 0){
 if (instance_exists(obj_player)){
     if (distance_to_object(obj_player) < pickup_range){
         pickup = true;
-		scr_ui_control_indicate(string(global.weapon_name[index]) + " [E]");
+		scr_ui_control_indicate(string(global.weapon_name[index]) + "");
     }else{
         pickup = false;
     }
@@ -58,7 +58,7 @@ if (instance_exists(obj_player)){
 	}
     
     if (pickup){
-        if (keyboard_check_pressed(ord("E"))) && (global.player_stamina_active){
+        if (keyboard_check_pressed(obj_controller_all.key_interact)) && (global.player_stamina_active){
 			if (global.weapon_slot_standalone == -1){
 	            
 				var oldweapon = global.weapon_slot[global.weapon_slotcurrent];

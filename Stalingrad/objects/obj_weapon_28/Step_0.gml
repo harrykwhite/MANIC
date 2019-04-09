@@ -8,7 +8,7 @@ var mdir = point_direction(x, y, mouse_x, mouse_y);
 
 if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
 	
-    if (mouse_check_button_pressed(mb_left)) && (shoot_can){
+    if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (shoot_can){
         
 		scr_player_knockback_initiate(0.5, mdir);
 		scr_camera_to_player();
@@ -44,7 +44,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
 
 if (global.player_stamina_active){
-    if (mouse_check_button_pressed(mb_right)){
+    if (mouse_check_button_pressed(obj_controller_all.key_throw)){
 		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);
@@ -66,7 +66,7 @@ if (global.player_stamina_active){
     }
 }
 
-//Timer
+// Timer
 if (shoot_time > 0){
     shoot_time--;
 	

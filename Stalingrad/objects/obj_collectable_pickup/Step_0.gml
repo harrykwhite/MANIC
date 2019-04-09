@@ -19,13 +19,13 @@ if (global.game_pause) || (global.cutscene_current != -1){
 if (instance_exists(obj_player)){
     if (distance_to_object(obj_player) < pickup_range){
         pickup = true;
-		scr_ui_control_indicate("Collectable [E]");
+		scr_ui_control_indicate("Collectable");
     }else{
         pickup = false;
     }
     
     if (pickup){
-        if (keyboard_check_pressed(ord("E"))){
+        if (keyboard_check_pressed(obj_controller_all.key_interact)){
 			instance_destroy();
 			
 			scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);

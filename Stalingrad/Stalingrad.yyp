@@ -2255,6 +2255,14 @@
             }
         },
         {
+            "Key": "34b95f1d-2851-40a0-bf58-7c9f9fe43f26",
+            "Value": {
+                "id": "46d4186c-8327-42a4-afcc-4d3e789728a6",
+                "resourcePath": "scripts\\scr_mousecheck_string\\scr_mousecheck_string.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "34dfb8c6-2d4d-403e-b7b3-7ec340fa5f2b",
             "Value": {
                 "id": "d6f7eb9b-68f9-459d-acb7-769abf8b4b19",
@@ -4635,6 +4643,14 @@
             "Value": {
                 "id": "b7e726e5-69e4-474f-b3cb-771b2105aaad",
                 "resourcePath": "scripts\\scr_cutscene_4\\scr_cutscene_4.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "6e47af72-51f7-4ac4-a451-ee96b1cf4ebf",
+            "Value": {
+                "id": "51c1020b-2ee5-4b5b-8867-c8446ec29529",
+                "resourcePath": "scripts\\scr_keycheck_string\\scr_keycheck_string.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -8271,6 +8287,14 @@
             }
         },
         {
+            "Key": "c61522d9-90f0-4efa-bd2f-2ab87b184001",
+            "Value": {
+                "id": "9fa8fb69-b9e3-43ab-b89b-14939f5a6093",
+                "resourcePath": "scripts\\scr_update_real_volumes\\scr_update_real_volumes.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "c65eef25-8ff3-48a8-b64f-f9568a1766b5",
             "Value": {
                 "id": "56b24958-757a-4303-80ff-ffd76c740f44",
@@ -10906,7 +10930,10 @@
         "94f2427f-b9f1-4b98-ad96-f2bacdad888f",
         "c411ae46-c47e-42b1-ae49-4331061cd7f1",
         "e4c622ab-fa1f-422b-b998-b61937e984f4",
-        "632a858c-e211-4a1b-a7d8-4a905e4b4f60"
+        "632a858c-e211-4a1b-a7d8-4a905e4b4f60",
+        "6e47af72-51f7-4ac4-a451-ee96b1cf4ebf",
+        "34b95f1d-2851-40a0-bf58-7c9f9fe43f26",
+        "c61522d9-90f0-4efa-bd2f-2ab87b184001"
     ],
     "tutorial": ""
 }

@@ -11,9 +11,9 @@ if (instance_exists(player)){
 
 if (interact) && (active){
 	sprite_index = spr_terminal_0_interact;
-	scr_ui_control_indicate("Interact [E]");
+	scr_ui_control_indicate("Interact");
 	
-	if (keyboard_check_pressed(ord("E"))){
+	if (keyboard_check_pressed(obj_controller_all.key_interact)){
 		active = false;
 		
 		switch(special){

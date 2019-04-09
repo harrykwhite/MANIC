@@ -391,10 +391,12 @@ if (control_indicate){
 }
 
 if (control_indicate_text != ""){
+	var buttonstr = scr_keycheck_string(obj_controller_all.key_interact);
+	
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_right);
 	draw_set_alpha(0.8);
-	scr_text_shadow(dwidth - control_indicate_x, dheight - 64, control_indicate_text, c_white);
+	scr_text_shadow(dwidth - control_indicate_x, dheight - 64, control_indicate_text + " [" + buttonstr + "]", c_white);
 }
 
 control_indicate = false;
@@ -560,7 +562,7 @@ if (pausedialogue_alpha > 0){
 			break;
 	}
 
-	scr_text_shadow((dwidth / 2) + 220, (dheight / 2) + 220, "Resume [E]", c_white);
+	scr_text_shadow((dwidth / 2) + 220, (dheight / 2) + 220, "Resume", c_white);
 	draw_set_valign(fa_top);
 }
 

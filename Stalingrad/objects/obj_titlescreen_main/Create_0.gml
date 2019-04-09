@@ -125,11 +125,54 @@ option_setting_audio_value_interval[3] = 10;
 option_setting_audio_unit[3] = "%";
 #endregion
 
+#region Options -> Settings -> Controls
+option_setting_controls[0] = "Move Right";
+option_setting_controls_edit[0] = Options.Input_MoveRight;
+option_setting_controls_value[0] = global.game_option[| Options.Input_MoveRight];
+option_setting_controls_ismouse[0] = false;
+
+option_setting_controls[1] = "Move Left";
+option_setting_controls_edit[1] = Options.Input_MoveLeft;
+option_setting_controls_value[1] = global.game_option[| Options.Input_MoveLeft];
+option_setting_controls_ismouse[1] = false;
+
+option_setting_controls[2] = "Move Up";
+option_setting_controls_edit[2] = Options.Input_MoveUp;
+option_setting_controls_value[2] = global.game_option[| Options.Input_MoveUp];
+option_setting_controls_ismouse[2] = false;
+
+option_setting_controls[3] = "Move Down";
+option_setting_controls_edit[3] = Options.Input_MoveDown;
+option_setting_controls_value[3] = global.game_option[| Options.Input_MoveDown];
+option_setting_controls_ismouse[3] = false;
+
+option_setting_controls[4] = "Dash";
+option_setting_controls_edit[4] = Options.Input_Dash;
+option_setting_controls_value[4] = global.game_option[| Options.Input_Dash];
+option_setting_controls_ismouse[4] = false;
+
+option_setting_controls[5] = "Interact";
+option_setting_controls_edit[5] = Options.Input_Interact;
+option_setting_controls_value[5] = global.game_option[| Options.Input_Interact];
+option_setting_controls_ismouse[5] = false;
+
+option_setting_controls[6] = "Attack";
+option_setting_controls_edit[6] = Options.Input_Attack;
+option_setting_controls_value[6] = global.game_option[| Options.Input_Attack];
+option_setting_controls_ismouse[6] = true;
+
+option_setting_controls[7] = "Throw";
+option_setting_controls_edit[7] = Options.Input_Throw;
+option_setting_controls_value[7] = global.game_option[| Options.Input_Throw];
+option_setting_controls_ismouse[7] = true;
+#endregion
+
 option_max = array_length_1d(option) - 1;
 option_setting_max = array_length_1d(option_setting) - 1;
 option_setting_gameplay_max = array_length_1d(option_setting_gameplay) - 1;
 option_setting_display_max = array_length_1d(option_setting_display) - 1;
 option_setting_audio_max = array_length_1d(option_setting_audio) - 1;
+option_setting_controls_max = array_length_1d(option_setting_controls) - 1;
 
 in_settings = false;
 in_settings_gameplay = false;
@@ -137,5 +180,8 @@ in_settings_display = false;
 in_settings_audio = false;
 in_settings_controls = false;
 
+searching_for_input = false;
+searching_for_input_wait = 0;
+searching_for_input_mouse = false;
 in_levelselect = false;
 selected = 0;

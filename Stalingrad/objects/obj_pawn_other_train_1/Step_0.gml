@@ -125,8 +125,8 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 				if (point_distance(x, y + 6, obj_player.x, obj_player.y) < 30){
 					if (obj_player.y > y){
 						interact = true;
-						scr_ui_control_indicate("Board Train [E]")
-						if (keyboard_check_pressed(ord("E"))){
+						scr_ui_control_indicate("Board Train")
+						if (keyboard_check_pressed(obj_controller_all.key_interact)){
 							interact_break = 10;
 							global.game_pause = true;
 							

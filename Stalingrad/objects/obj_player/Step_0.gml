@@ -45,13 +45,6 @@ flashlight_alpha = clamp(flashlight_alpha, 0, 1);
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
-// Keys
-key_left = keyboard_check(ord("A"));
-key_right = keyboard_check(ord("D"));
-key_up = keyboard_check(ord("W"));
-key_down = keyboard_check(ord("S"));
-key_space = keyboard_check_pressed(vk_space);
-
 // Script
 scr_player_update();
 script_execute(state);

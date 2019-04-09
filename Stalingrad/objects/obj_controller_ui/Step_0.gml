@@ -165,7 +165,7 @@ if (!global.game_pause){
 		if (pausedialogue_time < 20){
 			pausedialogue_time ++;
 		}else{
-			if (keyboard_check_pressed(ord("E"))){
+			if (keyboard_check_pressed(obj_controller_all.key_interact)){
 				pausedialogue = false;
 				pausedialogue_time = 0;
 				global.game_pause = false;
