@@ -1,7 +1,7 @@
 // Returns a list of possible resolution options
 var options = ds_list_create();
-var dwidth = display_get_gui_width();
-var dheight = display_get_gui_height();
+var dwidth = display_get_width();
+var dheight = display_get_height();
 
 ds_list_add(options, string(dwidth / 4) + "x" + string(dheight / 4));
 ds_list_add(options, string(dwidth / 3) + "x" + string(dheight / 3));

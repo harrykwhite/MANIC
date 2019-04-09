@@ -25,10 +25,9 @@ if (!instance_exists(obj_player)){
 	instance_create(0, 0, obj_player);
 }
 
-ini_open("save_respawn.ini");
 obj_player.x = global.player_respawn_x;
 obj_player.y = global.player_respawn_y;
-ini_close();
+
 
 var safe = instance_create(obj_player.x, obj_player.y, obj_block_safezone);
 safe.image_xscale = 4;
@@ -37,7 +36,6 @@ safe.x -= (safe.sprite_width * 0.5);
 safe.y -= (safe.sprite_height * 0.5);
 
 global.player_health_current = global.player_health_max;
-
 global.weapon_slotcurrent = 0;
 
 for(var i = 0; i < 2; i ++){

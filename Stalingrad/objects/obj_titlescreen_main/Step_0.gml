@@ -35,7 +35,7 @@ if (random(170) < 1){
 		}
 	}
 }
-	
+
 // Rain
 repeat(2){
     part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(-150, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) - 10, global.pt_rain_0, 1);
@@ -130,6 +130,9 @@ if (fade){
 				}else{
 					option_setting_gameplay_value[selected] = option_setting_gameplay_value_min[selected];
 				}
+				
+				global.game_option[| option_setting_gameplay_edit[selected]] = option_setting_gameplay_value[selected];
+				scr_options_refresh();
 			}
 			
 			if (keyboard_check_pressed(ord("A")) || keyboard_check_pressed(vk_left)){
@@ -138,6 +141,9 @@ if (fade){
 				}else{
 					option_setting_gameplay_value[selected] = option_setting_gameplay_value_max[selected];
 				}
+				
+				global.game_option[| option_setting_gameplay_edit[selected]] = option_setting_gameplay_value[selected];
+				scr_options_refresh();
 			}
 		}else if (in_settings_display){
 			if (keyboard_check_pressed(ord("D")) || keyboard_check_pressed(vk_right)){
@@ -146,6 +152,9 @@ if (fade){
 				}else{
 					option_setting_display_value[selected] = 0;
 				}
+				
+				global.game_option[| option_setting_display_edit[selected]] = option_setting_display_value[selected];
+				scr_options_refresh();
 			}
 			
 			if (keyboard_check_pressed(ord("A")) || keyboard_check_pressed(vk_left)){
@@ -154,6 +163,9 @@ if (fade){
 				}else{
 					option_setting_display_value[selected] = option_setting_display_value_max[selected];
 				}
+				
+				global.game_option[| option_setting_display_edit[selected]] = option_setting_display_value[selected];
+				scr_options_refresh();
 			}
 		}else if (in_settings_audio){
 			if (keyboard_check_pressed(ord("D")) || keyboard_check_pressed(vk_right)){
@@ -162,6 +174,9 @@ if (fade){
 				}else{
 					option_setting_audio_value[selected] = 0;
 				}
+				
+				global.game_option[| option_setting_audio_edit[selected]] = option_setting_audio_value[selected];
+				scr_options_refresh();
 			}
 			
 			if (keyboard_check_pressed(ord("A")) || keyboard_check_pressed(vk_left)){
@@ -170,6 +185,9 @@ if (fade){
 				}else{
 					option_setting_audio_value[selected] = option_setting_audio_value_max[selected];
 				}
+				
+				global.game_option[| option_setting_audio_edit[selected]] = option_setting_audio_value[selected];
+				scr_options_refresh();
 			}
 		}
 	}

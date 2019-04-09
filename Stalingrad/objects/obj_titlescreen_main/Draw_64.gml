@@ -86,7 +86,7 @@ if (STATE == GameState.Developer){
 					ds_list_destroy(resolutions);
 				}
 				
-				adjust_str += " >";
+				adjust_str = string(adjust_str) + " >";
 				adjust_str = string_insert("< ", adjust_str, 0);
 				
 				if (selected == i){
