@@ -205,15 +205,17 @@ if (!global.game_pause){
 		rain_thunder_interval--;
 	}else{
 		var index = random(array_length_1d(rain_thunder) - 1);
-		
 		rain_thunder_interval = 60 * random_range(10, 23);
-		audio_play_sound(rain_thunder_flash[index], 3, false);
+		
+		var thunder = audio_play_sound(rain_thunder_flash[index], 3, false);
+		audio_sound_gain(thunder, 1 * obj_controller_all.real_ambience_volume, 0);
+		
 		scr_effect_flash(rain_thunder_flash_amount[index], 0.05, c_white, true);
 	}
 	
 	if (!audio_is_playing(rain)){
 		rain = audio_play_sound(m_ambience_rain_0, 3, true);
 		audio_sound_gain(rain, 0, 0);
-		audio_sound_gain(rain, 1, 8000);
+		audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 8000);
 	}
 }

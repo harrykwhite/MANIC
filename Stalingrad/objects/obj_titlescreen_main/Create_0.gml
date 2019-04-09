@@ -1,3 +1,13 @@
+if (!ds_exists(global.game_option, ds_type_list)){
+	with(obj_controller_all){
+		scr_option_init();
+	}
+}
+
+var rain = audio_play_sound(m_ambience_rain_0, 3, true);
+audio_sound_gain(rain, 0, 0);
+audio_sound_gain(rain, 0.6 * obj_controller_all.real_ambience_volume, 4000);
+
 sprite_index = noone;
 
 fade = false;
@@ -5,6 +15,8 @@ fade_alpha = 1;
 fade_speed = 0;
 fade_goto = noone;
 fade_opening = true;
+
+press_break = 0;
 
 #region Options
 option[0] = "Start Game";
@@ -74,7 +86,7 @@ option_setting_display[1] = "Resolution";
 option_setting_display_edit[1] = Options.Resolution;
 option_setting_display_value[1] = global.game_option[| Options.Resolution];
 option_setting_display_value_min[1] = 0;
-option_setting_display_value_max[1] = 3;
+option_setting_display_value_max[1] = 8;
 option_setting_display_value_interval[1] = 1;
 option_setting_display_unit[1] = "[RESOLUTION]";
 #endregion

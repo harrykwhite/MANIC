@@ -14,7 +14,7 @@ if (!sectionstart_record_set){
 }
 
 // Managing corpse count
-if (instance_number(obj_enemy_corpse) > global.game_max_corpse_count){
+if (instance_number(obj_enemy_corpse) > global.game_option[| Options.MaxCorpses]){
 	var head = ds_queue_head(corpse_queue);
 	if (instance_exists(head)){
 		instance_destroy(head);

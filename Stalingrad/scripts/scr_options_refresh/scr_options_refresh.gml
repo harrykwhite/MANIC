@@ -12,5 +12,9 @@ ini_write_real("Options", "MusicVolume", global.game_option[| Options.MusicVolum
 ini_write_real("Options", "AmbienceVolume", global.game_option[| Options.AmbienceVolume]);
 
 ini_close();
-
 window_set_fullscreen(global.game_option[| Options.Fullscreen]);
+scr_display_update();
+
+if (room == rm_title_0){
+	audio_sound_gain(m_ambience_rain_0, 0.6 * obj_controller_all.real_ambience_volume, 50);
+}

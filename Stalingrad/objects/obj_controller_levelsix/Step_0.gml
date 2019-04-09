@@ -83,7 +83,7 @@ if (!global.game_pause){
 	if (!audio_is_playing(wind)){
 		wind = audio_play_sound(m_ambience_wind_0, 3, true);
 		audio_sound_gain(wind, 0, 0);
-		audio_sound_gain(wind, 1, 4000);
+		audio_sound_gain(wind, 1 * obj_controller_all.real_ambience_volume, 4000);
 	}
 	
 	// Train Arrival

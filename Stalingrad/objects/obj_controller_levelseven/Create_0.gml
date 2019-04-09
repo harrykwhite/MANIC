@@ -55,4 +55,4 @@ depth = -5;
 
 rain = audio_play_sound(m_ambience_rain_0, 3, true);
 audio_sound_gain(rain, 0, 0);
-audio_sound_gain(rain, 1, 8000);
+audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 8000);

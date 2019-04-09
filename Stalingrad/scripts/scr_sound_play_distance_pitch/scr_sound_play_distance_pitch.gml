@@ -20,5 +20,5 @@ if (instance_exists(obj_player)){
 	
     var sound = audio_play_sound(snd, 3, loop);
     audio_sound_pitch(sound, random_range(pmin, pmax));
-	audio_sound_gain(sound, vol, 0);
+	audio_sound_gain(sound, vol * obj_controller_all.real_sound_volume, 0);
 }

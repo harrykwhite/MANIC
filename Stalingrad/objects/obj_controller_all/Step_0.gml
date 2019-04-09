@@ -1,5 +1,35 @@
 scr_position_view();
 
+real_sound_volume = (global.game_option[| Options.SoundVolume] / 100) * (global.game_option[| Options.MasterVolume] / 100);
+real_music_volume = (global.game_option[| Options.MusicVolume] / 100) * (global.game_option[| Options.MasterVolume] / 100);
+real_ambience_volume = (global.game_option[| Options.AmbienceVolume] / 100) * (global.game_option[| Options.MasterVolume] / 100);
+
+/*
+if (sound_loaded){
+	audio_group_set_gain(audiogroup_sound, global.game_option[| Options.SoundVolume] / 100, 0);
+}
+
+if (music_loaded){
+	audio_group_set_gain(audiogroup_music, global.game_option[| Options.MusicVolume] / 100, 0);
+}
+
+if (ambience_loaded){
+	audio_group_set_gain(audiogroup_ambience, global.game_option[| Options.AmbienceVolume] / 100, 0);
+}
+
+// Game volume
+var gsound = global.game_sound;
+var soundcount = ds_list_size(gsound);
+var soundvolume = (global.game_option[| Options.SoundVolume] / 100);
+
+for(var i = 0; i < soundcount; i ++){
+	var sound = gsound[| i];
+	
+	if (audio_is_playing(sound)){
+		audio_sound_gain(sound, )
+	}
+}*/
+
 // Debug
 if (keyboard_check_pressed(vk_tab)){
 	debug = !debug;
@@ -9,9 +39,10 @@ if (keyboard_check_pressed(vk_tab)){
 if (full <= 0){
 	if (keyboard_check_pressed(ord("F"))){
 		window_set_fullscreen(!window_get_fullscreen());
+		global.game_option[| Options.Fullscreen] = window_get_fullscreen();
 		full = 40;
-
-		scr_display_update();
+		
+		scr_options_refresh();
 	}
 }else{
 	full--;

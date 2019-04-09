@@ -1,1 +1,1 @@
-global.ambientShadowIntensity = 0.79;
+global.ambientShadowIntensity = 0.825;

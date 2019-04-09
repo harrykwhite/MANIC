@@ -1,17 +1,21 @@
 var ideal_width = 0;
 var ideal_height = 800;
-var aspect_ratio = display_get_width() / display_get_height();
+
+var dwidth = scr_resolution_get(global.game_option[| Options.Resolution], true);
+var dheight = scr_resolution_get(global.game_option[| Options.Resolution], false);
+
+var aspect_ratio = dwidth / dheight;
 
 ideal_width = round(ideal_height * aspect_ratio);
 
-if (display_get_width() mod ideal_width != 0){
-	var d = round(display_get_width() / ideal_width);
-	ideal_width = display_get_width() / d;
+if (dwidth mod ideal_width != 0){
+	var d = round(dwidth / ideal_width);
+	ideal_width = dwidth / d;
 }
 
-if (display_get_height() mod ideal_height != 0){
-	var d = round(display_get_height() / ideal_height);
-	ideal_height = display_get_height() / d;
+if (dheight mod ideal_height != 0){
+	var d = round(dheight / ideal_height);
+	ideal_height = dheight / d;
 }
 
 if (ideal_width & 1){

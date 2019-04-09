@@ -13,8 +13,6 @@ global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
 global.game_level_opening_type = 0;
 
-global.game_max_corpse_count = 15;
-
 global.game_boss_thescorched_killed = false;
 global.game_boss_thedogkeeper_killed = false;
 global.game_boss_trainhorde_killed = false;
@@ -52,7 +50,6 @@ global.player_respawn_x = 0;
 global.player_respawn_y = 0;
 global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
-global.player_key_count = 0;
 
 global.worldtrain_room = rm_level_6_00;
 

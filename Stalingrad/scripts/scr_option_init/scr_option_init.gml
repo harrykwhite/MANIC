@@ -13,7 +13,9 @@ enum Options{
 
 ini_open("config.ini");
 
-global.game_option = ds_list_create();
+if (!ds_exists(global.game_option, ds_type_list)){
+	global.game_option = ds_list_create();
+}
 
 global.game_option[| Options.Screenshake] = ini_read_real("Options", "Screenshake", 50);
 global.game_option[| Options.ScreenFreeze] = ini_read_real("Options", "ScreenFreeze", true);

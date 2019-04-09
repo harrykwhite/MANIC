@@ -36,7 +36,7 @@ if (inrealboss){
 		}
 		
 		if (setToGain){
-			audio_sound_gain(bossmusic, 1, 4000);
+			audio_sound_gain(bossmusic, 1 * obj_controller_all.real_music_volume, 4000);
 		}
 	}
 }
@@ -58,18 +58,18 @@ if (!paused) && (!inrealboss) && (level != 9){
 			
 				// Play the stinger noise.
 				var stinger = audio_play_sound(spawn_music_stinger[0], 3, false);
-				audio_sound_gain(stinger, 0.7, 0);
+				audio_sound_gain(stinger, 0.7 * obj_controller_all.real_music_volume, 0);
 			
 				// Reset build up and climax music, lower Idle music.
-				audio_sound_gain(spawn_music_main[CombatState.Idle], 0.7, 3000);
-				audio_sound_gain(spawn_music_main[CombatState.Buildup], 1, 12000);
+				audio_sound_gain(spawn_music_main[CombatState.Idle], 0.7 * obj_controller_all.real_music_volume, 3000);
+				audio_sound_gain(spawn_music_main[CombatState.Buildup], 1 * obj_controller_all.real_music_volume, 12000);
 			}else{
 				// Idle Music
 				if (!audio_is_playing(spawn_music_main[CombatState.Idle])) || (audio_sound_get_gain(spawn_music_main[CombatState.Idle]) <= 0){
 					audio_stop_sound(spawn_music_main[CombatState.Idle]);
 					audio_play_sound(spawn_music_main[CombatState.Idle], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
-					audio_sound_gain(spawn_music_main[CombatState.Idle], 1, 8000);
+					audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
 				}
 				
 				// Build - Up Music
@@ -95,11 +95,11 @@ if (!paused) && (!inrealboss) && (level != 9){
 			
 				var stinger = audio_play_sound(spawn_music_stinger[1], 3, false);
 				audio_sound_gain(stinger, 0, 0);
-				audio_sound_gain(stinger, 0.7, 1000);
+				audio_sound_gain(stinger, 0.7 * obj_controller_all.real_music_volume, 1000);
 			
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 3000);
-				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0.7, 3000);
-				audio_sound_gain(spawn_music_main[CombatState.Climax], 1, 4000);
+				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0.7 * obj_controller_all.real_music_volume, 3000);
+				audio_sound_gain(spawn_music_main[CombatState.Climax], 1 * obj_controller_all.real_music_volume, 4000);
 			}
 		
 			break;
@@ -114,7 +114,7 @@ if (!paused) && (!inrealboss) && (level != 9){
 				audio_play_sound(spawn_music_stinger[2], 3, false);
 			
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
-				audio_sound_gain(spawn_music_main[CombatState.Idle], 1, 8000);
+				audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
 				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
 				audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
 			}

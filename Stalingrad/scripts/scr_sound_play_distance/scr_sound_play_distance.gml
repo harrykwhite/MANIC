@@ -12,6 +12,7 @@ if (instance_exists(obj_player)){
         var vol = 0;
     }
     
+	vol *= obj_controller_all.real_sound_volume;
 	vol = clamp(vol, 0, 1);
 	
     var sound = audio_play_sound(snd, 3, loop);

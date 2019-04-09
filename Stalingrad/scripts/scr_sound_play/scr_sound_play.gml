@@ -9,5 +9,6 @@ var max_pitch = argument3;
 
 var sound = audio_play_sound(snd, 3, loop);
 audio_sound_pitch(sound, random_range(min_pitch, max_pitch));
+audio_sound_gain(sound, obj_controller_all.real_sound_volume, 0);
 
 return sound;

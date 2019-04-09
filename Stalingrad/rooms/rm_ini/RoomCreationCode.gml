@@ -37,4 +37,10 @@ enum Grade{
 	S,
 }
 
+enum SoundType{
+	Sound,
+	Music,
+	Ambience,
+}
+
 room_goto(rm_title_0);

@@ -213,7 +213,7 @@ if (game_opening_intro){
 	}
 	
 	if (game_opening_intro_alpha > 0){
-		game_opening_intro_alpha -= 0.004 * game_opening_intro_speed;
+		game_opening_intro_alpha -= 0.005 * game_opening_intro_speed;
 		game_opening_intro_text_time -= game_opening_intro_speed;
 		
 		if (game_opening_intro_text_time <= 0){

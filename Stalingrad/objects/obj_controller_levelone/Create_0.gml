@@ -24,7 +24,7 @@ spawn_cleared = false;
 // Other
 rain = audio_play_sound(m_ambience_rain_0, 3, true);
 audio_sound_gain(rain, 0, 0);
-audio_sound_gain(rain, 1, 12000);
+audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 12000);
 rain_thunder = noone;
 rain_thunder_interval = 60 * 9;
 

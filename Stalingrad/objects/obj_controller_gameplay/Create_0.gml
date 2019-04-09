@@ -6,7 +6,6 @@ corpse_active_time = 30;
 bonus_killtime = 0;
 bonus_killamount = 0;
 
-levelstart_record_set = false;
 sectionstart_record_set = false;
 
 corpse_queue = ds_queue_create();

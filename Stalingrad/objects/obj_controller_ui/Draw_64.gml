@@ -139,7 +139,7 @@ if (playerhit_alpha > 0){
 if (vignette_flash_alpha > 0){
 	vignette_flash_alpha -= vignette_flash_alpha_speed;
 	
-	draw_set_alpha(vignette_flash_alpha);
+	draw_set_alpha(vignette_flash_alpha * (global.game_option[| Options.Flashing]) / 100);
     gpu_set_fog(true, vignette_flash_colour, 0, 1);
     draw_sprite_stretched(spr_ui_vignette_0, 0, 0, 0, dwidth, dheight);
     gpu_set_fog(false, c_black, 0, 0);

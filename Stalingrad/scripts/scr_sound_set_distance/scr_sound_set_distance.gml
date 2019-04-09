@@ -12,4 +12,5 @@ if (instance_exists(obj_player)){
 	vol = clamp(vol, 0, 1);
 }
 
+vol *= obj_controller_all.real_sound_volume;
 audio_sound_gain(snd, vol, 0);
