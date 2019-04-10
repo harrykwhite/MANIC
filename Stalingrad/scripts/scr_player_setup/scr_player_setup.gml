@@ -79,6 +79,14 @@ feet.owner = id;
 // Fly
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 
+// Upgrades
+var upgradecount = array_length_1d(global.upgrade_name);
+for(var i = 0; i < upgradecount; i ++){
+	if (global.game_save_upgrade_unlocked[i]){
+		scr_upgrade_add(i);
+	}
+}
+
 // Other
 isVisible = true;
 heartbeat = noone;

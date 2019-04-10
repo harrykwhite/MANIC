@@ -52,12 +52,12 @@ if (instance_exists(obj_player)){
 				}
 			}
 		
-			if (distance_to_object(obj_player) > 70) || (global.cutscene_current == 52){
+			if (distance_to_object(obj_player) > 70 + (40 * order)) || (global.cutscene_current == 52){
 				move_xTo = obj_player.x;
 				move_yTo = obj_player.y;
 				move_speed = 1.8;
 				
-				if (distance_to_object(obj_player) > 100){
+				if (distance_to_object(obj_player) > 100 + (40 * order)){
 					move_speed = 2.1;
 				}
 			
@@ -100,7 +100,7 @@ if (instance_exists(obj_player)){
 				move_xTo = target.x;
 				move_yTo = target.y;
 				
-				if (distance_to_object(target) > 38){
+				if (distance_to_object(target) > 38 + (40 * order)){
 					move_speed = 1.2;
 				}else{
 					move_speed = 0;
@@ -136,7 +136,7 @@ if (instance_exists(obj_player)){
 			}*/
 		}
 	}else{
-		if (distance_to_object(obj_player) > 37){
+		if (distance_to_object(obj_player) > 37 + (40 * order)){
 			move_speed = 1;
 		}else{
 			move_speed = 0;
@@ -149,7 +149,7 @@ if (instance_exists(obj_player)){
 	
 	distTo = distance_to_point(move_xTo, move_yTo);
 	if (weapon_does_exist){
-		if (distTo > 20){
+		if (distTo > 26){
 			weapon.dir = point_direction(x, y, move_xTo, move_yTo);
 		}
 	}

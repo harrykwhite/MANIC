@@ -1,28 +1,20 @@
 /// @desc Free the lighting engine
+
 vertex_format_delete(global.lightVertexFormat);
 
 // Remove all lights, if any
-if (ds_exists(global.worldLights, ds_type_list)){
-	var lights = ds_list_size(global.worldLights);
-	for(var i = 0; i < lights; ++i) {
-		light_destroy(global.worldLights[| i]);
-	}
-
-	ds_list_destroy(global.worldLights);
+var lights = ds_list_size(global.worldLights);
+for(var i = 0; i < lights; ++i) {
+	light_destroy(lights[| i]);
 }
+ds_list_destroy(global.worldLights);
 
-if (ds_map_exists(global.lightVertexArrayMap, ds_type_map)){
-	ds_map_destroy(global.lightVertexArrayMap);
-}
+ds_map_destroy(global.lightVertexArrayMap);
 
-if(global.worldShadowMap != undefined && surface_exists(global.worldShadowMap)){
+if(global.worldShadowMap != undefined && surface_exists(global.worldShadowMap))
 	surface_free(global.worldShadowMap);
-}
 
-if(global.lightShadowMap != undefined && surface_exists(global.lightShadowMap)){
+if(global.lightShadowMap != undefined && surface_exists(global.lightShadowMap))
 	surface_free(global.lightShadowMap);
-}
-
-if (ds_exists(global.worldDirtyShadowCasters, ds_type_list)){
-	ds_list_destroy(global.worldDirtyShadowCasters);
-}
+	
+ds_list_destroy(global.worldDirtyShadowCasters);

@@ -7,6 +7,7 @@ if (instance_exists(obj_player)){
 		scr_player_stamina_drain(6);
 		scr_effect_screenshake(1);
 		scr_upgrade_add(index);
+		scr_save_game();
 		
 		obj_controller_ui.upgrade_indicate_index = index;
 		obj_controller_ui.upgrade_indicate_time = 60 * 10;

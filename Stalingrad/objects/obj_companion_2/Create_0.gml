@@ -9,6 +9,9 @@ whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 mylight = noone;
 
+order = 0;
+registered = false;
+
 runaway_starttime = 0;
 runaway_time = 0;
 

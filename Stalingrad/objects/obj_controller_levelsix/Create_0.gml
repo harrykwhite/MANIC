@@ -60,3 +60,5 @@ trainboss_timemax = 60 * 45;
 trainboss_spawned = false;
 
 healer_can_spawn = global.game_firsthealer_killed;
+
+scr_save_game();

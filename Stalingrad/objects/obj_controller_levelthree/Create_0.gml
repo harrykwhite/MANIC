@@ -50,3 +50,5 @@ spawn_cleared = false;
 global.cutscene_current = 2;
 sprite_index = noone;
 depth = -5;
+
+scr_save_game();

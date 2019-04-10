@@ -11,6 +11,7 @@ if(__LIGHTING_ERROR_CHECKS) {
 		show_debug_message("lighting_global(): lighting already initialised");
 		return;
 	}
+	global.lighting_global_initialised = true;
 }
 
 //	#####################################
@@ -39,7 +40,7 @@ global.lightUpdateFrameDelay = 1;
 global.debugShadowCasters = false;
 
 // Default extension modules given to lights upon creation
-// This can be modified before creating any lights (|| at any time otherwise)
+// This can be modified before creating any lights (or at any time otherwise)
 global.lightDefaultExtensions = [
 	light_create_extension(ext_light_attenuation_apply, ext_light_attenuation_reset)
 ];
@@ -73,6 +74,13 @@ global.worldActiveShadowCasters = 0;
 
 // Macro to perform various error checks, can be turned on/off by changing value (true/false)
 #macro __LIGHTING_ERROR_CHECKS false
+
+// The step size to move along the traced line from light source to shadow caster
+#macro __LIGHT_LINE_SHADOW_CASTER_STEP 0.01
+
+// The default far vertex for shadows, this is the default on both lights and shadow casters
+// Actual shadow cast is min(light shadow length, shadow caster shadow length)
+#macro __WORLD_DEFAULT_SHADOW_FAR_VERTEX 32000
 
 // The shader used to blend each light onto the world shadow map
 #macro __LIGHT_SHADER sh_blend_light
@@ -112,7 +120,7 @@ enum eLight {
 	ShadowLength,	// The length of shadows cast from this light
 	
 	// LUTs
-	LutIntensity,	// Lookup texture (LUT) for light's intensity gradient (texture; not sprite || surface)
+	LutIntensity,	// Lookup texture (LUT) for light's intensity gradient (texture; not sprite or surface)
 	
 	// Spot light
 	Angle,			// The conical angle of the spot light
@@ -151,13 +159,13 @@ enum eLightFlags {
 	None = 0,
 	
 	// This light is dirty; this makes it update all static shadow casters
-	// Should be set whenever the light's position || range has changed
+	// Should be set whenever the light's position or range has changed
 	Dirty = 1 << 0,
 	
 	// This light casts shadows on shadow casters
 	// This is set by default but can be taken off
 	// NOTE: Without CastsShadow and with UsesUniqueShadowMap, the light might be optimized
-	//		 to not redraw if it's not dirty. This means changing render-only attributes of a light (e.g. intensity || color)
+	//		 to not redraw if it's not dirty. This means changing render-only attributes of a light (e.g. intensity or color)
 	//		 that doesn't cast shadow should also dirty the light. You need to dirty it manually to ensure it redraws.
 	//		 TL;DR: If you remove this flag, always dirty the light when you change a render-only attribute on it
 	CastsShadows = 1 << 1,
@@ -272,7 +280,7 @@ global.worldDirtyShadowCasters = ds_list_create();
 // The custom camera [X, Y, Width, Height] to use, if any
 // If undefined then it uses the active view camera
 // Set this with lighting_update_camera
-global.worldCustomCamera = -1;
+global.worldCustomCamera = undefined;
 
 // Reused vertex arrays
 global.lightVertexArrayMap = ds_map_create();

@@ -4,10 +4,21 @@
 
 var lights = argument0;
 var lightCount = ds_list_size(lights);
-var _lightShadowMap = global.lightShadowMap;
 
 // Pre-composite step
-//lighting_pre_composite();
+lighting_pre_composite();
+
+//if(lightCount == 0) {
+//	// They mostly come at night...mostly...
+//	show_debug_message("composite_shadow_map(lights): ignoring action, there are no lights");
+//	return false;
+//}
+
+//if(!shadow_casters_exist()) {
+//	// There are no shadow casters
+//	show_debug_message("composite_shadow_map(lights): ignoring action, there are no shadow casters");
+//	return;
+//}
 
 // Ensure that we have a valid shadow map surface
 var has_shadow_map = shadow_map_ensure_exists(eShadowMap.Global);
@@ -26,14 +37,6 @@ var cameraX = camera[eLightingCamera.X];
 var cameraY = camera[eLightingCamera.Y];
 var cameraW = camera[eLightingCamera.Width];
 var cameraH = camera[eLightingCamera.Height];
-
-var global_lightrange = global.u_LightRange;
-var global_lightdirection = global.u_LightDirection;
-var global_lightcolor = global.u_LightColor;
-var global_lightintensity = global.u_LightIntensity;
-var global_lightposition = global.u_LightPosition;
-var global_lightangle = global.u_LightAngle;
-var global_lightwidth = global.u_LightWidth;
 
 // Composite all shadow maps into a single texture
 for(var i = 0, firstLight = true; i < lightCount; ++i) {
@@ -96,7 +99,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 		}
 		
 		// Use the global shadow map
-		shadowMap = _lightShadowMap;
+		shadowMap = global.lightShadowMap;
 		
 		// Set light's position in texels on the global light shadow map
 		lightTexelX = (light[| eLight.X] - cameraX) / cameraW;
@@ -148,19 +151,19 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	//
 	
 	// Float arrays
-	shader_set_uniform_f_array(global_lightposition, [lightTexelX, lightTexelY]);
-	shader_set_uniform_f_array(global_lightcolor, colorArray);
+	shader_set_uniform_f_array(global.u_LightPosition, [lightTexelX, lightTexelY]);
+	shader_set_uniform_f_array(global.u_LightColor, colorArray);
 	
 	// Floats
-	shader_set_uniform_f(global_lightrange, lightRange);
-	shader_set_uniform_f(global_lightintensity, lightIntensity);
-	shader_set_uniform_f(global_lightangle, lightAngle);
-	shader_set_uniform_f(global_lightdirection, lightDirection);
-	shader_set_uniform_f(global_lightwidth, lightWidth);
+	shader_set_uniform_f(global.u_LightRange, lightRange);
+	shader_set_uniform_f(global.u_LightIntensity, lightIntensity);
+	shader_set_uniform_f(global.u_LightAngle, lightAngle);
+	shader_set_uniform_f(global.u_LightDirection, lightDirection);
+	shader_set_uniform_f(global.u_LightWidth, lightWidth);
 	// Default attenuation to disabled; must have extension module to enable it
 	shader_set_uniform_i(global.u_AttenuationEnabled, false);
 	
-	// Area || line light line emitter
+	// Area or line light line emitter
 	if(lightType == eLightType.Area || lightType == eLightType.Line) {
 		// Area light line emitter
 		var dir = lightDirection + 90;
@@ -175,7 +178,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	shader_set_uniform_i(global.u_LightType, lightType);
 	
 	// Apply extension modules
-	//light_enumerate_extensions(light, eLightExtension.Apply);
+	light_enumerate_extensions(light, eLightExtension.Apply);
 	
 	// If the light uses its own shadow map, convert to local space
 	var offsetx = 0, offsety = 0;
@@ -190,7 +193,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	draw_surface(shadowMap, offsetx, offsety);
 	
 	// Reset extension modules
-	//light_enumerate_extensions(light, eLightExtension.Reset);
+	light_enumerate_extensions(light, eLightExtension.Reset);
 	
 	// Reset
 	shader_reset();
@@ -199,6 +202,6 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 }
 
 // Post-composite step
-//lighting_post_composite();
+lighting_post_composite();
 
 return true;

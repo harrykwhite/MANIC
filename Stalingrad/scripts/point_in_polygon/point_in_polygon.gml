@@ -1,11 +1,11 @@
-/// @desc Returns whether the point is inside the polygon || not
+/// @desc Returns whether the point is inside the polygon or not
 /// @arg polygon The polygon to check against
-/// @arg point The point to check if it's inside || outside the polygon
+/// @arg point The point to check if it's inside or outside the polygon
 /// @returns True if the point is inside the polygon, otherwise false
 
 //
 //	This script can be used with the vertex buffer to check if an instance is
-//	in light || shadow -- if this script returns true on any polygon in the vertex buffer
+//	in light or shadow -- if this script returns true on any polygon in the vertex buffer
 //	the instance is in shadow
 //
 
@@ -16,7 +16,7 @@ var point = argument1;
 if(__LIGHTING_ERROR_CHECKS) {
 	if(!is_array(polygon) || array_length_1d(polygon) <= 3) {
 		// This array is not a polygon
-		show_debug_message("point_in_polygon(polygon, point): argument `polygon` is not a polygon array, || has less than 3 polygon");
+		show_debug_message("point_in_polygon(polygon, point): argument `polygon` is not a polygon array, or has less than 3 polygon");
 		return undefined;
 	}
 	

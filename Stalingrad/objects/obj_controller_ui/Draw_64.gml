@@ -1,3 +1,9 @@
+// Variables
+var soffset = wave(0, 0.025, 3, 0, false);
+var counter = 0;
+var dwidth = display_get_gui_width();
+var dheight = display_get_gui_height();
+
 // Player goggle effect
 if (instance_exists(obj_player)){
 	if (scr_player_has_upgrade(PlayerUpgrade.Goggles)){
@@ -21,11 +27,25 @@ if (instance_exists(obj_player)){
 	}
 }
 
-// Variables
-var soffset = wave(0, 0.025, 3, 0, false);
-var counter = 0;
-var dwidth = display_get_gui_width();
-var dheight = display_get_gui_height();
+// Red Tint
+redtint_alphato = 0;
+if (global.game_combat_state == CombatState.Buildup){
+	redtint_alphato = 0.025;
+}else if (global.game_combat_state == CombatState.Climax){
+	redtint_alphato = 0.06;
+}
+
+if (redtint_alpha < redtint_alphato){
+	redtint_alpha += 0.025;
+}else if (redtint_alpha > redtint_alphato){
+	redtint_alpha -= 0.025;
+}
+
+if (redtint_alpha > 0){
+	draw_set_colour(c_maroon);
+	draw_set_alpha(redtint_alpha);
+	draw_rectangle(0, 0, dwidth, dheight, false);
+}
 
 // Weapon Slots
 var amount = global.weapon_slotmax;
@@ -573,6 +593,27 @@ if (screen_fade_opening > 0){
 	draw_set_alpha(screen_fade_opening);
 	draw_set_colour(c_black);
 	draw_rectangle(0, 0, dwidth, dheight, false);
+}
+
+// Game Opening Intro
+if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
+	if (game_opening_intro){
+		var text = "MANIC";
+		if (game_opening_intro_text_stage == 0){
+			text = "Geta Presents";
+			draw_set_font(fnt_cambria_1);
+		}else{
+			draw_set_font(fnt_cambria_3);
+		}
+		
+		draw_set_alpha(game_opening_intro_alpha);
+		draw_set_colour(c_black);
+		draw_rectangle(0, 0, dwidth, dheight, false);
+		
+		draw_set_alpha(game_opening_intro_text_alpha);
+		draw_set_halign(fa_center);
+		scr_text_shadow(dwidth / 2, dheight / 2, text, c_white);
+	}
 }
 
 draw_set_alpha(1);

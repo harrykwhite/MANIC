@@ -5,18 +5,13 @@ var exists;
 
 if(dirty || tick >= global.lightUpdateFrameDelay || global.worldShadowMap == undefined || !surface_exists(global.worldShadowMap)) {
 	// Composite shadow map
-	if (!ds_exists(global.worldLights, ds_type_list)){
-		global.worldLights = ds_list_create();
-	}
-	
 	exists = composite_shadow_map(global.worldLights);
 	dirty = false;
 	tick = 0;
-}else{
-	exists = surface_exists(global.worldShadowMap);
 }
+else exists = surface_exists(global.worldShadowMap);
 
-if (exists){
+if(exists) {
 	// Get the active camera
 	var camera = lighting_get_active_camera();
 	// Draw the shadow map

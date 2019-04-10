@@ -19,7 +19,6 @@ if (time_end_cutscene < 60 * 1.3){
 	time_end_cutscene ++;
 }else{
 	global.cutscene_current = -1;
-	global.player_companion = -1;
 	
 	if (instance_exists(obj_player)){
 		obj_player.move_xTo = -1;

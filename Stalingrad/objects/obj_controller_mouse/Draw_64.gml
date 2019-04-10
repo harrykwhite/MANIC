@@ -44,20 +44,20 @@ switch(mouse){
 		break;
 	
 	case MouseType.SmallCircle:
-		draw_set_alpha(mouse_alpha * 0.75);
+		draw_set_alpha(mouse_alpha * 0.85);
 		draw_set_colour(c_white);
 		draw_circle(xx, yy, mouse_scale * 4 * scale, true);
+		draw_circle(xx, yy, (mouse_scale * 4 * scale) + 0.5, true);
 		draw_circle(xx, yy, (mouse_scale * 4 * scale) + 1, true);
-		draw_circle(xx, yy, (mouse_scale * 4 * scale) + 2, true);
 		draw_set_alpha(1);
 		break;
 	
 	case MouseType.LargeCircle:
-		draw_set_alpha(mouse_alpha * 0.75);
+		draw_set_alpha(mouse_alpha * 0.85);
 		draw_set_colour(c_white);
 		draw_circle(xx, yy, mouse_scale * 7.5 * scale, true);
+		draw_circle(xx, yy, (mouse_scale * 7.5 * scale) + 0.5, true);
 		draw_circle(xx, yy, (mouse_scale * 7.5 * scale) + 1, true);
-		draw_circle(xx, yy, (mouse_scale * 7.5 * scale) + 2, true);
 		draw_set_alpha(1);
 		break;
 	

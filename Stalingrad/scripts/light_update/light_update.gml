@@ -18,7 +18,7 @@ if(__LIGHTING_ERROR_CHECKS && (!ds_exists(light, ds_type_list) || ds_list_size(l
 //
 
 // This light is being rebuilt this frame
- ++global.worldRebuiltLights;
+++global.worldRebuiltLights;
 
 // Get the light's attributes
 var light_x = light[| eLight.X];
@@ -26,9 +26,9 @@ var light_y = light[| eLight.Y];
 var light_range = light[| eLight.Range];
 var light_flags = light[| eLight.Flags];
 var light_type = light[| eLight.Type];
-//var light_direction = light[| eLight.Direction];
+var light_direction = light[| eLight.Direction];
 var dirty = light_flags & eLightFlags.Dirty;
-//var static_storage = light[| eLight.StaticStorage];
+var static_storage = light[| eLight.StaticStorage];
 var out_of_range_map = light[| eLight.ShadowCastersOutOfRange];
 var culled_shadow_casters = light[| eLight.CulledShadowCasters];
 var ignore_set = light[| eLight.IgnoreSet];
@@ -57,8 +57,8 @@ vertex_begin(vbuffer, global.lightVertexFormat);
 
 // Get the camera we're rendering with to cull against
 var camera = lighting_get_active_camera();
-//var camera_right = camera[0] + camera[2];
-//var camera_bottom = camera[1] + camera[3];
+var camera_right = camera[0] + camera[2];
+var camera_bottom = camera[1] + camera[3];
 
 // Get the direction from the light to the center of the camera
 var light_shadow_map;
@@ -85,7 +85,7 @@ if(dirty && out_of_range_map != undefined) {
 	light[| eLight.ShadowCastersOutOfRange] = undefined;
 }
 
-// If the light is dirty || the camera is different, destroy set of culled shadow casters -- it is out of date
+// If the light is dirty or the camera is different, destroy set of culled shadow casters -- it is out of date
 if(culled_shadow_casters != undefined && (dirty || light_last_camera == undefined || !array_equals(light_last_camera, camera))) {
 	ds_map_destroy(culled_shadow_casters);
 	culled_shadow_casters = undefined;
@@ -99,10 +99,6 @@ var has_culled_shadow_casters = culled_shadow_casters != undefined;
 
 // Iterate over all shadow casters and trace shadows
 with(obj_shadow_caster) {
-	if (image_alpha <= 0){
-		break;
-	}
-	
 	// Is the light ignoring this shadow caster?
 	if(has_ignore_set && ds_map_exists(ignore_set, id)) {
 		// Yes, skip it
@@ -207,7 +203,7 @@ with(obj_shadow_caster) {
 	
 	if(shadow == undefined) {
 		// Count this shadow caster as active
-		 ++global.worldActiveShadowCasters;
+		++global.worldActiveShadowCasters;
 		
 		// Trace a shadow for this object
 		shadow = light_trace_polygon(id, light);
@@ -230,13 +226,13 @@ with(obj_shadow_caster) {
 	var len = array_length_1d(shadow);
 	// There's at least 3 vertices in the array, so add those outside loop
 	var k = 0;
-	var vertex = shadow[k ++];
+	var vertex = shadow[k++];
 	vertex_position(vbuffer, vertex[eVertex.X] - offset_x, vertex[eVertex.Y] - offset_y);
 	vertex_argb(vbuffer, $FF000000);
-	vertex = shadow[k ++];
+	vertex = shadow[k++];
 	vertex_position(vbuffer, vertex[eVertex.X] - offset_x, vertex[eVertex.Y] - offset_y);
 	vertex_argb(vbuffer, $FF000000);
-	vertex = shadow[k ++];
+	vertex = shadow[k++];
 	vertex_position(vbuffer, vertex[eVertex.X] - offset_x, vertex[eVertex.Y] - offset_y);
 	vertex_argb(vbuffer, $FF000000);
 	// Add the rest in a loop

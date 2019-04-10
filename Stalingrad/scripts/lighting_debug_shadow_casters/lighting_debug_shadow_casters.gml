@@ -7,10 +7,6 @@ draw_set_color(argument0);
 draw_set_alpha(1);
 
 with(obj_shadow_caster) {
-	if (image_alpha <= 0){
-		break;
-	}
-	
 	// Draw the polygon
 	var points = polygon[ePolygon.Length];
 	for(var i = 1; i <= points; ++i) {

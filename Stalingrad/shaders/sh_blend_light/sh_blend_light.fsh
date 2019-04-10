@@ -75,7 +75,7 @@ float intensityPoint(vec2 P, vec2 tex, float range);
 float attenuation(float X, float alpha, float beta);
 
 // Attenuation of the light intensity at the vertices of an area light's line emitter
-// This calls attenuation(X, alpha, beta) with parameters alpha = 0.0 and beta = 10.0
+// This calls attenuation(X, alpha, beta) with parameters alpha=0.0 and beta=10.0
 float attenuationAreaLightVertex(float X);
 
 // Gets the angle difference from the coord to the light's direction

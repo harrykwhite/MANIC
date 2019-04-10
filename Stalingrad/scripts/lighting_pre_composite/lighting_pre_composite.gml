@@ -8,10 +8,6 @@ global.worldActiveShadowCasters = 0;
 var camera = lighting_get_active_camera();
 
 with(obj_shadow_caster) {
-	if (image_alpha <= 0){
-		break;
-	}
-	
 	// Get shadow caster flags
 	var shadow_caster_dirty = (flags & eShadowCasterFlags.Dirty) != 0;
 	var shadow_caster_static = (flags & eShadowCasterFlags.Static) != 0;
@@ -27,7 +23,7 @@ with(obj_shadow_caster) {
 		last_camera = camera;
 	}
 	else if(last_camera == undefined || !array_equals(last_camera, camera)) {
-		// The camera changed, || this is the first time this shadow caster has been checked against this camera
+		// The camera changed, or this is the first time this shadow caster has been checked against this camera
 		// Get whether the polygon is outside the active camera
 		outside_active_camera = !rectangle_in_rectangle(cached_polygon_area[0], cached_polygon_area[1], cached_polygon_area[2], cached_polygon_area[3],
 														camera[eLightingCamera.X], camera[eLightingCamera.Y], camera[eLightingCamera.X] + camera[eLightingCamera.Width], camera[eLightingCamera.Y] + camera[eLightingCamera.Height])

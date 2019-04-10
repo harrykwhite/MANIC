@@ -1,26 +1,6 @@
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
-// Red Tint
-redtint_alphato = 0;
-if (global.game_combat_state == CombatState.Buildup){
-	redtint_alphato = 0.025;
-}else if (global.game_combat_state == CombatState.Climax){
-	redtint_alphato = 0.06;
-}
-
-if (redtint_alpha < redtint_alphato){
-	redtint_alpha += 0.025;
-}else if (redtint_alpha > redtint_alphato){
-	redtint_alpha -= 0.025;
-}
-
-if (redtint_alpha > 0){
-	draw_set_colour(c_maroon);
-	draw_set_alpha(redtint_alpha);
-	draw_rectangle(0, 0, dwidth, dheight, false);
-}
-
 // Black Bars
 if (blackbar_draw) || (global.cutscene_current != -1){
     blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 5);
@@ -35,27 +15,6 @@ if (blackbar_sizereal > 2){
 	draw_set_colour(c_black);
 	draw_rectangle(-10, -10, dwidth + 10, blackbar_sizereal, false);
 	draw_rectangle(-10, dheight + 10, dwidth + 10, (dheight + 10) - (blackbar_sizereal + 10), false);
-}
-
-// Game Opening Intro
-if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
-	if (game_opening_intro){
-		var text = "MANIC";
-		if (game_opening_intro_text_stage == 0){
-			text = "Geta Presents";
-			draw_set_font(fnt_cambria_1);
-		}else{
-			draw_set_font(fnt_cambria_3);
-		}
-		
-		draw_set_alpha(game_opening_intro_alpha);
-		draw_set_colour(c_black);
-		draw_rectangle(0, 0, dwidth, dheight, false);
-		
-		draw_set_alpha(game_opening_intro_text_alpha);
-		draw_set_halign(fa_center);
-		scr_text_shadow(dwidth / 2, dheight / 2, text, c_white);
-	}
 }
 
 // Game Ending Screen

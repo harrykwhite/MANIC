@@ -32,9 +32,13 @@ if (ispaused){
 	}
 }
 
-global.player_companion = 2;
-global.player_companion_health = health_current;
-global.game_companion_prisoner_found = true;
+if (!registered){
+	global.game_companion_prisoner_found = true;
+	scr_companion_register_me();
+	registered = true;
+}
+
+order = scr_companion_get_order();
 
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);

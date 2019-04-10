@@ -43,8 +43,7 @@ if (global.cutscene_current == -1) && (instance_exists(obj_player)){
 			if (pause_time < 1){
 				pause_time += 0.025;
 			}else{
-				global.player_companion = -1;
-				global.player_companion_health = -1;
+				ds_grid_clear(global.player_companions, -1);
 				scr_fade_object_list_reset();
 				scr_global_set();
 				audio_stop_all();
@@ -113,6 +112,14 @@ if (!global.game_pause){
 			}
 		}
 	}
+}
+
+// Time
+if (counter < 60){
+	counter += (delta_time / 10000) / 1.6;
+}else{
+	global.game_save_seconds ++;
+	counter = 0;
 }
 
 // Score

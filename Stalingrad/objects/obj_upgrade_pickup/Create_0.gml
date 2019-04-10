@@ -3,5 +3,6 @@ alpha = 1;
 index = 0;
 scale = 1;
 pickup = false;
+checked = false;
 
 image_alpha = 0;

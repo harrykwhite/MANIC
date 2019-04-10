@@ -53,6 +53,51 @@ if (random(2.5) < 1){
 }
 #endregion
 
+#region Text Scale Hander
+if (in_settings) || (in_levelselect){
+	for(var i = 0; i <= option_max; i ++){
+		option_scale[i] = 1;
+	}
+	
+	if (!in_settings_gameplay){
+		for(var i = 0; i <= option_setting_gameplay_max; i ++){
+			option_setting_gameplay_scale[i] = 1;
+		}
+	}
+	
+	if (!in_settings_display){
+		for(var i = 0; i <= option_setting_display_max; i ++){
+			option_setting_display_scale[i] = 1;
+		}
+	}
+	
+	if (!in_settings_audio){
+		for(var i = 0; i <= option_setting_audio_max; i ++){
+			option_setting_audio_scale[i] = 1;
+		}
+	}
+	
+	if (!in_settings_controls){
+		for(var i = 0; i <= option_setting_controls_max; i ++){
+			option_setting_controls_scale[i] = 1;
+		}
+	}
+}
+
+if (!in_settings){
+	for(var i = 0; i <= option_setting_max; i ++){
+		option_setting_scale[i] = 1;
+	}
+}
+
+if (!in_levelselect){
+	for(var i = 0; i <= option_levelselect_max; i ++){
+		option_levelselect_scale[i] = 1;
+	}
+}
+
+#endregion
+
 if (fade){
 	if (fade_alpha < 1){
 		fade_alpha += fade_speed;
@@ -72,6 +117,8 @@ if (fade){
 		}else if (in_settings_controls){
 			omax = option_setting_controls_max;
 		}
+	}else if (in_levelselect){
+		omax = option_levelselect_max;
 	}
 	
 	selected = clamp(selected, 0, omax);
@@ -104,6 +151,14 @@ if (fade){
 						selected = omax;
 					}
 				}
+			}else if (in_levelselect){
+				while(!option_levelselect_unlocked[selected]){
+					if (selected > 0){
+						selected--;
+					}else{
+						selected = omax;
+					}
+				}
 			}
 		}
 
@@ -116,6 +171,14 @@ if (fade){
 		
 			if (!in_settings) && (!in_levelselect){
 				while(option_locked[selected]){
+					if (selected < omax){
+						selected ++;
+					}else{
+						selected = 0;
+					}
+				}
+			}else if (in_levelselect){
+				while(!option_levelselect_unlocked[selected]){
 					if (selected < omax){
 						selected ++;
 					}else{
@@ -212,18 +275,18 @@ if (fade){
 				isvalid = true;
 				switch(selected){
 					case 0:
-						audio_sound_gain(m_ambience_rain_0, 0, 2000);
-					
+						audio_sound_gain(rain, 0, 2000);
+						
 						fade = true;
 						fade_goto = rm_level_1_00;
 						fade_speed = 0.01;
 						global.game_playthrough = true;
 						break;
-				
+					
 					case 1:
 						in_levelselect = true;
 						break;
-				
+					
 					case 2:
 						in_settings = true;
 						break;
@@ -257,6 +320,13 @@ if (fade){
 							break;
 					}
 				}
+			}else if (in_levelselect){
+				audio_sound_gain(rain, 0, 2000);
+				
+				fade = true;
+				fade_goto = option_levelselect_goto[selected];
+				fade_speed = 0.01;
+				global.game_playthrough = false;
 			}
 		
 			if (isvalid){
@@ -277,6 +347,8 @@ if (fade){
 					in_settings_audio = false;
 					in_settings_controls = false;
 				}
+			}else if (in_levelselect){
+				in_levelselect = false;
 			}
 		
 			if (isvalid){

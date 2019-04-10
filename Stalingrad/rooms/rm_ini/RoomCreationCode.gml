@@ -1,4 +1,5 @@
 scr_global_set();
+scr_save_game_reader();
 
 // Enumerators
 enum GameState{

@@ -34,8 +34,7 @@ global.boss_current = -1;
 if (room == rm_ini){
 	global.game_time_passed = 0;
 	global.level_current = LevelIndex.RavagedTown;
-	global.player_companion = -1;
-	global.player_companion_health = -1;
+	global.player_companions = ds_grid_create(2, 4);
 }
 
 global.fade_object_group[0, 0] = noone;
