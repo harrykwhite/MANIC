@@ -22,6 +22,22 @@ if (STATE == GameState.Developer){
 		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 150, str, c_white);
 	}
 	
+	if (indicate_text_alpha > 0){
+		if (indicate_text_time > 0){
+			indicate_text_time --;
+		}else{
+			indicate_text_alpha -= 0.05;
+		}
+		
+		draw_set_alpha(indicate_text_alpha);
+		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 150, indicate_text, c_white);
+		draw_set_alpha(1);
+	}else{
+		indicate_text = "";
+		indicate_text_alpha = 0;
+		indicate_text_time = 0;
+	}
+	
 	if (!in_settings) && (!in_levelselect){
 		for(var i = 0; i <= option_max; i ++){
 			var str = option[i];
@@ -61,7 +77,7 @@ if (STATE == GameState.Developer){
 				omax = option_setting_controls_max;
 			}
 			
-			for(var i = 0; i <= omax; i ++){
+			for(var i = 0; i <= omax + 1; i ++){
 				var str = "";
 				var adjust_str = "";
 				var isbool = false, isres = false;
@@ -70,72 +86,86 @@ if (STATE == GameState.Developer){
 				var value_min = 0;
 				var value_max = 0;
 				var scale = 1;
+				var centered = false;
 				
-				if (in_settings_gameplay){
-					value_cur = option_setting_gameplay_value[i];
-					value_min = option_setting_gameplay_value_min[i];
-					value_max = option_setting_gameplay_value_max[i];
-					
-					str = option_setting_gameplay[i];
-					adjust_str = string(value_cur) + option_setting_gameplay_unit[i];
+				if (i == omax + 1){
+					str = "Reset to defaults";
+					centered = true;
 					
 					if (selected == i){
-						option_setting_gameplay_scale[i] = approach(option_setting_gameplay_scale[i], 1.05, 40);
+						reset_text_scale = approach(reset_text_scale, 1.05, 40);
 					}else{
-						option_setting_gameplay_scale[i] = approach(option_setting_gameplay_scale[i], 1, 40);
+						reset_text_scale = approach(reset_text_scale, 1, 40);
 					}
 					
-					scale = option_setting_gameplay_scale[i];
-				}else if (in_settings_display){
-					value_cur = option_setting_display_value[i];
-					value_min = option_setting_display_value_min[i];
-					value_max = option_setting_display_value_max[i];
+					scale = reset_text_scale;
+				}else{
+					if (in_settings_gameplay){
+						value_cur = option_setting_gameplay_value[i];
+						value_min = option_setting_gameplay_value_min[i];
+						value_max = option_setting_gameplay_value_max[i];
 					
-					str = option_setting_display[i];
-					adjust_str = string(value_cur) + option_setting_display_unit[i];
+						str = option_setting_gameplay[i];
+						adjust_str = string(value_cur) + option_setting_gameplay_unit[i];
 					
-					if (selected == i){
-						option_setting_display_scale[i] = approach(option_setting_display_scale[i], 1.05, 40);
-					}else{
-						option_setting_display_scale[i] = approach(option_setting_display_scale[i], 1, 40);
+						if (selected == i){
+							option_setting_gameplay_scale[i] = approach(option_setting_gameplay_scale[i], 1.05, 40);
+						}else{
+							option_setting_gameplay_scale[i] = approach(option_setting_gameplay_scale[i], 1, 40);
+						}
+					
+						scale = option_setting_gameplay_scale[i];
+					}else if (in_settings_display){
+						value_cur = option_setting_display_value[i];
+						value_min = option_setting_display_value_min[i];
+						value_max = option_setting_display_value_max[i];
+					
+						str = option_setting_display[i];
+						adjust_str = string(value_cur) + option_setting_display_unit[i];
+					
+						if (selected == i){
+							option_setting_display_scale[i] = approach(option_setting_display_scale[i], 1.05, 40);
+						}else{
+							option_setting_display_scale[i] = approach(option_setting_display_scale[i], 1, 40);
+						}
+					
+						scale = option_setting_display_scale[i];
+					}else if (in_settings_audio){
+						value_cur = option_setting_audio_value[i];
+						value_min = option_setting_audio_value_min[i];
+						value_max = option_setting_audio_value_max[i];
+					
+						str = option_setting_audio[i];
+						adjust_str = string(value_cur) + option_setting_audio_unit[i];
+					
+						if (selected == i){
+							option_setting_audio_scale[i] = approach(option_setting_audio_scale[i], 1.05, 40);
+						}else{
+							option_setting_audio_scale[i] = approach(option_setting_audio_scale[i], 1, 40);
+						}
+					
+						scale = option_setting_audio_scale[i];
+					}else if (in_settings_controls){
+						value_cur = option_setting_controls_value[i];
+						value_min = 0;
+						value_max = 0;
+					
+						str = option_setting_controls[i];
+					
+						if (!option_setting_controls_ismouse[i]){
+							adjust_str = scr_keycheck_string(value_cur);
+						}else{
+							adjust_str = scr_mousecheck_string(value_cur);
+						}
+					
+						if (selected == i){
+							option_setting_controls_scale[i] = approach(option_setting_controls_scale[i], 1.05, 40);
+						}else{
+							option_setting_controls_scale[i] = approach(option_setting_controls_scale[i], 1, 40);
+						}
+					
+						scale = option_setting_controls_scale[i];
 					}
-					
-					scale = option_setting_display_scale[i];
-				}else if (in_settings_audio){
-					value_cur = option_setting_audio_value[i];
-					value_min = option_setting_audio_value_min[i];
-					value_max = option_setting_audio_value_max[i];
-					
-					str = option_setting_audio[i];
-					adjust_str = string(value_cur) + option_setting_audio_unit[i];
-					
-					if (selected == i){
-						option_setting_audio_scale[i] = approach(option_setting_audio_scale[i], 1.05, 40);
-					}else{
-						option_setting_audio_scale[i] = approach(option_setting_audio_scale[i], 1, 40);
-					}
-					
-					scale = option_setting_audio_scale[i];
-				}else if (in_settings_controls){
-					value_cur = option_setting_controls_value[i];
-					value_min = 0;
-					value_max = 0;
-					
-					str = option_setting_controls[i];
-					
-					if (!option_setting_controls_ismouse[i]){
-						adjust_str = scr_keycheck_string(value_cur);
-					}else{
-						adjust_str = scr_mousecheck_string(value_cur);
-					}
-					
-					if (selected == i){
-						option_setting_controls_scale[i] = approach(option_setting_controls_scale[i], 1.05, 40);
-					}else{
-						option_setting_controls_scale[i] = approach(option_setting_controls_scale[i], 1, 40);
-					}
-					
-					scale = option_setting_controls_scale[i];
 				}
 				
 				isbool = string_pos("[BOOL]", adjust_str) != 0;
@@ -150,7 +180,13 @@ if (STATE == GameState.Developer){
 				
 				if (isres){
 					var resolutions = scr_resolution_options();
-					adjust_str = ds_list_find_value(resolutions, value_cur);
+					var value = ds_list_find_value(resolutions, value_cur);
+					
+					if (value == undefined){
+						adjust_str = ds_list_find_value(resolutions, ds_list_size(resolutions) - 1);
+					}else{
+						adjust_str = value;
+					}
 					
 					ds_list_destroy(resolutions);
 				}
@@ -160,16 +196,26 @@ if (STATE == GameState.Developer){
 					adjust_str = string_insert("< ", adjust_str, 0);
 				}
 				
-				if (selected == i){
-					draw_set_halign(fa_left);
-					scr_text_shadow_transformed((display_get_gui_width() / 2) - 175, ((display_get_gui_height() / 2) - 65) + (42 * i), str, make_colour_rgb(189, 23, 23), scale, scale, 0);
-					draw_set_halign(fa_right);
-					scr_text_shadow_transformed((display_get_gui_width() / 2) + 175, ((display_get_gui_height() / 2) - 65) + (42 * i), adjust_str, make_colour_rgb(189, 23, 23), scale, scale, 0);
+				if (centered){
+					draw_set_halign(fa_center);
+					
+					if (selected == i){
+						scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (42 * i) + 30, str, make_colour_rgb(189, 23, 23), scale, scale, 0);	
+					}else{
+						scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (42 * i) + 30, str, c_white, scale, scale, 0);	
+					}
 				}else{
-					draw_set_halign(fa_left);
-					scr_text_shadow_transformed((display_get_gui_width() / 2) - 175, ((display_get_gui_height() / 2) - 65) + (42 * i), str, c_white, scale, scale, 0);
-					draw_set_halign(fa_right);
-					scr_text_shadow_transformed((display_get_gui_width() / 2) + 175, ((display_get_gui_height() / 2) - 65) + (42 * i), adjust_str, c_white, scale, scale, 0);
+					if (selected == i){
+						draw_set_halign(fa_left);
+						scr_text_shadow_transformed((display_get_gui_width() / 2) - 175, ((display_get_gui_height() / 2) - 65) + (42 * i), str, make_colour_rgb(189, 23, 23), scale, scale, 0);
+						draw_set_halign(fa_right);
+						scr_text_shadow_transformed((display_get_gui_width() / 2) + 175, ((display_get_gui_height() / 2) - 65) + (42 * i), adjust_str, make_colour_rgb(189, 23, 23), scale, scale, 0);
+					}else{
+						draw_set_halign(fa_left);
+						scr_text_shadow_transformed((display_get_gui_width() / 2) - 175, ((display_get_gui_height() / 2) - 65) + (42 * i), str, c_white, scale, scale, 0);
+						draw_set_halign(fa_right);
+						scr_text_shadow_transformed((display_get_gui_width() / 2) + 175, ((display_get_gui_height() / 2) - 65) + (42 * i), adjust_str, c_white, scale, scale, 0);
+					}
 				}
 			}
 		}else{

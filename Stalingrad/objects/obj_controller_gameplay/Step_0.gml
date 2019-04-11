@@ -16,9 +16,12 @@ if (!sectionstart_record_set){
 // Managing corpse count
 if (instance_number(obj_enemy_corpse) > global.game_option[| Options.MaxCorpses]){
 	var head = ds_queue_head(corpse_queue);
-	if (instance_exists(head)){
-		instance_destroy(head);
-		ds_queue_dequeue(corpse_queue);
+	
+	if (head != undefined){
+		if (instance_exists(head)){
+			instance_destroy(head);
+			ds_queue_dequeue(corpse_queue);
+		}
 	}
 }
 
@@ -115,11 +118,13 @@ if (!global.game_pause){
 }
 
 // Time
-if (counter < 60){
-	counter += (delta_time / 10000) / 1.6;
-}else{
-	global.game_save_seconds ++;
-	counter = 0;
+if (!global.game_pause){
+	if (counter < 60){
+		counter += (delta_time / 10000) / 1.6;
+	}else{
+		global.game_save_seconds ++;
+		counter = 0;
+	}
 }
 
 // Score

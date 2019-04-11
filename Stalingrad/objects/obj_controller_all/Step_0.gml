@@ -1,4 +1,7 @@
 scr_position_view();
+if (!ds_exists(global.game_option, ds_type_list)){
+	scr_option_init();
+}
 scr_update_real_volumes();
 
 // Debug

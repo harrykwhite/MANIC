@@ -14,7 +14,7 @@
         "67f04608-7f1b-4d76-8f81-a7c369858ad5"
     ],
     "filterType": "GMScript",
-    "folderName": "Lighting",
+    "folderName": "Lighting Extension",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

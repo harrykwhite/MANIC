@@ -1,7 +1,7 @@
 /// @desc Trace a shadow for the given polygon from the provided light
 /// @arg shadow_caster The shadow caster that is being illuminated
 /// @arg light The light that illuminates the polygon
-/// @returns An array of vertices (at least 3) as a triangle list that is the shadow, or undefined if no shadow is cast
+/// @returns An array of vertices (at least 3) as a triangle list that is the shadow, || undefined if no shadow is cast
 
 var shadow_caster = argument0;
 var light = argument1;
@@ -14,7 +14,7 @@ var sc_shadow_length = shadow_caster.shadow_length;
 if(__LIGHTING_ERROR_CHECKS) {
 	if(!is_array(polygon) || array_length_1d(polygon) <= 3) {
 		// This array is not a polygon
-		show_debug_message("light_trace_polygon(polygon, light): argument `polygon` is not a polygon array, or has less than 3 vertices");
+		show_debug_message("light_trace_polygon(polygon, light): argument `polygon` is not a polygon array, || has less than 3 vertices");
 		return undefined;
 	}
 	
@@ -60,7 +60,7 @@ if(shadow_array == undefined) {
 }
 
 if(line_emitter) {
-	// Precompute variables for the area or line light to use per-vertex
+	// Precompute variables for the area || line light to use per-vertex
 	var _dir = light_direction + 90;
 	var _w = light[| eLight.Width] * 0.5; // * 0.5 because the line emitter is centered on the light
 	var _c = cos(_dir * pi / 180) * _w;
@@ -82,7 +82,7 @@ for(var i = 0; i < vertex_count; ++i) {
 	
 	if(line_emitter) {
 		// Either the vertex is perpendicular to the line emitter,
-		// or we take the angle to whichever vertex on the line this polygon vertex is closest to
+		// || we take the angle to whichever vertex on the line this polygon vertex is closest to
 		var p1v = [vx - areaPoint1[0], vy - areaPoint1[1]];
 		var projection = dot_product(p1v[0], p1v[1], p1p2[0], p1p2[1]) / p1p2_dot;
 		if(projection < 0.0) langle = point_direction(areaPoint1[0], areaPoint1[1], vx, vy);		// Vertex

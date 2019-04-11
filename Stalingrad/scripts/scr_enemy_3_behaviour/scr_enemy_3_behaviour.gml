@@ -52,7 +52,7 @@ if (instance_exists(target)){
 	shoot_buildup_time = 0;
 }
 
-if (image_angle < 90) or (image_angle > 270){
+if (image_angle < 90) || (image_angle > 270){
 	image_yscale = scale;
 }else{
 	image_yscale = -scale;

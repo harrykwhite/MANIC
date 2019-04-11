@@ -4,7 +4,7 @@ var counter = 0;
 ds_grid_sort(global.player_companions, 0, false);
 
 for(var i = 0; i < height; i ++){
-	if (global.player_companions[# 0, i] == id){
+	if (global.player_companions[# 0, i] == object_index){
 		return counter;
 	}else{
 		if (global.player_companions[# 0, i] != -1){

@@ -1,6 +1,6 @@
 room_speed = framespeed;
 
-if (time < 1){
+if (time < 2){
 	time ++;
 }else{
 	room_speed = 60;

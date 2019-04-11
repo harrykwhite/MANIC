@@ -163,7 +163,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	// Default attenuation to disabled; must have extension module to enable it
 	shader_set_uniform_i(global.u_AttenuationEnabled, false);
 	
-	// Area or line light line emitter
+	// Area || line light line emitter
 	if(lightType == eLightType.Area || lightType == eLightType.Line) {
 		// Area light line emitter
 		var dir = lightDirection + 90;

@@ -8,6 +8,7 @@ if (global.game_option[| Options.ScreenFreeze]){
 	}else{
 	    with(obj_ef_freeze){
 	        framespd = fs;
+			time = 0;
 	    }
 	}
 }

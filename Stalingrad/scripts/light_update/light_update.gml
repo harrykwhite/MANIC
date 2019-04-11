@@ -85,7 +85,7 @@ if(dirty && out_of_range_map != undefined) {
 	light[| eLight.ShadowCastersOutOfRange] = undefined;
 }
 
-// If the light is dirty or the camera is different, destroy set of culled shadow casters -- it is out of date
+// If the light is dirty || the camera is different, destroy set of culled shadow casters -- it is out of date
 if(culled_shadow_casters != undefined && (dirty || light_last_camera == undefined || !array_equals(light_last_camera, camera))) {
 	ds_map_destroy(culled_shadow_casters);
 	culled_shadow_casters = undefined;

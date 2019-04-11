@@ -49,7 +49,7 @@ for(var i = 0; i < 8; i ++){
 			break;
 	}
 	
-	if (ww > dwidth) or (hh > dheight){
+	if (ww > dwidth) || (hh > dheight){
 		break;
 	}
 	

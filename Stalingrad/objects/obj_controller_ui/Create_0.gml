@@ -54,7 +54,7 @@ level_opening_active = false;
 
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
-	if (global.level_current == 0) && ((STATE == GameState.Public) or (global.game_playthrough)){
+	if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
 		break;
 	}
 	

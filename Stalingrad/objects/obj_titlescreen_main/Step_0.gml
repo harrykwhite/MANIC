@@ -109,13 +109,13 @@ if (fade){
 	if (in_settings) && (!in_levelselect){
 		var omax = option_setting_max;
 		if (in_settings_gameplay){
-			omax = option_setting_gameplay_max;
+			omax = option_setting_gameplay_max + 1;
 		}else if (in_settings_display){
-			omax = option_setting_display_max;
+			omax = option_setting_display_max + 1;
 		}else if (in_settings_audio){
-			omax = option_setting_audio_max;
+			omax = option_setting_audio_max + 1;
 		}else if (in_settings_controls){
-			omax = option_setting_controls_max;
+			omax = option_setting_controls_max + 1;
 		}
 	}else if (in_levelselect){
 		omax = option_levelselect_max;
@@ -278,7 +278,7 @@ if (fade){
 						audio_sound_gain(rain, 0, 2000);
 						
 						fade = true;
-						fade_goto = rm_level_1_00;
+						fade_goto = global.level_room[global.game_save_level];
 						fade_speed = 0.01;
 						global.game_playthrough = true;
 						break;
@@ -296,28 +296,66 @@ if (fade){
 						break;
 				}
 			}else if (in_settings) && (!in_levelselect){
-				if (in_settings_controls){
-					searching_for_input = true;
-					searching_for_input_wait = 15;
-					searching_for_input_mouse = option_setting_controls_ismouse[selected];
-				}else if (!in_settings_gameplay) && (!in_settings_display) && (!in_settings_audio){
-					isvalid = true;
-					switch(selected){
-						case 0:
-							in_settings_gameplay = true;
-							break;
+				if (selected == omax) && ((in_settings_gameplay) || (in_settings_display) || (in_settings_audio) || (in_settings_controls)){
+					if (indicate_text_alpha <= 0) || (indicate_text != "Options have been reset"){
+						var otype = "";
+						
+						if (in_settings_gameplay){
+							otype = "gameplay";
+						}else if (in_settings_display){
+							otype = "display";
+						}else if (in_settings_audio){
+							otype = "audio";
+						}else if (in_settings_controls){
+							otype = "controls";
+						}
+						
+						scr_option_reset_defaults(otype);
+						
+						indicate_text = "Options have been reset";
+						indicate_text_time = 135;
+						indicate_text_alpha = 1;
+					}
+				}else{
+					if (in_settings_controls){
+						searching_for_input = true;
+						searching_for_input_wait = 15;
+						searching_for_input_mouse = option_setting_controls_ismouse[selected];
+					}else if (!in_settings_gameplay) && (!in_settings_display) && (!in_settings_audio){
+						isvalid = true;
+						switch(selected){
+							case 0:
+								in_settings_gameplay = true;
+								break;
 				
-						case 1:
-							in_settings_display = true;
-							break;
+							case 1:
+								in_settings_display = true;
+								break;
 				
-						case 2:
-							in_settings_audio = true;
-							break;
+							case 2:
+								in_settings_audio = true;
+								break;
 				
-						case 3:
-							in_settings_controls = true;
-							break;
+							case 3:
+								in_settings_controls = true;
+								break;
+						
+							case 4:
+								if (indicate_text_alpha <= 0) || ((indicate_text != "No save data was found") && (indicate_text != "Save data has been reset")){
+									if (file_exists("save.ini")){
+										file_delete("save.ini");
+										indicate_text = "Save data has been reset";
+									}else{
+										indicate_text = "No save data was found";
+									}
+									
+									indicate_text_time = 135;
+									indicate_text_alpha = 1;
+								}
+								
+								isvalid = false;
+								break;
+						}
 					}
 				}
 			}else if (in_levelselect){

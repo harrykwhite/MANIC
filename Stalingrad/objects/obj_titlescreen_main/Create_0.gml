@@ -54,6 +54,9 @@ option_setting_scale[2] = 1;
 
 option_setting[3] = "Controls";
 option_setting_scale[3] = 1;
+
+option_setting[4] = "Clear Save Data";
+option_setting_scale[4] = 1;
 #endregion
 
 #region Options -> Settings -> Gameplay
@@ -218,6 +221,12 @@ for(var i = 0; i < levelcount; i ++){
 }
 
 #endregion
+
+reset_text_scale = 1;
+
+indicate_text = "";
+indicate_text_time = 0;
+indicate_text_alpha = 0;
 
 option_max = array_length_1d(option) - 1;
 

@@ -25,7 +25,7 @@ if (usize > 0){
 	for(var i = 0; i < usize; i ++){
 		var upgrade = upgrades[| i];
 		if (!global.upgrade_behind[upgrade]){
-			if (upgrade == PlayerUpgrade.RunningBoots) or (upgrade == PlayerUpgrade.KneePads){
+			if (upgrade == PlayerUpgrade.RunningBoots) || (upgrade == PlayerUpgrade.KneePads){
 				var rboots = upgrade == PlayerUpgrade.RunningBoots;
 				var walksprite = spr_player_upgrade_runningboots_0_walk;
 				
