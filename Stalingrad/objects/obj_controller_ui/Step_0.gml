@@ -207,7 +207,7 @@ if (!global.game_pause){
 
 // Game Opening Intro
 if (game_opening_intro){
-	if (global.level_current != 0) || ((STATE == GameState.Developer) && (!global.game_playthrough)){
+	if (global.level_current != 0) || (global.game_save_started) || (!global.game_playthrough){
 		game_opening_intro = false;
 	}
 	
