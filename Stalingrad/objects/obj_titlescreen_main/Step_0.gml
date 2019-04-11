@@ -273,6 +273,7 @@ if (fade){
 		
 			if (!in_settings) && (!in_levelselect){
 				isvalid = true;
+				option_scale[selected] = 1;
 				switch(selected){
 					case 0:
 						audio_sound_gain(rain, 0, 2000);
@@ -326,6 +327,7 @@ if (fade){
 						switch(selected){
 							case 0:
 								in_settings_gameplay = true;
+								option_scale[selected] = 1;
 								break;
 				
 							case 1:
@@ -369,12 +371,13 @@ if (fade){
 		
 			if (isvalid){
 				selected = 0;
+				scr_titlescreen_options_scale_reset();
 			}
 		}
 	
 		if (keyboard_check_pressed(vk_backspace)){
 			var isvalid = false;
-		
+			
 			if (in_settings) && (!in_levelselect){
 				isvalid = true;
 				if (!in_settings_gameplay) && (!in_settings_display) && (!in_settings_audio) && (!in_settings_controls){
@@ -391,6 +394,7 @@ if (fade){
 		
 			if (isvalid){
 				selected = 0;
+				scr_titlescreen_options_scale_reset();
 			}
 		}
 	}else{
