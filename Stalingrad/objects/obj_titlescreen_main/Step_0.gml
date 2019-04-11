@@ -276,6 +276,7 @@ if (fade){
 				option_scale[selected] = 1;
 				switch(selected){
 					case 0:
+						isvalid = false;
 						audio_sound_gain(rain, 0, 2000);
 						
 						fade = true;
@@ -361,6 +362,7 @@ if (fade){
 					}
 				}
 			}else if (in_levelselect){
+				isvalid = false;
 				audio_sound_gain(rain, 0, 2000);
 				
 				fade = true;
