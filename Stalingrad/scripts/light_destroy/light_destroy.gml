@@ -3,6 +3,10 @@
 
 var light = argument0;
 
+if (light == undefined){
+	return;
+}
+
 // Destroy the vertex buffer
 var buffer = light[| eLight.VertexBuffer];
 if(buffer != undefined) vertex_delete_buffer(buffer);

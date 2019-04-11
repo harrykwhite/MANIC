@@ -1,6 +1,8 @@
 scr_position_view();
 scr_inboss()
 
+global.player_has_bossrespawn = global.boss_current != -1;
+
 // Recording level and section start data
 if (!sectionstart_record_set){
 	var rslotcount = array_length_1d(global.weapon_slot);

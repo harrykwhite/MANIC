@@ -50,6 +50,7 @@ global.player_respawn_x = 0;
 global.player_respawn_y = 0;
 global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
+global.player_has_bossrespawn = false;
 
 global.worldtrain_room = rm_level_6_00;
 

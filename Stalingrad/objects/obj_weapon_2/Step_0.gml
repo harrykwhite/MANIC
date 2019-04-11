@@ -17,8 +17,8 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
         scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
 		image_speed = 1;
 		
-        var xpos = x + lengthdir_x(14, mdir) + lengthdir_x(3, up(mdir));
-        var ypos = y + lengthdir_y(14, mdir) + lengthdir_y(3, up(mdir));
+        var xpos = x + lengthdir_x(15, mdir) + lengthdir_x(4, up(mdir));
+        var ypos = y + lengthdir_y(15, mdir) + lengthdir_y(4, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
 		part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);
