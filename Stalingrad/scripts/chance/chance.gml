@@ -3,8 +3,8 @@ var _chance = argument0;
 
 if (random(100) < _chance){
     return true;
-    exit;
+    return;
 }else{
     return false;
-    exit;
+    return;
 }

@@ -17,14 +17,14 @@ for(var i = 0; i < (dash_speed) + 1; i ++){
 					scr_effect_screenshake(3);
 					scr_effect_freeze(5);
 					inst.death = true;
-					exit;
+					return;
 				}
 			}
 		}*/
 		
 		state = scr_player_move;
 	    dash_length_current = 0;
-	    exit;
+	    return;
 	}
 }
 

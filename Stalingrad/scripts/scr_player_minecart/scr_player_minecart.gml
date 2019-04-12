@@ -10,7 +10,7 @@ if (minecart_sprite_image < sprite_get_number(minecart_sprite)){
 }
 
 if (!instance_exists(minecart)){
-	exit;
+	return;
 }
 
 if (mouse_x > x){

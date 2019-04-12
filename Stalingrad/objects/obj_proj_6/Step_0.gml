@@ -1,12 +1,12 @@
 if (global.game_pause){
 	image_speed = 0;
-	exit;
+	return;
 }
 
 if (owner != noone){
 	if (!instance_exists(owner)){
 		instance_destroy();
-		exit;
+		return;
 	}
 	
 	spd = 0;

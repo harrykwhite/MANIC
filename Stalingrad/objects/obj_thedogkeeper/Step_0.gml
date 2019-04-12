@@ -36,7 +36,7 @@ if (ispaused){
 		audio_pause_sound(burn_sound);
 		burn_sound_paused = true;
 	}
-	exit;
+	return;
 }else{
 	if (burn_sound_paused){
 		audio_resume_sound(burn_sound);
@@ -80,7 +80,7 @@ if (!dogs_downed){
 }else{
 	if (!weapon_has){
 		weapon_has = true;
-		exit;
+		return;
 	}
 	
 	scr_thedogkeeper_behaviour_1();

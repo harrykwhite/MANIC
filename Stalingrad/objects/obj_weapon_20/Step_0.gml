@@ -8,7 +8,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 			shoot_onsound_paused = true;
 		}
 	}
-	exit;
+	return;
 }else{
 	if (shoot_onsound_paused){
 		audio_resume_sound(shoot_onsound);

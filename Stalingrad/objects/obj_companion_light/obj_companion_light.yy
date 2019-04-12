@@ -22,7 +22,7 @@
             "mvc": "1.0",
             "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
             "propertyId": "1a4e0384-2c2a-48c1-86ff-1579eb84c5fa",
-            "value": "300"
+            "value": "200"
         },
         {
             "id": "41873775-a61e-4174-a1ba-7eebd8aa5a82",
@@ -30,7 +30,7 @@
             "mvc": "1.0",
             "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
             "propertyId": "a89637b7-5f88-4100-a038-c4d3e5c67480",
-            "value": "1.3"
+            "value": "1.1"
         }
     ],
     "parentObjectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",

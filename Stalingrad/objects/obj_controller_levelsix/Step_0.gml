@@ -162,7 +162,7 @@ if (player_exists){
 				
 					if (spawn_trial > 1000){
 						spawn_trial = 0;
-						exit;
+						return;
 					}
 				}
 		

@@ -6,33 +6,35 @@ var distTo = 0;
 if (instance_exists(obj_player)){
 	if (!in_cutscene){
 		if (!instance_exists(target) || (target == noone)){
-			var enemyCount = array_length_1d(global.enemy);
-			for(var i = 0; i < enemyCount; i ++){
-				if (instance_exists(global.enemy[i])){
-					target = instance_nearest(x, y, global.enemy[i]);
+			if (global.cutscene_current == -1){
+				var enemyCount = array_length_1d(global.enemy);
+				for(var i = 0; i < enemyCount; i ++){
+					if (instance_exists(global.enemy[i])){
+						target = instance_nearest(x, y, global.enemy[i]);
 				
-					if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
-						target = noone;
-					}
+						if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
+							target = noone;
+						}
 				
-					if (distance_to_object(target) > 70){
-						target = noone;
+						if (distance_to_object(target) > 70 + (30 * order)){
+							target = noone;
+						}
 					}
 				}
 			}
 		
-			if (distance_to_object(obj_player) > 70) || (global.cutscene_current == 52){
+			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52) || (global.cutscene_current == 2){
 				move_xTo = obj_player.x;
 				move_yTo = obj_player.y;
 				move_speed = 1.8;
 				
-				if (distance_to_object(obj_player) > 100){
+				if (distance_to_object(obj_player) > 100 + (30 * order)){
 					move_speed = 2.1;
 				}
 			
 				face_player = true;
 			}else{
-				if (distance_to_point(move_xTo, move_yTo) > 27){
+				if (distance_to_point(move_xTo, move_yTo) > 27 + (30 * order)){
 					move_speed = 1.6;
 					move_time = random_range(10, 15);
 				}else{
@@ -99,7 +101,7 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}else{
-		if (distance_to_object(obj_player) > 37){
+		if (distance_to_object(obj_player) > 37 + (30 * order)){
 			move_speed = 1;
 		}else{
 			move_speed = 0;

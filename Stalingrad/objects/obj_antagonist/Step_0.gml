@@ -46,7 +46,7 @@ if (ispaused){
 		audio_pause_sound(burn_sound);
 		burn_sound_paused = true;
 	}
-	exit;
+	return;
 }else{
 	if (burn_sound_paused){
 		audio_resume_sound(burn_sound);

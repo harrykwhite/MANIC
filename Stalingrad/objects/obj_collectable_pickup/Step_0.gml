@@ -12,7 +12,7 @@ if (parent != -1){
 }
 
 if (global.game_pause) || (global.cutscene_current != -1){
-	exit;
+	return;
 }
 
 // Pickup
@@ -32,6 +32,7 @@ if (instance_exists(obj_player)){
 			scr_player_stamina_drain(6);
 			scr_effect_screenshake(1);
 			global.level_collectable_current[global.level_current] ++;
+			global.level_collectable_found[# 0, listnum] = true;
 			
 			var amount = 3000;
 			scr_points_display("COLLECTABLE +" + string(amount));

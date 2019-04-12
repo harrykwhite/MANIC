@@ -1,11 +1,11 @@
 if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_index == obj_enemy_3){
 	if (cutscene_prop){
-		exit;
+		return;
 	}
 	
 	if (object_index == obj_enemy_0){
 		if (type == EnemyOneType.TrainBoss){
-			exit;
+			return;
 		}
 	}
 }

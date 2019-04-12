@@ -1,5 +1,5 @@
 if (global.game_pause){
-	exit;
+	return;
 }
 
 if (rspd > 0){

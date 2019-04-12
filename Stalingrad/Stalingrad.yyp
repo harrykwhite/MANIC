@@ -3399,14 +3399,6 @@
             }
         },
         {
-            "Key": "4e90ed30-ef5a-4581-800a-8c63766d4141",
-            "Value": {
-                "id": "e9ee961d-5d65-44b7-a968-199d78e9dc5d",
-                "resourcePath": "sprites\\spr_conveyerbelt_2_interact\\spr_conveyerbelt_2_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "4ed52afd-427a-41d0-8bd3-32937edd4630",
             "Value": {
                 "id": "5ce60f32-c84d-4bb7-8e4e-156406ac0967",
@@ -5444,6 +5436,14 @@
                 "id": "6c48d91e-7fdf-40d2-963d-a32aa64a1df3",
                 "resourcePath": "objects\\obj_weapon_23\\obj_weapon_23.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "83af0d57-9c33-47ac-8e04-3ea8afb6d604",
+            "Value": {
+                "id": "24456b84-24e4-447c-957f-e0c1c9226fa8",
+                "resourcePath": "sprites\\spr_tileset_floor_01\\spr_tileset_floor_01.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -9519,14 +9519,6 @@
             }
         },
         {
-            "Key": "e815114f-aeaf-4f7f-a7c0-f3423abdeb14",
-            "Value": {
-                "id": "b9ca98d1-fc48-489d-b5dc-9d084db29a89",
-                "resourcePath": "sprites\\spr_sign_0_interact\\spr_sign_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "e83ee497-f828-4012-b3b8-661f71fd2709",
             "Value": {
                 "id": "09a8509e-9773-4195-b949-24defbde3f4c",
@@ -9983,6 +9975,14 @@
             }
         },
         {
+            "Key": "f2ad6a6c-e239-427b-bb8a-c14cdddcff29",
+            "Value": {
+                "id": "cb5c0cb3-e67a-4246-be77-1c3b97b4f9b5",
+                "resourcePath": "sprites\\spr_sign_0_interact\\spr_sign_0_interact.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f2d4366a-e2d3-46b8-ab8a-9a4990e3e829",
             "Value": {
                 "id": "4aaf4d5f-95f8-42e1-b594-ed5707889a04",
@@ -10236,6 +10236,14 @@
                 "id": "bb818786-6a54-4a7b-8d3b-c890474c062b",
                 "resourcePath": "sounds\\m_boss_stinger_0\\m_boss_stinger_0.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "f770c2d7-abb2-483c-9718-a1580c83cc95",
+            "Value": {
+                "id": "60fc45f9-6ea9-402e-a268-54d8fb3c934c",
+                "resourcePath": "sprites\\spr_conveyerbelt_2_interact\\spr_conveyerbelt_2_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

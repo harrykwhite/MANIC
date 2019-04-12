@@ -3,7 +3,7 @@
 
 var light = argument0;
 
-if (light == undefined){
+if (light == undefined) || (!ds_exists(light, ds_type_list)){
 	return;
 }
 

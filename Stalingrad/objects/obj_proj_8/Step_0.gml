@@ -1,6 +1,6 @@
 if (global.game_pause){
 	image_speed = 0;
-	exit;
+	return;
 }
 
 if (place_meeting(x + 1, y + 1, obj_p_solid)){

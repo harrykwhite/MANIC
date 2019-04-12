@@ -3,7 +3,7 @@ if (global.game_pause){
 	ispaused = true;
 }
 
-if (global.cutscene_current != -1) && (global.cutscene_current != 52){
+if (global.cutscene_current != -1) && (global.cutscene_current != 52) && (global.cutscene_current != 2){
 	if (!in_cutscene){
 		ispaused = true;
 	}
@@ -24,7 +24,7 @@ if (ispaused){
 		audio_pause_sound(burn_sound);
 		burn_sound_paused = true;
 	}
-	exit;
+	return;
 }else{
 	if (burn_sound_paused){
 		audio_resume_sound(burn_sound);
@@ -63,12 +63,14 @@ if (light_brightness < 1){
 	light_brightness -= 0.05;
 }
 
-mylight.x = x;
-mylight.y = y + 5;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y + 5;
-mylight.light[| eLight.LutIntensity] = max((1.55 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+if (instance_exists(mylight)){
+	mylight.x = x;
+	mylight.y = y + 5;
+	mylight.light[| eLight.X] = x;
+	mylight.light[| eLight.Y] = y + 5;
+	mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+}
 
 scr_pawn_update();
 image_yscale = scale;

@@ -1,6 +1,6 @@
 // Player Collision
 if (hspd == 0) && (vspd == 0){
-	exit;
+	return;
 }
 
 for(var i = 0; i < abs(hspd) + 1; i ++){

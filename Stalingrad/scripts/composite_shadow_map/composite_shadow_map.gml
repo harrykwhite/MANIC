@@ -43,6 +43,10 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	// Get the light's shadow map
 	var light = ds_list_find_value(lights, i);
 	
+	if (!ds_exists(light, ds_type_list)){
+		continue;
+	}
+	
 	// Can this light be culled?
 	if(light_cull(light, camera)) {
 		// Yes, no reason to draw it
@@ -178,7 +182,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	shader_set_uniform_i(global.u_LightType, lightType);
 	
 	// Apply extension modules
-	light_enumerate_extensions(light, eLightExtension.Apply);
+	//light_enumerate_extensions(light, eLightExtension.Apply);
 	
 	// If the light uses its own shadow map, convert to local space
 	var offsetx = 0, offsety = 0;
@@ -193,7 +197,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	draw_surface(shadowMap, offsetx, offsety);
 	
 	// Reset extension modules
-	light_enumerate_extensions(light, eLightExtension.Reset);
+	//light_enumerate_extensions(light, eLightExtension.Reset);
 	
 	// Reset
 	shader_reset();

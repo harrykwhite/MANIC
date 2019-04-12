@@ -2,7 +2,7 @@ var level = scr_get_level_object();
 interact = false;
 if (global.game_pause){
 	image_speed = 0;
-	exit;
+	return;
 }
 
 while (spd <= 0.2) && (instance_exists(obj_player)){

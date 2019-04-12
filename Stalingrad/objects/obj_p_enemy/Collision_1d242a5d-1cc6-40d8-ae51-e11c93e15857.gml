@@ -1,16 +1,16 @@
 if (other.enemy){
-	exit;
+	return;
 }
 
 if (object_index == obj_enemy_1){
 	if (owner != obj_player) && (owner != noone){
-		exit;
+		return;
 	}
 }
 
 if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_index == obj_enemy_3){
 	if (cutscene_prop){
-		exit;
+		return;
 	}
 }
 

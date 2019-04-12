@@ -596,7 +596,7 @@ if (screen_fade_opening > 0){
 }
 
 // Game Opening Intro
-if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
+if (global.level_current == 0){
 	if (game_opening_intro){
 		var text = "MANIC";
 		if (game_opening_intro_text_stage == 0){

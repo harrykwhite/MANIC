@@ -1,5 +1,5 @@
 if (!other.enemy){
-	exit;
+	return;
 }
 
 if (i_time < 1) && (other.spd > 0){

@@ -3,7 +3,7 @@ if (global.game_pause){
 		audio_pause_sound(sound);
 		sound_paused = true;
 	}
-	exit;
+	return;
 }else{
 	if (sound_paused){
 		audio_resume_sound(sound);

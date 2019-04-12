@@ -1,5 +1,5 @@
 if (!isVisible){
-	exit;
+	return;
 }
 
 // Health

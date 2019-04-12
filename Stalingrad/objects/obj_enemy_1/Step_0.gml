@@ -7,11 +7,11 @@ if (ispaused){
 	if (owner.object_index == obj_enemy_0){
 		if (!owner.cutscene_prop){
 			image_speed = 0;
-			exit;
+			return;
 		}
 	}else{
 		image_speed = 0;
-		exit;
+		return;
 	}
 }
 

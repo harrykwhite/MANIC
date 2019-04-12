@@ -42,6 +42,10 @@ game_opening_intro_text_alpha = -0.25;
 game_opening_intro_text_stage = 0;
 game_opening_intro_text_time = 60 * 4;
 
+if (global.level_current != 0) || (global.game_save_started){
+	game_opening_intro = false;
+}
+
 upgrade_indicate_index = 0;
 upgrade_indicate_time = 0;
 upgrade_indicate_alpha = 0;
@@ -54,7 +58,8 @@ level_opening_active = false;
 
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
-	if (global.level_current == 0) && ((STATE == GameState.Public) || (global.game_playthrough)){
+	if (global.level_current == 0){
+		global.level_entered[0] = true;
 		break;
 	}
 	
@@ -141,3 +146,4 @@ pausedialogue_type_option_trainroom[0] = -1;
 pausedialogue_type_option_trainstart_type[0] = -1;
 
 sprite_index = noone;
+depth = -4;

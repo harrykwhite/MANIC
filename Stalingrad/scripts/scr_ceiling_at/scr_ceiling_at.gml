@@ -2,7 +2,7 @@
 ///@param y
 if (global.level_current == 2) || (global.level_current == 4){
 	return false;
-	exit;
+	return;
 }
 
 var xx = argument0;

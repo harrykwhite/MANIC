@@ -132,7 +132,7 @@ if (fade){
 		}
 		
 		fade_alpha = clamp(fade_alpha, 0, 1);
-		exit;
+		return;
 	}
 	
 	if (!searching_for_input){
@@ -273,7 +273,6 @@ if (fade){
 		
 			if (!in_settings) && (!in_levelselect){
 				isvalid = true;
-				option_scale[selected] = 1;
 				switch(selected){
 					case 0:
 						isvalid = false;
@@ -282,7 +281,6 @@ if (fade){
 						fade = true;
 						fade_goto = global.level_room[global.game_save_level];
 						fade_speed = 0.01;
-						global.game_playthrough = true;
 						break;
 					
 					case 1:
@@ -352,6 +350,14 @@ if (fade){
 										indicate_text = "No save data was found";
 									}
 									
+									scr_save_game_reader();
+									option[0] = "Start Game";
+									option_locked[1] = true;
+									if (global.game_save_started){
+										option[0] = "Continue Game";
+										option_locked[1] = false;
+									}
+									
 									indicate_text_time = 135;
 									indicate_text_alpha = 1;
 								}
@@ -368,7 +374,6 @@ if (fade){
 				fade = true;
 				fade_goto = option_levelselect_goto[selected];
 				fade_speed = 0.01;
-				global.game_playthrough = false;
 			}
 		
 			if (isvalid){

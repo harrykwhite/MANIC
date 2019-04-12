@@ -84,7 +84,7 @@ if (instance_exists(target)){
 				healer_instance = noone;
 				healer_healtime = 5;
 				healer_findtime = 70;
-				exit;
+				return;
 			}
 		}else{
 			move_speed = 2.65;
@@ -196,11 +196,11 @@ if (instance_exists(target)){
 									weapon_index = PawnWeapon.Grenade;
 									time = 120;
 									attack_time = time * attack_time_offset;
-									exit;
+									return;
 								}else{
 									time = 100;
 									if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (collision_line(x, y, target.x, target.y, obj_enemy_0, false, true)){
-										exit;
+										return;
 									}
 								}
 							}

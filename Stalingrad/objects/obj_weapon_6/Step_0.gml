@@ -1,7 +1,7 @@
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	image_index = 0;
-	exit;
+	return;
 }
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);

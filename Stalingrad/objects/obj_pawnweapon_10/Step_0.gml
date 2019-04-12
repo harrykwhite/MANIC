@@ -7,7 +7,7 @@ if (global.game_pause){
 			shoot_onsound_paused = true;
 		}
 	}
-	exit;
+	return;
 }else{
 	if (shoot_onsound_paused){
 		audio_resume_sound(shoot_onsound);

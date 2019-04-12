@@ -6,7 +6,7 @@ if (index == 52){
 }
 
 if (!active){
-	exit;
+	return;
 }
 
 if (instance_exists(obj_player)) && (global.cutscene_current == -1){	
@@ -19,7 +19,7 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 					if (boss != -1){
 						if (boss != Boss.MotherRobot) && (boss != Boss.SniperRobot){
 							interact_active = false;
-							exit;
+							return;
 						}
 					}
 					
@@ -27,7 +27,7 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				}
 				
 				if (!keyboard_check_pressed(obj_controller_all.key_interact)){
-					exit;
+					return;
 				}
 			}
 			

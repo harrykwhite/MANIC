@@ -24,7 +24,7 @@ global.level_entered[1] = false;
 global.level_name[2] = "Underground Bunker";
 global.level_room[2] = rm_level_3_00;
 global.level_collectable_current[2] = 0;
-global.level_collectable_number[2] = 5;
+global.level_collectable_number[2] = 4;
 global.level_displaynum[2] = "Three";
 global.level_entered[2] = false;
 
@@ -45,7 +45,7 @@ global.level_entered[4] = false;
 global.level_name[5] = "Train Station";
 global.level_room[5] = rm_level_6_00;
 global.level_collectable_current[5] = 0;
-global.level_collectable_number[5] = 2;
+global.level_collectable_number[5] = 3;
 global.level_displaynum[5] = "Six";
 global.level_entered[5] = false;
 

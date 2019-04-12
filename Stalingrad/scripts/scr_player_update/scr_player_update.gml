@@ -26,6 +26,20 @@ if (global.cutscene_current == -1){
 	y = clamp(y, 0, room_height);
 }
 
+// Companions
+var height = ds_grid_height(global.player_companions);
+for(var i = 0; i < height; i ++){
+	var obj = global.player_companions[# 0, i];
+	
+	if (obj != -1){
+		if (!instance_exists(obj)){
+			global.player_companions[# 0, i] = -1;
+			global.player_companions[# 1, i] = -1;
+			ds_grid_sort(global.player_companions, 0, false);
+		}
+	}
+}
+
 // Invincibility
 if (i_time > 0){
     i_time--;

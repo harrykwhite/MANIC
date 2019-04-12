@@ -120,6 +120,7 @@ if (!global.game_pause){
 						break;
 					
 					case 2:
+						scr_save_game();
 						ds_grid_clear(global.player_companions, -1);
 						scr_fade_object_list_reset();
 						scr_global_set();
@@ -168,7 +169,7 @@ if (!global.game_pause){
 				pausedialogue = false;
 				pausedialogue_time = 0;
 				global.game_pause = false;
-				exit;
+				return;
 			}
 			
 			if (keyboard_check_pressed(ord("W"))) || (keyboard_check_pressed(vk_up)){
@@ -207,10 +208,6 @@ if (!global.game_pause){
 
 // Game Opening Intro
 if (game_opening_intro){
-	if (global.level_current != 0) || (global.game_save_started) || (!global.game_playthrough){
-		game_opening_intro = false;
-	}
-	
 	if (game_opening_intro_alpha > 0){
 		game_opening_intro_alpha -= 0.005 * game_opening_intro_speed;
 		game_opening_intro_text_time -= game_opening_intro_speed;

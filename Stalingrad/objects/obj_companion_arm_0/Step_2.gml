@@ -1,7 +1,7 @@
 var wcurrent = -1;
 
 if (!instance_exists(owner)){
-	exit;
+	return;
 }
 
 if (instance_exists(owner.weapon)){
@@ -14,7 +14,7 @@ image_xscale = owner.scale;
 if (wcurrent != -1){
 	if (global.game_pause){
 		image_alpha = 1;
-		exit;
+		return;
 	}
 	
 	// Weapon Position -------------------------------------------------------------------------------------------------

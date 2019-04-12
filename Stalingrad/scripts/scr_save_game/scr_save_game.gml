@@ -34,6 +34,16 @@ if (ds_exists(global.player_upgrades, ds_type_list)){
 	}
 }
 
+var levelcount = array_length_1d(global.level_name);
+for(var i = 0; i < levelcount; i ++){
+	ini_write_real("Save", "Level_Entered" + string(i), global.level_entered[i]);
+}
+
+var collectcount = ds_grid_height(global.level_collectable_found);
+for(var i = 0; i < collectcount; i ++){
+	ini_write_real("Save", "CollectableFound" + string(i), global.level_collectable_found[# 0, i]);
+}
+
 if (ds_exists(global.player_companions, ds_type_grid)){
 	var companioncount = ds_grid_height(global.player_companions);
 	for(var i = 0; i < companioncount; i ++){

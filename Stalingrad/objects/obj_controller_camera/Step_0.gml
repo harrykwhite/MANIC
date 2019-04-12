@@ -56,7 +56,7 @@ if (instance_exists(obj_player)) && (!global.game_pause){
 	    }else{
 	        camera_screenshake_amount = 0;
 	        camera_screenshake = false;
-	        exit;
+	        return;
 	    }
 		
 	}

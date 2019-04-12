@@ -1,5 +1,5 @@
 if (global.cutscene_current != -1) || (global.game_pause){
-	exit;
+	return;
 }
 
 // Blood

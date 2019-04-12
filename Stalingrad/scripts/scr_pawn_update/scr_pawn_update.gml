@@ -221,7 +221,7 @@ if (health_current <= 0){
 	
 		if (global.weapon_slot_standalone != -1){
 			dropchance = 0;
-			exit;
+			return;
 		}
 	
 		if (weapon.type == WeaponType.Ranged){

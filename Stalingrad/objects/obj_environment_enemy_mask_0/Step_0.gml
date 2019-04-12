@@ -1,5 +1,5 @@
 if (global.game_pause){
-	exit;
+	return;
 }
 
 if (place_meeting(x, y + 8, obj_conveyerbelt_0)){

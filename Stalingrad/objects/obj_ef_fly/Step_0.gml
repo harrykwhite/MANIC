@@ -4,7 +4,7 @@ if (global.game_pause){
 		audio_stop_sound(buzz);
 		buzz = noone;
 	}
-	exit;
+	return;
 }else{
 	image_speed = 0.2;
 }

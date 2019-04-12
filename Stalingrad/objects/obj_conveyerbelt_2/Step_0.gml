@@ -1,6 +1,6 @@
 if (global.game_pause){
 	image_speed = 0;
-	exit;
+	return;
 }
 
 sprite_index = spr_conveyerbelt_2;

@@ -34,7 +34,7 @@ if (ispaused){
 	}
 	
 	image_speed = 0;
-	exit;
+	return;
 }
 
 whiteflash_alpha -= whiteflash_alphadec;

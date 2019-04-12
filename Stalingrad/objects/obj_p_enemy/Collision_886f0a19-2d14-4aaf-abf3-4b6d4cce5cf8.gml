@@ -2,16 +2,16 @@ event_inherited();
 
 if (object_index == obj_enemy_0){
 	if (cutscene_prop){
-		exit;
+		return;
 	}
 	
 	if (type == EnemyOneType.TrainBoss){
-		exit;
+		return;
 	}
 }
 
 if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
-	exit;
+	return;
 }
 
 var damage = 2;

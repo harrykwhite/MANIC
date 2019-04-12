@@ -2,7 +2,7 @@ var wcurrent = -1;
 var outlength = 0;
 
 if (!instance_exists(owner)){
-	exit;
+	return;
 }
 
 image_xscale = owner.scale;
@@ -16,7 +16,7 @@ if (owner.weapon != -1){
 	
 		if (global.game_pause){
 			image_alpha = 1;
-			exit;
+			return;
 		}
 	
 		image_index = 0;

@@ -1,6 +1,6 @@
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
-	exit;
+	return;
 }
 
 if (domove){

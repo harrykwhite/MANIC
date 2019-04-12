@@ -101,8 +101,8 @@ if (!global.game_pause){
 		if (global.cutscene_current == -1) && (obj_player.move_xTo == -1 && (obj_player.move_yTo == -1)){
 			if (global.weapon_slot_standalone == -1){
 				if (instance_exists(weapon)){
-					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){ if (weapon.attack_time > 0){exit;}}
-					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){ if (weapon.shoot_time > 0){exit;}}
+					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){ if (weapon.attack_time > 0){return;}}
+					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){ if (weapon.shoot_time > 0){return;}}
 					
 					if (mouse_wheel_up()){
 						obj_controller_mouse.mouse_scale = 2;

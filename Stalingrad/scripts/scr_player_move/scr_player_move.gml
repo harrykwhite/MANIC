@@ -12,7 +12,7 @@ if (spd_offset > 1){
 // Minecart State
 if (in_minecart){
 	state = scr_player_minecart;
-	exit;
+	return;
 }
 
 // Main
@@ -130,7 +130,7 @@ if (global.weapon_slot_standalone == -1){
 		    if (place_meeting(x + lengthdir_x(i, knockback_direction), y + lengthdir_y(i, knockback_direction), obj_p_solid)) || (knockback_speed <= 0.2){
 				knockback_speed = 0;
 		        knockback = false;
-				exit;
+				return;
 		    }
 		}
 		
@@ -180,7 +180,7 @@ if (global.weapon_slot_standalone == -1){
 		}
 		
 	    state = scr_player_dash;
-	    exit;
+	    return;
 	}
 	
 	if (dash_time_short > 0){

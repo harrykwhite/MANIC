@@ -1,6 +1,6 @@
 if (global.game_pause){
 	image_speed = 0;
-	exit;
+	return;
 }
 
 alpha = approach(alpha, alphaTo, 40);

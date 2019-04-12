@@ -15,7 +15,7 @@ if (argument_count == 5){
 
 if (!activeOnPause){
 	if (global.game_pause){
-		exit;
+		return;
 	}
 }
 

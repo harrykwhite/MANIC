@@ -1,9 +1,9 @@
 if (!other.enemy){
-	exit;
+	return;
 }
 
 if (!other.damage){
-	exit;
+	return;
 }
 
 other.owner = id;

@@ -7,7 +7,6 @@ scr_collectable_list();
 scr_upgrade_list();
 
 global.game_pause = false;
-global.game_playthrough = false;
 
 global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
@@ -34,8 +33,17 @@ global.boss_current = -1;
 if (room == rm_ini){
 	global.game_time_passed = 0;
 	global.level_current = LevelIndex.RavagedTown;
+	
 	global.player_companions = ds_grid_create(2, 4);
 	ds_grid_clear(global.player_companions, -1);
+	
+	var levelcount = array_length_1d(global.level_name);
+	var size = 0;
+	for(var i = 0; i < levelcount; i ++){
+		size += global.level_collectable_number[i] - 1;
+	}
+	
+	global.level_collectable_found = ds_grid_create(1, size);
 }
 
 global.fade_object_group[0, 0] = noone;

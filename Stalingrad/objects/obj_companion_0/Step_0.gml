@@ -4,7 +4,7 @@ if (global.game_pause){
 }
 
 if (global.cutscene_current != -1){
-	if (!in_cutscene) && (global.cutscene_current != 52){
+	if (!in_cutscene) && (global.cutscene_current != 52) && (global.cutscene_current != 2){
 		ispaused = true;
 	}
 }else{
@@ -24,7 +24,7 @@ if (ispaused){
 		audio_pause_sound(burn_sound);
 		burn_sound_paused = true;
 	}
-	exit;
+	return;
 }else{
 	if (burn_sound_paused){
 		audio_resume_sound(burn_sound);
@@ -36,6 +36,8 @@ if (!registered){
 	global.game_companion_farmer_found = true;
 	scr_companion_register_me();
 	registered = true;
+}else{
+	global.player_companions[# 1, order] = health_current;
 }
 
 order = scr_companion_get_order();
@@ -63,12 +65,14 @@ if (light_brightness < 1){
 	light_brightness -= 0.05;
 }
 
-mylight.x = x;
-mylight.y = y;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.55 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+if (instance_exists(mylight)){
+	mylight.x = x;
+	mylight.y = y;
+	mylight.light[| eLight.X] = x;
+	mylight.light[| eLight.Y] = y;
+	mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+}
 
 scr_pawn_update();
 image_yscale = scale;

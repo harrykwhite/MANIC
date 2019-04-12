@@ -10,12 +10,12 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
     
 	if (obj_player.state == scr_player_dash){
         image_alpha = 0;
-		exit;
+		return;
     }
 	
 	if (global.game_pause){
 		image_alpha = 1;
-		exit;
+		return;
 	}
 	
 	if (obj_player.move_xTo == -1) && (obj_player.move_yTo == -1) && (global.cutscene_current == -1){

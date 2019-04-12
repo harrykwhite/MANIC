@@ -4,7 +4,7 @@ if (global.cutscene_current == -1){
 
 if (global.game_pause) || (global.cutscene_current != -1){
 	if (!global.game_pause) && (!is_cutscene){
-		exit;
+		return;
 	}
 }
 
@@ -97,7 +97,7 @@ if (instance_exists(obj_player)){
 						obj_controller_ui.weaponslot_shake = 3;
 			            obj_controller_ui.weaponslot_weaponscale[i] = 0;    
 						
-						exit;
+						return;
 					}
 				}
 				
@@ -159,7 +159,7 @@ if (instance_exists(obj_player)){
 							
 							if (weaponlist[| i] == other.index){
 								isnew = false;
-								exit;
+								return;
 							}
 						}
 						

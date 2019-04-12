@@ -1,6 +1,6 @@
 if (global.game_pause){
 	image_speed = 0;
-	exit;
+	return;
 }
 
 if (collision_line(xstart, ystart, x + lengthdir_x(8, dir), y + lengthdir_y(8, dir), obj_p_solid, true, true)){
