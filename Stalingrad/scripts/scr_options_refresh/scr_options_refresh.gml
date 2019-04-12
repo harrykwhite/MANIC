@@ -1,5 +1,9 @@
 ini_open("config.ini");
 
+global.game_option[| Options.Screenshake] = clamp(global.game_option[| Options.Screenshake], 0, 100);
+global.game_option[| Options.ScreenFreeze] = clamp(global.game_option[| Options.ScreenFreeze], 0, 100);
+global.game_option[| Options.Flashing] = clamp(global.game_option[| Options.Flashing], 0, 100);
+
 ini_write_real("Options", "Screenshake", global.game_option[| Options.Screenshake]);
 ini_write_real("Options", "ScreenFreeze", global.game_option[| Options.ScreenFreeze]);
 ini_write_real("Options", "MaxCorpses", global.game_option[| Options.MaxCorpses]);

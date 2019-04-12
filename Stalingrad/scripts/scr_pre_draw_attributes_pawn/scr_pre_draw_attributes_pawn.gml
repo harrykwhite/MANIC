@@ -23,7 +23,7 @@ if (drawshader){
 			    }
 				
 				var armx = x + lengthdir_x(4, angle);
-				var army = y - 1 + lengthdir_y(4, angle);
+				var army = y - 3 + lengthdir_y(4, angle);
 				
 				draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, image_xscale, angle, c_white, 1);
 				

@@ -23,7 +23,7 @@ if (instance_exists(obj_player)){
 				}
 			}
 		
-			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52) || (global.cutscene_current == 2){
+			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52){
 				move_xTo = obj_player.x;
 				move_yTo = obj_player.y;
 				move_speed = 1.8;
@@ -33,22 +33,28 @@ if (instance_exists(obj_player)){
 				}
 			
 				face_player = true;
-			}else{
-				if (distance_to_point(move_xTo, move_yTo) > 27 + (30 * order)){
-					move_speed = 1.6;
-					move_time = random_range(10, 15);
+			}else if (global.cutscene_current != 2){
+				if (distance_to_point(move_xTo, move_yTo) > 40){
+					move_speed = 1.3;
+					move_time = 35;
 				}else{
 					move_speed = 0;
 					if (move_time > 0){
 						move_time--;
 					}else{
 						var attempts = 0;
-						move_xTo = obj_player.x + lengthdir_x(45, random(360));
-						move_yTo = obj_player.y + lengthdir_y(45, random(360));
-					
-						while(distance_to_point(move_xTo, move_yTo) < 15) || (collision_line(x, y, move_xTo, move_yTo, obj_p_solid, false, true)){
-							move_xTo = obj_player.x + lengthdir_x(45, random(360));
-							move_yTo = obj_player.y + lengthdir_y(45, random(360));
+						var dirto = point_direction(obj_player.x, obj_player.y, x, y);
+						var xx = obj_player.x + lengthdir_x(40 * order, dirto);
+						var yy = obj_player.y + lengthdir_y(40 * order, dirto);
+						
+						var dir = random(360);
+						move_xTo = xx + lengthdir_x(35, dir);
+						move_yTo = yy + lengthdir_y(35, dir);
+						
+						while(distance_to_point(move_xTo, move_yTo) < 30) || (collision_line(x, y, move_xTo, move_yTo, obj_p_solid, false, true)){
+							dir = random(360);
+							move_xTo = xx + lengthdir_x(35, dir);
+							move_yTo = yy + lengthdir_y(35, dir);
 							
 							if (attempts < 200){
 								attempts ++;
@@ -56,6 +62,8 @@ if (instance_exists(obj_player)){
 								break;
 							}
 						}
+						
+						move_time = random_range(30, 60) * 0.6;
 					}
 				}
 			}
@@ -124,11 +132,13 @@ if (instance_exists(obj_player)){
 }
 
 // Off - screen movement.
-x = clamp(x, 22, room_width - 22);
-y = clamp(y, 22, room_height - 22);
+if (global.cutscene_current != 2){
+	x = clamp(x, 22, room_width - 22);
+	y = clamp(y, 22, room_height - 22);
 
-if (!onscreen(x, y)){
-	speed_multiplier = 0;
+	if (!onscreen(x, y)){
+		speed_multiplier = 0;
+	}
 }
 
 // Moving

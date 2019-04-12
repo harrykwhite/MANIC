@@ -3,9 +3,17 @@ if (global.game_pause){
 	ispaused = true;
 }
 
-if (global.cutscene_current != -1) && (global.cutscene_current != 52) && (global.cutscene_current != 2){
-	if (!in_cutscene){
-		ispaused = true;
+if (global.cutscene_current != -1){
+	if (global.cutscene_current == 2){
+		if (cutscene_prop){
+			ispaused = true;
+		}
+	}
+	
+	if (!in_cutscene) && (global.cutscene_current != 52){
+		if (global.cutscene_current != 2) || (cutscene_prop){
+			ispaused = true;
+		}
 	}
 }else{
 	if (cutscene_prop){

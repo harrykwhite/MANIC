@@ -76,7 +76,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 		
 		// Update the light's shadow map
 		// This will create, resize and free it as necessary (so we have to call it even if useShadowMap is false!)
-		if(light_maintain_shadow_map(light) && useShadowMap) {
+		if (light_maintain_shadow_map(light) && useShadowMap) {
 			// Use the light's shadow map
 			shadowMap = light[| eLight.ShadowMap];
 		

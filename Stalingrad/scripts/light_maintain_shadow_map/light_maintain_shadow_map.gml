@@ -24,6 +24,10 @@ var range = light[| eLight.Range];
 var size = get_next_pot(ceil(range)) * 2;
 
 if(shadowMap == undefined || !surface_exists(shadowMap) || surface_get_width(shadowMap) != size || surface_get_height(shadowMap) != size) {
+	if (size == 0){
+		return false;
+	}
+	
 	if(shadowMap != undefined && surface_exists(shadowMap)) {
 		// Recreate the surface
 		surface_free(shadowMap);

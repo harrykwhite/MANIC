@@ -15,8 +15,8 @@ if (instance_exists(obj_player)) && (!global.game_pause){
 	camera_speed = 0.085;
     if (global.cutscene_current == -1){
         if (camera_radius != -1) && (!camera_move_to_player){
-            xx = obj_player.x + lengthdir_x(min(camera_radius, mdist), dir);
-            yy = obj_player.y + lengthdir_y(min(camera_radius, mdist), dir);
+            xx = obj_player.x + lengthdir_x(min(camera_radius * 1.25, mdist), dir);
+            yy = obj_player.y + lengthdir_y(min(camera_radius * 1.25, mdist), dir);
         }else{
             xx = obj_player.x;
             yy = obj_player.y;

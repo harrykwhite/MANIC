@@ -4,8 +4,16 @@ if (global.game_pause){
 }
 
 if (global.cutscene_current != -1){
-	if (!in_cutscene) && (global.cutscene_current != 52) && (global.cutscene_current != 2){
-		ispaused = true;
+	if (global.cutscene_current == 2){
+		if (cutscene_prop){
+			ispaused = true;
+		}
+	}
+	
+	if (!in_cutscene) && (global.cutscene_current != 52){
+		if (global.cutscene_current != 2) || (cutscene_prop){
+			ispaused = true;
+		}
 	}
 }else{
 	if (cutscene_prop){
@@ -44,6 +52,8 @@ order = scr_companion_get_order();
 
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
+
+
 
 scr_pawn_status_handler();
 
