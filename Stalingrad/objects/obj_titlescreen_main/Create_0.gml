@@ -1,7 +1,5 @@
 if (!ds_exists(global.game_option, ds_type_list)){
-	with(obj_controller_all){
-		scr_option_init();
-	}
+	scr_option_init();
 }
 
 rain = audio_play_sound(m_ambience_rain_0, 3, true);

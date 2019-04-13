@@ -47,7 +47,7 @@ for(var i = 0; i < collectcount; i ++){
 if (ds_exists(global.player_companions, ds_type_grid)){
 	var companioncount = ds_grid_height(global.player_companions);
 	for(var i = 0; i < companioncount; i ++){
-		ini_write_real("Save", "Companion" + string(i), global.player_companions[# 0, i]);
+		ini_write_real("Save", "Companion" + string(i), real(global.player_companions[# 0, i]));
 		ini_write_real("Save", "Companion" + string(i) + "_Health", global.player_companions[# 1, i]);
 	}
 }

@@ -37,6 +37,7 @@ if (instance_exists(obj_player)){
 		obj_controller_ui.area_next_room = cutscene_moveto_room;
 		global.game_level_opening_type = cutscene_moveto_type;
 		global.level_current = cutscene_moveto_level;
+		global.player_is_respawning = true;
 	}else{
 		obj_player.move_xTo = xTo;
 		obj_player.move_yTo = yTo;

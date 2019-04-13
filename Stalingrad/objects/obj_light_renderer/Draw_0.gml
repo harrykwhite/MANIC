@@ -4,6 +4,10 @@
 var exists;
 
 if (!ds_exists(global.worldLights, ds_type_list)){
+	with(obj_lighting_init){
+		event_perform(ev_create, 0);
+	}
+	
 	return;
 }
 

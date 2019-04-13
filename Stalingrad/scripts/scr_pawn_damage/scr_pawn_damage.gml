@@ -17,6 +17,10 @@ health_flash = 1;
 
 var corpse = noone;
 
+if (object_index == obj_enemy_3){
+	initiated = true;
+}
+
 if (health_current <= 0){
 	switch(object_index){
 		case obj_enemy_0:

@@ -59,5 +59,3 @@ if (global.game_level_opening_type == 2){
 
 sprite_index = noone;
 depth = -5;
-
-scr_save_game();

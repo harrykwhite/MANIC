@@ -4,6 +4,8 @@ counter = 0;
 pause_time = 0;
 corpse_active_time = 30;
 
+has_saved = false;
+
 bonus_killtime = 0;
 bonus_killamount = 0;
 
@@ -31,6 +33,8 @@ weaponlist = ds_list_create();
 weaponlist[| 0] = global.weapon_slot[global.weapon_slotcurrent];
 weaponlist[| 1] = 4;
 weaponlist[| 2] = -1;
+
+global.player_is_respawning = false;
 
 scr_level_current_control();
 sprite_index = noone;

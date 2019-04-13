@@ -35,7 +35,7 @@ if (global.cutscene_current != -1){
 if (ispaused){
 	if (abs(image_xscale) != scale) || (abs(image_yscale) != scale){
 		image_xscale = sign(image_xscale) * scale;
-		image_yscale = scale;
+		image_yscale = sign(image_yscale) * scale;
 	}
 	
 	image_speed = 0;
@@ -62,3 +62,9 @@ scr_pawn_status_handler();
 scr_enemy_3_behaviour();
 
 scr_pawn_update();
+
+if (image_angle < 90) || (image_angle > 270){
+	image_yscale = scale;
+}else{
+	image_yscale = -scale;
+}

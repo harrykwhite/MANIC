@@ -52,5 +52,3 @@ if (room == rm_level_4_00) && (global.game_level_opening_type == 1){
 
 sprite_index = noone;
 depth = -5;
-
-scr_save_game();

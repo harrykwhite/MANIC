@@ -43,7 +43,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	// Get the light's shadow map
 	var light = ds_list_find_value(lights, i);
 	
-	if (!ds_exists(light, ds_type_list)){
+	if (!ds_exists(light, ds_type_list)) || (light == undefined){
 		continue;
 	}
 	

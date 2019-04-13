@@ -70,5 +70,3 @@ global.cutscene_current = 2;
 sniper_can_spawn = global.game_firstsniper_killed;
 sprite_index = noone;
 depth = -5;
-
-scr_save_game();

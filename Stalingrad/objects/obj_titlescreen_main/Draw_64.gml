@@ -19,7 +19,7 @@ if (STATE == GameState.Developer){
 			str = "Searching for mouse input...";
 		}
 		
-		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 150, str, c_white);
+		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 120, str, c_white);
 	}
 	
 	if (indicate_text_alpha > 0){
@@ -29,8 +29,14 @@ if (STATE == GameState.Developer){
 			indicate_text_alpha -= 0.05;
 		}
 		
+		var yy = 150;
+		
+		if (in_settings_controls){
+			yy = 120;
+		}
+		
 		draw_set_alpha(indicate_text_alpha);
-		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 150, indicate_text, c_white);
+		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - yy, indicate_text, c_white);
 		draw_set_alpha(1);
 	}else{
 		indicate_text = "";

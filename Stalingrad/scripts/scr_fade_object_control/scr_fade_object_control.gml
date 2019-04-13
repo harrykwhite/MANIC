@@ -7,7 +7,7 @@ for(var group = 0; group < height; group ++){
 	for(var index = 0; index < length; index ++){
 		var inst = grouparray[group, index];
 		
-		if (inst != noone){
+		if (inst != noone) && (instance_exists(inst)){
 			if (inst.fade){ // If pawn is detected on any part of the house
 				scr_fade_object_control_set(group, true); // Hide the ceiling
 				break;

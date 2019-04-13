@@ -13,7 +13,7 @@ if (full <= 0){
 		global.game_option[| Options.Fullscreen] = window_get_fullscreen();
 		full = 40;
 		
-		scr_options_refresh();
+		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
 	}
 }else{
 	full--;

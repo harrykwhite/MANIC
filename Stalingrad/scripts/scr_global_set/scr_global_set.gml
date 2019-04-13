@@ -40,7 +40,7 @@ if (room == rm_ini){
 	var levelcount = array_length_1d(global.level_name);
 	var size = 0;
 	for(var i = 0; i < levelcount; i ++){
-		size += global.level_collectable_number[i] - 1;
+		size += global.level_collectable_number[i];
 	}
 	
 	global.level_collectable_found = ds_grid_create(1, size);
@@ -59,6 +59,7 @@ global.player_respawn_y = 0;
 global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
 global.player_has_bossrespawn = false;
+global.player_is_respawning = false;
 
 global.worldtrain_room = rm_level_6_00;
 

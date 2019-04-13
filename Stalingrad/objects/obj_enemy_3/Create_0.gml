@@ -2,6 +2,7 @@ pawn = PawnType.Enemy;
 blend = -1;
 scale = random_range(1, 1.1);
 destroy = false;
+initiated = false;
 
 damage = 1;
 strength = 1;
@@ -30,7 +31,7 @@ poison = false;
 headless = false;
 bleed = false;
 
-defense = 0;
+defense = 3;
 
 i_time = 0;
 i_blend_time = 0;

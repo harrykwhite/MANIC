@@ -20,17 +20,11 @@ if (global.boss_current != -1){
 global.player_health_current = global.player_health_max;
 global.weapon_slotcurrent = 0;
 
-instance_destroy(obj_player_light);
-instance_destroy(obj_player_flashlight);
-
-if (!global.player_has_bossrespawn){
+if (!global.player_has_bossrespawn) && (global.player_is_respawning){
 	var roomto = global.level_room[global.level_current];
 	
 	if (roomto == room){
 		room_restart();
-		if (global.worldShadowMap != undefined){
-			surface_free(global.worldShadowMap);
-		}
 	}else{
 		room_goto(roomto);
 	}
@@ -103,7 +97,7 @@ if (!global.player_has_bossrespawn){
 			}
 		}
 	}
-
+	
 	if (instance_exists(obj_pawn_other_train_1)){
 		if (obj_pawn_other_train_1.is_boss) && (room == rm_level_6_00){
 			instance_destroy(obj_pawn_other_train_1);
@@ -113,11 +107,11 @@ if (!global.player_has_bossrespawn){
 			level.trainboss_spawned = false;
 		}
 	}
-
+	
 	if (audio_is_playing(snd_character_burn_0)){
 		audio_stop_sound(snd_character_burn_0);
 	}
-
+	
 	if (audio_is_playing(snd_weapon_flamethrower_active_0)){
 		audio_stop_sound(snd_weapon_flamethrower_active_0);
 	}

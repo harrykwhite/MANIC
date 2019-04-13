@@ -27,7 +27,6 @@ ini_write_real("Options", "Input_Attack", global.game_option[| Options.Input_Att
 ini_write_real("Options", "Input_Throw", global.game_option[| Options.Input_Throw]);
 
 ini_close();
-window_set_fullscreen(global.game_option[| Options.Fullscreen]);
 scr_display_update();
 
 with(obj_controller_all){

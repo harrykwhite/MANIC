@@ -126,6 +126,8 @@ if (!global.game_pause){
 						scr_global_set();
 						audio_stop_all();
 						room_goto(rm_title_0);
+						
+						obj_controller_gameplay.has_saved = true;
 						break;
 				}
 			}

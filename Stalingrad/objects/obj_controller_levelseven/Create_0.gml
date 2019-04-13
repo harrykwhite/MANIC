@@ -18,8 +18,18 @@ spawn_cleared = false;
 switch(room){
 	case rm_level_7_00:
 		if (global.game_level_opening_type == 0){
-			spawn_x = 240;
+			spawn_x = 220;
 			spawn_y = 192;
+		}else{
+			spawn_x = 1092;
+			spawn_y = 232;
+		}
+		break;
+	
+	case rm_level_7_001:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 220;
+			spawn_y = 832;
 		}else{
 			spawn_x = 1092;
 			spawn_y = 232;
@@ -56,5 +66,3 @@ depth = -5;
 rain = audio_play_sound(m_ambience_rain_0, 3, true);
 audio_sound_gain(rain, 0, 0);
 audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 8000);
-
-scr_save_game();

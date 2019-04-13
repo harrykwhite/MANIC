@@ -1,3 +1,5 @@
+scr_option_init();
+
 // Particles
 if (part > 0){
 	part --;

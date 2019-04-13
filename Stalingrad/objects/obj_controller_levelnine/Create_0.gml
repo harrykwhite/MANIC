@@ -55,5 +55,3 @@ audio_sound_gain(wind, 1 * obj_controller_all.real_ambience_volume, 9000);
 global.cutscene_current = 2;
 sprite_index = noone;
 depth = -5;
-
-scr_save_game();
