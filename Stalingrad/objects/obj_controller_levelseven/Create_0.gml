@@ -26,7 +26,7 @@ switch(room){
 		}
 		break;
 	
-	case rm_level_7_001:
+	case rm_level_7_01:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 170;
 			spawn_y = 832;
@@ -36,7 +36,7 @@ switch(room){
 		}
 		break;
 	
-	case rm_level_7_002:
+	case rm_level_7_02:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 170;
 			spawn_y = 752;

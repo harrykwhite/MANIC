@@ -67,11 +67,11 @@ switch(room){
 		global.level_current = 6;
 		break;
 	
-	case rm_level_7_001:
+	case rm_level_7_01:
 		global.level_current = 6;
 		break;
 	
-	case rm_level_7_002:
+	case rm_level_7_02:
 		global.level_current = 6;
 		break;
 	

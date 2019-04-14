@@ -1,6 +1,6 @@
 
 {
-    "name": "rm_level_7_001",
+    "name": "rm_level_7_01",
     "id": "aab72a58-0597-4486-96ea-305bd157db47",
     "creationCodeFile": "RoomCreationCode.gml",
     "inheritCode": false,
