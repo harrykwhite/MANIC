@@ -1,3 +1,13 @@
+// Lights
+if (!instance_exists(obj_player_light)){
+	mylight = instance_create(x, y, obj_player_light);
+}
+
+if (!instance_exists(obj_player_flashlight)){
+	flashlight = instance_create(x, y, obj_player_flashlight);
+}
+
+// Canmove
 if (!canmove){
 	sprite_index = spr_player_idle_1;
 	image_speed = 0;

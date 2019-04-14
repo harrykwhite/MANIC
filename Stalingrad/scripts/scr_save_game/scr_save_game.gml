@@ -1,4 +1,4 @@
-ini_open("save.ini");
+ini_open(working_directory + "save.ini");
 
 if (global.level_current > global.game_save_level){
 	global.game_save_level = global.level_current;
@@ -24,14 +24,12 @@ ini_write_real("Save", "CompanionGrenadierFound", global.game_companion_grenadie
 ini_write_real("Save", "CompanionPrisonerFound", global.game_companion_prisoner_found);
 ini_write_real("Save", "CompanionDogFound", global.game_companion_dog_found);
 
-if (ds_exists(global.player_upgrades, ds_type_list)){
-	var upgradecount = array_length_1d(global.upgrade_name);
-	for(var i = 0; i < upgradecount; i ++){
-		var unlocked = scr_player_has_upgrade(i);
-		
-		global.game_save_upgrade_unlocked[i] = unlocked;
-		ini_write_real("Save", "Upgrade" + string(i), unlocked);
-	}
+var upgradecount = array_length_1d(global.upgrade_name);
+for(var i = 0; i < upgradecount; i ++){
+	var unlocked = scr_player_has_upgrade(i);
+	
+	global.game_save_upgrade_unlocked[i] = unlocked;
+	ini_write_real("Save", "Upgrade" + string(i), unlocked);
 }
 
 var levelcount = array_length_1d(global.level_name);

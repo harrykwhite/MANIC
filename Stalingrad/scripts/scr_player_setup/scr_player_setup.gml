@@ -76,9 +76,6 @@ i_time = 0;
 var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;
 
-// Fly
-fly[0] = noone; fly[1] = noone; fly[2] = noone;
-
 // Upgrades
 var upgradecount = array_length_1d(global.upgrade_name);
 for(var i = 0; i < upgradecount; i ++){
@@ -86,6 +83,9 @@ for(var i = 0; i < upgradecount; i ++){
 		scr_upgrade_add(i);
 	}
 }
+
+// Fly
+fly[0] = noone; fly[1] = noone; fly[2] = noone;
 
 // Other
 isVisible = true;

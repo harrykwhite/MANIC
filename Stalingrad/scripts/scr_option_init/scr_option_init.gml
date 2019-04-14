@@ -19,7 +19,7 @@ enum Options{
 	Input_Throw,
 }
 
-ini_open("config.ini");
+ini_open(working_directory + "config.ini");
 
 if (!ds_exists(global.game_option, ds_type_list)){
 	global.game_option = ds_list_create();

@@ -1,11 +1,8 @@
 draw_self();
+var ucount = array_length_1d(global.upgrade_name);
 
-var upgrades = global.player_upgrades;
-var usize = ds_list_size(upgrades);
-
-if (usize > 0){
-	for(var i = 0; i < usize; i ++){
-		var upgrade = upgrades[| i];
-		draw_sprite_ext(global.upgrade_sprite_corpse[upgrade], 0, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+for(var i = 0; i < ucount; i ++){
+	if (scr_player_has_upgrade(i)){
+		draw_sprite_ext(global.upgrade_sprite_corpse[i], 0, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 	}
 }

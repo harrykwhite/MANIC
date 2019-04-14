@@ -63,7 +63,7 @@ scr_enemy_3_behaviour();
 
 scr_pawn_update();
 
-if (image_angle < 90) || (image_angle > 270){
+if (abs(image_angle) < 90) || (abs(image_angle) > 270){
 	image_yscale = scale;
 }else{
 	image_yscale = -scale;

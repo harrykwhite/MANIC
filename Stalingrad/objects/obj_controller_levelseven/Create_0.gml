@@ -18,7 +18,7 @@ spawn_cleared = false;
 switch(room){
 	case rm_level_7_00:
 		if (global.game_level_opening_type == 0){
-			spawn_x = 220;
+			spawn_x = 170;
 			spawn_y = 192;
 		}else{
 			spawn_x = 1092;
@@ -28,31 +28,21 @@ switch(room){
 	
 	case rm_level_7_001:
 		if (global.game_level_opening_type == 0){
-			spawn_x = 220;
+			spawn_x = 170;
 			spawn_y = 832;
 		}else{
-			spawn_x = 1092;
-			spawn_y = 232;
+			spawn_x = 910;
+			spawn_y = 208;
 		}
 		break;
 	
-	case rm_level_7_01:
+	case rm_level_7_002:
 		if (global.game_level_opening_type == 0){
-			spawn_x = 240;
-			spawn_y = 196;
+			spawn_x = 170;
+			spawn_y = 752;
 		}else{
-			spawn_x = 352;
-			spawn_y = 544;
-		}
-		break;
-	
-	case rm_level_7_02:
-		if (global.game_level_opening_type == 0){
-			spawn_x = 336;
-			spawn_y = 124;
-		}else{
-			spawn_x = 352;
-			spawn_y = 548;
+			spawn_x = room_width / 2;
+			spawn_y = 170;
 		}
 		break;
 }

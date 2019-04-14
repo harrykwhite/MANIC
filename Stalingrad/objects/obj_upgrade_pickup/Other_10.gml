@@ -8,7 +8,7 @@ gpu_set_fog(false, c_black, 0, 0);
 draw_sprite_ext(sprite, 0, x, y + yy, 1.25, 1.25, angle, c_white, 1);
 
 gpu_set_fog(true, c_white, 0, 0);
-draw_sprite_ext(sprite, 0, x, y + yy, 1.3 * glow, 1.3 * glow, angle, c_white, 0.4 * glow);
+draw_sprite_ext(sprite, 0, x, y + yy, 1.3 * glow, 1.3 * glow, angle, c_white, 0.7 * glow);
 gpu_set_fog(false, c_black, 0, 0);
 
 mask_index = spr_mask_0;

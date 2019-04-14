@@ -69,6 +69,10 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	if(lightType != eLightType.Directional && lightType != eLightType.Area && lightType != eLightType.Line) {
 		// Should this light be using a unique shadow map?
 		// Multiplied by two because we treat all lights as omnidirectional, so range is the radius of the light
+		if (lightRange == undefined){
+			continue;
+		}
+		
 		var shadowMapSize = get_next_pot(ceil(lightRange)) * 2;
 		var useShadowMap = shadowMapSize <= global.lightMaxUniqueShadowMapSize;
 		if(useShadowMap) light[| eLight.Flags] |= eLightFlags.UsesUniqueShadowMap;

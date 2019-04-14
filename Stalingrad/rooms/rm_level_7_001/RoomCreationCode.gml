@@ -6,7 +6,7 @@ global.player_footstep_default = snd_character_footstep_grass;
 
 if (global.game_level_opening_type == 1){
 	obj_player.x = room_width + 4;
-	obj_player.y = 228;
+	obj_player.y = 208;
 	obj_controller_camera.x = obj_player.x;
 	obj_controller_camera.y = obj_player.y;
 }

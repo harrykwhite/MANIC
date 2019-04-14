@@ -7,22 +7,22 @@ obj_controller_camera.camera_screenshake_amount = 0;
 if (instance_exists(obj_player)){
 	switch(cutscene_moveto_dir){
 		case 0:
-			xTo = room_width + 100;
+			xTo = room_width + 120;
 			yTo = obj_player.y;
 			break;
 		
 		case 1:
-			yTo = -100;
+			yTo = -120;
 			xTo = obj_player.x;
 			break;
 		
 		case 2:
-			xTo = -100;
+			xTo = -120;
 			yTo = obj_player.y;
 			break;
 		
 		case 3:
-			yTo = room_height + 100;
+			yTo = room_height + 120;
 			xTo = obj_player.x;
 			break;
 	}
@@ -32,17 +32,15 @@ if (instance_exists(obj_player)){
 	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
 	
+	obj_player.move_xTo = xTo;
+	obj_player.move_yTo = yTo;
+	obj_player.move_extSpd = obj_player.spd_max;
+	
 	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 130){
 		obj_controller_ui.area_next_fade = true;
 		obj_controller_ui.area_next_room = cutscene_moveto_room;
 		global.game_level_opening_type = cutscene_moveto_type;
 		global.level_current = cutscene_moveto_level;
-		global.player_is_respawning = true;
-	}else{
-		obj_player.move_xTo = xTo;
-		obj_player.move_yTo = yTo;
-		obj_player.move_extSpd = obj_player.spd_max;
-		obj_player.image_xscale = 1;
 	}
 }else{
 	global.cutscene_current = -1;

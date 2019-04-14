@@ -52,7 +52,7 @@ global.level_entered[5] = false;
 global.level_name[6] = "The Cemetery";
 global.level_room[6] = rm_level_7_00;
 global.level_collectable_current[6] = 0;
-global.level_collectable_number[6] = 3;
+global.level_collectable_number[6] = 4;
 global.level_displaynum[6] = "Seven";
 global.level_entered[6] = false;
 

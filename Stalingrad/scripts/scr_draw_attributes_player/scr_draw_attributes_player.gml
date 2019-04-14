@@ -1,9 +1,7 @@
 var drawshader = (global.player_health_current <= 2) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha > 0);
 
-var upgrades = global.player_upgrades;
-var usize = ds_list_size(upgrades);
-
-if (usize > 0){
+var ucount = array_length_1d(global.upgrade_name);
+if (ucount > 0){
 	var uoffset = 0, is_idle = true;
 	if (sprite_index == spr_player_idle_0) || (sprite_index == spr_player_idle_1) || (sprite_index == spr_player_idle_2){
 		if (image_index == 1){
@@ -22,24 +20,25 @@ if (usize > 0){
 		}
 	}
 	
-	for(var i = 0; i < usize; i ++){
-		var upgrade = upgrades[| i];
-		if (!global.upgrade_behind[upgrade]){
-			if (upgrade == PlayerUpgrade.RunningBoots) || (upgrade == PlayerUpgrade.KneePads){
-				var rboots = upgrade == PlayerUpgrade.RunningBoots;
-				var walksprite = spr_player_upgrade_runningboots_0_walk;
+	for(var i = 0; i < ucount; i ++){
+		if (scr_player_has_upgrade(i)){
+			if (!global.upgrade_behind[i]){
+				if (i == PlayerUpgrade.RunningBoots) || (i == PlayerUpgrade.KneePads){
+					var rboots = i == PlayerUpgrade.RunningBoots;
+					var walksprite = spr_player_upgrade_runningboots_0_walk;
 				
-				if (!rboots){
-					walksprite = spr_player_upgrade_kneepads_0_walk;
-				}
+					if (!rboots){
+						walksprite = spr_player_upgrade_kneepads_0_walk;
+					}
 				
-				if (is_idle){
-					draw_sprite_ext(global.upgrade_sprite[upgrade], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+					if (is_idle){
+						draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+					}else{
+						draw_sprite_ext(walksprite, image_index, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+					}
 				}else{
-					draw_sprite_ext(walksprite, image_index, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+					draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 				}
-			}else{
-				draw_sprite_ext(global.upgrade_sprite[upgrade], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 			}
 		}
 	}

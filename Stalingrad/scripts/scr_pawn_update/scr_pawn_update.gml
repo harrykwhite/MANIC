@@ -107,11 +107,13 @@ if (health_current <= 0){
 				global.game_boss_trainhorde_killed = true;
 				obj_pawn_other_train_1.is_boss = false;
 				
-				var udrop = instance_create(x, y, obj_upgrade_pickup);
-				udrop.index = PlayerUpgrade.Chestplate;
-				udrop.angle = random_range(-10, 10);
-				
-				global.cutscene_current = 53;
+				if (!scr_player_has_upgrade(PlayerUpgrade.Chestplate)){
+					var udrop = instance_create(x, y, obj_upgrade_pickup);
+					udrop.index = PlayerUpgrade.Chestplate;
+					udrop.angle = random_range(-10, 10);
+					
+					global.cutscene_current = 53;
+				}
 			}
 		}else if (object_index == obj_enemy_2){
 			global.game_firstdog_killed = true;
@@ -129,11 +131,12 @@ if (health_current <= 0){
 		}else if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
 			
-			var udrop = instance_create(x, y, obj_upgrade_pickup);
-			udrop.index = PlayerUpgrade.RunningBoots;
-			udrop.angle = random_range(-10, 10);
-			
-			global.cutscene_current = 53;
+			if (!scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
+				var udrop = instance_create(x, y, obj_upgrade_pickup);
+				udrop.index = PlayerUpgrade.RunningBoots;
+				udrop.angle = random_range(-10, 10);
+				global.cutscene_current = 53;
+			}
 			
 			with(obj_block_cutscene){
 				if (index == 46){

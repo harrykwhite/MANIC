@@ -42,7 +42,7 @@ if (instance_exists(obj_player)){
 		case rm_level_6_00: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
 		case rm_level_7_00: obj_player.flashlight_direction = 360; obj_player.image_xscale = 1; break;
 		case rm_level_7_01: obj_player.flashlight_direction = 360; obj_player.image_xscale = 1; break;
-		case rm_level_7_02: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
+		case rm_level_7_02: obj_player.flashlight_direction = 360; obj_player.image_xscale = -1; break;
 		case rm_level_8_00: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
 		case rm_level_8_01: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
 		case rm_level_8_02: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;

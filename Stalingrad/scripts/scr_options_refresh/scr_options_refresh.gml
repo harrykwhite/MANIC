@@ -1,4 +1,4 @@
-ini_open("config.ini");
+ini_open(working_directory + "config.ini");
 
 global.game_option[| Options.Screenshake] = clamp(global.game_option[| Options.Screenshake], 0, 100);
 global.game_option[| Options.ScreenFreeze] = clamp(global.game_option[| Options.ScreenFreeze], 0, 100);

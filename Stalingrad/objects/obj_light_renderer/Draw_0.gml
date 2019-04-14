@@ -4,11 +4,7 @@
 var exists;
 
 if (!ds_exists(global.worldLights, ds_type_list)){
-	with(obj_lighting_init){
-		event_perform(ev_create, 0);
-	}
-	
-	return;
+	global.worldLights = ds_list_create();
 }
 
 if(dirty || tick >= global.lightUpdateFrameDelay || global.worldShadowMap == undefined || !surface_exists(global.worldShadowMap)) {

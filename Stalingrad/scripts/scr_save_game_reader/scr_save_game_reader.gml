@@ -1,4 +1,4 @@
-ini_open("save.ini");
+ini_open(working_directory + "save.ini");
 global.game_save_started = ini_read_real("Save", "Started", false);
 global.game_save_level = ini_read_real("Save", "LevelAt", 0);
 global.game_save_seconds = ini_read_real("Save", "Seconds", 0);
