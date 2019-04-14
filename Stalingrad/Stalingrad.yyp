@@ -5943,6 +5943,14 @@
             }
         },
         {
+            "Key": "8d8039b4-274f-4cc0-93d8-8ee83418c827",
+            "Value": {
+                "id": "546ab755-ce94-4b37-8df5-37788a1e60ee",
+                "resourcePath": "rooms\\rm_level_8_00\\rm_level_8_00.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "8d8377a2-f4b1-4d10-af5d-6e3f461bbe0f",
             "Value": {
                 "id": "ece8bc20-b225-4a11-8b5e-eb774b1769ab",
@@ -9172,14 +9180,6 @@
                 "id": "4c57b305-4c72-4a4b-8e67-c174a094609c",
                 "resourcePath": "scripts\\scr_part_type_poison_1\\scr_part_type_poison_1.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "de8254a0-074e-4041-b204-342a9dccb9b3",
-            "Value": {
-                "id": "f08a616b-4dde-4805-a59b-8c88bfd67382",
-                "resourcePath": "rooms\\rm_level_8_00\\rm_level_8_00.yy",
-                "resourceType": "GMRoom"
             }
         },
         {

@@ -56,14 +56,14 @@ global.level_collectable_number[6] = 4;
 global.level_displaynum[6] = "Seven";
 global.level_entered[6] = false;
 
-global.level_name[7] = "Into the City";
+global.level_name[7] = "Desolate Village";
 global.level_room[7] = rm_level_8_00;
 global.level_collectable_current[7] = 0;
 global.level_collectable_number[7] = 2;
 global.level_displaynum[7] = "Eight";
 global.level_entered[7] = false;
 
-global.level_name[8] = "The City";
+global.level_name[8] = "Into the City";
 global.level_room[8] = rm_level_9_00;
 global.level_collectable_current[8] = 0;
 global.level_collectable_number[8] = 4;

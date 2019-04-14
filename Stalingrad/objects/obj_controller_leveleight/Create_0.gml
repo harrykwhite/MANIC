@@ -19,7 +19,7 @@ switch(room){
 	case rm_level_8_00:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 360;
-			spawn_y = 525;
+			spawn_y = 1035;
 		}else{
 			spawn_x = 368;
 			spawn_y = 152;
