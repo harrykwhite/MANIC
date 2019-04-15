@@ -120,7 +120,7 @@ if (!global.game_pause){
 }
 
 // Time
-if (!global.game_pause){
+if (!global.game_pause) && (global.game_is_playthrough){
 	if (counter < 60){
 		counter += (delta_time / 10000) / 1.6;
 	}else{

@@ -134,7 +134,6 @@ if (poison){
 var length = array_length_1d(fly);
 
 if (global.player_health_current < 3){
-	
 	for(var i = 0; i < length; i ++){
 		if (fly[i] == noone){
 			if (random(100) <= 0.05) fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);

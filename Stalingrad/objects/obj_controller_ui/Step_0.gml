@@ -1,5 +1,3 @@
-show_debug_message(string(global.game_is_playthrough));
-
 scr_position_view();
 scr_ui_rank_display_setup();
 scr_ui_rank_display_update();

@@ -87,3 +87,5 @@ feet.owner = id;
 
 image_xscale = scale;
 image_yscale = scale;
+
+fly[0] = noone; fly[1] = noone; fly[2] = noone;
