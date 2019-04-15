@@ -26,13 +26,13 @@ switch(room){
 		}
 		break;
 	
-	case rm_level_8_01:
+	case rm_level_8_001:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 462;
-			spawn_y = 575;
+			spawn_y = 670;
 		}else{
 			spawn_x = 462;
-			spawn_y = 100;
+			spawn_y = 146;
 		}
 		break;
 	

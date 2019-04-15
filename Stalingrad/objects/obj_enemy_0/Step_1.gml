@@ -109,22 +109,21 @@ if (!typedet){
 		mylight = instance_create(x, y - 9, obj_enemy_0_light);
 	}
 	
-	if (global.level_current >= LevelIndex.WesternFarmland){
+	if (global.level_current >= LevelIndex.UndergroundBunker){
 		defense ++;
 	}
 	
-	if (global.level_current >= LevelIndex.StorageFacility){
+	if (global.level_current >= LevelIndex.HumanPrison){
 		defense ++;
 	}
 	
 	if (global.level_current >= LevelIndex.TheCemetery){
 		defense ++;
-		knockback_multiplier *= 0.7;
+		knockback_multiplier *= 0.85;
 	}
 	
 	if (global.level_current >= LevelIndex.IntoTheCity){
-		defense ++;
-		knockback_multiplier *= 0.5;
+		knockback_multiplier *= 0.7;
 	}
 	
 	typedet = true;

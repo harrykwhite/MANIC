@@ -5,21 +5,27 @@ if (global.game_pause) || (global.cutscene_current != -1){
 }
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
+var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 
 if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_continue_time > 0)) && (!global.game_pause){
-    if ((shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0)) || (shoot_continue_time > 0){
-        var xpos = x + lengthdir_x(19, mdir) + lengthdir_x(3, up(mdir));
-	    var ypos = y + lengthdir_y(19, mdir) + lengthdir_y(3, up(mdir));
+    if ((shoot_can) && (ammo > 0)) || (shoot_continue_time > 0){
+        var xpos = x + lengthdir_x(21, mdir) + lengthdir_x(3, up(mdir));
+	    var ypos = y + lengthdir_y(21, mdir) + lengthdir_y(3, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
 		if (mouse_check_button_pressed(mb_left) && (shoot_continue_time <= 0)){
-			shoot_continue_time = 4;
+			shoot_continue_time = 6;
 			shoot_bounceback = -5;
 			angle_offset = 20;
-			scr_weapon_ammo_use(1);
+			
+			if (ammo == 1){
+				shoot_continue_time = 1;
+			}
+			
+			scr_weapon_ammo_use(2);
 			scr_player_flash(8);
 			scr_camera_to_player();
-			scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
+			scr_sound_play(snd_weapon_shotgun_0, false, 0.8, 1.2);
 
 	        part_type_direction(global.pt_flash_0, dir - 25, dir + 25, 0, 0);
 			repeat(2) part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
@@ -34,17 +40,17 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
         image_speed = 1;
         
 		repeat(3){
-		    shoot = instance_create(xpos, ypos, obj_proj_0);
-			shoot.damage = shoot_damage + choose(0, 0, 1);
+			shoot = instance_create(xpos, ypos, obj_proj_0);
+			shoot.damage = shoot_damage;
+			shoot.damage_change = -0.2;
 			shoot.strength = shoot_strength;
-		    shoot.dir = dir + random_range(-shoot_range, shoot_range);
-			shoot.spd = 18;
+			shoot.dir = dir + random_range(-shoot_range, shoot_range);
+			shoot.spd = shoot_speed;
 			shoot.image_angle = shoot.dir;
 		}
         
         shoot_can = false;
-        shoot_time = 65;
-		
+        shoot_time = 35;
     }else{
 		scr_sound_play(snd_weapon_click_0, false, 0.8, 1);
 	}
@@ -85,13 +91,10 @@ if (shoot_time > 0){
     shoot_time --;
 	
 	if (within(shoot_time, 26, 28)){
-		
 		if (!audio_is_playing(snd_weapon_reload_0)){
 			scr_sound_play(snd_weapon_reload_0, false, 0.9, 1.2);
 		}
 	}
-	
 }else{
     shoot_can = true;
 }
-

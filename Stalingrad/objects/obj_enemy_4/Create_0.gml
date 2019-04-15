@@ -74,3 +74,7 @@ feet.owner = id;
 fly[0] = noone; fly[1] = noone; fly[2] = noone; fly[3] = noone;
 image_xscale = scale;
 image_yscale = scale;
+
+if (global.level_current >= LevelIndex.IntoTheCity){
+	knockback_multiplier *= 0.7;
+}

@@ -45,7 +45,7 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
 			shoot.damage_change = -0.25;
 			shoot.strength = shoot_strength;
 			shoot.dir = dir + random_range(-shoot_range, shoot_range);
-			shoot.spd = 18;
+			shoot.spd = shoot_speed;
 			shoot.image_angle = shoot.dir;
 		}
         
