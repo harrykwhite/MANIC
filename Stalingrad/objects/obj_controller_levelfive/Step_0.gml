@@ -47,7 +47,7 @@ if (player_exists){
 			spawn_time /= spawn_rate;
 		}
 		
-		spawn_state_time_real ++;
+		global.game_combat_state_time_real ++;
 	
 		if (spawn){
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
@@ -89,10 +89,6 @@ if (player_exists){
 						enemy.type = EnemyOneType.Normal
 					}else{
 						if (spawn_rate > 0.9){
-							if (chance(15)){
-								enemy.type = choose(EnemyOneType.Fast, EnemyOneType.Large);
-							}
-						
 							if (global.boss_current == -1) && (room != rm_level_5_02){
 								if (chance(3.5)){
 									enemy.type = EnemyOneType.Mother;
@@ -107,10 +103,6 @@ if (player_exists){
 						}
 				
 						if (spawn_rate > 1.4){
-							if (chance(20)){
-								enemy.type = choose(EnemyOneType.Fast, EnemyOneType.Large);
-							}
-					
 							if (global.boss_current == -1) && (room != rm_level_5_02){
 								if (chance(4)){
 									enemy.type = EnemyOneType.Mother;
@@ -177,7 +169,7 @@ if (player_exists){
 	}
 	
 }else{
-	spawn_state_time_real = 0;
+	global.game_combat_state_time_real = 0;
 	spawn_rate_real = 0.75;
 	global.game_combat_state = CombatState.Idle;
 	

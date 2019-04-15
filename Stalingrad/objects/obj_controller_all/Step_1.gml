@@ -1,5 +1,8 @@
 scr_option_init();
-scr_save_game_reader();
+
+//if (global.game_is_playthrough){
+	//scr_save_game_reader();
+//}
 
 // Particles
 if (part > 0){

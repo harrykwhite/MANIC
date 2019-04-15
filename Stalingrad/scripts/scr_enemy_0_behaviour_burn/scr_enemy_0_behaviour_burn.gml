@@ -3,14 +3,6 @@ var speed_final = 0;
 target = obj_player;
 
 switch(type){
-	case EnemyOneType.Fast:
-		speed_multiplier += 0.2;
-		break;
-	
-	case EnemyOneType.Large:
-		speed_multiplier -= 0.3;
-		break;
-	
 	case EnemyOneType.Grenadier:
 		speed_multiplier -= 0.15;
 		break;

@@ -32,7 +32,7 @@ i_blend_time = 0;
 
 knockback_speed = 0;
 knockback_direction = 0;
-knockback_resist = 0;
+knockback_multiplier = 0;
 
 cutscene_prop = false;
 in_cutscene = false;

@@ -59,6 +59,14 @@ if (area_next_fade){
 		scr_fade_object_list_reset();
 		if (area_next_room != noone){
 			scr_level_cleanup();
+			
+			if (area_next_room == rm_title_0){
+				ds_grid_clear(global.player_companions, -1);
+				scr_fade_object_list_reset();
+				scr_global_set();
+				audio_stop_all();
+			}
+			
 			room_goto(area_next_room);
 		}
 	}

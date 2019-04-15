@@ -278,6 +278,7 @@ if (fade){
 						isvalid = false;
 						audio_sound_gain(rain, 0, 2000);
 						
+						global.game_is_playthrough = true;
 						fade = true;
 						fade_goto = global.level_room[global.game_save_level];
 						fade_speed = 0.01;
@@ -371,6 +372,7 @@ if (fade){
 				isvalid = false;
 				audio_sound_gain(rain, 0, 2000);
 				
+				global.game_is_playthrough = false;
 				fade = true;
 				fade_goto = option_levelselect_goto[selected];
 				fade_speed = 0.01;

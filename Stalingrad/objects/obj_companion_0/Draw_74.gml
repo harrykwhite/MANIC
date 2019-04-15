@@ -28,7 +28,7 @@ if (hp < health_max){
 }
 
 if (health_flash > 0.01){
-	health_flash *= 0.9;
+	health_flash *= 0.85;
 }else{
 	health_flash = 0;
 }

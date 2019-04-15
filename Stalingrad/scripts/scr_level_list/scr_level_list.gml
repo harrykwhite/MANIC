@@ -1,10 +1,14 @@
 enum LevelIndex{
 	RavagedTown,
-	Farmland,
+	WesternFarmland,
 	UndergroundBunker,
-	Facility,
-	Prison,
+	StorageFacility,
+	HumanPrison,
 	TrainStation,
+	TheCemetery,
+	DesolateVillage,
+	IntoTheCity,
+	CityHeadquarters,
 }
 
 global.level_name[0] = "Ravaged Town";

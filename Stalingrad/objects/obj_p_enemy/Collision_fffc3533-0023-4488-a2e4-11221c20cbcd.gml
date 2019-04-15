@@ -11,7 +11,7 @@ if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_ind
 }
 
 if (health_current > 0){
-	scr_pawn_damage(health_max, 2 * knockback_resist, random(360), 4);
+	scr_pawn_damage(health_max, 2 * knockback_multiplier, random(360), 4);
 	part_particles_create(global.ps_front, x, y, global.pt_blood_0, 3);
 	part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10);
 	part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3);

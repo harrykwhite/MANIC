@@ -8,6 +8,8 @@ global.game_pause = false;
 
 global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
+global.game_combat_state_time_real = 0;
+
 global.game_level_opening_type = 0;
 
 global.game_boss_thescorched_killed = false;
@@ -44,6 +46,7 @@ if (room == rm_ini){
 		size += global.level_collectable_number[i];
 	}
 	
+	global.game_is_playthrough = true;
 	global.level_collectable_found = ds_grid_create(1, size);
 }
 

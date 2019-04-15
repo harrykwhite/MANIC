@@ -38,7 +38,13 @@ if (instance_exists(obj_player)){
 	
 	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 130){
 		obj_controller_ui.area_next_fade = true;
-		obj_controller_ui.area_next_room = cutscene_moveto_room;
+		
+		if (global.game_is_playthrough) || (cutscene_moveto_level == global.level_current){
+			obj_controller_ui.area_next_room = cutscene_moveto_room;
+		}else{
+			obj_controller_ui.area_next_room = rm_title_0;
+		}
+		
 		global.game_level_opening_type = cutscene_moveto_type;
 		global.level_current = cutscene_moveto_level;
 	}

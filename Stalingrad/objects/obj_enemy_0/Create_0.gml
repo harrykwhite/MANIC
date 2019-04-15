@@ -93,7 +93,7 @@ i_blend_time = 0;
 
 knockback_speed = 0;
 knockback_direction = 0;
-knockback_resist = 1;
+knockback_multiplier = 1;
 
 attack_time = 46;
 attack_time_offset = random_range(1.1, 1.4);

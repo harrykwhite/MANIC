@@ -24,7 +24,7 @@ if (other.minecart_speed > 3.2){
 
 if (other.in_minecart){
 	if (i_time <= 0) && (health_current > 0) && (other.minecart_speed > 2.5){
-		scr_pawn_damage(damage, 2 * knockback_resist, other.minecart_dir, 30);
+		scr_pawn_damage(damage, 2 * knockback_multiplier, other.minecart_dir, 30);
 		part_particles_create(global.ps_front, x, y, global.pt_blood_0, 3);
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10);
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3);

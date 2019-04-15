@@ -39,7 +39,7 @@ if (instance_exists(target)){
 					shoot_in_burst = true;
 				}else{
 					shoot_burst_count = 0;
-					shoot_time = 50;
+					shoot_time = 150;
 					shoot_in_burst = false;
 				}
 			}

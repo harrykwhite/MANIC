@@ -90,8 +90,13 @@ switch(ctype){
 						scr_pawn_damage(clamp(damage - defense, 1, 6), strength, dir, 4);
 					}
 					
-					part_particles_create(global.ps_front, inst.x, inst.y + 6, global.pt_burst_2, 6);
 					if (inst.object_index != obj_enemy_1) && (inst.object_index != obj_enemy_3) && (inst.object_index != obj_giantturret) && (inst.object_index != obj_giantturret_flamethrower){
+						var yoffset = 0;
+						
+						if (inst.object_index == obj_enemy_0){
+							yoffset = 6;
+						}
+						
 						repeat(5){
 							var gore = instance_create(inst.x, inst.y, obj_ef_gore);
 							gore.dir = dir + random_range(-20, 20);
@@ -103,9 +108,9 @@ switch(ctype){
 						}
 						
 					    part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3);
-					    part_particles_create(global.ps_bottom, inst.x, inst.y + 6, global.pt_blood_1, 10);
-						part_particles_create(global.ps_bottom, inst.x, inst.y + 6, global.pt_blood_3, 3);
-					    part_particles_create(global.ps_bottom, inst.x, inst.y + 6, global.pt_gore_0, 3);
+					    part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_blood_1, 10);
+						part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_blood_3, 3);
+					    part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_gore_0, 3);
 						part_type_direction(global.pt_blood_5, dir - 20, dir + 20, 0, 0);
 						part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
 						repeat(9)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_blood_5, 1);

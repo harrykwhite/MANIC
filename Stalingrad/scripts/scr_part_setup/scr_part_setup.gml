@@ -24,7 +24,20 @@ scr_part_type_blood_5();
 scr_part_type_gore_0();
 scr_part_type_gore_0_perm();
 
-scr_part_type_bodypart_0();
+scr_part_type_bodypart_enemy_0();
+scr_part_type_bodypart_enemy_1();
+scr_part_type_bodypart_enemy_2();
+scr_part_type_bodypart_enemy_3();
+scr_part_type_bodypart_enemy_4();
+scr_part_type_bodypart_giantturret_0();
+scr_part_type_bodypart_giantturret_flamethrower_0();
+scr_part_type_bodypart_thedogkeeper_0();
+scr_part_type_bodypart_thedogkeeper_dog_0();
+scr_part_type_bodypart_thescorched_0();
+scr_part_type_bodypart_companion_0();
+scr_part_type_bodypart_companion_1();
+scr_part_type_bodypart_companion_2();
+scr_part_type_bodypart_companion_3();
 
 scr_part_type_smoke_0();
 scr_part_type_smoke_1();

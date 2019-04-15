@@ -33,7 +33,10 @@ if (instance_exists(obj_player)){
 			scr_effect_screenshake(1);
 			global.level_collectable_current[global.level_current] ++;
 			global.level_collectable_found[# 0, listnum] = true;
-			scr_save_game();
+			
+			if (global.game_is_playthrough){
+				scr_save_game();
+			}
 			
 			var amount = 3000;
 			scr_points_display("COLLECTABLE +" + string(amount));

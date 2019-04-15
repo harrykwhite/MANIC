@@ -43,24 +43,13 @@ if (!typedet){
 	weapon_original = weapon_index;
 	
 	switch(type){
-		case EnemyOneType.Fast:
-			scale = 0.905;
-			defense = -1;
-			break;
-	
-		case EnemyOneType.Large:
-			defense = 2;
-			scale = 1.115;
-			knockback_resist = 0.7;
-			break;
-	
 		case EnemyOneType.Mother:
 			scale = 1.2;
 			defense = 2;
 			health_max = 9;
 			health_current = health_max;
 			attack_time_offset = 0.6;
-			knockback_resist = 0.4;
+			knockback_multiplier = 0.4;
 			break;
 		
 		case EnemyOneType.Grenadier:
@@ -74,7 +63,7 @@ if (!typedet){
 			defense = 2;
 			health_max = 8;
 			health_current = health_max;
-			knockback_resist = 0.6;
+			knockback_multiplier = 0.6;
 			sprite_index = spr_enemy_0_light_idle_0;
 			break;
 		
@@ -89,7 +78,7 @@ if (!typedet){
 			health_current = health_max;
 			defense = 3;
 			scale -= 0.1;
-			knockback_resist = 0.4;
+			knockback_multiplier = 0.4;
 			sprite_index = spr_enemy_0_healer_idle_0;
 			break;
 		
@@ -97,7 +86,7 @@ if (!typedet){
 			scale = 1.125;
 			defense = 3;
 			attack_time_offset = 0.6;
-			knockback_resist = 0.7;
+			knockback_multiplier = 0.7;
 			
 			repeat(3){
 				var fly = instance_create(x + random_range(-5, 5), y + random_range(-10, 10), obj_enemy_1);
@@ -118,6 +107,24 @@ if (!typedet){
 	
 	if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.TrainBoss){
 		mylight = instance_create(x, y - 9, obj_enemy_0_light);
+	}
+	
+	if (global.level_current >= LevelIndex.WesternFarmland){
+		defense ++;
+	}
+	
+	if (global.level_current >= LevelIndex.StorageFacility){
+		defense ++;
+	}
+	
+	if (global.level_current >= LevelIndex.TheCemetery){
+		defense ++;
+		knockback_multiplier *= 0.7;
+	}
+	
+	if (global.level_current >= LevelIndex.IntoTheCity){
+		defense ++;
+		knockback_multiplier *= 0.5;
 	}
 	
 	typedet = true;

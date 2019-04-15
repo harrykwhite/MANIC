@@ -146,7 +146,7 @@ if (global.weapon_slot_standalone == -1){
 	if (key_dash) && (dash_time <= 0) && (global.cutscene_current == -1) && (move_xTo == -1) && (move_yTo == -1){
 		dash_length = 55;
 		dash_speed = spd_max * 3.65;
-		dash_time = 20;
+		dash_time = 18;
 		
 		if (scr_player_has_upgrade(PlayerUpgrade.KneePads)){
 			dash_speed *= 1.3;
@@ -158,7 +158,7 @@ if (global.weapon_slot_standalone == -1){
 				scr_sound_play(snd_character_dash_0, false, 0.9, 1);
 			}else{
 				dash_count = 0;
-				dash_time = 37;
+				dash_time = 26;
 				scr_sound_play(snd_character_dash_0, false, 1.15, 1.25);
 			}
 		}else{

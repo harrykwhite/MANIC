@@ -1,7 +1,7 @@
 // Draw Line
 if (!global.game_pause) && (global.cutscene_current == -1){
-	var xx = x + lengthdir_x(6, dir);
-	var yy = y + lengthdir_y(6, dir);
+	var xx = x;
+	var yy = y;
 	
 	if (line_alpha > 0.85){
 		if (line_flicker_time > 0){

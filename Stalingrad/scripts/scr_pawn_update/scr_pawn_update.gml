@@ -1,5 +1,5 @@
 // Knockback
-var kbs = knockback_speed * knockback_resist;
+var kbs = knockback_speed * knockback_multiplier;
 
 if (kbs > 0.1) && (!place_meeting(x + lengthdir_x(kbs + 1, knockback_direction), y + lengthdir_y(kbs + 1, knockback_direction), obj_p_solid)){
     x += lengthdir_x(kbs, knockback_direction);
@@ -24,18 +24,30 @@ if (i_blend_time > 0){
 }
 
 // Flies
-if (object_index == obj_enemy_0){
+if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_index != obj_enemy_4) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
 	var length = array_length_1d(fly);
-
-	if (health_current <= floor(health_max / 3)){
-		for(var i = 0; i < length; i ++){
-			if (fly[i] == noone){
-				if (random(100) <= 1) fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
-				break;
-			}
+	var docreate = true;
+	
+	if (object_index == obj_enemy_0){
+		if (type == EnemyOneType.Fly){
+			docreate = false;
+		}
+	}
+	
+	if (docreate){
+		if (health_current <= floor(health_max / 3)) || (object_index == obj_enemy_4){
+			for(var i = 0; i < length; i ++){
+				if (fly[i] == noone){
+					if (random(150) < 1){
+						fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
+					}
+				
+					break;
+				}
 		
-			fly[i].xbase = x;
-			fly[i].ybase = y;
+				fly[i].xbase = x;
+				fly[i].ybase = y;
+			}
 		}
 	}
 }

@@ -65,6 +65,8 @@ for(var i = 0; i < levelcount; i ++){
 	
 	if (room == global.level_room[i]){
 		if (!global.level_entered[i]){
+			global.game_combat_state = CombatState.Idle;
+			global.game_combat_state_time_real = 0;
 			level_opening = true;
 			level_opening_active = true;
 			level_opening_time = 60 * 4;

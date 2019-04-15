@@ -62,7 +62,7 @@ heal_time = heal_time_max;
 
 knockback_speed = 0;
 knockback_direction = 0;
-knockback_resist = 1;
+knockback_multiplier = 1;
 
 attack_time = 36;
 attack_time_max = attack_time;

@@ -1,3 +1,5 @@
+show_debug_message(string(global.game_is_playthrough));
+
 scr_position_view();
 scr_ui_rank_display_setup();
 scr_ui_rank_display_update();
@@ -120,7 +122,10 @@ if (!global.game_pause){
 						break;
 					
 					case 2:
-						scr_save_game();
+						if (global.game_is_playthrough){
+							scr_save_game();
+						}
+						
 						ds_grid_clear(global.player_companions, -1);
 						scr_fade_object_list_reset();
 						scr_global_set();

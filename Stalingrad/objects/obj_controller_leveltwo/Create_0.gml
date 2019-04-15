@@ -42,7 +42,7 @@ switch(room){
 // Spawn System
 scr_spawn_setup("main", 1.15);
 spawn_pause_update = false;
-spawn_state_time_real = 0;
+global.game_combat_state_time_real = 0;
 spawn_rate_real = 1;
 spawn_cleared = false;
 
