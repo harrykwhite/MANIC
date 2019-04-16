@@ -132,6 +132,11 @@ if (health_current <= 0){
 		}else if (object_index == obj_enemy_3){
 			doexplode = true;
 			global.game_firstturret_killed = true;
+			
+			global.level_turret_killed[# 0, listnum] = true;
+			if (global.game_is_playthrough){
+				scr_save_game();
+			}
 		}else if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
 			
@@ -181,6 +186,8 @@ if (health_current <= 0){
 			}
 		}else if (object_index == obj_giantturret_flamethrower){
 			doexplode = true;
+		}else if (object_index == obj_enemy_4){
+			global.game_firstmaggot_killed = true;
 		}
 	}
 	

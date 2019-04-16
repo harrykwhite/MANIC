@@ -12,7 +12,7 @@ if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_ind
 
 if (i_time <= 0) && (other.bite_to){
 	var dir = point_direction(other.x, other.y, x, y);
-	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.strength, dir, 30);
+	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.strength, dir, 2);
 	
 	if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper){
 		part_particles_create(global.ps_front, other.x, other.y, global.pt_blood_0, 3);

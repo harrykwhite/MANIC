@@ -84,6 +84,22 @@ if (global.game_is_playthrough){
 			scr_upgrade_add(i);
 		}
 	}
+}else{
+	if (global.level_current >= 4){
+		scr_upgrade_add(PlayerUpgrade.RunningBoots);
+	}
+	
+	if (global.level_current >= 5){
+		scr_upgrade_add(PlayerUpgrade.KneePads);
+	}
+	
+	if (global.level_current >= 6){
+		scr_upgrade_add(PlayerUpgrade.Chestplate);
+	}
+	
+	if (global.level_current >= 7){
+		scr_upgrade_add(PlayerUpgrade.GasMask);
+	}
 }
 
 // Fly

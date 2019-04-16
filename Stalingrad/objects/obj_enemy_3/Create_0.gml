@@ -46,11 +46,13 @@ dir_to = dir;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 8;
+health_max = 9;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
+
+setup = false;
 
 target = obj_player;
 

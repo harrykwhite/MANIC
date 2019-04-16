@@ -156,8 +156,10 @@ if (player_exists){
 					}
 				
 					enemy.weapon_index = weapon;
-				}else{
+				}else if (chance(55)) || (instance_number(obj_enemy_4) > 1){
 					enemy = instance_create(xpos, ypos, obj_enemy_2);
+				}else{
+					enemy = instance_create(xpos, ypos, obj_enemy_4);
 				}
 
 				repeat(9){

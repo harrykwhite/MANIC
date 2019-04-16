@@ -191,8 +191,10 @@ if (health_current <= 0){
 		
 	}
 	
+	global.game_experience_count += 20;
+	
 	if (corpse != noone){
-		corpse.spd = clamp(knockback_speed * 1.5, 1.35, 5) + random_range(-0.5, 1);
+		corpse.spd = max(knockback_speed * 2, 1.35) + random_range(-0.5, 1);
 		corpse.dir = knockback_direction;
 		corpse.move = true;
 		corpse.image_xscale = image_xscale;

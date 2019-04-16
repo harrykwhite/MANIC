@@ -30,6 +30,10 @@ if (instance_exists(obj_player)){
 			buzz = noone;
 		}
 	}
+}else{
+	if (buzz != noone){
+		audio_sound_gain(buzz, 0, 2000);
+	}
 }
 
 while(point_distance(x, y, xoffset + xbase, yoffset + ybase) < 5){

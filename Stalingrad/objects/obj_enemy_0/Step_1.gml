@@ -109,16 +109,11 @@ if (!typedet){
 		mylight = instance_create(x, y - 9, obj_enemy_0_light);
 	}
 	
-	if (global.level_current >= LevelIndex.UndergroundBunker){
-		defense ++;
-	}
-	
-	if (global.level_current >= LevelIndex.HumanPrison){
+	if (global.level_current >= LevelIndex.StorageFacility){
 		defense ++;
 	}
 	
 	if (global.level_current >= LevelIndex.TheCemetery){
-		defense ++;
 		knockback_multiplier *= 0.85;
 	}
 	

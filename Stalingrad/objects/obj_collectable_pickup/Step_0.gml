@@ -33,8 +33,8 @@ if (instance_exists(obj_player)){
 			scr_effect_screenshake(1);
 			global.level_collectable_current[global.level_current] ++;
 			
+			global.level_collectable_found[# 0, listnum] = true;
 			if (global.game_is_playthrough){
-				global.level_collectable_found[# 0, listnum] = true;
 				scr_save_game();
 			}
 			

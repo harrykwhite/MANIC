@@ -3,6 +3,13 @@ scr_inboss()
 
 global.player_has_bossrespawn = global.boss_current != -1;
 
+// Experience
+if (global.game_experience_count >= global.game_experience_max){
+	global.game_experience_count = 0;
+	global.game_experience_level ++;
+	global.game_experience_max = scr_get_max_experience();
+}
+
 // Recording level and section start data
 if (!sectionstart_record_set){
 	var rslotcount = array_length_1d(global.weapon_slot);

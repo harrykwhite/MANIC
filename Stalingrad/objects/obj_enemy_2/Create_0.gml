@@ -81,16 +81,11 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;
 image_yscale = scale;
 
-if (global.level_current >= LevelIndex.UndergroundBunker){
-	defense ++;
-}
-	
-if (global.level_current >= LevelIndex.HumanPrison){
+if (global.level_current >= LevelIndex.StorageFacility){
 	defense ++;
 }
 
 if (global.level_current >= LevelIndex.TheCemetery){
-	defense ++;
 	knockback_multiplier *= 0.85;
 }
 

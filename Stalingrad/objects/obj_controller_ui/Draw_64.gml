@@ -172,43 +172,71 @@ if (screenblend_alpha > 0){
     draw_rectangle(-5, -5, dwidth+5, dheight+5, false);
 }
 
-// Score Display
-var length = 7;
-var shake = wave(-score_shake, score_shake, 0.2, 0);
+// Experience Display
+var barx = 30;
+var bary = display_get_gui_height() - 50;
+var barw = 180;
+var barh = 12;
+var barval = (global.game_experience_count / global.game_experience_max) * 100;
+
+if (experience_current != global.game_experience_count){
+	if (experience_current < global.game_experience_count){
+		experience_current += 2;
+	}else if (experience_current > global.game_experience_count){
+		experience_current -= 2;
+	}
+}
+
+experience_value_current = approach(experience_value_current, barval, 35);
+barval = experience_value_current;
 
 draw_set_alpha(1);
-draw_set_font(fnt_cambria_2);
+draw_healthbar(barx, bary, barx + barw, bary + barh, barval, c_dkgray, c_white, c_white, 0, true, false);
+
 draw_set_halign(fa_left);
-scr_text_shadow_transformed(58 + shake, (dheight - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35) + soffset, (score_scale * 1.35) + soffset, 0);
+draw_set_font(fnt_cambria_0);
+scr_text_shadow(barx, bary - 26, string(floor(experience_current)) + "/" + string(global.game_experience_max) + " XP", c_white);
 
-// Score Text Display
-if (score_text_time > 0){
-	score_text_time--;
-	
-	if (score_text_alpha < 1){
-		score_text_alpha += 0.1;
-	}
-	
-	if (score_text_offset > 0){
-		score_text_offset -= 0.25;
-	}
-}else{
-	
-	if (score_text_alpha > 0){
-		score_text_alpha -= 0.1;
-	}
-	
-	if (score_text_offset > -12){
-		score_text_offset -= 0.25;
-	}
-}
+draw_set_halign(fa_right);
+scr_text_shadow(barx + barw, bary - 26, "LVL " + string(global.game_experience_level), c_white);
 
-if (score_text_alpha > 0){
-	draw_set_alpha(score_text_alpha);
-	draw_set_font(fnt_cambria_2);
-	scr_text_shadow_transformed(59 + shake, ((dheight - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
-	draw_set_valign(fa_top);
-}
+//// Score Display
+//var length = 7;
+//var shake = wave(-score_shake, score_shake, 0.2, 0);
+
+//draw_set_alpha(1);
+//draw_set_font(fnt_cambria_2);
+//draw_set_halign(fa_left);
+//scr_text_shadow_transformed(58 + shake, (dheight - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35) + soffset, (score_scale * 1.35) + soffset, 0);
+
+//// Score Text Display
+//if (score_text_time > 0){
+//	score_text_time--;
+	
+//	if (score_text_alpha < 1){
+//		score_text_alpha += 0.1;
+//	}
+	
+//	if (score_text_offset > 0){
+//		score_text_offset -= 0.25;
+//	}
+//}else{
+	
+//	if (score_text_alpha > 0){
+//		score_text_alpha -= 0.1;
+//	}
+	
+//	if (score_text_offset > -12){
+//		score_text_offset -= 0.25;
+//	}
+//}
+
+//if (score_text_alpha > 0){
+//	draw_set_alpha(score_text_alpha);
+//	draw_set_font(fnt_cambria_2);
+//	scr_text_shadow_transformed(59 + shake, ((dheight - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
+//	draw_set_valign(fa_top);
+//}
 
 // Weapon Ammo
 var w = global.weapon_slot[global.weapon_slotcurrent];

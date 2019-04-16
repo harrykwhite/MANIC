@@ -11,12 +11,20 @@ whiteflash_alphadec = 0.1;
 mylight = noone;
 
 defense = 0;
-burn = false;
-poison = true;
-headless = false;
 
+burn = false;
+burn_x = x;
+burn_y = y;
+burn_start = false;
+burn_time = -1;
+burn_cycle = 3;
+burn_sound = noone;
+burn_sound_paused = false;
+
+poison = false;
 bleed = false;
 bleed_time = 0;
+headless = false;
 
 move_xTo = x;
 move_yTo = y;

@@ -11,8 +11,11 @@ vignette_flash_colour = c_white;
 grain_alpha = 0;
 grain_image = 0;
 
-areacleared_alpha = 0;
-areacleared_time = 0;
+//areacleared_alpha = 0;
+//areacleared_time = 0;
+
+experience_current = 0;
+experience_value_current = 0;
 
 stats_y = 0;
 
@@ -65,6 +68,7 @@ for(var i = 0; i < levelcount; i ++){
 	
 	if (room == global.level_room[i]){
 		if (!global.level_entered[i]){
+			scr_set_kills_and_findings();
 			global.game_combat_state = CombatState.Idle;
 			global.game_combat_state_time_real = 0;
 			level_opening = true;

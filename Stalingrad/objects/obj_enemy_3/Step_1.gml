@@ -1,3 +1,11 @@
+if (!setup){
+	if (global.level_turret_killed[# 0, listnum]){
+		instance_destroy();
+	}
+	
+	setup = true;
+}
+
 if (destroy){
 	if (instance_exists(mylight)){
 		instance_destroy(mylight);

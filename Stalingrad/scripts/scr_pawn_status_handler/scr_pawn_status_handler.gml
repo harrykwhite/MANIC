@@ -1,4 +1,6 @@
 // Burn control
+var is_fly = object_index == obj_enemy_1;
+
 if (burn){
 	if (!burn_start){
 		burn_x = x;
@@ -8,10 +10,15 @@ if (burn){
 		burn_start = true;
 		move_xTo = x;
 		move_yTo = y;
-		burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
+		
+		if (!is_fly){
+			burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
+		}
 	}
 	
-	scr_sound_set_distance(burn_sound, 110);
+	if (!is_fly){
+		scr_sound_set_distance(burn_sound, 110);
+	}
 	
 	if (burn_time > 0){
 		burn_time--;
@@ -29,33 +36,39 @@ if (burn){
 				burn = false;
 				move_xTo = x;
 				move_yTo = y;
-				audio_stop_sound(burn_sound);
+				
+				if (!is_fly){
+					audio_stop_sound(burn_sound);
+				}
+				
 				burn_sound = noone;
 			}
 		}
 	}
 }else{
-	if (burn_sound != noone){
-		while (audio_is_playing(burn_sound)){
-			audio_stop_sound(burn_sound);
-		}
+	if (!is_fly){
+		if (burn_sound != noone){
+			while (audio_is_playing(burn_sound)){
+				audio_stop_sound(burn_sound);
+			}
 		
-		burn_sound = noone;
+			burn_sound = noone;
+		}
 	}
 }
 
 // Poison control
 if (poison){
 	if (!poison_start){
-		poison_time = 80;
+		poison_time = 50;
 		poison_start = true;
 	}
 
 	if (poison_time > 0){
 		poison_time--;
 	}else{
-		poison_time = 80;
-		scr_pawn_damage(1, 0, 0, 5);
+		poison_time = 50;
+		scr_pawn_damage(2, 0, 0, 5);
 		scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 	}
 }

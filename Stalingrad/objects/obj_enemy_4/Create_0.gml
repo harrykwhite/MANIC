@@ -3,7 +3,7 @@ blend = -1;
 scale = random_range(1, 1.1);
 destroy = false;
 
-damage = 1;
+damage = 2;
 strength = 0.5;
 
 whiteflash_alpha = 0;
@@ -59,7 +59,7 @@ knockback_multiplier = 0.1;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 34;
+health_max = 22;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
@@ -77,4 +77,5 @@ image_yscale = scale;
 
 if (global.level_current >= LevelIndex.IntoTheCity){
 	knockback_multiplier *= 0.7;
+	move_speed_offset *= 1.2;
 }

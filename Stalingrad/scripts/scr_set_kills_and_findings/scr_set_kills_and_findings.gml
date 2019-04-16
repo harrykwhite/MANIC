@@ -1,0 +1,16 @@
+global.game_boss_thescorched_killed = false;
+global.game_boss_thedogkeeper_killed = false;
+global.game_boss_trainhorde_killed = false;
+global.game_boss_final_killed = false;
+global.game_firstdog_killed = false;
+global.game_firstgrenadier_killed = false;
+global.game_firstcrazy_killed = false;
+global.game_firstsniper_killed = false;
+global.game_firsthealer_killed = false;
+global.game_firstflyhead_killed = false;
+global.game_firstturret_killed = false;
+global.game_firstmaggot_killed = false;
+global.game_companion_farmer_found = false;
+global.game_companion_grenadier_found = false;
+global.game_companion_prisoner_found = false;
+global.game_companion_dog_found = false;

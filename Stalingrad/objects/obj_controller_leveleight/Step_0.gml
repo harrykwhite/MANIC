@@ -151,8 +151,10 @@ if (player_exists){
 					}
 				
 					enemy.weapon_index = weapon;
-				}else{
+				}else if (chance(60)) || (instance_number(obj_enemy_4) > 0) || (!global.game_firstmaggot_killed){
 					enemy = instance_create(xpos, ypos, obj_enemy_2);
+				}else{
+					enemy = instance_create(xpos, ypos, obj_enemy_4);
 				}
 
 				repeat(9){

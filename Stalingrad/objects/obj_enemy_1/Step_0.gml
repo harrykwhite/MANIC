@@ -69,4 +69,8 @@ if (distance_to_point(move_xTo, move_yTo) < 10) || (move_time <= 0){
 	move_time --;
 }
 
+poison = false;
+bleed = false;
+
+scr_pawn_status_handler();
 scr_pawn_update();

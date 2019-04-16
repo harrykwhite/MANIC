@@ -14,6 +14,7 @@ global.game_firstsniper_killed = ini_read_real("Save", "FirstSniperKilled", fals
 global.game_firsthealer_killed = ini_read_real("Save", "FirstHealerKilled", false);
 global.game_firstflyhead_killed = ini_read_real("Save", "FirstFlyHeadKilled", false);
 global.game_firstturret_killed = ini_read_real("Save", "FirstTurretKilled", false);
+global.game_firstmaggot_killed = ini_read_real("Save", "FirstMaggotKilled", false);
 global.game_companion_farmer_found = ini_read_real("Save", "CompanionFarmerFound", false);
 global.game_companion_grenadier_found = ini_read_real("Save", "CompanionGrenadierFound", false);
 global.game_companion_prisoner_found = ini_read_real("Save", "CompanionPrisonerFound", false);
@@ -32,6 +33,11 @@ for(var i = 0; i < levelcount; i ++){
 var collectcount = ds_grid_height(global.level_collectable_found);
 for(var i = 0; i < collectcount; i ++){
 	global.level_collectable_found[# 0, i] = ini_read_real("Save", "CollectableFound" + string(i), false);
+}
+
+var turretcount = ds_grid_height(global.level_turret_killed);
+for(var i = 0; i < turretcount; i ++){
+	global.level_turret_killed[# 0, i] = ini_read_real("Save", "TurretKilled" + string(i), false);
 }
 
 if (ds_exists(global.player_companions, ds_type_grid)){

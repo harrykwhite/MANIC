@@ -154,11 +154,11 @@ if (global.weapon_slot_standalone == -1){
 			if (dash_count < 1){
 				dash_count ++;
 				dash_time = 2;
-				dash_time_short = 16;
+				dash_time_short = 10;
 				scr_sound_play(snd_character_dash_0, false, 0.9, 1);
 			}else{
 				dash_count = 0;
-				dash_time = 26;
+				dash_time = 20;
 				scr_sound_play(snd_character_dash_0, false, 1.15, 1.25);
 			}
 		}else{

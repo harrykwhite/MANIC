@@ -12,3 +12,11 @@ if (ds_exists(global.game_option, ds_type_list)){
 if (ds_exists(global.player_companions, ds_type_grid)){
 	ds_grid_destroy(global.player_companions);
 }
+
+if (ds_exists(global.level_collectable_found, ds_type_grid)){
+	ds_grid_destroy(global.level_collectable_found);
+}
+
+if (ds_exists(global.level_turret_killed, ds_type_grid)){
+	ds_grid_destroy(global.level_turret_killed);
+}

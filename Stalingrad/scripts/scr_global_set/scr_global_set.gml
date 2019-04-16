@@ -10,29 +10,23 @@ global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
 global.game_combat_state_time_real = 0;
 
+global.game_experience_count = 0;
+global.game_experience_level = 1;
+global.game_experience_max = scr_get_max_experience();
+
 global.game_level_opening_type = 0;
 
-global.game_boss_thescorched_killed = false;
-global.game_boss_thedogkeeper_killed = false;
-global.game_boss_trainhorde_killed = false;
-global.game_boss_final_killed = false;
-global.game_firstdog_killed = false;
-global.game_firstgrenadier_killed = false;
-global.game_firstcrazy_killed = false;
-global.game_firstsniper_killed = false;
-global.game_firsthealer_killed = false;
-global.game_firstflyhead_killed = false;
-global.game_firstturret_killed = false;
-global.game_companion_farmer_found = false;
-global.game_companion_grenadier_found = false;
-global.game_companion_prisoner_found = false;
-global.game_companion_dog_found = false;
+scr_set_kills_and_findings();
 
 global.boss_current = -1;
 
 if (room == rm_ini){
 	scr_upgrade_list();
 	scr_level_list();
+	
+	global.game_save_started = false;
+	global.game_save_seconds = 0;
+	global.game_save_level = 0;
 	
 	global.game_time_passed = 0;
 	global.level_current = LevelIndex.RavagedTown;
@@ -41,13 +35,20 @@ if (room == rm_ini){
 	ds_grid_clear(global.player_companions, -1);
 	
 	var levelcount = array_length_1d(global.level_name);
-	var size = 0;
+	
+	var collectsize = 0;
 	for(var i = 0; i < levelcount; i ++){
-		size += global.level_collectable_number[i];
+		collectsize += global.level_collectable_number[i];
 	}
+	global.level_collectable_found = ds_grid_create(1, collectsize);
+	
+	var turretsize = 0;
+	for(var i = 0; i < levelcount; i ++){
+		turretsize += global.level_turret_number[i];
+	}
+	global.level_turret_killed = ds_grid_create(1, turretsize);
 	
 	global.game_is_playthrough = true;
-	global.level_collectable_found = ds_grid_create(1, size);
 }
 
 global.fade_object_group[0, 0] = noone;
