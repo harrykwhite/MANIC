@@ -9,6 +9,17 @@ if (instance_exists(target)){
 	move_xTo = target.x;
 	move_yTo = target.y;
 	
+	if (!mucus_is_releasing){
+		if (mucus_release_time > 0){
+			mucus_release_time --;
+		}else{
+			mucus_release_time = random_range(60 * 4, 60 * 8);
+			mucus_is_releasing = true;
+		}
+	}else{
+		speed_multiplier = 0;
+	}
+	
 	if (dist_to > 10){
 		move_speed = 0.2;
 	}else{
@@ -73,10 +84,15 @@ if (!face_player){
 }
 
 // Animation
-if (speed_final > 0.1){
-	sprite_index = spr_enemy_4_idle_0;
-	image_speed = 0.1;
+if (!mucus_is_releasing){
+	if (speed_final > 0.1){
+		sprite_index = spr_enemy_4_idle_0;
+		image_speed = 0.1;
+	}else{
+		sprite_index = spr_enemy_4_idle_0;
+		image_speed = 0.1;
+	}
 }else{
-	sprite_index = spr_enemy_4_idle_0;
+	sprite_index = spr_enemy_4_attack_0;
 	image_speed = 0.1;
 }

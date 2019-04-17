@@ -23,6 +23,10 @@ global.weapon_slotcurrent = 0;
 if (!global.player_has_bossrespawn) && (global.player_is_respawning){
 	var roomto = global.level_room[global.level_current];
 	
+	if (!global.level_cleared[global.level_current]){
+		global.level_kill_count[global.level_current] = 0;
+	}
+	
 	if (roomto == room){
 		room_restart();
 	}else{

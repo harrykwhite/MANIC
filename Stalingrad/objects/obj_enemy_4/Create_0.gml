@@ -16,6 +16,9 @@ companion_attack_break = 0;
 
 contact_attack_ready_time = 30;
 
+mucus_release_time = random_range(60 * 4, 60 * 8);
+mucus_is_releasing = false;
+
 burn = false;
 burn_x = x;
 burn_y = y;

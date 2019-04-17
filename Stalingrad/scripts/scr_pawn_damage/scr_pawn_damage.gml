@@ -188,10 +188,7 @@ if (health_current <= 0){
 				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_3, 1);
 			}
 			break;
-		
 	}
-	
-	global.game_experience_count += 20;
 	
 	if (corpse != noone){
 		corpse.spd = max(knockback_speed * 2, 1.35) + random_range(-0.5, 1);

@@ -10,8 +10,7 @@
         "a05865e1-ef74-4d49-8e18-5d461d04b76d",
         "9d517cf2-48ca-4958-b17a-734e4f72055c",
         "84bd3659-1e54-4047-8b20-f47552a92532",
-        "5a6847bc-f2b2-4599-b15f-da5c87860daf",
-        "8fef6771-d5ff-4ceb-909d-280664ffb725"
+        "5a6847bc-f2b2-4599-b15f-da5c87860daf"
     ],
     "filterType": "GMObject",
     "folderName": "Environmental",

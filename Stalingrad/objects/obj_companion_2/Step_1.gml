@@ -13,6 +13,9 @@ if (!weapon_destroyed){
 if (arm == -1){
 	arm = instance_create(x, y, obj_companion_arm_0);
 	arm.owner = id;
+}else if (!instance_exists(arm)){
+	arm = instance_create(x, y, obj_companion_arm_0);
+	arm.owner = id;
 }
 
 if (mylight == noone){

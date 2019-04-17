@@ -34,7 +34,7 @@ global.ambientShadowIntensity = lighting;
 if (player_exists){
 	var spawn_rate = spawn_rate_real;
 	
-	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1){
+	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (!global.level_cleared[global.level_current]){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}

@@ -4,6 +4,8 @@ counter = 0;
 pause_time = 0;
 corpse_active_time = 30;
 
+levelclear_called = false;
+
 has_saved = false;
 
 bonus_killtime = 0;
@@ -28,6 +30,7 @@ cutscene_moveto_room = noone;
 cutscene_moveto_level = 0;
 cutscene_moveto_dir = 0;
 cutscene_moveto_type = 0;
+cutscene_ending_stage = 0;
 
 weaponlist = ds_list_create();
 weaponlist[| 0] = global.weapon_slot[global.weapon_slotcurrent];

@@ -11,11 +11,8 @@ vignette_flash_colour = c_white;
 grain_alpha = 0;
 grain_image = 0;
 
-//areacleared_alpha = 0;
-//areacleared_time = 0;
-
-experience_current = 0;
-experience_value_current = 0;
+levelcleared_alpha = 0;
+levelcleared_time = 0;
 
 stats_y = 0;
 
@@ -82,9 +79,12 @@ for(var i = 0; i < levelcount; i ++){
 
 screen_fade_opening = 1.15;
 
-game_ending_screen = false;
-game_ending_screen_alpha = 0;
-game_ending_screen_text_alpha = 0;
+ending = false;
+ending_logo_text_time = 60 * 6;
+ending_logo_text_alpha = 0;
+ending_credits_text_alpha = 0;
+ending_back_time = 60 * 3.5;
+ending_back_alpha = 0;
 
 area_next_fade = false;
 area_next_alpha = 0;

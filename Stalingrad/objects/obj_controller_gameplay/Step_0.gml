@@ -3,11 +3,25 @@ scr_inboss()
 
 global.player_has_bossrespawn = global.boss_current != -1;
 
-// Experience
-if (global.game_experience_count >= global.game_experience_max){
-	global.game_experience_count = 0;
-	global.game_experience_level ++;
-	global.game_experience_max = scr_get_max_experience();
+// Level clear
+if (!levelclear_called){
+	if (global.level_cleared[global.level_current]){
+		levelclear_called = true;
+		return;
+	}
+	
+	if (global.level_current == 9){
+		levelclear_called = true;
+		return;
+	}
+	
+	if (global.level_kill_count[global.level_current] >= global.level_kill_max[global.level_current]){
+		obj_controller_ui.levelcleared_time = 60 * 3.5;
+		global.level_cleared[global.level_current] = true;
+		levelclear_called = true;
+	}
+}else{
+	global.level_kill_count[global.level_current] = global.level_kill_max[global.level_current];
 }
 
 // Recording level and section start data

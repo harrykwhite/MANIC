@@ -89,6 +89,8 @@ if (health_current <= 0){
 		}
 		
 		if (object_index == obj_enemy_0){
+			global.level_kill_count[global.level_current] ++;
+			
 			switch(type){
 				case EnemyOneType.Grenadier:
 					global.game_firstgrenadier_killed = true;
@@ -128,8 +130,10 @@ if (health_current <= 0){
 				}
 			}
 		}else if (object_index == obj_enemy_2){
+			global.level_kill_count[global.level_current] ++;
 			global.game_firstdog_killed = true;
 		}else if (object_index == obj_enemy_3){
+			global.level_kill_count[global.level_current] ++;
 			doexplode = true;
 			global.game_firstturret_killed = true;
 			
@@ -187,7 +191,12 @@ if (health_current <= 0){
 		}else if (object_index == obj_giantturret_flamethrower){
 			doexplode = true;
 		}else if (object_index == obj_enemy_4){
+			global.level_kill_count[global.level_current] ++;
 			global.game_firstmaggot_killed = true;
+			
+			if (chance(30)){
+				instance_create(x + random_range(-4, 4), y + random_range(-4, 4), obj_health_pack_1);
+			}
 		}
 	}
 	

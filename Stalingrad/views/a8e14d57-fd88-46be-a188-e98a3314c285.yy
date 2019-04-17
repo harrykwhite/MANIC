@@ -10,8 +10,8 @@
         "ebf469e3-9d29-4831-b47a-d08279144fa5",
         "1a9f203e-01c3-4470-8311-322e5bfd2df3",
         "77bd16d7-5aba-482f-89b6-3d15b4e591cf",
-        "96c89177-1928-47b4-93c5-230aeeef8340",
-        "8a16432d-7405-43d4-abe0-03c01cbc1eb7"
+        "8a16432d-7405-43d4-abe0-03c01cbc1eb7",
+        "96c89177-1928-47b4-93c5-230aeeef8340"
     ],
     "filterType": "GMObject",
     "folderName": "Pawns",

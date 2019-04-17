@@ -10,10 +10,6 @@ global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
 global.game_combat_state_time_real = 0;
 
-global.game_experience_count = 0;
-global.game_experience_level = 1;
-global.game_experience_max = scr_get_max_experience();
-
 global.game_level_opening_type = 0;
 
 scr_set_kills_and_findings();

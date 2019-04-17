@@ -1,1 +1,0 @@
-return 200 * global.game_experience_level;

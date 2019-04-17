@@ -1,5 +1,4 @@
 // Variables
-var soffset = wave(0, 0.025, 3, 0, false);
 var counter = 0;
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
@@ -142,7 +141,7 @@ if (instance_exists(obj_player)){
     }
     
     draw_set_alpha(weapon_standalone_alpha * ui_alpha);
-    draw_healthbar(xx, yy, xx + width, yy + height, sc / sm * 100, c_white, col, col, 3, false, false);
+    draw_healthbar(xx, yy, xx + width, yy + height, sc / sm * 100, make_color_rgb(45, 45, 45), col, col, 3, false, false);
 }
 
 // Player Hit
@@ -169,36 +168,24 @@ if (vignette_flash_alpha > 0){
 if (screenblend_alpha > 0){
     draw_set_alpha(screenblend_alpha);
     draw_set_colour(screenblend_colour);
-    draw_rectangle(-5, -5, dwidth+5, dheight+5, false);
+    draw_rectangle(-5, -5, dwidth + 5, dheight + 5, false);
 }
 
-// Experience Display
-var barx = 30;
-var bary = display_get_gui_height() - 50;
-var barw = 180;
-var barh = 12;
-var barval = (global.game_experience_count / global.game_experience_max) * 100;
+// Kill Display
+if (global.level_current != LevelIndex.CityHeadquarters){
+	var text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level";
+	var textx = 40;
+	var texty = display_get_gui_height() - 50;
 
-if (experience_current != global.game_experience_count){
-	if (experience_current < global.game_experience_count){
-		experience_current += 2;
-	}else if (experience_current > global.game_experience_count){
-		experience_current -= 2;
+	if (global.level_cleared[global.level_current]){
+		text = "Area cleared. Proceed to the next level."
 	}
+
+	draw_set_alpha(1);
+	draw_set_font(fnt_cambria_0);
+	draw_set_halign(fa_left);
+	scr_text_shadow(textx, texty - 26, text, c_white);
 }
-
-experience_value_current = approach(experience_value_current, barval, 35);
-barval = experience_value_current;
-
-draw_set_alpha(1);
-draw_healthbar(barx, bary, barx + barw, bary + barh, barval, c_dkgray, c_white, c_white, 0, true, false);
-
-draw_set_halign(fa_left);
-draw_set_font(fnt_cambria_0);
-scr_text_shadow(barx, bary - 26, string(floor(experience_current)) + "/" + string(global.game_experience_max) + " XP", c_white);
-
-draw_set_halign(fa_right);
-scr_text_shadow(barx + barw, bary - 26, "LVL " + string(global.game_experience_level), c_white);
 
 //// Score Display
 //var length = 7;
@@ -207,7 +194,7 @@ scr_text_shadow(barx + barw, bary - 26, "LVL " + string(global.game_experience_l
 //draw_set_alpha(1);
 //draw_set_font(fnt_cambria_2);
 //draw_set_halign(fa_left);
-//scr_text_shadow_transformed(58 + shake, (dheight - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35) + soffset, (score_scale * 1.35) + soffset, 0);
+//scr_text_shadow_transformed(58 + shake, (dheight - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35), (score_scale * 1.35), 0);
 
 //// Score Text Display
 //if (score_text_time > 0){
@@ -234,7 +221,7 @@ scr_text_shadow(barx + barw, bary - 26, "LVL " + string(global.game_experience_l
 //if (score_text_alpha > 0){
 //	draw_set_alpha(score_text_alpha);
 //	draw_set_font(fnt_cambria_2);
-//	scr_text_shadow_transformed(59 + shake, ((dheight - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65) + soffset, (score_scale * 0.65) + soffset, 0);
+//	scr_text_shadow_transformed(59 + shake, ((dheight - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65), (score_scale * 0.65), 0);
 //	draw_set_valign(fa_top);
 //}
 
@@ -251,13 +238,13 @@ if (instance_exists(obj_player)){
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
 				var xx = 51, yy = (74 * (counter + 1)) + 12;
-				var col = make_color_hsv(0, 0, (colour_get_value(c_white) - 7) + weaponammo_scale);
+				var col = c_white;
 				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
 				
 				draw_set_halign(fa_left);
 				draw_set_font(fnt_cambria_0);
 				draw_set_alpha(ui_alpha);
-				scr_text_shadow_transformed(xx, yy, "x" + string(quantity), col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+				scr_text_shadow_transformed(xx, yy, "x" + string(quantity), col, weaponammo_scale, weaponammo_scale, 0);
 			}
 		}
 		
@@ -270,8 +257,8 @@ if (instance_exists(obj_player)){
 		if (instance_exists(global.weapon_object[w])){
 	        if (global.weapon_type[w] == WeaponType.Ranged){
 	            var xx = 131 + weaponammo_x;
-	            var yy = 78 - 30;
-	            var col = make_color_hsv(0, 0, (colour_get_value(c_white) - 7) + weaponammo_scale);
+	            var yy = 78 - 33;
+	            var col = c_white;
 				
 	            var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 	            var maxammo = global.weapon_ammomax[global.weapon_slot[global.weapon_slotcurrent]];
@@ -298,23 +285,23 @@ if (instance_exists(obj_player)){
 				
 				switch(global.weapon_ammotype[w]){
 					case AmmoType.Bullets:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, weaponammo_scale, weaponammo_scale, 0);
 						break;
 					
 					case AmmoType.Fuel:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " fuel", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " fuel", col, weaponammo_scale, weaponammo_scale, 0);
 						break;
 					
 					case AmmoType.Explosives:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " explosives", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " explosives", col, weaponammo_scale, weaponammo_scale, 0);
 						break;
 					
 					case AmmoType.Arrows:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " arrows", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " arrows", col, weaponammo_scale, weaponammo_scale, 0);
 						break;
 					
 					case AmmoType.Darts:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, (weaponammo_scale * 1.1) + soffset, (weaponammo_scale * 1.1) + soffset, 0);
+						scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, weaponammo_scale, weaponammo_scale, 0);
 						break;
 				}
 	        }else{
@@ -334,13 +321,13 @@ if (!global.game_is_playthrough){
 if (!drawammo){
 	stats_y = approach(stats_y, 48, 30);
 }else{
-	stats_y = approach(stats_y, 82, 30);
+	stats_y = approach(stats_y, 72, 30);
 }
 
 draw_set_alpha(1);
 draw_set_font(fnt_cambria_n1);
 draw_set_halign(fa_left);
-scr_text_shadow(136, stats_y, str, make_colour_hsv(0, 0, colour_get_value(c_white) - 7));
+scr_text_shadow(136, stats_y, str, c_white);
 
 /* Time Passed
 var time_passed_text;
@@ -398,7 +385,7 @@ if (bosshealth_width_current > 0){
 	var w = bosshealth_width_current;
 	var h = 12;
 	
-	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), c_dkgray, c_ltgray, c_ltgray, 0, true, false);
+	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_color_rgb(45, 45, 45), c_ltgray, c_ltgray, 0, true, false);
 	draw_set_alpha(bosshealth_flash * 0.6);
 	draw_set_colour(c_white);
 	draw_rectangle(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), false);
@@ -447,7 +434,7 @@ if (control_indicate){
 if (control_indicate_text != ""){
 	var buttonstr = scr_keycheck_string(obj_controller_all.key_interact);
 	
-	draw_set_font(fnt_cambria_2);
+	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_right);
 	draw_set_alpha(0.8);
 	scr_text_shadow(dwidth - control_indicate_x, dheight - 64, control_indicate_text + " [" + buttonstr + "]", c_white);
@@ -455,28 +442,28 @@ if (control_indicate_text != ""){
 
 control_indicate = false;
 
-/* Area Cleared
-if (areacleared_time > 0){
-	if (areacleared_alpha < 1){
-		areacleared_alpha += 0.1;
+// Level Cleared
+if (levelcleared_time > 0){
+	if (levelcleared_alpha < 1){
+		levelcleared_alpha += 0.05;
 	}
-	areacleared_time --;
+	levelcleared_time --;
 }else{
-	if (areacleared_alpha > 0){
-		areacleared_alpha -= 0.02;
+	if (levelcleared_alpha > 0){
+		levelcleared_alpha -= 0.02;
 	}
 }
 
-if (areacleared_alpha > 0){
+if (levelcleared_alpha > 0){
 	var xx = dwidth / 2;
 	var yy = dheight / 2;
-	yy -= 150;
+	yy -= 100;
 	
-	draw_set_font(fnt_cambria_4);
+	draw_set_font(fnt_cambria_3);
 	draw_set_halign(fa_center);
-	draw_set_alpha(0.8 * areacleared_alpha * 0.8);
-	scr_text_shadow(xx, yy, "AREA CLEARED", c_white);
-}*/
+	draw_set_alpha(levelcleared_alpha);
+	scr_text_shadow(xx, yy, "LEVEL CLEARED", c_white);
+}
 
 // Level Results / Ranking
 if (rank_display_draw){
@@ -616,7 +603,7 @@ if (pausedialogue_alpha > 0){
 			break;
 	}
 
-	scr_text_shadow((dwidth / 2) + 220, (dheight / 2) + 220, "Resume", c_white);
+	scr_text_shadow((dwidth / 2) + 220, (dheight / 2) + 220, "Resume [E]", c_white);
 	draw_set_valign(fa_top);
 }
 
@@ -648,6 +635,38 @@ if (global.level_current == 0){
 		draw_set_halign(fa_center);
 		scr_text_shadow(dwidth / 2, dheight / 2, text, c_white);
 	}
+}
+
+// Game Ending
+if (ending){
+	if (ending_back_time > 0){
+		ending_back_time --;
+	}else{
+		if (ending_back_alpha < 1){
+			ending_back_alpha += 0.025;
+		}
+	}
+	
+	if (ending_logo_text_time > 0){
+		ending_logo_text_time --;
+		
+		if (ending_logo_text_alpha < 1){
+			ending_logo_text_alpha += 0.01;
+		}
+	}else{
+		if (ending_logo_text_alpha > 0){
+			ending_logo_text_alpha -= 0.01;
+		}
+	}
+	
+	draw_set_alpha(ending_back_alpha);
+	draw_set_colour(c_black);
+	draw_rectangle(0, 0, dwidth, dheight, false);
+	
+	draw_set_font(fnt_cambria_3);
+	draw_set_halign(fa_center);
+	draw_set_alpha(ending_logo_text_alpha);
+	scr_text_shadow(dwidth / 2, dheight / 2, "MANIC", c_white);
 }
 
 draw_set_alpha(1);

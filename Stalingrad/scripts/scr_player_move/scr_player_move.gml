@@ -203,7 +203,7 @@ if (global.weapon_slot_standalone == -1){
 			    len = 0;
 			}else{
 			    if (len < (spd_max * spd_multiplier)){
-			        len += spd_build * spd_multiplier;
+			        len += (spd_build * spd_multiplier);
 			    }else if (len > (spd_max * spd_multiplier)){
 			        len -= 0.05;
 			    }
@@ -229,7 +229,7 @@ if (global.weapon_slot_standalone == -1){
 			}
 			
 		    if (len < (spd * spd_multiplier)){
-		        len += spd_build * spd_multiplier;
+		        len += (spd_build * spd_multiplier);
 		    }else if (len > (spd * spd_multiplier)){
 		        len -= 0.05;
 		    }
@@ -248,8 +248,8 @@ if (global.weapon_slot_standalone == -1){
 		}
 	}
 	
-	vspd = lengthdir_y(len, dir);
 	hspd = lengthdir_x(len, dir);
+	vspd = lengthdir_y(len, dir);
 }else{
 	sprite_index = spr_player_idle_2;
 	img_speed = 0.05;

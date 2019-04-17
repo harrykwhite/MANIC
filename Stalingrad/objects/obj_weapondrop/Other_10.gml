@@ -5,7 +5,7 @@ var alpha_glow = wave(0, 0.2, 2.5, 0);
 animation += animation_speed;
 
 gpu_set_fog(true, c_black, 0, 0);
-draw_sprite_ext(sprite, animation, x, y, scale, scale, angle, c_white, alpha * 0.175);
+draw_sprite_ext(sprite, animation, x, y, scale, scale, angle, c_white, alpha * 0.135);
 gpu_set_fog(false, c_black, 0, 0);
 
 draw_sprite_ext(sprite, animation, x, y + yy, scale, scale, angle, c_white, 1);

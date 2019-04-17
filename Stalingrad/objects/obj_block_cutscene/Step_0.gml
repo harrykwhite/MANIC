@@ -12,6 +12,12 @@ if (!active){
 if (instance_exists(obj_player)) && (global.cutscene_current == -1){	
 	if (place_meeting(x + 1, y + 1, obj_player)){
 		if (time >= 30){
+			if (special == "requireclear"){
+				if (!global.level_cleared[global.level_current]){
+					return;
+				}
+			}
+			
 			if (interact){
 				interact_active = true;
 				if (interact_special == "moveto"){

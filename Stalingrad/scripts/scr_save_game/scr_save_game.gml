@@ -36,6 +36,8 @@ for(var i = 0; i < upgradecount; i ++){
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
 	ini_write_real("Save", "Level_Entered" + string(i), global.level_entered[i]);
+	ini_write_real("Save", "Level_KillCount" + string(i), global.level_kill_count[i]);
+	ini_write_real("Save", "Level_Cleared" + string(i), global.level_cleared[i]);
 }
 
 var collectcount = ds_grid_height(global.level_collectable_found);
