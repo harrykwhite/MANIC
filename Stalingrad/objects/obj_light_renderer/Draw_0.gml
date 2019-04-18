@@ -5,6 +5,7 @@ var exists;
 
 if (!ds_exists(global.worldLights, ds_type_list)){
 	global.worldLights = ds_list_create();
+	return;
 }
 
 if(dirty || tick >= global.lightUpdateFrameDelay || global.worldShadowMap == undefined || !surface_exists(global.worldShadowMap)) {

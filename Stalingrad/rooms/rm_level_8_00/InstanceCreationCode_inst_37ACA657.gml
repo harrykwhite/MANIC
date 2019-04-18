@@ -1,2 +1,2 @@
-index = PlayerWeapon.Spear;
-angle = -20;
+index = PlayerWeapon.DartPistol;
+angle = 35;

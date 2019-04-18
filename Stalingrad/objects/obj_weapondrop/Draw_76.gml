@@ -14,4 +14,4 @@ if (sprite == -1){
 	}
 }
 
-scr_render_me(y - (25 + offset));
+scr_render_me(y - (32 + offset));

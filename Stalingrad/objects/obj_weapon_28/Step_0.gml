@@ -9,7 +9,6 @@ var mdir = point_direction(x, y, mouse_x, mouse_y);
 if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
 	
     if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (shoot_can){
-        
 		scr_player_knockback_initiate(0.5, mdir);
 		scr_camera_to_player();
 		scr_player_flash(4);

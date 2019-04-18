@@ -149,7 +149,7 @@ if (global.weapon_slot_standalone == -1){
 		dash_time = 18;
 		
 		if (scr_player_has_upgrade(PlayerUpgrade.KneePads)){
-			dash_speed *= 1.3;
+			dash_speed *= 2;
 			
 			if (dash_count < 1){
 				dash_count ++;

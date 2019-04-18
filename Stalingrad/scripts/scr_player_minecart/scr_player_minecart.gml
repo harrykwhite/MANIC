@@ -19,22 +19,6 @@ if (mouse_x > x){
 	image_xscale = -1;
 }
 
-if (keyboard_check(ord("D"))){
-	if (minecart_speed < 4){
-		minecart_speed += 0.01;
-	}
-}else if (keyboard_check(ord("A"))){
-	if (minecart_speed > -4){
-		minecart_speed -= 0.01;
-	}
-}else{
-	if (minecart_speed > 0){
-		minecart_speed -= 0.005;
-	}else if (minecart_speed < 0){
-		minecart_speed += 0.005;
-	}
-}
-
 var cartx = x - 2;
 var carty = y + 16;
 var cartw = 4;
@@ -57,19 +41,48 @@ if (minecart_break > 0){
 	}
 }
 
-if (minecart_speed != 0) || (minecart_speed != 0){
-	image_speed = 1;
-}else{
-	image_speed = 0;
-}
-
 var absmdir = abs(minecart_dir);
 var mdir = absmdir - ((absmdir div 360) * 360);
+var acceleration = 0.025;
 
 if (mdir == 90) || (mdir == 270){
 	minecart_sprite = spr_pawn_minecart_1;
 }else{
 	minecart_sprite = spr_pawn_minecart_0;
+}
+
+if (keyboard_check(ord("D"))){
+	if (mdir == 180) || (mdir == 270){
+		if (minecart_speed > -4){
+			minecart_speed -= acceleration;
+		}
+	}else{
+		if (minecart_speed < 4){
+			minecart_speed += acceleration;
+		}
+	}
+}else if (keyboard_check(ord("A"))){
+	if (mdir == 180) || (mdir == 90){
+		if (minecart_speed < 4){
+			minecart_speed += acceleration;
+		}
+	}else{
+		if (minecart_speed > -4){
+			minecart_speed -= acceleration;
+		}
+	}
+}else{
+	if (minecart_speed > 0){
+		minecart_speed -= 0.005;
+	}else if (minecart_speed < 0){
+		minecart_speed += 0.005;
+	}
+}
+
+if (minecart_speed != 0) || (minecart_speed != 0){
+	image_speed = 1;
+}else{
+	image_speed = 0;
 }
 
 x += lengthdir_x(minecart_speed, minecart_dir);

@@ -399,6 +399,14 @@
             }
         },
         {
+            "Key": "089c28c3-03b2-4f92-94ba-5428e63d0524",
+            "Value": {
+                "id": "1004c3a9-9730-42e0-8901-d226205a5b6f",
+                "resourcePath": "sprites\\spr_weapon_31\\spr_weapon_31.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "08a5d915-85cd-4616-bd08-7a1b973c983e",
             "Value": {
                 "id": "9515aa17-c3d0-4ede-98f5-cb4f05396dda",
@@ -1083,14 +1091,6 @@
             "Value": {
                 "id": "dd6c9f28-000a-4254-be94-632b481d6a8c",
                 "resourcePath": "sprites\\spr_tileset_ground_1\\spr_tileset_ground_1.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "1900e893-ffdf-4c33-af63-2964dccdfbaa",
-            "Value": {
-                "id": "fe133cc1-7887-44f4-9f74-e20946a1eae3",
-                "resourcePath": "sprites\\spr_pawn_minecart_1_interact\\spr_pawn_minecart_1_interact.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -4551,6 +4551,14 @@
             }
         },
         {
+            "Key": "6aa0f887-e89c-4fd7-9db7-b718218718e9",
+            "Value": {
+                "id": "71d5a9c8-1be6-4b9a-8de0-3490994f0c6d",
+                "resourcePath": "views\\6aa0f887-e89c-4fd7-9db7-b718218718e9.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "6ab7be42-4fb7-4022-8bcd-a9bcec154bb2",
             "Value": {
                 "id": "513729fb-3c91-4fbf-b48a-dd7b41d8f8ee",
@@ -4876,6 +4884,14 @@
                 "id": "ca653916-70ef-483c-8e83-ab2617f9c815",
                 "resourcePath": "scripts\\instance_meeting_direction\\instance_meeting_direction.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "713857b4-8c35-4d6a-b860-cbf067342c19",
+            "Value": {
+                "id": "e843aa56-50ce-4550-962b-2625a54f67d8",
+                "resourcePath": "sprites\\spr_pawn_minecart_1_interact\\spr_pawn_minecart_1_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -6511,14 +6527,6 @@
             }
         },
         {
-            "Key": "92dbdec9-d983-4298-9a72-900b9d7de23b",
-            "Value": {
-                "id": "27f6a7d8-6df4-443b-88ea-261651dc03fd",
-                "resourcePath": "sprites\\spr_pawn_minecart_0_interact\\spr_pawn_minecart_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "92f77b69-9a74-41fe-af85-cd6c8f6dc1f5",
             "Value": {
                 "id": "452748a5-65c2-414e-ad1e-05ce48af1299",
@@ -7444,6 +7452,14 @@
                 "id": "ed2e0f72-a4e3-490d-b370-a0b7452a3712",
                 "resourcePath": "scripts\\scr_part_type_smoke_1\\scr_part_type_smoke_1.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "aa795f0c-3903-458f-a867-3d3597c13e2a",
+            "Value": {
+                "id": "24833142-2dff-4c71-968a-6c5c96c569cf",
+                "resourcePath": "sprites\\spr_pawn_minecart_0_interact\\spr_pawn_minecart_0_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -10260,6 +10276,14 @@
                 "id": "608a87d0-b011-4d92-bb38-137f3f307ba8",
                 "resourcePath": "sprites\\spr_prisoner_idle_0\\spr_prisoner_idle_0.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "f3d7a703-99ff-4449-95c5-0d01341bab9d",
+            "Value": {
+                "id": "be3b55b2-bc3b-4aec-add4-894228034f69",
+                "resourcePath": "objects\\obj_weapon_31\\obj_weapon_31.yy",
+                "resourceType": "GMObject"
             }
         },
         {

@@ -34,9 +34,10 @@ enum PlayerWeapon{
 	HeavyShotgun,
 	Minigun,
 	FlareRifle,
-	DartGun,
+	DartPistol,
 	MountedMachineGunCart,
 	WireCables,
+	DartRifle
 }
 
 enum AmmoType{
@@ -334,12 +335,12 @@ global.weapon_camerarange[27] = 35;
 global.weapon_mouse[27] = MouseType.SmallCrosshair;
 global.weapon_dualhanded[27] = false;
 
-global.weapon_name[28] = "Dart Gun";
+global.weapon_name[28] = "Dart Pistol";
 global.weapon_object[28] = obj_weapon_28;
 global.weapon_sprite[28] = spr_weapon_28;
 global.weapon_type[28] = WeaponType.Ranged;
 global.weapon_heavy[28] = false;
-global.weapon_ammomax[28] = 11;
+global.weapon_ammomax[28] = 13;
 global.weapon_ammotype[28] = AmmoType.Darts;
 global.weapon_camerarange[28] = 38;
 global.weapon_mouse[28] = MouseType.SmallCrosshair;
@@ -364,6 +365,17 @@ global.weapon_heavy[30] = false;
 global.weapon_camerarange[30] = 15;
 global.weapon_mouse[30] = MouseType.SmallCircle;
 global.weapon_dualhanded[30] = false;
+
+global.weapon_name[31] = "Dart Rifle";
+global.weapon_object[31] = obj_weapon_31;
+global.weapon_sprite[31] = spr_weapon_31;
+global.weapon_type[31] = WeaponType.Ranged;
+global.weapon_heavy[31] = true;
+global.weapon_ammomax[31] = 12;
+global.weapon_ammotype[31] = AmmoType.Darts;
+global.weapon_camerarange[31] = 35;
+global.weapon_mouse[31] = MouseType.SmallCrosshair;
+global.weapon_dualhanded[31] = false;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
