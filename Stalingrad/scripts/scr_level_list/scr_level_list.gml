@@ -20,7 +20,7 @@ global.level_displaynum[0] = "One";
 global.level_entered[0] = false;
 global.level_cleared[0] = false;
 global.level_kill_count[0] = 0;
-global.level_kill_max[0] = 30;
+global.level_kill_max[0] = 60;
 
 global.level_name[1] = "Western Farmland";
 global.level_room[1] = rm_level_2_00;
@@ -31,7 +31,7 @@ global.level_displaynum[1] = "Two";
 global.level_entered[1] = false;
 global.level_cleared[1] = false;
 global.level_kill_count[1] = 0;
-global.level_kill_max[1] = 20;
+global.level_kill_max[1] = 40;
 
 global.level_name[2] = "Underground Bunker";
 global.level_room[2] = rm_level_3_00;
@@ -42,7 +42,7 @@ global.level_displaynum[2] = "Three";
 global.level_entered[2] = false;
 global.level_cleared[2] = false;
 global.level_kill_count[2] = 0;
-global.level_kill_max[2] = 50;
+global.level_kill_max[2] = 100;
 
 global.level_name[3] = "Storage Facility";
 global.level_room[3] = rm_level_4_00;
@@ -53,7 +53,7 @@ global.level_displaynum[3] = "Four";
 global.level_entered[3] = false;
 global.level_cleared[3] = false;
 global.level_kill_count[3] = 0;
-global.level_kill_max[3] = 30;
+global.level_kill_max[3] = 50;
 
 global.level_name[4] = "Human Prison";
 global.level_room[4] = rm_level_5_00;
@@ -64,7 +64,7 @@ global.level_displaynum[4] = "Five";
 global.level_entered[4] = false;
 global.level_cleared[4] = false;
 global.level_kill_count[4] = 0;
-global.level_kill_max[4] = 60;
+global.level_kill_max[4] = 120;
 
 global.level_name[5] = "Train Station";
 global.level_room[5] = rm_level_6_00;
@@ -75,7 +75,7 @@ global.level_displaynum[5] = "Six";
 global.level_entered[5] = false;
 global.level_cleared[5] = false;
 global.level_kill_count[5] = 0;
-global.level_kill_max[5] = 30;
+global.level_kill_max[5] = 40;
 
 global.level_name[6] = "The Cemetery";
 global.level_room[6] = rm_level_7_00;
@@ -86,7 +86,7 @@ global.level_displaynum[6] = "Seven";
 global.level_entered[6] = false;
 global.level_cleared[6] = false;
 global.level_kill_count[6] = 0;
-global.level_kill_max[6] = 30;
+global.level_kill_max[6] = 60;
 
 global.level_name[7] = "Desolate Village";
 global.level_room[7] = rm_level_8_00;
@@ -97,7 +97,7 @@ global.level_displaynum[7] = "Eight";
 global.level_entered[7] = false;
 global.level_cleared[7] = false;
 global.level_kill_count[7] = 0;
-global.level_kill_max[7] = 40;
+global.level_kill_max[7] = 60;
 
 global.level_name[8] = "Into the City";
 global.level_room[8] = rm_level_9_00;
@@ -108,7 +108,7 @@ global.level_displaynum[8] = "Nine";
 global.level_entered[8] = false;
 global.level_cleared[8] = false;
 global.level_kill_count[8] = 0;
-global.level_kill_max[8] = 50;
+global.level_kill_max[8] = 80;
 
 global.level_name[9] = "City Headquarters";
 global.level_room[9] = rm_level_10_00;

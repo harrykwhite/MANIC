@@ -50,6 +50,11 @@ rain_thunder_flash[6] = m_ambience_thunder_6;
 rain_thunder_flash_amount[6] = 0.1;
 
 dog_can_spawn = global.game_firstdog_killed;
+enemy_has_panned = false;
+
+if (global.game_firstenemy_killed){
+	enemy_has_panned = true;
+}
 
 if (global.game_level_opening_type == 2){
 	global.cutscene_current = 47;

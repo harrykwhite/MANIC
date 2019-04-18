@@ -3,7 +3,7 @@ draw_set_alpha(0.25);
 draw_rectangle((display_get_gui_width() / 2) - 220, 0, (display_get_gui_width() / 2) + 220, display_get_gui_height(), false);
 draw_set_alpha(1);
 
-if (STATE == GameState.Developer){
+if (gamestate == GameState.Developer){
 	var titlescale = wave(1.3, 1.35, 4, 0);
 	
 	draw_set_font(fnt_cambria_4);

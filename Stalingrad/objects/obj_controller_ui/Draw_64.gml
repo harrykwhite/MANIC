@@ -15,11 +15,11 @@ if (instance_exists(obj_player)){
 			
 			alpha *= (point_distance(inst.x, inst.y, obj_player.x, obj_player.y) / 400);
 			
-			var xx = (inst.x - camera_get_view_x(view_camera[0])) * GUI_SCALE_X;
-			var yy = (inst.y - camera_get_view_y(view_camera[0])) * GUI_SCALE_Y;
+			var xx = (inst.x - camera_get_view_x(view_camera[0])) * gui_scale_x;
+			var yy = (inst.y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 			
 			with(inst){
-				draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale * GUI_SCALE_X, image_yscale * GUI_SCALE_Y, image_angle, c_white, alpha * image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale * gui_scale_x, image_yscale * gui_scale_y, image_angle, c_white, alpha * image_alpha);
 			}
 		}
 		gpu_set_fog(false, c_black, 0, 0);
@@ -312,11 +312,7 @@ if (instance_exists(obj_player)){
 }
 
 // Collectables
-var str = "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]);
-
-if (!global.game_is_playthrough){
-	str = string_replace(str, "\nTIME: " + string(scr_seconds_to_timer(global.game_save_seconds)), "");
-}
+var str = "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]) + "\nTIME: " + string(scr_seconds_to_timer(global.game_save_seconds));
 
 if (global.level_collectable_number[global.level_current] <= 0){
 	str = string_replace(str, "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]), "");

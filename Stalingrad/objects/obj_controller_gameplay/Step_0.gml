@@ -1,9 +1,13 @@
 scr_position_view();
-scr_inboss()
+scr_inboss();
 
 global.player_has_bossrespawn = global.boss_current != -1;
 
 // Level clear
+//if (keyboard_check_pressed(vk_left)){
+//	global.level_kill_count[global.level_current] += 10;
+//}
+
 if (!levelclear_called){
 	if (global.level_cleared[global.level_current]){
 		levelclear_called = true;
@@ -19,8 +23,23 @@ if (!levelclear_called){
 		obj_controller_ui.levelcleared_time = 60 * 3.5;
 		global.level_cleared[global.level_current] = true;
 		levelclear_called = true;
+		
+		var level = scr_get_level_object();
+		with(level){
+			global.game_combat_state = CombatState.Idle;
+			global.game_combat_state_time_real = 0;
+			
+			audio_play_sound(spawn_music_stinger[2], 3, false);
+			
+			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
+			audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
+			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
+			audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+		}
 	}
-}else{
+}
+
+if (global.level_cleared[global.level_current]){
 	global.level_kill_count[global.level_current] = global.level_kill_max[global.level_current];
 }
 
@@ -141,9 +160,9 @@ if (!global.game_pause){
 }
 
 // Time
-if (!global.game_pause) && (global.game_is_playthrough){
+if (!global.game_pause){
 	if (counter < 60){
-		counter += (delta_time / 10000) / 1.6;
+		counter += realtime;
 	}else{
 		global.game_save_seconds ++;
 		counter = 0;

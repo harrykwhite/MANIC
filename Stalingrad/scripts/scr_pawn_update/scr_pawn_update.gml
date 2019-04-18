@@ -90,6 +90,7 @@ if (health_current <= 0){
 		
 		if (object_index == obj_enemy_0){
 			global.level_kill_count[global.level_current] ++;
+			global.game_firstenemy_killed = true;
 			
 			switch(type){
 				case EnemyOneType.Grenadier:

@@ -1,4 +1,7 @@
-if (arm == -1) || (!instance_exists(arm)){
+if (arm == -1){
+	arm = instance_create(x, y, obj_enemy_0_arm);
+	arm.owner = id;
+}else if (!instance_exists(arm)){
 	arm = instance_create(x, y, obj_enemy_0_arm);
 	arm.owner = id;
 }else{

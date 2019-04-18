@@ -1,3 +1,5 @@
+scr_save_game_reader();
+
 if (!ds_exists(global.game_option, ds_type_list)){
 	scr_option_init();
 }

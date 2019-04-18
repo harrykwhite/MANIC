@@ -1,5 +1,5 @@
-var xx = (x - camera_get_view_x(view_camera[0])) * GUI_SCALE_X;
-var yy = (y - camera_get_view_y(view_camera[0])) * GUI_SCALE_Y;
+var xx = (x - camera_get_view_x(view_camera[0])) * gui_scale_x;
+var yy = (y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 
 if (throw_time > 0){
     var spr_index = (throw_time / throw_time_max) * 37;

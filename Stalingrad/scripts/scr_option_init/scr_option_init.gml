@@ -31,7 +31,7 @@ global.game_option[| Options.MaxCorpses] = ini_read_real("Options", "MaxCorpses"
 global.game_option[| Options.Flashing] = ini_read_real("Options", "Flashing", 100);
 
 global.game_option[| Options.Fullscreen] = ini_read_real("Options", "Fullscreen", true);
-global.game_option[| Options.Resolution] = ini_read_real("Options", "Resolution", 3);
+global.game_option[| Options.Resolution] = ini_read_real("Options", "Resolution", -1);
 
 global.game_option[| Options.MasterVolume] = ini_read_real("Options", "MasterVolume", 100);
 global.game_option[| Options.SoundVolume] = ini_read_real("Options", "SoundVolume", 100);

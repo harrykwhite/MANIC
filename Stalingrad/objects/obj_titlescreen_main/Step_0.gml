@@ -125,7 +125,7 @@ if (fade){
 	
 	if (fade_opening){
 		if (fade_alpha > 0){
-			fade_alpha -= 0.05;
+			fade_alpha -= 0.025;
 		}else{
 			fade_alpha = 0;
 			fade_opening = false;
@@ -373,6 +373,7 @@ if (fade){
 				audio_sound_gain(rain, 0, 2000);
 				
 				global.game_is_playthrough = false;
+				global.game_save_seconds = 0;
 				fade = true;
 				fade_goto = option_levelselect_goto[selected];
 				fade_speed = 0.01;

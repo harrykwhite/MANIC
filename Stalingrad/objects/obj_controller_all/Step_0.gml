@@ -1,3 +1,5 @@
+game_set_speed(60, gamespeed_fps);
+
 scr_position_view();
 scr_update_real_volumes();
 

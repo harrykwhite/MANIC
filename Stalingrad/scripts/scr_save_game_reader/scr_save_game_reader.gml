@@ -28,7 +28,7 @@ for(var i = 0; i < upgradecount; i ++){
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
 	global.level_entered[i] = ini_read_real("Save", "Level_Entered" + string(i), false);
-	global.level_kill_count[i] = ini_read_real("Save", "Level_KillCount" + string(i), false);
+	global.level_kill_count[i] = ini_read_real("Save", "Level_KillCount" + string(i), 0);
 	global.level_cleared[i] = ini_read_real("Save", "Level_Cleared" + string(i), false);
 }
 

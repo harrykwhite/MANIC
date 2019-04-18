@@ -14,16 +14,16 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
     if (shoot_can){
         scr_player_knockback_initiate(0.5, mdir);
         scr_effect_screenshake(1);
-		scr_player_flash(4);
-		scr_camera_to_player(3);
+		scr_player_flash(2);
+		scr_camera_to_player(1);
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
         scr_mouse_control(MouseType.Crosshair, 2.5, 20);
         scr_weapon_ammo_use(1);
 		
 		image_speed = 3;
         
-        var xpos = x + lengthdir_x(20, mdir) + lengthdir_x(3, up(mdir));
-        var ypos = y + lengthdir_y(20, mdir) + lengthdir_y(3, up(mdir));
+        var xpos = x + lengthdir_x(20, mdir) + lengthdir_x(2, up(mdir));
+        var ypos = y + lengthdir_y(20, mdir) + lengthdir_y(2, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
         part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);
@@ -41,13 +41,13 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
         shoot_can = false;
         shoot_current ++;
         shoot_bounceback = -2;
-        angle_offset = 6;
+        angle_offset = 4;
 		
         if (shoot_current < 3){
-            shoot_time = 7;
+            shoot_time = 4;
         }else{
             shoot_current = -1;
-            shoot_time = 40;
+            shoot_time = 36;
         }
     }
 }

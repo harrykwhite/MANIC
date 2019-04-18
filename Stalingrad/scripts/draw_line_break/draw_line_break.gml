@@ -33,9 +33,9 @@ yyTo = yy + lengthdir_y(dist, dir);
 
 if (gui){
 	if (thickness == 0){
-		draw_line(xx * GUI_SCALE_X, yy * GUI_SCALE_Y, xxTo * GUI_SCALE_X, yyTo * GUI_SCALE_Y);
+		draw_line(xx * gui_scale_x, yy * gui_scale_y, xxTo * gui_scale_x, yyTo * gui_scale_y);
 	}else{
-		draw_line_width(xx * GUI_SCALE_X, yy * GUI_SCALE_Y, xxTo * GUI_SCALE_X, yyTo * GUI_SCALE_Y, thickness);
+		draw_line_width(xx * gui_scale_x, yy * gui_scale_y, xxTo * gui_scale_x, yyTo * gui_scale_y, thickness);
 	}
 }else{
 	if (thickness == 0){

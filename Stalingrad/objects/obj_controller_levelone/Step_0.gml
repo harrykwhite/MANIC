@@ -116,7 +116,18 @@ if (player_exists){
 				
 				if (chance(80)) || (!dog_can_spawn){
 					enemy = instance_create(xpos, ypos, obj_enemy_0);
-				
+					
+					if (!enemy_has_panned){
+						global.cutscene_current = 40;
+						obj_controller_gameplay.cutscene_look_x = xpos;
+						obj_controller_gameplay.cutscene_look_y = ypos;
+						obj_controller_gameplay.cutscene_look_time = 100;
+						obj_controller_gameplay.cutscene_look_object = enemy;
+						obj_controller_gameplay.cutscene_look_prop = true;
+						
+						enemy_has_panned = true;
+					}
+					
 					if (spawn_rate > 1.5){
 						if (global.boss_current == -1){
 							if (chance(5)){
@@ -124,15 +135,15 @@ if (player_exists){
 							}
 						}
 					}
-				
+					
 					if (weapon == PawnWeapon.Grenade){
 						enemy.type = EnemyOneType.Grenadier;
 					}
-				
+					
 					if (enemy.type == EnemyOneType.Sniper){
 						weapon = PawnWeapon.SniperRifle;
 					}
-				
+					
 					enemy.weapon_index = weapon;
 				}else{
 					enemy = instance_create(xpos, ypos, obj_enemy_2);
