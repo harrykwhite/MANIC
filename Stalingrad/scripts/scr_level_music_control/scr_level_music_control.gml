@@ -18,25 +18,31 @@ if (inrealboss){
 	if (bossmusic != noone){
 		var setToGain = false;
 		
-		while (!audio_is_playing(bossmusic)){
-			audio_play_sound(bossmusic, 3, true);
-			audio_sound_gain(bossmusic, 0.02, 0);
-			setToGain = true;
+		if (paused){
+			audio_pause_sound(bossmusic);
+		}else if (audio_is_paused(bossmusic)){
+			audio_resume_sound(bossmusic);
+		}else{
+			while (!audio_is_playing(bossmusic)){
+				audio_play_sound(bossmusic, 3, true);
+				audio_sound_gain(bossmusic, 0.02, 0);
+				setToGain = true;
 			
-			if (level != 9){
-				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
-				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
-				audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
+				if (level != 9){
+					audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
+					audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
+					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
+				}
 			}
-		}
 		
-		while(audio_sound_get_gain(bossmusic) <= 0.01){
-			audio_sound_gain(m_boss_main_0, 0.02, 0);
-			setToGain = true;
-		}
+			while(audio_sound_get_gain(bossmusic) <= 0.01){
+				audio_sound_gain(m_boss_main_0, 0.02, 0);
+				setToGain = true;
+			}
 		
-		if (setToGain){
-			audio_sound_gain(bossmusic, 1 * obj_controller_all.real_music_volume, 4000);
+			if (setToGain){
+				audio_sound_gain(bossmusic, 1 * obj_controller_all.real_music_volume, 4000);
+			}
 		}
 	}
 }

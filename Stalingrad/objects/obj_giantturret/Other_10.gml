@@ -5,28 +5,34 @@ var linealpha = shoot_buildup_time / 120;
 if (instance_exists(obj_player)){
 	shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
 	
-	if (shoot_buildup_time < 120){
-		if (linealpha > 0.85){
-			if (line_flicker_time > 0){
-				line_flicker_time --;
+	var xx = x + lengthdir_x(26, shoot_dir);
+	var yy = y + lengthdir_y(26, shoot_dir);
+	shoot_dir = point_direction(xx, yy, obj_player.x, obj_player.y);
+	
+	if (distance_to_object(obj_player) > 28){
+		if (shoot_buildup_time < 120){
+			if (linealpha > 0.85){
+				if (line_flicker_time > 0){
+					line_flicker_time --;
+				}else{
+					line_flicker = !line_flicker;
+					line_flicker_time = 8;
+				}
 			}else{
-				line_flicker = !line_flicker;
 				line_flicker_time = 8;
+				line_flicker = false;
 			}
-		}else{
-			line_flicker_time = 8;
-			line_flicker = false;
-		}
 
-		draw_set_colour(c_red);
+			draw_set_colour(c_red);
 
-		if (line_flicker){
-			draw_set_colour(c_ltgray);
-		}
+			if (line_flicker){
+				draw_set_colour(c_ltgray);
+			}
 		
-		draw_set_alpha(clamp(linealpha, 0, 1) * 0.7);
-		draw_line_break(x, y, shoot_dir, obj_p_solid, 1, false, -6);
-		draw_set_alpha(1);
+			draw_set_alpha(clamp(linealpha, 0, 1) * 0.7);
+			draw_line_break(xx, yy, shoot_dir, obj_p_solid, 1, false, -6);
+			draw_set_alpha(1);
+		}
 	}
 }
 

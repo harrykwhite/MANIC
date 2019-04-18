@@ -9,8 +9,10 @@ if (place_meeting(x + 1, y + 1, obj_p_solid)){
 
 if (instance_exists(target)){
 	var dir_to_target = point_direction(x, y, target.x, target.y);
-	dir = dir_to_target;
-	image_angle = dir_to_target;
+	var dir_from_target = angle_difference(dir, dir_to_target);
+	
+	dir += 0.75 * -sign(dir_from_target);
+	image_angle = dir;
 }
 
 part_type_speed(global.pt_smoke_8, 2, 4, -0.1, 0);
@@ -46,8 +48,8 @@ if (explode){
 	fl.fadeSpeed = 0.015;
 	
     instance_destroy();
-    scr_damage_custom(damage, 1, 45, 45, 3, enemy, !enemy, true, true);
-	scr_damage_custom(round(damage / 2), 1, 60, 60, 3, enemy, !enemy, true, true);
+    scr_damage_custom(damage, 1, 45, 45, 3, !enemy, enemy, true, true);
+	scr_damage_custom(round(damage / 2), 1, 60, 60, 3, !enemy, enemy, true, true);
     scr_effect_screenshake(6);
 	scr_effect_freeze(5);
 	scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);

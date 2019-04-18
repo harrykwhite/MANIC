@@ -197,6 +197,11 @@ if (health_current <= 0){
 			if (chance(30)){
 				instance_create(x + random_range(-4, 4), y + random_range(-4, 4), obj_health_pack_1);
 			}
+		}else if (object_index == obj_antagonist){
+			global.cutscene_current = 54;
+			obj_controller_gameplay.cutscene_ending_stage = 0;
+			
+			instance_create(x, y, obj_upgrade_pickup);
 		}
 	}
 	

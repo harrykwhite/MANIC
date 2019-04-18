@@ -33,7 +33,14 @@ light_brightness = 0;
 mylight = instance_create(x, y, obj_giantturret_light);
 
 burn = false;
+burn_x = x;
+burn_y = y;
+burn_start = false;
+burn_time = -1;
+burn_cycle = 3;
 burn_sound = noone;
+burn_sound_paused = false;
+
 poison = false;
 bleed = false;
 headless = false;

@@ -60,6 +60,10 @@ scr_player_update();
 script_execute(state);
 
 // Animation
+if (in_minecart){
+	img_speed = 0.03;
+}
+
 if (sign(img_speed) == 1){
 	if (img_index < image_number){
 	    img_index += img_speed;

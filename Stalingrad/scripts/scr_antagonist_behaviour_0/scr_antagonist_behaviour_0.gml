@@ -125,8 +125,8 @@ if (instance_exists(target)){
 				scr_effect_screenshake(1);
 				scr_sound_play(snd_weapon_swing_0, false, 0.9, 1.1);
 				
-				weapon = -1;
 				instance_destroy(weapon);
+				weapon = -1;
 			}
 		}
 	}else if (state == 3){

@@ -234,18 +234,3 @@ if (game_opening_intro){
 		game_opening_intro = false;
 	}
 }
-
-// Game Ending Screen
-if (game_ending_screen){
-	if (global.level_current != 0) || (STATE == GameState.Developer){
-		game_ending_screen = false;
-	}
-	
-	if (game_ending_screen_alpha < 1){
-		game_ending_screen_alpha += 0.01;
-	}else{
-		if (game_ending_screen_text_alpha < 1){
-			game_ending_screen_text_alpha += 0.01;
-		}
-	}
-}

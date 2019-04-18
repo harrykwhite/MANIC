@@ -15,29 +15,28 @@ if (instance_exists(target)){
 			shoot_time --;
 		}else{
 			shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
-			xpos = x + lengthdir_x(22, shoot_dir);
-			ypos = y + lengthdir_y(22, shoot_dir);
-			
+			scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
 			scr_effect_screenshake(2);
-			scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
 			light_brightness = 1.25;
 			
-			part_type_direction(global.pt_flash_0, shoot_dir - 17, shoot_dir + 17, 0, 0);
+			var xpos = x + lengthdir_x(26, shoot_dir);
+			var ypos = y + lengthdir_y(26, shoot_dir);
+			part_type_direction(global.pt_flash_0, shoot_dir - 15, shoot_dir + 15, 0, 0);
 			part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
-	        part_type_direction(global.pt_smoke_5, shoot_dir - 17, shoot_dir + 17, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(5, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(5, shoot_dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+		    part_type_direction(global.pt_smoke_5, shoot_dir - 15, shoot_dir + 15, 0, 0);
+			part_particles_create(global.ps_front, xpos + lengthdir_x(8, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(8, image_angle) + random_range(-3, 3), global.pt_smoke_5, 1);
 			
-		    var bullet = instance_create(xpos, ypos, obj_proj_0);
-			bullet.dir = shoot_dir;
-		    bullet.image_angle = shoot_dir;
-			bullet.spd = 11;
-			bullet.damage = 1;
-			bullet.strength = 1.25;
+			var bullet = instance_create(x, y, obj_proj_0);
 			bullet.enemy = true;
+			bullet.damage = 1;
+			bullet.spd = 15;
+			bullet.strength = 1;
+			bullet.dir = shoot_dir;
+			bullet.image_angle = bullet.dir;
 			
 			if (shoot_burst < 2){
 				shoot_burst ++;
-				shoot_time = 4;
+				shoot_time = 3;
 			}else{
 				shoot_burst = 0;
 				shoot_time = 70;

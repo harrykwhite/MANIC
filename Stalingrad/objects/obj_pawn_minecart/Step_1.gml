@@ -12,21 +12,28 @@ if (instance_exists(obj_player)){
 
 		if (minecart_speed > 0){
 			minecart_speed -= 0.005;
+		}else if (minecart_speed < 0){
+			minecart_speed += 0.005;
 		}
 
-		var cartx = sprite_get_bbox_left(sprite_index);
-		var carty = sprite_get_bbox_top(sprite_index);
-		var cartw = sprite_get_bbox_right(sprite_index) - cartx;
-		var carth = sprite_get_bbox_bottom(sprite_index) - carty;
+		var cartx = x - 2;
+		var carty = y + 16;
+		var cartw = 4;
+		var carth = 4;
 
-		var mblocklist = ds_list_create();
-		var mblocktotal = collision_rectangle_list(x - (sprite_width / 2) + cartx, y - (sprite_height/ 2) + carty, x - (sprite_width / 2) + cartx + cartw, y - (sprite_height / 2) + carty + carth, obj_block_direction, false, false, mblocklist, false);
-		if (mblocktotal > 0){
-		for(var i = 0; i < mblocktotal; i ++){
-			var mblock = mblocklist[| i];
-				if (mblock.image_angle != minecart_dir){
-					minecart_dir = mblock.image_angle;
-					break;
+		if (minecart_break > 0){
+			minecart_break --;
+			minecart_touching = false;
+		}else{
+			if (collision_rectangle(cartx, carty, cartx + cartw, carty + carth, obj_block_direction, false, true)){
+				if (!minecart_touching){
+					minecart_dir -= 90 * sign(minecart_speed);
+					minecart_touching = true;
+				}
+			}else{
+				if (minecart_touching){
+					minecart_touching = false;
+					minecart_break = 2;
 				}
 			}
 		}
@@ -37,7 +44,10 @@ if (instance_exists(obj_player)){
 			image_speed = 0;
 		}
 
-		if ((minecart_dir > 90 - 20) && (minecart_dir < 90 + 20)) || ((minecart_dir > 270 - 20) && (minecart_dir < 270 + 20)){
+		var absmdir = abs(minecart_dir);
+		var mdir = absmdir - ((absmdir div 360) * 360);
+
+		if (mdir == 90) || (mdir == 270){
 			mysprite = spr_pawn_minecart_1;
 		}else{
 			mysprite = spr_pawn_minecart_0;

@@ -8,7 +8,7 @@ if (ds_exists(global.worldLights, ds_type_list)){
 	var lightcount = ds_list_size(lights);
 	
 	for(var i = 0; i < lightcount; ++i) {
-		if (lights[| i] != undefined){
+		if (ds_exists(lights[| i], ds_type_list)){
 			light_destroy(lights[| i]);
 		}
 	}

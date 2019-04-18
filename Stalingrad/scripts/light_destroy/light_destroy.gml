@@ -3,10 +3,6 @@
 
 var light = argument0;
 
-if (light == undefined) || (!ds_exists(light, ds_type_list)){
-	return;
-}
-
 // Destroy the vertex buffer
 var buffer = light[| eLight.VertexBuffer];
 if(buffer != undefined) vertex_delete_buffer(buffer);

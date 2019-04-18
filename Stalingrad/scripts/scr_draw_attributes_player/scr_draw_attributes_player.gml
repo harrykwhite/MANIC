@@ -24,17 +24,19 @@ if (ucount > 0){
 		if (scr_player_has_upgrade(i)){
 			if (!global.upgrade_behind[i]){
 				if (i == PlayerUpgrade.RunningBoots) || (i == PlayerUpgrade.KneePads){
-					var rboots = i == PlayerUpgrade.RunningBoots;
-					var walksprite = spr_player_upgrade_runningboots_0_walk;
+					if (!in_minecart){
+						var rboots = i == PlayerUpgrade.RunningBoots;
+						var walksprite = spr_player_upgrade_runningboots_0_walk;
 				
-					if (!rboots){
-						walksprite = spr_player_upgrade_kneepads_0_walk;
-					}
+						if (!rboots){
+							walksprite = spr_player_upgrade_kneepads_0_walk;
+						}
 				
-					if (is_idle){
-						draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
-					}else{
-						draw_sprite_ext(walksprite, image_index, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+						if (is_idle){
+							draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+						}else{
+							draw_sprite_ext(walksprite, image_index, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+						}
 					}
 				}else{
 					draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);

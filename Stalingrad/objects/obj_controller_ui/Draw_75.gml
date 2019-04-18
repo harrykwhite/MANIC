@@ -17,21 +17,6 @@ if (blackbar_sizereal > 2){
 	draw_rectangle(-10, dheight + 10, dwidth + 10, (dheight + 10) - (blackbar_sizereal + 10), false);
 }
 
-// Game Ending Screen
-if (global.level_current == 0) && (STATE == GameState.Public){
-	if (game_ending_screen){
-		draw_set_alpha(game_ending_screen_alpha);
-		draw_set_colour(c_black);
-		draw_rectangle(0, 0, dwidth, dheight, false);
-		
-		draw_set_alpha(game_ending_screen_text_alpha);
-		draw_set_font(fnt_cambria_1);
-		scr_text_shadow(dwidth / 2, dheight / 2, "Thanks for playing!", c_white);
-		draw_set_font(fnt_cambria_0);
-		scr_text_shadow(dwidth / 2, (dheight / 2) + 60, "That's the end of the demo. If you have any questions\nmake sure to contact us at getagamesteam@gmail.com.", c_white);
-	}
-}
-
 // Level opening
 if (level_opening){
 	draw_set_alpha(level_opening_alpha);

@@ -312,10 +312,14 @@ if (instance_exists(obj_player)){
 }
 
 // Collectables
-var str = "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]) + "\nTIME: " + string(scr_seconds_to_timer(global.game_save_seconds));
+var str = "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]);
 
 if (!global.game_is_playthrough){
-	str = "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]);
+	str = string_replace(str, "\nTIME: " + string(scr_seconds_to_timer(global.game_save_seconds)), "");
+}
+
+if (global.level_collectable_number[global.level_current] <= 0){
+	str = string_replace(str, "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]), "");
 }
 
 if (!drawammo){
