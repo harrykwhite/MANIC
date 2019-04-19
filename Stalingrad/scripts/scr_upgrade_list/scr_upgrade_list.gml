@@ -2,11 +2,12 @@ enum PlayerUpgrade{
 	Goggles,
 	Backpack,
 	Chestplate, // Collectable
-	AmmoPack,
+	AmmoPack, // Collectable
 	GasMask, // Collectable, position must change
 	RunningBoots, // Collectable
 	KneePads, // Collectable
 	IronGlove,
+	HeadLight,
 }
 
 global.upgrade_name[0] = "Goggles";
@@ -72,3 +73,11 @@ global.upgrade_sprite_corpse[7] = spr_player_upgrade_ironglove_0_corpse;
 global.upgrade_sprite_pickup[7]= spr_player_upgrade_ironglove_0_pickup;
 global.upgrade_behind[7] = false;
 global.upgrade_equipped[7] = false;
+
+global.upgrade_name[8] = "Head Light";
+global.upgrade_description[8] = "Provides greater surrounding light";
+global.upgrade_sprite[8] = spr_player_upgrade_headlight_0;
+global.upgrade_sprite_corpse[8] = spr_player_upgrade_headlight_0_corpse;
+global.upgrade_sprite_pickup[8]= spr_player_upgrade_headlight_0_pickup;
+global.upgrade_behind[8] = false;
+global.upgrade_equipped[8] = false;

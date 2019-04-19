@@ -57,6 +57,38 @@ if (instance_exists(obj_player)){
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;
 				}
+			}else if (room == rm_level_4_01){
+				if (terminal_deactivate_count < 2){
+					terminal_deactivate_count ++;
+					
+					global.cutscene_current = -1;
+					global.cutscene_time[index] = 0;
+				}else{
+					var lookx = 882;
+					var looky = 618;
+					
+					if (global.cutscene_time[index] < 170) && (!scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){
+						if (global.cutscene_time[index] == 0){
+							var upgrade = instance_create(x, y, obj_upgrade_pickup);
+							upgrade.index = PlayerUpgrade.AmmoPack;
+							upgrade.angle = 20;
+							
+							var cblock = instance_create(x - 64, y - 64, obj_block_cutscene);
+							cblock.image_xscale = 8;
+							cblock.image_yscale = 8;
+							cblock.index = 53;
+							cblock.destroy_on_activate = true;
+						}
+						
+						global.cutscene_time[index] ++;
+						
+						global.cutscene_camera_x[index] = lookx;
+						global.cutscene_camera_y[index] = looky;
+					}else{
+						global.cutscene_current = -1;
+						global.cutscene_time[index] = 0;
+					}
+				}
 			}else{
 				global.cutscene_current = -1;
 				global.cutscene_time[index] = 0;

@@ -3311,6 +3311,14 @@
             }
         },
         {
+            "Key": "49d5e703-12af-4e44-9849-849a75b0e260",
+            "Value": {
+                "id": "2690786f-fb5f-41eb-8c53-4fe8e136df7b",
+                "resourcePath": "sprites\\spr_player_upgrade_headlight_0\\spr_player_upgrade_headlight_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "49fdb3b8-356e-4c28-87ef-a1e1d2cdc62d",
             "Value": {
                 "id": "6d32222f-1516-45ba-ae52-fedf9b907d7f",
@@ -5655,6 +5663,14 @@
             }
         },
         {
+            "Key": "8431dd3a-0000-4595-acfc-490c5897c89c",
+            "Value": {
+                "id": "f5e4a27d-9c85-4f54-9374-6ceed4f26958",
+                "resourcePath": "sprites\\spr_player_upgrade_headlight_0_pickup\\spr_player_upgrade_headlight_0_pickup.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
             "Value": {
                 "id": "3c2f3311-d223-4da1-bea7-ac744788c6a0",
@@ -5940,6 +5956,14 @@
                 "id": "e3da39e1-7872-4543-bae0-73ca310c0ecb",
                 "resourcePath": "scripts\\scr_companion_get_order\\scr_companion_get_order.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "89dc27a2-2fea-4d84-a243-d1e5f038f4ea",
+            "Value": {
+                "id": "3450351c-4859-4b19-aeb4-74c1adeb598f",
+                "resourcePath": "sprites\\spr_player_upgrade_headlight_0_corpse\\spr_player_upgrade_headlight_0_corpse.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -9595,6 +9619,14 @@
             "Value": {
                 "id": "598dc43c-7a27-48fe-b31a-49d4f0a48835",
                 "resourcePath": "objects\\obj_farmbuilding_1\\obj_farmbuilding_1.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "e2719fd4-8b25-45d8-81a9-607de3342da5",
+            "Value": {
+                "id": "0e5b560d-180b-4a4f-80d0-1d2124e6ac00",
+                "resourcePath": "objects\\obj_upgrade_pickup_headlight_light\\obj_upgrade_pickup_headlight_light.yy",
                 "resourceType": "GMObject"
             }
         },

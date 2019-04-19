@@ -1,3 +1,15 @@
+// Light
+if (index == PlayerUpgrade.HeadLight){
+	if (!instance_exists(mylight)){
+		mylight = instance_create(x, y, obj_upgrade_pickup_headlight_light);
+	}
+	
+	mylight.x = x;
+	mylight.y = y;
+	mylight.light[| eLight.X] = mylight.x;
+	mylight.light[| eLight.Y] = mylight.y;
+}
+
 // Pickup
 if (instance_exists(obj_player)){
     if (pickup){

@@ -1,5 +1,5 @@
-var xx = (mouse_x - camera_get_view_x(view_camera[0])) * gui_scale_x;
-var yy = (mouse_y - camera_get_view_y(view_camera[0])) * gui_scale_y;
+var xx = (x - camera_get_view_x(view_camera[0])) * gui_scale_x;
+var yy = (y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 var scale = 2;
 var counter = 0;
 

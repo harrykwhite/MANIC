@@ -1,3 +1,9 @@
+if (room != rm_ini) && (room != rm_title_0){
+	if (global.game_is_playthrough){
+		scr_save_game();
+	}
+}
+
 part_system_destroy(global.ps_front);
 part_system_destroy(global.ps_bottom);
 

@@ -97,6 +97,10 @@ if (instance_exists(mylight)){
 	mylight.light[| eLight.Range] = 210 * light_brightness;
 	mylight.light[| eLight.LutIntensity] = 1.65 + (clamp(flash_time, 0, 2) / 10);
 	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+	
+	if (scr_player_has_upgrade(PlayerUpgrade.HeadLight)){
+		mylight.light[| eLight.Range] *= 1.3;
+	}
 }
 
 if (instance_exists(flashlight)){

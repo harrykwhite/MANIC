@@ -42,6 +42,8 @@ audio_sound_gain(wind, 1 * obj_controller_all.real_ambience_volume, 7000);
 dogkeeper = noone;
 dogkeeper_failed = false;
 
+terminal_deactivate_count = 0;
+
 crazy_can_spawn = global.game_firstcrazy_killed;
 
 if (room == rm_level_4_00) && (global.game_level_opening_type == 1){
