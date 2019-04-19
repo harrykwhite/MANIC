@@ -26,7 +26,11 @@
         "306e5f31-79af-464f-a69f-0e60a43e6be8",
         "5b760083-5bd3-4e4c-99f8-f2ce12e2199a",
         "5bb84446-5aa0-4097-b9e6-13e9db875cd2",
-        "22556bfe-9cf1-42c0-8361-7501cd5e541e"
+        "22556bfe-9cf1-42c0-8361-7501cd5e541e",
+        "85b52c0d-50c6-4a62-baef-fc40223f3de9",
+        "739a957a-9d5b-400b-bc10-429114673fcd",
+        "b3f136ac-dce8-43b2-ae89-bf4681f119d7",
+        "63b03d4b-a8a9-477f-a439-b70f32d7ec29"
     ],
     "filterType": "GMSprite",
     "folderName": "Upgrades",

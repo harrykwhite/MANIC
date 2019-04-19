@@ -8,7 +8,7 @@ shoot_speed = 20;
 shoot_range = 3;
 shoot_damage = 1;
 shoot_time = 0;
-shoot_strength = 0.25;
+shoot_strength = 1.75;
 shoot_bounceback = 0;
 
 throw_damage = 3;

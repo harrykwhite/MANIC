@@ -1,15 +1,16 @@
 enum PlayerUpgrade{
 	Goggles,
 	Backpack,
-	Chestplate,
+	Chestplate, // Collectable
 	AmmoPack,
-	GasMask,
-	RunningBoots,
-	KneePads,
+	GasMask, // Collectable, position must change
+	RunningBoots, // Collectable
+	KneePads, // Collectable
+	IronGlove,
 }
 
 global.upgrade_name[0] = "Goggles";
-global.upgrade_description[0] = "Opponents glow in the dark";
+global.upgrade_description[0] = "Opponents will glow in the dark";
 global.upgrade_sprite[0] = spr_player_upgrade_goggles_0;
 global.upgrade_sprite_corpse[0] = spr_player_upgrade_goggles_0_corpse;
 global.upgrade_sprite_pickup[0] = spr_player_upgrade_goggles_0_pickup;
@@ -63,3 +64,11 @@ global.upgrade_sprite_corpse[6] = spr_player_upgrade_kneepads_0_corpse;
 global.upgrade_sprite_pickup[6]= spr_player_upgrade_kneepads_0_pickup;
 global.upgrade_behind[6] = false;
 global.upgrade_equipped[6] = false;
+
+global.upgrade_name[7] = "Iron Glove";
+global.upgrade_description[7] = "75% increased attack knockback";
+global.upgrade_sprite[7] = spr_player_upgrade_ironglove_0;
+global.upgrade_sprite_corpse[7] = spr_player_upgrade_ironglove_0_corpse;
+global.upgrade_sprite_pickup[7]= spr_player_upgrade_ironglove_0_pickup;
+global.upgrade_behind[7] = false;
+global.upgrade_equipped[7] = false;

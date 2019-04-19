@@ -9,7 +9,7 @@ shoot_range = 9;
 shoot_damage = 4;
 shoot_time = 0;
 shoot_continue_time = 0;
-shoot_strength = 1;
+shoot_strength = 1.75;
 shoot_bounceback = 0;
 
 throw_damage = 4;

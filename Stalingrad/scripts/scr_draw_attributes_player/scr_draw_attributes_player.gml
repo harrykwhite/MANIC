@@ -23,13 +23,18 @@ if (ucount > 0){
 	for(var i = 0; i < ucount; i ++){
 		if (scr_player_has_upgrade(i)){
 			if (!global.upgrade_behind[i]){
-				if (i == PlayerUpgrade.RunningBoots) || (i == PlayerUpgrade.KneePads){
+				if (i == PlayerUpgrade.RunningBoots) || (i == PlayerUpgrade.KneePads) || (i == PlayerUpgrade.IronGlove){
 					if (!in_minecart){
-						var rboots = i == PlayerUpgrade.RunningBoots;
 						var walksprite = spr_player_upgrade_runningboots_0_walk;
 				
-						if (!rboots){
+						if (i == PlayerUpgrade.KneePads){
 							walksprite = spr_player_upgrade_kneepads_0_walk;
+						}else if (i == PlayerUpgrade.IronGlove){
+							walksprite = spr_player_upgrade_ironglove_0_walk;
+							
+							if (sprite_index != spr_player_walk_1){
+								continue;
+							}
 						}
 				
 						if (is_idle){

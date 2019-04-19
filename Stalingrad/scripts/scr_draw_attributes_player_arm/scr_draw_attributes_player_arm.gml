@@ -1,6 +1,17 @@
 var player = obj_player;
 var drawshader = (global.player_health_current <= 2) || (player.burn) || (player.poison) || (player.whiteflash_alpha > 0);
 
+var ucount = array_length_1d(global.upgrade_name);
+if (ucount > 0){
+	for(var i = 0; i < ucount; i ++){
+		if (scr_player_has_upgrade(i)){
+			if (i == PlayerUpgrade.IronGlove){
+				draw_sprite_ext(global.upgrade_sprite[i], 0, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+			}
+		}
+	}
+}
+
 if (drawshader){
 	shader_set(sh_pawntint);
 	var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");

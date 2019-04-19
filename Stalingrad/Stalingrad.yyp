@@ -4287,6 +4287,14 @@
             }
         },
         {
+            "Key": "63b03d4b-a8a9-477f-a439-b70f32d7ec29",
+            "Value": {
+                "id": "c08a7ef1-8fd5-478a-9205-8d178f286ce4",
+                "resourcePath": "sprites\\spr_player_upgrade_ironglove_0_walk\\spr_player_upgrade_ironglove_0_walk.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "644b593a-59c5-437a-be9c-914ccbadfc7e",
             "Value": {
                 "id": "450015b4-9b33-4073-b72f-43aed32440b6",
@@ -4971,6 +4979,14 @@
             "Value": {
                 "id": "5c8b769b-1f93-441c-a2fe-417a5f9fdddc",
                 "resourcePath": "sprites\\spr_weapon_0\\spr_weapon_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "739a957a-9d5b-400b-bc10-429114673fcd",
+            "Value": {
+                "id": "3121175b-8c7e-404d-8fd9-c88fca19fb59",
+                "resourcePath": "sprites\\spr_player_upgrade_ironglove_0_corpse\\spr_player_upgrade_ironglove_0_corpse.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -5715,6 +5731,14 @@
             "Value": {
                 "id": "276d693e-a6ce-45a7-b2c4-9ea095a97000",
                 "resourcePath": "sprites\\spr_tree_5\\spr_tree_5.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "85b52c0d-50c6-4a62-baef-fc40223f3de9",
+            "Value": {
+                "id": "c2c2e267-fcaa-439c-96a5-e678c1d1c984",
+                "resourcePath": "sprites\\spr_player_upgrade_ironglove_0\\spr_player_upgrade_ironglove_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -7923,6 +7947,14 @@
             "Value": {
                 "id": "e4e94c15-7094-47c8-9bcf-e9b6d731180f",
                 "resourcePath": "sprites\\spr_enemy_2_idle_0\\spr_enemy_2_idle_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "b3f136ac-dce8-43b2-ae89-bf4681f119d7",
+            "Value": {
+                "id": "f09f6383-2922-4240-a29f-8737d3ae2961",
+                "resourcePath": "sprites\\spr_player_upgrade_ironglove_0_pickup\\spr_player_upgrade_ironglove_0_pickup.yy",
                 "resourceType": "GMSprite"
             }
         },

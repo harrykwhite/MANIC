@@ -121,7 +121,7 @@ if (player_exists){
 						global.cutscene_current = 40;
 						obj_controller_gameplay.cutscene_look_x = xpos;
 						obj_controller_gameplay.cutscene_look_y = ypos;
-						obj_controller_gameplay.cutscene_look_time = 100;
+						obj_controller_gameplay.cutscene_look_time = 85;
 						obj_controller_gameplay.cutscene_look_object = enemy;
 						obj_controller_gameplay.cutscene_look_prop = true;
 						
