@@ -6,9 +6,9 @@ if (object_index != obj_player){
 
 if (i_time < 1) && (other.damage_player){
 	if (object_index == obj_player){
-		scr_player_damage(other.damage, other.strength, random(360), 6);
+		scr_player_damage(other.damage, other.strength, random(360), 40);
 	}else{
-		scr_pawn_damage(other.damage, other.strength, random(360), 6);
+		scr_pawn_damage(other.damage, other.strength, random(360), 40);
 	}
 	
     scr_effect_screenshake(6);

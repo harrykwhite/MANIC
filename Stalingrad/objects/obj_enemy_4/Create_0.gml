@@ -79,6 +79,6 @@ image_xscale = scale;
 image_yscale = scale;
 
 if (global.level_current >= LevelIndex.IntoTheCity){
-	knockback_multiplier *= 0.7;
+	knockback_multiplier *= 0.925;
 	move_speed_offset *= 1.2;
 }

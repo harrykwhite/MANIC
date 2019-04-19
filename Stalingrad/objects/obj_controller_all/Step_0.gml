@@ -1,4 +1,7 @@
-game_set_speed(60, gamespeed_fps);
+if (!instance_exists(obj_ef_freeze)){
+	game_set_speed(60, gamespeed_fps);
+	room_speed = 60;
+}
 
 scr_position_view();
 scr_update_real_volumes();

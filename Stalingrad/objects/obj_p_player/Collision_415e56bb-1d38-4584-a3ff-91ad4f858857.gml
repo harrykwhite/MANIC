@@ -4,7 +4,7 @@ if (i_time < 1) && (other.bite_to){
 	if (object_index == obj_player){
 		scr_player_damage(other.damage, other.strength, dir, 50);
 	}else{
-		scr_pawn_damage(other.damage, other.strength, dir, 60);
+		scr_pawn_damage(other.damage, other.strength, dir, 50);
 	}
 	
     scr_effect_screenshake(2);

@@ -4,9 +4,9 @@ if (!other.enemy){
 
 if (i_time < 1){
 	if (object_index == obj_player){
-		scr_player_damage(other.damage, other.strength, other.dir, 6);
+		scr_player_damage(other.damage, other.strength, other.dir, 60);
 	}else{
-		scr_pawn_damage(other.damage, other.strength, other.dir, 6);
+		scr_pawn_damage(other.damage, other.strength, other.dir, 60);
 	}
 	
     scr_effect_screenshake(2);

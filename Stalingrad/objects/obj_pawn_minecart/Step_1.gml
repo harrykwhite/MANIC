@@ -15,6 +15,9 @@ if (instance_exists(obj_player)){
 		}else if (minecart_speed < 0){
 			minecart_speed += 0.005;
 		}
+		
+		var absmdir = abs(minecart_dir);
+		var mdir = absmdir - ((absmdir div 360) * 360);
 
 		var cartx = x - 2;
 		var carty = y + 16;
@@ -44,8 +47,8 @@ if (instance_exists(obj_player)){
 			image_speed = 0;
 		}
 
-		var absmdir = abs(minecart_dir);
-		var mdir = absmdir - ((absmdir div 360) * 360);
+		absmdir = abs(minecart_dir);
+		mdir = absmdir - ((absmdir div 360) * 360);
 
 		if (mdir == 90) || (mdir == 270){
 			mysprite = spr_pawn_minecart_1;

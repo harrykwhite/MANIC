@@ -32,6 +32,10 @@ if (global.weapon_slot_standalone == -1){
 	image_angle = 0;
 
 	// Speed
+	if (i_time > 0){
+		spd_multiplier += 0.125;
+	}
+	
 	if (scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
 		spd_multiplier += 0.2;
 	}

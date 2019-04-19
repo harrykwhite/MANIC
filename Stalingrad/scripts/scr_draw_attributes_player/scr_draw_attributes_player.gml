@@ -38,13 +38,13 @@ if (ucount > 0){
 						}
 				
 						if (is_idle){
-							draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+							draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 						}else{
-							draw_sprite_ext(walksprite, image_index, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+							draw_sprite_ext(walksprite, image_index, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 						}
 					}
 				}else{
-					draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+					draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 				}
 			}
 		}
@@ -129,7 +129,7 @@ if (drawshader){
 		shader_set_uniform_f(shader_red, r);
 		shader_set_uniform_f(shader_green, g);
 		shader_set_uniform_f(shader_blue, b);
-		draw_self();
+		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha * i_time_alpha);
 	}
 
 	shader_reset();

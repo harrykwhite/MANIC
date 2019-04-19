@@ -1,5 +1,5 @@
-var wrange = 70;
-var hrange = 70;
+var wrange = 150;
+var hrange = 150;
 var camx = camera_get_view_x(view_camera[0]);
 var camy = camera_get_view_y(view_camera[0]);
 var camw = camera_get_view_width(view_camera[0]);

@@ -7,7 +7,7 @@ var decrease = argument1;
 var colour = argument2;
 var script = argument3;
 
-f = instance_create(camera_get_view_x(view_camera[0])+camera_get_view_width(view_camera[0])/2, camera_get_view_y(view_camera[0])+camera_get_view_height(view_camera[0])/2, obj_ef_flash);
+f = instance_create_layer(0, 0, "Control", obj_ef_flash);
 f.increase_speed = increase;
 f.decrease_speed = decrease;
 f.colour = colour;

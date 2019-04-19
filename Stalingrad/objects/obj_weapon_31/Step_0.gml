@@ -22,8 +22,8 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
 		
 		image_speed = 3;
         
-        var xpos = x + lengthdir_x(20, mdir) + lengthdir_x(3, up(mdir));
-        var ypos = y + lengthdir_y(20, mdir) + lengthdir_y(3, up(mdir));
+        var xpos = x + lengthdir_x(26, mdir) + lengthdir_x(2, up(mdir));
+        var ypos = y + lengthdir_y(26, mdir) + lengthdir_y(2, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
         part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);

@@ -5,8 +5,8 @@ var linealpha = shoot_buildup_time / 120;
 if (instance_exists(obj_player)){
 	shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
 	
-	var xx = x + lengthdir_x(26, shoot_dir);
-	var yy = y + lengthdir_y(26, shoot_dir);
+	var xx = x + lengthdir_x(21, shoot_dir);
+	var yy = y + lengthdir_y(21, shoot_dir);
 	shoot_dir = point_direction(xx, yy, obj_player.x, obj_player.y);
 	
 	if (distance_to_object(obj_player) > 28){

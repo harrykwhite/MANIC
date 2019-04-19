@@ -71,6 +71,9 @@ poison_cycle_amount = 0;
 // Blend and Invincibility
 i_blend_time = 0;
 i_time = 0;
+i_time_alpha = 0;
+i_time_flicker = false;
+i_time_flicker_time = 0;
 
 // Colliders
 var feet = instance_create(x, y, obj_feetbox_0);

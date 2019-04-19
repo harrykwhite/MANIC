@@ -37,7 +37,7 @@ knockback_multiplier = 0;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 30;
+health_max = 25;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

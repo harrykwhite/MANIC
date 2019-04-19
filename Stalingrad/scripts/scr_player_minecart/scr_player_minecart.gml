@@ -19,6 +19,10 @@ if (mouse_x > x){
 	image_xscale = -1;
 }
 
+var absmdir = abs(minecart_dir);
+var mdir = absmdir - ((absmdir div 360) * 360);
+var acceleration = 0.025;
+
 var cartx = x - 2;
 var carty = y + 16;
 var cartw = 4;
@@ -41,9 +45,8 @@ if (minecart_break > 0){
 	}
 }
 
-var absmdir = abs(minecart_dir);
-var mdir = absmdir - ((absmdir div 360) * 360);
-var acceleration = 0.025;
+absmdir = abs(minecart_dir);
+mdir = absmdir - ((absmdir div 360) * 360);
 
 if (mdir == 90) || (mdir == 270){
 	minecart_sprite = spr_pawn_minecart_1;
