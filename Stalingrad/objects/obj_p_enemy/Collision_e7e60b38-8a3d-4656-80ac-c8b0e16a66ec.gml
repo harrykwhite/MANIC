@@ -23,7 +23,7 @@ other.owner_offset_x = clamp(x - other.x, -7, 7);
 other.owner_offset_y = clamp(y - other.y, -7, 7);
 
 if (i_time <= 0){
-	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.strength, other.dir, 3);
+	scr_pawn_damage(max(other.damage - defense, 1), other.strength, other.dir, 3);
 	
 	if (other.creator == obj_player){
 		scr_mouse_cross();

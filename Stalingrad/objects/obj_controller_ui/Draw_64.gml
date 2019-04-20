@@ -173,7 +173,7 @@ if (screenblend_alpha > 0){
 
 // Kill Display
 if (global.level_current != LevelIndex.CityHeadquarters){
-	var text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level";
+	var text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
 	var textx = 40;
 	var texty = display_get_gui_height() - 50;
 
@@ -539,6 +539,9 @@ if (global.game_pause) && (!pausedialogue){
 if (pause_text_alpha > 0){
 	draw_set_alpha(pause_text_alpha);
 	draw_set_halign(fa_center);
+	draw_set_font(fnt_cambria_3);
+	scr_text_shadow(xx, yy - 80, "GAME PAUSED", c_white);
+	
 	draw_set_font(fnt_cambria_1);
 	repeat(pause_selectedmax){
 		if (pause_selected == counter){
@@ -643,7 +646,7 @@ if (ending){
 		ending_back_time --;
 	}else{
 		if (ending_back_alpha < 1){
-			ending_back_alpha += 0.025;
+			ending_back_alpha += 0.0025;
 		}
 	}
 	
@@ -651,11 +654,15 @@ if (ending){
 		ending_logo_text_time --;
 		
 		if (ending_logo_text_alpha < 1){
-			ending_logo_text_alpha += 0.01;
+			ending_logo_text_alpha += 0.0025;
 		}
 	}else{
 		if (ending_logo_text_alpha > 0){
-			ending_logo_text_alpha -= 0.01;
+			ending_logo_text_alpha -= 0.005;
+		}else{
+			if (ending_credits_text_alpha < 1){
+				ending_credits_text_alpha += 0.005;
+			}
 		}
 	}
 	
@@ -663,10 +670,22 @@ if (ending){
 	draw_set_colour(c_black);
 	draw_rectangle(0, 0, dwidth, dheight, false);
 	
-	draw_set_font(fnt_cambria_3);
+	draw_set_font(fnt_cambria_7);
 	draw_set_halign(fa_center);
 	draw_set_alpha(ending_logo_text_alpha);
 	scr_text_shadow(dwidth / 2, dheight / 2, "MANIC", c_white);
+	
+	draw_set_font(fnt_cambria_3);
+	draw_set_halign(fa_center);
+	draw_set_alpha(ending_credits_text_alpha);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 250, "A GAME BY GETA", c_white);
+	
+	draw_set_font(fnt_cambria_2);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 150, "Programming, artwork and game design by Harry White", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 50, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Art assistance for character design by Ulkenstride", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 150, "Programming assistance by Gideon the Bard and Zyro", c_white);
+	
 }
 
 draw_set_alpha(1);

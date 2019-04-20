@@ -28,7 +28,7 @@ if (sprite_index == spr_player_walk_0) || (sprite_index == spr_player_walk_1) ||
 for(var i = 0; i < ucount; i ++){
 	if (scr_player_has_upgrade(i)){
 		if (global.upgrade_behind[i]){
-			draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+			draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 		}
 	}
 }
@@ -55,7 +55,7 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 		
 		var armx = obj_player_arm.x + lengthdir_x(4, angle);
 		var army = obj_player_arm.y - 1 + lengthdir_y(4, angle);
-		draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 1);
+		draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, image_alpha * i_time_alpha);
 		
 		var wv = wave(0.05, 0.1, 2, 0);
 		
@@ -105,7 +105,7 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 			shader_set_uniform_f(shader_red, r);
 			shader_set_uniform_f(shader_green, g);
 			shader_set_uniform_f(shader_blue, b);
-			draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, 1);
+			draw_sprite_ext(spr_player_arm, 1, armx, army, 1, obj_player_arm.image_yscale, angle, c_white, image_alpha * i_time_alpha);
 		}
 		
 		shader_reset();

@@ -111,6 +111,12 @@ if (!global.game_pause){
 						for(var i = 0; i < rslotcount; i ++){
 							global.weapon_slot[i] = global.sectionstart_weapon[i];
 							global.weapon_slotammo[i] = global.sectionstart_weaponammo[i];
+							
+							if (global.weapon_slot[i] != -1){
+								if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
+									global.weapon_quantity[global.weapon_slot[i]] = global.sectionstart_weaponquantity[i];
+								}
+							}
 						}
 						
 						global.game_combat_state = CombatState.Idle;
@@ -129,6 +135,17 @@ if (!global.game_pause){
 						scr_global_set();
 						audio_stop_all();
 						room_goto(rm_title_0);
+						
+						obj_controller_gameplay.has_saved = true;
+						break;
+					
+					case 3:
+						if (global.game_is_playthrough){
+							scr_save_game();
+						}
+						
+						audio_stop_all();
+						game_end();
 						
 						obj_controller_gameplay.has_saved = true;
 						break;

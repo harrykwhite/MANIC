@@ -12,7 +12,7 @@ if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_ind
 
 if (i_time < 1) && (other.spd > 0) && (!other.enemy){
 	scr_bonuspoints_update(BonusPoints.WeaponThrow);
-	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.spd / 6, other.dir, 7);
+	scr_pawn_damage(max(other.damage - defense, 1), other.spd / 6, other.dir, 7);
 	
 	if (object_index != obj_enemy_3) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 14);

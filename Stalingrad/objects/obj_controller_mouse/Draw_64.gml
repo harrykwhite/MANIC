@@ -61,6 +61,15 @@ switch(mouse){
 		draw_set_alpha(1);
 		break;
 	
+	case MouseType.Dot:
+		var size = mouse_scale * scale;
+		
+		draw_set_alpha(mouse_alpha * 0.85);
+		draw_set_colour(c_white);
+		draw_rectangle(xx - size, yy - size, xx + size, yy + size, false);
+		draw_set_alpha(1);
+		break;
+	
 	case MouseType.NoAmmo:
 		var space = (mouse_scale * 9 * scale);
 		var length = 6 * scale;

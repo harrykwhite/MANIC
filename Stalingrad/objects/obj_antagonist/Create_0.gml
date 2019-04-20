@@ -8,7 +8,7 @@ state_time_max = 0;
 type = -1;
 
 light_brightness = 0;
-mylight = instance_create(x, y, obj_antagonist_light);
+mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 
 shoot_time = 0;
 shoot_delay = 0;
@@ -71,11 +71,13 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_multiplier = 0;
 
+attack_time = 40;
+
 cutscene_prop = false;
 in_cutscene = false;
 active = false;
 
-health_max = 80;
+health_max = 40;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

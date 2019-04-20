@@ -44,20 +44,29 @@ if (distance_to_point(move_xTo, move_yTo) < 10) || (move_time <= 0){
 		if (instance_exists(obj_player)){
 			owner = obj_player;
 			move_speed *= random_range(0.675, 0.8);
+		}else{
+			move_xTo = x + choose(-40, 40, -40, 40);
+			move_yTo = y + choose(-40, 40, -40, 40);
 		}
-	}
-	
-	if (instance_exists(owner) && (owner != noone)){
-		if (owner == obj_player){
+	}else{
+		if (owner == obj_player) || (object_get_parent(owner) == obj_p_player){
 			move_xTo = owner.x + random_range(-18, 18);
 			move_yTo = owner.y + random_range(-18, 18);
+			
+			var csize = array_length_1d(global.companion);
+			for(var i = 0; i < csize; i ++){
+				if (instance_exists(global.companion[i])){
+					var nearest = instance_nearest(x, y, global.companion[i]);
+					if (distance_to_object(nearest) < 30){
+						owner = nearest;
+						break;
+					}
+				}
+			}
 		}else{
 			move_xTo = owner.x + random_range(-30, 30);
 			move_yTo = owner.y + random_range(-30, 30);
 		}
-	}else{
-		move_xTo = x + choose(-40, 40, -30, 30);
-		move_yTo = y + choose(-40, 40, -30, 30);
 	}
 	
 	move_time = random_range(30, 50);
@@ -71,6 +80,10 @@ if (distance_to_point(move_xTo, move_yTo) < 10) || (move_time <= 0){
 
 poison = false;
 bleed = false;
+
+if (attack_ready_time > 0){
+	attack_ready_time --;
+}
 
 scr_pawn_status_handler();
 scr_pawn_update();

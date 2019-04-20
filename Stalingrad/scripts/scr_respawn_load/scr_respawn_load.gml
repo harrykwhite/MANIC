@@ -33,4 +33,18 @@ if (!global.player_has_bossrespawn) && (global.player_is_respawning){
 	}
 }else{
 	room_restart();
+	
+	var rslotcount = array_length_1d(global.weapon_slot);
+	for(var i = 0; i < rslotcount; i ++){
+		global.weapon_slot[i] = global.sectionstart_weapon[i];
+		global.weapon_slotammo[i] = global.sectionstart_weaponammo[i];
+		
+		if (global.weapon_slot[i] != -1){
+			if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
+				global.weapon_quantity[global.weapon_slot[i]] = global.sectionstart_weaponquantity[i];
+			}
+		}
+	}
+	
+	global.player_health_current = global.sectionstart_playerhealth;
 }

@@ -5,7 +5,7 @@ destroy = false;
 state = 0;
 
 light_brightness = 0;
-mylight = instance_create(x, y, obj_thescorched_light);
+mylight = instance_create_layer(x, y, "Lights", obj_thescorched_light);
 
 arena_x = 0;
 arena_y = 0;

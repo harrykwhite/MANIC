@@ -1,3 +1,9 @@
+if (object_index == obj_player){
+	if (state == scr_player_dash){
+		return;
+	}
+}
+
 if (i_time < 1) && (other.contact_attack_ready_time <= 0){
 	var dir = point_direction(other.x, other.y, x, y);
 	

@@ -49,5 +49,5 @@ if (instance_exists(obj_player)){
 }else{
 	mouse_scale = 1;
 	mouse_alpha = 1;
-	mouse = MouseType.SmallCrosshair;
+	mouse = MouseType.Dot;
 }

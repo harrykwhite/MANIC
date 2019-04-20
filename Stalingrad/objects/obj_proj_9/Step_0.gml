@@ -29,7 +29,7 @@ if (spd > 0){
 	destroy = true;
 }
 
-if (collision_line(xstart, ystart, x, y, obj_p_solid, false, true)) or (destroy){
+if (collision_line(xstart, ystart, x, y, obj_p_solid, false, true)) || (destroy){
 	part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_poison_0, 1);
 	part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_poison_2, 1);
 	instance_destroy();

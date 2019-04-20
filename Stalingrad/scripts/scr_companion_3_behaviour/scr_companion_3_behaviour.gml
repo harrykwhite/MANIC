@@ -16,7 +16,7 @@ if (instance_exists(obj_player)){
 							target = noone;
 						}
 				
-						if (distance_to_object(target) > 70 + (30 * order)){
+						if (distance_to_object(target) > 150){
 							target = noone;
 						}
 					}

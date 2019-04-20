@@ -1,10 +1,10 @@
 // Lights
 if (!instance_exists(obj_player_light)){
-	mylight = instance_create(x, y, obj_player_light);
+	mylight = instance_create_layer(x, y, "Lights", obj_player_light);
 }
 
 if (!instance_exists(obj_player_flashlight)){
-	flashlight = instance_create(x, y, obj_player_flashlight);
+	flashlight = instance_create_layer(x, y, "Lights", obj_player_flashlight);
 }
 
 // Canmove

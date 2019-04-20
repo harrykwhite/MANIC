@@ -7,7 +7,7 @@ if (instance_exists(target)){
 	for(var i = 0; i < csize; i ++){
 		if (instance_exists(global.companion[i])){
 			var nearest = instance_nearest(x, y, global.companion[i]);
-			if (distance_to_object(nearest) < 50){
+			if (distance_to_object(nearest) < 250){
 				target = nearest;
 			}
 		}

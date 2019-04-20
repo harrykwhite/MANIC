@@ -6,7 +6,7 @@ state = 0;
 
 light_brightness = 0;
 levelobj = scr_get_level_object();
-mylight = instance_create(x, y, obj_thedogkeeper_light);
+mylight = instance_create_layer(x, y, "Lights", obj_thedogkeeper_light);
 
 arena_x = 0;
 arena_y = 0;

@@ -65,7 +65,7 @@ if (keyboard_check(ord("D"))){
 		}
 	}
 }else if (keyboard_check(ord("A"))){
-	if (mdir == 180) || (mdir == 90){
+	if (mdir == 180) || (mdir == 270){
 		if (minecart_speed < 4){
 			minecart_speed += acceleration;
 		}

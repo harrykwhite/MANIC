@@ -6,6 +6,12 @@ if (!other.damage){
 	return;
 }
 
+if (object_index == obj_player){
+	if (state == scr_player_dash){
+		return;
+	}
+}
+
 other.owner = id;
 other.owner_offset_x = clamp(x - other.x, -7, 7);
 other.owner_offset_y = clamp(y - other.y, -7, 7);

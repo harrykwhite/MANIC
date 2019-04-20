@@ -14,7 +14,7 @@ shoot_in_burst = false;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
-mylight = instance_create(x, y, obj_enemy_3_light);
+mylight = instance_create_layer(x, y, "Lights", obj_enemy_3_light);
 flash_time = 0;
 light_brightness = 0;
 

@@ -55,6 +55,9 @@ move_xTo = x;
 move_yTo = y;
 
 i_time = 0;
+i_time_alpha = 0;
+i_time_flicker = false;
+i_time_flicker_time = 0;
 i_blend_time = 0;
 
 heal_time_max = 60 * 0.75;

@@ -109,7 +109,7 @@ if (instance_exists(target)){
 			for(var i = 0; i < csize; i ++){
 				if (instance_exists(global.companion[i])){
 					var nearest = instance_nearest(x, y, global.companion[i]);
-					if (distance_to_object(nearest) < 38){
+					if (distance_to_object(nearest) < 50){
 						target = nearest;
 						move_xTo = target.x;
 						move_yTo = target.y + 6;
@@ -120,6 +120,8 @@ if (instance_exists(target)){
 							companion_attack_time = 0;
 							companion_attack_break = 0;
 						}
+						
+						break;
 					}
 				}
 			}

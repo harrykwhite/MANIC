@@ -2,6 +2,12 @@ if (!other.enemy){
 	return;
 }
 
+if (object_index == obj_player){
+	if (state == scr_player_dash){
+		return;
+	}
+}
+
 if (i_time < 1){
 	if (!scr_player_has_upgrade(PlayerUpgrade.GasMask)){
 		poison = true;

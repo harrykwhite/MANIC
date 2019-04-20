@@ -20,7 +20,7 @@ global.level_displaynum[0] = "One";
 global.level_entered[0] = false;
 global.level_cleared[0] = false;
 global.level_kill_count[0] = 0;
-global.level_kill_max[0] = 60;
+global.level_kill_max[0] = 40;
 
 global.level_name[1] = "Western Farmland";
 global.level_room[1] = rm_level_2_00;

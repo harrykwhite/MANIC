@@ -2,6 +2,10 @@ if (object_index != obj_player){
 	if (!other.damage_companion){
 		return;
 	}
+}else{
+	if (state == scr_player_dash){
+		return;
+	}
 }
 
 if (i_time < 1) && (other.damage_player){

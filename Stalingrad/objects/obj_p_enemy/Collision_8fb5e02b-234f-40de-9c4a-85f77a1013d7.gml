@@ -19,7 +19,7 @@ if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_ind
 }
 
 if (i_time <= 0){
-	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.strength, random(360), 5);
+	scr_pawn_damage(max(other.damage - defense, 1), other.strength, random(360), 5);
 	
 	if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog){
 		if (other.damage > 3){

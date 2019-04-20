@@ -3,11 +3,11 @@ enum MouseType{
 	Crosshair,
 	LargeCircle,
 	SmallCircle,
-	Scope,
+	Dot,
 	NoAmmo,
 }
 
-mouse = MouseType.Crosshair;
+mouse = MouseType.Dot;
 mouse_scale = 1;
 mouse_scaleTo = 1;
 mouse_scaleSpeed = 20;

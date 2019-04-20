@@ -1,7 +1,7 @@
 // Light
 if (index == PlayerUpgrade.HeadLight){
 	if (!instance_exists(mylight)){
-		mylight = instance_create(x, y, obj_upgrade_pickup_headlight_light);
+		mylight = instance_create_layer(x, y, "Lights", obj_upgrade_pickup_headlight_light);
 	}
 	
 	mylight.x = x;

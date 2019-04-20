@@ -87,7 +87,7 @@ switch(ctype){
 					}
 					
 					with(inst){
-						scr_pawn_damage(clamp(damage - defense, 1, 6), strength, dir, 4);
+						scr_pawn_damage(max(damage - defense, 1), strength, dir, 4);
 					}
 					
 					if (inst.object_index != obj_enemy_1) && (inst.object_index != obj_enemy_3) && (inst.object_index != obj_giantturret) && (inst.object_index != obj_giantturret_flamethrower){

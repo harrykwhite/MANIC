@@ -1,4 +1,4 @@
-for(var i = 0; i <= 53; i ++){
+for(var i = 0; i <= 55; i ++){
 	var asset = asset_get_index("scr_cutscene_" + string(i));
 	
 	if (script_exists(asset)){

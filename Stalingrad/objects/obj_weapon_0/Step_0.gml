@@ -10,7 +10,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
     if (mouse_check_button(obj_controller_all.key_attack)) && (shoot_can){
 		scr_player_knockback_initiate(0.5, mdir);
 		scr_camera_to_player();
-		scr_player_flash(4);
+		scr_player_flash(2);
 		
         scr_effect_screenshake(1);
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
@@ -25,17 +25,17 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
 		part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
 		part_type_direction(global.pt_smoke_5, dir - 17, dir + 17, 0, 0);
         part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
-		scr_mouse_control(MouseType.Crosshair, 2.5, 15);
+		scr_mouse_control(MouseType.Crosshair, 2.5, 20);
 		
 	    shoot = instance_create(xpos, ypos, obj_proj_0);
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
 	    shoot.dir = mdir + random_range(-shoot_range, shoot_range);
-		shoot.spd = 20;
+		shoot.spd = shoot_speed;
 		shoot.image_angle = shoot.dir;
-				
+		
         shoot_can = false;
-        shoot_time = 7;
+        shoot_time = 6;
         shoot_bounceback = -3;
         angle_offset = 13;
     }

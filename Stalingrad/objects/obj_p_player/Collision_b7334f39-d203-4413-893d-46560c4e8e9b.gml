@@ -2,6 +2,12 @@ if (!other.enemy){
 	return;
 }
 
+if (object_index == obj_player){
+	if (state == scr_player_dash){
+		return;
+	}
+}
+
 if (i_time < 1) && (other.spd > 0){
 	if (object_index == obj_player){
 		scr_player_damage(round(other.damage), other.spd / 6, other.dir, 60);

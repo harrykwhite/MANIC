@@ -1,5 +1,3 @@
-scr_pre_draw_attributes_player();
-
 i_time_alpha = 1;
 if (i_time > 0){
 	if (i_time_flicker){
@@ -19,5 +17,6 @@ if (i_time > 0){
 	i_time_flicker_time = 0;
 }
 
+scr_pre_draw_attributes_player();
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha * i_time_alpha);
 scr_draw_attributes_player();

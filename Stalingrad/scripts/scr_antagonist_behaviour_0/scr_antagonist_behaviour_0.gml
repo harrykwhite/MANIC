@@ -7,7 +7,7 @@ target = obj_player;
 if (instance_exists(target)){
 	var dir_to_target = point_direction(x, y, target.x, target.y);
 	var nearest_bullet = instance_nearest(x, y, obj_proj_0);
-	var halfhealth = health_current < health_max / 2;
+	var phasetwo = health_current < health_max / 3;
 	
 	if (weapon_exists){
 		weapon_exists = instance_exists(weapon);
@@ -16,7 +16,7 @@ if (instance_exists(target)){
 	if (state == 0){
 		var dist = distance_to_point(run_x, run_y);
 		var dir = point_direction(x, y, run_x, run_y);
-		move_speed = 2 + (0.75 * halfhealth);
+		move_speed = 2 + (0.75 * phasetwo);
 		state_time_max = 60 * 10;
 		
 		/*if (dist < 50){
@@ -25,8 +25,13 @@ if (instance_exists(target)){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
-			if (distance_to_object(target) < 30){
-				weapon.attack = true;
+			if (distance_to_object(target) < 27){
+				if (attack_time > 0){
+					attack_time --;
+				}else{
+					weapon.attack = true;
+					attack_time = 40;
+				}
 			}
 		}
 		
@@ -37,7 +42,7 @@ if (instance_exists(target)){
 				run_time --;
 				
 				if (dash_time > 0){
-					dash_time -= 1 + halfhealth;
+					dash_time -= 1 + phasetwo;
 				}else{
 					dash = true;
 					dash_direction = dir;
@@ -53,7 +58,7 @@ if (instance_exists(target)){
 		}
 	}else if (state == 1){
 		var nearest_barrel_from_target = instance_nearest(target.x, target.y, obj_barrel_2);
-		move_speed = 2.5 + (0.75 * halfhealth);
+		move_speed = 2.5 + (0.75 * phasetwo);
 		state_time_max = 60 * 7;
 		
 		if (run_away_time < 180){
@@ -142,8 +147,12 @@ if (instance_exists(target)){
 			if (isranged){
 				weapon.attack = true;
 			}else{
-				if (distance_to_object(target) < 40){
-					weapon.attack = true;
+				if (distance_to_object(target) < 27){
+					if (attack_time > 0){
+						attack_time --;
+					}else{
+						weapon.attack = true;
+					}
 				}
 			}
 		}
@@ -174,7 +183,7 @@ if (instance_exists(target)){
 				run_time --;
 				
 				if (dash_time > 0){
-					dash_time -= 1 + halfhealth;
+					dash_time -= 1 + phasetwo;
 				}else{
 					dash = true;
 					dash_direction = dir;
@@ -212,7 +221,7 @@ if (instance_exists(target)){
 	}else{
 		var maxstate = 2;
 		
-		if (halfhealth){
+		if (phasetwo){
 			maxstate = 3;
 		}
 		

@@ -49,6 +49,13 @@ if (!sectionstart_record_set){
 	for(var i = 0; i < rslotcount; i ++){
 		global.sectionstart_weapon[i] = global.weapon_slot[i];
 		global.sectionstart_weaponammo[i] = global.weapon_slotammo[i];
+		
+		global.sectionstart_weaponquantity[i] = -1;
+		if (global.weapon_slot[i] != -1){
+			if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
+				global.sectionstart_weaponquantity[i] = global.weapon_quantity[global.weapon_slot[i]];
+			}
+		}
 	}
 	
 	global.sectionstart_playerhealth = global.player_health_current;

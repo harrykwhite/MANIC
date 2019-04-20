@@ -19,5 +19,5 @@ if (arm == -1){
 }
 
 if (mylight == noone){
-	mylight = instance_create(x, y, obj_companion_light);
+	mylight = instance_create_layer(x, y, "Lights", obj_companion_light);
 }

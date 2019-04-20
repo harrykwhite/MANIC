@@ -4,7 +4,7 @@ if (light_brightness < 1){
 	light_brightness -= 0.05;
 }
 
-if (global.cutscene_current == 40) && (obj_controller_gameplay.cutscene_look_object == id){
+if (global.cutscene_current == 55) && (in_cutscene){
 	active = true;
 }
 

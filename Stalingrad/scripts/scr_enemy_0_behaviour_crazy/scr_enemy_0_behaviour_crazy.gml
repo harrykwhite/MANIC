@@ -3,16 +3,16 @@ var speed_final = 0;
 target = obj_player;
 
 if (instance_exists(target)) && (instance_exists(weapon)){
-	if (companion_attack_break < 240){
+	if (companion_attack_break > 240){
 		var csize = array_length_1d(global.companion);
 		for(var i = 0; i < csize; i ++){
 			if (instance_exists(global.companion[i])){
 				var nearest = instance_nearest(x, y, global.companion[i]);
-				if (distance_to_object(nearest) < 38){
+				if (distance_to_object(nearest) < 50){
 					target = nearest;
 					move_xTo = target.x;
 					move_yTo = target.y + 6;
-					crazy_attackbreak = 34;
+					crazy_attackbreak = 35;
 					
 					if (companion_attack_time < companion_attack_time_max){
 						companion_attack_time ++;
@@ -20,6 +20,8 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 						companion_attack_time = 0;
 						companion_attack_break = 0;
 					}
+					
+					break;
 				}
 			}
 		}

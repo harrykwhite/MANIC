@@ -22,7 +22,7 @@ if (instance_exists(obj_player)){
 							target = noone;
 						}
 				
-						if (distance_to_object(target) > 70){
+						if (distance_to_object(target) > 200){
 							target = noone;
 						}
 					}
@@ -110,7 +110,7 @@ if (instance_exists(obj_player)){
 				move_xTo = target.x;
 				move_yTo = target.y;
 				
-				if (distance_to_object(target) > 38){
+				if (distance_to_object(target) > 50){
 					move_speed = 1.2;
 				}else{
 					move_speed = 0;

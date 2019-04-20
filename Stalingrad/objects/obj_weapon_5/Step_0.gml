@@ -35,7 +35,7 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
 	    shoot.dir = dir + random_range(-shoot_range, shoot_range);
-		shoot.spd = 18;
+		shoot.spd = shoot_speed;
 		shoot.image_angle = shoot.dir;
 		
         shoot_can = false;

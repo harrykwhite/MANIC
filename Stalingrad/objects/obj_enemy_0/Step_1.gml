@@ -37,9 +37,11 @@ if (!weapon_destroyed){
 if (arm == -1){
 	arm = instance_create(x, y, obj_enemy_0_arm);
 	arm.owner = id;
+	show_debug_message("It is -1, so one is created")
 }else if (!instance_exists(arm)){
 	arm = instance_create(x, y, obj_enemy_0_arm);
 	arm.owner = id;
+	show_debug_message("It doesn't exist, so one is created");
 }
 
 if (!typedet){
@@ -109,7 +111,7 @@ if (!typedet){
 	}
 	
 	if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.TrainBoss){
-		mylight = instance_create(x, y - 9, obj_enemy_0_light);
+		mylight = instance_create_layer(x, y - 9, "Lights", obj_enemy_0_light);
 	}
 	
 	if (global.level_current >= LevelIndex.HumanPrison){

@@ -35,18 +35,46 @@ if (instance_exists(obj_player)){
 				global.cutscene_time[index] ++;
 			}else{
 				cutscene_ending_stage = 1;
+				global.cutscene_time[index] = 0;
 			}
 		}
 	}else if (cutscene_ending_stage == 1){
-		var xTo = room_width + 200;
-		var yTo = obj_player.y;
+		stationary = true;
+		
+		if (global.cutscene_time[index] < 60){
+			global.cutscene_time[index] ++;
+		}else{
+			cutscene_ending_stage = 2;
+			global.cutscene_time[index] = 0;
+		}
+	}else if (cutscene_ending_stage == 2){
+		var xTo = 720;
+		var yTo = 454;
+		var gate = inst_2F004B72;
+		
+		if (instance_exists(gate)){
+			gate.open = true;
+		}
+		
+		obj_player.move_xTo = xTo;
+		obj_player.move_yTo = yTo;
+		obj_player.flashlight_direction = point_direction(x, y, xTo, yTo);
+		obj_player.move_extSpd = obj_player.spd_max * 0.65;
+		
+		if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 30){
+			cutscene_ending_stage = 3;
+			global.cutscene_time[index] = 0;
+		}
+	}else if (cutscene_ending_stage == 3){
+		var xTo = room_width + 400;
+		var yTo = 454;
 		
 		obj_player.move_xTo = xTo;
 		obj_player.move_yTo = yTo;
 		obj_player.flashlight_direction = 360;
-		obj_player.move_extSpd = obj_player.spd_max * 0.75;
+		obj_player.move_extSpd = obj_player.spd_max * 0.65;
 		
-		if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 15){
+		if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 105){
 			stationary = true;
 			obj_controller_ui.ending = true;
 		}

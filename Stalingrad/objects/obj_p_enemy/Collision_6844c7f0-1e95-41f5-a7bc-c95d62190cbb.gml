@@ -15,7 +15,7 @@ if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_ind
 }
 
 if (i_time <= 0){
-	scr_pawn_damage(clamp(other.damage - defense, 1, 6), other.strength, other.dir, 15);
+	scr_pawn_damage(max(other.damage - defense, 1), other.strength, other.dir, 15);
 	if (other.burn) && (object_index != obj_enemy_1) burn = true;
 	
 	if (other.creator == obj_player){

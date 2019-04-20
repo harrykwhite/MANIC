@@ -12,6 +12,10 @@ mylight = noone;
 
 defense = 0;
 
+damage = 1;
+strength = 0.5;
+attack_ready_time = random_range(40, 60);
+
 burn = false;
 burn_x = x;
 burn_y = y;

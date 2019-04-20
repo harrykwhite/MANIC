@@ -1,10 +1,15 @@
 if (instance_exists(owner)){
 	var is_metal = false;
+	var alpha_mult = 1;
 	var drawshader = (owner.health_current <= floor(owner.health_max / 3)) || (owner.burn) || (owner.poison) || (owner.i_blend_time > 0) || (owner.whiteflash_alpha);
 	
 	if (drawshader){
 		if (owner.object_index == obj_enemy_3) || (owner.object_index == obj_giantturret) || (owner.object_index == obj_giantturret_flamethrower){
 			is_metal = true;
+		}
+		
+		if (object_get_parent(owner) == obj_p_player){
+			alpha_mult = owner.i_time_alpha;
 		}
 		
 		shader_set(sh_pawntint);
@@ -63,7 +68,7 @@ if (instance_exists(owner)){
 			shader_set_uniform_f(shader_red, r);
 			shader_set_uniform_f(shader_green, g);
 			shader_set_uniform_f(shader_blue, b);
-			draw_self();
+			draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha * alpha_mult);
 		}
 		
 		shader_reset();

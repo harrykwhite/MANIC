@@ -9,7 +9,7 @@ if (instance_exists(target)){
 		for(var i = 0; i < csize; i ++){
 			if (instance_exists(global.companion[i])){
 				var nearest = instance_nearest(x, y, global.companion[i]);
-				if (distance_to_object(nearest) < 30){
+				if (distance_to_object(nearest) < 50){
 					target = nearest;
 					
 					if (companion_attack_time < companion_attack_time_max){

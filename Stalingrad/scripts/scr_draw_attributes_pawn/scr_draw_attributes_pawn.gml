@@ -1,4 +1,5 @@
 var is_metal = false;
+var alpha_mult = 1;
 var drawshader = (health_current <= max(floor(health_max / 3), 1)) || (bleed) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha > 0);
 
 if (drawshader){
@@ -6,6 +7,10 @@ if (drawshader){
 
 	if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 		is_metal = true;
+	}
+	
+	if (object_get_parent(object_index) == obj_p_player){
+		alpha_mult = i_time_alpha;
 	}
 
 	shader_set(sh_pawntint);
@@ -123,7 +128,7 @@ if (drawshader){
 		shader_set_uniform_f(shader_red, r);
 		shader_set_uniform_f(shader_green, g);
 		shader_set_uniform_f(shader_blue, b);
-		draw_self();
+		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha * alpha_mult);
 	}
 
 	shader_reset();
@@ -133,8 +138,8 @@ if (headless){
 	headless_image += 0.35;
 
 	if (object_index != obj_enemy_2) && (object_index != obj_companion_3) && (object_index != obj_thedogkeeper_dog){
-		draw_sprite_ext(spr_enemy_0_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, 1);
+		draw_sprite_ext(spr_enemy_0_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, image_alpha * alpha_mult);
 	}else{
-		draw_sprite_ext(spr_enemy_2_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, 1);
+		draw_sprite_ext(spr_enemy_2_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, image_alpha * alpha_mult);
 	}
 }

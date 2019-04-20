@@ -33,6 +33,7 @@ pause_has_selected_time = 0;
 pause_selectoption[0] = "Resume";
 pause_selectoption[1] = "Restart Section";
 pause_selectoption[2] = "Exit to Titlescreen";
+pause_selectoption[3] = "Exit to Desktop";
 pause_selectedmax = array_length_1d(pause_selectoption);
 
 game_opening_intro = true;
@@ -80,7 +81,7 @@ for(var i = 0; i < levelcount; i ++){
 screen_fade_opening = 1.15;
 
 ending = false;
-ending_logo_text_time = 60 * 6;
+ending_logo_text_time = 60 * 5;
 ending_logo_text_alpha = 0;
 ending_credits_text_alpha = 0;
 ending_back_time = 60 * 3.5;

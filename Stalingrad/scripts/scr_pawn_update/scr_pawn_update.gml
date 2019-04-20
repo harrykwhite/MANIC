@@ -202,7 +202,8 @@ if (health_current <= 0){
 			global.cutscene_current = 54;
 			obj_controller_gameplay.cutscene_ending_stage = 0;
 			
-			instance_create(x, y, obj_upgrade_pickup);
+			var upgrade = instance_create(x, y, obj_upgrade_pickup);
+			upgrade.index = PlayerUpgrade.HeadLight;
 		}
 	}
 	

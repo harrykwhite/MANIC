@@ -1,3 +1,9 @@
+if (object_index == obj_player){
+	if (state == scr_player_dash){
+		return;
+	}
+}
+
 if (i_time < 1) && (other.leash_bite){
 	var dir = point_direction(other.x, other.y, x, y);
 	

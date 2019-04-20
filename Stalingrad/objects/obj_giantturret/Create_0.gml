@@ -30,7 +30,7 @@ for(var i = 0; i < 4; i ++){
 }
 
 light_brightness = 0;
-mylight = instance_create(x, y, obj_giantturret_light);
+mylight = instance_create_layer(x, y, "Lights", obj_giantturret_light);
 
 burn = false;
 burn_x = x;

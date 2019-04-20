@@ -18,7 +18,7 @@ whiteflash_alphadec = 0.075;
 mylight = noone;
 
 companion_attack_time = 0;
-companion_attack_time_max = 145;
+companion_attack_time_max = 90;
 companion_attack_break = 0;
 
 burn = false;

@@ -105,8 +105,6 @@ if (global.game_is_playthrough){
 	}
 }
 
-scr_upgrade_add(PlayerUpgrade.HeadLight);
-
 // Fly
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 

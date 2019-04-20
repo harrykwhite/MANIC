@@ -359,7 +359,7 @@ if (is_boss) && (count == -1){
 // Light
 /*if (count != 0) && (count != 5){
 	if (mylight == noone){
-		mylight = instance_create(x, y - 4, obj_pawn_other_train_light);
+		mylight = instance_create_layer(x, y - 4, "Lights", obj_pawn_other_train_light);
 	}else{
 		mylight.x = x;
 		mylight.y = y - 4;
