@@ -26,13 +26,15 @@ if (global.game_pause){
 if (!active){
 	ispaused = true;
 	i_blend_time = 0;
-	sprite_index = spr_enemy_0_idle_0;
+	sprite_index = spr_antagonist_idle_1;
 	image_speed = 0;
 	image_index = 0;
 }
 
 if (global.cutscene_current != -1){
-	ispaused = true;
+	if (!cutscene_prop) && (!in_cutscene){
+		ispaused = true;
+	}
 }
 
 if (ispaused){

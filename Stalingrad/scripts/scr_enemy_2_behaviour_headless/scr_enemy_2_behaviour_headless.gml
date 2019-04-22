@@ -61,10 +61,6 @@ if (speed_final > 0.1){
 
 if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
-}else if (speed_final >= 0.1) && (speed_final <= 0.75){
-    image_speed = 0.15;
-}else if (speed_final < 1.1) && (speed_final > 0.75){
-    image_speed = 0.25;
-}else if (speed_final >= 1.1){
-    image_speed = 0.35;
+}else{
+	image_speed = (speed_final * 0.165);
 }

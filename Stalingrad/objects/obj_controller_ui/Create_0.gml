@@ -81,10 +81,10 @@ for(var i = 0; i < levelcount; i ++){
 screen_fade_opening = 1.15;
 
 ending = false;
-ending_logo_text_time = 60 * 5;
+ending_logo_text_time = 60 * 6;
 ending_logo_text_alpha = 0;
 ending_credits_text_alpha = 0;
-ending_back_time = 60 * 3.5;
+ending_back_time = 60 * 3;
 ending_back_alpha = 0;
 
 area_next_fade = false;

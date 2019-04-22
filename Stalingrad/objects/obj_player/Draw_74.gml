@@ -1,4 +1,4 @@
-if (!isVisible){
+if (!is_visible){
 	return;
 }
 

@@ -208,6 +208,18 @@ if (health_current <= 0){
 				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_3, 1);
 			}
 			break;
+		
+		case obj_antagonist:
+			corpse = instance_create(x, y - 16, obj_antagonist_corpse);
+			corpse.sprite_index = spr_antagonist_corpse_0;
+			
+			var mask = instance_create(x, y + 4, obj_antagonist_mask);
+			mask.dir = knockback_direction;
+			
+			if (room == rm_level_10_01){
+				obj_controller_gameplay.cutscene_ending_corpse = corpse;
+			}
+			break;
 	}
 	
 	if (corpse != noone){

@@ -670,7 +670,7 @@ if (ending){
 	draw_set_colour(c_black);
 	draw_rectangle(0, 0, dwidth, dheight, false);
 	
-	draw_set_font(fnt_cambria_7);
+	draw_set_font(fnt_cambria_6);
 	draw_set_halign(fa_center);
 	draw_set_alpha(ending_logo_text_alpha);
 	scr_text_shadow(dwidth / 2, dheight / 2, "MANIC", c_white);
@@ -678,14 +678,14 @@ if (ending){
 	draw_set_font(fnt_cambria_3);
 	draw_set_halign(fa_center);
 	draw_set_alpha(ending_credits_text_alpha);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 250, "A GAME BY GETA", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 200, "A GAME BY GETA", c_white);
 	
 	draw_set_font(fnt_cambria_2);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 150, "Programming, artwork and game design by Harry White", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 50, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Art assistance for character design by Ulkenstride", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 150, "Programming assistance by Gideon the Bard and Zyro", c_white);
-	
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 120, "Programming, artwork and game design by Harry White", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 60, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2), "Art assistance for character design by Ulkenstride", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 60, "Programming assistance from Gideon the Bard and Zyro", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 120, "Thanks for playing!", c_white);
 }
 
 draw_set_alpha(1);

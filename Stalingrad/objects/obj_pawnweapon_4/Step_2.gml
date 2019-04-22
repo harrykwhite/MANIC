@@ -2,8 +2,8 @@ if (instance_exists(owner)){
 	if (scr_pawn_weapon_endstepcan()){
 		dir = dir + (owner.image_xscale * throw_offset);
 		
-	    x = (owner.x + (-3 * owner.image_xscale)) + lengthdir_x(14 * owner.scale, owner.arm.image_angle);
-	    y = (owner.y - 4) + lengthdir_y(14 * owner.scale, owner.arm.image_angle);
+	    x = owner.arm.x + lengthdir_x(14 * owner.scale, owner.arm.image_angle);
+	    y = owner.arm.y + lengthdir_y(14 * owner.scale, owner.arm.image_angle);
 		
 		image_angle = dir;
 	

@@ -350,9 +350,9 @@ if (instance_exists(weapon)){
 	var Idle1, Walk1;
 	var Idle2, Walk2;
 	
-	Idle0 = spr_enemy_0_idle_0; Walk0 = spr_enemy_0_walk_0;
-	Idle1 = spr_enemy_0_idle_1; Walk1 = spr_enemy_0_walk_1;
-	Idle2 = spr_enemy_0_idle_2; Walk2 = spr_enemy_0_walk_2;
+	Idle0 = spr_antagonist_idle_0; Walk0 = spr_antagonist_walk_0;
+	Idle1 = spr_antagonist_idle_1; Walk1 = spr_antagonist_walk_1;
+	Idle2 = spr_antagonist_idle_2; Walk2 = spr_antagonist_walk_2;
 	
 	if (speed_final < 0.1){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
@@ -363,10 +363,6 @@ if (instance_exists(weapon)){
 
 if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
-}else if (speed_final >= 0.1) && (speed_final <= 0.75){
-    image_speed = 0.15;
-}else if (speed_final < 1.1) && (speed_final > 0.75){
-    image_speed = 0.25;
-}else if (speed_final >= 1.1){
-    image_speed = 0.35;
+}else{
+	image_speed = (speed_final * 0.165);
 }

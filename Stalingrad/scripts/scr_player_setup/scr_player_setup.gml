@@ -109,8 +109,11 @@ if (global.game_is_playthrough){
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 
 // Other
-isVisible = true;
+is_visible = true;
+
 heartbeat = noone;
+
+has_antagonist_mask = false;
 
 minecart = noone;
 minecart_dir = 0;

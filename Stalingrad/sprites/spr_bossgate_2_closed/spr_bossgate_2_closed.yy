@@ -393,7 +393,7 @@
     ],
     "origin": 0,
     "originLocked": false,
-    "playbackSpeed": 0.25,
+    "playbackSpeed": 0.4,
     "playbackSpeedType": 1,
     "premultiplyAlpha": false,
     "sepmasks": false,

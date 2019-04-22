@@ -422,7 +422,7 @@
     ],
     "origin": 0,
     "originLocked": false,
-    "playbackSpeed": 0.3,
+    "playbackSpeed": 0.4,
     "playbackSpeedType": 1,
     "premultiplyAlpha": false,
     "sepmasks": false,

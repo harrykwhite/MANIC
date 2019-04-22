@@ -76,7 +76,7 @@ if (global.weapon_slot_standalone == -1){
 			}
 		}
 		
-		if (room == rm_level_8_02) || (room == rm_level_9_00) || (room == rm_level_9_01) || (room == rm_level_9_02){
+		if (room == rm_level_8_01) || (room == rm_level_8_02) || (room == rm_level_9_00) || (room == rm_level_9_01) || (room == rm_level_9_02){
 			if (layer_exists("Road")){
 				footstep_road = layer_tilemap_get_id("Road");
 				if (layer_tilemap_exists(layer_get_id("Road"), footstep_road)){
@@ -97,7 +97,7 @@ if (global.weapon_slot_standalone == -1){
 		
 			// Play Footstep Sound
 			if (footstep_sound != -1){
-				scr_sound_play(footstep_sound, false, 0.8, 1.1);
+				scr_sound_play_distance_pitch(footstep_sound, false, 180, 0.8, 1.1);
 			}
 		}
 	}else{

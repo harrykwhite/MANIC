@@ -179,6 +179,8 @@ if (health_current <= 0){
 			antag.arena_y = 306;
 			antag.arena_width = 430;
 			antag.arena_height = 276;
+			antag.cutscene_prop = true;
+			antag.in_cutscene = true;
 			
 			global.cutscene_current = 40;
 			with(obj_controller_gameplay){
@@ -201,9 +203,6 @@ if (health_current <= 0){
 		}else if (object_index == obj_antagonist){
 			global.cutscene_current = 54;
 			obj_controller_gameplay.cutscene_ending_stage = 0;
-			
-			var upgrade = instance_create(x, y, obj_upgrade_pickup);
-			upgrade.index = PlayerUpgrade.HeadLight;
 		}
 	}
 	
@@ -315,11 +314,14 @@ if (health_current <= 0){
 				}
 			}
 		}
-	}else if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper){
+	}else if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
 		audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
 		audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
-		instance_create(x, y + 4, obj_health_pack_1);
-		scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
 		global.boss_current = -1;
+		
+		if (object_index != obj_antagonist){
+			instance_create(x, y + 4, obj_health_pack_1);
+			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
+		}
 	}
 }

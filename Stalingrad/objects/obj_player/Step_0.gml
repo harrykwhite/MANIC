@@ -81,7 +81,7 @@ if (sign(img_speed) == 1){
 image_index = floor(clamp(img_index, 0, image_number));
 image_speed = 0;
 
-if (isVisible){
+if (is_visible){
 	if (light_brightness < 1){
 		light_brightness += 0.05;
 	}else if (light_brightness > 1){

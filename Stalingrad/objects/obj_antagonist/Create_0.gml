@@ -82,6 +82,8 @@ health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 
+has_mask = true;
+
 target = obj_player;
 
 var feet = instance_create(x, y, obj_feetbox_0);

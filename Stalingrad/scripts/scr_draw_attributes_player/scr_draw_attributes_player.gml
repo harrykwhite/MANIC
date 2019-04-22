@@ -1,7 +1,7 @@
 var drawshader = (global.player_health_current <= 2) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha > 0);
 
 var ucount = array_length_1d(global.upgrade_name);
-if (ucount > 0){
+if (ucount > 0) || (has_antagonist_mask){
 	var uoffset = 0, is_idle = true;
 	if (sprite_index == spr_player_idle_0) || (sprite_index == spr_player_idle_1) || (sprite_index == spr_player_idle_2){
 		if (image_index == 1){
@@ -48,6 +48,10 @@ if (ucount > 0){
 				}
 			}
 		}
+	}
+	
+	if (has_antagonist_mask){
+		draw_sprite_ext(spr_antagonist_mask_0, 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 	}
 }
 

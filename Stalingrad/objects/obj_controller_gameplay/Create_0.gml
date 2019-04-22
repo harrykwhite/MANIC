@@ -31,6 +31,7 @@ cutscene_moveto_level = 0;
 cutscene_moveto_dir = 0;
 cutscene_moveto_type = 0;
 cutscene_ending_stage = 0;
+cutscene_ending_corpse = noone;
 
 weaponlist = ds_list_create();
 weaponlist[| 0] = global.weapon_slot[global.weapon_slotcurrent];

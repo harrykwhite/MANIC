@@ -11,15 +11,15 @@ if (cutscene_trainopening_inst != noone){
 	if (cutscene_trainopening_inst.spd <= 0.2){
 		if (global.cutscene_time[index] < 60){
 			global.cutscene_time[index] ++;
-			obj_player.isVisible = false;
+			obj_player.is_visible = false;
 			
 			if (global.cutscene_time[index] == 30){
 				cutscene_trainopening_inst.open = true;
 				cutscene_trainopening_inst.open_pause = false;
 			}
 		}else{
-			if (!obj_player.isVisible){
-				obj_player.isVisible = true;
+			if (!obj_player.is_visible){
+				obj_player.is_visible = true;
 				obj_player.x = cutscene_trainopening_inst.x;
 				obj_player.y = cutscene_trainopening_inst.y + 30;
 			}
