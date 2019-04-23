@@ -14,5 +14,6 @@ var basecol = argument3;
 //}
 
 //draw_text(xx + 3, yy + 3, str);
+
 draw_set_colour(basecol);
 draw_text(xx, yy, str);

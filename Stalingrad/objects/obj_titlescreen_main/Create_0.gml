@@ -223,6 +223,7 @@ for(var i = 0; i < levelcount; i ++){
 #endregion
 
 reset_text_scale = 1;
+return_text_scale = 1;
 
 indicate_text = "";
 indicate_text_time = 0;
@@ -248,4 +249,4 @@ searching_for_input = false;
 searching_for_input_wait = 0;
 searching_for_input_mouse = false;
 in_levelselect = false;
-selected = 0;
+selected = -1;

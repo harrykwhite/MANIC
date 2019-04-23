@@ -7,5 +7,5 @@ gpu_set_fog(false, c_black, 0, 0);
 draw_sprite_ext(sprite_index, 0, x, y + yy, 1, 1, image_angle, c_white, 1);
 
 gpu_set_fog(true, c_white, 0, 0);
-draw_sprite_ext(sprite_index, 0, x, y + yy, 1, 1, image_angle, c_white, 0.3 * glow);
+draw_sprite_ext(sprite_index, 0, x, y + yy, 1, 1, image_angle, c_white, 0.05 * glow);
 gpu_set_fog(false, c_black, 0, 0);

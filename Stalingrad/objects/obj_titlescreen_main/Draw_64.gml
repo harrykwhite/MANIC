@@ -1,15 +1,19 @@
-draw_set_colour(c_black);
-draw_set_alpha(0.25);
-draw_rectangle((display_get_gui_width() / 2) - 220, 0, (display_get_gui_width() / 2) + 220, display_get_gui_height(), false);
-draw_set_alpha(1);
+//draw_set_colour(c_black);
+//draw_set_alpha(0.25);
+//draw_rectangle((display_get_gui_width() / 2) - 220, 0, (display_get_gui_width() / 2) + 220, display_get_gui_height(), false);
+//draw_set_alpha(1);
 
 if (gamestate == GameState.Developer){
 	var titlescale = wave(1.3, 1.35, 4, 0);
+	var selected_set = false;
+	var angle = wave(-1, 1, 6, 0);
+	var mousex = scr_world_to_screen_x(obj_controller_mouse.x);
+	var mousey = scr_world_to_screen_y(obj_controller_mouse.y);
 	
-	draw_set_font(fnt_cambria_4);
+	draw_set_font(fnt_cambria_5);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_text_shadow_transformed((display_get_gui_width() / 2), (display_get_gui_height() / 2) - 158, "MANIC", c_white, titlescale, titlescale, 0);
+	scr_text_shadow_transformed((display_get_gui_width() / 2), (display_get_gui_height() / 2) - 218, "MANIC", c_white, titlescale, titlescale, angle);
 	draw_set_font(fnt_cambria_2);
 	
 	if (searching_for_input){
@@ -19,24 +23,20 @@ if (gamestate == GameState.Developer){
 			str = "Searching for mouse input...";
 		}
 		
-		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 120, str, c_white);
+		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 30, str, c_white);
+	}else{
+		selected = -1;
 	}
 	
-	if (indicate_text_alpha > 0){
+	if (indicate_text_alpha > 0) && (!searching_for_input){
 		if (indicate_text_time > 0){
 			indicate_text_time --;
 		}else{
 			indicate_text_alpha -= 0.05;
 		}
 		
-		var yy = 150;
-		
-		if (in_settings_controls){
-			yy = 120;
-		}
-		
 		draw_set_alpha(indicate_text_alpha);
-		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - yy, indicate_text, c_white);
+		scr_text_shadow((display_get_gui_width() / 2), display_get_gui_height() - 30, indicate_text, c_white);
 		draw_set_alpha(1);
 	}else{
 		indicate_text = "";
@@ -47,6 +47,22 @@ if (gamestate == GameState.Developer){
 	if (!in_settings) && (!in_levelselect){
 		for(var i = 0; i <= option_max; i ++){
 			var str = option[i];
+			var xx = (display_get_gui_width() / 2);
+			var yy = ((display_get_gui_height() / 2) - 115) + (56 * i);
+			var islocked = false;
+			
+			if (i != option_max) && (i != -1){
+				islocked = option_locked[i];
+			}
+			
+			if (!selected_set){
+				if (!islocked){
+					if (point_in_rectangle(mousex, mousey, xx - 80, yy - 16, xx + 80, yy + 16)){
+						selected = i;
+						selected_set = true;
+					}
+				}
+			}
 			
 			if (selected == i){
 				option_scale[i] = approach(option_scale[i], 1.1, 40);
@@ -54,19 +70,19 @@ if (gamestate == GameState.Developer){
 				option_scale[i] = approach(option_scale[i], 1, 40);
 			}
 			
-			if (option_locked[i]){
-				scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (52 * i), str, c_gray, option_scale[i], option_scale[i], 0);
+			if (islocked){
+				scr_text_shadow_transformed(xx, yy, str, c_gray, option_scale[i], option_scale[i], 0);
 			}else{
 				if (selected == i){
-					scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (52 * i), str, make_colour_rgb(189, 23, 23), option_scale[i], option_scale[i], 0);
+					scr_text_shadow_transformed(xx, yy, str, make_colour_rgb(189, 23, 23), option_scale[i], option_scale[i], 0);
 					
 					if (i == 0) && (string_pos("Continue", option[i]) != 0){
 						draw_set_font(fnt_cambria_0);
-						scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (52 * i) + 22, scr_seconds_to_timer(global.game_save_seconds) + " - " + global.level_name[global.game_save_level], c_white, 0.75, 0.75, 0);
+						scr_text_shadow_transformed(xx, yy + 22, scr_seconds_to_timer(global.game_save_seconds) + " - " + global.level_name[global.game_save_level], c_white, 0.75, 0.75, 0);
 						draw_set_font(fnt_cambria_2);
 					}
 				}else{
-					scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (52 * i), str, c_white, option_scale[i], option_scale[i], 0);
+					scr_text_shadow_transformed(xx, yy, str, c_white, option_scale[i], option_scale[i], 0);
 				}
 			}
 		}
@@ -83,7 +99,7 @@ if (gamestate == GameState.Developer){
 				omax = option_setting_controls_max;
 			}
 			
-			for(var i = 0; i <= omax + 1; i ++){
+			for(var i = 0; i <= omax + 2; i ++){
 				var str = "";
 				var adjust_str = "";
 				var isbool = false, isres = false;
@@ -94,8 +110,34 @@ if (gamestate == GameState.Developer){
 				var scale = 1;
 				var centered = false;
 				
+				var xx = (display_get_gui_width() / 2);
+				var yy = ((display_get_gui_height() / 2) - 115) + (56 * i);
+				
+				if (in_settings_controls){
+					yy = ((display_get_gui_height() / 2) - 115) + (46 * i);
+				}
+				
+				if (i > omax){
+					yy += 24;
+				}
+				
+				if (!searching_for_input){
+					if (!selected_set){
+						var w = 80;
+					
+						if (i != omax + 1) && (i != omax + 2){
+							w = 180;
+						}
+					
+						if (point_in_rectangle(mousex, mousey, xx - w, yy - 16, xx + w, yy + 16)){
+							selected = i;
+							selected_set = true;
+						}
+					}
+				}
+				
 				if (i == omax + 1){
-					str = "Reset to defaults";
+					str = "Reset to Defaults";
 					centered = true;
 					
 					if (selected == i){
@@ -105,6 +147,17 @@ if (gamestate == GameState.Developer){
 					}
 					
 					scale = reset_text_scale;
+				}else if (i == omax + 2){
+					str = "Back to Options";
+					centered = true;
+					
+					if (selected == i){
+						return_text_scale = approach(return_text_scale, 1.05, 40);
+					}else{
+						return_text_scale = approach(return_text_scale, 1, 40);
+					}
+					
+					scale = return_text_scale;
 				}else{
 					if (in_settings_gameplay){
 						value_cur = option_setting_gameplay_value[i];
@@ -206,60 +259,120 @@ if (gamestate == GameState.Developer){
 					draw_set_halign(fa_center);
 					
 					if (selected == i){
-						scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (42 * i) + 30, str, make_colour_rgb(189, 23, 23), scale, scale, 0);	
+						scr_text_shadow_transformed(xx, yy, str, make_colour_rgb(189, 23, 23), scale, scale, 0);	
 					}else{
-						scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (42 * i) + 30, str, c_white, scale, scale, 0);	
+						scr_text_shadow_transformed(xx, yy, str, c_white, scale, scale, 0);	
 					}
 				}else{
 					if (selected == i){
 						draw_set_halign(fa_left);
-						scr_text_shadow_transformed((display_get_gui_width() / 2) - 175, ((display_get_gui_height() / 2) - 65) + (42 * i), str, make_colour_rgb(189, 23, 23), scale, scale, 0);
+						scr_text_shadow_transformed(xx - 175, yy, str, make_colour_rgb(189, 23, 23), scale, scale, 0);
 						draw_set_halign(fa_right);
-						scr_text_shadow_transformed((display_get_gui_width() / 2) + 175, ((display_get_gui_height() / 2) - 65) + (42 * i), adjust_str, make_colour_rgb(189, 23, 23), scale, scale, 0);
+						scr_text_shadow_transformed(xx + 175, yy, adjust_str, make_colour_rgb(189, 23, 23), scale, scale, 0);
 					}else{
 						draw_set_halign(fa_left);
-						scr_text_shadow_transformed((display_get_gui_width() / 2) - 175, ((display_get_gui_height() / 2) - 65) + (42 * i), str, c_white, scale, scale, 0);
+						scr_text_shadow_transformed(xx - 175, yy, str, c_white, scale, scale, 0);
 						draw_set_halign(fa_right);
-						scr_text_shadow_transformed((display_get_gui_width() / 2) + 175, ((display_get_gui_height() / 2) - 65) + (42 * i), adjust_str, c_white, scale, scale, 0);
+						scr_text_shadow_transformed(xx + 175, yy, adjust_str, c_white, scale, scale, 0);
 					}
 				}
 			}
 		}else{
-			for(var i = 0; i <= option_setting_max; i ++){
-				var str = option_setting[i];
+			for(var i = 0; i <= option_setting_max + 1; i ++){
+				var str = "";
+				var xx = (display_get_gui_width() / 2);
+				var yy = ((display_get_gui_height() / 2) - 115) + (56 * i);
+				var scale = 1;
 				
-				if (selected == i){
-					option_setting_scale[i] = approach(option_setting_scale[i], 1.1, 40);
+				if (!selected_set){
+					if (point_in_rectangle(mousex, mousey, xx - 80, yy - 16, xx + 80, yy + 16)){
+						selected = i;
+						selected_set = true;
+					}
+				}
+				
+				if (i != option_setting_max + 1){
+					str = option_setting[i];
+					
+					if (selected == i){
+						option_setting_scale[i] = approach(option_setting_scale[i], 1.1, 40);
+					}else{
+						option_setting_scale[i] = approach(option_setting_scale[i], 1, 40);
+					}
+					
+					scale = option_setting_scale[i];
 				}else{
-					option_setting_scale[i] = approach(option_setting_scale[i], 1, 40);
+					str = "Back to Title";
+					
+					if (selected == i){
+						return_text_scale = approach(return_text_scale, 1.1, 40);
+					}else{
+						return_text_scale = approach(return_text_scale, 1, 40);
+					}
+					
+					scale = return_text_scale;
 				}
 				
 				if (selected == i){
-					scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (42 * i), str, make_colour_rgb(189, 23, 23), option_setting_scale[i], option_setting_scale[i], 0);
+					scr_text_shadow_transformed(xx, yy, str, make_colour_rgb(189, 23, 23), scale, scale, 0);
 				}else{
-					scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (42 * i), str, c_white, option_setting_scale[i], option_setting_scale[i], 0);
+					scr_text_shadow_transformed(xx, yy, str, c_white, scale, scale, 0);
 				}
 			}
 		}
 	}else if (in_levelselect){
 		draw_set_font(fnt_cambria_1);
 		
-		for(var i = 0; i <= option_levelselect_max; i ++){
-			var str = option_levelselect[i];
+		for(var i = 0; i <= option_levelselect_max + 1; i ++){
+			var str = "";
+			var scale = 1;
+			var xx = (display_get_gui_width() / 2);
+			var yy = ((display_get_gui_height() / 2) - 115) + (39 * i);
+			var islocked = false;
 			
-			if (selected == i){
-				option_levelselect_scale[i] = approach(option_levelselect_scale[i], 1.1, 40);
-			}else{
-				option_levelselect_scale[i] = approach(option_levelselect_scale[i], 1, 40);
+			if (i < option_levelselect_max + 1){
+				if (!option_levelselect_unlocked[i]){
+					islocked = true;
+				}
 			}
 			
-			if (!option_levelselect_unlocked[i]){
-				scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (36 * i), "?????", c_gray, option_levelselect_scale[i], option_levelselect_scale[i], 0);
+			if (!selected_set){
+				if (!islocked){
+					if (point_in_rectangle(mousex, mousey, xx - 80, yy - 16, xx + 80, yy + 16)){
+						selected = i;
+						selected_set = true;
+					}
+				}
+			}
+			
+			if (i != option_levelselect_max + 1){
+				str = option_levelselect[i];
+				if (selected == i){
+					option_levelselect_scale[i] = approach(option_levelselect_scale[i], 1.1, 40);
+				}else{
+					option_levelselect_scale[i] = approach(option_levelselect_scale[i], 1, 40);
+				}
+				
+				scale = option_levelselect_scale[i];
+			}else{
+				str = "Back to Title";
+				
+				if (selected == i){
+					return_text_scale = approach(return_text_scale, 1.1, 40);
+				}else{
+					return_text_scale = approach(return_text_scale, 1, 40);
+				}
+				
+				scale = return_text_scale;
+			}
+			
+			if (islocked){
+				scr_text_shadow_transformed(xx, yy, "?????", c_gray, scale, scale, 0);
 			}else{
 				if (selected == i){
-					scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (36 * i), str, make_colour_rgb(189, 23, 23), option_levelselect_scale[i], option_levelselect_scale[i], 0);
+					scr_text_shadow_transformed(xx, yy, str, make_colour_rgb(189, 23, 23), scale, scale, 0);
 				}else{
-					scr_text_shadow_transformed((display_get_gui_width() / 2), ((display_get_gui_height() / 2) - 65) + (36 * i), str, c_white, option_levelselect_scale[i], option_levelselect_scale[i], 0);
+					scr_text_shadow_transformed(xx, yy, str, c_white, scale, scale, 0);
 				}
 			}
 		}
@@ -273,7 +386,10 @@ if (gamestate == GameState.Developer){
 }
 
 draw_set_font(fnt_cambria_0);
-draw_set_valign(fa_top);
+draw_set_valign(fa_bottom);
 draw_set_halign(fa_left);
-scr_text_shadow(23, display_get_gui_height() - 50, "(F) Fullscreen", c_white);
+scr_text_shadow(23, display_get_gui_height() - 30, "(F) Fullscreen", c_white);
+draw_set_halign(fa_right);
+scr_text_shadow(display_get_gui_width() - 23, display_get_gui_height() - 30, "Beta v0.01\nCopyright 2019 Geta Games", c_white);
+draw_set_valign(fa_top);
 draw_set_alpha(1);
