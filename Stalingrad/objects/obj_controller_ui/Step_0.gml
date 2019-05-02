@@ -98,10 +98,8 @@ if (!global.game_pause){
 			if (pause_has_selected_time < 1){
 				pause_has_selected_time += 0.025;
 			}else{
-				global.game_pause = false;
-				part_system_automatic_update(global.ps_bottom, false);
-				part_system_automatic_update(global.ps_front, false);
-			
+				scr_toggle_pause(false);
+				
 				switch(pause_selected){
 					case 1:
 						part_system_clear(global.ps_front);
@@ -150,80 +148,79 @@ if (!global.game_pause){
 						obj_controller_gameplay.has_saved = true;
 						break;
 				}
+				
+				pausedialogue_type = 1;
+				pausedialogue_time = 0;
+				pausedialogue_option_selected = -1;
+				pausedialogue_option_max = 0;
+				pausedialogue_type_text = "";
+				pausedialogue_type_option[0] = -1;
+				pausedialogue_type_option_special[0] = -1;
+				pausedialogue_type_option_cutscene[0] = -1;
+				pausedialogue_type_option_traingoto[0] = -1;
+				pausedialogue_type_option_trainroom[0] = -1;
+				pausedialogue_type_option_trainstart_type[0] = -1;
 			}
 		}else{
-			if (keyboard_check_pressed(ord("W"))) || (keyboard_check_pressed(vk_up)){
-				if (pause_selected > 0){
-					pause_selected --;
-				}else{
-					pause_selected = pause_selectedmax - 1;
-				}
-			}
-	
-			if (keyboard_check_pressed(ord("S"))) || (keyboard_check_pressed(vk_down)){
-				if (pause_selected < pause_selectedmax - 1){
-					pause_selected ++;
-				}else{
-					pause_selected = 0;
-				}
-			}
+			if (mouse_check_button_pressed(mb_left)){
+				if (pause_selected != -1){
+					switch(pause_selected){
+						case 0:
+							scr_toggle_pause(false);
+							pause_selected = 0;
+							break;
 			
-			if (keyboard_check_pressed(vk_enter)){
-				switch(pause_selected){
-					case 0:
-						global.game_pause = false;
-						pause_selected = 0;
-						break;
-			
-					default:
-						pause_has_selected = true;
-						pause_has_selected_time = 0;
-						break;
+						default:
+							pause_has_selected = true;
+							pause_has_selected_time = 0;
+							break;
+					}
 				}
 			}
 		}
 	}else{
 		// Pause Dialogue
-		if (pausedialogue_time < 20){
+		if (pausedialogue_time < 10){
 			pausedialogue_time ++;
 		}else{
 			if (keyboard_check_pressed(obj_controller_all.key_interact)){
 				pausedialogue = false;
-				pausedialogue_time = 0;
-				global.game_pause = false;
-				return;
-			}
-			
-			if (keyboard_check_pressed(ord("W"))) || (keyboard_check_pressed(vk_up)){
-				if (pausedialogue_option_selected > 0){
-					pausedialogue_option_selected --;
-				}else{
-					pausedialogue_option_selected = pausedialogue_option_max - 1;
-				}
-			}
-	
-			if (keyboard_check_pressed(ord("S"))) || (keyboard_check_pressed(vk_down)){
-				if (pausedialogue_option_selected < pausedialogue_option_max - 1){
-					pausedialogue_option_selected ++;
-				}else{
-					pausedialogue_option_selected = 0;
-				}
-			}
-	
-			if (keyboard_check_pressed(vk_enter)){
-				if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
-					global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
-				}
+				scr_toggle_pause(false);
+			}else{
+				if (mouse_check_button_pressed(mb_left)){
+					if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected != pausedialogue_option_max){
+						if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
+							global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
+						}
 				
-				if (pausedialogue_type_option_traingoto[pausedialogue_option_selected] != -1){
-					obj_controller_gameplay.cutscene_traingoto = pausedialogue_type_option_traingoto[pausedialogue_option_selected];
-				}
+						if (pausedialogue_type_option_traingoto[pausedialogue_option_selected] != -1){
+							obj_controller_gameplay.cutscene_traingoto = pausedialogue_type_option_traingoto[pausedialogue_option_selected];
+						}
+				
+						switch(pausedialogue_type_option_special[pausedialogue_option_selected]){
+							case 0:
+								global.game_combat_in_hordechallenge = true;
+								global.game_combat_in_hordechallenge_time = 60 * 30;
+							
+								if (instance_exists(obj_hordepost_0)){
+									obj_hordepost_0.activated = true;
+								}
+								break;
+						}
 			
-				obj_controller_gameplay.cutscene_trainstart_type = pausedialogue_type_option_trainstart_type[pausedialogue_option_selected];
-				obj_controller_gameplay.cutscene_trainroom = pausedialogue_type_option_trainroom[pausedialogue_option_selected];
-				pausedialogue = false;
-				global.game_pause = false;
+						obj_controller_gameplay.cutscene_trainstart_type = pausedialogue_type_option_trainstart_type[pausedialogue_option_selected];
+						obj_controller_gameplay.cutscene_trainroom = pausedialogue_type_option_trainroom[pausedialogue_option_selected];
+					
+						pausedialogue = false;
+						scr_toggle_pause(false);
+					}else if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected == pausedialogue_option_max){
+						pausedialogue = false;
+						scr_toggle_pause(false);
+					}
+				}
 			}
+			
+			
 		}
 	}
 }

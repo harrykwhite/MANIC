@@ -18,7 +18,7 @@ if (mouse_cross > 0.01){
 	mouse_cross = 0;
 }
 
-if (instance_exists(obj_player)){
+if (instance_exists(obj_player)) && (!global.game_pause){
 	// Mouse Type
 	var index = global.weapon_slot[global.weapon_slotcurrent];
 	

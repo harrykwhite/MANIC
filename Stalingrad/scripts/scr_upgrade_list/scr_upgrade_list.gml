@@ -1,13 +1,13 @@
 enum PlayerUpgrade{
-	Goggles,
+	Goggles, // Collectable
 	Backpack,
 	Chestplate, // Collectable
 	AmmoPack, // Collectable
 	GasMask, // Collectable, position must change
 	RunningBoots, // Collectable
 	KneePads, // Collectable
-	IronGlove,
-	HeadLight,
+	IronGlove, // Collectable
+	HeadLight, // Collectable
 }
 
 global.upgrade_name[0] = "Goggles";

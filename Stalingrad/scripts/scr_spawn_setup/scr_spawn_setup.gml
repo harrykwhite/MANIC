@@ -57,3 +57,6 @@ spawn_music_stinger[CombatState.Climax] = stinger_2;
 spawn_music_main[CombatState.Climax] = combat_2;
 spawn_music_pause_gain[CombatState.Climax] = 0;
 spawn_music_pause_position[CombatState.Climax] = 0;
+
+global.game_combat_in_hordechallenge = false;
+global.game_combat_in_hordechallenge_time = 0;

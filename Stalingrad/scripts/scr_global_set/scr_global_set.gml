@@ -9,6 +9,8 @@ global.game_pause = false;
 global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;
 global.game_combat_state_time_real = 0;
+global.game_combat_in_hordechallenge = false;
+global.game_combat_in_hordechallenge_time = 0;
 
 global.game_level_opening_type = 0;
 

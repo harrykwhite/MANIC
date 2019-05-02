@@ -19,4 +19,4 @@ lighting = 0.9;
 
 global.ambientShadowIntensity = lighting;
 global.game_combat_active = false;
-scr_level_music_control();
+scr_level_combatstate_control();

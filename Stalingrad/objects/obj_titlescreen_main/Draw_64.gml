@@ -55,7 +55,7 @@ if (gamestate == GameState.Developer){
 				islocked = option_locked[i];
 			}
 			
-			if (!selected_set){
+			if (!selected_set) && (!fade){
 				if (!islocked){
 					if (point_in_rectangle(mousex, mousey, xx - 80, yy - 16, xx + 80, yy + 16)){
 						selected = i;
@@ -121,7 +121,7 @@ if (gamestate == GameState.Developer){
 					yy += 24;
 				}
 				
-				if (!searching_for_input){
+				if (!searching_for_input) && (!fade){
 					if (!selected_set){
 						var w = 80;
 					
@@ -284,7 +284,7 @@ if (gamestate == GameState.Developer){
 				var yy = ((display_get_gui_height() / 2) - 115) + (56 * i);
 				var scale = 1;
 				
-				if (!selected_set){
+				if (!selected_set) && (!fade){
 					if (point_in_rectangle(mousex, mousey, xx - 80, yy - 16, xx + 80, yy + 16)){
 						selected = i;
 						selected_set = true;
@@ -336,7 +336,7 @@ if (gamestate == GameState.Developer){
 				}
 			}
 			
-			if (!selected_set){
+			if (!selected_set) && (!fade){
 				if (!islocked){
 					if (point_in_rectangle(mousex, mousey, xx - 80, yy - 16, xx + 80, yy + 16)){
 						selected = i;

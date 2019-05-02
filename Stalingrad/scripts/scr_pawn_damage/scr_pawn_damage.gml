@@ -2,7 +2,7 @@
 /// @param knockback_speed
 /// @param knockback_direction
 /// @param invincibility_time
-var dmg = argument0;
+var dmg = round(argument0);
 var kbs = argument1;
 var kbd = argument2;
 var it = argument3;

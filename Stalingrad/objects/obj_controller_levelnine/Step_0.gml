@@ -48,9 +48,14 @@ lighting_level[CombatState.Climax] = 1;
 lighting_level[CombatState.Buildup] = 0.925;
 lighting_level[CombatState.Idle] = 0.85;
 
-if (lighting < lighting_level[global.game_combat_state]){
+var lighting_to = lighting_level[global.game_combat_state];
+if (global.game_combat_in_hordechallenge){
+	lighting_to = 1;
+}
+
+if (lighting < lighting_to){
 	lighting += 0.004;
-}else if (lighting > lighting_level[global.game_combat_state]){
+}else if (lighting > lighting_to){
 	lighting -= 0.004;
 }
 
@@ -58,11 +63,13 @@ global.ambientShadowIntensity = lighting;
 
 if (player_exists){
 	var spawn_rate = spawn_rate_real;
-	
-	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (!global.level_cleared[global.level_current]){
-		
+	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
+		}
+		
+		if (global.game_combat_in_hordechallenge){
+			spawn_rate += 5;
 		}
 		
 		if (spawn_time > 0){
@@ -73,7 +80,9 @@ if (player_exists){
 			spawn_time /= spawn_rate;
 		}
 		
-		global.game_combat_state_time_real ++;
+		if (!global.game_combat_in_hordechallenge){
+			global.game_combat_state_time_real ++;
+		}
 		
 		if (spawn){
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
@@ -218,4 +227,4 @@ if (!global.game_pause){
 }
 
 global.game_combat_active = true;
-scr_level_music_control();
+scr_level_combatstate_control();

@@ -36,7 +36,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
 		shoot.image_angle = shoot.dir;
         
         shoot_can = false;
-        shoot_time = 6;
+        shoot_time = 3;
         shoot_bounceback = -1;
         angle_offset = 5;
     }

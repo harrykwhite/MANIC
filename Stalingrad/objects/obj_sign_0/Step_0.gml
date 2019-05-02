@@ -1,6 +1,6 @@
 var player = obj_player;
 if (instance_exists(player)){
-	if (point_distance(x, y - 6, player.x, player.y) < 37){
+	if (point_distance(x, y, player.x, player.y) < 37){
 		interact = true;
 	}else{
 		interact = false;
@@ -19,7 +19,7 @@ if (interact){
 			obj_controller_ui.pausedialogue = true;
 			obj_controller_ui.pausedialogue_type = 0;
 			obj_controller_ui.pausedialogue_type_text = text;
-			global.game_pause = true;
+			scr_toggle_pause(true);
 		}
 	}else{
 		if (!obj_controller_ui.pausedialogue){

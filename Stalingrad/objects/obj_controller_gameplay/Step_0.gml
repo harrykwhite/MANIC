@@ -84,10 +84,8 @@ if (global.cutscene_current != -1){
 
 // Game Pausing
 if (global.cutscene_current == -1) && (instance_exists(obj_player)){
-    if (keyboard_check_pressed(vk_escape)){
-        global.game_pause = !global.game_pause;
-		part_system_automatic_update(global.ps_bottom, !global.game_pause);
-		part_system_automatic_update(global.ps_front, !global.game_pause);
+    if (keyboard_check_pressed(vk_escape)) && (!obj_controller_ui.pausedialogue){
+        scr_toggle_pause(!global.game_pause);
     }
 	
 	if (global.game_pause){

@@ -173,6 +173,20 @@ if (global.player_health_current <= 0){
     scr_effect_flash_script(0.0045, 1, c_black, scr_trigger_0);
 	audio_play_sound(m_combat_stinger_3, 3, false);
     
+	if (global.game_combat_in_hordechallenge){
+		global.game_combat_in_hordechallenge = false;
+		global.game_combat_in_hordechallenge_time = 0;
+		global.game_combat_state = CombatState.Idle;
+		
+		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
+		audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
+		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
+		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+		
+		audio_sound_gain(global.boss_music[0], 0, 5000);
+		audio_play_sound(global.boss_stinger[0], 3, false);
+	}
+	
 	global.player_is_respawning = true;
 	global.cutscene_current = -1;
 	global.game_score_deaths -= 1000;

@@ -99,6 +99,8 @@ if (!in_levelselect){
 #endregion
 
 if (fade){
+	selected = -1;
+	
 	if (fade_alpha < 1){
 		fade_alpha += fade_speed;
 	}else{

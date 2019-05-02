@@ -1,5 +1,7 @@
 // Variables
 var counter = 0;
+var mousex = scr_world_to_screen_x(obj_controller_mouse.x);
+var mousey = scr_world_to_screen_y(obj_controller_mouse.y);
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
@@ -34,10 +36,14 @@ if (global.game_combat_state == CombatState.Buildup){
 	redtint_alphato = 0.06;
 }
 
+if (global.game_combat_in_hordechallenge){
+	redtint_alphato = 0.085;
+}
+
 if (redtint_alpha < redtint_alphato){
-	redtint_alpha += 0.025;
+	redtint_alpha += 0.01;
 }else if (redtint_alpha > redtint_alphato){
-	redtint_alpha -= 0.025;
+	redtint_alpha -= 0.01;
 }
 
 if (redtint_alpha > 0){
@@ -175,7 +181,7 @@ if (screenblend_alpha > 0){
 if (global.level_current != LevelIndex.CityHeadquarters){
 	var text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
 	var textx = 40;
-	var texty = display_get_gui_height() - 50;
+	var texty = dheight - 50;
 
 	if (global.level_cleared[global.level_current]){
 		text = "Area cleared. Proceed to the next level."
@@ -184,7 +190,9 @@ if (global.level_current != LevelIndex.CityHeadquarters){
 	draw_set_alpha(1);
 	draw_set_font(fnt_cambria_0);
 	draw_set_halign(fa_left);
-	scr_text_shadow(textx, texty - 26, text, c_white);
+	draw_set_valign(fa_middle);
+	scr_text_shadow(textx, texty, text, c_white);
+	draw_set_valign(fa_top);
 }
 
 //// Score Display
@@ -381,11 +389,14 @@ if (bosshealth_flash > 0.01){
 
 if (bosshealth_width_current > 0){
 	var xx = dwidth / 2;
-	var yy = dheight - 30;
+	var yy = dheight - 50;
 	var w = bosshealth_width_current;
-	var h = 12;
+	var h = 8;
 	
+	draw_set_colour(c_ltgray);
+	draw_rectangle(xx - (w / 2) - 1, yy - (h / 2) - 1, xx + (w / 2) + 1, yy + (h / 2) + 1, false);
 	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_color_rgb(45, 45, 45), c_ltgray, c_ltgray, 0, true, false);
+	
 	draw_set_alpha(bosshealth_flash * 0.6);
 	draw_set_colour(c_white);
 	draw_rectangle(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), false);
@@ -513,16 +524,16 @@ if (rank_display_draw){
 }
 
 // Pause Backdrop
-if (pausedialogue_alpha > 0) || (pause_text_alpha > 0){
+if (pause_text_alpha > 0) || (pausedialogue_alpha > 0){
 	draw_set_colour(c_black);
-	draw_set_alpha((pause_text_alpha + pausedialogue_alpha) * 0.5);
+	draw_set_alpha((pause_text_alpha + (pausedialogue_alpha * 0.8)) * 0.35);
 	draw_rectangle(0, 0, dwidth, dheight, false);
 }
 
 // Pause
 var xx = dwidth / 2;
 var yy = (dheight / 2) - ((30 * pause_selectedmax) / 2);
-var offset = 30;
+var offset = 54;
 
 if (global.game_pause) && (!pausedialogue){
 	if (pause_text_alpha < 1){
@@ -539,20 +550,37 @@ if (global.game_pause) && (!pausedialogue){
 if (pause_text_alpha > 0){
 	draw_set_alpha(pause_text_alpha);
 	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_set_font(fnt_cambria_3);
 	scr_text_shadow(xx, yy - 80, "GAME PAUSED", c_white);
 	
-	draw_set_font(fnt_cambria_1);
+	draw_set_font(fnt_cambria_2);
+	
+	var selected_set = false;
+	pause_selected = -1;
+	
 	repeat(pause_selectedmax){
+		var opty = yy + (counter * offset);
+		
+		if (!selected_set){
+			if (point_in_rectangle(mousex, mousey, xx - 80, opty - 16, xx + 80, opty + 16)){
+				pause_selected = counter;
+				selected_set = true;
+			}
+		}
+		
 		if (pause_selected == counter){
-			scr_text_shadow(xx, yy + (counter * offset), pause_selectoption[counter], make_colour_rgb(189, 23, 23));
+			pause_selectoption_scale[counter] = approach(pause_selectoption_scale[counter], 1.1, 40);
+			scr_text_shadow_transformed(xx, opty, pause_selectoption[counter], make_colour_rgb(189, 23, 23), pause_selectoption_scale[counter], pause_selectoption_scale[counter], 0);
 		}else{
-			scr_text_shadow(xx, yy + (counter * offset), pause_selectoption[counter], c_white);
+			pause_selectoption_scale[counter] = approach(pause_selectoption_scale[counter], 1, 40);
+			scr_text_shadow_transformed(xx, opty, pause_selectoption[counter], c_white, pause_selectoption_scale[counter], pause_selectoption_scale[counter], 0);
 		}
 		
 		counter ++;
 	}
 	
+	draw_set_valign(fa_top);
 	counter = 0;
 }
 
@@ -568,11 +596,11 @@ var optyy = (dheight / 2) - ((30 * pausedialogue_option_max) / 2);
 
 if (pausedialogue){
 	if (pausedialogue_alpha < 1){
-		pausedialogue_alpha += 0.15;
+		pausedialogue_alpha += 0.05;
 	}
 }else{
 	if (pausedialogue_alpha > 0){
-		pausedialogue_alpha -= 0.15;
+		pausedialogue_alpha -= 0.05;
 	}else{
 		pausedialogue_option_selected = 0;
 		pausedialogue_type = 0;
@@ -581,32 +609,65 @@ if (pausedialogue){
 }
 
 if (pausedialogue_alpha > 0){
+	var vslot = 0;
+	var selected_set = false;
+	
 	draw_set_alpha(pausedialogue_alpha);
-	draw_set_font(fnt_cambria_1);
+	draw_set_font(fnt_cambria_0);
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-
+	draw_set_valign(fa_middle);
+	
 	switch(pausedialogue_type){
 		case 0:
 			scr_text_shadow(dwidth / 2, dheight / 2, pausedialogue_type_text, c_white);
+			vslot = 1;
 			break;
 	
 		case 1:
-			optyy += 45;
+			optyy += string_height(pausedialogue_type_text) + 20;
 			scr_text_shadow(dwidth / 2, (dheight / 2) - 30, pausedialogue_type_text, c_white);
+			
+			pausedialogue_option_selected = -1;
+			
 			for(var counter = 0; counter < pausedialogue_option_max; counter ++){
+				var optrealy = optyy + (counter * 44);
+				 vslot ++;
+				
+				if (!selected_set){
+					if (point_in_rectangle(mousex, mousey, optxx - 80, optrealy - 16, optxx + 80, optrealy + 16)){
+						pausedialogue_option_selected = counter;
+						selected_set = true;
+					}
+				}
+				
 				if (pausedialogue_option_selected == counter){
-					scr_text_shadow(optxx, optyy + (counter * 30), pausedialogue_type_option[counter], make_colour_rgb(189, 23, 23));
+					pausedialogue_type_option_scale[counter] = approach(pausedialogue_type_option_scale[counter], 1.1, 40);
+					scr_text_shadow_transformed(optxx, optrealy, pausedialogue_type_option[counter], make_colour_rgb(189, 23, 23), pausedialogue_type_option_scale[counter], pausedialogue_type_option_scale[counter], 0);
 				}else{
-					scr_text_shadow(optxx, optyy + (counter * 30), pausedialogue_type_option[counter], c_white);
+					pausedialogue_type_option_scale[counter] = approach(pausedialogue_type_option_scale[counter], 1, 40);
+					scr_text_shadow_transformed(optxx, optrealy, pausedialogue_type_option[counter], c_white, pausedialogue_type_option_scale[counter], pausedialogue_type_option_scale[counter], 0);
 				}
 			}
 			
-			scr_text_shadow((dwidth / 2) + 80, (dheight / 2) + 220, "Select [Enter]", c_white);
 			break;
 	}
-
-	scr_text_shadow((dwidth / 2) + 220, (dheight / 2) + 220, "Resume [E]", c_white);
+	
+	var exity = optyy + (vslot * 44) + 14;
+	if (!selected_set){
+		if (point_in_rectangle(mousex, mousey, optxx - 80, exity - 16, optxx + 80, exity + 16)){
+			pausedialogue_option_selected = counter;
+			selected_set = true;
+		}
+	}
+	
+	if (pausedialogue_option_selected == counter){
+		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1.1, 40);
+		scr_text_shadow_transformed(optxx, exity, "Resume", make_colour_rgb(189, 23, 23), pausedialogue_option_exitscale * 1.05, pausedialogue_option_exitscale * 1.05, 0);
+	}else{
+		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1, 40);
+		scr_text_shadow_transformed(optxx, exity, "Resume", c_white, pausedialogue_option_exitscale * 1.05, pausedialogue_option_exitscale * 1.05, 0);
+	}
+	
 	draw_set_valign(fa_top);
 }
 
