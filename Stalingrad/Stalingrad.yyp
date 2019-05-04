@@ -1207,14 +1207,6 @@
             }
         },
         {
-            "Key": "1c1b5da1-f0d9-44b9-992a-286e59aa1863",
-            "Value": {
-                "id": "cff86667-7f71-4e39-b804-526ac40f41e5",
-                "resourcePath": "rooms\\rm_lighting_demo_many\\rm_lighting_demo_many.yy",
-                "resourceType": "GMRoom"
-            }
-        },
-        {
             "Key": "1c68ea63-a1a0-4143-92e6-a26bc949d14f",
             "Value": {
                 "id": "3d6b8852-cd3d-464e-b97a-75f2fc87e1b5",
@@ -1551,6 +1543,14 @@
             }
         },
         {
+            "Key": "25236311-1d22-4cfb-9db9-67082cb82da2",
+            "Value": {
+                "id": "9a17f519-6bfa-40c3-a64b-7c7a025395fc",
+                "resourcePath": "views\\25236311-1d22-4cfb-9db9-67082cb82da2.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "2550b303-9c41-4dad-8556-bcc6aec4ad56",
             "Value": {
                 "id": "33936bdb-1de5-4fa4-a3ce-0194ab6e432e",
@@ -1580,14 +1580,6 @@
                 "id": "cfe158c6-7957-4474-9b4d-a2723851c413",
                 "resourcePath": "views\\25d3c773-db0c-4992-90a4-62c2eede3560.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "25eb29c1-5017-428b-b070-2bc4ea4fa5ae",
-            "Value": {
-                "id": "7a567386-fe87-4fbe-9e17-dc3720df52d4",
-                "resourcePath": "rooms\\rm_lighting_demo_single_point\\rm_lighting_demo_single_point.yy",
-                "resourceType": "GMRoom"
             }
         },
         {
@@ -3399,14 +3391,6 @@
             }
         },
         {
-            "Key": "4a3de82e-98b2-4f90-93de-587993e3a8a4",
-            "Value": {
-                "id": "0bf2efa5-c2fe-4997-94cb-30b48697a98b",
-                "resourcePath": "views\\4a3de82e-98b2-4f90-93de-587993e3a8a4.yy",
-                "resourceType": "GMFolder"
-            }
-        },
-        {
             "Key": "4a7598e9-f497-43ae-8910-856d7e7fd7a4",
             "Value": {
                 "id": "dfa16dc4-e987-4a52-a0f7-5670c91f8870",
@@ -3916,6 +3900,14 @@
                 "id": "0e7a9d55-a4d1-426f-859b-b27355080f99",
                 "resourcePath": "sprites\\spr_enemy_4_idle_0\\spr_enemy_4_idle_0.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "57f1787f-14bf-4b90-bba5-f14e3efb88f6",
+            "Value": {
+                "id": "a8929bdd-1584-420b-bc12-889eb559ce24",
+                "resourcePath": "objects\\obj_controller_prologue\\obj_controller_prologue.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -6287,14 +6279,6 @@
             }
         },
         {
-            "Key": "8cc1c0b6-2bdb-4006-ba8b-ddf10ec6bfbd",
-            "Value": {
-                "id": "e04b874d-396e-46d5-aed8-50423a41266a",
-                "resourcePath": "rooms\\rm_lighting_demo_single_directional\\rm_lighting_demo_single_directional.yy",
-                "resourceType": "GMRoom"
-            }
-        },
-        {
             "Key": "8d172ad5-ac23-4920-8346-ef0d2cd20a94",
             "Value": {
                 "id": "d619d6e4-c93b-4ad7-9825-89e74e0b3012",
@@ -6564,14 +6548,6 @@
                 "id": "1a12ce11-3810-4ab4-801a-879e1933e051",
                 "resourcePath": "views\\9018af24-df19-4d9c-967b-a58d02d3a7c8.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "90486d1f-4f15-4697-9263-ade70c47573c",
-            "Value": {
-                "id": "1cfc4976-45fd-4f12-a5ce-28480e28f778",
-                "resourcePath": "rooms\\rm_lighting_demo_single_line\\rm_lighting_demo_single_line.yy",
-                "resourceType": "GMRoom"
             }
         },
         {
@@ -9503,14 +9479,6 @@
             }
         },
         {
-            "Key": "da7ae039-89dc-4bb9-8642-bc4b85b29b0c",
-            "Value": {
-                "id": "a96d1781-7a4e-42b4-9a78-bc533366ca9a",
-                "resourcePath": "rooms\\rm_lighting_demo_single_area\\rm_lighting_demo_single_area.yy",
-                "resourceType": "GMRoom"
-            }
-        },
-        {
             "Key": "da7e97ec-6084-4eab-b56a-d72bdc41f148",
             "Value": {
                 "id": "051c59d5-6ae1-4950-993a-54d015b3a6ad",
@@ -9919,6 +9887,14 @@
             }
         },
         {
+            "Key": "e440948c-158e-4b9d-819e-589156fd6479",
+            "Value": {
+                "id": "d41f4f2d-bffa-4580-b101-c49e90e54160",
+                "resourcePath": "rooms\\rm_prologue_00\\rm_prologue_00.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "e46911bf-3a8b-40c2-828e-88f15dd48eef",
             "Value": {
                 "id": "b9ef014e-e10f-452f-aa93-ab9c0742edf3",
@@ -10196,14 +10172,6 @@
                 "id": "8f56d95d-3db1-45b5-9d18-542a62bfdf4d",
                 "resourcePath": "fonts\\fnt_cambria_7\\fnt_cambria_7.yy",
                 "resourceType": "GMFont"
-            }
-        },
-        {
-            "Key": "ebda08eb-a49a-423f-ae58-b90f7caabf86",
-            "Value": {
-                "id": "0df9b273-2799-4d7b-80af-b277495e5413",
-                "resourcePath": "rooms\\rm_lighting_demo_single_spot\\rm_lighting_demo_single_spot.yy",
-                "resourceType": "GMRoom"
             }
         },
         {

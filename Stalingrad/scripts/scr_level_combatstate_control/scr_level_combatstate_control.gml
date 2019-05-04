@@ -9,10 +9,6 @@ if (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.Sni
 	inrealboss = false;
 }
 
-if (room == rm_level_10_00) || (room == rm_level_10_01){
-	level = 9;
-}
-
 if (inhordechallenge){
 	if (global.game_combat_in_hordechallenge_time > 0){
 		global.game_combat_in_hordechallenge_time --;
@@ -37,19 +33,19 @@ if (inhordechallenge){
 		var ux = -1;
 		var uy = -1;
 		switch(global.level_current){
-			case LevelIndex.UndergroundBunker:
+			case Level.UndergroundBunker:
 				uindex = PlayerUpgrade.Goggles;
 				ux = 1760;
 				uy = 552;
 				break;
 			
-			case LevelIndex.TrainStation:
+			case Level.TrainStation:
 				uindex = PlayerUpgrade.HeadLight;
 				ux = 500;
 				uy = 208;
 				break;
 			
-			case LevelIndex.DesolateVillage:
+			case Level.DesolateVillage:
 				uindex = PlayerUpgrade.IronGlove;
 				ux = 636;
 				uy = 616;
@@ -71,7 +67,7 @@ if (inhordechallenge){
 	}
 }
 
-if (inrealboss) or (inhordechallenge){
+if (inrealboss) || (inhordechallenge){
 	if (inhordechallenge){
 		bossmusic = global.boss_music[0];
 	}else{
@@ -91,7 +87,7 @@ if (inrealboss) or (inhordechallenge){
 				audio_sound_gain(bossmusic, 0.02, 0);
 				setToGain = true;
 			
-				if (level != 9){
+				if (level != 9) && (level != 0){
 					audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 					audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
@@ -116,7 +112,7 @@ if (audio_is_playing(m_boss_main_0)){
 	}
 }
 
-if (!paused) && (!inrealboss) && (level != 9) && (!inhordechallenge){
+if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != Level.Prologue) && (!inhordechallenge){
 	switch(global.game_combat_state){
 		case CombatState.Idle:
 			if (global.game_combat_state_time_real >= (60 * spawn_state_time[global.game_combat_state])){
@@ -230,7 +226,7 @@ if (!paused) && (!inrealboss) && (level != 9) && (!inhordechallenge){
 		
 			break;
 	}
-}else if (!paused) && (level != 9) && (!inhordechallenge){
+}else if (!paused) && (level != Level.CityHeadquarters) && (level != Level.Prologue) && (!inhordechallenge){
 	audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 7000);
 	audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 7000);
@@ -245,17 +241,17 @@ if (!paused){
 		spawn_pause_update = true;
 		
 		// Play other music.
-		if (level != 9){
+		if (level != Level.CityHeadquarters) && (level != Level.Prologue){
 			audio_resume_sound(spawn_music_main[CombatState.Idle]);
 			audio_resume_sound(spawn_music_main[CombatState.Buildup]);
 			audio_resume_sound(spawn_music_main[CombatState.Climax]);
 		}
 		
-		if (level == 0) || (level == 6){
+		if (level == Level.RavagedTown) || (level == Level.TheCemetery){
 			audio_resume_sound(rain);
 		}
 		
-		if (level == 3) || (level == 5) || (level == 7){
+		if (level == Level.StorageFacility) || (level == Level.TrainStation) || (level == Level.DesolateVillage){
 			audio_resume_sound(wind);
 		}
 		

@@ -61,8 +61,8 @@ if (global.weapon_slot_standalone != -1){
 	weapon_standalone_alpha = 0.2;
 }
 
-if (weaponslot_shake > 0.05){
-    weaponslot_shake *= 0.9;
+if (weaponslot_shake > 0.02){
+    weaponslot_shake *= 0.925;
 }else{
     weaponslot_shake = 0;
 }
@@ -178,7 +178,7 @@ if (screenblend_alpha > 0){
 }
 
 // Kill Display
-if (global.level_current != LevelIndex.CityHeadquarters){
+if (global.level_current != Level.CityHeadquarters) && (global.level_current != Level.Prologue){
 	var text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
 	var textx = 40;
 	var texty = dheight - 50;
@@ -556,7 +556,7 @@ if (pause_text_alpha > 0){
 	
 	draw_set_font(fnt_cambria_2);
 	
-	var selected_set = false;
+	var selected_set = pause_has_selected;
 	pause_selected = -1;
 	
 	repeat(pause_selectedmax){
@@ -681,11 +681,11 @@ if (screen_fade_opening > 0){
 }
 
 // Game Opening Intro
-if (global.level_current == 0){
+if (global.level_current == Level.Prologue){
 	if (game_opening_intro){
 		var text = "MANIC";
 		if (game_opening_intro_text_stage == 0){
-			text = "Geta Presents";
+			text = "Geta presents";
 			draw_set_font(fnt_cambria_1);
 		}else{
 			draw_set_font(fnt_cambria_3);

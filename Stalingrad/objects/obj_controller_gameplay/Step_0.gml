@@ -14,7 +14,7 @@ if (!levelclear_called){
 		return;
 	}
 	
-	if (global.level_current == 9){
+	if (global.level_current == Level.CityHeadquarters) || (global.level_current == Level.Prologue){
 		levelclear_called = true;
 		return;
 	}

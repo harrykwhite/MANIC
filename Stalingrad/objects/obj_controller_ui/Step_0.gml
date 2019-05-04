@@ -100,7 +100,7 @@ if (!global.game_pause){
 			}else{
 				scr_toggle_pause(false);
 				
-				switch(pause_selected){
+				switch(pause_has_selected_index){
 					case 1:
 						part_system_clear(global.ps_front);
 						part_system_clear(global.ps_bottom);
@@ -149,6 +149,9 @@ if (!global.game_pause){
 						break;
 				}
 				
+				pause_has_selected = false;
+				pause_has_selected_index = -1;
+				
 				pausedialogue_type = 1;
 				pausedialogue_time = 0;
 				pausedialogue_option_selected = -1;
@@ -172,6 +175,7 @@ if (!global.game_pause){
 			
 						default:
 							pause_has_selected = true;
+							pause_has_selected_index = pause_selected;
 							pause_has_selected_time = 0;
 							break;
 					}

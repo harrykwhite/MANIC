@@ -1,6 +1,6 @@
 ///@param x
 ///@param y
-if (global.level_current == 2) || (global.level_current == 4){
+if (global.level_current == Level.UndergroundBunker) || (global.level_current == Level.HumanPrison){
 	return false;
 	return;
 }

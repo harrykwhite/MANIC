@@ -24,7 +24,7 @@ Plot beats:
  * X responds carelessly, and continues towards the nearest train station that he knows of so that he can travel to the city.
  
  * At the train station (level 6), X tries to overrun one of the enemy trains and kills the robot train driver and passengers.
- * X takes control of the train and travels towards a cemetary (level 7) that is by the city.
+ * X takes control of the train and travels towards a Cemetery (level 7) that is by the city.
  
  [Haven't decided what happens between level 7 and level 9]
  

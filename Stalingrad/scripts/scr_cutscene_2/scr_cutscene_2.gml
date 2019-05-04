@@ -11,15 +11,18 @@ if (instance_exists(obj_player)){
 	obj_player.flashlight_move = false;
 	
 	if (obj_controller_ui.screen_fade_opening >= 1){
+		show_debug_message("screen fade");
 		return;
 	}
 	
 	if (obj_controller_ui.level_opening_time > 10){
+		show_debug_message("level opening");
 		return;
 	}
 	
 	if (obj_controller_ui.game_opening_intro){
 		if (obj_controller_ui.game_opening_intro_alpha >= 1){
+			show_debug_message("game opening");
 			return;
 		}
 	}

@@ -14,8 +14,6 @@ global.game_combat_in_hordechallenge_time = 0;
 
 global.game_level_opening_type = 0;
 
-scr_set_kills_and_findings();
-
 global.boss_current = -1;
 
 if (room == rm_ini){
@@ -24,10 +22,10 @@ if (room == rm_ini){
 	
 	global.game_save_started = false;
 	global.game_save_seconds = 0;
-	global.game_save_level = 0;
+	global.game_save_level = Level.RavagedTown;
 	
 	global.game_time_passed = 0;
-	global.level_current = LevelIndex.RavagedTown;
+	global.level_current = Level.Prologue;
 	
 	global.player_companions = ds_grid_create(2, 4);
 	ds_grid_clear(global.player_companions, -1);

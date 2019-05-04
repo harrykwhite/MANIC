@@ -1,6 +1,9 @@
 var level;
 
 switch(room){
+	case rm_level_1_00:
+		level = obj_controller_levelone;
+		break;
 	
 	case rm_level_2_00:
 		level = obj_controller_leveltwo;
@@ -107,7 +110,7 @@ switch(room){
 		break;
 	
 	default:
-		level = obj_controller_levelone;
+		level = obj_controller_prologue;
 		break;
 }
 

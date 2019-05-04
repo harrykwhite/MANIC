@@ -178,13 +178,16 @@ if (global.player_health_current <= 0){
 		global.game_combat_in_hordechallenge_time = 0;
 		global.game_combat_state = CombatState.Idle;
 		
-		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
-		audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
-		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
-		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+		var level = scr_get_level_object();
+		with(level){
+			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
+			audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
+			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
+			audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
 		
-		audio_sound_gain(global.boss_music[0], 0, 5000);
-		audio_play_sound(global.boss_stinger[0], 3, false);
+			audio_sound_gain(global.boss_music[0], 0, 5000);
+			audio_play_sound(global.boss_stinger[0], 3, false);
+		}
 	}
 	
 	global.player_is_respawning = true;

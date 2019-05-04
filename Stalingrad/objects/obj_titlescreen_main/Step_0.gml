@@ -225,6 +225,8 @@ if (fade){
 						fade = true;
 						fade_goto = global.level_room[global.game_save_level];
 						fade_speed = 0.01;
+						
+						global.level_current = global.game_save_level;
 						break;
 					
 					case 1:
@@ -348,6 +350,9 @@ if (fade){
 				
 					global.game_is_playthrough = false;
 					global.game_save_seconds = 0;
+					global.level_current = selected;
+					scr_level_list();
+					
 					fade = true;
 					fade_goto = option_levelselect_goto[selected];
 					fade_speed = 0.01;

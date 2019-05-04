@@ -29,7 +29,7 @@ if (level_opening){
 	scr_text_shadow(dwidth / 2, (dheight / 2) - 25, string(global.level_name[global.level_current]), c_white);
 	//draw_rectangle((dwidth / 2) - 110, (dheight / 2) + 8, (dwidth / 2) + 110, (dheight / 2) + 8 + 1, false);
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow((dwidth / 2), (dheight / 2) + 13, "PART " + string(global.level_current + 1), c_white);
+	scr_text_shadow((dwidth / 2), (dheight / 2) + 13, "PART " + string(global.level_current), c_white);
 }
 
 // Area Next

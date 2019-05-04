@@ -61,7 +61,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	// Footstep Sound
-	if (global.level_current != 2) && (global.level_current != 4) && (global.level_current != 9){
+	if (global.level_current != Level.UndergroundBunker) && (global.level_current != Level.HumanPrison) && (global.level_current != Level.CityHeadquarters){
 		if (layer_exists("InteriorFloorWood")){
 			footstep_wood = layer_tilemap_get_id("InteriorFloorWood");
 			if (tilemap_get_at_pixel(footstep_wood, x, y + 18)){

@@ -112,15 +112,15 @@ if (!typedet){
 		mylight = instance_create_layer(x, y - 9, "Lights", obj_enemy_0_light);
 	}
 	
-	if (global.level_current >= LevelIndex.HumanPrison){
+	if (global.level_current >= Level.HumanPrison){
 		knockback_multiplier *= 0.95;
 	}
 	
-	if (global.level_current >= LevelIndex.TheCemetery){
+	if (global.level_current >= Level.TheCemetery){
 		knockback_multiplier *= 0.9;
 	}
 	
-	if (global.level_current >= LevelIndex.IntoTheCity){
+	if (global.level_current >= Level.IntoTheCity){
 		knockback_multiplier *= 0.85;
 	}
 	

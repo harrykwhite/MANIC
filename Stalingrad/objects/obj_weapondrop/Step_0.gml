@@ -94,14 +94,14 @@ if (instance_exists(obj_player)){
 							instance_destroy();
 						}
 						
-						obj_controller_ui.weaponslot_shake = 3;
+						obj_controller_ui.weaponslot_shake = 4;
 			            obj_controller_ui.weaponslot_weaponscale[i] = 0;    
 						
 						return;
 					}
 				}
 				
-	            obj_controller_ui.weaponslot_shake = 3;
+	            obj_controller_ui.weaponslot_shake = 4;
 	            obj_controller_ui.weaponslot_weaponscale[global.weapon_slotcurrent] = 0;
 				
 				if (instance_exists(global.weapon_object[oldweapon])){

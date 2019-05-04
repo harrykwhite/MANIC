@@ -23,11 +23,11 @@ cutscene_look_boss = -1;
 cutscene_conveyerbelt_x = 0;
 cutscene_conveyerbelt_y = 0;
 cutscene_trainopening_inst = noone;
-cutscene_traingoto = 0;
+cutscene_traingoto = Level.RavagedTown;
 cutscene_trainroom = -1;
 cutscene_trainstart_type = -1;
 cutscene_moveto_room = noone;
-cutscene_moveto_level = 0;
+cutscene_moveto_level = Level.RavagedTown;
 cutscene_moveto_dir = 0;
 cutscene_moveto_type = 0;
 cutscene_ending_stage = 0;
@@ -41,4 +41,5 @@ weaponlist[| 2] = -1;
 global.player_is_respawning = false;
 
 scr_level_current_control();
+
 sprite_index = noone;
