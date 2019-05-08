@@ -37,8 +37,8 @@ if (instance_exists(target)){
 		
 		if (!dash){
 			if (run_time > 0) && (dist > 15){
-				move_xTo = run_x;
-				move_yTo = run_y;
+				move_x_to = run_x;
+				move_y_to = run_y;
 				run_time --;
 				
 				if (dash_time > 0){
@@ -84,21 +84,21 @@ if (instance_exists(target)){
 					}
 				}
 				
-				move_xTo = x + lengthdir_x(100, run_away_direction);
-				move_yTo = y + lengthdir_y(100, run_away_direction);
+				move_x_to = x + lengthdir_x(100, run_away_direction);
+				move_y_to = y + lengthdir_y(100, run_away_direction);
 			}
 			
 			if (weapon_exists){
 				face_player = false;
-				weapon.dir = point_direction(x, y, move_xTo, move_yTo);
+				weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 			}
 		}else{
 			move_speed = 0;
-			move_xTo = target.x;
-			move_yTo = target.y;
+			move_x_to = target.x;
+			move_y_to = target.y;
 			
 			if (weapon_exists){
-				weapon.dir = point_direction(x, y, move_xTo, move_yTo);
+				weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 				weapon.attack = true;
 				
 				if (nearest_barrel_from_target != noone){
@@ -176,14 +176,13 @@ if (instance_exists(target)){
 			
 			weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
 	        weapon.owner = id;
-	        weapon.alphaTo = 0;
 			weapon_change_time = 0;
 		}
 		
 		if (!dash){
 			if (run_time > 0) && (dist > 15){
-				move_xTo = run_x;
-				move_yTo = run_y;
+				move_x_to = run_x;
+				move_y_to = run_y;
 				run_time --;
 				
 				if (dash_time > 0){
@@ -259,7 +258,6 @@ if (instance_exists(target)){
 		
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
-        weapon.alphaTo = 0;
 		
 		run_away_time = 0;
 		run_away_direction = 0;
@@ -330,12 +328,12 @@ if (dash){
 		dash_time = random_range(80, 120);
 	}
 }else{
-	mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
+	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 }
 
 // Facing
 if (!face_player){
-	if (move_xTo > x){
+	if (move_x_to > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;
@@ -358,14 +356,14 @@ if (instance_exists(weapon)){
 	Idle1 = spr_antagonist_idle_1; Walk1 = spr_antagonist_walk_1;
 	Idle2 = spr_antagonist_idle_2; Walk2 = spr_antagonist_walk_2;
 	
-	if (speed_final < 0.1){
+	if (speed_final <= 0.1){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 
-if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else{
 	image_speed = (speed_final * 0.165);

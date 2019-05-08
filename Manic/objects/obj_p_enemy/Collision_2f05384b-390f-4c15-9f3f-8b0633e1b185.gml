@@ -38,7 +38,7 @@ if (i_time <= 0) && (other.bite_to){
 		with(other){
 			bite_to = false;
 			bite_retreat = true;
-			bite_retreat_direction = point_direction(x, y, move_xTo, move_yTo) - 180;
+			bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to) - 180;
 			bite_retreat_x = target.x;
 			bite_retreat_y = target.y + 6;
 		}

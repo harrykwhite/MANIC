@@ -1,6 +1,6 @@
 ///scr_cutscene_7();
 var index = 7;
-var xTo = cutscene_conveyerbelt_x, yTo = cutscene_conveyerbelt_y;
+var x_to = cutscene_conveyerbelt_x, y_to = cutscene_conveyerbelt_y;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
@@ -10,9 +10,9 @@ if (instance_exists(obj_player)){
 	global.cutscene_camera_y[index] = cutscene_conveyerbelt_y;
 	obj_player.flashlight_move = false;
 	
-	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 24){
-		obj_player.move_xTo = -1;
-		obj_player.move_yTo = -1;
+	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 24){
+		obj_player.move_x_to = -1;
+		obj_player.move_y_to = -1;
 		obj_player.move_extSpd = 0;
 		
 		if (global.cutscene_time[index] < 120){
@@ -95,8 +95,8 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}else{
-		obj_player.move_xTo = xTo;
-		obj_player.move_yTo = yTo;
+		obj_player.move_x_to = x_to;
+		obj_player.move_y_to = y_to;
 		obj_player.move_extSpd = obj_player.spd_max;
 	}
 

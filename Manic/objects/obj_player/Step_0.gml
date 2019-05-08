@@ -3,8 +3,15 @@ if (!instance_exists(obj_player_light)){
 	mylight = instance_create_layer(x, y, "Lights", obj_player_light);
 }
 
-if (!instance_exists(obj_player_flashlight)){
-	flashlight = instance_create_layer(x, y, "Lights", obj_player_flashlight);
+if (global.weapon_slot[global.weapon_slotcurrent] != -1) || (global.level_current != Level.Prologue){
+	if (!instance_exists(obj_player_flashlight)){
+		flashlight = instance_create_layer(x, y, "Lights", obj_player_flashlight);
+	}
+}else{
+	if (instance_exists(obj_player_flashlight)){
+		instance_destroy(obj_player_flashlight);
+		flashlight = noone;
+	}
 }
 
 // Canmove

@@ -1,4 +1,4 @@
-type = EnemyOneType.Crazy;
+type = Enemy0_Type.Crazy;
 weapon_index = PawnWeapon.Machete;
 cutscene_prop = true;
 in_cutscene = false;

@@ -133,21 +133,32 @@ if (!global.game_pause){
 	
 	// Weapon Switching
 	if (instance_exists(obj_player)){
-    
-	    // Switching
-		var weapon;
+		var weapon = noone;
 		
 		if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 			weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
 		}else{
-			weapon = global.weapon_object[4];
+			if (global.level_current != Level.Prologue){
+				weapon = global.weapon_object[4];
+			}
 		}
 		
-		if (global.cutscene_current == -1) && (obj_player.move_xTo == -1 && (obj_player.move_yTo == -1)){
+		if (global.cutscene_current == -1) && (obj_player.move_x_to == -1 && (obj_player.move_y_to == -1)){
 			if (global.weapon_slot_standalone == -1){
-				if (instance_exists(weapon)){
-					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){ if (weapon.attack_time > 0){return;}}
-					if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){ if (weapon.shoot_time > 0){return;}}
+				if (instance_exists(weapon)) || (weapon == noone){
+					if (weapon != noone){
+						if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){
+							if (weapon.attack_time > 0){
+								return;
+							}
+						}
+					
+						if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){
+							if (weapon.shoot_time > 0){
+								return;
+							}
+						}
+					}
 					
 					if (mouse_wheel_up()){
 						obj_controller_mouse.mouse_scale = 2;

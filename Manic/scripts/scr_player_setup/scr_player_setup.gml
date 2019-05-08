@@ -21,8 +21,8 @@ whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 
 // Externally Controlled Movement
-move_xTo = -1;
-move_yTo = -1;
+move_x_to = -1;
+move_y_to = -1;
 move_extSpd = -1;
 
 // Dash
@@ -47,9 +47,6 @@ global.player_stamina_max = 100;
 global.player_stamina_current = global.player_stamina_max;
 global.player_stamina_break = 0;
 global.player_stamina_active = false;
-
-// Weapon
-global.player_weapon = 0;
 
 // Knockback
 knockback = false;

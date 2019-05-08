@@ -10,14 +10,14 @@ if (instance_exists(target)){
 		leash_dir = point_direction(x, y, target.x, target.y + 6);
 	}
 	
-	move_xTo = keeper.x + lengthdir_x(leash_length + leash_length_offset, leash_dir + leash_offset);
-	move_yTo = keeper.y + lengthdir_y(leash_length + leash_length_offset, leash_dir + leash_offset);
+	move_x_to = keeper.x + lengthdir_x(leash_length + leash_length_offset, leash_dir + leash_offset);
+	move_y_to = keeper.y + lengthdir_y(leash_length + leash_length_offset, leash_dir + leash_offset);
 	
 	if (leash_bite){
 		var dirToTarget = point_direction(x, y, target.x, target.y);
 		speed_multiplier += 0.8;
-		move_xTo = target.x + lengthdir_x(30, dirToTarget);
-		move_yTo = target.y + lengthdir_y(30, dirToTarget);
+		move_x_to = target.x + lengthdir_x(30, dirToTarget);
+		move_y_to = target.y + lengthdir_y(30, dirToTarget);
 		
 		if (attack_active_time > 0){
 			attack_active_time --;
@@ -49,7 +49,7 @@ if (instance_exists(target)){
 		leash_length_offset  = 0;
 	}
 	
-	if (distance_to_point(move_xTo, move_yTo) > 8){
+	if (distance_to_point(move_x_to, move_y_to) > 8){
 		move_speed = 1.8;
 	}else{
 		move_speed = 0;
@@ -104,11 +104,11 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
+mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 
 // Facing
 if (!face_player){
-	if (move_xTo > x){
+	if (move_x_to > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;
@@ -128,7 +128,7 @@ if (speed_final > 0.5){
 	sprite_index = spr_thedogkeeper_dog_idle_0;
 }
 
-if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else{
 	image_speed = (speed_final * 0.165);

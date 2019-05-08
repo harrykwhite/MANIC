@@ -29,8 +29,8 @@ if (instance_exists(target)){
 		companion_attack_break ++;
 	}
 	
-	move_xTo = target.x;
-	move_yTo = target.y + 6;
+	move_x_to = target.x;
+	move_y_to = target.y + 6;
 	
 	if (!mucus_is_releasing){
 		if (mucus_release_time > 0){
@@ -89,11 +89,11 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
+mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 
 // Facing
 if (!face_player){
-	if (move_xTo > x){
+	if (move_x_to > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;

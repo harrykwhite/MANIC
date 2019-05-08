@@ -42,7 +42,7 @@ if (global.weapon_slot_standalone != -1){
 }
 
 if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player_dash){
-    if (global.weapon_heavy[wcurrent]) && (global.cutscene_current == -1) && (move_xTo == -1) && (move_yTo == -1){
+    if (global.weapon_heavy[wcurrent]) && (global.cutscene_current == -1) && (move_x_to == -1) && (move_y_to == -1){
         if (obj_player_arm.image_yscale = -1){
             angle = clamp(obj_player_arm.image_angle, 130, 220);
         }else{

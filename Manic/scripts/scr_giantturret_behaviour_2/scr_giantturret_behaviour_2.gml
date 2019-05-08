@@ -21,10 +21,8 @@ if (instance_exists(target)){
 			
 			var xpos = x + lengthdir_x(29, shoot_dir);
 			var ypos = y + lengthdir_y(29, shoot_dir);
-			part_type_direction(global.pt_flash_0, shoot_dir - 15, shoot_dir + 15, 0, 0);
-			part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
-		    part_type_direction(global.pt_smoke_5, shoot_dir - 15, shoot_dir + 15, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(8, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(8, image_angle) + random_range(-3, 3), global.pt_smoke_5, 1);
+			part_type_direction(global.pt_smoke_5, dir - 6, dir + 6, 0, 0);
+			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
 			
 			var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.enemy = true;
@@ -96,15 +94,15 @@ if (instance_exists(target)){
 			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Grenade);
 			
 			if (random(3) < 1){
-				enemy.type = EnemyOneType.Crazy;
+				enemy.type = Enemy0_Type.Crazy;
 			}
 			
 			if (random(4) < 1){
-				enemy.type = EnemyOneType.Fly;
+				enemy.type = Enemy0_Type.Fly;
 			}
 			
 			if (enemy.weapon_index == PawnWeapon.Grenade){
-				enemy.type = EnemyOneType.Grenadier;
+				enemy.type = Enemy0_Type.Grenadier;
 			}
 			
 			repeat(9){

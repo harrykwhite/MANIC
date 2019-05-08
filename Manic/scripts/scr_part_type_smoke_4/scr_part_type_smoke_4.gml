@@ -1,7 +1,7 @@
 global.pt_smoke_4 = part_type_create();
 var pt = global.pt_smoke_4;
 
-part_type_sprite(pt, spr_ef_smoke_1, false, false, false);
+part_type_sprite(pt, spr_ef_smoke_0, false, false, false);
 part_type_alpha3(pt, 1, 0.8, 0);
 part_type_direction(pt, 0, 360, 0, 0);
 part_type_orientation(pt, 0, 360, 0, 0, 0);

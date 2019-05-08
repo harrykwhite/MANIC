@@ -51,8 +51,8 @@ move_speed = 0;
 move_speed_real = 0;
 move_speed_offset = 1.3;
 move_time = 0;
-move_xTo = x;
-move_yTo = y;
+move_x_to = x;
+move_y_to = y;
 
 i_time = 0;
 i_time_alpha = 0;

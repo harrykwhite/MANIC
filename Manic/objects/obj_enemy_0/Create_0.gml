@@ -13,7 +13,7 @@ whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 mylight = noone;
 
-type = EnemyOneType.Normal;
+type = Enemy0_Type.Normal;
 typedet = false;
 
 sniperboss_opening = true;
@@ -85,8 +85,8 @@ arm = -1;
 move_speed = 0;
 move_speed_real = 0;
 move_speed_offset = random_range(0.95, 1.1);
-move_xTo = x;
-move_yTo = y;
+move_x_to = x;
+move_y_to = y;
 
 i_time = 0;
 i_blend_time = 0;

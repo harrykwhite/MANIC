@@ -4,11 +4,12 @@ global.enemy[1] = obj_enemy_1;
 global.enemy[2] = obj_enemy_2;
 global.enemy[3] = obj_enemy_3;
 global.enemy[4] = obj_enemy_4;
-global.enemy[5] = obj_thescorched;
-global.enemy[6] = obj_thedogkeeper;
-global.enemy[7] = obj_giantturret;
-global.enemy[8] = obj_giantturret_flamethrower;
-global.enemy[9] = obj_antagonist;
+global.enemy[5] = obj_enemy_5;
+global.enemy[6] = obj_thescorched;
+global.enemy[7] = obj_thedogkeeper;
+global.enemy[8] = obj_giantturret;
+global.enemy[9] = obj_giantturret_flamethrower;
+global.enemy[10] = obj_antagonist;
 
 // Companion Pawns
 global.companion[0] = obj_companion_0;
@@ -61,7 +62,7 @@ global.boss_music[7] = m_boss_main_0;
 global.boss_stinger[7] = m_boss_stinger_0;
 
 // Enumerators
-enum EnemyOneType{
+enum Enemy0_Type{
 	Normal,
 	Grenadier,
 	Sniper,

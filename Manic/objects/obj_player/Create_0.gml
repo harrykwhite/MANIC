@@ -8,6 +8,8 @@ hspd = 0;
 vspd = 0;
 
 light_brightness = 0;
+mylight = noone;
+flashlight = noone;
 
 image_speed = 0;
 image_index = 0;

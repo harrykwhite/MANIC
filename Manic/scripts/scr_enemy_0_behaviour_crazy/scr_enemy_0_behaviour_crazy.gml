@@ -10,8 +10,8 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 				var nearest = instance_nearest(x, y, global.companion[i]);
 				if (distance_to_object(nearest) < 50){
 					target = nearest;
-					move_xTo = target.x;
-					move_yTo = target.y + 6;
+					move_x_to = target.x;
+					move_y_to = target.y + 6;
 					crazy_attackbreak = 35;
 					
 					if (companion_attack_time < companion_attack_time_max){
@@ -44,8 +44,8 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 			move_speed = 2;
 			crazy_dash = false;
 			
-			move_xTo = xx;
-			move_yTo = yy;
+			move_x_to = xx;
+			move_y_to = yy;
 		}else{
 			crazy_runback = false;
 		}
@@ -67,8 +67,8 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 			}
 		}else{
 			move_speed = 1.175;
-			move_xTo = target.x;
-			move_yTo = target.y;
+			move_x_to = target.x;
+			move_y_to = target.y;
 			crazy_attackbreak = 34;
 		}
 		
@@ -77,7 +77,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 				crazy_dashbreak ++;
 			}else{
 				crazy_dash = true;
-				crazy_dashdirection = point_direction(x, y, move_xTo, move_yTo) + random_range(-5, 5);
+				crazy_dashdirection = point_direction(x, y, move_x_to, move_y_to) + random_range(-5, 5);
 				crazy_dashspeed = 5.2;
 				crazy_dashtime = 8;
 				crazy_dashbreak = 0;
@@ -161,12 +161,12 @@ if (crazy_dash){
 		crazy_dash = false;
 	}
 }else{
-	mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
+	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 }
 
 // Facing
 if (crazy_runback){
-	if (move_xTo > x){
+	if (move_x_to > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;
@@ -187,14 +187,14 @@ if (instance_exists(weapon)){
 	var Idle1 = spr_enemy_0_brain_idle_1, Walk1 = spr_enemy_0_brain_walk_1;
 	var Idle2 = spr_enemy_0_brain_idle_2, Walk2 = spr_enemy_0_brain_walk_2;
 	
-	if (speed_final < 0.1){
+	if (speed_final <= 0.1){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 
-if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else{
 	image_speed = (speed_final * 0.165);

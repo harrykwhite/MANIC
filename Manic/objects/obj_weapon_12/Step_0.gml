@@ -25,7 +25,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
         part_type_direction(global.pt_smoke_5, dir - 17, dir + 17, 0, 0);
 		repeat(5) part_particles_create(global.ps_front, xpos + lengthdir_x(4, dir) + random_range(-5, 5), ypos + lengthdir_y(4, dir) + random_range(-5, 5), global.pt_smoke_5, 1);
         
-	    shoot = instance_create(xpos, ypos, obj_throwobject_1);
+	    var shoot = instance_create(xpos, ypos, obj_throwobject_1);
 	    shoot.spd = shoot_speed;
 	    shoot.dir = dir + random_range(-shoot_range, shoot_range);
 	    shoot.image_angle = shoot.dir;

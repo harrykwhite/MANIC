@@ -3,12 +3,9 @@ if (global.game_pause){
 	return;
 }
 
-alpha = approach(alpha, alphaTo, 40);
-image_alpha = alpha;
 
 // Attacking
 if (instance_exists(owner)){
-    alphaTo = 1;
     
 	if (attack_time > 0){
 		attack_time --;
@@ -38,17 +35,15 @@ if (instance_exists(owner)){
 			scr_effect_screenshake(2);
 			owner.light_brightness = 1.25;
 			
-			part_type_direction(global.pt_flash_0, dir - 15, dir + 15, 0, 0);
-			part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
-		    part_type_direction(global.pt_smoke_5, dir - 15, dir + 15, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(8, dir) + random_range(-3, 3), ypos + lengthdir_y(8, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+			part_type_direction(global.pt_smoke_5, dir - 6, dir + 6, 0, 0);
+			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
 			
 			if (owner.pawn == PawnType.Companion){
 				isEnemy = false;
 			}
 
 			repeat(3){
-			    shoot = instance_create(xpos, ypos, obj_proj_0);
+			    var shoot = instance_create(xpos, ypos, obj_proj_0);
 				shoot.damage = 1;
 				shoot.damage_change = -0.25;
 				shoot.strength = 1;

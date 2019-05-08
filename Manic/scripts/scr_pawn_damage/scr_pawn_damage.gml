@@ -31,19 +31,19 @@ if (health_current <= 0){
 	switch(object_index){
 		case obj_enemy_0:
 			corpse = instance_create(x, y - 16, obj_enemy_corpse);
-			if (type == EnemyOneType.Crazy){
+			if (type == Enemy0_Type.Crazy){
 				corpse.sprite_index = spr_enemy_0_brain_corpse_0;
 			}
 			
-			if (type == EnemyOneType.Healer){
+			if (type == Enemy0_Type.Healer){
 				corpse.sprite_index = spr_enemy_0_healer_corpse_0;
 			}
 			
-			if (type == EnemyOneType.TrainBoss){
+			if (type == Enemy0_Type.TrainBoss){
 				corpse.sprite_index = spr_enemy_0_sniperboss_corpse_0;
 			}
 			
-			if (type == EnemyOneType.Fly){
+			if (type == Enemy0_Type.Fly){
 				corpse.sprite_index = spr_enemy_0_fly_corpse_0;
 			}
 			
@@ -97,6 +97,17 @@ if (health_current <= 0){
 				part_type_speed(global.pt_bodypart_enemy_4, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_enemy_4, knockback_direction - 35, knockback_direction + 35, 0, 0);
 				part_particles_create(global.ps_bottom, x + random_range(-10, 10), y + random_range(-6, 6), global.pt_bodypart_enemy_4, 1);
+			}
+			break;
+		
+		case obj_enemy_5:
+			corpse = instance_create(x, y, obj_enemy_corpse);
+			corpse.sprite_index = spr_enemy_5_corpse_0;
+			
+			repeat(4){
+				part_type_speed(global.pt_bodypart_enemy_5, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
+				part_type_direction(global.pt_bodypart_enemy_5, knockback_direction - 35, knockback_direction + 35, 0, 0);
+				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_5, 1);
 			}
 			break;
 		

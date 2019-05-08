@@ -39,19 +39,19 @@ image_speed = 1;
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
-if (distance_to_point(move_xTo, move_yTo) < 10) || (move_time <= 0){
+if (distance_to_point(move_x_to, move_y_to) < 10) || (move_time <= 0){
 	if (owner == noone) || (!instance_exists(owner)){
 		if (instance_exists(obj_player)){
 			owner = obj_player;
 			move_speed *= random_range(0.675, 0.8);
 		}else{
-			move_xTo = x + choose(-40, 40, -40, 40);
-			move_yTo = y + choose(-40, 40, -40, 40);
+			move_x_to = x + choose(-40, 40, -40, 40);
+			move_y_to = y + choose(-40, 40, -40, 40);
 		}
 	}else{
 		if (owner == obj_player) || (object_get_parent(owner) == obj_p_player){
-			move_xTo = owner.x + random_range(-18, 18);
-			move_yTo = owner.y + random_range(-18, 18);
+			move_x_to = owner.x + random_range(-18, 18);
+			move_y_to = owner.y + random_range(-18, 18);
 			
 			var csize = array_length_1d(global.companion);
 			for(var i = 0; i < csize; i ++){
@@ -64,14 +64,14 @@ if (distance_to_point(move_xTo, move_yTo) < 10) || (move_time <= 0){
 				}
 			}
 		}else{
-			move_xTo = owner.x + random_range(-30, 30);
-			move_yTo = owner.y + random_range(-30, 30);
+			move_x_to = owner.x + random_range(-30, 30);
+			move_y_to = owner.y + random_range(-30, 30);
 		}
 	}
 	
 	move_time = random_range(30, 50);
 }else{
-	var dir = point_direction(x, y, move_xTo, move_yTo);
+	var dir = point_direction(x, y, move_x_to, move_y_to);
 	x += lengthdir_x(move_speed, dir);
 	y += lengthdir_y(move_speed, dir);
 	

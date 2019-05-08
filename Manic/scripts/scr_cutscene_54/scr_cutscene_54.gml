@@ -17,12 +17,12 @@ if (instance_exists(obj_player)){
 	}else if (cutscene_ending_stage == 1){
 		var inst = instance_nearest(obj_player.x, obj_player.y, obj_antagonist_mask);
 		if (inst != noone){
-			var xTo = inst.x;
-			var yTo = inst.y;
+			var x_to = inst.x;
+			var y_to = inst.y;
 		
-			if (point_distance(obj_player.x, obj_player.y, xTo, yTo) > 15){
-				obj_player.move_xTo = xTo;
-				obj_player.move_yTo = yTo;
+			if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 15){
+				obj_player.move_x_to = x_to;
+				obj_player.move_y_to = y_to;
 				obj_player.move_extSpd = obj_player.spd_max * 0.75;
 				obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
 			}else{
@@ -43,8 +43,8 @@ if (instance_exists(obj_player)){
 			if (global.cutscene_time[index] < 200){
 				global.cutscene_time[index] ++;
 				
-				obj_player.move_xTo = obj_player.x;
-				obj_player.move_yTo = obj_player.y;
+				obj_player.move_x_to = obj_player.x;
+				obj_player.move_y_to = obj_player.y;
 				
 				if (global.cutscene_time[index] > 0){
 					obj_player.image_xscale = 1;
@@ -72,35 +72,35 @@ if (instance_exists(obj_player)){
 			global.cutscene_time[index] = 0;
 		}
 	}else if (cutscene_ending_stage == 3){
-		var xTo = 720;
-		var yTo = 458;
+		var x_to = 720;
+		var y_to = 458;
 		var gate = inst_2F004B72;
 		
 		if (instance_exists(gate)){
 			gate.open = true;
 		}
 		
-		obj_player.move_xTo = xTo;
-		obj_player.move_yTo = yTo;
-		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
+		obj_player.move_x_to = x_to;
+		obj_player.move_y_to = y_to;
+		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 		obj_player.move_extSpd = obj_player.spd_max * 0.7;
 		
-		if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 20){
+		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 20){
 			cutscene_ending_stage = 4;
 			global.cutscene_time[index] = 0;
 		}
 	}else if (cutscene_ending_stage == 4){
-		var xTo = room_width + 400;
-		var yTo = 454;
+		var x_to = room_width + 400;
+		var y_to = 454;
 		
-		obj_player.move_xTo = xTo;
-		obj_player.move_yTo = yTo;
+		obj_player.move_x_to = x_to;
+		obj_player.move_y_to = y_to;
 		obj_player.flashlight_direction = 360;
 		obj_player.move_extSpd = obj_player.spd_max * 0.7;
 		
-		if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 500){
+		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 500){
 			obj_controller_ui.ending = true;
-		}else if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 14){
+		}else if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 14){
 			stationary = true;
 		}
 	}
@@ -114,8 +114,8 @@ if (instance_exists(obj_player)){
 	}
 	
 	if (stationary){
-		obj_player.move_xTo = -1;
-		obj_player.move_yTo = -1;
+		obj_player.move_x_to = -1;
+		obj_player.move_y_to = -1;
 		obj_player.move_extSpd = 0;
 	}
 }else{

@@ -1,5 +1,5 @@
 ///scr_cutscene_52();
-var index = 52, xTo = 0, yTo = 0;
+var index = 52, x_to = 0, y_to = 0;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
@@ -7,36 +7,36 @@ obj_controller_camera.camera_screenshake_amount = 0;
 if (instance_exists(obj_player)){
 	switch(cutscene_moveto_dir){
 		case 0:
-			xTo = room_width + 120;
-			yTo = obj_player.y;
+			x_to = room_width + 120;
+			y_to = obj_player.y;
 			break;
 		
 		case 1:
-			yTo = -120;
-			xTo = obj_player.x;
+			y_to = -120;
+			x_to = obj_player.x;
 			break;
 		
 		case 2:
-			xTo = -120;
-			yTo = obj_player.y;
+			x_to = -120;
+			y_to = obj_player.y;
 			break;
 		
 		case 3:
-			yTo = room_height + 120;
-			xTo = obj_player.x;
+			y_to = room_height + 120;
+			x_to = obj_player.x;
 			break;
 	}
 	
-	global.cutscene_camera_x[index] = xTo;
-	global.cutscene_camera_y[index] = yTo;
+	global.cutscene_camera_x[index] = x_to;
+	global.cutscene_camera_y[index] = y_to;
 	obj_player.flashlight_move = false;
-	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
+	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 	
-	obj_player.move_xTo = xTo;
-	obj_player.move_yTo = yTo;
+	obj_player.move_x_to = x_to;
+	obj_player.move_y_to = y_to;
 	obj_player.move_extSpd = obj_player.spd_max;
 	
-	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 130){
+	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 130){
 		if (!obj_controller_ui.area_next_fade){
 			obj_controller_ui.area_next_fade = true;
 			

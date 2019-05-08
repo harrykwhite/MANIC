@@ -1,4 +1,4 @@
-type = EnemyOneType.Healer;
+type = Enemy0_Type.Healer;
 weapon_index = PawnWeapon.Axe;
 cutscene_prop = true;
 in_cutscene = false;

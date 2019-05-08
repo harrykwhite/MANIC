@@ -3,7 +3,7 @@ if (global.game_pause){
 	return;
 }
 
-if (collision_line(xstart, ystart, x + lengthdir_x(8, dir), y + lengthdir_y(8, dir), obj_p_solid, true, true)){
+if (place_meeting(x + lengthdir_x(10, dir), y + lengthdir_y(10, dir), obj_p_solid)){
 	instance_destroy();
 }
 

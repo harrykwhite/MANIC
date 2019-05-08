@@ -1,4 +1,4 @@
-var xTo, yTo;
+var x_to, y_to;
 var xx, yy;
 var mdist = distance_to_point(mouse_x, mouse_y);
 
@@ -28,11 +28,11 @@ if (instance_exists(obj_player)) && (!global.game_pause){
 	    }
 	
 		dir = point_direction(x, y, mouse_x, mouse_y);
-		xTo = clamp(xx, 0, room_width);
-		yTo = clamp(yy, 0, room_height);
+		x_to = clamp(xx, 0, room_width);
+		y_to = clamp(yy, 0, room_height);
 	
-		var xspd = (xTo - x) * camera_speed;
-		var yspd = (yTo - y) * camera_speed;
+		var xspd = (x_to - x) * camera_speed;
+		var yspd = (y_to - y) * camera_speed;
 	
 		x += xspd;
 		y += yspd;

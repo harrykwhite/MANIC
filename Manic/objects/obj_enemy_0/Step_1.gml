@@ -1,7 +1,7 @@
 if (destroy){
 	if (!cutscene_prop){
 		instance_destroy();
-		if (type == EnemyOneType.TrainBoss){
+		if (type == Enemy0_Type.TrainBoss){
 			with(obj_controller_levelsix){
 				train_time = 0;
 				train_timemax = 10 * 60;
@@ -26,11 +26,9 @@ if (!weapon_destroyed){
     if (weapon == -1){
         weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
-        weapon.alphaTo = 0;
     }else if (!instance_exists(weapon)){
         weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
-        weapon.alphaTo = 0;
     }
 }
 
@@ -48,7 +46,7 @@ if (!typedet){
 	weapon_original = weapon_index;
 	
 	switch(type){
-		case EnemyOneType.Mother:
+		case Enemy0_Type.Mother:
 			scale = 1.2;
 			defense = 2;
 			health_max = 9;
@@ -57,13 +55,13 @@ if (!typedet){
 			knockback_multiplier = 0.4;
 			break;
 		
-		case EnemyOneType.Grenadier:
+		case Enemy0_Type.Grenadier:
 			scale = random_range(1.1, 1.125);
 			defense = 1;
 			sprite_index = spr_enemy_0_light_idle_0;
 			break;
 		
-		case EnemyOneType.Sniper:
+		case Enemy0_Type.Sniper:
 			scale = 1.1;
 			defense = 2;
 			health_max = 8;
@@ -72,13 +70,13 @@ if (!typedet){
 			sprite_index = spr_enemy_0_light_idle_0;
 			break;
 		
-		case EnemyOneType.Crazy:
+		case Enemy0_Type.Crazy:
 			defense = 0;
 			attack_time_offset = 0.6;
 			sprite_index = spr_enemy_0_brain_idle_0;
 			break;
 		
-		case EnemyOneType.Healer:
+		case Enemy0_Type.Healer:
 			health_max = 2;
 			health_current = health_max;
 			defense = 3;
@@ -87,7 +85,7 @@ if (!typedet){
 			sprite_index = spr_enemy_0_healer_idle_0;
 			break;
 		
-		case EnemyOneType.Fly:
+		case Enemy0_Type.Fly:
 			scale = 1.125;
 			defense = 3;
 			attack_time_offset = 0.6;
@@ -101,7 +99,7 @@ if (!typedet){
 			sprite_index = spr_enemy_0_fly_idle_0;
 			break;
 			
-		case EnemyOneType.TrainBoss:
+		case Enemy0_Type.TrainBoss:
 			scale = 1.1;
 			defense = 0;
 			health_max = 45;
@@ -110,7 +108,7 @@ if (!typedet){
 			break;
 	}
 	
-	if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper) || (type == EnemyOneType.TrainBoss){
+	if (type == Enemy0_Type.Grenadier) || (type == Enemy0_Type.Sniper) || (type == Enemy0_Type.TrainBoss){
 		mylight = instance_create_layer(x, y - 9, "Lights", obj_enemy_0_light);
 	}
 	

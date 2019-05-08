@@ -113,8 +113,7 @@ if (instance_exists(obj_player)){
             gpu_set_fog(true, c_white, 0, 0);
             draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_white, 0, 0);
-			
-        }else{
+        }else if (global.level_current != Level.Prologue){
             var spr = spr_weapon_4;
 			
 			gpu_set_fog(true, c_dkgray, 0, 0);
@@ -177,12 +176,49 @@ if (screenblend_alpha > 0){
     draw_rectangle(-5, -5, dwidth + 5, dheight + 5, false);
 }
 
+// Tutourial Display
+if (tutourial) && (global.cutscene_current == -1){
+	if (tutourial_stage_timer != -1){
+		if (tutourial_stage_timer > 0){
+			tutourial_stage_timer --;
+		}else{
+			if (tutourial_stage < 4){
+				tutourial_stage ++;
+				tutourial_scale = 1.3;
+			}else{
+				tutourial = false;
+				tutourial_stage = 0;
+			}
+			
+			tutourial_stage_timer = -1;
+		}
+	}
+	
+	var scalem = wave(1, 1.025, 3.5, 0);
+	tutourial_scale = approach(tutourial_scale, 1, 7);
+	
+	draw_set_font(fnt_cambria_2);
+	draw_set_halign(fa_center);
+	draw_set_alpha(1);
+	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tutourial_stage], c_white, tutourial_scale * scalem, tutourial_scale * scalem, 0);
+	
+	draw_set_alpha(((tutourial_scale * scalem) - 1) * 2);
+	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tutourial_stage], c_maroon, tutourial_scale * scalem, tutourial_scale * scalem, 0);
+	draw_set_alpha(1);
+}
+
 // Kill Display
-if (global.level_current != Level.CityHeadquarters) && (global.level_current != Level.Prologue){
-	var text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
+if (global.level_current != Level.CityHeadquarters){
+	var text = "";
 	var textx = 40;
 	var texty = dheight - 50;
-
+	
+	if (global.level_current == Level.Prologue){
+		text = "Hunt and kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " deer.";
+	}else{
+		text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
+	}
+	
 	if (global.level_cleared[global.level_current]){
 		text = "Area cleared. Proceed to the next level."
 	}

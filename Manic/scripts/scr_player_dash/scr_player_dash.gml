@@ -7,7 +7,7 @@ if (in_minecart){
 for(var i = 0; i < (dash_speed) + 1; i ++){
 	var inst = instance_place(x + lengthdir_x(i, dash_direction), y + lengthdir_y(i, dash_direction), obj_p_solid);
 	
-	if (global.cutscene_current != -1) || ((move_xTo != -1) && (move_yTo != -1)) || (dash_length_current >= dash_length) || (inst != noone){
+	if (global.cutscene_current != -1) || ((move_x_to != -1) && (move_y_to != -1)) || (dash_length_current >= dash_length) || (inst != noone){
 		/*if (inst != noone){
 			scr_env_objects();
 			len = array_length_1d(envobject);

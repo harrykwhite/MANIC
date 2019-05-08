@@ -33,7 +33,8 @@
         "5393ed09-27f0-4e9a-acfc-a81c2ae45f73",
         "ba13abc3-9534-4e9e-acbd-d90663a0fbca",
         "f9231b29-5e81-43c9-9978-fdebc4e6ddb3",
-        "5c3f66a8-902d-4494-ad94-cd2c422cc87a"
+        "5c3f66a8-902d-4494-ad94-cd2c422cc87a",
+        "e0e411e9-12ed-4571-af2f-1d92691e9a9d"
     ],
     "filterType": "GMSprite",
     "folderName": "Interior",

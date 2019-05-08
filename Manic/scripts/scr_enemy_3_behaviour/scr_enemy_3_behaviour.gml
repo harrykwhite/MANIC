@@ -20,10 +20,8 @@ if (instance_exists(target)){
 				
 				var xpos = x + lengthdir_x(10, image_angle) + lengthdir_x(4, up(image_angle));
 				var ypos = y + lengthdir_y(10, image_angle) + lengthdir_y(4, up(image_angle));
-				part_type_direction(global.pt_flash_0, image_angle - 15, image_angle + 15, 0, 0);
-				part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
-		        part_type_direction(global.pt_smoke_5, image_angle - 15, image_angle + 15, 0, 0);
-				part_particles_create(global.ps_front, xpos + lengthdir_x(8, image_angle) + random_range(-3, 3), ypos + lengthdir_y(8, image_angle) + random_range(-3, 3), global.pt_smoke_5, 1);
+				part_type_direction(global.pt_smoke_5, image_angle - 6, image_angle + 6, 0, 0);
+				part_particles_create(global.ps_front, xpos + lengthdir_x(3, image_angle) + random_range(-3, 3), ypos + lengthdir_y(3, image_angle) + random_range(-3, 3), global.pt_smoke_5, 2);
 				
 				var bullet = instance_create(x, y, obj_proj_0);
 				bullet.enemy = true;

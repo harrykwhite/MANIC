@@ -1,4 +1,4 @@
-type = EnemyOneType.Sniper;
+type = Enemy0_Type.Sniper;
 weapon_index = PawnWeapon.SniperRifle;
 cutscene_prop = true;
 in_cutscene = false;

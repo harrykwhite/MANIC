@@ -46,7 +46,7 @@ if (instance_exists(target)){
 		while(instance_number(obj_p_enemy) < 7){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Axe, PawnWeapon.Crowbar);
-			enemy.type = EnemyOneType.Normal;
+			enemy.type = Enemy0_Type.Normal;
 			
 			repeat(9){
 				part_particles_create(global.ps_front, enemy.x + random_range(-7, 7), enemy.y + random_range(-18, 18), global.pt_spawn_0, 1);

@@ -104,9 +104,11 @@ if (instance_exists(obj_player)){
 	            obj_controller_ui.weaponslot_shake = 4;
 	            obj_controller_ui.weaponslot_weaponscale[global.weapon_slotcurrent] = 0;
 				
-				if (instance_exists(global.weapon_object[oldweapon])){
-					with(global.weapon_object[oldweapon]) instance_destroy(); // Destroy the old weapon.
-		        }
+				if (oldweapon != -1){
+					if (instance_exists(global.weapon_object[oldweapon])){
+						instance_destroy(global.weapon_object[oldweapon]); // Destroy the old weapon.
+			        }
+				}
 				
 				global.weapon_slot[global.weapon_slotcurrent] = index;
 				var weapon_dropindex;
@@ -117,7 +119,7 @@ if (instance_exists(obj_player)){
 					weapon_dropindex = index;
 				}
 				
-				if (weapon_dropindex != 4) && (weapon_dropindex != -1){ // If it is not a knife.
+				if (weapon_dropindex != 4) && (weapon_dropindex != -1){ // If it is not a knife or empty.
 					var drop = instance_create(obj_player.x + random_range(-6, 6), obj_player.y + random_range(-6, 6), obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
 					drop.index = weapon_dropindex;
 					drop.ammo = dropammo;
@@ -141,6 +143,13 @@ if (instance_exists(obj_player)){
 				global.weapon_collected[index] = true;
 				
 	            instance_destroy(); // Destroy this weapondrop object as it has been picked up.
+				
+				if (global.level_current == Level.Prologue){
+					if (obj_controller_ui.tutourial_stage == 1){
+						obj_controller_ui.tutourial_stage = 2;
+						obj_controller_ui.tutourial_scale = 1.3;
+					}
+				}
 				
 				with(obj_controller_mouse){
 					mouse_alpha = 0.25;

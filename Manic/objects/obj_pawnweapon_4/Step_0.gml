@@ -3,17 +3,12 @@ if (global.game_pause){
 	return;
 }
 
-alpha = approach(alpha, alphaTo, 40);
-image_alpha = alpha;
-
 // Attacking
 if (attack_time > 0){
     attack_time--;
 }
 
 if (instance_exists(owner)){
-    alphaTo = 1;
-
     if (attack){
 		if (throw_offset < 40){
 			throw_offset ++;

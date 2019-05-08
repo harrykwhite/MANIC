@@ -5,7 +5,12 @@ if (scr_pawn_weapon_endstepcan()){
 		y = owner.arm.y + lengthdir_y(6 * owner.scale, dir);
 	
 		image_angle = dir;
-		image_yscale = 1;
+		
+		if (angle_offset_current < 0){
+			image_yscale = 1;
+		}else{
+			image_yscale = -1;
+		}
 	}
 
 	if (attack_active){

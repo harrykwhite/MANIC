@@ -1,5 +1,7 @@
 // Variables
 var spd_multiplier = spd_offset;
+var weapon_index = global.weapon_slot[global.weapon_slotcurrent];
+var has_weapon = (weapon_index != -1) || (global.level_current != Level.Prologue);
 var footstep_wood, footstep_road, footstep_tile;
 footstep_sound = global.player_footstep_default;
 
@@ -40,8 +42,10 @@ if (global.weapon_slot_standalone == -1){
 		spd_multiplier += 0.2;
 	}
 	
-	if (global.weapon_heavy[global.weapon_slot[global.weapon_slotcurrent]]){
-	    spd_multiplier -= 0.1;
+	if (has_weapon){
+		if (global.weapon_heavy[global.weapon_slot[global.weapon_slotcurrent]]){
+		    spd_multiplier -= 0.1;
+		}
 	}
 
 	if (global.player_health_current <= 2){
@@ -105,31 +109,30 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
-	    if (global.player_weapon != -1){
-	        if (!global.weapon_heavy[global.player_weapon]){
+	    if (has_weapon){
+	        if (!global.weapon_heavy[weapon_index]){
 	            sprite_index = spr_player_idle_0;
 	        }else{
 	            sprite_index = spr_player_idle_2;
 	        }
-        
 	    }else{
 	        sprite_index = spr_player_idle_1;
 	    }
 	}else{
-	    // Movement
-	     if (global.player_weapon != -1){
-			if (!global.weapon_heavy[global.player_weapon]){
+		// Movement
+	    if (has_weapon){
+			if (!global.weapon_heavy[weapon_index]){
 				sprite_index = spr_player_walk_0;
 			}else{
 				sprite_index = spr_player_walk_2;
 			}
-	     }else{
+		}else{
 			sprite_index = spr_player_walk_1;
-	     }
+	    }
 	}
 
 	// Knockback
-	if (knockback) && (move_xTo == -1) && (move_yTo == -1) && (global.cutscene_current == -1){
+	if (knockback) && (move_x_to == -1) && (move_y_to == -1) && (global.cutscene_current == -1){
 		for(var i = knockback_speed + 3; i > -1; i--){
 		    if (place_meeting(x + lengthdir_x(i, knockback_direction), y + lengthdir_y(i, knockback_direction), obj_p_solid)) || (knockback_speed <= 0.2){
 				knockback_speed = 0;
@@ -147,7 +150,7 @@ if (global.weapon_slot_standalone == -1){
 		knockback_speed = 0;
 	}
 	
-	if (key_dash) && (dash_time <= 0) && (global.cutscene_current == -1) && (move_xTo == -1) && (move_yTo == -1){
+	if (key_dash) && (dash_time <= 0) && (global.cutscene_current == -1) && (move_x_to == -1) && (move_y_to == -1){
 		dash_length = 55;
 		dash_speed = spd_max * 3.65;
 		dash_time = 18;
@@ -183,6 +186,14 @@ if (global.weapon_slot_standalone == -1){
 			}
 		}
 		
+		if (global.level_current == Level.Prologue){
+			with(obj_controller_ui){
+				if (tutourial) && (tutourial_stage == 4) && (tutourial_stage_timer == -1){
+					tutourial_stage_timer = 60 * 3;
+				}
+			}
+		}
+		
 	    state = scr_player_dash;
 	    return;
 	}
@@ -201,7 +212,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 	
 	// Movement
-	if (move_xTo == -1) && (move_yTo == -1){
+	if (move_x_to == -1) && (move_y_to == -1){
 		if (global.cutscene_current == -1){
 			if ((xaxis == 0) && (yaxis == 0)){
 			    len = 0;
@@ -220,10 +231,10 @@ if (global.weapon_slot_standalone == -1){
 			img_speed = 0.03;
 		}
 	}else{
-		dir = point_direction(x, y, move_xTo, move_yTo);
+		dir = point_direction(x, y, move_x_to, move_y_to);
 		sprite_index = spr_player_walk_1;
 		
-		if (distance_to_point(move_xTo, move_yTo) < 7){
+		if (distance_to_point(move_x_to, move_y_to) < 7){
 		    len = 0;
 		}else{
 			var spd = move_extSpd;
@@ -263,14 +274,14 @@ if (global.weapon_slot_standalone == -1){
 }
 
 // Sprite Flip
-if (move_xTo == -1) && (move_yTo == -1) && (global.cutscene_current == -1){
+if (move_x_to == -1) && (move_y_to == -1) && (global.cutscene_current == -1){
 	if (mouse_x > x){
 		image_xscale = 1;
 	}else{
 		image_xscale = -1;
 	}
 }else{
-	if (move_xTo > x){
+	if (move_x_to > x){
 		image_xscale = 1;
 	}else{
 		image_xscale = -1;
@@ -288,9 +299,9 @@ if (global.cutscene_current != -1){
 scr_player_collision();
 
 // Hspd and Vspd
-if (move_xTo == -1) && (move_yTo == -1){
+if (move_x_to == -1) && (move_y_to == -1){
 	x += hspd;
 	y += vspd;
 }else{
-	mp_potential_step_object(move_xTo, move_yTo, len, obj_p_solid);
+	mp_potential_step_object(move_x_to, move_y_to, len, obj_p_solid);
 }

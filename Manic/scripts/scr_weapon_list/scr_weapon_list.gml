@@ -37,7 +37,8 @@ enum PlayerWeapon{
 	DartPistol,
 	MountedMachineGunCart,
 	WireCables,
-	DartRifle
+	DartRifle,
+	HuntingRifle,
 }
 
 enum AmmoType{
@@ -376,6 +377,17 @@ global.weapon_ammotype[31] = AmmoType.Darts;
 global.weapon_camerarange[31] = 35;
 global.weapon_mouse[31] = MouseType.SmallCrosshair;
 global.weapon_dualhanded[31] = false;
+
+global.weapon_name[32] = "Hunting Rifle";
+global.weapon_object[32] = obj_weapon_32;
+global.weapon_sprite[32] = spr_weapon_32;
+global.weapon_type[32] = WeaponType.Ranged;
+global.weapon_heavy[32] = true;
+global.weapon_ammomax[32] = 8;
+global.weapon_ammotype[32] = AmmoType.Bullets;
+global.weapon_camerarange[32] = 40;
+global.weapon_mouse[32] = MouseType.Crosshair;
+global.weapon_dualhanded[32] = false;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];

@@ -7,12 +7,12 @@ obj_controller_camera.camera_screenshake_amount = 0;
 if (instance_exists(obj_player)){
 	if (obj_controller_ui.game_opening_intro_alpha < 1){
 		if (abs(obj_controller_camera.x - obj_player.x) > 10){
-			if (cutscene_prologue_opening_camspeed < 0.6){
-				cutscene_prologue_opening_camspeed += 0.02;
+			if (cutscene_prologue_opening_camspeed < 0.8){
+				cutscene_prologue_opening_camspeed += 0.025;
 			}
 		}else{
 			if (cutscene_prologue_opening_camspeed > 0){
-				cutscene_prologue_opening_camspeed -= 0.02;
+				cutscene_prologue_opening_camspeed -= 0.025;
 			}
 			
 			if (global.cutscene_time[index] < 120){

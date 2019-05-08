@@ -1,14 +1,13 @@
 // Equipment
-global.player_weapon = global.weapon_slot[global.weapon_slotcurrent];
 var weapon;
 
-if (global.player_weapon != -1){
-    weapon = global.weapon_object[global.player_weapon];
+if (global.weapon_slot[global.weapon_slotcurrent] != -1){
+    weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
     
     if (!instance_exists(weapon)){
         instance_create(x, y, weapon);
     }
-}else{
+}else if (global.level_current != Level.Prologue){
 	global.weapon_slot[global.weapon_slotcurrent] = 4;
 	
     if (!instance_exists(global.weapon_object[4])){

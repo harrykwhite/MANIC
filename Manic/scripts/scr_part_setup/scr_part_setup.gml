@@ -31,6 +31,7 @@ scr_part_type_bodypart_enemy_1();
 scr_part_type_bodypart_enemy_2();
 scr_part_type_bodypart_enemy_3();
 scr_part_type_bodypart_enemy_4();
+scr_part_type_bodypart_enemy_5();
 scr_part_type_bodypart_giantturret_0();
 scr_part_type_bodypart_giantturret_flamethrower_0();
 scr_part_type_bodypart_thedogkeeper_0();
@@ -67,8 +68,6 @@ scr_part_type_burst_3();
 
 scr_part_type_toxic_0();
 scr_part_type_toxic_1();
-
-scr_part_type_flash_0();
 
 scr_part_type_fire_0();
 scr_part_type_fire_1();

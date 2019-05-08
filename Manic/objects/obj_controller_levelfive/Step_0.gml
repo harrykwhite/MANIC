@@ -3,16 +3,21 @@ var player_exists = instance_exists(player);
 scr_position_view();
 sniper_can_spawn = global.game_firstsniper_killed;
 
+var camx = camera_get_view_x(view_camera[0]);
+var camy = camera_get_view_y(view_camera[0]);
+var camw = camera_get_view_width(view_camera[0]);
+var camh = camera_get_view_height(view_camera[0]);
+
 if (!global.game_pause){
 	
 	// Dust
-	if (random(5) < 1) part_particles_create(global.ps_front, random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0])), random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])), global.pt_dust_0, 1);
-	if (random(10) < 1) part_particles_create(global.ps_front, random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0])), random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])), global.pt_dust_1, 1);
+	if (random(5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
+	if (random(10) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
 	
 	// Fog
 	if (random(2.5) < 1){
 		if (part_particles_count(global.pt_smoke_3) < 40){
-			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_smoke_3, 1);
 		}
 	}
 }
@@ -61,13 +66,13 @@ if (player_exists){
 	
 		if (spawn){
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
-				var xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
-				var ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
+				var xpos = random_range(camx - 10, camx + camw + 10);
+				var ypos = random_range(camy - 10, camy + camh + 10);
 				var spawn_trial = 0;
 				
 				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80){
-					xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
-					ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
+					xpos = random_range(camx - 10, camx + camw + 10);
+					ypos = random_range(camy - 10, camy + camh + 10);
 					spawn_trial ++;
 				
 					if (spawn_trial > 1000){
@@ -96,17 +101,17 @@ if (player_exists){
 					if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 						enemy.move_speed_offset = 1.45;
 						enemy.attack_time = 45;
-						enemy.type = EnemyOneType.Normal
+						enemy.type = Enemy0_Type.Normal
 					}else{
 						if (spawn_rate > 0.9){
 							if (global.boss_current == -1) && (room != rm_level_5_02){
 								if (chance(3.5)){
-									enemy.type = EnemyOneType.Mother;
+									enemy.type = Enemy0_Type.Mother;
 								}
 							
 								if (sniper_can_spawn){
 									if (chance(4)){
-										enemy.type = EnemyOneType.Sniper;
+										enemy.type = Enemy0_Type.Sniper;
 									}
 								}
 							}
@@ -115,26 +120,26 @@ if (player_exists){
 						if (spawn_rate > 1.4){
 							if (global.boss_current == -1) && (room != rm_level_5_02){
 								if (chance(4)){
-									enemy.type = EnemyOneType.Mother;
+									enemy.type = Enemy0_Type.Mother;
 								}
 						
 								if (sniper_can_spawn){
 									if (chance(5)){
-										enemy.type = EnemyOneType.Sniper;
+										enemy.type = Enemy0_Type.Sniper;
 									}
 								}
 							}
 						}
 				
 						if (chance(8)){
-							enemy.type = EnemyOneType.Crazy;
+							enemy.type = Enemy0_Type.Crazy;
 						}
 				
 						if (weapon == PawnWeapon.Grenade){
-							enemy.type = EnemyOneType.Grenadier;
+							enemy.type = Enemy0_Type.Grenadier;
 						}
 				
-						if (enemy.type == EnemyOneType.Sniper){
+						if (enemy.type == Enemy0_Type.Sniper){
 							weapon = PawnWeapon.SniperRifle;
 						}
 					}

@@ -5,19 +5,19 @@ var face_target = false;
 target = obj_player;
 
 switch(type){
-	case EnemyOneType.Grenadier:
+	case Enemy0_Type.Grenadier:
 		speed_multiplier -= 0.15;
 		break;
 	
-	case EnemyOneType.Sniper:
+	case Enemy0_Type.Sniper:
 		speed_multiplier -= 0.2;
 		break;
 	
-	case EnemyOneType.Healer:
+	case Enemy0_Type.Healer:
 		speed_multiplier -= 0.2;
 		break;
 	
-	case EnemyOneType.Mother:
+	case Enemy0_Type.Mother:
 		speed_multiplier -= 0.075;
 		if (health_current <= health_max / 1.5){
 			speed_multiplier += 0.35;
@@ -28,7 +28,7 @@ switch(type){
 		}
 		break;
 	
-	case EnemyOneType.Fly:
+	case Enemy0_Type.Fly:
 		speed_multiplier -= 0.4;
 		break;
 }
@@ -42,17 +42,17 @@ if (instance_exists(target)){
 			sporadic_time ++;
 		}else{
 			var dir_to = point_direction(x, y, target.x, target.y + 6);
-			move_xTo = x + lengthdir_x(200, dir_to + random_range(-20, 20));
-			move_yTo = y + lengthdir_y(200, dir_to + random_range(-20, 20));
+			move_x_to = x + lengthdir_x(200, dir_to + random_range(-20, 20));
+			move_y_to = y + lengthdir_y(200, dir_to + random_range(-20, 20));
 			sporadic_time = 0;
 			face_target = true;
 		}
 	}else{
-		move_xTo = target.x;
-		move_yTo = target.y + 6;
+		move_x_to = target.x;
+		move_y_to = target.y + 6;
 	}
 	
-	if (type == EnemyOneType.Healer) && (healer_instance != noone) && (instance_exists(healer_instance)){
+	if (type == Enemy0_Type.Healer) && (healer_instance != noone) && (instance_exists(healer_instance)){
 		if (distance_to_object(healer_instance) < 7){
 			healer_instance.move_speed = 0;
 			if (healer_healtime > 0){
@@ -80,8 +80,8 @@ if (instance_exists(target)){
 			}
 		}else{
 			move_speed = 2.65;
-			move_xTo = healer_instance.x;
-			move_yTo = healer_instance.y;
+			move_x_to = healer_instance.x;
+			move_y_to = healer_instance.y;
 			
 			if (weapon_exists){
 				weapon.dir = point_direction(x, y, healer_instance.x, healer_instance.y);
@@ -111,8 +111,8 @@ if (instance_exists(target)){
 					var nearest = instance_nearest(x, y, global.companion[i]);
 					if (distance_to_object(nearest) < 50){
 						target = nearest;
-						move_xTo = target.x;
-						move_yTo = target.y + 6;
+						move_x_to = target.x;
+						move_y_to = target.y + 6;
 						
 						if (companion_attack_time < companion_attack_time_max){
 							companion_attack_time ++;
@@ -129,7 +129,7 @@ if (instance_exists(target)){
 			companion_attack_break ++;
 		}
 	
-		if (type == EnemyOneType.Grenadier){
+		if (type == Enemy0_Type.Grenadier){
 			var inst = instance_nearest(x, y, obj_throwobject_1);
 		
 			if (instance_exists(inst)) && (inst != noone){
@@ -138,8 +138,8 @@ if (instance_exists(target)){
 				if (distance_to_object(inst) < 33){
 				
 					wait = 60;
-					move_xTo = x + lengthdir_x(20, dir);
-					move_yTo = y + lengthdir_y(20, dir);
+					move_x_to = x + lengthdir_x(20, dir);
+					move_y_to = y + lengthdir_y(20, dir);
 				
 					wait_stop_movement = false;
 					wait_negate = false;
@@ -151,7 +151,7 @@ if (instance_exists(target)){
 			}
 		}
 		
-		if (distance_to_point(move_xTo, move_yTo) > mindist){
+		if (distance_to_point(move_x_to, move_y_to) > mindist){
 			move_speed = 1;
 		}else{
 			move_speed = 0;
@@ -160,15 +160,15 @@ if (instance_exists(target)){
 		if (weapon_exists){
 			weapon.dir = point_direction(x, y, target.x, target.y + 6);
 			
-			if (type == EnemyOneType.Sniper){
+			if (type == Enemy0_Type.Sniper){
 				if (weapon.attack_time < weapon.attack_time_max / 3){
 					speed_multiplier = 0;
 				}
 			}
 			
-			if (!collision_line(x, y, move_xTo, move_yTo, obj_p_solid, false, true)) && (global.cutscene_current == -1){
+			if (!collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)) && (global.cutscene_current == -1){
 				if (distance_to_point(target.x, target.y + 6) < mindist + 10) && (livetime > 80){
-					if (type != EnemyOneType.Sniper){
+					if (type != Enemy0_Type.Sniper){
 						if (attack_time > 0){
 							attack_time--;
 						}else{
@@ -178,7 +178,7 @@ if (instance_exists(target)){
 								time *= 2;
 							}
 				
-							if (type == EnemyOneType.Grenadier){
+							if (type == Enemy0_Type.Grenadier){
 								if (weapon.index != PawnWeapon.Grenade){
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, obj_pawnweapon_4);
@@ -204,7 +204,7 @@ if (instance_exists(target)){
 			}
 		}
 		
-		if (type == EnemyOneType.Healer){
+		if (type == Enemy0_Type.Healer){
 			if (health_current < health_max){
 				speed_multiplier = 0;
 				if (healer_healselftime > 0){
@@ -279,11 +279,11 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
+mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 
 // Facing
 if (!face_target){
-	if (move_xTo > x){
+	if (move_x_to > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;
@@ -304,25 +304,25 @@ if (instance_exists(weapon)){
 	
 	switch(type){
 		
-		case EnemyOneType.Grenadier:
+		case Enemy0_Type.Grenadier:
 			Idle0 = spr_enemy_0_light_idle_0; Walk0 = spr_enemy_0_light_walk_0;
 			Idle1 = spr_enemy_0_light_idle_1; Walk1 = spr_enemy_0_light_walk_1;
 			Idle2 = spr_enemy_0_light_idle_2; Walk2 = spr_enemy_0_light_walk_2;
 			break;
 			
-		case EnemyOneType.Sniper:
+		case Enemy0_Type.Sniper:
 			Idle0 = spr_enemy_0_light_idle_0; Walk0 = spr_enemy_0_light_walk_0;
 			Idle1 = spr_enemy_0_light_idle_1; Walk1 = spr_enemy_0_light_walk_1;
 			Idle2 = spr_enemy_0_light_idle_2; Walk2 = spr_enemy_0_light_walk_2;
 			break;
 		
-		case EnemyOneType.Fly:
+		case Enemy0_Type.Fly:
 			Idle0 = spr_enemy_0_fly_idle_0; Walk0 = spr_enemy_0_fly_walk_0;
 			Idle1 = spr_enemy_0_fly_idle_1; Walk1 = spr_enemy_0_fly_walk_1;
 			Idle2 = spr_enemy_0_fly_idle_2; Walk2 = spr_enemy_0_fly_walk_2;
 			break;
 			
-		case EnemyOneType.Healer:
+		case Enemy0_Type.Healer:
 			Idle0 = spr_enemy_0_healer_idle_0; Walk0 = spr_enemy_0_healer_walk_0;
 			Idle1 = spr_enemy_0_healer_idle_1; Walk1 = spr_enemy_0_healer_walk_1;
 			Idle2 = spr_enemy_0_healer_idle_2; Walk2 = spr_enemy_0_healer_walk_2;
@@ -335,14 +335,14 @@ if (instance_exists(weapon)){
 			break;
 	}
 	
-	if (speed_final < 0.1){
+	if (speed_final <= 0.1){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 
-if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else{
 	image_speed = (speed_final * 0.165);

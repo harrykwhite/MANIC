@@ -2,24 +2,29 @@ var player = obj_player;
 var player_exists = instance_exists(player);
 scr_position_view();
 
+var camx = camera_get_view_x(view_camera[0]);
+var camy = camera_get_view_y(view_camera[0]);
+var camw = camera_get_view_width(view_camera[0]);
+var camh = camera_get_view_height(view_camera[0]);
+
 if (!global.game_pause){
 	
 	// Dust
-	if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0])), random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])), global.pt_dust_2, 1);
-	if (random(6.5) < 1) part_particles_create(global.ps_front, random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0])), random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])), global.pt_dust_0, 1);
-	if (random(8.5) < 1) part_particles_create(global.ps_front, random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0])), random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])), global.pt_dust_1, 1);
+	if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
+	if (random(6.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
+	if (random(8.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
 
 	// Tumbleweed
 	if (random(200) < 1){
 		if (instance_number(obj_environment_tumbleweed) < 5){
-			var xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
-			var yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
+			var xx = random_range(camx, camx + camw);
+			var yy = random_range(camy, camy + camh);
 			var safe = 0;
 			
 			if (player_exists){
 				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
-					xx = random_range(camera_get_view_x(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]));
-					yy = random_range(camera_get_view_y(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]));
+					xx = random_range(camx, camx + camw);
+					yy = random_range(camy, camy + camh);
 		
 					if (safe < 100){
 						safe ++;
@@ -38,7 +43,7 @@ if (!global.game_pause){
 	// Fog
 	if (random(3) < 1){
 		if (part_particles_count(global.pt_smoke_3) < 40){
-			part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), global.pt_smoke_3, 1);
+			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_smoke_3, 1);
 		}
 	}
 }
@@ -88,13 +93,13 @@ if (player_exists){
 		if (spawn){
 		
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
-				var xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
-				var ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
+				var xpos = random_range(camx - 10, camx + camw + 10);
+				var ypos = random_range(camy - 10, camy + camh + 10);
 				var spawn_trial = 0;
 				
 				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80) || (place_meeting(xpos, ypos, obj_campfire_0)){
-					xpos = random_range(camera_get_view_x(view_camera[0]) - 10, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 10);
-					ypos = random_range(camera_get_view_y(view_camera[0]) - 10, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 10);
+					xpos = random_range(camx - 10, camx + camw + 10);
+					ypos = random_range(camy - 10, camy + camh + 10);
 					spawn_trial ++;
 				
 					if (spawn_trial > 1000){
@@ -119,16 +124,16 @@ if (player_exists){
 					if (spawn_rate > 1.5){
 						if (global.boss_current == -1){
 							if (chance(5)){
-								enemy.type = EnemyOneType.Mother;
+								enemy.type = Enemy0_Type.Mother;
 							}
 						}
 					}
 				
 					if (weapon == PawnWeapon.Grenade){
-						enemy.type = EnemyOneType.Grenadier;
+						enemy.type = Enemy0_Type.Grenadier;
 					}
 				
-					if (enemy.type == EnemyOneType.Sniper){
+					if (enemy.type == Enemy0_Type.Sniper){
 						weapon = PawnWeapon.SniperRifle;
 					}
 				

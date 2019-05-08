@@ -3,15 +3,11 @@ if (global.game_pause){
 	return;
 }
 
-alpha = approach(alpha, alphaTo, 40);
-image_alpha = alpha;
-
 // Attacking
 if (instance_exists(owner)){
 	var attack_time_multiplier = 1;
-    alphaTo = 1;
 	
-	if (owner.type == EnemyOneType.TrainBoss){
+	if (owner.type == Enemy0_Type.TrainBoss){
 		if (owner.health_current <= (owner.health_max / 2)){
 			attack_time_multiplier += 0.1;
 		}
@@ -41,10 +37,8 @@ if (instance_exists(owner)){
 		scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
 		owner.light_brightness = 1.25;
 		
-		part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);
-		part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
-	    part_type_direction(global.pt_smoke_5, dir - 17, dir + 17, 0, 0);
-		part_particles_create(global.ps_front, xpos + lengthdir_x(5, dir) + random_range(-3, 3), ypos + lengthdir_y(5, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+		part_type_direction(global.pt_smoke_5, dir - 6, dir + 6, 0, 0);
+        part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
 		
 		if (owner.pawn == PawnType.Companion){
 			isEnemy = false;
@@ -68,7 +62,7 @@ if (instance_exists(owner)){
 		angle_offset = 10;
 		
 		if (owner.pawn == PawnType.Enemy){
-			if (owner.type == EnemyOneType.TrainBoss){
+			if (owner.type == Enemy0_Type.TrainBoss){
 				if (owner.health_current >= (owner.health_max / 1.875)){
 					with(owner){
 						sniperboss_melee = true;

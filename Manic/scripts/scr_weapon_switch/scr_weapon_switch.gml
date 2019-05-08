@@ -1,4 +1,3 @@
-// ** MUST BE CALLED WITHIN obj_controller_gameplay **
 ///@param increment
 ///@param to
 var old_weapon, to = -1, increment = argument[0];
@@ -55,8 +54,8 @@ if (global.weapon_slot_standalone != -1){
 }
 
 if (old_weaponslot != -1) {
-    if (instance_exists(old_weapon)) {
-        with(global.weapon_object[old_weaponslot]) instance_destroy();
+    if (instance_exists(old_weapon)){
+        instance_destroy(global.weapon_object[old_weaponslot]);
     }
 }
 

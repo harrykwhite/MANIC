@@ -1,19 +1,19 @@
 ///scr_cutscene_51();
 var index = 51;
-var xTo = 0, yTo = 0;
+var x_to = 0, y_to = 0;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
-	xTo = cutscene_trainopening_inst.x;
-	yTo = cutscene_trainopening_inst.y + 12;
-	global.cutscene_camera_x[index] = xTo;
-	global.cutscene_camera_y[index] = yTo;
+	x_to = cutscene_trainopening_inst.x;
+	y_to = cutscene_trainopening_inst.y + 12;
+	global.cutscene_camera_x[index] = x_to;
+	global.cutscene_camera_y[index] = y_to;
 	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = 90;
 	
-	if (point_distance(obj_player.x, obj_player.y, xTo, yTo) < 20){
+	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 20){
 		obj_player.move_extSpd = 0;
 		obj_player.sprite_index = spr_player_idle_1;
 		obj_player.image_speed = 0;
@@ -47,8 +47,8 @@ if (instance_exists(obj_player)){
 				break;
 		}*/
 	}else{
-		obj_player.move_xTo = xTo;
-		obj_player.move_yTo = yTo;
+		obj_player.move_x_to = x_to;
+		obj_player.move_y_to = y_to;
 		obj_player.move_extSpd = obj_player.spd_max;
 	}
 }else{

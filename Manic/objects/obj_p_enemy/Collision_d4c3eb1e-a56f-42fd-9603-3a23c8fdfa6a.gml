@@ -3,7 +3,7 @@ if (object_index == obj_enemy_0){
 		return;
 	}
 	
-	if (type == EnemyOneType.TrainBoss){
+	if (type == Enemy0_Type.TrainBoss){
 		return;
 	}
 }

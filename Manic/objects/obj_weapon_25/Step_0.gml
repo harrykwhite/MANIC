@@ -27,10 +27,8 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
 			scr_camera_to_player();
 			scr_sound_play(snd_weapon_shotgun_0, false, 0.8, 1.2);
 
-	        part_type_direction(global.pt_flash_0, dir - 25, dir + 25, 0, 0);
-			repeat(2) part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 1);
-	        part_type_direction(global.pt_smoke_5, dir - 25, dir + 25, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+	        part_type_direction(global.pt_smoke_5, dir - 6, dir + 6, 0, 0);
+			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
 		}
 		
 		scr_player_knockback_initiate(0.5, mdir);
@@ -40,7 +38,7 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
         image_speed = 1;
         
 		repeat(3){
-			shoot = instance_create(xpos, ypos, obj_proj_0);
+			var shoot = instance_create(xpos, ypos, obj_proj_0);
 			shoot.damage = shoot_damage;
 			shoot.damage_change = -0.2;
 			shoot.strength = shoot_strength;

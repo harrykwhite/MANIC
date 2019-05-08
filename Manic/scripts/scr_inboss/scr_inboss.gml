@@ -5,19 +5,19 @@ if (instance_exists(obj_enemy_0)){
 	for(var i = 0; i < count; i ++){
 		inst = instance_find(obj_enemy_0, i);
 		
-		if (inst.type == EnemyOneType.Mother){
+		if (inst.type == Enemy0_Type.Mother){
 			global.boss_current = Boss.MotherRobot;
 			return true;
 		}
 		
-		if (inst.type == EnemyOneType.Sniper){
+		if (inst.type == Enemy0_Type.Sniper){
 			if (!inst.cutscene_prop){
 				global.boss_current = Boss.SniperRobot;
 				return true;
 			}
 		}
 		
-		if (inst.type == EnemyOneType.TrainBoss){
+		if (inst.type == Enemy0_Type.TrainBoss){
 			global.boss_current = Boss.TrainBoss;
 			return true;
 		}

@@ -25,7 +25,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
         part_particles_create(global.ps_front, xpos + lengthdir_x(10, mdir) + random_range(-3, 3), ypos + lengthdir_y(10, mdir) + random_range(-3, 3), global.pt_smoke_5, 1);
 		scr_mouse_control(MouseType.SmallCrosshair, 2.5, 15);
 		
-	    shoot = instance_create(xpos, ypos, obj_proj_6);
+	    var shoot = instance_create(xpos, ypos, obj_proj_6);
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
 	    shoot.dir = mdir + random_range(-shoot_range, shoot_range);

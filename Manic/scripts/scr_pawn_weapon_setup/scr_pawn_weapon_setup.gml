@@ -9,9 +9,6 @@ attack = false;
 
 dir = 0;
 
-alpha = 0;
-alphaTo = 0;
-
 throw_offset = 0;
 
 attack_active = false;

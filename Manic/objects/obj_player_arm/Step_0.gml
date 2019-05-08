@@ -16,7 +16,7 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 		return;
 	}
 	
-	if (obj_player.move_xTo == -1) && (obj_player.move_yTo == -1) && (global.cutscene_current == -1){
+	if (obj_player.move_x_to == -1) && (obj_player.move_y_to == -1) && (global.cutscene_current == -1){
 		
 		// Bobbing -----------------------------------------------------------------------------------------------------
 	    var img = floor(obj_player.img_index);
@@ -74,7 +74,7 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 	            x = obj_player.x - 3;
 	            y = (obj_player.y - 4) + yoffset;
             
-				if (obj_player.move_xTo == -1) && (obj_player.move_yTo == -1){
+				if (obj_player.move_x_to == -1) && (obj_player.move_y_to == -1){
 					if (global.weapon_type[wcurrent] == WeaponType.Throwing){
 						image_angle = dir + global.weapon_object[wcurrent].throw_offset;
 					}else{
@@ -90,7 +90,7 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 	            x = obj_player.x + 3;
 	            y = (obj_player.y - 4) + yoffset;
             
-				if (obj_player.move_xTo == -1) && (obj_player.move_yTo == -1){
+				if (obj_player.move_x_to == -1) && (obj_player.move_y_to == -1){
 					if (global.weapon_type[wcurrent] == WeaponType.Throwing){
 						image_angle = dir - global.weapon_object[wcurrent].throw_offset;
 					}else{

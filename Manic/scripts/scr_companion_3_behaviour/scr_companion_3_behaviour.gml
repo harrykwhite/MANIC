@@ -24,8 +24,8 @@ if (instance_exists(obj_player)){
 			}
 		
 			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52){
-				move_xTo = obj_player.x;
-				move_yTo = obj_player.y;
+				move_x_to = obj_player.x;
+				move_y_to = obj_player.y;
 				move_speed = 1.8;
 				
 				if (distance_to_object(obj_player) > 100 + (30 * order)){
@@ -34,7 +34,7 @@ if (instance_exists(obj_player)){
 			
 				face_player = true;
 			}else if (global.cutscene_current != 2){
-				if (distance_to_point(move_xTo, move_yTo) > 40){
+				if (distance_to_point(move_x_to, move_y_to) > 40){
 					move_speed = 1.3;
 					move_time = 35;
 				}else{
@@ -48,13 +48,13 @@ if (instance_exists(obj_player)){
 						var yy = obj_player.y + lengthdir_y(40 * order, dirto);
 						
 						var dir = random(360);
-						move_xTo = xx + lengthdir_x(35, dir);
-						move_yTo = yy + lengthdir_y(35, dir);
+						move_x_to = xx + lengthdir_x(35, dir);
+						move_y_to = yy + lengthdir_y(35, dir);
 						
-						while(distance_to_point(move_xTo, move_yTo) < 30) || (collision_line(x, y, move_xTo, move_yTo, obj_p_solid, false, true)){
+						while(distance_to_point(move_x_to, move_y_to) < 30) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
 							dir = random(360);
-							move_xTo = xx + lengthdir_x(35, dir);
-							move_yTo = yy + lengthdir_y(35, dir);
+							move_x_to = xx + lengthdir_x(35, dir);
+							move_y_to = yy + lengthdir_y(35, dir);
 							
 							if (attempts < 200){
 								attempts ++;
@@ -69,29 +69,29 @@ if (instance_exists(obj_player)){
 			}
 		}else{
 			if (bite_to){
-				move_xTo = target.x;
-				move_yTo = target.y + 6;
+				move_x_to = target.x;
+				move_y_to = target.y + 6;
 				move_speed = 1.85;
 		
-				if (distance_to_point(move_xTo, move_yTo) < 3){
+				if (distance_to_point(move_x_to, move_y_to) < 3){
 					bite_to = false;
 					bite_retreat = true;
-					bite_retreat_direction = point_direction(x, y, move_xTo, move_yTo) - 180;
+					bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to) - 180;
 					bite_retreat_x = target.x;
 					bite_retreat_y = target.y + 6;
 				}
 			}else if (bite_retreat){
-				move_xTo = bite_retreat_x + lengthdir_x(80, bite_retreat_direction);
-				move_yTo = bite_retreat_y + lengthdir_y(80, bite_retreat_direction);
+				move_x_to = bite_retreat_x + lengthdir_x(80, bite_retreat_direction);
+				move_y_to = bite_retreat_y + lengthdir_y(80, bite_retreat_direction);
 				move_speed = 1.7;
 		
-				if (distance_to_point(move_xTo, move_yTo) < 24) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 80){
+				if (distance_to_point(move_x_to, move_y_to) < 24) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 80){
 					bite_to = false;
 					bite_retreat = false;
 				}
 			}else{
-				move_xTo = target.x;
-				move_yTo = target.y;
+				move_x_to = target.x;
+				move_y_to = target.y;
 			
 				if (distance_to_object(target) > 58){
 					move_speed = 1.2;
@@ -115,8 +115,8 @@ if (instance_exists(obj_player)){
 			move_speed = 0;
 		}
 		
-		move_xTo = obj_player.x;
-		move_yTo = obj_player.y;
+		move_x_to = obj_player.x;
+		move_y_to = obj_player.y;
 	}
 	
 	if (bark_time > 0){
@@ -126,7 +126,7 @@ if (instance_exists(obj_player)){
 		bark_time = random_range(400, 650);
 	}
 	
-	distTo = distance_to_point(move_xTo, move_yTo);
+	distTo = distance_to_point(move_x_to, move_y_to);
 }else{
 	move_speed = 0;
 }
@@ -150,12 +150,12 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
+mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 
 // Facing
 if (!face_player){
 	if (distTo > 15){
-		if (move_xTo > x){
+		if (move_x_to > x){
 			image_xscale = scale;
 		}else{
 			image_xscale = -scale;
@@ -176,7 +176,7 @@ if (speed_final > 0.1){
 	sprite_index = spr_companion_3_idle_0;
 }
 
-if (speed_final < 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else if (speed_final >= 0.1) && (speed_final <= 0.75){
     image_speed = 0.15;

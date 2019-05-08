@@ -8,9 +8,6 @@ vignette_flash_alpha = 0;
 vignette_flash_alpha_speed = 0;
 vignette_flash_colour = c_white;
 
-grain_alpha = 0;
-grain_image = 0;
-
 levelcleared_alpha = 0;
 levelcleared_time = 0;
 
@@ -19,6 +16,20 @@ stats_y = 0;
 weaponammo_scale = 1;
 weaponammo_scaleTo = 1;
 weaponammo_x = 0;
+
+tutourial = false;
+tutourial_scale = 1;
+tutourial_stage = 0;
+tutourial_stage_timer = -1;
+tutourial_text[0] = "Use the [" + scr_keycheck_string(global.game_option[| Options.Input_MoveUp]) + scr_keycheck_string(global.game_option[| Options.Input_MoveLeft]) + scr_keycheck_string(global.game_option[| Options.Input_MoveDown]) + scr_keycheck_string(global.game_option[| Options.Input_MoveRight]) + "] keys to move";
+tutourial_text[1] = "Pick up the rifle in the shed with [" + scr_keycheck_string(global.game_option[| Options.Input_Interact]) + "]";
+tutourial_text[2] = "Shoot with [" + scr_mousecheck_string(global.game_option[| Options.Input_Attack]) + "]";
+tutourial_text[3] = "Throw your weapon at enemies by pressing [" + scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + "]";
+tutourial_text[4] = "Dash by pressing [" + scr_keycheck_string(global.game_option[| Options.Input_Dash]) + "]";
+
+if (global.level_current == Level.Prologue){
+	tutourial = true;
+}
 
 ui_alpha = 1;
 
@@ -61,8 +72,6 @@ level_opening_text_alpha = 0;
 level_opening_alpha = 1;
 level_opening_time = 0;
 level_opening_active = false;
-
-
 
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){

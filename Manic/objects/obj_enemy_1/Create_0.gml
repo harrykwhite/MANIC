@@ -30,8 +30,8 @@ bleed = false;
 bleed_time = 0;
 headless = false;
 
-move_xTo = x;
-move_yTo = y;
+move_x_to = x;
+move_y_to = y;
 move_time = 0;
 move_speed = random_range(1.6, 2.3);
 

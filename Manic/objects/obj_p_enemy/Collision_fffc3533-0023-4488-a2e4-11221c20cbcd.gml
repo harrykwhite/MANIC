@@ -4,7 +4,7 @@ if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) || (object_ind
 	}
 	
 	if (object_index == obj_enemy_0){
-		if (type == EnemyOneType.TrainBoss){
+		if (type == Enemy0_Type.TrainBoss){
 			return;
 		}
 	}

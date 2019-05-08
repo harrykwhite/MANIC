@@ -31,6 +31,7 @@
         "d74e404a-f32d-4166-9b99-7e343a3e40d5",
         "6cabdf4b-224c-406f-b6cf-4d3712f23ee6",
         "119b5115-8df1-4062-83f0-12f5792f046e",
+        "27876fa4-6573-49ff-b8a5-d609143ca89f",
         "e5428456-e666-4f83-bbfd-0d30864a07f2",
         "d9772ccf-dfc2-4c0d-b615-8d0de703e856",
         "038e2600-c638-45c2-94fd-620ba05ebd08",
@@ -65,8 +66,7 @@
         "f991936b-eb7a-4525-a790-da91971ab7de",
         "daadb286-2d06-4cf4-a137-2f0be71b38ce",
         "de6a5409-42f8-469a-9a8d-00545cc1e9cf",
-        "0bbe62f7-d9db-4ac7-bf94-67cb24942a54",
-        "9a8b2a2e-ef4a-49e5-880b-a08208931aa5"
+        "0bbe62f7-d9db-4ac7-bf94-67cb24942a54"
     ],
     "filterType": "GMScript",
     "folderName": "Particle Effects",

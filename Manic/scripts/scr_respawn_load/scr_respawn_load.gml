@@ -2,6 +2,12 @@ global.game_combat_state = CombatState.Idle;
 global.weapon_slot_standalone = -1;
 scr_weapon_list();
 
+if (global.level_current == Level.Prologue){
+	global.weapon_slot[0] = -1;
+	global.weapon_slotammo[0] = -1;
+	global.weapon_slotscale[0] = 1;
+}
+
 if (instance_exists(obj_pawn_other_train_0)){
 	instance_destroy(obj_pawn_other_train_0);
 }

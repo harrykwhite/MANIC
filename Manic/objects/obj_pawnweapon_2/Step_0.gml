@@ -3,13 +3,8 @@ if (global.game_pause){
 	return;
 }
 
-alpha = approach(alpha, alphaTo, 40);
-image_alpha = alpha;
-
 // Attacking
 if (instance_exists(owner)){
-    alphaTo = 1;
-    
     if (attack_time > 0){
         attack_time--;
     }
@@ -42,7 +37,7 @@ if (instance_exists(owner)){
 		
         angle_offset = -angle_offset;
 		
-		if (owner.type == EnemyOneType.TrainBoss){
+		if (owner.type == Enemy0_Type.TrainBoss){
 			with(owner){
 				if (sniperboss_attack_counter < 4){
 					sniperboss_attack_counter ++;

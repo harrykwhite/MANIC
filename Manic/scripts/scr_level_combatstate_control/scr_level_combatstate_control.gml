@@ -33,12 +33,6 @@ if (inhordechallenge){
 		var ux = -1;
 		var uy = -1;
 		switch(global.level_current){
-			case Level.RavagedTown:
-				uindex = PlayerUpgrade.Goggles;
-				ux = 553;
-				uy = 363;
-				break;
-			
 			case Level.UndergroundBunker:
 				uindex = PlayerUpgrade.Goggles;
 				ux = 1760;

@@ -1,7 +1,7 @@
 ///@param index
 var key = argument0;
 
-// ** Function created by LOv3 (|| someone else, that's who I got it from)**
+// ** Function created by LOv3 (or someone else, that's who I got it from)**
 
 //Left
 if (key == vk_left)

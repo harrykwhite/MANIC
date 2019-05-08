@@ -3,19 +3,13 @@ if (global.game_pause){
 	return;
 }
 
-alpha = approach(alpha, alphaTo, 40);
-image_alpha = alpha;
-
 // Attacking
 if (instance_exists(owner)) && (global.cutscene_current == -1){
-    alphaTo = 1;
-    
     if (attack_time > 0){
         attack_time--;
     }
 
     if (attack) && (attack_time <= 0){
-		
         scr_effect_screenshake(2);
         scr_sound_play_distance(snd_weapon_swing_0, false, 450);
         

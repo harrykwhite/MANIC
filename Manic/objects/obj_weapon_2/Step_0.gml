@@ -17,17 +17,15 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
         scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
 		image_speed = 1;
 		
-        var xpos = x + lengthdir_x(15, mdir) + lengthdir_x(4, up(mdir));
-        var ypos = y + lengthdir_y(15, mdir) + lengthdir_y(4, up(mdir));
+        var xpos = x + lengthdir_x(18, mdir) + lengthdir_x(4, up(mdir));
+        var ypos = y + lengthdir_y(18, mdir) + lengthdir_y(4, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
-		part_type_direction(global.pt_flash_0, dir - 17, dir + 17, 0, 0);
-		part_particles_create(global.ps_front, xpos + random_range(-3, 3), ypos + random_range(-3, 3), global.pt_flash_0, 2);
-		part_type_direction(global.pt_smoke_5, dir - 17, dir + 17, 0, 0);
+		part_type_direction(global.pt_smoke_5, dir - 6, dir + 6, 0, 0);
         part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
 		scr_mouse_control(MouseType.Crosshair, 2, 20);
 		
-		shoot = instance_create(xpos, ypos, obj_proj_0);
+		var shoot = instance_create(xpos, ypos, obj_proj_0);
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
 	    shoot.dir = dir + random_range(-shoot_range, shoot_range);

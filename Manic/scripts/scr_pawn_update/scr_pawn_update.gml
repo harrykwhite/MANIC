@@ -29,7 +29,7 @@ if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_ind
 	var docreate = true;
 	
 	if (object_index == obj_enemy_0){
-		if (type == EnemyOneType.Fly){
+		if (type == Enemy0_Type.Fly){
 			docreate = false;
 		}
 	}
@@ -73,7 +73,6 @@ if (health_current <= 0){
     scr_effect_freeze(5);
     scr_effect_screenshake(4);
 	scr_effect_vignette_flash(c_ltgray, 0.3, 0.01);
-	//scr_effect_grain(0.4);
     
     instance_destroy();
 	audio_play_sound(snd_other_kick_0, 3, false);
@@ -89,36 +88,35 @@ if (health_current <= 0){
 		}
 		
 		if (object_index == obj_enemy_0){
-			global.level_kill_count[global.level_current] ++;
 			global.game_firstenemy_killed = true;
 			
 			switch(type){
-				case EnemyOneType.Grenadier:
+				case Enemy0_Type.Grenadier:
 					global.game_firstgrenadier_killed = true;
 					break;
 				
-				case EnemyOneType.Crazy:
+				case Enemy0_Type.Crazy:
 					global.game_firstcrazy_killed = true;
 					break;
 				
-				case EnemyOneType.Sniper:
+				case Enemy0_Type.Sniper:
 					global.game_firstsniper_killed = true;
 					break;
 				
-				case EnemyOneType.Healer:
+				case Enemy0_Type.Healer:
 					global.game_firsthealer_killed = true;
 					break;
 				
-				case EnemyOneType.Fly:
+				case Enemy0_Type.Fly:
 					global.game_firstflyhead_killed = true;
 					break;
 			}
 			
-			if (type == EnemyOneType.Grenadier) || (type == EnemyOneType.Sniper){
+			if (type == Enemy0_Type.Grenadier) || (type == Enemy0_Type.Sniper){
 				doexplode = true;
 			}
 			
-			if (type == EnemyOneType.TrainBoss){
+			if (type == Enemy0_Type.TrainBoss){
 				global.game_boss_trainhorde_killed = true;
 				obj_pawn_other_train_1.is_boss = false;
 				
@@ -200,6 +198,8 @@ if (health_current <= 0){
 			if (chance(30)){
 				instance_create(x + random_range(-4, 4), y + random_range(-4, 4), obj_health_pack_1);
 			}
+		}else if (object_index == obj_enemy_5){
+			global.level_kill_count[global.level_current] ++;
 		}else if (object_index == obj_antagonist){
 			global.cutscene_current = 54;
 			obj_controller_gameplay.cutscene_ending_stage = 0;
@@ -265,12 +265,12 @@ if (health_current <= 0){
 			dropchance = 20;
 		}
 	
-		if (type == EnemyOneType.Mother) || (type == EnemyOneType.Sniper){
+		if (type == Enemy0_Type.Mother) || (type == Enemy0_Type.Sniper){
 			dropchance = 100;
 			instance_create(x - 7, y + 2, obj_health_pack_0);
 			instance_create(x + 9, y + 4, obj_health_pack_0);
 			scr_weapon_ammo_spawn(choose(6, 7), 5, 6, x, y + 5);
-		}else if (type == EnemyOneType.TrainBoss){
+		}else if (type == Enemy0_Type.TrainBoss){
 			dropchance = 100;
 			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
 			audio_play_sound(global.boss_stinger[global.boss_current], 3, false);

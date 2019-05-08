@@ -52,8 +52,8 @@ if (instance_exists(obj_player)){
 	}*/
 	
 	if (point_distance(obj_player.x, obj_player.y, level.spawn_x, level.spawn_y) < 60){
-		obj_player.move_xTo = -1;
-		obj_player.move_yTo = -1;
+		obj_player.move_x_to = -1;
+		obj_player.move_y_to = -1;
 		obj_player.move_extSpd = 0;
 		
 		if (global.cutscene_time[index] < 40){
@@ -65,10 +65,10 @@ if (instance_exists(obj_player)){
 			global.player_respawn_y = obj_player.y;
 		}
 	}else{
-		obj_player.move_xTo = level.spawn_x;
-		obj_player.move_yTo = level.spawn_y;
+		obj_player.move_x_to = level.spawn_x;
+		obj_player.move_y_to = level.spawn_y;
 		obj_player.move_extSpd = obj_player.spd_max;
-		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, obj_player.move_xTo, obj_player.move_yTo);
+		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to);
 	}
 }else{
 	global.cutscene_current = -1;

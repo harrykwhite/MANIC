@@ -1,5 +1,5 @@
 ///scr_cutscene_46();
-var index = 46, xTo = 884, yTo = 530, spawnx = 884, spawny = 508;
+var index = 46, x_to = 884, y_to = 530, spawnx = 884, spawny = 508;
 var eobj = noone;
 var levelobj = scr_get_level_object();
 
@@ -7,8 +7,8 @@ obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
-	xTo = spawnx;
-	yTo = spawny;
+	x_to = spawnx;
+	y_to = spawny;
 	
 	if (levelobj.dogkeeper == noone){
 		levelobj.dogkeeper = instance_create(spawnx, spawny, obj_thedogkeeper);
@@ -19,18 +19,18 @@ if (instance_exists(obj_player)){
 	
 	eobj = levelobj.dogkeeper;
 	if (instance_exists(eobj)){
-		xTo = eobj.x;
-		yTo = eobj.y;
+		x_to = eobj.x;
+		y_to = eobj.y;
 		eobj.in_cutscene = true;
 		
 		obj_player.flashlight_move = false;
-		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xTo, yTo);
+		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 		
 		if (global.cutscene_time[index] > 130){
 			global.cutscene_current = -1;
 			global.cutscene_time[index] = 0;
-			obj_player.move_xTo = -1;
-			obj_player.move_yTo = -1;
+			obj_player.move_x_to = -1;
+			obj_player.move_y_to = -1;
 			eobj.in_cutscene = false;
 			eobj.cutscene_prop = false;
 		}else{
@@ -38,8 +38,8 @@ if (instance_exists(obj_player)){
 		}
 	}
 	
-	global.cutscene_camera_x[index] = xTo;
-	global.cutscene_camera_y[index] = yTo;
+	global.cutscene_camera_x[index] = x_to;
+	global.cutscene_camera_y[index] = y_to;
 }else{
 	global.cutscene_current = -1;
 	global.cutscene_time[index] = 0;

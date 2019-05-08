@@ -5,14 +5,14 @@ target = obj_player;
 
 if (instance_exists(target)){
 	if (distance_to_point(target.x, target.y) > 10){
-		move_xTo = target.x;
-		move_yTo = target.y + 6;
+		move_x_to = target.x;
+		move_y_to = target.y + 6;
 		move_speed = 0.7;
 	}else{
 		move_speed = 0;
 	}
 	
-	move_dir = point_direction(x, y, move_xTo, move_yTo);
+	move_dir = point_direction(x, y, move_x_to, move_y_to);
 }else{
 	move_speed = 0;
 	face_player = false;
@@ -54,11 +54,11 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_xTo, move_yTo, move_speed_real, obj_p_solid);
+mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 
 // Facing
 if (!face_player){
-	if (move_xTo > x){
+	if (move_x_to > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;
@@ -81,14 +81,14 @@ if (instance_exists(weapon)){
 	Idle1 = spr_thedogkeeper_idle_1; Walk1 = spr_thedogkeeper_walk_1;
 	Idle2 = spr_thedogkeeper_idle_1; Walk2 = spr_thedogkeeper_walk_1;
 	
-	if (speed_final < 0.1){
+	if (speed_final <= 0.1){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 
-if (speed_final < 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
 }else{
 	image_speed = (speed_final * 0.165);

@@ -109,7 +109,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 				}
 				
 				level.trainboss_leader = instance_create(x, y + 30, obj_enemy_0);
-				level.trainboss_leader.type = EnemyOneType.TrainBoss;
+				level.trainboss_leader.type = Enemy0_Type.TrainBoss;
 				level.trainboss_leader.weapon_index = PawnWeapon.SniperRifle;
 				
 				global.cutscene_current = 37;

@@ -8,8 +8,8 @@ if (burn){
 		burn_time = 45;
 		burn_cycle = 4;
 		burn_start = true;
-		move_xTo = x;
-		move_yTo = y;
+		move_x_to = x;
+		move_y_to = y;
 		
 		if (!is_fly){
 			burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
@@ -34,8 +34,8 @@ if (burn){
 				burn_time = -1;
 				burn_start = false;
 				burn = false;
-				move_xTo = x;
-				move_yTo = y;
+				move_x_to = x;
+				move_y_to = y;
 				
 				if (!is_fly){
 					audio_stop_sound(burn_sound);

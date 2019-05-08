@@ -21,11 +21,11 @@ switch(global.cutscene_time[index]){
 		
 		// Make the player move to the portal.
 		if (instance_exists(obj_player)){
-			obj_player.move_xTo = obj_player.x;
-			obj_player.move_yTo = room_height + 40;
+			obj_player.move_x_to = obj_player.x;
+			obj_player.move_y_to = room_height + 40;
 			obj_player.move_extSpd = obj_player.spd_max;
 			
-			if (point_distance(obj_player.x, obj_player.y, obj_player.move_xTo, obj_player.move_yTo) < 40){
+			if (point_distance(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to) < 40){
 				global.cutscene_time[index] = 1;
 			}
 		}
