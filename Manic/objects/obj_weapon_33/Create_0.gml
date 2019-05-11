@@ -1,4 +1,4 @@
-angle_offset = 50;
+angle_offset = 80;
 angle_offset_current = 0;
 
 attack_can = true;

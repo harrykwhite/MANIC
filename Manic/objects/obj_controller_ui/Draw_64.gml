@@ -190,6 +190,7 @@ if (tutourial) && (global.cutscene_current == -1){
 				tutourial_scale = 1.3;
 			}else{
 				tutourial_fade = true;
+				show_debug_message("tutourial fade enabled");
 			}
 			
 			tutourial_stage_timer = -1;
@@ -210,7 +211,7 @@ if (tutourial) && (global.cutscene_current == -1){
 	var scalem = wave(1, 1.025, 3.5, 0);
 	tutourial_scale = approach(tutourial_scale, 1, 15);
 	
-	var tstage = min(tutourial_stage, tut_count);
+	var tstage = min(tutourial_stage, tut_count - 1);
 	
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);

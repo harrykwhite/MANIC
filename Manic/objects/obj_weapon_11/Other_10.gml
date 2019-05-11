@@ -1,6 +1,6 @@
 // Draw Line
 if (!global.game_pause) && (global.cutscene_current == -1) && (instance_exists(obj_player)){
-	var mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+	var mdir = point_direction(x, y, mouse_x, mouse_y);
 	var xx = obj_player.x + lengthdir_x(22, mdir) + lengthdir_x(1, up(mdir));
 	var yy = obj_player.y + lengthdir_y(22, mdir) + lengthdir_y(1, up(mdir));
 	

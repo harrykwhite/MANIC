@@ -66,25 +66,33 @@ if (point_distance(x, y, move_x_to, move_y_to) > 8){
 if (speed_final < 0.1){
 	image_speed = 0.05;
 	
-	switch(type){
-		case 0:
-			sprite_index = spr_player_child_0_idle_0;
-			break;
+	if (object_index == obj_player_child_0){
+		switch(type){
+			case 0:
+				sprite_index = spr_player_child_0_idle_0;
+				break;
 		
-		case 1:
-			sprite_index = spr_player_child_1_idle_0;
-			break;
+			case 1:
+				sprite_index = spr_player_child_1_idle_0;
+				break;
+		}
+	}else{
+		sprite_index = spr_player_wife_idle_0;
 	}
 }else{
 	image_speed = 0.175;
 	
-	switch(type){
-		case 0:
-			sprite_index = spr_player_child_0_walk_0;
-			break;
+	if (object_index == obj_player_child_0){
+		switch(type){
+			case 0:
+				sprite_index = spr_player_child_0_idle_0;
+				break;
 		
-		case 1:
-			sprite_index = spr_player_child_1_walk_0;
-			break;
+			case 1:
+				sprite_index = spr_player_child_1_idle_0;
+				break;
+		}
+	}else{
+		sprite_index = spr_player_wife_idle_0;
 	}
 }

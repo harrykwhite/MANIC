@@ -52,8 +52,6 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
 }
 
 // Throwing Weapon
-var mdir = point_direction(x, y, mouse_x, mouse_y);
-
 if (global.player_stamina_active){
     if (mouse_check_button_pressed(obj_controller_all.key_throw)){
 		
