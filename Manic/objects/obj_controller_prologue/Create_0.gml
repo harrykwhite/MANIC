@@ -11,7 +11,7 @@ spawn_y = 480;
 spawn_pause_update = false;
 
 deer_can_spawn = false;
-deer_spawn_time = 60 * random_range(8, 13);
+deer_spawn_time = 60 * random_range(6, 9);
 
 // Other
 wind = audio_play_sound(m_ambience_wind_0, 3, true);
@@ -31,14 +31,45 @@ global.weapon_slotscale[0] = 1;
 var flr = layer_get_id("InteriorFloorWood");
 var lflr = layer_tilemap_get_id(flr);
 
-repeat(650){
+var oldx = 0;
+var oldy = 0;
+
+repeat(420){
 	var xx = random(room_width);
 	var yy = random(room_height);
 	
-	while(collision_rectangle(xx - 10, yy - 10, xx + 10, yy + 10, obj_p_solid, false, true) || collision_rectangle(xx - 10, yy - 10, xx + 10, yy + 10, obj_grass_small_0, false, true) || tilemap_get_at_pixel(lflr, xx, yy)){
+	if (random(10) < 1){
+		xx = oldx + choose(-15, 15);
+		yy = oldy + choose(-15, 15);
+	}
+	
+	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true) || tilemap_get_at_pixel(lflr, xx, yy)){
 		xx = random(room_width);
 		yy = random(room_height);
 	}
 	
-	instance_create(xx, yy, obj_grass_small_0);
+	oldx = xx;
+	oldy = yy;
+	
+	instance_create(xx, yy, obj_grass_small_1);
+}
+
+oldx = 0;
+oldy = 0;
+
+repeat(40){
+	var xx = random(room_width);
+	var yy = random(room_height);
+	
+	if (random(6) < 1){
+		xx = oldx + choose(-20, 20);
+		yy = oldy + choose(-20, 20);
+	}
+	
+	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_rock_small_0, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true) || tilemap_get_at_pixel(lflr, xx, yy)){
+		xx = random(room_width);
+		yy = random(room_height);
+	}
+	
+	instance_create(xx, yy, obj_rock_small_0);
 }

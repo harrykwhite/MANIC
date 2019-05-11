@@ -29,7 +29,7 @@ if (instance_exists(target)){
 				wander_stage = 0;
 				wander_x_to = x;
 				wander_y_to = y;
-				wander_break = random_range(60, 140);
+				wander_break = random_range(30, 60);
 			}
 		}
 		

@@ -10,7 +10,7 @@ part_particles_create(global.ps_front, x, y, global.pt_fire_0, 1);
 x += lengthdir_x(spd, dir);
 y += lengthdir_y(spd, dir);
 
-if (collision_line(xstart, ystart, x, y, obj_p_solid, false, true)){
+if (collision_line(xprevious, yprevious, x + lengthdir_x(4, dir), y + lengthdir_y(4, dir), obj_p_solid, false, true)){
 	repeat(5){
 		part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_fire_0, 1);
 	}

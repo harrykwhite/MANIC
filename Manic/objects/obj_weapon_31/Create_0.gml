@@ -14,7 +14,7 @@ shoot_current = -1;
 
 throw_damage = 4;
 
-index = 5;
+index = 31;
 
 image_alpha = 0;
 image_speed = 0;

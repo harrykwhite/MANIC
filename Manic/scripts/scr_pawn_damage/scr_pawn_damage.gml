@@ -215,7 +215,7 @@ if (health_current <= 0){
 			
 			repeat(4){
 				part_type_speed(global.pt_bodypart_companion_3, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
-				part_type_direction(global.pt_bodypart_companion_3, knockback_direction - 35, knockback_direction + 35, 0, 0);
+				part_type_direction(global.pt_bodypart_companion_3, knockback_direction - 15, knockback_direction + 15, 0, 0);
 				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_3, 1);
 			}
 			break;

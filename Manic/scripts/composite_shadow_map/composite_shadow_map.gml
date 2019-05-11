@@ -8,13 +8,13 @@ var lightCount = ds_list_size(lights);
 // Pre-composite step
 lighting_pre_composite();
 
-//if(lightCount == 0) {
+//if (lightCount == 0){
 //	// They mostly come at night...mostly...
 //	show_debug_message("composite_shadow_map(lights): ignoring action, there are no lights");
 //	return false;
 //}
 
-//if(!shadow_casters_exist()) {
+//if (!shadow_casters_exist()){
 //	// There are no shadow casters
 //	show_debug_message("composite_shadow_map(lights): ignoring action, there are no shadow casters");
 //	return;
@@ -22,7 +22,7 @@ lighting_pre_composite();
 
 // Ensure that we have a valid shadow map surface
 var has_shadow_map = shadow_map_ensure_exists(eShadowMap.Global);
-if(!has_shadow_map) {
+if (!has_shadow_map){
 	// Failed to create a shadow map
 	show_debug_message("composite_shadow_map(lights): failed to create global shadow map");
 	return false;
@@ -39,7 +39,7 @@ var cameraW = camera[eLightingCamera.Width];
 var cameraH = camera[eLightingCamera.Height];
 
 // Composite all shadow maps into a single texture
-for(var i = 0, firstLight = true; i < lightCount; ++i) {
+for(var i = 0, firstLight = true; i < lightCount; ++i){
 	// Get the light's shadow map
 	var light = ds_list_find_value(lights, i);
 	
@@ -48,7 +48,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	}
 	
 	// Can this light be culled?
-	if(light_cull(light, camera)) {
+	if (light_cull(light, camera)){
 		// Yes, no reason to draw it
 		continue;
 	}
@@ -66,7 +66,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	
 	// Directional lights are infinite and have no source, so there's no optimization to be had here
 	// Area and line lights are tricky and they shouldn't be used excessively in any case
-	if(lightType != eLightType.Directional && lightType != eLightType.Area && lightType != eLightType.Line) {
+	if (lightType != eLightType.Directional && lightType != eLightType.Area && lightType != eLightType.Line){
 		// Should this light be using a unique shadow map?
 		// Multiplied by two because we treat all lights as omnidirectional, so range is the radius of the light
 		if (lightRange == undefined){
@@ -75,12 +75,12 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 		
 		var shadowMapSize = get_next_pot(ceil(lightRange)) * 2;
 		var useShadowMap = shadowMapSize <= global.lightMaxUniqueShadowMapSize;
-		if(useShadowMap) light[| eLight.Flags] |= eLightFlags.UsesUniqueShadowMap;
+		if (useShadowMap) light[| eLight.Flags] |= eLightFlags.UsesUniqueShadowMap;
 		else light[| eLight.Flags] &= ~eLightFlags.UsesUniqueShadowMap;
 		
 		// Update the light's shadow map
 		// This will create, resize and free it as necessary (so we have to call it even if useShadowMap is false!)
-		if (light_maintain_shadow_map(light) && useShadowMap) {
+		if (light_maintain_shadow_map(light) && useShadowMap){
 			// Use the light's shadow map
 			shadowMap = light[| eLight.ShadowMap];
 		
@@ -93,12 +93,12 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	}
 	
 	// Use the global shadow map for this light?
-	if(shadowMap == undefined) {
+	if (shadowMap == undefined){
 		// If this is the first light using the global shadow map
-		if(firstUseOfGlobalShadowMap) {
+		if (firstUseOfGlobalShadowMap){
 			// Ensure that we have a valid global shadow map surface
 			var has_shadow_map = shadow_map_ensure_exists(eShadowMap.Light);
-			if(!has_shadow_map) {
+			if (!has_shadow_map){
 				// Failed to create a shadow map
 				show_debug_message("composite_shadow_map(lights): failed to create light shadow map");
 				return false;
@@ -137,7 +137,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	// Composite the light into the global shadow map
 	surface_set_target(global.worldShadowMap);
 	
-	if(firstLight) {
+	if (firstLight){
 		// Clear the shadow map
 		draw_clear_alpha(c_black, 0);
 		firstLight = false;
@@ -149,7 +149,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	shader_set(__LIGHT_SHADER);
 	
 	// Pass the light intensity lookup texture to the shader
-	if(lightLutIntensity != undefined) texture_set_stage(global.u_LutIntensity, lightLutIntensity);
+	if (lightLutIntensity != undefined) texture_set_stage(global.u_LutIntensity, lightLutIntensity);
 	
 	// Set the texel size
 	shader_set_uniform_f_array(global.u_TexelSize, [1.0 / surface_get_width(shadowMap), 1.0 / surface_get_height(shadowMap)]);
@@ -172,7 +172,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	shader_set_uniform_i(global.u_AttenuationEnabled, false);
 	
 	// Area || line light line emitter
-	if(lightType == eLightType.Area || lightType == eLightType.Line) {
+	if (lightType == eLightType.Area || lightType == eLightType.Line){
 		// Area light line emitter
 		var dir = lightDirection + 90;
 		var w = lightWidth * 0.5; // * 0.5 because the line emitter is centered on the light
@@ -190,7 +190,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i) {
 	
 	// If the light uses its own shadow map, convert to local space
 	var offsetx = 0, offsety = 0;
-	if(light[| eLight.Flags] & eLightFlags.UsesUniqueShadowMap) {
+	if (light[| eLight.Flags] & eLightFlags.UsesUniqueShadowMap){
 		// Light is at the center of its shadow map
 		var size = surface_get_width(light[| eLight.ShadowMap]);
 		offsetx = light[| eLight.X] - size * 0.5 - cameraX;

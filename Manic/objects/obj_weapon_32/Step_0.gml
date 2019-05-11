@@ -10,12 +10,11 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
     
     if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
         scr_player_knockback_initiate(2, mdir);
-		scr_effect_freeze(15);
-        scr_effect_screenshake(3);
+        scr_effect_screenshake(2);
         scr_mouse_control(MouseType.SmallCircle, 5, 7);
         scr_weapon_ammo_use(1);
         scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
-		scr_player_flash(8);
+		scr_player_flash(5);
 		scr_camera_to_player();
 		
         image_speed = 1;
@@ -31,19 +30,19 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
 	    shoot.dir = dir + random_range(-shoot_range, shoot_range);
-		shoot.spd = 20;
+		shoot.spd = 21;
 		shoot.image_angle = shoot.dir;
 		
         shoot_can = false;
         shoot_time = 40;
         shoot_bounceback = -1.5;
-        angle_offset = 20;
+        angle_offset = 10;
 		line_alpha = -4.2;
 		
 		if (global.level_current == Level.Prologue){
 			with(obj_controller_ui){
-				if (tutourial) && (tutourial_stage == 2) && (tutourial_stage_timer == -1){
-					tutourial_stage_timer = 60 * 3;
+				if (tutourial) && (tutourial_stage < TutourialStage.Throw) && (tutourial_stage_timer == -1){
+					tutourial_stage_timer = 60 * 4;
 				}
 			}
 		}
@@ -74,14 +73,6 @@ if (global.player_stamina_active){
 			
 		    instance_destroy();
 		    global.weapon_slot[global.weapon_slotcurrent] = -1;
-			
-			if (global.level_current == Level.Prologue){
-				with(obj_controller_ui){
-					if (tutourial) && (tutourial_stage == 3) && (tutourial_stage_timer == -1){
-						tutourial_stage_timer = 60 * 3;
-					}
-				}
-			}
 		}
     }
 }

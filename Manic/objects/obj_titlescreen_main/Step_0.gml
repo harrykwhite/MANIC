@@ -185,7 +185,7 @@ if (fade){
 		}else{
 			var key = keyboard_key;
 			var mouse = mouse_button;
-		
+			
 			if (searching_for_input_wait > 0){
 				searching_for_input_wait --;
 			}else if (in_settings_controls){

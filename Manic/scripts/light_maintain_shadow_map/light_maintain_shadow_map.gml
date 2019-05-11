@@ -6,10 +6,10 @@ var light = argument0;
 var shadowMap = light[| eLight.ShadowMap];
 var useShadowMap = light[| eLight.Flags] & eLightFlags.UsesUniqueShadowMap;
 
-if(!useShadowMap) {
+if (!useShadowMap){
 	// Does the light have a shadow map it no longer uses?
-	if(shadowMap != undefined) {
-		if(surface_exists(shadowMap)) {
+	if (shadowMap != undefined){
+		if (surface_exists(shadowMap)){
 			// Free the unused surface
 			surface_free(shadowMap);
 		}
@@ -23,12 +23,12 @@ if(!useShadowMap) {
 var range = light[| eLight.Range];
 var size = get_next_pot(ceil(range)) * 2;
 
-if(shadowMap == undefined || !surface_exists(shadowMap) || surface_get_width(shadowMap) != size || surface_get_height(shadowMap) != size) {
+if (shadowMap == undefined || !surface_exists(shadowMap) || surface_get_width(shadowMap) != size || surface_get_height(shadowMap) != size){
 	if (size == 0){
 		return false;
 	}
 	
-	if(shadowMap != undefined && surface_exists(shadowMap)) {
+	if (shadowMap != undefined && surface_exists(shadowMap)){
 		// Recreate the surface
 		surface_free(shadowMap);
 	}

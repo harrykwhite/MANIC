@@ -6,8 +6,8 @@
 //
 
 // Avoid calling this script multiple times
-if(__LIGHTING_ERROR_CHECKS) {
-	if(variable_global_exists("lighting_global_initialised")) {
+if (__LIGHTING_ERROR_CHECKS){
+	if (variable_global_exists("lighting_global_initialised")){
 		show_debug_message("lighting_global(): lighting already initialised");
 		return;
 	}
@@ -88,7 +88,7 @@ global.worldActiveShadowCasters = 0;
 //
 
 // Types of lights
-enum eLightType {
+enum eLightType{
 	Point,			// This light has an omnidirectional point emitter
 	Spot,			// This light has a conical point emitter
 	Area,			// This light has a unidirectional line emitter
@@ -97,7 +97,7 @@ enum eLightType {
 }
 
 // Fields of a light
-enum eLight {
+enum eLight{
 	// Public
 	X,				// The X position of the light
 	Y,				// The Y position of the light
@@ -146,7 +146,7 @@ enum eLight {
 }
 
 // Light flags
-enum eLightFlags {
+enum eLightFlags{
 	// No flags set
 	None = 0,
 	
@@ -168,7 +168,7 @@ enum eLightFlags {
 }
 
 // Shadow caster flags
-enum eShadowCasterFlags {
+enum eShadowCasterFlags{
 	// No flags set
 	None = 0,
 	
@@ -187,7 +187,7 @@ enum eShadowCasterFlags {
 
 // Enum that describes a light extension module
 // All scripts receive the current light as argument0
-enum eLightExtension {
+enum eLightExtension{
 	Apply,		// The script to apply the extension to a light
 	Reset,		// The script that is called to clean up after the extension has been applied to a light
 	
@@ -198,7 +198,7 @@ enum eLightExtension {
 
 // An enum of reserved light extension module names
 // I have reserved 8 extension names for future use...do not use any of these numbers for custom extension names!
-enum eLightReservedExtensionNames {
+enum eLightReservedExtensionNames{
 	Attenuation = 0,
 	Reserved2, Reserved3,
 	Reserved4, Reserved5,
@@ -207,14 +207,14 @@ enum eLightReservedExtensionNames {
 }
 
 // Enum of all shadow maps for shadow_map_ensure_exists
-enum eShadowMap {
+enum eShadowMap{
 	Light,		// A light's shadow map
 	Global,		// The global shadow map
 	Snapshot	// The snapshot shadow map
 }
 
 // Enum of camera attributes [X, Y, Width, Height] from lighting_get_active_camera
-enum eLightingCamera {
+enum eLightingCamera{
 	X,
 	Y,
 	Width,
@@ -223,7 +223,7 @@ enum eLightingCamera {
 
 // Fields in a polygon array
 // Access these in a polygon array as: polygon[ePolygon.Length]
-enum ePolygon {
+enum ePolygon{
 	Length,			// The length (in # of points) of the polygon
 	
 	// The number of polygon fields (this must be the last enum field)
@@ -232,7 +232,7 @@ enum ePolygon {
 }
 
 // Fields in a vertex
-enum eVertex {
+enum eVertex{
 	X,				// The X position of this vertex
 	Y,				// The Y position of this vertex
 	
@@ -242,7 +242,7 @@ enum eVertex {
 }
 
 // Triangle direction enum
-enum eTriDirection {
+enum eTriDirection{
 	Clockwise,
 	CounterClockwise
 }

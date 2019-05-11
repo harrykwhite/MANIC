@@ -8,6 +8,7 @@ hspd = 0;
 vspd = 0;
 
 light_brightness = 0;
+
 mylight = noone;
 flashlight = noone;
 

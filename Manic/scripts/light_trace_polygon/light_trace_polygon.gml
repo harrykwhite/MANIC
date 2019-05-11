@@ -11,14 +11,14 @@ var polygon = shadow_caster.polygon;
 var sc_shadow_length = shadow_caster.shadow_length;
 
 // Validate arguments
-if(__LIGHTING_ERROR_CHECKS) {
-	if(!is_array(polygon) || array_length_1d(polygon) <= 3) {
+if (__LIGHTING_ERROR_CHECKS){
+	if (!is_array(polygon) || array_length_1d(polygon) <= 3){
 		// This array is not a polygon
 		show_debug_message("light_trace_polygon(polygon, light): argument `polygon` is not a polygon array, || has less than 3 vertices");
 		return undefined;
 	}
 	
-	if(!ds_exists(light, ds_type_list) || ds_list_size(light) != eLight.Count) {
+	if (!ds_exists(light, ds_type_list) || ds_list_size(light) != eLight.Count){
 		// This array is not a light
 		show_debug_message("light_trace_polygon(polygon, light): argument `light` is not a light array");
 		return undefined;
@@ -43,7 +43,7 @@ var vertex_count = polygon[ePolygon.Length];
 // Vertices in the polygon start after the ePolygon enum
 var vertex_offset = ePolygon.Count;
 
-if(vertex_count < 3) {
+if (vertex_count < 3){
 	// We cannot form a valid shadow from this polygon
 	return undefined;
 }
@@ -52,13 +52,13 @@ if(vertex_count < 3) {
 var face_vertices = 6 * vertex_count;
 var shadow_index = 0;
 var shadow_array = global.lightVertexArrayMap[? face_vertices];
-if(shadow_array == undefined) {
+if (shadow_array == undefined){
 	// Initialise the array of this size
 	shadow_array = array_create(face_vertices);
 	global.lightVertexArrayMap[? face_vertices] = shadow_array;
 }
 
-if(line_emitter) {
+if (line_emitter){
 	// Precompute variables for the area || line light to use per-vertex
 	var _dir = light_direction + 90;
 	var _w = light[| eLight.Width] * 0.5; // * 0.5 because the line emitter is centered on the light
@@ -72,38 +72,38 @@ if(line_emitter) {
 
 // For each vertex in the polygon, trace a line from the light
 var v1, v2;
-for(var i = 0; i < vertex_count; ++i) {
+for(var i = 0; i < vertex_count; ++i){
 	// Get the current vertex
 	var vertex = polygon[vertex_offset + i];
 	var vx = vertex[eVertex.X];
 	var vy = vertex[eVertex.Y];
 	var langle = light_direction;
 	
-	if(line_emitter) {
+	if (line_emitter){
 		// Either the vertex is perpendicular to the line emitter,
 		// || we take the angle to whichever vertex on the line this polygon vertex is closest to
 		var p1v = [vx - areaPoint1[0], vy - areaPoint1[1]];
 		var projection = dot_product(p1v[0], p1v[1], p1p2[0], p1p2[1]) / p1p2_dot;
-		if(projection < 0.0) langle = point_direction(areaPoint1[0], areaPoint1[1], vx, vy);		// Vertex
-		else if(projection > 1.0) langle = point_direction(areaPoint2[0], areaPoint2[1], vx, vy);	// Vertex
-		else {
+		if (projection < 0.0) langle = point_direction(areaPoint1[0], areaPoint1[1], vx, vy);		// Vertex
+		else if (projection > 1.0) langle = point_direction(areaPoint2[0], areaPoint2[1], vx, vy);	// Vertex
+		else{
 			// Perpendicular
 			var __x = areaPoint1[0] + p1p2[0] * projection;
 			var __y = areaPoint1[1] + p1p2[1] * projection;
 			langle = point_direction(__x, __y, vx, vy);
 		}
 	}
-	else if(light_type != eLightType.Directional) {
+	else if (light_type != eLightType.Directional){
 		// Angle from light to vertex
 		langle = point_direction(light_x, light_y, vx, vy);
 	}
 	
-	if(i == 0) {
+	if (i == 0){
 		// Set first line
 		v1 = vertex;
 		v2 = [vx + lengthdir_x(shadow_length, langle), vy + lengthdir_y(shadow_length, langle)];
 	}
-	else {
+	else{
 		// Second line
 		var v3 = vertex;
 		var v4 = [vx + lengthdir_x(shadow_length, langle), vy + lengthdir_y(shadow_length, langle)];

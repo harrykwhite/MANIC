@@ -9,8 +9,8 @@ var rotation = argument_count > 1 ? argument[1] : image_angle;
 // Create the set of points from the bounding box
 var set = array_create(4);
 
-with(inst) {
-	if(rotation == 0) {
+with(inst){
+	if (rotation == 0){
 		// The corners of the bounding box are the most primitive polygon we can create
 		// that represents any arbitrary instance
 		set[0] = [bbox_left, bbox_top];
@@ -18,7 +18,7 @@ with(inst) {
 		set[2] = [bbox_right, bbox_bottom];
 		set[3] = [bbox_left, bbox_bottom];
 	}
-	else {
+	else{
 		// Rotate the instance; this relies on the sprite information
 		set[0] = [x,				 y];
 		set[1] = [x + sprite_width,  y];
@@ -29,7 +29,7 @@ with(inst) {
 		var cy = y + sprite_yoffset;
 		
 		var rad = degtorad(rotation);
-		for(var i = 0; i < 4; ++i) {
+		for(var i = 0; i < 4; ++i){
 			var p = set[i], px = p[0] - cx, py = p[1] - cy;
 			p[@ 0] = px * cos(rad) + py * sin(rad) + cx - sprite_xoffset;
 			p[@ 1] = py * cos(rad) - px * sin(rad) + cy - sprite_yoffset;

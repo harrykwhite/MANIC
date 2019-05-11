@@ -78,7 +78,7 @@ switch(ctype){
 					yEnd = yy + lengthdir_y(len, dir);
 					
 					scr_effect_screenshake(2);
-					scr_effect_freeze(15);
+					scr_effect_freeze(5);
 					
 					if (inst.object_index == obj_enemy_1){
 						if (inst.owner != obj_player) && (inst.owner != noone){

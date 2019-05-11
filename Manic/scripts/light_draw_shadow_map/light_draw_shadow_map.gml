@@ -8,7 +8,7 @@ var surface = argument1;
 var update = argument2;
 
 // Validate argument
-if(__LIGHTING_ERROR_CHECKS && (!ds_exists(light, ds_type_list) || ds_list_size(light) != eLight.Count)) {
+if (__LIGHTING_ERROR_CHECKS && (!ds_exists(light, ds_type_list) || ds_list_size(light) != eLight.Count)){
 	// This array is not a light
 	show_debug_message("light_draw(light): argument `light` is not a light array");
 	return;
@@ -16,7 +16,7 @@ if(__LIGHTING_ERROR_CHECKS && (!ds_exists(light, ds_type_list) || ds_list_size(l
 
 // Ensure that we have a valid shadow map surface
 var has_shadow_map = surface_exists(surface);
-if(!has_shadow_map) {
+if (!has_shadow_map){
 	// Failed to create a shadow map
 	show_debug_message("light_draw(light): shadow map doesn't exist");
 	return;
@@ -29,7 +29,7 @@ var unique_shadow_map = (flags & eLightFlags.UsesUniqueShadowMap) != 0;
 var casts_shadow = (flags & eLightFlags.CastsShadows) != 0;
 var dirty = (flags & eLightFlags.Dirty) != 0;
 
-if(unique_shadow_map && !dirty && !casts_shadow) {
+if (unique_shadow_map && !dirty && !casts_shadow){
 	// This light does not need to be redrawn
 	// Keep its surface as it is
 	return;
@@ -46,7 +46,7 @@ surface_set_target(shadowMap);
 draw_clear_alpha(c_black, 0);
 
 // If it doesn't cast any shadows, we won't have a vertex buffer
-if(vertexbuffer != undefined) {
+if (vertexbuffer != undefined){
 	// Draw the shadow triangles onto the light's shadow map
 	vertex_submit(vertexbuffer, pr_trianglelist, -1);
 }

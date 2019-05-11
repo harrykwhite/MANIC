@@ -97,7 +97,7 @@ void main()
 }
 
 // You can uncomment adjacent fragments to do a more complete blend
-vec4 average(sampler2D sampler, vec2 coord, float dist) {
+vec4 average(sampler2D sampler, vec2 coord, float dist){
 	vec2 tc0 = coord + (dist * vec2(-u_TexelSize.s,	-u_TexelSize.t));
 	//vec2 tc1 = coord + (dist * vec2(-u_TexelSize.s,	0.0));
 	vec2 tc2 = coord + (dist * vec2(+u_TexelSize.s,	-u_TexelSize.t));

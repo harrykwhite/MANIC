@@ -24,6 +24,7 @@ if (instance_exists(obj_player)){
 				draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale * gui_scale_x, image_yscale * gui_scale_y, image_angle, c_white, alpha * image_alpha);
 			}
 		}
+		
 		gpu_set_fog(false, c_black, 0, 0);
 	}
 }
@@ -178,32 +179,46 @@ if (screenblend_alpha > 0){
 
 // Tutourial Display
 if (tutourial) && (global.cutscene_current == -1){
+	var tut_count = array_length_1d(tutourial_text);
+	
 	if (tutourial_stage_timer != -1){
 		if (tutourial_stage_timer > 0){
 			tutourial_stage_timer --;
 		}else{
-			if (tutourial_stage < 4){
+			if (tutourial_stage < tut_count){
 				tutourial_stage ++;
 				tutourial_scale = 1.3;
 			}else{
-				tutourial = false;
-				tutourial_stage = 0;
+				tutourial_fade = true;
 			}
 			
 			tutourial_stage_timer = -1;
 		}
 	}
 	
+	if (tutourial_fade){
+		if (tutourial_alpha > 0){
+			tutourial_alpha -= 0.05;
+		}else{
+			tutourial = false;
+			tutourial_stage = 0;
+			tutourial_fade = false;
+			tutourial_alpha = 1;
+		}
+	}
+	
 	var scalem = wave(1, 1.025, 3.5, 0);
-	tutourial_scale = approach(tutourial_scale, 1, 7);
+	tutourial_scale = approach(tutourial_scale, 1, 15);
+	
+	var tstage = min(tutourial_stage, tut_count);
 	
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
-	draw_set_alpha(1);
-	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tutourial_stage], c_white, tutourial_scale * scalem, tutourial_scale * scalem, 0);
+	draw_set_alpha(tutourial_alpha);
+	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_white, tutourial_scale * scalem, tutourial_scale * scalem, 0);
 	
-	draw_set_alpha(((tutourial_scale * scalem) - 1) * 2);
-	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tutourial_stage], c_maroon, tutourial_scale * scalem, tutourial_scale * scalem, 0);
+	draw_set_alpha(((tutourial_scale * scalem) - 1) * 3 * tutourial_alpha);
+	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_maroon, tutourial_scale * scalem, tutourial_scale * scalem, 0);
 	draw_set_alpha(1);
 }
 

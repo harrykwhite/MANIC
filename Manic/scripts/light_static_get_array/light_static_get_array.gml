@@ -7,6 +7,6 @@ var light = argument0;
 var shadow_caster = argument1;
 
 var static_storage = light[| eLight.StaticStorage];
-if(static_storage == undefined) return undefined;
+if (static_storage == undefined) return undefined;
 
 return static_storage[? shadow_caster];

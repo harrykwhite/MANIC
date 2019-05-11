@@ -12,7 +12,7 @@ wander_stage = 0;
 wander_stage_max = 0;
 wander_x_to = x;
 wander_y_to = y;
-wander_break = random_range(60, 140);
+wander_break = random_range(30, 60);
 wander_time = 0;
 
 burn = false;

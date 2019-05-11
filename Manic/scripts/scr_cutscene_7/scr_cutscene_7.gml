@@ -24,13 +24,13 @@ if (instance_exists(obj_player)){
 			if (audio_is_playing(snd_other_typing_0)){
 				audio_stop_sound(snd_other_typing_0);
 				
-				if (instance_exists(inst_18E1EC84)) { instance_destroy(inst_18E1EC84); }
-				if (instance_exists(inst_1E60D0F5)) { instance_destroy(inst_1E60D0F5); }
-				if (instance_exists(inst_63C69FB8)) { instance_destroy(inst_63C69FB8); }
+				if (instance_exists(inst_18E1EC84)){ instance_destroy(inst_18E1EC84); }
+				if (instance_exists(inst_1E60D0F5)){ instance_destroy(inst_1E60D0F5); }
+				if (instance_exists(inst_63C69FB8)){ instance_destroy(inst_63C69FB8); }
 			
-				if (instance_exists(obj_conveyerbelt_0)) { with(obj_conveyerbelt_0) stop = true; }
-				if (instance_exists(obj_conveyerbelt_1)) { with(obj_conveyerbelt_1) stop = true; }
-				if (instance_exists(obj_conveyerbelt_2)) { with(obj_conveyerbelt_2) stop = true; }
+				if (instance_exists(obj_conveyerbelt_0)){ with(obj_conveyerbelt_0) stop = true; }
+				if (instance_exists(obj_conveyerbelt_1)){ with(obj_conveyerbelt_1) stop = true; }
+				if (instance_exists(obj_conveyerbelt_2)){ with(obj_conveyerbelt_2) stop = true; }
 				audio_play_sound(snd_other_conveyorbelt_1, 3, false);
 			}
 			

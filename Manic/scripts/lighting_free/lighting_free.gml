@@ -7,7 +7,7 @@ if (ds_exists(global.worldLights, ds_type_list)){
 	var lights = global.worldLights;
 	var lightcount = ds_list_size(lights);
 	
-	for(var i = 0; i < lightcount; ++i) {
+	for(var i = 0; i < lightcount; ++i){
 		if (ds_exists(lights[| i], ds_type_list)){
 			light_destroy(lights[| i]);
 		}
@@ -18,11 +18,11 @@ if (ds_exists(global.worldLights, ds_type_list)){
 
 ds_map_destroy(global.lightVertexArrayMap);
 
-if(global.worldShadowMap != undefined && surface_exists(global.worldShadowMap)){
+if (global.worldShadowMap != undefined && surface_exists(global.worldShadowMap)){
 	surface_free(global.worldShadowMap);
 }
 
-if(global.lightShadowMap != undefined && surface_exists(global.lightShadowMap)){
+if (global.lightShadowMap != undefined && surface_exists(global.lightShadowMap)){
 	surface_free(global.lightShadowMap);
 }
 	

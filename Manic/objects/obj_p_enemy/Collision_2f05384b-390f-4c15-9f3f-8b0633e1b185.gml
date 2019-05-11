@@ -21,7 +21,7 @@ if (i_time <= 0) && (other.bite_to){
 	    part_particles_create(global.ps_bottom, x, y + 6, global.pt_gore_0, 3);
 		part_type_direction(global.pt_blood_5, dir - 20, dir + 20, 0, 0);
 		part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
-		repeat(8) { part_particles_create(global.ps_bottom, other.x + random_range(-8, 8), other.y + random_range(-8, 8), global.pt_blood_5, 1) };
+		repeat(8){ part_particles_create(global.ps_bottom, other.x + random_range(-8, 8), other.y + random_range(-8, 8), global.pt_blood_5, 1) };
 		scr_effect_object(other.x, other.y, obj_ef_blood, spr_ef_blood_0, 0, 1);
 		scr_effect_object(other.x + random_range(-6, 6), other.y + random_range(-6, 6), obj_ef_blood, spr_ef_blood_1, 0, 1);
 		

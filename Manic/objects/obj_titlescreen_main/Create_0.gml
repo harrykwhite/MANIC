@@ -130,7 +130,7 @@ option_setting_display_edit[3] = Options.CameraScale;
 option_setting_display_value[3] = global.game_option[| Options.CameraScale];
 option_setting_display_value_min[3] = 1;
 option_setting_display_value_max[3] = 1.5;
-option_setting_display_value_interval[3] = 0.25;
+option_setting_display_value_interval[3] = 0.1;
 option_setting_display_unit[3] = "x";
 option_setting_display_scale[3] = 1;
 
@@ -139,7 +139,7 @@ option_setting_display_edit[4] = Options.UIScale;
 option_setting_display_value[4] = global.game_option[| Options.UIScale];
 option_setting_display_value_min[4] = 1;
 option_setting_display_value_max[4] = 1.5;
-option_setting_display_value_interval[4] = 0.25;
+option_setting_display_value_interval[4] = 0.1;
 option_setting_display_unit[4] = "x";
 option_setting_display_scale[4] = 1;
 #endregion

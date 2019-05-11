@@ -5,7 +5,7 @@
 var shadowMapType = argument0;
 
 var shadowMap;
-switch(shadowMapType) {
+switch(shadowMapType){
 	case eShadowMap.Light: shadowMap = global.lightShadowMap; break;
 	case eShadowMap.Global: shadowMap = global.worldShadowMap; break;
 }
@@ -14,8 +14,8 @@ var camera = lighting_get_active_camera();
 var vw = camera[eLightingCamera.Width]
 var vh = camera[eLightingCamera.Height];
 
-if(shadowMap == undefined || !surface_exists(shadowMap) || surface_get_width(shadowMap) != vw || surface_get_height(shadowMap) != vh) {
-	if(shadowMap != undefined && surface_exists(shadowMap)) {
+if (shadowMap == undefined || !surface_exists(shadowMap) || surface_get_width(shadowMap) != vw || surface_get_height(shadowMap) != vh){
+	if (shadowMap != undefined && surface_exists(shadowMap)){
 		// Recreate the surface
 		surface_free(shadowMap);
 	}
@@ -24,7 +24,7 @@ if(shadowMap == undefined || !surface_exists(shadowMap) || surface_get_width(sha
 	shadowMap = surface_create(vw, vh);
 	
 	// Reassign it
-	switch(shadowMapType) {
+	switch(shadowMapType){
 		case eShadowMap.Light: global.lightShadowMap = shadowMap; break;
 		case eShadowMap.Global: global.worldShadowMap = shadowMap; break;
 	}

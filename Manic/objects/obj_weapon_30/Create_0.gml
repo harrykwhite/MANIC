@@ -8,6 +8,6 @@ attack_strength = 1;
 
 throw_damage = 5;
 
-index = 3;
+index = 30;
 
 global.weapon_slotammo[global.weapon_slotcurrent] = -1;

@@ -7,7 +7,7 @@ var light = argument0;
 var camera = argument1;
 
 // Validate argument
-if (!ds_exists(light, ds_type_list) || (ds_list_size(light) != eLight.Count)) {
+if (!ds_exists(light, ds_type_list) || (ds_list_size(light) != eLight.Count)){
 	// This array is not a light
 	return;
 }
@@ -18,7 +18,7 @@ if (!ds_exists(light, ds_type_list) || (ds_list_size(light) != eLight.Count)) {
 
 var type = light[| eLight.Type];
 
-if(type == eLightType.Directional) {
+if (type == eLightType.Directional){
 	// We cannot cull an infinite light
 	return false;
 }
@@ -34,8 +34,8 @@ var camera_w = camera[eLightingCamera.Width];
 var camera_h = camera[eLightingCamera.Height];
 
 // Do the rectangles overlap?
-if(rectangle_in_rectangle(light_x - range, light_y - range, light_x + range, light_y + range,
-						  camera_x, camera_y, camera_x + camera_w, camera_y + camera_h)) {
+if (rectangle_in_rectangle(light_x - range, light_y - range, light_x + range, light_y + range,
+						  camera_x, camera_y, camera_x + camera_w, camera_y + camera_h)){
 	// Do not cull this light
 	return false;
 }

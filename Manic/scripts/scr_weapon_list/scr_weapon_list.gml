@@ -39,6 +39,7 @@ enum PlayerWeapon{
 	WireCables,
 	DartRifle,
 	HuntingRifle,
+	Sickle,
 }
 
 enum AmmoType{
@@ -388,6 +389,15 @@ global.weapon_ammotype[32] = AmmoType.Bullets;
 global.weapon_camerarange[32] = 40;
 global.weapon_mouse[32] = MouseType.Crosshair;
 global.weapon_dualhanded[32] = false;
+
+global.weapon_name[33] = "Sickle";
+global.weapon_object[33] = obj_weapon_33;
+global.weapon_sprite[33] = spr_weapon_33;
+global.weapon_type[33] = WeaponType.Melee;
+global.weapon_heavy[33] = false;
+global.weapon_camerarange[33] = 15;
+global.weapon_mouse[33] = MouseType.SmallCircle;
+global.weapon_dualhanded[33] = false;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];

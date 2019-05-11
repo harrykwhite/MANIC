@@ -9,6 +9,6 @@
 //	This can be a powerful optimization if implemented carefully, and by disabling automatic recompositing.
 //
 
-with(__LIGHT_RENDERER) {
+with(__LIGHT_RENDERER){
 	dirty = argument0;
 }

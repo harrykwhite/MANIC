@@ -17,15 +17,28 @@ weaponammo_scale = 1;
 weaponammo_scaleTo = 1;
 weaponammo_x = 0;
 
+enum TutourialStage{
+	Movement,
+	Pickup,
+	Shoot,
+	Throw,
+	Switch,
+	Dash,
+}
+
 tutourial = false;
 tutourial_scale = 1;
+tutourial_alpha = 1;
+tutourial_fade = false;
 tutourial_stage = 0;
 tutourial_stage_timer = -1;
-tutourial_text[0] = "Use the [" + scr_keycheck_string(global.game_option[| Options.Input_MoveUp]) + scr_keycheck_string(global.game_option[| Options.Input_MoveLeft]) + scr_keycheck_string(global.game_option[| Options.Input_MoveDown]) + scr_keycheck_string(global.game_option[| Options.Input_MoveRight]) + "] keys to move";
-tutourial_text[1] = "Pick up the rifle in the shed with [" + scr_keycheck_string(global.game_option[| Options.Input_Interact]) + "]";
-tutourial_text[2] = "Shoot with [" + scr_mousecheck_string(global.game_option[| Options.Input_Attack]) + "]";
-tutourial_text[3] = "Throw your weapon at enemies by pressing [" + scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + "]";
-tutourial_text[4] = "Dash by pressing [" + scr_keycheck_string(global.game_option[| Options.Input_Dash]) + "]";
+
+tutourial_text[TutourialStage.Movement] = "Use the [" + scr_keycheck_string(global.game_option[| Options.Input_MoveUp]) + scr_keycheck_string(global.game_option[| Options.Input_MoveLeft]) + scr_keycheck_string(global.game_option[| Options.Input_MoveDown]) + scr_keycheck_string(global.game_option[| Options.Input_MoveRight]) + "] keys to move";
+tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with [" + scr_keycheck_string(global.game_option[| Options.Input_Interact]) + "]";
+tutourial_text[TutourialStage.Shoot] = "Shoot with [" + scr_mousecheck_string(global.game_option[| Options.Input_Attack]) + "]";
+tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing [" + scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + "]";
+tutourial_text[TutourialStage.Switch] = "Switch between weapons by using the [Mouse Scroll Wheel]";
+tutourial_text[TutourialStage.Dash] = "Dash by pressing [" + scr_keycheck_string(global.game_option[| Options.Input_Dash]) + "]";
 
 if (global.level_current == Level.Prologue){
 	tutourial = true;

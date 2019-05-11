@@ -96,14 +96,14 @@ void main()
 	/*								*/
 	/*		    Point Light			*/
 	/*								*/
-	if(u_LightType == eLightType_Point) {
+	if (u_LightType == eLightType_Point){
 		// Distance from point to point emitter
 		intensity *= intensityPoint(u_LightPosition, v_vTexcoord, u_LightRange);
 	}
 	/*								*/
 	/*			Spot Light			*/
 	/*								*/
-	else if(u_LightType == eLightType_Spot) {
+	else if (u_LightType == eLightType_Spot){
 		// Distance from point to point emitter
 		intensity *= intensityPoint(u_LightPosition, v_vTexcoord, u_LightRange);
 		// Dim it by angular distance to cone
@@ -112,12 +112,12 @@ void main()
 	/*								*/
 	/*		 Area & Line Light		*/
 	/*								*/
-	else if(u_LightType == eLightType_Area || u_LightType == eLightType_Line) {
+	else if (u_LightType == eLightType_Area || u_LightType == eLightType_Line){
 		// The line emitter is precomputed in constants u_LineEmitterPoint1 and u_LineEmitterPoint2
-		if(u_LightType == eLightType_Area) {
+		if (u_LightType == eLightType_Area){
 			// Compute if the fragment falls on the correct side of this infinite line
 			float side = (v_vTexcoord.x - u_LineEmitterPoint1.x) * (u_LineEmitterPoint2.y - u_LineEmitterPoint1.y) - (v_vTexcoord.y - u_LineEmitterPoint1.y) * (u_LineEmitterPoint2.x - u_LineEmitterPoint1.x);
-			if(side > 0.0) {
+			if (side > 0.0){
 				// This side is not lit
 				return;
 			}
@@ -126,17 +126,17 @@ void main()
 		// Project the fragment onto the line emitter
 		vec2 p1p2 = (u_LineEmitterPoint2 - u_LineEmitterPoint1) / u_TexelSize;
 		float projection = dot((v_vTexcoord - u_LineEmitterPoint1) / u_TexelSize, p1p2) / dot(p1p2, p1p2);
-		if(projection < 0.0) {
+		if (projection < 0.0){
 			// Vertex
 			intensity *= intensityPoint(u_LineEmitterPoint1, v_vTexcoord, u_LightRange)
 					   * attenuationAreaLightVertex(-clamp(projection, -1.0, 0.0));
 		}
-		else if(projection > 1.0) {
+		else if (projection > 1.0){
 			// Vertex
 			intensity *= intensityPoint(u_LineEmitterPoint2, v_vTexcoord, u_LightRange)
 					   * attenuationAreaLightVertex(clamp(projection - 1.0, 0.0, 1.0));
 		}
-		else {
+		else{
 			// Perpendicular
 			intensity *= intensityPoint(u_LineEmitterPoint1 + (u_LineEmitterPoint2 - u_LineEmitterPoint1) * projection, v_vTexcoord, u_LightRange);
 		}
@@ -145,7 +145,7 @@ void main()
 	// Get the fragment of this light
 	vec4 fragment = texture2D(gm_BaseTexture, v_vTexcoord);
 	
-	if(fragment.a > 0.5) {
+	if (fragment.a > 0.5){
 		// This fragment is in shadow
 #ifdef BLEND_UNLIT_FRAGMENTS
 		// Blend it with nearby fragments
@@ -154,7 +154,7 @@ void main()
 		gl_FragColor = u_LightColor * intensity * (1.0 - blend.a);
 #endif
 	}
-	else {
+	else{
 #ifdef BLEND_LIT_FRAGMENTS
 		vec4 blend = 0.50 * (blendFragment(gm_BaseTexture, v_vTexcoord, BLEND_TEXELS_IN_LIGHT * 0.50)
 						  +  blendFragment(gm_BaseTexture, v_vTexcoord, BLEND_TEXELS_IN_LIGHT));
@@ -169,7 +169,7 @@ void main()
 //	Function implementations
 //
 
-float intensityPoint(vec2 P, vec2 tex, float range) {
+float intensityPoint(vec2 P, vec2 tex, float range){
 	// Distance from point to point emitter
 	float distx = distance(vec2(P.x, 0.0), vec2(tex.x, 0.0)) / u_TexelSize.x;
 	float disty = distance(vec2(0.0, P.y), vec2(0.0, tex.y)) / u_TexelSize.y;
@@ -178,19 +178,19 @@ float intensityPoint(vec2 P, vec2 tex, float range) {
 	// Get light intensity from lut
 	float T = clamp(distPixels / range, 0.0, 1.0);
 	vec4 intensity = texture2D(u_LutIntensity, vec2(T, 0.0));
-	if(!u_AttenuationEnabled) return intensity.a;
+	if (!u_AttenuationEnabled) return intensity.a;
 	return intensity.a * attenuation(T, u_AttenuationAlpha, u_AttenuationBeta);
 }
 
-float attenuation(float X, float alpha, float beta) {
+float attenuation(float X, float alpha, float beta){
 	return 1.0 / (1.0 + alpha * X + beta * X * X);
 }
 
-float attenuationAreaLightVertex(float X) {
+float attenuationAreaLightVertex(float X){
 	return attenuation(X, 0.0, 10.0);
 }
 
-float angleDiff(vec2 origin, vec2 coord, float direction) {
+float angleDiff(vec2 origin, vec2 coord, float direction){
 	// Get the angle from origin to coordinate
 	float angle = atan((origin.y - coord.y) * u_TexelSize.x, (origin.x - coord.x) * u_TexelSize.y);
 	// Convert from radians to degrees in [0; 360] counter-clockwise order
@@ -200,7 +200,7 @@ float angleDiff(vec2 origin, vec2 coord, float direction) {
 }
 
 // You can uncomment adjacent fragments to do a more complete blend
-vec4 blendFragment(sampler2D sampler, vec2 coord, float dist) {
+vec4 blendFragment(sampler2D sampler, vec2 coord, float dist){
 	vec2 tc0 = coord + (dist * vec2(-u_TexelSize.s,	-u_TexelSize.t));
 	//vec2 tc1 = coord + (dist * vec2(-u_TexelSize.s,	0.0));
 	vec2 tc2 = coord + (dist * vec2(+u_TexelSize.s,	-u_TexelSize.t));

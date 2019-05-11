@@ -12,7 +12,7 @@ var camera_y = argument1;
 var camera_width = argument2;
 var camera_height = argument3;
 
-if(global.worldCustomCamera == undefined) {
+if (global.worldCustomCamera == undefined){
 	// Create the custom camera array
 	global.worldCustomCamera = array_create(4);
 }

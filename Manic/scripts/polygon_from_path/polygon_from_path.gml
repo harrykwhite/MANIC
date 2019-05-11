@@ -18,7 +18,7 @@ var points = path_get_number(path);
 // Create the set of points from the bounding box
 var set = array_create(points);
 
-for(var i = 0; i < points; ++i) {
+for(var i = 0; i < points; ++i){
 	var px = path_get_point_x(path, i) - area_cx - originx;
 	var py = path_get_point_y(path, i) - area_cy - originy;
 	set[i] = [px, py];

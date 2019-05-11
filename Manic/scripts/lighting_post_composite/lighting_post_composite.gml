@@ -7,13 +7,13 @@
 //// Any dirty shadow casters to clear?
 //var list = global.worldDirtyShadowCasters;
 //var size = ds_list_size(list);
-//for(var i = 0; i < size; ++i) {
+//for(var i = 0; i < size; ++i){
 //	var shadow_caster = list[| i];
-//	with(shadow_caster) {
+//	with(shadow_caster){
 //		// Unset the dirty and cleanup flags
 //		flags &= ~(eShadowCasterFlags.MarkedForCleanup | eShadowCasterFlags.Dirty);
 //	}
 //}
 
 //// Clear the list of dirty shadow casters
-//if(list > 0) ds_list_clear(list);
+//if (list > 0) ds_list_clear(list);

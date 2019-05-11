@@ -10,8 +10,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
     
     if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
         scr_player_knockback_initiate(2, mdir);
-		scr_effect_freeze(15);
-        scr_effect_screenshake(3);
+        scr_effect_screenshake(2);
         scr_mouse_control(MouseType.SmallCircle, 5, 7);
         scr_weapon_ammo_use(1);
         scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
@@ -38,7 +37,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
         shoot_can = false;
         shoot_time = 50;
         shoot_bounceback = -2;
-        angle_offset = 30;
+        angle_offset = 14;
 		line_alpha = -5.2;
     }else{
 		scr_sound_play(snd_weapon_click_0, false, 0.8, 1);

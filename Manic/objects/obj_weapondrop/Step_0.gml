@@ -9,7 +9,6 @@ if (global.game_pause) || (global.cutscene_current != -1){
 }
 
 var hit = false;
-time ++;
 
 if (spd > 0){
 	x += lengthdir_x(spd, dir);
@@ -46,12 +45,16 @@ if (bounce_time > 0){
 
 // Pickup
 if (instance_exists(obj_player)){
-    if (distance_to_object(obj_player) < pickup_range){
-        pickup = true;
-		scr_ui_control_indicate(string(global.weapon_name[index]) + "");
-    }else{
-        pickup = false;
-    }
+	if (time < 20){
+		time ++;
+	}else{
+	    if (distance_to_object(obj_player) < pickup_range){
+	        pickup = true;
+			scr_ui_control_indicate(string(global.weapon_name[index]) + "");
+	    }else{
+	        pickup = false;
+	    }
+	}
 	
 	if (global.weapon_slot_standalone != -1){
 		pickup = false;
@@ -77,8 +80,8 @@ if (instance_exists(obj_player)){
 				
 				for(var i = 0; i < 2; i ++){
 					if (global.weapon_slot[i] == index){
-						if (i != global.weapon_slotcurrent) {
-							with(obj_controller_gameplay) { scr_weapon_switch(true, i); }
+						if (i != global.weapon_slotcurrent){
+							with(obj_controller_gameplay){ scr_weapon_switch(true, i); }
 						}
 						
 						if (global.weapon_type[index] == WeaponType.Ranged){
@@ -139,14 +142,17 @@ if (instance_exists(obj_player)){
 	            if (ammo != -1){ // Set the ammo of the new object, based on what it was originally.
 					global.weapon_slotammo[global.weapon_slotcurrent] = ammo;
 	            }
-	
+				
 				global.weapon_collected[index] = true;
 				
 	            instance_destroy(); // Destroy this weapondrop object as it has been picked up.
 				
 				if (global.level_current == Level.Prologue){
-					if (obj_controller_ui.tutourial_stage == 1){
-						obj_controller_ui.tutourial_stage = 2;
+					if (obj_controller_ui.tutourial_stage < TutourialStage.Shoot) && (index == PlayerWeapon.HuntingRifle){
+						obj_controller_ui.tutourial_stage = TutourialStage.Shoot;
+						obj_controller_ui.tutourial_scale = 1.3;
+					}else if (obj_controller_ui.tutourial_stage < TutourialStage.Switch) && (index == PlayerWeapon.Sickle){
+						obj_controller_ui.tutourial_stage = TutourialStage.Switch;
 						obj_controller_ui.tutourial_scale = 1.3;
 					}
 				}

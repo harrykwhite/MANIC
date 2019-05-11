@@ -13,7 +13,7 @@ if (gamestate == GameState.Developer){
 	draw_set_font(fnt_cambria_5);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_text_shadow_transformed((display_get_gui_width() / 2), 140, "MANIC", c_white, titlescale, titlescale, angle);
+	scr_text_shadow_transformed((display_get_gui_width() / 2), (display_get_gui_height() / 2) - 240, "MANIC", c_white, titlescale, titlescale, angle);
 	draw_set_font(fnt_cambria_2);
 	
 	if (searching_for_input){
@@ -48,7 +48,7 @@ if (gamestate == GameState.Developer){
 		for(var i = 0; i <= option_max; i ++){
 			var str = option[i];
 			var xx = (display_get_gui_width() / 2);
-			var yy = (400 + (56 * i);
+			var yy = (((display_get_gui_height() / 2) - (56 * option_max * 0.5)) + (56 * i));
 			var islocked = false;
 			
 			if (i != option_max) && (i != -1){
@@ -111,10 +111,10 @@ if (gamestate == GameState.Developer){
 				var centered = false;
 				
 				var xx = (display_get_gui_width() / 2);
-				var yy = (400 + (56 * i);
+				var yy = (((display_get_gui_height() / 2) - (56 * omax * 0.5)) + (56 * i));
 				
 				if (in_settings_controls){
-					yy = (400 + (46 * i);
+					yy = (((display_get_gui_height() / 2) - (46 * omax * 0.5)) + (46 * i));
 				}
 				
 				if (i > omax){
@@ -281,7 +281,7 @@ if (gamestate == GameState.Developer){
 			for(var i = 0; i <= option_setting_max + 1; i ++){
 				var str = "";
 				var xx = (display_get_gui_width() / 2);
-				var yy = (400 + (56 * i);
+				var yy = (((display_get_gui_height() / 2) - (56 * option_setting_max * 0.5)) + (56 * i));
 				var scale = 1;
 				
 				if (!selected_set) && (!fade){
@@ -327,7 +327,7 @@ if (gamestate == GameState.Developer){
 			var str = "";
 			var scale = 1;
 			var xx = (display_get_gui_width() / 2);
-			var yy = (400 + (32 * i);
+			var yy = (((display_get_gui_height() / 2) - (32 * option_levelselect_max * 0.5)) + (32 * i));
 			var islocked = false;
 			
 			if (i < option_levelselect_max + 1){

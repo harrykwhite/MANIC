@@ -160,12 +160,26 @@ if (!global.game_pause){
 						}
 					}
 					
+					var switched = false;
+					
 					if (mouse_wheel_up()){
 						obj_controller_mouse.mouse_scale = 2;
 						scr_weapon_switch(false);
+						switched = true;
 					}else if (mouse_wheel_down()){
 						obj_controller_mouse.mouse_scale = 2;
 						scr_weapon_switch(true);
+						switched = true;
+					}
+					
+					if (switched){
+						if (global.level_current == Level.Prologue){
+							with(obj_controller_ui){
+								if (tutourial) && (tutourial_stage < TutourialStage.Dash) && (tutourial_stage_timer == -1){
+									tutourial_stage_timer = 60 * 4;
+								}
+							}
+						}
 					}
 				}
 			}else{

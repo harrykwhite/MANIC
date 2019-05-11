@@ -2,3 +2,4 @@
 #macro gui_scale_y (display_get_gui_height() / camera_get_view_height(view_camera[0]))
 #macro gamestate GameState.Developer
 #macro realtime (delta_time / 10000) / 1.6
+#macro outlinewhite make_colour_rgb(0.8 * 255, 0.8 * 255, 0.8 * 255)

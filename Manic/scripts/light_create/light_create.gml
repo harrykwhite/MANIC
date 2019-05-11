@@ -36,7 +36,7 @@ arr[| eLight.Flags] = eLightFlags.Dirty | eLightFlags.CastsShadows;
 arr[| eLight.ShadowLength] = shadow_length;
 
 var lutIntensity = undefined;
-switch(type) {
+switch(type){
 	case eLightType.Point: lutIntensity = spr_lut_light_intensity_linear; break;
 	case eLightType.Spot: lutIntensity = spr_lut_light_intensity_spot; break;
 	case eLightType.Area: lutIntensity = spr_lut_light_intensity_area; break;
@@ -87,9 +87,9 @@ arr[| eLight.ActiveCamera] = undefined;
 //	Add default extensions
 //
 
-if(global.lightDefaultExtensions != undefined) {
+if (global.lightDefaultExtensions != undefined){
 	var len = array_length_1d(global.lightDefaultExtensions);
-	for(var i = 0; i < len; ++i) {
+	for(var i = 0; i < len; ++i){
 		var ext = global.lightDefaultExtensions[i];
 		light_add_extension(arr, ext);
 	}

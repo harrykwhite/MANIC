@@ -1,1 +1,1 @@
-stage_to = 1;
+stage_to = TutourialStage.Pickup;
