@@ -185,26 +185,14 @@ if (tutourial) && (global.cutscene_current == -1){
 		if (tutourial_stage_timer > 0){
 			tutourial_stage_timer --;
 		}else{
-			if (tutourial_stage < tut_count){
+			if (tutourial_stage < tut_count - 1){
 				tutourial_stage ++;
 				tutourial_scale = 1.3;
 			}else{
 				tutourial_fade = true;
-				show_debug_message("tutourial fade enabled");
 			}
 			
 			tutourial_stage_timer = -1;
-		}
-	}
-	
-	if (tutourial_fade){
-		if (tutourial_alpha > 0){
-			tutourial_alpha -= 0.05;
-		}else{
-			tutourial = false;
-			tutourial_stage = 0;
-			tutourial_fade = false;
-			tutourial_alpha = 1;
 		}
 	}
 	
@@ -221,6 +209,17 @@ if (tutourial) && (global.cutscene_current == -1){
 	draw_set_alpha(((tutourial_scale * scalem) - 1) * 3 * tutourial_alpha);
 	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_maroon, tutourial_scale * scalem, tutourial_scale * scalem, 0);
 	draw_set_alpha(1);
+	
+	if (tutourial_fade){
+		if (tutourial_alpha > 0){
+			tutourial_alpha -= 0.05;
+		}else{
+			tutourial = false;
+			tutourial_stage = 0;
+			tutourial_fade = false;
+			tutourial_alpha = 1;
+		}
+	}
 }
 
 // Kill Display

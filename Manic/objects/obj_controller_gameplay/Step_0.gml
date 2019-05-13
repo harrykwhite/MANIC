@@ -14,7 +14,7 @@ if (!levelclear_called){
 		return;
 	}
 	
-	if (global.level_current == Level.CityHeadquarters) || (global.level_current == Level.Prologue){
+	if (global.level_current == Level.CityHeadquarters){
 		levelclear_called = true;
 		return;
 	}
@@ -29,12 +29,14 @@ if (!levelclear_called){
 			global.game_combat_state = CombatState.Idle;
 			global.game_combat_state_time_real = 0;
 			
-			audio_play_sound(spawn_music_stinger[2], 3, false);
+			if (global.level_current != Level.Prologue){
+				audio_play_sound(spawn_music_stinger[2], 3, false);
 			
-			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
-			audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
-			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
-			audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
+				audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
+				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
+				audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+			}
 		}
 	}
 }

@@ -7,7 +7,7 @@ if (parent != -1){
 		
 		parent = -1;
 	}else{
-		depth_offset = -45;
+		depth_offset = -25;
 	}
 }
 

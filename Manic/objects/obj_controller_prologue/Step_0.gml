@@ -33,22 +33,68 @@ if (!global.game_pause){
 }
 
 // Spawning
-if (obj_controller_ui.tutourial){
+if (!global.level_cleared[global.level_current]){
 	lighting = 0.7;
 }else{
 	var to = 0.85;
 	
 	if (lighting < to){
-		lighting += 0.00001;
+		lighting += 0.00025;
 	}else if (lighting > to){
-		lighting -= 0.00001;
+		lighting -= 0.00025;
+	}
+	
+	if (!endscene_initiated){
+		var child0 = inst_3992F7F2;
+		var child1 = inst_1FCF6CFC;
+		var wife = inst_6C02B40B;
+		
+		instance_activate_all();
+		
+		with(obj_bed_small_0){
+			fire = true;
+		}
+		
+		with(obj_bed_large_0){
+			fire = true;
+		}
+		
+		with(obj_table_0){
+			fire = true;
+		}
+		
+		with(obj_chair_0){
+			fire = true;
+		}
+		
+		var light = instance_create(466, 552, obj_block_light);
+		light.size[0] = 180;
+		
+		var child0corpse = instance_create(child0.x, child0.y, obj_enemy_corpse);
+		child0corpse.sprite_index = spr_player_child_0_corpse_0;
+		
+		var child1corpse = instance_create(child1.x, child1.y, obj_enemy_corpse);
+		child1corpse.sprite_index = spr_player_child_1_corpse_0;
+		
+		var wifecorpse = instance_create(wife.x, wife.y, obj_enemy_corpse);
+		wifecorpse.sprite_index = spr_player_wife_corpse_0;
+		
+		instance_destroy(child0);
+		instance_destroy(child1);
+		instance_destroy(wife);
+		
+		instance_destroy(obj_farmbuilding_3);
+		instance_destroy(obj_farmbuilding_4);
+		
+		endscene_initiated = true;
 	}
 }
 
 if (!global.game_pause) && (instance_exists(obj_player)){
 	deer_can_spawn = ((obj_controller_ui.tutourial_stage > 1) || (!obj_controller_ui.tutourial))
 					&& (instance_number(obj_enemy_5) < 1)
-					&& (point_distance(obj_player.x, obj_player.y, 530, 550) > 500);
+					&& (point_distance(obj_player.x, obj_player.y, 530, 550) > 600)
+					&& (!global.level_cleared[global.level_current]);
 
 	if (deer_can_spawn){
 		if (deer_spawn_time > 0){
@@ -57,14 +103,14 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 			var xx = random_range(camx - 200, camx + camw + 200);
 			var yy = random_range(camy - 200, camy + camh + 200);
 		
-			while (onscreen(xx, yy, -20) || !inroom(xx, yy) || collision_rectangle(xx - 15, yy - 15, xx + 15, yy + 15, obj_p_solid, false, true)){
-				xx = random_range(camx - 50, camx + camw + 50);
-				yy = random_range(camy - 50, camy + camh + 50);
+			while (onscreen(xx, yy, -50) || !inroom(xx, yy) || collision_rectangle(xx - 15, yy - 15, xx + 15, yy + 15, obj_p_solid, false, true)){
+				xx = random_range(camx - 200, camx + camw + 200);
+				yy = random_range(camy - 200, camy + camh + 200);
 			}
 			
 			instance_create(xx, yy, obj_enemy_5);
 			
-			repeat(9){
+			repeat(15){
 				part_particles_create(global.ps_front, xx + random_range(-7, 7), yy + random_range(-18, 18), global.pt_spawn_0, 1);
 			}
 			

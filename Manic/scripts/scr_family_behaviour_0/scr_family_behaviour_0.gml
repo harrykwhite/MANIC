@@ -9,12 +9,20 @@ if (instance_exists(obj_player)){
 		var len = random_range(40, 60);
 		var xx = xstart + lengthdir_x(len, dir);
 		var yy = ystart + lengthdir_y(len, dir);
+		var counter = 0;
 		
 		while(collision_line(x, y, xx, yy, obj_p_solid, false, true)){
 			dir = random(360);
 			len = random_range(40, 60);
 			xx = xstart + lengthdir_x(len, dir);
 			yy = ystart + lengthdir_y(len, dir);
+			
+			if (counter < 100){
+				counter ++;
+			}else{
+				counter = 0;
+				break;
+			}
 		}
 		
 		move_x_to = xx;
@@ -93,6 +101,6 @@ if (speed_final < 0.1){
 				break;
 		}
 	}else{
-		sprite_index = spr_player_wife_idle_0;
+		sprite_index = spr_player_wife_walk_0;
 	}
 }

@@ -14,6 +14,8 @@ deer_can_spawn = false;
 deer_spawn_time = 60 * random_range(6, 9);
 
 // Other
+endscene_initiated = false;
+
 wind = audio_play_sound(m_ambience_wind_0, 3, true);
 audio_sound_gain(wind, 0, 0);
 audio_sound_gain(wind, 1 * obj_controller_all.real_ambience_volume, 20000);
