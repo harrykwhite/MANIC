@@ -20,7 +20,7 @@ global.level_turret_number[Level.Prologue] = 0;
 global.level_entered[Level.Prologue] = false;
 global.level_cleared[Level.Prologue] = false;
 global.level_kill_count[Level.Prologue] = 0;
-global.level_kill_max[Level.Prologue] = 4;
+global.level_kill_max[Level.Prologue] = 3;
 
 global.level_name[Level.RavagedTown] = "Ravaged Town";
 global.level_room[Level.RavagedTown] = rm_level_1_00;

@@ -41,8 +41,8 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
 		
 		if (global.level_current == Level.Prologue){
 			with(obj_controller_ui){
-				if (tutourial) && (tutourial_stage < TutourialStage.Throw) && (tutourial_stage_timer == -1){
-					tutourial_stage_timer = 60 * 4;
+				if (tutourial) && (tutourial_stage == TutourialStage.Shoot) && (tutourial_stage_timer == -1){
+					tutourial_stage_timer = 60 * 2;
 				}
 			}
 		}
@@ -71,6 +71,14 @@ if (global.player_stamina_active){
 			
 		    instance_destroy();
 		    global.weapon_slot[global.weapon_slotcurrent] = -1;
+			
+			if (global.level_current == Level.Prologue){
+				with(obj_controller_ui){
+					if (tutourial) && (tutourial_stage == TutourialStage.Throw) && (tutourial_stage_timer == -1){
+						tutourial_stage_timer = 60 * 2;
+					}
+				}
+			}
 		}
     }
 }

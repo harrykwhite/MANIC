@@ -185,11 +185,20 @@ if (tutourial) && (global.cutscene_current == -1){
 		if (tutourial_stage_timer > 0){
 			tutourial_stage_timer --;
 		}else{
-			if (tutourial_stage < tut_count - 1){
-				tutourial_stage ++;
-				tutourial_scale = 1.3;
-			}else{
-				tutourial_fade = true;
+			scr_tutourial_next_stage();
+			
+			if (tutourial_stage == TutourialStage.PickupMelee) && (!tutourial_stage_pickupmelee_cseen){
+				var cutsceneblock = inst_1A5669D2;
+				
+				instance_activate_object(cutsceneblock);
+				instance_destroy(cutsceneblock);
+				
+				global.cutscene_current = 40;
+				obj_controller_gameplay.cutscene_look_x = 1702;
+				obj_controller_gameplay.cutscene_look_y = 505;
+				obj_controller_gameplay.cutscene_look_time = 70;
+				obj_controller_gameplay.cutscene_look_prop = false;
+				obj_controller_gameplay.cutscene_look_object = noone;
 			}
 			
 			tutourial_stage_timer = -1;

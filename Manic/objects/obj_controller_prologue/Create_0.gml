@@ -11,7 +11,7 @@ spawn_y = 480;
 spawn_pause_update = false;
 
 deer_can_spawn = false;
-deer_spawn_time = 60 * random_range(6, 9);
+deer_spawn_time = 60 * random_range(4, 7);
 
 // Other
 endscene_initiated = false;
@@ -45,7 +45,10 @@ repeat(420){
 		yy = oldy + choose(-15, 15);
 	}
 	
-	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true) || tilemap_get_at_pixel(lflr, xx, yy)){
+	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true)
+	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
+	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_weapondrop, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
+	|| tilemap_get_at_pixel(lflr, xx, yy)){
 		xx = random(room_width);
 		yy = random(room_height);
 	}
@@ -68,7 +71,12 @@ repeat(40){
 		yy = oldy + choose(-20, 20);
 	}
 	
-	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_rock_small_0, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true) || tilemap_get_at_pixel(lflr, xx, yy)){
+	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true)
+	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true)
+	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_rock_small_0, false, true)
+	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
+	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_weapondrop, false, true)
+	|| tilemap_get_at_pixel(lflr, xx, yy)){
 		xx = random(room_width);
 		yy = random(room_height);
 	}

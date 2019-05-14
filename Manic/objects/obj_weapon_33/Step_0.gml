@@ -27,12 +27,19 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
         
         attack_time = 8;
         attack_can = false;
+		
+		if (global.level_current == Level.Prologue){
+			with(obj_controller_ui){
+				if (tutourial) && (tutourial_stage == TutourialStage.Shoot) && (tutourial_stage_timer == -1){
+					tutourial_stage_timer = 60 * 2;
+				}
+			}
+		}
     }
 }
 
 if (global.player_stamina_active){
     if (mouse_check_button_pressed(obj_controller_all.key_throw)){
-		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);
 			scr_player_stamina_drain(10);
@@ -48,6 +55,14 @@ if (global.player_stamina_active){
 
 		    instance_destroy();
 		    global.weapon_slot[global.weapon_slotcurrent] = -1;
+			
+			if (global.level_current == Level.Prologue){
+				with(obj_controller_ui){
+					if (tutourial) && (tutourial_stage == TutourialStage.Throw) && (tutourial_stage_timer == -1){
+						tutourial_stage_timer = 60 * 2;
+					}
+				}
+			}
 		}
     }
 }

@@ -32,7 +32,6 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
 
 if (global.player_stamina_active){
     if (mouse_check_button_pressed(obj_controller_all.key_throw)){
-		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);
 			scr_player_stamina_drain(10);

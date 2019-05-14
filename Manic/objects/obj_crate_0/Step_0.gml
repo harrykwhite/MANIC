@@ -49,7 +49,10 @@ if (death){
 	scr_effect_vignette_flash(c_ltgray, 0.1, 0.01);
 	part_type_direction(global.pt_wood_2, 0, 360, 0, 0);
     repeat(15)part_particles_create(global.ps_front, x + random_range(-7, 7), y + random_range(-7, 7), global.pt_wood_2, 1);
-	var brk = instance_create(x, y, obj_break); brk.shake = 3; brk.sprite_index = spr_crate_0_break;
+	
+	var brk = instance_create(x, y, obj_break);
+	brk.shake = 3;
+	brk.sprite_index = spr_crate_0_break;
 	
 	scr_weapon_ammo_spawn(2, 6, 5, x, y + 6);
 	

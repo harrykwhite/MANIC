@@ -75,7 +75,6 @@ if (shoot_time > 0){
     shoot_time--;
 	
 	if (within(shoot_time, 29, 31)){
-		
 		if (!audio_is_playing(snd_weapon_reload_0)){
 			scr_sound_play(snd_weapon_reload_0, false, 0.9, 1.2);
 		}

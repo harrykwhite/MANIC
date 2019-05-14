@@ -32,7 +32,7 @@ if (playerexists){
 // Moving to Player
 if (playerexists) && (windex != -1){
     if (attract){
-        dir = point_direction(x, y, player.x, player.y);
+        dir = point_direction(x, y, player.x, player.y + 6);
         spd += ammospeed;
 		
         if (place_meeting(x + 1, y + 1, player)){

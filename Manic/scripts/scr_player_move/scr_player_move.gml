@@ -189,7 +189,7 @@ if (global.weapon_slot_standalone == -1){
 		if (global.level_current == Level.Prologue){
 			with(obj_controller_ui){
 				if (tutourial) && (tutourial_stage == TutourialStage.Dash) && (tutourial_stage_timer == -1){
-					tutourial_stage_timer = 60 * 4;
+					tutourial_stage_timer = 60 * 2;
 				}
 			}
 		}

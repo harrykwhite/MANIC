@@ -148,10 +148,10 @@ if (instance_exists(obj_player)){
 	            instance_destroy(); // Destroy this weapondrop object as it has been picked up.
 				
 				if (global.level_current == Level.Prologue){
-					if (obj_controller_ui.tutourial_stage < TutourialStage.Shoot) && (index == PlayerWeapon.HuntingRifle){
+					if (obj_controller_ui.tutourial_stage == TutourialStage.Pickup) && (index == PlayerWeapon.HuntingRifle){
 						obj_controller_ui.tutourial_stage = TutourialStage.Shoot;
 						obj_controller_ui.tutourial_scale = 1.3;
-					}else if (obj_controller_ui.tutourial_stage < TutourialStage.Switch) && (index == PlayerWeapon.Sickle){
+					}else if (obj_controller_ui.tutourial_stage == TutourialStage.PickupMelee) && (index == PlayerWeapon.Sickle){
 						obj_controller_ui.tutourial_stage = TutourialStage.Switch;
 						obj_controller_ui.tutourial_scale = 1.3;
 					}

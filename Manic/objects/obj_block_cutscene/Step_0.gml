@@ -39,6 +39,10 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 			
 			global.cutscene_current = index;
 			
+			if (special == "sicklelook"){
+				obj_controller_ui.tutourial_stage_pickupmelee_cseen = true;
+			}
+			
 			if (index == 40){
 				obj_controller_gameplay.cutscene_look_x = look_x;
 				obj_controller_gameplay.cutscene_look_y = look_y;
