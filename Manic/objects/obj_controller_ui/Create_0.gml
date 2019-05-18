@@ -1,5 +1,5 @@
 // Setup
-var weaponalength = array_length_1d(global.weapon_slot);
+scr_level_current_control();
 
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
@@ -34,6 +34,7 @@ tutourial_fade = false;
 tutourial_stage = 0;
 tutourial_stage_timer = -1;
 tutourial_stage_pickupmelee_cseen = false;
+tutourial_stage_pickupmelee_equipped = false;
 
 tutourial_text[TutourialStage.Movement] = "Use the [" + scr_keycheck_string(global.game_option[| Options.Input_MoveUp]) + scr_keycheck_string(global.game_option[| Options.Input_MoveLeft]) + scr_keycheck_string(global.game_option[| Options.Input_MoveDown]) + scr_keycheck_string(global.game_option[| Options.Input_MoveRight]) + "] keys to move";
 tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with [" + scr_keycheck_string(global.game_option[| Options.Input_Interact]) + "]";
@@ -144,6 +145,7 @@ for(var i = 1; i < levels; i ++){
 	}
 }
 
+var weaponalength = array_length_1d(global.weapon_slot);
 weaponslot_shake = 0;
 for (var i = 0; i < weaponalength; i ++){
     weaponslot_weaponscale[i] = 0;

@@ -231,11 +231,21 @@ if (global.weapon_slot_standalone == -1){
 			img_speed = 0.03;
 		}
 	}else{
+		var idlesprite = spr_player_idle_1;
+		var walksprite = spr_player_walk_1;
+		
+		if (global.cutscene_current == 57) && (global.weapon_slot[0] == PlayerWeapon.Revolver){
+			idlesprite = spr_player_idle_0;
+			walksprite = spr_player_walk_0;
+		}
+		
 		dir = point_direction(x, y, move_x_to, move_y_to);
-		sprite_index = spr_player_walk_1;
+		sprite_index = walksprite;
 		
 		if (distance_to_point(move_x_to, move_y_to) < 7){
 		    len = 0;
+			sprite_index = idlesprite;
+			img_speed = 0.03;
 		}else{
 			var spd = move_extSpd;
 			

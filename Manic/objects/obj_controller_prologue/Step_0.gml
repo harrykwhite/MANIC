@@ -41,9 +41,9 @@ if (!global.level_cleared[global.level_current]){
 	var to = 0.95;
 	
 	if (lighting < to){
-		lighting += 0.0002;
+		lighting += 0.0005;
 	}else if (lighting > to){
-		lighting -= 0.0002;
+		lighting -= 0.0005;
 	}
 	
 	if (!endscene_initiated){
@@ -73,16 +73,20 @@ if (!global.level_cleared[global.level_current]){
 		for(var i = 0; i < cratecount; i ++){
 			var thiscrate = instance_find(obj_crate_0, i);
 			
-			if (thiscrate.x < 1038){
-				with(thiscrate){
-					var brk = instance_create(x, y, obj_break);
-					brk.sprite_index = spr_crate_0_break;
+			if (instance_exists(thiscrate)){
+				if (thiscrate.x < 1038){
+					with(thiscrate){
+						var brk = instance_create(x, y, obj_break);
+						brk.sprite_index = spr_crate_0_break;
+					}
+				
+					instance_destroy(thiscrate);
 				}
 			}
 		}
 		
 		var light = instance_create(466, 552, obj_block_light);
-		light.size[0] = 360;
+		light.size[0] = 560;
 		light.time = -1;
 		
 		var firesound = instance_create(502, 544, obj_block_sound);
@@ -105,6 +109,14 @@ if (!global.level_cleared[global.level_current]){
 		instance_destroy(obj_farmbuilding_3);
 		instance_destroy(obj_farmbuilding_4);
 		
+		var gundrop = instance_create(652, 500, obj_weapondrop);
+		gundrop.index = PlayerWeapon.Revolver;
+		gundrop.angle = 30;
+		
+		var knifedrop = instance_create(652 - 10, 500 + 10, obj_weapondrop);
+		knifedrop.index = PlayerWeapon.Knife;
+		knifedrop.angle = 110;
+		
 		endscene_initiated = true;
 	}
 }
@@ -119,16 +131,16 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 		if (deer_spawn_time > 0){
 			deer_spawn_time --;
 		}else{
-			var xx = random_range(camx - 200, camx + camw + 200);
-			var yy = random_range(camy - 200, camy + camh + 200);
+			var xx = random_range(camx - 60, camx + camw + 60);
+			var yy = random_range(camy - 60, camy + camh + 60);
 			var counter = 0;
 			var dospawn = true;
 			
-			while (onscreen(xx, yy, -50) || !inroom(xx, yy) || collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)){
-				xx = random_range(camx - 200, camx + camw + 200);
-				yy = random_range(camy - 200, camy + camh + 200);
+			while (onscreen(xx, yy) || !inroom(xx, yy) || collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)){
+				xx = random_range(camx - 60, camx + camw + 60);
+				yy = random_range(camy - 60, camy + camh + 60);
 				
-				if (counter < 100){
+				if (counter < 200){
 					counter ++;
 				}else{
 					dospawn = false;
@@ -144,7 +156,7 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 				}
 			}
 			
-			deer_spawn_time = 60 * random_range(4, 7);
+			deer_spawn_time = 60 * random_range(3, 5);
 		}
 	}
 }

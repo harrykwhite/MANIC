@@ -1,4 +1,4 @@
-if (!instance_exists(obj_player)) || (instance_number(object_index)>1){
+if (!instance_exists(obj_player)) || (instance_number(object_index) > 1){
     instance_destroy();
 
 }else{

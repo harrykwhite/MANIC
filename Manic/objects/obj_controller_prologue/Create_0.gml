@@ -11,7 +11,7 @@ spawn_y = 480;
 spawn_pause_update = false;
 
 deer_can_spawn = false;
-deer_spawn_time = 60 * random_range(4, 7);
+deer_spawn_time = 60 * random_range(3, 5);
 
 // Other
 endscene_initiated = false;

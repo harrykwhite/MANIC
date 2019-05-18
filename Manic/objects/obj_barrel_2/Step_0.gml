@@ -13,20 +13,7 @@ if (hit_time > 0){
 
 // Motion
 if (spd > 0.375){
-	var col_list, col_length, can_move;
-	col_list[0] = obj_p_enemy;
-	col_list[1] = obj_p_player;
-	col_length = array_length_1d(col_list);
-	can_move = true;
-	
-	for(var i = 0; i < col_length; i ++){
-		if (place_meeting(x + lengthdir_x(spd + 1, dir), y + lengthdir_y(spd, dir), col_list[i])){
-			can_move = false;
-			break;
-		}
-	}
-	
-	if (can_move){
+	if (!place_meeting(x + lengthdir_x(spd + 3, dir), y + lengthdir_y(spd + 3, dir), obj_p_pawn)){
 		x += lengthdir_x(spd, dir);
 		y += lengthdir_y(spd, dir);
 	}
@@ -35,8 +22,10 @@ if (spd > 0.375){
 }else{
 	if (point_distance(x, y, basex, basey) > 1){
 		var dirto = point_direction(x, y, basex, basey);
-		x += lengthdir_x(abs(basex - x) * 0.1, dirto);
-		y += lengthdir_y(abs(basey - y) * 0.1, dirto);
+		if (!place_meeting(x + lengthdir_x(3, dirto), y + lengthdir_y(3, dirto), obj_p_pawn)){
+			x += lengthdir_x(abs(basex - x) * 0.1, dirto);
+			y += lengthdir_y(abs(basey - y) * 0.1, dirto);
+		}
 	}
 }
 

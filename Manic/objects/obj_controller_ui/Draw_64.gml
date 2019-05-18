@@ -187,18 +187,24 @@ if (tutourial) && (global.cutscene_current == -1){
 		}else{
 			scr_tutourial_next_stage();
 			
-			if (tutourial_stage == TutourialStage.PickupMelee) && (!tutourial_stage_pickupmelee_cseen){
-				var cutsceneblock = inst_1A5669D2;
+			if (tutourial_stage == TutourialStage.PickupMelee){
+				if (tutourial_stage_pickupmelee_equipped){
+					scr_tutourial_next_stage();
+				}
 				
-				instance_activate_object(cutsceneblock);
-				instance_destroy(cutsceneblock);
+				if (!tutourial_stage_pickupmelee_cseen){
+					var cutsceneblock = inst_1A5669D2;
 				
-				global.cutscene_current = 40;
-				obj_controller_gameplay.cutscene_look_x = 1702;
-				obj_controller_gameplay.cutscene_look_y = 505;
-				obj_controller_gameplay.cutscene_look_time = 70;
-				obj_controller_gameplay.cutscene_look_prop = false;
-				obj_controller_gameplay.cutscene_look_object = noone;
+					instance_activate_object(cutsceneblock);
+					instance_destroy(cutsceneblock);
+				
+					global.cutscene_current = 40;
+					obj_controller_gameplay.cutscene_look_x = 1702;
+					obj_controller_gameplay.cutscene_look_y = 505;
+					obj_controller_gameplay.cutscene_look_time = 70;
+					obj_controller_gameplay.cutscene_look_prop = false;
+					obj_controller_gameplay.cutscene_look_object = noone;
+				}
 			}
 			
 			tutourial_stage_timer = -1;
@@ -239,14 +245,18 @@ if (global.level_current != Level.CityHeadquarters){
 	
 	if (global.level_current == Level.Prologue){
 		text = "Hunt and kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " deer.";
+		
+		if (global.level_cleared[global.level_current]){
+			text = "All deers hunted. Return to the house."
+		}
 	}else{
 		text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
+		
+		if (global.level_cleared[global.level_current]){
+			text = "Area cleared. Proceed to the next level."
+		}
 	}
 	
-	if (global.level_cleared[global.level_current]){
-		text = "Area cleared. Proceed to the next level."
-	}
-
 	draw_set_alpha(1);
 	draw_set_font(fnt_cambria_0);
 	draw_set_halign(fa_left);

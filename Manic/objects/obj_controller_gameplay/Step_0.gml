@@ -1,3 +1,5 @@
+var levelcur = global.level_current;
+
 scr_position_view();
 scr_inboss();
 
@@ -5,23 +7,25 @@ global.player_has_bossrespawn = global.boss_current != -1;
 
 // Level clear
 //if (keyboard_check_pressed(vk_left)){
-//	global.level_kill_count[global.level_current] += 10;
+//	global.level_kill_count[levelcur] += 10;
 //}
 
 if (!levelclear_called){
-	if (global.level_cleared[global.level_current]){
+	if (levelcur != Level.Prologue){
+		if (global.level_cleared[levelcur]){
+			levelclear_called = true;
+			return;
+		}
+	}
+	
+	if (levelcur == Level.CityHeadquarters){
 		levelclear_called = true;
 		return;
 	}
 	
-	if (global.level_current == Level.CityHeadquarters){
-		levelclear_called = true;
-		return;
-	}
-	
-	if (global.level_kill_count[global.level_current] >= global.level_kill_max[global.level_current]){
+	if (global.level_kill_count[levelcur] >= global.level_kill_max[levelcur]){
 		obj_controller_ui.levelcleared_time = 60 * 3.5;
-		global.level_cleared[global.level_current] = true;
+		global.level_cleared[levelcur] = true;
 		levelclear_called = true;
 		
 		var level = scr_get_level_object();
@@ -29,7 +33,7 @@ if (!levelclear_called){
 			global.game_combat_state = CombatState.Idle;
 			global.game_combat_state_time_real = 0;
 			
-			if (global.level_current != Level.Prologue){
+			if (levelcur != Level.Prologue){
 				audio_play_sound(spawn_music_stinger[2], 3, false);
 			
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
@@ -41,8 +45,10 @@ if (!levelclear_called){
 	}
 }
 
-if (global.level_cleared[global.level_current]){
-	global.level_kill_count[global.level_current] = global.level_kill_max[global.level_current];
+if (levelcur != Level.Prologue){
+	if (global.level_cleared[levelcur]){
+		global.level_kill_count[levelcur] = global.level_kill_max[levelcur];
+	}
 }
 
 // Recording level and section start data
@@ -140,7 +146,7 @@ if (!global.game_pause){
 		if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 			weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
 		}else{
-			if (global.level_current != Level.Prologue){
+			if (levelcur != Level.Prologue){
 				weapon = global.weapon_object[4];
 			}
 		}
@@ -175,7 +181,7 @@ if (!global.game_pause){
 					}
 					
 					if (switched){
-						if (global.level_current == Level.Prologue){
+						if (levelcur == Level.Prologue){
 							with(obj_controller_ui){
 								if (tutourial) && (tutourial_stage == TutourialStage.Switch) && (tutourial_stage_timer == -1){
 									tutourial_stage_timer = 60 * 2;

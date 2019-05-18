@@ -6,14 +6,14 @@ if (instance_exists(obj_player)){
 		move_time --;
 	}else{
 		var dir = random(360);
-		var len = random_range(40, 60);
+		var len = random_range(20, 30);
 		var xx = xstart + lengthdir_x(len, dir);
 		var yy = ystart + lengthdir_y(len, dir);
 		var counter = 0;
 		
 		while(collision_line(x, y, xx, yy, obj_p_solid, false, true)){
 			dir = random(360);
-			len = random_range(40, 60);
+			len = random_range(20, 30);
 			xx = xstart + lengthdir_x(len, dir);
 			yy = ystart + lengthdir_y(len, dir);
 			
@@ -32,7 +32,7 @@ if (instance_exists(obj_player)){
 	}
 	
 	if (distance_to_point(move_x_to, move_y_to) > 15){
-		move_speed = 1.2;
+		move_speed = 1;
 	}else{
 		move_speed = 0;
 	}
@@ -93,11 +93,11 @@ if (speed_final < 0.1){
 	if (object_index == obj_player_child_0){
 		switch(type){
 			case 0:
-				sprite_index = spr_player_child_0_idle_0;
+				sprite_index = spr_player_child_0_walk_0;
 				break;
 		
 			case 1:
-				sprite_index = spr_player_child_1_idle_0;
+				sprite_index = spr_player_child_1_walk_0;
 				break;
 		}
 	}else{

@@ -1,1 +1,1 @@
-scr_render_me(y + depth_offset);
+scr_render_me(y + sprite_height + 10);

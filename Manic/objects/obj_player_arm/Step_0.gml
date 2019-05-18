@@ -6,7 +6,7 @@ if (global.weapon_slot_standalone != -1){
 
 image_alpha = 1;
 
-if (instance_exists(obj_player)) && (wcurrent!= -1){
+if (instance_exists(obj_player)) && (wcurrent != -1){
 	if (obj_player.state == scr_player_dash){
         image_alpha = 0;
 		return;
@@ -16,7 +16,15 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 		return;
 	}
 	
-	if (obj_player.move_x_to == -1) && (obj_player.move_y_to == -1) && (global.cutscene_current == -1){
+	var iscutscene = (global.cutscene_current != -1);
+	
+	if (global.cutscene_current == 57){
+		if (wcurrent == PlayerWeapon.Revolver){
+			iscutscene = false;
+		}
+	}
+	
+	if (!iscutscene){
 		
 		// Bobbing -----------------------------------------------------------------------------------------------------
 	    var img = floor(obj_player.img_index);
@@ -41,6 +49,10 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
     
 	    // Weapon Position -------------------------------------------------------------------------------------------------
 	    var dir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+		
+		if (global.cutscene_current != -1){
+			dir = point_direction(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to);
+		}
 		
 		if ((global.weapon_type[wcurrent] == WeaponType.Ranged)
 		|| (global.weapon_type[wcurrent] == WeaponType.Throwing)
@@ -74,36 +86,31 @@ if (instance_exists(obj_player)) && (wcurrent!= -1){
 	            x = obj_player.x - 3;
 	            y = (obj_player.y - 4) + yoffset;
             
-				if (obj_player.move_x_to == -1) && (obj_player.move_y_to == -1){
-					if (global.weapon_type[wcurrent] == WeaponType.Throwing){
-						image_angle = dir + global.weapon_object[wcurrent].throw_offset;
-					}else{
-						image_angle = dir;
-					}
+				if (global.weapon_type[wcurrent] == WeaponType.Throwing){
+					image_angle = dir + global.weapon_object[wcurrent].throw_offset;
 				}else{
-					image_angle = 0;
+					image_angle = dir;
 				}
 			
 	            image_yscale = 1;
-            
 	        }else{
 	            x = obj_player.x + 3;
 	            y = (obj_player.y - 4) + yoffset;
             
-				if (obj_player.move_x_to == -1) && (obj_player.move_y_to == -1){
-					if (global.weapon_type[wcurrent] == WeaponType.Throwing){
-						image_angle = dir - global.weapon_object[wcurrent].throw_offset;
-					}else{
-						image_angle = dir;
-					}
-				
+				if (global.weapon_type[wcurrent] == WeaponType.Throwing){
+					image_angle = dir - global.weapon_object[wcurrent].throw_offset;
 				}else{
-					image_angle = 0;
+					image_angle = dir;
 				}
 			
 				image_yscale = -1;
 	        }
-	    }
+	    }else{
+			x = obj_player.x + (sign(obj_player.image_xscale) * 3);
+			y = obj_player.y;
+			image_yscale = sign(obj_player.image_xscale);
+			image_angle = dir;
+		}
 		
 	}else{
 		image_alpha = 0;

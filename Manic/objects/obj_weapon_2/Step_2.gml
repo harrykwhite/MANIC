@@ -1,8 +1,7 @@
-if (!instance_exists(obj_player)) || (instance_number(object_index)>1){
+if (!instance_exists(obj_player)) || (instance_number(object_index) > 1){
     instance_destroy();
 
 }else{
-	
     if (obj_player.image_xscale == 1){
         image_yscale = 1;
     }else{
@@ -15,6 +14,11 @@ if (instance_exists(obj_player)){
     // Position
 	if (!global.game_pause){
 	    var mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+		
+		if (global.cutscene_current != -1){
+			mdir = point_direction(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to);
+		}
+		
 	    shoot_bounceback = approach(shoot_bounceback, 0, 20);
     
 	    if (instance_exists(obj_player_arm)){
@@ -42,13 +46,13 @@ if (instance_exists(obj_player)){
 	}
     
     if (obj_player.state == scr_player_dash) || (global.cutscene_current != -1){
+		if (global.cutscene_current != 57){
+	        if (visible){
+	            fade_out = true;
+	        }
+		}
 		
-        if (visible){
-            fade_out = true;
-        }
-        
-        shoot_can = false;
-        
+		shoot_can = false;
     }else if (!visible){
         fade_in = true;
     }

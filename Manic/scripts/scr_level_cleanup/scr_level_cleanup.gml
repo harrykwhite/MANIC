@@ -74,5 +74,10 @@ if (audio_is_playing(snd_other_fly_0)){
 	audio_sound_gain(snd_other_fly_0, 0, 2000);
 }
 
+if (global.cutscene_current != -1){
+	global.cutscene_time[global.cutscene_current] = 0;
+	global.cutscene_current = -1;
+}
+
 scr_fade_object_list_reset();
 global.boss_current = -1;
