@@ -1,0 +1,1 @@
+text = "-- Constructed in 1867 --\n\nPlease do not step on the grass!";

@@ -175,6 +175,13 @@ if (instance_exists(obj_player)){
 		}
 	}
 }else{
+	if (image_xscale == scale){
+		weapon.dir = 360;
+	}else{
+		weapon.dir = 180;
+	}
+	
+	face_player = false;
 	move_speed = 0;
 }
 

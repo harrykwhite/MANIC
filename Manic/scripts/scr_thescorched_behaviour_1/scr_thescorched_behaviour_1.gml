@@ -5,7 +5,7 @@ target = obj_player;
 
 if (instance_exists(target)){
 	if (state == 0){
-		move_speed = 2;
+		move_speed = min(2 / ((health_current / health_max) * 2), 2.75);
 		
 		if (instance_exists(weapon)){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
@@ -45,7 +45,7 @@ if (instance_exists(target)){
 				}
 				
 				shoot_delay = 40;
-				shoot_time = 80 + random_range(-10, 8);
+				shoot_time = 80 + random_range(-10, 8) * ((health_current / health_max) * 2);
 			}else{
 				state = 1;
 				run_count = 0;
@@ -62,15 +62,15 @@ if (instance_exists(target)){
 		
 		if (release_count < 5){
 			if (release_time > 0){
-				release_time--;
+				release_time --;
 			}else{
-				var interval = 360 / 8;
+				var interval = 360 / 7;
 				scr_sound_play_distance_pitch(snd_weapon_flare_1, false, 300, 0.8, 1.2);
 				flash_time = 5;
 				
 				for(var i = 0; i < 360; i += interval){
 					fire = instance_create(x, y, obj_proj_4);
-					fire.spd = 4;
+					fire.spd = clamp(4 / ((health_current / health_max) * 4), 4, 5);
 					fire.dir = i + release_offset;
 					fire.damage = 1;
 					fire.strength = 1;
@@ -83,17 +83,52 @@ if (instance_exists(target)){
 					release_offset = 0;
 				}
 				
-				release_time = 45;
+				release_time = max(45 * ((health_current / health_max) * 2), 35);
 				release_count ++;
 			}
 		}else{
-			release_time = 45;
+			release_time = max(45 * ((health_current / health_max) * 2), 35);
 			release_count = 0;
 			
+			state = 2;
+		}
+	}else if (state == 2){
+		var maxtime = max(60 * 3 * ((health_current / health_max) * 2), 60 * 1.75);
+		
+		if (slowfire_time < maxtime){
+			face_player = true;
+			
+			if (slowfire_time > 40) && (slowfire_time < maxtime - 30){
+				weapon.attack = true;
+			}
+			
+			weapon.dir = point_direction(x, y, obj_player.x, obj_player.y);
+			
+			slowfire_time ++;
+			
+			if (distance_to_point(move_x_to, move_y_to) > 10){
+				move_speed = clamp(1 / ((health_current / health_max) * 4), 1, 2);
+			}else{
+				move_x_to = x + random_range(-40, 40);
+				move_y_to = y + random_range(-40, 40);
+				
+				while(distance_to_point(move_x_to, move_y_to) < 10){
+					move_x_to = x + random_range(-40, 40);
+					move_y_to = y + random_range(-40, 40);
+				}
+			}
+		}else{
+			slowfire_time = 0;
 			state = 0;
 		}
 	}
 }else{
+	if (image_xscale == scale){
+		weapon.dir = 360;
+	}else{
+		weapon.dir = 180;
+	}
+	
 	move_speed = 0;
 	face_player = false;
 }

@@ -30,6 +30,10 @@ if (drawshader){
 				var armx = x + lengthdir_x(4, angle);
 				var army = y - 3 + lengthdir_y(4, angle);
 				
+				if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
+					army --;
+				}
+				
 				draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, image_xscale, angle, c_white, image_alpha * alpha_mult);
 				
 				shader_set(sh_pawntint);

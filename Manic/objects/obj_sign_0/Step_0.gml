@@ -9,22 +9,23 @@ if (instance_exists(player)){
 	interact = false;
 }
 
-if (interact){
+if (interact) && (obj_controller_ui.dialogue_time <= 0){
 	sprite_index = spr_sign_0_interact;
 	scr_ui_control_indicate("Read");
 	
 	if (interact_break <= 0){
 		if (keyboard_check_pressed(obj_controller_all.key_interact)){
 			interact_break = 15;
-			obj_controller_ui.pausedialogue = true;
-			obj_controller_ui.pausedialogue_type = 0;
-			obj_controller_ui.pausedialogue_type_text = text;
-			scr_toggle_pause(true);
+			
+			obj_controller_ui.dialogue = text;
+			obj_controller_ui.dialogue_time = 60 * 4;
+			obj_controller_ui.dialogue_pause = false;
+			obj_controller_ui.dialogue_count = 0;
+			obj_controller_ui.dialogue_x = x;
+			obj_controller_ui.dialogue_y = y - 24;
 		}
 	}else{
-		if (!obj_controller_ui.pausedialogue){
-			interact_break --;
-		}
+		interact_break --;
 	}
 }else{
 	sprite_index = spr_sign_0;

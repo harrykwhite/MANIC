@@ -232,6 +232,12 @@ if (instance_exists(target)){
 		}
 	}
 }else{
+	if (image_xscale == scale){
+		weapon.dir = 360;
+	}else{
+		weapon.dir = 180;
+	}
+	
 	move_speed = 0;
 	face_target = false;
 }

@@ -89,6 +89,7 @@ if (health_current <= 0){
 		
 		if (object_index == obj_enemy_0){
 			global.game_firstenemy_killed = true;
+			global.level_kill_count[global.level_current] ++;
 			
 			switch(type){
 				case Enemy0_Type.Grenadier:
@@ -143,6 +144,13 @@ if (health_current <= 0){
 		}else if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
 			
+			if (!scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
+				var udrop = instance_create(x, y, obj_upgrade_pickup);
+				udrop.index = PlayerUpgrade.RunningBoots;
+				udrop.angle = random_range(-10, 10);
+				global.cutscene_current = 53;
+			}
+			
 			with(obj_block_cutscene){
 				if (index == 11){
 					instance_destroy();
@@ -151,9 +159,9 @@ if (health_current <= 0){
 		}else if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
 			
-			if (!scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
+			if (!scr_player_has_upgrade(PlayerUpgrade.Backpack)){
 				var udrop = instance_create(x, y, obj_upgrade_pickup);
-				udrop.index = PlayerUpgrade.RunningBoots;
+				udrop.index = PlayerUpgrade.Backpack;
 				udrop.angle = random_range(-10, 10);
 				global.cutscene_current = 53;
 			}

@@ -45,7 +45,7 @@ if (instance_exists(obj_player)){
 				obj_player.move_y_to = yto;
 				obj_player.move_extSpd = 1;
 				
-				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 20){
+				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 40){
 					global.cutscene_time[index] = 130;
 				}
 			}else{
@@ -67,6 +67,11 @@ if (instance_exists(obj_player)){
 			
 			// Give the player the revolver and knife
 			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 15){
+				obj_player.move_extSpd = 0;
+				obj_player.move_x_to = obj_player.x + (cos((7 / 6) * pi) * 5);
+				obj_player.move_y_to = obj_player.y + (sin((7 / 6) * pi) * 5);
+				obj_player.image_xscale = -1;
+				
 				if (global.cutscene_time[index] < 160){
 					global.cutscene_time[index] ++;
 					
@@ -105,15 +110,15 @@ if (instance_exists(obj_player)){
 				}
 			}
 		}else if (global.cutscene_time[index] < 400){
-			xto = 700;
+			xto = 820;
 			yto = 604;
 			
 			global.cutscene_time[index] ++;
 			
-			if (global.cutscene_time[index] < 340){
+			if (global.cutscene_time[index] < 370){
 				obj_player.move_extSpd = 0;
-				obj_player.move_x_to = obj_player.x - 5;
-				obj_player.move_y_to = obj_player.y;
+				obj_player.move_x_to = obj_player.x + (cos((7 / 6) * pi) * 5);
+				obj_player.move_y_to = obj_player.y + (sin((7 / 6) * pi) * 5);
 				obj_player.image_xscale = -1;
 			}else{
 				obj_player.move_extSpd = 1;
@@ -123,15 +128,15 @@ if (instance_exists(obj_player)){
 			
 			global.cutscene_camera_x[index] = obj_player.x;
 			global.cutscene_camera_y[index] = obj_player.y;
-		}else if (global.cutscene_time[index] < 500){
+		}else if (global.cutscene_time[index] < 610){
 			xto = obj_player.x;
 			yto = 1076;
 			
 			if (!obj_controller_ui.area_next_fade){
-				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 220){
+				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 420){
 					obj_controller_ui.area_next_fade = true;
 					obj_controller_ui.area_next_alpha = 0;
-					obj_controller_ui.area_next_alpha_speed = 0.01;
+					obj_controller_ui.area_next_alpha_speed = 0.005;
 					obj_controller_ui.area_next_room = rm_level_1_00;
 				}
 			}

@@ -128,6 +128,7 @@ if (instance_exists(obj_player)){
 	
 	distTo = distance_to_point(move_x_to, move_y_to);
 }else{
+	face_player = false;
 	move_speed = 0;
 }
 

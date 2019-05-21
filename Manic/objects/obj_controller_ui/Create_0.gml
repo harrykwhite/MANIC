@@ -17,6 +17,18 @@ weaponammo_scale = 1;
 weaponammo_scaleTo = 1;
 weaponammo_x = 0;
 
+dialogue = "";
+dialogue_count = 0;
+dialogue_spd = 0.75;
+dialogue_time = 0;
+dialogue_pause = false;
+dialogue_next = false;
+dialogue_x = 0;
+dialogue_y = 0;
+dialogue_skip = 0;
+dialogue_skip_max = 40;
+dialogue_break = 0;
+
 enum TutourialStage{
 	Movement,
 	Pickup,

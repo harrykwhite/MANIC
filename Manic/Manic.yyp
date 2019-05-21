@@ -407,6 +407,14 @@
             }
         },
         {
+            "Key": "08a0f8fa-9e21-4057-a8f0-f3c397b40f48",
+            "Value": {
+                "id": "5099098e-0d16-4849-9fa7-e5b818f6686b",
+                "resourcePath": "scripts\\scr_cutscene_58\\scr_cutscene_58.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "08a5d915-85cd-4616-bd08-7a1b973c983e",
             "Value": {
                 "id": "9515aa17-c3d0-4ede-98f5-cb4f05396dda",
@@ -2956,14 +2964,6 @@
                 "id": "988441aa-e547-47d8-8f69-91687e821a3c",
                 "resourcePath": "scripts\\scr_part_type_fire_0\\scr_part_type_fire_0.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "3f383ca9-17f5-41e2-8fe7-0e6e007471b2",
-            "Value": {
-                "id": "a970a754-ea66-4b29-98fd-edb509f0d6ff",
-                "resourcePath": "sprites\\sprite449\\sprite449.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -10343,6 +10343,14 @@
             }
         },
         {
+            "Key": "e8333c5c-d955-4dff-a82c-e170ac992863",
+            "Value": {
+                "id": "182950c1-a40a-4c5b-bdf4-5594fc765173",
+                "resourcePath": "objects\\obj_pawn_other_robotrunning_0\\obj_pawn_other_robotrunning_0.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "e83ee497-f828-4012-b3b8-661f71fd2709",
             "Value": {
                 "id": "09a8509e-9773-4195-b949-24defbde3f4c",
@@ -11767,6 +11775,7 @@
         "8f5f1476-ff9c-483d-a3d2-6e20b0dd279f",
         "4f6bef14-fc38-462b-adc7-6a3618468b80",
         "283689a2-3cf2-4dea-8847-644f870a31ed",
+        "08a0f8fa-9e21-4057-a8f0-f3c397b40f48",
         "378b63b6-0909-49fa-871e-90dcc73234ba",
         "7ec6e1a4-36c9-419e-87f2-6f5eda7e45d6",
         "44d7f04b-3b18-4620-b33c-6aa314e17d60",

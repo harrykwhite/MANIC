@@ -3,6 +3,7 @@ blend = -1;
 scale = 1.1;
 destroy = false;
 state = 0;
+mid_cutscene_played = false;
 
 light_brightness = 0;
 mylight = instance_create_layer(x, y, "Lights", obj_thescorched_light);
@@ -49,6 +50,8 @@ barrel_pause_break = 0;
 defense = 0;
 arm = -1;
 
+slowfire_time = 0;
+
 move_speed = 0;
 move_speed_real = 0;
 move_speed_offset = random_range(0.75, 0.9);
@@ -67,7 +70,7 @@ knockback_multiplier = 0;
 cutscene_prop = true;
 in_cutscene = false;
 
-health_max = 80;
+health_max = 100;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

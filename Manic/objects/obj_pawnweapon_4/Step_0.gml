@@ -36,13 +36,13 @@ if (instance_exists(owner)){
 				if (owner.target != noone) && (instance_exists(owner.target)){
 					throw.dir = point_direction(x, y, owner.target.x, owner.target.y);
 				}else{
-					throw.dir = dir - (owner.image_xscale * throw_offset);
+					throw.dir = dir - (sign(owner.image_xscale) * throw_offset);
 				}
 			}else{
 				if (instance_exists(obj_player)){
 					throw.dir = point_direction(x, y, obj_player.x, obj_player.y);
 				}else{
-					throw.dir = dir - (owner.image_xscale * throw_offset);
+					throw.dir = dir - (sign(owner.image_xscale) * throw_offset);
 				}
 			}
 			

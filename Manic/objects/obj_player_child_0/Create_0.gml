@@ -5,5 +5,8 @@ move_speed_offset = 1;
 move_x_to = x;
 move_y_to = y;
 
-type = 0;
 scale = 1;
+talking = false;
+interact = false;
+interact_break = 0;
+type = 0;

@@ -149,6 +149,12 @@ if (instance_exists(target)){
 		weapon.dir = point_direction(x, y, target.x, target.y);
 	}
 }else{
+	if (image_xscale == scale){
+		weapon.dir = 360;
+	}else{
+		weapon.dir = 180;
+	}
+	
 	move_speed = 0;
 }
 

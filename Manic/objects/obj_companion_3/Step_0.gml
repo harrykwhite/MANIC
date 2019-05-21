@@ -1,6 +1,8 @@
 var ispaused = false;
+var freezeanim = false;
 if (global.game_pause){
 	ispaused = true;
+	freezeanim = true;
 }
 
 if (global.cutscene_current != -1){
@@ -14,6 +16,16 @@ if (global.cutscene_current != -1){
 }else{
 	if (cutscene_prop){
 		ispaused = true;
+		
+		if (instance_exists(obj_player)){
+			if (!collision_line(x, y, obj_player.x, obj_player.y, obj_p_solid, false, true)){
+				if (obj_player.x > x){
+					image_xscale = scale;
+				}else{
+					image_xscale = -scale;
+				}
+			}
+		}
 	}
 }
 
@@ -23,7 +35,13 @@ if (ispaused){
 		image_yscale = scale;
 	}
 	
-	image_speed = 0;
+	if (freezeanim){
+		image_speed = 0;
+	}else{
+		image_speed = 0.05;
+		sprite_index = spr_companion_3_idle_0;
+	}
+	
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);
 		burn_sound_paused = true;

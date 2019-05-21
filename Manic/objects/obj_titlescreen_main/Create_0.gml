@@ -37,6 +37,9 @@ option_scale[3] = 1;
 
 if (global.game_save_started){
 	option[0] = "Continue Game";
+}
+
+if (global.game_boss_final_killed){
 	option_locked[1] = false;
 }
 
@@ -239,12 +242,7 @@ for(var i = 0; i < levelcount; i ++){
 	option_levelselect[i] = global.level_name[i];
 	option_levelselect_goto[i] = global.level_room[i];
 	option_levelselect_scale[i] = 1;
-	
-	if (i > global.game_save_level){
-		option_levelselect_unlocked[i] = false;
-	}else{
-		option_levelselect_unlocked[i] = true;
-	}
+	option_levelselect_unlocked[i] = true;
 }
 
 #endregion

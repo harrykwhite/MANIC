@@ -85,19 +85,23 @@ if (global.game_is_playthrough){
 		}
 	}
 }else{
-	if (global.level_current >= 4){
+	if (global.level_current >= Level.UndergroundBunker){
+		scr_upgrade_add(PlayerUpgrade.Backpack);
+	}
+	
+	if (global.level_current >= Level.HumanPrison){
 		scr_upgrade_add(PlayerUpgrade.RunningBoots);
 	}
 	
-	if (global.level_current >= 5){
+	if (global.level_current >= Level.TrainStation){
 		scr_upgrade_add(PlayerUpgrade.KneePads);
 	}
 	
-	if (global.level_current >= 6){
+	if (global.level_current >= Level.TheCemetery){
 		scr_upgrade_add(PlayerUpgrade.Chestplate);
 	}
 	
-	if (global.level_current >= 7){
+	if (global.level_current >= Level.DesolateVillage){
 		scr_upgrade_add(PlayerUpgrade.GasMask);
 	}
 }

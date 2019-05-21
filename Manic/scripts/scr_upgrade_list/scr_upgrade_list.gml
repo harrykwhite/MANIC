@@ -1,6 +1,6 @@
 enum PlayerUpgrade{
 	Goggles, // Collectable
-	Backpack,
+	Backpack, // Collectable
 	Chestplate, // Collectable
 	AmmoPack, // Collectable
 	GasMask, // Collectable, position must change

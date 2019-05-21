@@ -270,6 +270,14 @@ if (instance_exists(target)){
 		state_time = 0;
 	}
 }else{
+	if (weapon_exists) && (instance_exists(weapon)){
+		if (image_xscale == scale){
+			weapon.dir = 360;
+		}else{
+			weapon.dir = 180;
+		}
+	}
+	
 	move_speed = 0;
 	face_player = false;
 }

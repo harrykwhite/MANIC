@@ -36,6 +36,12 @@ if (instance_exists(obj_player)){
 	}else{
 		move_speed = 0;
 	}
+	
+	if (talking){
+		move_x_to = x;
+		move_y_to = y;
+		move_speed = 0;
+	}
 }else{
 	move_speed = 0;
 }

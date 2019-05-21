@@ -106,7 +106,7 @@ if (instance_exists(obj_player)) && (wcurrent != -1){
 				image_yscale = -1;
 	        }
 	    }else{
-			x = obj_player.x + (sign(obj_player.image_xscale) * 3);
+			x = obj_player.x - (sign(obj_player.image_xscale) * 3);
 			y = obj_player.y;
 			image_yscale = sign(obj_player.image_xscale);
 			image_angle = dir;

@@ -125,7 +125,7 @@ global.pawnweapon_object[10] = obj_pawnweapon_10;
 global.pawnweapon_playerindex[10] = PlayerWeapon.Flamethrower;
 
 global.pawnweapon_object[11] = obj_pawnweapon_11;
-global.pawnweapon_playerindex[11] = PlayerWeapon.Shotgun;
+global.pawnweapon_playerindex[11] = PlayerWeapon.HeavyShotgun;
 
 global.pawnweapon_object[12] = obj_pawnweapon_12;
 global.pawnweapon_playerindex[12] = PlayerWeapon.Revolver;

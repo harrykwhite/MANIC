@@ -1,6 +1,6 @@
 if (instance_exists(owner)){
 	if (scr_pawn_weapon_endstepcan()){
-		dir = dir + (owner.image_xscale * throw_offset);
+		dir = dir + (sign(owner.image_xscale) * throw_offset);
 	    x = owner.arm.x + lengthdir_x(13 * owner.scale, dir);
 	    y = owner.arm.y + lengthdir_y(13 * owner.scale, dir);
 	

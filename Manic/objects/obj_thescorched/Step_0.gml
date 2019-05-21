@@ -19,10 +19,27 @@ if (global.game_pause){
 	ispaused = true;
 }
 
-if (cutscene_prop){
-	if (!in_cutscene){
-		ispaused = true;
+if (global.cutscene_current == 58){
+	knockback_speed = 0;
+	knockback_direction = 0;
+	i_time = 0;
+	i_blend_time = 0;
+	health_scale = 1;
+	health_flash = 0;
+	whiteflash_alpha = 0;
+	
+	if (instance_exists(obj_player)){
+		if (obj_player.x > x){
+			image_xscale = scale;
+		}else{
+			image_xscale = -scale;
+		}
 	}
+	
+	sprite_index = spr_thescorched_idle_1;
+	image_speed = 0.05;
+	
+	ispaused = true;
 }
 
 if (ispaused){
@@ -52,6 +69,12 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 scr_pawn_status_handler();
 
 if (health_current <= health_max / 2){
+	if (!mid_cutscene_played){
+		global.cutscene_current = 58;
+		mid_cutscene_played = true;
+		return;
+	}
+	
 	scr_thescorched_behaviour_1();
 	weapon_has = true;
 }else{

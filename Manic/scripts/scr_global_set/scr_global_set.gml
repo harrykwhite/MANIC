@@ -5,6 +5,7 @@ scr_cutscene_list();
 scr_collectable_list();
 
 global.game_pause = false;
+global.game_in_dialogue = false;
 
 global.game_combat_state = CombatState.Idle;
 global.game_combat_active = true;

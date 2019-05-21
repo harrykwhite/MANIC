@@ -117,6 +117,19 @@ if (!global.level_cleared[global.level_current]){
 		knifedrop.index = PlayerWeapon.Knife;
 		knifedrop.angle = 110;
 		
+		
+		var robotprop = instance_create(446, 754, obj_pawn_other_robotrunning_0);
+		robotprop.dir = 180;
+		
+		robotprop = instance_create(562, 570, obj_pawn_other_robotrunning_0);
+		robotprop.dir = 360;
+		
+		robotprop = instance_create(532, 550, obj_pawn_other_robotrunning_0);
+		robotprop.dir = 360;
+		
+		robotprop = instance_create(756, 516, obj_pawn_other_robotrunning_0);
+		robotprop.dir = 90;
+		
 		endscene_initiated = true;
 	}
 }

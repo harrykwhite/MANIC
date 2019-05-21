@@ -454,21 +454,19 @@ if (bosshealth_value_current < bosshealth_value_previous){
 }
 
 if (bosshealth_flash > 0.01){
-	bosshealth_flash *= 0.915;
+	bosshealth_flash *= 0.8;
 }
 
 if (bosshealth_width_current > 0){
 	var xx = dwidth / 2;
 	var yy = dheight - 50;
 	var w = bosshealth_width_current;
-	var h = 8;
+	var h = 12;
 	
-	draw_set_colour(c_ltgray);
-	draw_rectangle(xx - (w / 2) - 1, yy - (h / 2) - 1, xx + (w / 2) + 1, yy + (h / 2) + 1, false);
 	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_color_rgb(45, 45, 45), c_ltgray, c_ltgray, 0, true, false);
 	
-	draw_set_alpha(bosshealth_flash * 0.6);
-	draw_set_colour(c_white);
+	draw_set_alpha(bosshealth_flash * 0.3);
+	draw_set_colour(c_ltgray);
 	draw_rectangle(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), false);
 	draw_set_alpha(1);
 }
@@ -538,7 +536,7 @@ if (levelcleared_time > 0){
 if (levelcleared_alpha > 0){
 	var xx = dwidth / 2;
 	var yy = dheight / 2;
-	yy -= 100;
+	yy -= 250;
 	
 	draw_set_font(fnt_cambria_3);
 	draw_set_halign(fa_center);
