@@ -60,9 +60,45 @@ if (instance_exists(obj_player)){
 				linefrom[4] = inst;
 			}
 			break;
+		
+		case rm_level_5_00:
+			if (cutscene_dialogue_special == 0){
+				inst = inst_40C9D2CD;
+				
+				if (instance_exists(inst)){
+					line[0] = "Who are you?";
+					linefrom[0] = inst;
+					
+					line[1] = "I'm here to get you out of here.";
+					linefrom[1] = obj_player;
+					
+					line[2] = "What? What do you mean?";
+					linefrom[2] = inst;
+					
+					line[3] = "Just tell me, how did you get here?";
+					linefrom[3] = obj_player;
+					
+					line[4] = "I was just at my home..";
+					linefrom[4] = inst;
+				
+					line[5] = "And a large group of masked people broke in.";
+					linefrom[5] = inst;
+					
+					line[6] = "I remember being knocked onto the ground. I'm not sure what happened after that...";
+					linefrom[6] = inst;
+				
+					line[7] = "Okay, well you're alright now.";
+					linefrom[7] = obj_player;
+					
+					line[8] = "The exit is down south.";
+					linefrom[8] = obj_player;
+				}
+			}
+			break;
 	}
 	
 	var instexists = inst != noone;
+	
 	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 	
@@ -78,6 +114,7 @@ if (instance_exists(obj_player)){
 				global.cutscene_time[index] = 0;
 				
 				cutscene_dialogue_line = 0;
+				cutscene_dialogue_special = -1;
 				
 				obj_controller_ui.dialogue_pause = false;
 				obj_controller_ui.dialogue_time = 0;
@@ -104,8 +141,15 @@ if (instance_exists(obj_player)){
 		}
 	}
 	
-	// Set the camera position based on speaker
+	
 	if (instexists){
+		if (inst.x > obj_player.x){
+			obj_player.image_xscale = 1;
+		}else{
+			obj_player.image_xscale = -1;
+		}
+		
+		// Set the camera position based on speaker
 		if (cutscene_dialogue_line - 1 >= 0){
 			x_to = linefrom[cutscene_dialogue_line - 1].x;
 			y_to = linefrom[cutscene_dialogue_line - 1].y - 8;
@@ -120,6 +164,7 @@ if (instance_exists(obj_player)){
 		global.cutscene_current = -1;
 		global.cutscene_time[index] = 0;
 		cutscene_dialogue_line = 0;
+		cutscene_dialogue_special = -1;
 		
 		if (instexists){
 			inst.cutscene_prop = false;
@@ -136,4 +181,5 @@ if (instance_exists(obj_player)){
 	global.cutscene_current = -1;
 	global.cutscene_time[index] = 0;
 	cutscene_dialogue_line = 0;
+	cutscene_dialogue_special = -1;
 }

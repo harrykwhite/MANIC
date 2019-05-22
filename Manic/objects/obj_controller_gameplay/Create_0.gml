@@ -36,6 +36,7 @@ cutscene_prologue_opening_camspeed = 0;
 cutscene_prologue_ending_camspeed = 0;
 cutscene_prologue_ending_camopening = true;
 cutscene_dialogue_line = 0;
+cutscene_dialogue_special = -1;
 
 weaponlist = ds_list_create();
 weaponlist[| 0] = global.weapon_slot[global.weapon_slotcurrent];
