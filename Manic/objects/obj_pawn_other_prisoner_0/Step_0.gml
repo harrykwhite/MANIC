@@ -12,8 +12,8 @@ if (talk){
 	with(object_index){
 		talking = false;
 	}
-	
-	obj_controller_ui.dialogue = "Thank you!";
+		
+	obj_controller_ui.dialogue = choose("Thank you!", "Thanks!", "...");
 	obj_controller_ui.dialogue_time = 60 * 4;
 	obj_controller_ui.dialogue_pause = false;
 	obj_controller_ui.dialogue_count = 0;

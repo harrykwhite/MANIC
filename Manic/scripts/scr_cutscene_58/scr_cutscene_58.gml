@@ -9,6 +9,40 @@ if (instance_exists(obj_player)){
 	var line, linefrom;
 	
 	switch(room){
+		case rm_level_1_00:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_townperson_0);
+			
+			line[0] = "Hello? Are you okay?";
+			linefrom[0] = obj_player;
+			
+			line[1] = "Yes... I'm alright...";
+			linefrom[1] = inst;
+			
+			line[2] = "Are you able to tell me what has happened?";
+			linefrom[2] = obj_player;
+			
+			line[3] = "Large groups of them ran into the town...";
+			linefrom[3] = inst;
+			
+			line[4] = "They murdered our people... they ravaged all of our houses.";
+			linefrom[4] = inst;
+			
+			line[5] = "I'm not even sure how long I've been waiting here...";
+			linefrom[5] = inst;
+			
+			line[6] = "It's okay, you'll be fine.";
+			linefrom[6] = obj_player;
+			
+			line[7] = "I'm going to clear them out of the town.";
+			linefrom[7] = obj_player;
+			
+			line[8] = "Once it's safe, you can leave down south.";
+			linefrom[8] = obj_player;
+			
+			line[9] = "Alright, thank you...";
+			linefrom[9] = inst;
+			break;
+		
 		case rm_level_2_00:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_0);
 			
