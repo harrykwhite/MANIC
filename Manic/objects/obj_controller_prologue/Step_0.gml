@@ -117,7 +117,6 @@ if (!global.level_cleared[global.level_current]){
 		knifedrop.index = PlayerWeapon.Knife;
 		knifedrop.angle = 110;
 		
-		
 		var robotprop = instance_create(446, 754, obj_pawn_other_robotrunning_0);
 		robotprop.dir = 180;
 		

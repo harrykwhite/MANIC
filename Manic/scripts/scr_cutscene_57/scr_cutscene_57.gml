@@ -66,10 +66,10 @@ if (instance_exists(obj_player)){
 			global.cutscene_camera_y[index] = obj_player.y;
 			
 			// Give the player the revolver and knife
-			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 15){
+			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 20){
 				obj_player.move_extSpd = 0;
-				obj_player.move_x_to = obj_player.x + (cos((7 / 6) * pi) * 5);
-				obj_player.move_y_to = obj_player.y + (sin((7 / 6) * pi) * 5);
+				obj_player.move_x_to = obj_player.x + lengthdir_x(5, 180);
+				obj_player.move_y_to = obj_player.y + lengthdir_y(5, 180);
 				obj_player.image_xscale = -1;
 				
 				if (global.cutscene_time[index] < 160){
@@ -110,15 +110,12 @@ if (instance_exists(obj_player)){
 				}
 			}
 		}else if (global.cutscene_time[index] < 400){
-			xto = 820;
+			xto = 795;
 			yto = 604;
 			
 			global.cutscene_time[index] ++;
 			
-			if (global.cutscene_time[index] < 370){
-				obj_player.move_extSpd = 0;
-				obj_player.move_x_to = obj_player.x + (cos((7 / 6) * pi) * 5);
-				obj_player.move_y_to = obj_player.y + (sin((7 / 6) * pi) * 5);
+			if (global.cutscene_time[index] < 360){
 				obj_player.image_xscale = -1;
 			}else{
 				obj_player.move_extSpd = 1;

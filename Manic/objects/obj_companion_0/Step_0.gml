@@ -9,6 +9,11 @@ if (global.cutscene_current != -1){
 	if (global.cutscene_current == 2) || (global.cutscene_current == 52){
 		if (cutscene_prop) || (in_cutscene){
 			ispaused = true;
+			
+			if (room == rm_level_2_00){
+				image_xscale = -scale;
+				weapon.dir = 180;
+			}
 		}
 	}else if (!in_cutscene){
 		ispaused = true;
@@ -73,8 +78,8 @@ scr_pawn_status_handler();
 
 if (headless){
 	scr_companion_headless(); 
-}else if (burn){
-	scr_companion_burn();
+//}else if (burn){
+//	scr_companion_burn();
 }else{
 	scr_companion_0_behaviour();
 }
@@ -97,6 +102,8 @@ if (instance_exists(mylight)){
 	mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }
+
+health_current = max(health_current, 1);
 
 scr_pawn_update();
 image_yscale = scale;

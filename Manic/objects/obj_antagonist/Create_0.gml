@@ -13,6 +13,9 @@ mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 shoot_time = 0;
 shoot_delay = 0;
 
+near_dead = false;
+walk_off = false;
+
 run_x = x;
 run_y = y;
 run_time = 0;
@@ -77,7 +80,12 @@ cutscene_prop = false;
 in_cutscene = false;
 active = false;
 
-health_max = 50;
+if (room == rm_level_6_pre_00){
+	health_max = 80;
+}else{
+	health_max = 50;
+}
+
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

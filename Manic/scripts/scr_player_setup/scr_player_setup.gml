@@ -77,6 +77,11 @@ var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;
 
 // Upgrades
+var upgradecount = array_length_1d(global.upgrade_name);
+for(var i = 0; i < upgradecount; i ++){
+	global.upgrade_equipped[i] = false;
+}
+
 if (global.game_is_playthrough){
 	var upgradecount = array_length_1d(global.upgrade_name);
 	for(var i = 0; i < upgradecount; i ++){

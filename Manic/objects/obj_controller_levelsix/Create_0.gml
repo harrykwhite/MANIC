@@ -16,6 +16,16 @@ spawn_rate_real = 1;
 spawn_cleared = false;
 
 switch(room){
+	case rm_level_6_pre_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 526;
+			spawn_y = 1062;
+		}else{
+			spawn_x = 526;
+			spawn_y = 140;
+		}
+		break;
+	
 	case rm_level_6_00:
 		spawn_x = 656;
 		spawn_y = 245;

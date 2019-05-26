@@ -27,14 +27,14 @@ if (drawshader){
 		            }
 			    }
 				
-				var armx = x + lengthdir_x(4, angle);
-				var army = y - 3 + lengthdir_y(4, angle);
+				var armx = arm.x + lengthdir_x(4, angle);
+				var army = (arm.y - 2) + lengthdir_y(4, angle);
 				
 				if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
 					army --;
 				}
 				
-				draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, image_xscale, angle, c_white, image_alpha * alpha_mult);
+				draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, arm.image_yscale, angle, c_white, image_alpha * alpha_mult);
 				
 				shader_set(sh_pawntint);
 				var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");
@@ -43,21 +43,28 @@ if (drawshader){
 				var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
 				var r = 0, g = 0, b = 0, a = 0;
 				var wv = wave(0.05, 0.1, 2, 0);
-	
-				if (health_current <= floor(health_max / 3)){
+				
+				var drawlowhealth = true;
+				if (object_index == obj_antagonist){
+					if (room == rm_level_6_pre_00){
+						drawlowhealth = false;
+					}
+				}
+				
+				if (health_current <= floor(health_max / 3)) && (drawlowhealth){
 				    a = wv * 0.5;
 					r = 255;
 					g = 0;
 					b = 0;
 				}
-	
+				
 				if (burn){
 					a = wv;
 					r = 255;
 					g = 255;
 					b = 255;
 				}
-	
+				
 				if (object_index != obj_thescorched){
 					if (poison){
 						a = wv * 0.7;
@@ -66,7 +73,7 @@ if (drawshader){
 						b = 255;
 					}
 				}
-	
+				
 				if (i_blend_time > 0){
 					var colour = c_red;
 					if (is_metal){
@@ -79,7 +86,7 @@ if (drawshader){
 					g = color_get_green(colour);
 					b = color_get_blue(colour);
 				}
-	
+				
 				if (whiteflash_alpha > 0){
 					a = whiteflash_alpha;
 					r = 255;

@@ -1,5 +1,6 @@
 global.game_boss_thescorched_killed = false;
 global.game_boss_thedogkeeper_killed = false;
+global.game_boss_firstantag_killed = false;
 global.game_boss_trainhorde_killed = false;
 global.game_boss_final_killed = false;
 global.game_firstenemy_killed = false;

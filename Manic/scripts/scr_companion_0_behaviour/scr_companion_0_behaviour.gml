@@ -27,31 +27,6 @@ if (instance_exists(obj_player)){
 						}
 					}
 				}
-				
-				if (health_current < 5){
-					speed_multiplier = 0;
-				
-					if (heal_time > 0){
-						heal_time--;
-					}else{
-						whiteflash_alpha = 0.7;
-						health_scale = 1.5;
-						health_current ++;
-						scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
-					
-						repeat(5){
-							part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);
-						}
-					
-						part_type_direction(global.pt_heal_0, 0, 360, 0, 0);
-					
-						repeat(14){
-							part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-13, 13), global.pt_heal_0, 1);
-						}
-					
-						heal_time = heal_time_max;
-					}
-				}
 			}
 		
 			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52){
@@ -145,6 +120,39 @@ if (instance_exists(obj_player)){
 				}
 			}*/
 		}
+		
+		if (health_current == health_max){
+			heal_can = false;
+		}
+		
+		if (health_current < health_max - 1){
+			heal_can = true;
+		}
+		
+		if (heal_can){
+			speed_multiplier = 0;
+			
+			if (heal_time > 0){
+				heal_time--;
+			}else{
+				whiteflash_alpha = 0.7;
+				health_scale = 1.5;
+				health_current ++;
+				scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
+				
+				repeat(5){
+					part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);
+				}
+				
+				part_type_direction(global.pt_heal_0, 0, 360, 0, 0);
+				
+				repeat(14){
+					part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-13, 13), global.pt_heal_0, 1);
+				}
+				
+				heal_time = heal_time_max;
+			}
+		}
 	}else{
 		if (distance_to_object(obj_player) > 37 + (30 * order)){
 			move_speed = 1;
@@ -189,7 +197,7 @@ if (dash){
 	image_speed = 0;
 	
 	if (dashtime > 0){
-		dashtime--;
+		dashtime --;
 	}else{
 		dash = false;
 	}

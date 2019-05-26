@@ -129,6 +129,33 @@ if (instance_exists(obj_player)){
 				}
 			}
 			break;
+		
+		case rm_level_6_pre_00:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
+			
+			if (inst.near_dead){
+				line[0] = "I may have underestimated you...";
+				linefrom[0] = inst;
+				
+				line[1] = "Meet me at the city if you truly think you're worthy.";
+				linefrom[1] = inst;
+				
+				line[2] = "There we will fight again.";
+				linefrom[2] = inst;
+			}else{
+				line[0] = "So, you're finally here?";
+				linefrom[0] = inst;
+				
+				line[1] = "I am. Do you think you've got the nerve to harm me?";
+				linefrom[1] = obj_player;
+				
+				line[2] = "Of course!";
+				linefrom[2] = inst;
+				
+				line[3] = "Let's see if you're as good as you think you are.";
+				linefrom[3] = inst;
+			}
+			break;
 	}
 	
 	var instexists = inst != noone;

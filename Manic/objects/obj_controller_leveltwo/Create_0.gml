@@ -8,6 +8,16 @@ spawn = false;
 spawn_time = 60 * 10;
 
 switch(room){
+	case rm_level_2_pre_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 446;
+			spawn_y = 188;
+		}else{
+			spawn_x = 1952;
+			spawn_y = 428;
+		}
+		break;
+	
 	case rm_level_2_00:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 188;

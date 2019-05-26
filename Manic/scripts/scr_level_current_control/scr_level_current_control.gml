@@ -7,6 +7,10 @@ switch(room){
 		global.level_current = Level.RavagedTown;
 		break;
 	
+	case rm_level_2_pre_00:
+		global.level_current = Level.WesternFarmland;
+		break;
+	
 	case rm_level_2_00:
 		global.level_current = Level.WesternFarmland;
 		break;
@@ -57,6 +61,10 @@ switch(room){
 	
 	case rm_level_5_04:
 		global.level_current = Level.HumanPrison;
+		break;
+	
+	case rm_level_6_pre_00:
+		global.level_current = Level.TrainStation;
 		break;
 	
 	case rm_level_6_00:

@@ -4,8 +4,43 @@ if (light_brightness < 1){
 	light_brightness -= 0.05;
 }
 
-if (global.cutscene_current == 40){
-	active = true;
+if (global.cutscene_current == 58){
+	active = false;
+	in_cutscene = true;
+	
+	if (distance_to_object(obj_player) < 60){
+		var dirto = point_direction(x, y, obj_player.x, obj_player.y);
+		obj_player.move_x_to = x + lengthdir_x(30, dirto);
+		obj_player.move_y_to = y + lengthdir_y(30, dirto);
+		obj_player.move_extSpd = 1.5;
+	}else{
+		if (obj_player.x > x){
+			obj_player.move_x_to = obj_player.x - 5;
+		}else{
+			obj_player.move_x_to = obj_player.x + 5;
+		}
+		
+		obj_player.move_y_to = obj_player.y;
+		obj_player.move_extSpd = 0;
+	}
+}else{
+	if (in_cutscene){
+		obj_player.move_x_to = -1;
+		obj_player.move_y_to = -1;
+		obj_player.move_extSpd = 0;
+		
+		if (near_dead){
+			walk_off = true;
+			global.game_boss_firstantag_killed = true;
+			
+			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
+			audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
+			global.boss_current = -1;
+		}
+		
+		active = true;
+		in_cutscene = false;
+	}
 }
 
 mylight.x = x;
@@ -26,9 +61,26 @@ if (global.game_pause){
 if (!active){
 	ispaused = true;
 	i_blend_time = 0;
-	sprite_index = spr_antagonist_idle_1;
+	whiteflash_alpha = 0;
+	i_time = 0;
+	
+	sprite_index = spr_antagonist_idle_0;
 	image_speed = 0;
 	image_index = 0;
+	
+	if (instance_exists(obj_player)){
+		if (weapon != -1){
+			if (instance_exists(weapon)){
+				weapon.dir = point_direction(x, y, obj_player.x, obj_player.y);
+			}
+		}
+		
+		if (obj_player.x > x){
+			image_xscale = scale;
+		}else{
+			image_xscale = -scale;
+		}
+	}
 }
 
 if (global.cutscene_current != -1){
@@ -60,7 +112,21 @@ whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
-scr_antagonist_behaviour_0();
+
+if (room == rm_level_6_pre_00){
+	scr_antagonist_behaviour_1();
+	
+	if (health_current <= 10){
+		health_current = 10;
+		
+		if (!near_dead){
+			near_dead = true;
+			global.cutscene_current = 58;
+		}
+	}
+}else{
+	scr_antagonist_behaviour_0();
+}
 
 scr_pawn_update();
 image_yscale = scale;

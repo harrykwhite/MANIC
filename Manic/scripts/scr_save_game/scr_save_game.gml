@@ -10,6 +10,7 @@ ini_write_real("Save", "Seconds", global.game_save_seconds);
 
 ini_write_real("Save", "TheScorchedKilled", global.game_boss_thescorched_killed);
 ini_write_real("Save", "TheDogkeeperKilled", global.game_boss_thedogkeeper_killed);
+ini_write_real("Save", "FirstAntagKilled", global.game_boss_firstantag_killed);
 ini_write_real("Save", "TrainHordeKilled", global.game_boss_trainhorde_killed);
 ini_write_real("Save", "FinalBossKilled", global.game_boss_final_killed);
 ini_write_real("Save", "FirstEnemyKilled", global.game_firstenemy_killed);

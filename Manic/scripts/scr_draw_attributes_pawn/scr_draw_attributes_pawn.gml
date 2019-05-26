@@ -19,8 +19,15 @@ if (drawshader){
 	var shader_green = shader_get_uniform(sh_pawntint, "_green");
 	var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
 	var r = 0, g = 0, b = 0, a = 0;
-
-	if (!is_metal){
+	
+	var drawlowhealth = true;
+	if (object_index == obj_antagonist){
+		if (room == rm_level_6_pre_00){
+			drawlowhealth = false;
+		}
+	}
+	
+	if (!is_metal) && (drawlowhealth){
 		if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
 			if (!global.game_pause){
 			    if (random(3) < 1){

@@ -20,7 +20,14 @@ if (instance_exists(owner)){
 		var r = 0, g = 0, b = 0, a = 0;
 		var wv = wave(0.05, 0.1, 2, 0);
 		
-		if (owner.health_current <= floor(owner.health_max / 3)){
+		var drawlowhealth = true;
+		if (owner.object_index == obj_antagonist){
+			if (room == rm_level_6_pre_00){
+				drawlowhealth = false;
+			}
+		}
+		
+		if (owner.health_current <= floor(owner.health_max / 3)) && (drawlowhealth){
 		    a = wv * 0.5;
 			r = 255;
 			g = 0;

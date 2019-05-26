@@ -66,13 +66,17 @@ if (instance_exists(target)){
 				run_away_direction = dir_to_target - 180;
 			}
 			
+			run_away_time ++;
+			
 			if (distance_to_object(target) > 120){
-				run_away_time ++;
 				run_away_direction = 0;
 				
 				move_speed = 0;
 				face_player = true;
-				weapon.dir = point_direction(x, y, target.x, target.y);
+				
+				if (weapon_exists){
+					weapon.dir = point_direction(x, y, target.x, target.y);
+				}
 			}else{
 				if (!dash){
 					if (dash_time > 0){
@@ -86,11 +90,15 @@ if (instance_exists(target)){
 				
 				move_x_to = x + lengthdir_x(100, run_away_direction);
 				move_y_to = y + lengthdir_y(100, run_away_direction);
-			}
-			
-			if (weapon_exists){
-				face_player = false;
-				weapon.dir = point_direction(x, y, move_x_to, move_y_to);
+				
+				if (distance_to_point(move_x_to, move_y_to) < 20){
+					run_away_time = 60;
+				}
+				
+				if (weapon_exists){
+					face_player = false;
+					weapon.dir = run_away_direction;
+				}
 			}
 		}else{
 			move_speed = 0;
@@ -110,7 +118,7 @@ if (instance_exists(target)){
 		}
 	}else if (state == 2){
 		var isranged = global.weapon_type[global.pawnweapon_playerindex[weapon_index]] == WeaponType.Ranged;
-		state_time_max = 60 * 1.85;
+		state_time_max = 60 * 2.5;
 		move_speed = 0;
 		
 		if (weapon_exists){
@@ -121,21 +129,45 @@ if (instance_exists(target)){
 			}else{
 				var drop = instance_create(x, y, obj_weapondrop);
 				drop.index = global.pawnweapon_playerindex[weapon_index];
-				drop.spd = 10;
+				drop.spd = 16;
 				drop.angle = weapon.dir;
 				drop.dir = dir_to_target + random_range(-3, 3);
 				drop.enemy = true;
-				drop.damage = 2;
+				drop.damage = 4;
 				
 				if (drop.index == PlayerWeapon.Revolver){
-					drop.ammo = random(4);
+					drop.ammo = irandom(4);
+					drop.ammodetermined = true;
 				}
+				
+				throw_weapon_inst = drop;
 				
 				scr_effect_screenshake(1);
 				scr_sound_play(snd_weapon_swing_0, false, 0.9, 1.1);
 				
 				instance_destroy(weapon);
 				weapon = -1;
+			}
+		}else{
+			if (throw_weapon_time >= throw_weapon_time_max){
+				if (instance_exists(throw_weapon_inst)){
+					if (state_time_max > throw_weapon_time_max + 30){
+						move_x_to = throw_weapon_inst.x;
+						move_y_to = throw_weapon_inst.y;
+						move_speed = 2;
+						arm.image_angle = point_direction(x, y, move_x_to, move_y_to);
+						face_player = false;
+						
+						if (distance_to_object(throw_weapon_inst) < 15){
+							weapon = instance_create(x, y, global.pawnweapon_object[throw_weapon_inst.index]);
+					        weapon.owner = id;
+							weapon_change_time = 0;
+							
+							scr_sound_play_distance(snd_weapon_pickup_0, false, 240);
+							state_time_max = 0;
+						}
+					}
+				}
 			}
 		}
 	}else if (state == 3){
@@ -263,6 +295,7 @@ if (instance_exists(target)){
 		run_away_direction = 0;
 		
 		throw_weapon_time = 0;
+		throw_weapon_inst = noone;
 		
 		weapon_change_time = 0;
 		weapon_change_origin = weapon_index;
@@ -325,6 +358,7 @@ if (dash){
 	if (health_current <= floor(health_max / 3)) || (bleed){
 		trail.special = "LowHealth";
 	}
+	
 	part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-12, 12), global.pt_smoke_1, 2);
 	
 	if (!place_meeting(x + lengthdir_x(dash_speed + 1, dash_direction), y + lengthdir_y(dash_speed + 1, dash_direction), obj_p_solid) && (dash_time > 0)){

@@ -92,7 +92,7 @@ if (!global.game_pause){
 	}
 	
 	// Train Arrival
-	if (global.cutscene_current == -1) && (room != rm_level_6_01){
+	if (global.cutscene_current == -1) && (room == rm_level_6_00){
 		if (!trainboss_spawned){
 			if (train_time < train_timemax){
 				train_time ++;
@@ -127,8 +127,13 @@ lighting_level[CombatState.Buildup] = 0.925;
 lighting_level[CombatState.Idle] = 0.85;
 
 var lighting_to = lighting_level[global.game_combat_state];
+
 if (global.game_combat_in_hordechallenge){
 	lighting_to = 1;
+}
+
+if (room == rm_level_6_pre_00){
+	lighting_to = 0.8;
 }
 
 if (lighting < lighting_to){
@@ -139,7 +144,7 @@ if (lighting < lighting_to){
 
 global.ambientShadowIntensity = lighting;
 
-if (player_exists){
+if (player_exists) && (room != rm_level_6_pre_00){
 	var spawn_rate = spawn_rate_real;
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
@@ -163,7 +168,6 @@ if (player_exists){
 		}
 		
 		if (spawn){
-		
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
 				var xpos = random_range(camx - 10, camx + camw + 10);
 				var ypos = random_range(camy - 10, camy + camh + 10);
