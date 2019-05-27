@@ -259,7 +259,7 @@ if (!paused){
 			audio_resume_sound(spawn_music_main[CombatState.Climax]);
 		}
 		
-		if (level == Level.RavagedTown) || (level == Level.TheCemetery){
+		if (level == Level.RavagedTown) || (level == Level.TheCemetery) || (room == rm_level_2_pre_00){
 			audio_resume_sound(rain);
 		}
 		

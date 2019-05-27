@@ -439,6 +439,14 @@
             }
         },
         {
+            "Key": "08f41e88-a6cb-4701-906b-e009997c6485",
+            "Value": {
+                "id": "9833f03c-42ab-450c-a395-62cebb3c4c9b",
+                "resourcePath": "sprites\\spr_townperson_1_idle_0\\spr_townperson_1_idle_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "09425dde-e25b-4eb3-a7ff-6767286ebf56",
             "Value": {
                 "id": "1c99fbff-ba7c-456c-b80d-e2c1665e7b25",
@@ -3547,6 +3555,14 @@
             "Value": {
                 "id": "bdf3439f-e700-4b85-86e1-71932290ff7d",
                 "resourcePath": "objects\\obj_fence_5\\obj_fence_5.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "4d2055ce-a781-409b-96b6-d3dc57e78ea2",
+            "Value": {
+                "id": "9352e8bc-bb8f-4f1c-accd-9b30eb1a36ab",
+                "resourcePath": "objects\\obj_townperson_1\\obj_townperson_1.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -9586,7 +9602,7 @@
             "Key": "d488c93b-ee18-4499-a7bf-4d6fb1cb1310",
             "Value": {
                 "id": "9c0bdf72-394b-4aba-8814-acd1e3d65ccb",
-                "resourcePath": "sprites\\spr_townperson_idle_0\\spr_townperson_idle_0.yy",
+                "resourcePath": "sprites\\spr_townperson_0_idle_0\\spr_townperson_0_idle_0.yy",
                 "resourceType": "GMSprite"
             }
         },

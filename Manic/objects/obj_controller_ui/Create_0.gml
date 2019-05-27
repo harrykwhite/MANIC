@@ -183,7 +183,7 @@ control_indicate_x = 0;
 bosshealth_value_current = 0;
 bosshealth_value_previous = 0;
 bosshealth_value_max = 0;
-bosshealth_width_to = 500;
+bosshealth_width_to = 0;
 bosshealth_width_current = 0;
 bosshealth_flash = 3;
 

@@ -40,6 +40,12 @@ if (instance_exists(obj_player)){
 		if (!obj_controller_ui.area_next_fade){
 			obj_controller_ui.area_next_fade = true;
 			
+			if (cutscene_moveto_level != global.level_current){
+				area_next_alpha_speed = 0.01;
+			}else{
+				area_next_alpha_speed = 0.02;
+			}
+			
 			if (global.game_is_playthrough){
 				obj_controller_ui.area_next_room = cutscene_moveto_room;
 			}else{

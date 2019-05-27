@@ -10,10 +10,33 @@ var camh = camera_get_view_height(view_camera[0]);
 if (!global.game_pause){
 	
 	// Dust
-	if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
+	if (room != rm_level_2_pre_00){
+		if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
+	}else{
+		// Rain
+		if (instance_exists(obj_player)){
+			rainamount = (obj_player.x / room_width) * 5;
+			rainamount ++;
+		}
+		
+		if (random(rainamount / 1.15) < 1){
+			part_particles_create(global.ps_front, camx + random_range(0, camw + 150), camy - 10, global.pt_rain_0, 1);
+		}
+		
+		if (random(2 * rainamount) < 1){
+		    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), choose(global.pt_rain_1, global.pt_rain_2), 1);
+		}
+		
+		if (!audio_is_playing(rain)){
+			rain = audio_play_sound(m_ambience_rain_0, 3, true);
+			audio_sound_gain(rain, 0, 0);
+			audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 8000);
+		}
+	}
+	
 	if (random(6.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
 	if (random(8.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
-
+	
 	// Tumbleweed
 	if (random(200) < 1){
 		if (instance_number(obj_environment_tumbleweed) < 5){
@@ -156,6 +179,9 @@ if (player_exists) && (room != rm_level_2_pre_00){
 		}
 		
 	}else if (global.game_pause){
+		if (audio_is_playing(rain)){
+			audio_pause_sound(rain);
+		}
 		
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
 			audio_pause_sound(spawn_music_main[CombatState.Idle]);

@@ -12,35 +12,84 @@ if (instance_exists(obj_player)){
 		case rm_level_1_00:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_townperson_0);
 			
-			line[0] = "Hello? Are you okay?";
-			linefrom[0] = obj_player;
+			if (inst != noone){
+				line[0] = "Hello? Are you okay?";
+				linefrom[0] = obj_player;
 			
-			line[1] = "Yes... I'm alright...";
-			linefrom[1] = inst;
+				line[1] = "Yes... I'm alright...";
+				linefrom[1] = inst;
 			
-			line[2] = "Are you able to tell me what has happened?";
-			linefrom[2] = obj_player;
+				line[2] = "Are you able to tell me what has happened?";
+				linefrom[2] = obj_player;
 			
-			line[3] = "Large groups of them ran into the town...";
-			linefrom[3] = inst;
+				line[3] = "Large groups of them ran into the town...";
+				linefrom[3] = inst;
 			
-			line[4] = "They murdered our people... they ravaged all of our houses.";
-			linefrom[4] = inst;
+				line[4] = "They murdered our people... they ravaged all of our houses.";
+				linefrom[4] = inst;
 			
-			line[5] = "I'm not even sure how long I've been waiting here...";
-			linefrom[5] = inst;
+				line[5] = "I'm not even sure how long I've been waiting here...";
+				linefrom[5] = inst;
 			
-			line[6] = "It's okay, you'll be fine.";
-			linefrom[6] = obj_player;
+				line[6] = "It's okay, you'll be fine.";
+				linefrom[6] = obj_player;
 			
-			line[7] = "I'm going to clear them out of the town.";
-			linefrom[7] = obj_player;
+				line[7] = "I'm going to clear them out of the town.";
+				linefrom[7] = obj_player;
 			
-			line[8] = "Once it's safe, you can leave down south.";
-			linefrom[8] = obj_player;
+				line[8] = "Once it's safe, you can leave down south.";
+				linefrom[8] = obj_player;
 			
-			line[9] = "Alright, thank you...";
-			linefrom[9] = inst;
+				line[9] = "Alright, thank you...";
+				linefrom[9] = inst;
+			}else{
+				inst = instance_nearest(obj_player.x, obj_player.y, obj_townperson_1);
+				
+				if (inst != noone){
+					line[0] = "Hello?";
+					linefrom[0] = obj_player;
+			
+					line[1] = "Hi. Did you also live here?";
+					linefrom[1] = inst;
+			
+					line[2] = "No, I lived in a house up north.";
+					linefrom[2] = obj_player;
+			
+					line[3] = "What about you?";
+					linefrom[3] = obj_player;
+			
+					line[4] = "A friend of mine lived here, I came to see if he was okay.";
+					linefrom[4] = inst;
+			
+					line[5] = "The town seems to be deserted, though.";
+					linefrom[5] = inst;
+			
+					line[6] = "He may have escaped to the east. I believe a lot of them went that way.";
+					linefrom[6] = obj_player;
+			
+					line[7] = "Did you see where the robots went?";
+					linefrom[7] = obj_player;
+			
+					line[8] = "I remember seeing a large group of them approaching a farm to the south-east.";
+					linefrom[8] = inst;
+			
+					line[9] = "Okay, thank you. I'll go and see what's going on.";
+					linefrom[9] = obj_player;
+					
+					line[10] = "Thank you for your bravery.";
+					linefrom[10] = inst;
+					
+					if (point_distance(obj_player.x, obj_player.y, inst.x, inst.y) > 80){
+						obj_player.move_x_to = inst.x;
+						obj_player.move_y_to = inst.y;
+						obj_player.move_extSpd = 1.25;
+					}else{
+						obj_player.move_x_to = -1;
+						obj_player.move_y_to = -1;
+						obj_player.move_extSpd = 0;
+					}
+				}
+			}
 			break;
 		
 		case rm_level_2_00:
@@ -146,10 +195,10 @@ if (instance_exists(obj_player)){
 				line[0] = "So, you're finally here?";
 				linefrom[0] = inst;
 				
-				line[1] = "I am. Do you think you've got the nerve to harm me?";
+				line[1] = "I am. Do you think you've got the strength to fight me?";
 				linefrom[1] = obj_player;
 				
-				line[2] = "Of course!";
+				line[2] = "Oh, for sure.";
 				linefrom[2] = inst;
 				
 				line[3] = "Let's see if you're as good as you think you are.";
@@ -209,6 +258,10 @@ if (instance_exists(obj_player)){
 		}else{
 			obj_player.image_xscale = -1;
 		}
+		
+		// Update dialogue position
+		obj_controller_ui.dialogue_x = linefrom[cutscene_dialogue_line].x;
+		obj_controller_ui.dialogue_y = linefrom[cutscene_dialogue_line].y - 24;
 		
 		// Set the camera position based on speaker
 		if (cutscene_dialogue_line - 1 >= 0){

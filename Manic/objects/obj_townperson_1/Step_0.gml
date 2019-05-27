@@ -3,7 +3,7 @@ if (global.game_pause){
 	exit;
 }
 
-sprite_index = spr_townperson_0_idle_0;
+sprite_index = spr_townperson_1_idle_0;
 image_speed = 0.02;
 
 if (instance_exists(obj_player)){
