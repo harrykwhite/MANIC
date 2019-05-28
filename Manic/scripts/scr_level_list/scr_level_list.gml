@@ -35,7 +35,7 @@ global.level_kill_count[Level.RavagedTown] = 0;
 global.level_kill_max[Level.RavagedTown] = 40;
 
 global.level_name[Level.WesternFarmland] = "Western Farmland";
-global.level_room[Level.WesternFarmland] = rm_level_2_00;
+global.level_room[Level.WesternFarmland] = rm_level_2_post_00;
 global.level_preroom[Level.WesternFarmland] = rm_level_2_pre_00;
 global.level_collectable_current[Level.WesternFarmland] = 0;
 global.level_collectable_number[Level.WesternFarmland] = 4;

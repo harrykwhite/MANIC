@@ -69,6 +69,73 @@ if (!global.game_pause){
 			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_smoke_3, 1);
 		}
 	}
+	
+	// Post Level Dialogue
+	if (room == rm_level_2_post_00) && (global.cutscene_current == -1) && (postlevel_dialogue_index < postlevel_dialogue_index_max){
+		if (postlevel_dialogue_time > 0){
+			postlevel_dialogue_time --;
+			
+			if (instance_exists(postlevel_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
+				obj_controller_ui.dialogue_x = postlevel_dialogue_inst.x;
+				obj_controller_ui.dialogue_y = postlevel_dialogue_inst.y - 24;
+			}
+		}else{
+			var text = "", inst = noone, dodraw = true;
+			
+			switch(postlevel_dialogue_index){
+				case 0:
+					text = "So what is making you want to fight them?";
+					inst = obj_companion_0;
+					break;
+				
+				case 1:
+					text = "To help stop this?";
+					inst = obj_companion_0;
+			
+				case 2:
+					text = "My family was murdered by the group. I can't let that happen again.";
+					inst = obj_player;
+					break;
+				
+				case 3:
+					text = "I understand.";
+					inst = obj_companion_0;
+					break;
+				
+				case 4:
+					text = "It's lucky that you found me when you did.";
+					inst = obj_companion_0;
+					break;
+				
+				case 5:
+					text = "Just a couple more hours there and I would have been killed.";
+					inst = obj_companion_0;
+					break;
+				
+				case 6:
+					text = "Thank you for helping me.";
+					inst = obj_companion_0;
+					break;
+				
+				default:
+					dodraw = false;
+					break;
+			}
+			
+			if (dodraw) && (instance_exists(inst)){
+				obj_controller_ui.dialogue = text;
+				obj_controller_ui.dialogue_time = 60 * 3;
+				obj_controller_ui.dialogue_pause = false;
+				obj_controller_ui.dialogue_count = 0;
+				obj_controller_ui.dialogue_x = inst.x;
+				obj_controller_ui.dialogue_y = inst.y - 24;
+				
+				postlevel_dialogue_inst = inst;
+				postlevel_dialogue_index ++;
+				postlevel_dialogue_time  = 60 * 3.5;
+			}
+		}
+	}
 }
 
 // Spawning
@@ -83,7 +150,7 @@ if (global.game_combat_in_hordechallenge){
 	lighting_to = 1;
 }
 
-if (room == rm_level_2_pre_00){
+if (room == rm_level_2_pre_00) || (room == rm_level_2_post_00){
 	lighting_to = 0.8;
 }
 
@@ -95,7 +162,7 @@ if (lighting < lighting_to){
 
 global.ambientShadowIntensity = lighting;
 
-if (player_exists) && (room != rm_level_2_pre_00){
+if (player_exists) && (room != rm_level_2_pre_00) && (room != rm_level_2_post_00){
 	var spawn_rate = spawn_rate_real;
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){

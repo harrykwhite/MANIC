@@ -23,6 +23,10 @@ switch(room){
 		global.level_current = Level.WesternFarmland;
 		break;
 	
+	case rm_level_2_post_00:
+		global.level_current = Level.WesternFarmland;
+		break;
+	
 	case rm_level_3_00:
 		global.level_current = Level.UndergroundBunker;
 		break;
