@@ -71,7 +71,7 @@ if (!global.game_pause){
 	}
 	
 	// Post Level Dialogue
-	if (room == rm_level_2_post_00) && (global.cutscene_current == -1) && (postlevel_dialogue_index < postlevel_dialogue_index_max){
+	if (room == rm_level_2_post_00) && (global.cutscene_current == -1) && (postlevel_dialogue_index <= postlevel_dialogue_index_max){
 		if (postlevel_dialogue_time > 0){
 			postlevel_dialogue_time --;
 			
@@ -84,13 +84,14 @@ if (!global.game_pause){
 			
 			switch(postlevel_dialogue_index){
 				case 0:
-					text = "So what is making you want to fight them?";
+					text = "So what's making you want to fight them?";
 					inst = obj_companion_0;
 					break;
 				
 				case 1:
 					text = "To help stop this?";
 					inst = obj_companion_0;
+					break;
 			
 				case 2:
 					text = "My family was murdered by the group. I can't let that happen again.";

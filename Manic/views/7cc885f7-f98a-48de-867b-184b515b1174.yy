@@ -11,7 +11,8 @@
         "aae1adb6-6bbf-4557-9da7-e72e0a31c16c",
         "356dbaab-fcc0-4391-a956-1d018a2c6c95",
         "1b1bea56-0d89-4c87-8a75-fdb341e7af63",
-        "88fb3107-7e2d-4b12-805c-c4208eba3e41"
+        "88fb3107-7e2d-4b12-805c-c4208eba3e41",
+        "cf572c8f-d7bf-4c8b-83e4-9eb2c388b2ed"
     ],
     "filterType": "GMSprite",
     "folderName": "Object Tiles",

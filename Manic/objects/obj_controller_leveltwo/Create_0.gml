@@ -76,7 +76,7 @@ spawn_cleared = false;
 
 rainamount = 1;
 
-postlevel_dialogue_time = 60 * 2;
+postlevel_dialogue_time = 60 * 3;
 postlevel_dialogue_index = 0;
 postlevel_dialogue_index_max = 7;
 postlevel_dialogue_inst = noone;

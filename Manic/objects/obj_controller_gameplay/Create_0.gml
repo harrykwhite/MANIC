@@ -30,6 +30,7 @@ cutscene_moveto_room = noone;
 cutscene_moveto_level = Level.RavagedTown;
 cutscene_moveto_dir = 0;
 cutscene_moveto_type = 0;
+cutscene_moveto_instant = false;
 cutscene_ending_stage = 0;
 cutscene_ending_corpse = noone;
 cutscene_prologue_opening_camspeed = 0;

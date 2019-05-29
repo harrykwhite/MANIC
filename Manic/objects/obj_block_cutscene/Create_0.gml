@@ -17,6 +17,7 @@ moveto_dir = -1;
 moveto_level = -1;
 moveto_room = noone;
 moveto_type = -1;
+moveto_instant = false;
 
 look_x = 0;
 look_y = 0;

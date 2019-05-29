@@ -12,7 +12,8 @@
         "8d8377a2-f4b1-4d10-af5d-6e3f461bbe0f",
         "2b0c1498-7261-472c-b74f-d6f6dc2f0868",
         "3c8bbf62-1c52-4265-ab80-4e2fac3106e6",
-        "67153994-efa4-4a20-a361-66fc84ef711a"
+        "67153994-efa4-4a20-a361-66fc84ef711a",
+        "e977af46-ab56-469b-b127-be133ca77a57"
     ],
     "filterType": "GMObject",
     "folderName": "Object Tiles",

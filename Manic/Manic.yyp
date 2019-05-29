@@ -159,6 +159,14 @@
             }
         },
         {
+            "Key": "03c39b7e-7654-42a6-8096-2a18d1fd55ad",
+            "Value": {
+                "id": "a67a1f17-7788-4bed-a7fd-9f07674f23b1",
+                "resourcePath": "sprites\\spr_bunkerbuilding_1\\spr_bunkerbuilding_1.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "03fd46c0-7726-4051-af21-6d7cba0ccc98",
             "Value": {
                 "id": "93c1f543-5f37-4227-ba84-0e9e4149a07c",
@@ -315,6 +323,14 @@
             "Value": {
                 "id": "98a6796b-9745-4218-bd42-884604ec5a02",
                 "resourcePath": "sprites\\spr_weapon_12\\spr_weapon_12.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "06694a0a-0b90-4f59-916e-7688224c3b11",
+            "Value": {
+                "id": "1d504b65-fc1f-40cc-acfa-982ed6af0293",
+                "resourcePath": "sprites\\spr_bunkerbuilding_2\\spr_bunkerbuilding_2.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -1420,6 +1436,14 @@
                 "id": "842d7aef-7107-4e7a-a4b5-4ded81af4a1e",
                 "resourcePath": "sprites\\spr_enemy_0_brain_idle_2\\spr_enemy_0_brain_idle_2.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "214e7bfd-d5fc-4fd1-bd7a-56fb787c739f",
+            "Value": {
+                "id": "f077e180-a908-4f48-b470-c1c119853cb0",
+                "resourcePath": "objects\\obj_bunkerbuilding_3\\obj_bunkerbuilding_3.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -3071,6 +3095,14 @@
             }
         },
         {
+            "Key": "420fa579-fd3f-435b-b9c1-6b2978ba460d",
+            "Value": {
+                "id": "462b1ae8-e2aa-46cc-86f8-fce51342e026",
+                "resourcePath": "objects\\obj_bunkerbuilding_4\\obj_bunkerbuilding_4.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "42304ef7-a95f-4a71-8267-860f4b7eb5cb",
             "Value": {
                 "id": "adf9fb4b-c941-468c-bf81-e15b55666956",
@@ -3148,6 +3180,14 @@
                 "id": "e6188b46-a56c-41cd-a2f4-754ebb04bfd1",
                 "resourcePath": "objects\\obj_weapon_12\\obj_weapon_12.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "4386c11a-4eed-4844-8379-d6f22da32f5e",
+            "Value": {
+                "id": "4403033b-ab69-44c4-9730-2dcf2c71a08a",
+                "resourcePath": "sprites\\spr_bunkerbuilding_0\\spr_bunkerbuilding_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -3804,6 +3844,14 @@
                 "id": "f8f96e42-61e1-444d-90b7-194d3dfe71ae",
                 "resourcePath": "scripts\\scr_draw_attributes_environhit\\scr_draw_attributes_environhit.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "52fff4b8-b89a-45b9-a6e3-1146a391b785",
+            "Value": {
+                "id": "d761a049-a84d-4fee-b28a-d16125e7c1af",
+                "resourcePath": "objects\\obj_bunkerbuilding_1\\obj_bunkerbuilding_1.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -6471,6 +6519,14 @@
             }
         },
         {
+            "Key": "8c0926ab-01c8-4e01-9afe-175fa82bf72e",
+            "Value": {
+                "id": "399bcc2a-9006-4c81-b35f-1e693a269a4e",
+                "resourcePath": "sprites\\spr_bunkerbuilding_3\\spr_bunkerbuilding_3.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "8c2c68a4-c646-4854-a590-c9e700158de2",
             "Value": {
                 "id": "63f591c8-3890-4e67-bac0-b834bb6f85b5",
@@ -8855,6 +8911,14 @@
             }
         },
         {
+            "Key": "bf17889b-b290-4355-a64b-be9fc364dbca",
+            "Value": {
+                "id": "bf116ae1-6a81-4dba-b956-f65d0c608af4",
+                "resourcePath": "objects\\obj_bunkerbuilding_0\\obj_bunkerbuilding_0.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "bf7c962e-634c-4baa-b3d0-823b0452b5aa",
             "Value": {
                 "id": "75c91466-36b5-4a6a-ac55-661b0d3a55f3",
@@ -9183,6 +9247,14 @@
             }
         },
         {
+            "Key": "c9a068b8-bc8d-4ba6-8e71-ccf11f999c7d",
+            "Value": {
+                "id": "f6415509-add1-46d9-a7b9-fe75a0a2d64a",
+                "resourcePath": "sprites\\spr_bunkerbuilding_4\\spr_bunkerbuilding_4.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "c9cd63ea-e070-4852-9164-56d0ea18fcaa",
             "Value": {
                 "id": "7365cd68-9bc9-462c-b448-e93fa8ca88fe",
@@ -9367,6 +9439,14 @@
             }
         },
         {
+            "Key": "ce019b86-037c-41e3-9f93-0b9deccd6dcd",
+            "Value": {
+                "id": "0aa23bb4-2306-4fcb-b731-7e1903589c29",
+                "resourcePath": "objects\\obj_bunkerbuilding_2\\obj_bunkerbuilding_2.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "ce3a34dd-cb2e-43c6-8439-1a62337e4e62",
             "Value": {
                 "id": "21fe19f2-d38d-4e3c-8bde-bf4eee027b0f",
@@ -9436,6 +9516,14 @@
                 "id": "1af00498-c196-4626-bc3e-af44d484a178",
                 "resourcePath": "sprites\\spr_citybuilding_9\\spr_citybuilding_9.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "cf572c8f-d7bf-4c8b-83e4-9eb2c388b2ed",
+            "Value": {
+                "id": "38f0bec1-243b-4f9b-afa6-20a996fae3a4",
+                "resourcePath": "views\\cf572c8f-d7bf-4c8b-83e4-9eb2c388b2ed.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -10460,6 +10548,14 @@
                 "id": "84c8ada6-4e0e-4ce4-bb38-8af792d64a8d",
                 "resourcePath": "sprites\\spr_giantturret_flamethrower_0\\spr_giantturret_flamethrower_0.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "e977af46-ab56-469b-b127-be133ca77a57",
+            "Value": {
+                "id": "71467c32-8a12-4981-bc20-7146fa352d35",
+                "resourcePath": "views\\e977af46-ab56-469b-b127-be133ca77a57.yy",
+                "resourceType": "GMFolder"
             }
         },
         {

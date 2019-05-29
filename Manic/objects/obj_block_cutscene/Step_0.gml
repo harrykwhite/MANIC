@@ -57,6 +57,7 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				obj_controller_gameplay.cutscene_moveto_room = moveto_room;
 				obj_controller_gameplay.cutscene_moveto_level = moveto_level;
 				obj_controller_gameplay.cutscene_moveto_type = moveto_type;
+				obj_controller_gameplay.cutscene_moveto_instant = moveto_instant;
 			}
 			
 			if (destroy_on_activate){
