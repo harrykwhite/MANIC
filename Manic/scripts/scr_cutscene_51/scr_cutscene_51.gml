@@ -1,6 +1,6 @@
 ///scr_cutscene_51();
 var index = 51;
-var x_to = 0, y_to = 0;
+var x_to = 0, y_to = 0, drawlight = false;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
@@ -52,6 +52,18 @@ if (instance_exists(obj_player)){
 		obj_player.move_extSpd = obj_player.spd_max;
 	}
 }else{
+	x_to = cutscene_trainopening_inst.x;
+	y_to = cutscene_trainopening_inst.y + 12;
+	
+	if (!instance_exists(cutscene_trainopening_light)){
+		cutscene_trainopening_light = instance_create(x_to, y_to, obj_player_light);
+	}else{
+		cutscene_trainopening_light.x = x_to;
+		cutscene_trainopening_light.y = y_to;
+		
+		scr_modify_player_surrounding_light(cutscene_trainopening_light, x_to, y_to);
+	}
+	
 	if (global.cutscene_time[index] < 100){
 		global.cutscene_time[index] ++;
 	}else{

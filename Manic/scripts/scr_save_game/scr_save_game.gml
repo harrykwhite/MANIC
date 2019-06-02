@@ -8,6 +8,8 @@ if (global.level_current > global.game_save_level){
 ini_write_real("Save", "Started", global.game_save_started);
 ini_write_real("Save", "Seconds", global.game_save_seconds);
 
+ini_write_real("Save", "WorldTrainRoom", global.worldtrain_room);
+
 ini_write_real("Save", "TheScorchedKilled", global.game_boss_thescorched_killed);
 ini_write_real("Save", "TheDogkeeperKilled", global.game_boss_thedogkeeper_killed);
 ini_write_real("Save", "FirstAntagKilled", global.game_boss_firstantag_killed);
@@ -26,6 +28,15 @@ ini_write_real("Save", "CompanionFarmerFound", global.game_companion_farmer_foun
 ini_write_real("Save", "CompanionGrenadierFound", global.game_companion_grenadier_found);
 ini_write_real("Save", "CompanionPrisonerFound", global.game_companion_prisoner_found);
 ini_write_real("Save", "CompanionDogFound", global.game_companion_dog_found);
+ini_write_real("Save", "Prisoner0Left", global.game_npc_prisoner0_left);
+ini_write_real("Save", "Prisoner1Left", global.game_npc_prisoner1_left);
+ini_write_real("Save", "Prisoner2Left", global.game_npc_prisoner2_left);
+ini_write_real("Save", "Prisoner3Left", global.game_npc_prisoner3_left);
+ini_write_real("Save", "Prisoner4Left", global.game_npc_prisoner4_left);
+ini_write_real("Save", "Prisoner5Left", global.game_npc_prisoner5_left);
+ini_write_real("Save", "Prisoner6Left", global.game_npc_prisoner6_left);
+ini_write_real("Save", "TownPerson0Talked", global.game_npc_townperson0_talked);
+ini_write_real("Save", "TownPerson1Talked", global.game_npc_townperson1_talked);
 
 var upgradecount = array_length_1d(global.upgrade_name);
 for(var i = 0; i < upgradecount; i ++){

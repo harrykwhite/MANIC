@@ -13,6 +13,8 @@ if (instance_exists(obj_player)){
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_townperson_0);
 			
 			if (inst != noone){
+				global.game_npc_townperson0_talked = true;
+				
 				line[0] = "Hello? Are you okay?";
 				linefrom[0] = obj_player;
 			
@@ -46,6 +48,8 @@ if (instance_exists(obj_player)){
 				inst = instance_nearest(obj_player.x, obj_player.y, obj_townperson_1);
 				
 				if (inst != noone){
+					global.game_npc_townperson1_talked = true;
+					
 					line[0] = "Hello?";
 					linefrom[0] = obj_player;
 			
@@ -76,7 +80,7 @@ if (instance_exists(obj_player)){
 					line[9] = "Okay, thank you. I'll go and see what's going on.";
 					linefrom[9] = obj_player;
 					
-					line[10] = "Thank you for your bravery.";
+					line[10] = "Thank you.";
 					linefrom[10] = inst;
 					
 					if (point_distance(obj_player.x, obj_player.y, inst.x, inst.y) > 80){

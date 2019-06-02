@@ -8415,6 +8415,14 @@
             }
         },
         {
+            "Key": "afe5ec6d-0d5e-4a6c-b254-b15fd77c961d",
+            "Value": {
+                "id": "cafbd643-0ad0-40de-bfe4-4f66734a2559",
+                "resourcePath": "scripts\\scr_modify_player_surrounding_light\\scr_modify_player_surrounding_light.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "b00c1441-9b43-4d38-bbcb-429d3111bf8e",
             "Value": {
                 "id": "6d738bee-1828-4f63-bc91-142383bae2f9",
@@ -12163,7 +12171,8 @@
         "a34c1138-876c-42ec-9240-d56998b3ca84",
         "70900a82-0b09-4fc1-bebe-d044997c0da4",
         "fe8cedac-48aa-4588-b89c-1c87c49fb8e7",
-        "c0a013d2-fea4-49bf-a7aa-c9e999cb0aa6"
+        "c0a013d2-fea4-49bf-a7aa-c9e999cb0aa6",
+        "afe5ec6d-0d5e-4a6c-b254-b15fd77c961d"
     ],
     "tutorial": ""
 }

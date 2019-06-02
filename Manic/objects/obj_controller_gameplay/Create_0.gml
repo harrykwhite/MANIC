@@ -23,6 +23,7 @@ cutscene_look_boss = -1;
 cutscene_conveyerbelt_x = 0;
 cutscene_conveyerbelt_y = 0;
 cutscene_trainopening_inst = noone;
+cutscene_trainopening_light = noone;
 cutscene_traingoto = Level.RavagedTown;
 cutscene_trainroom = -1;
 cutscene_trainstart_type = -1;

@@ -63,8 +63,6 @@ global.player_health_current = global.player_health_max;
 global.player_has_bossrespawn = false;
 global.player_is_respawning = false;
 
-global.worldtrain_room = rm_level_6_00;
-
 var rslotcount = array_length_1d(global.weapon_slot);
 for(var i = 0; i < rslotcount; i ++){
 	global.sectionstart_weapon[i] = global.weapon_slot[i];

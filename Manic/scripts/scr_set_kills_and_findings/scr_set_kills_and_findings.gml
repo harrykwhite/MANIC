@@ -1,3 +1,5 @@
+global.worldtrain_room = rm_level_6_00;
+
 global.game_boss_thescorched_killed = false;
 global.game_boss_thedogkeeper_killed = false;
 global.game_boss_firstantag_killed = false;
@@ -16,3 +18,12 @@ global.game_companion_farmer_found = false;
 global.game_companion_grenadier_found = false;
 global.game_companion_prisoner_found = false;
 global.game_companion_dog_found = false;
+global.game_npc_prisoner0_left = false;
+global.game_npc_prisoner1_left = false;
+global.game_npc_prisoner2_left = false;
+global.game_npc_prisoner3_left = false;
+global.game_npc_prisoner4_left = false;
+global.game_npc_prisoner5_left = false;
+global.game_npc_prisoner6_left = false;
+global.game_npc_townperson0_talked = false;
+global.game_npc_townperson1_talked = false;

@@ -1,9 +1,6 @@
 // Setup
 scr_level_current_control();
 
-global.game_is_playthrough = true;
-scr_companion_register(obj_companion_0);
-
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
 
