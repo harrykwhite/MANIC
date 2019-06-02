@@ -12,7 +12,7 @@ if (component_spawn){
 	}
 	
 	for(var i = 1; i < 9; i ++){
-		comp = instance_create(x + ((i * 112) * -dir), y, obj_pawn_other_train_0);
+		comp = instance_create_layer(x + ((i * 112) * -dir), y, "Trains", obj_pawn_other_train_0);
 		comp.spd = spd;
 		comp.dir = dir;
 		comp.type = type;

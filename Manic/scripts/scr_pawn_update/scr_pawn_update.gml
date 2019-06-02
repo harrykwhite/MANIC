@@ -215,6 +215,7 @@ if (health_current <= 0){
 	}
 	
 	if (pawn == PawnType.Companion){
+		scr_companion_remove(object_index);
 		global.cutscene_current = 40;
 		obj_controller_gameplay.cutscene_look_x = x;
 		obj_controller_gameplay.cutscene_look_y = y;

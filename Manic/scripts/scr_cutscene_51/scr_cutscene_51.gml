@@ -13,7 +13,7 @@ if (instance_exists(obj_player)){
 	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = 90;
 	
-	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 20){
+	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 40){
 		obj_player.move_extSpd = 0;
 		obj_player.sprite_index = spr_player_idle_1;
 		obj_player.image_speed = 0;

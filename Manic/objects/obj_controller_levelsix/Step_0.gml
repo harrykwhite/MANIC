@@ -93,6 +93,10 @@ if (!global.game_pause){
 	
 	// Train Arrival
 	if (global.cutscene_current == -1) && (room == rm_level_6_00){
+		if (global.worldtrain_room == room){
+			trainboss_spawned = true;
+		}
+		
 		if (!trainboss_spawned){
 			if (train_time < train_timemax){
 				train_time ++;
@@ -115,6 +119,8 @@ if (!global.game_pause){
 				trainboss_trainhead.component_spawn = true;
 				trainboss_trainhead.is_boss = true;
 				trainboss_trainhead.spd = 6;
+				
+				global.worldtrain_room = room;
 			}
 		}
 	}

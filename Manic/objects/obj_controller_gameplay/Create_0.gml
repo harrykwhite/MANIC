@@ -36,13 +36,10 @@ cutscene_ending_corpse = noone;
 cutscene_prologue_opening_camspeed = 0;
 cutscene_prologue_ending_camspeed = 0;
 cutscene_prologue_ending_camopening = true;
-cutscene_dialogue_line = 0;
+cutscene_dialogue_line = -1;
 cutscene_dialogue_special = -1;
 
-weaponlist = ds_list_create();
-weaponlist[| 0] = global.weapon_slot[global.weapon_slotcurrent];
-weaponlist[| 1] = 4;
-weaponlist[| 2] = -1;
+weaponswitch_break = 10;
 
 global.player_is_respawning = false;
 

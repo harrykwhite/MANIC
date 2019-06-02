@@ -10,7 +10,6 @@ if (instance_exists(owner)){
     }
     
     if (attack) && (attack_time <= 0){
-		
         scr_effect_screenshake(3);
         scr_sound_play_distance(snd_weapon_swing_0, false, 450);
         
@@ -29,7 +28,7 @@ if (instance_exists(owner)){
 		
 	    scr_weapon_melee_detect(isEnemy, x, y, dir, scr_pawn_weapon_damage(2), 2.75, 32 + 14, obj_proj_1);
         
-        owner.knockback_speed = 0.6;
+        owner.knockback_speed = 1;
         owner.knockback_direction = dir;
 		
         attack = false;

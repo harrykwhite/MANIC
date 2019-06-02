@@ -11,19 +11,27 @@ if (instance_exists(obj_player)){
 	}
 	
 	if (!in_cutscene){
-		if (!instance_exists(target) || (target == noone)){
+		if (!instance_exists(target)){
 			if (global.cutscene_current == -1){
 				var enemyCount = array_length_1d(global.enemy);
 				for(var i = 0; i < enemyCount; i ++){
+					if (i == 1){
+						continue;
+					}
+					
 					if (instance_exists(global.enemy[i])){
 						target = instance_nearest(x, y, global.enemy[i]);
-				
-						if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
-							target = noone;
+						
+						if (target.object_index == obj_antagonist){
+							if (target.walk_off) || (target.near_dead){
+								target = noone;
+								continue;
+							}
 						}
-				
-						if (distance_to_object(target) > 200){
+						
+						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
 							target = noone;
+							continue;
 						}
 					}
 				}
@@ -85,8 +93,8 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y;
 				
-				if (distance_to_object(target) > 50){
-					move_speed = 1.2;
+				if (distance_to_object(target) > 40){
+					move_speed = 1.5;
 				}else{
 					move_speed = 0;
 					if (weapon_does_exist){
@@ -96,6 +104,7 @@ if (instance_exists(obj_player)){
 							if (weapon.attack_time <= 0){
 								runaway_starttime = 2;
 							}
+							
 							weapon.attack = true;
 							attack_time = attack_time_max;
 						}
@@ -104,10 +113,10 @@ if (instance_exists(obj_player)){
 			}
 			
 			if (runaway_starttime > 0){
-				runaway_starttime--;
+				runaway_starttime --;
 			}else if (runaway_starttime != -2){
 				runaway_starttime = -2;
-				runaway_time = 17;
+				runaway_time = 27;
 			}
 			
 			/*if (distance_to_object(obj_player) > 85){
@@ -154,15 +163,48 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}else{
-		if (distance_to_object(obj_player) > 37 + (30 * order)){
-			move_speed = 1;
-		}else{
-			move_speed = 0;
-		}
+		var pdir = point_direction(x, y, obj_player.x, obj_player.y);
+		face_player = false;
+		move_time = 1;
 		
-		move_x_to = obj_player.x;
-		move_y_to = obj_player.y;
-		move_time = 60;
+		if (depart){
+			move_x_to = x;
+			move_y_to = room_height;
+			
+			if (distance_to_point(move_x_to, move_y_to) > 32 + (30 * order)){
+				move_speed = 1.7;
+			}else{
+				move_speed = 0;
+			}
+		}else if (depart_standaway){
+			var xx = obj_player.x + 10;
+			var yy = obj_player.y + 95;
+			
+			if (distance_to_point(xx, yy) > 20 + (30 * order)){
+				move_x_to = xx;
+				move_y_to = yy;
+				move_speed = 1.7;
+			}else{
+				face_player = true;
+				move_speed = 0;
+				move_x_to = obj_player.x;
+				move_y_to = obj_player.y;
+			}
+		}else{
+			if (distance_to_object(obj_player) > 67 + (30 * order)){
+				move_speed = 1.5;
+			}else{
+				face_player = true;
+				move_speed = 0;
+				
+				if (weapon_does_exist){
+					weapon.dir = pdir;
+				}
+			}
+		
+			move_x_to = obj_player.x;
+			move_y_to = obj_player.y;
+		}
 	}
 	
 	distTo = distance_to_point(move_x_to, move_y_to);
@@ -237,7 +279,7 @@ if (dash){
 // Facing
 if (!face_player){
 	if (distTo > 15){
-		if (move_x_to > x){
+		if (move_x_to > x) || (weapon.dir <= 90) || (weapon.dir >= 270){
 			image_xscale = scale;
 		}else{
 			image_xscale = -scale;

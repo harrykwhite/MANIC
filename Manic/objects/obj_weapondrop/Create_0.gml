@@ -19,5 +19,6 @@ drop = false;
 pack = false;
 damage = 0;
 is_cutscene = false;
+specialweapon = false;
 
 image_alpha = 0;

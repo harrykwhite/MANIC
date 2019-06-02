@@ -160,20 +160,20 @@ if (health_current <= 0){
 			}
 			break;
 
-		case obj_companion_0:
-			corpse = instance_create(x, y - 16, obj_companion_corpse);
-			corpse.sprite_index = spr_companion_0_corpse_0;
+		//case obj_companion_0:
+		//	corpse = instance_create(x, y - 16, obj_companion_corpse);
+		//	corpse.sprite_index = spr_companion_0_corpse_0;
 			
-			if (headless){
-				corpse.sprite_index = spr_companion_0_headless_corpse_0;
-			}
+		//	if (headless){
+		//		corpse.sprite_index = spr_companion_0_headless_corpse_0;
+		//	}
 			
-			repeat(4){
-				part_type_speed(global.pt_bodypart_companion_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
-				part_type_direction(global.pt_bodypart_companion_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_0, 1);
-			}
-			break;
+		//	repeat(4){
+		//		part_type_speed(global.pt_bodypart_companion_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
+		//		part_type_direction(global.pt_bodypart_companion_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
+		//		part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_0, 1);
+		//	}
+		//	break;
 		
 		case obj_companion_1:
 			corpse = instance_create(x, y - 16, obj_companion_corpse);

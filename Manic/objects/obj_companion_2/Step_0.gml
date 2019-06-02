@@ -58,7 +58,7 @@ if (ispaused){
 
 if (!registered){
 	global.game_companion_prisoner_found = true;
-	scr_companion_register_me();
+	scr_companion_register(object_index);
 	registered = true;
 }
 

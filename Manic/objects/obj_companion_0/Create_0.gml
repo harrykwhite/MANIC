@@ -15,6 +15,9 @@ registered = false;
 runaway_starttime = 0;
 runaway_time = 0;
 
+depart_standaway = false;
+depart = false;
+
 burn = false;
 burn_x = x;
 burn_y = y;

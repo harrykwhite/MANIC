@@ -1,1 +1,1 @@
-text = "-- Constructed in 1867 --\n\nPlease do not step on the grass!";
+text = "Constructed in 1867\n\n(Please do not step on the grass!)";

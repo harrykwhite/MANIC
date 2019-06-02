@@ -40,11 +40,11 @@ switch(room){
 		break;
 	
 	case rm_level_4_00:
-		global.level_current = Level.StorageFacility;
+		global.level_current = Level.WinterTown;
 		break;
 	
 	case rm_level_4_01:
-		global.level_current = Level.StorageFacility;
+		global.level_current = Level.WinterTown;
 		break;
 	
 	case rm_level_5_00:

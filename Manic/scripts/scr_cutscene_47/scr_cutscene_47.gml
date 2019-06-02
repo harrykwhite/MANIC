@@ -39,6 +39,7 @@ if (cutscene_trainopening_inst != noone){
 					obj_player.move_y_to = -1;
 				}else{
 					global.cutscene_current = -1;
+					global.cutscene_time[index] = 0;
 					global.player_respawn_x = obj_player.x;
 					global.player_respawn_y = obj_player.y;
 					obj_player.move_x_to = -1;

@@ -135,20 +135,11 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 									obj_controller_ui.pausedialogue = true;
 									obj_controller_ui.pausedialogue_type = 1;
 									obj_controller_ui.pausedialogue_type_text = "Select your destination";
-									obj_controller_ui.pausedialogue_type_option[0] = "Storage Facility";
-									obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[0] = 3;
-									obj_controller_ui.pausedialogue_type_option[1] = "Train Station";
-									obj_controller_ui.pausedialogue_type_option_scale[1] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[1] = 5;
-									obj_controller_ui.pausedialogue_type_option[2] = "The Cemetery";
-									obj_controller_ui.pausedialogue_type_option_scale[2] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
-									obj_controller_ui.pausedialogue_type_option_trainroom[2] = rm_level_6_01;
-									obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = 0;
+									
+									scr_train_set_option(0, global.level_name[Level.WinterTown], Level.WinterTown, rm_level_4_00);
+									scr_train_set_option(1, global.level_name[Level.TrainStation], Level.TrainStation, rm_level_6_00);
+									scr_train_set_option(2, global.level_name[Level.TheCemetery], Level.TrainStation, rm_level_6_01);
+									
 									obj_controller_ui.pausedialogue_option_max = 3;
 									break;
 							
@@ -156,21 +147,11 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 									obj_controller_ui.pausedialogue = true;
 									obj_controller_ui.pausedialogue_type = 1;
 									obj_controller_ui.pausedialogue_type_text = "Select your destination";
-									obj_controller_ui.pausedialogue_type_option[0] = "Ravaged Town";
-									obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
-									obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = 2;
-									obj_controller_ui.pausedialogue_type_option[1] = "Train Station";
-									obj_controller_ui.pausedialogue_type_option_scale[1] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[1] = 5;
-									obj_controller_ui.pausedialogue_type_option[2] = "The Cemetery";
-									obj_controller_ui.pausedialogue_type_option_scale[2] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
-									obj_controller_ui.pausedialogue_type_option_trainroom[2] = rm_level_6_01;
-									obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = 0;
+									
+									scr_train_set_option(0, global.level_name[Level.RavagedTown], Level.RavagedTown, rm_level_1_00);
+									scr_train_set_option(1, global.level_name[Level.TrainStation], Level.TrainStation, rm_level_6_00);
+									scr_train_set_option(2, global.level_name[Level.TheCemetery], Level.TrainStation, rm_level_6_01);
+									
 									obj_controller_ui.pausedialogue_option_max = 3;
 									break;
 							
@@ -178,21 +159,11 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 									obj_controller_ui.pausedialogue = true;
 									obj_controller_ui.pausedialogue_type = 1;
 									obj_controller_ui.pausedialogue_type_text = "Select your destination";
-									obj_controller_ui.pausedialogue_type_option[0] = "Ravaged Town";
-									obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
-									obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = 2;
-									obj_controller_ui.pausedialogue_type_option[1] = "Storage Facility";
-									obj_controller_ui.pausedialogue_type_option_scale[1] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[1] = 3;
-									obj_controller_ui.pausedialogue_type_option[2] = "The Cemetery";
-									obj_controller_ui.pausedialogue_type_option_scale[2] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
-									obj_controller_ui.pausedialogue_type_option_trainroom[2] = rm_level_6_01;
-									obj_controller_ui.pausedialogue_type_option_trainstart_type[2] = 0;
+									
+									scr_train_set_option(0, global.level_name[Level.RavagedTown], Level.RavagedTown, rm_level_1_00);
+									scr_train_set_option(1, global.level_name[Level.WinterTown], Level.WinterTown, rm_level_4_00);
+									scr_train_set_option(2, global.level_name[Level.TheCemetery], Level.TrainStation, rm_level_6_01);
+									
 									obj_controller_ui.pausedialogue_option_max = 3;
 									break;
 							
@@ -200,19 +171,11 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 									obj_controller_ui.pausedialogue = true;
 									obj_controller_ui.pausedialogue_type = 1;
 									obj_controller_ui.pausedialogue_type_text = "Select your destination";
-									obj_controller_ui.pausedialogue_type_option[0] = "Ravaged Town";
-									obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[0] = 0;
-									obj_controller_ui.pausedialogue_type_option_trainstart_type[0] = 2;
-									obj_controller_ui.pausedialogue_type_option[1] = "Storage Facility";
-									obj_controller_ui.pausedialogue_type_option_scale[1] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[1] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[1] = 3;
-									obj_controller_ui.pausedialogue_type_option[2] = "Train Station";
-									obj_controller_ui.pausedialogue_type_option_scale[2] = 1;
-									obj_controller_ui.pausedialogue_type_option_cutscene[2] = 51;
-									obj_controller_ui.pausedialogue_type_option_traingoto[2] = 5;
+									
+									scr_train_set_option(0, global.level_name[Level.RavagedTown], Level.RavagedTown, rm_level_1_00);
+									scr_train_set_option(1, global.level_name[Level.WinterTown], Level.WinterTown, rm_level_4_00);
+									scr_train_set_option(2, global.level_name[Level.TrainStation], Level.TrainStation, rm_level_6_00);
+									
 									obj_controller_ui.pausedialogue_option_max = 3;
 									break;
 							}

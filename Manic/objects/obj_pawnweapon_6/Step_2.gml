@@ -11,14 +11,13 @@ if (scr_pawn_weapon_endstepcan()){
 	if (attack_active){
 	    if (!attack_return){
 	        if (attack_offset < 8){
-	            attack_offset += 2;
+	            attack_offset ++;
 	        }else{
 	            attack_return = true;
 	        }
-        
 	    }else{
 	        if (attack_offset > 0){
-	            attack_offset -= 2;
+	            attack_offset --;
 	        }else{
 	            attack_offset = 0;
 	            attack_active = false;

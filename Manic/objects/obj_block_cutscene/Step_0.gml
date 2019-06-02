@@ -18,6 +18,12 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				}
 			}
 			
+			if (special == "requirebosskill"){
+				if (global.boss_current != -1){
+					return;
+				}
+			}
+			
 			if (interact){
 				interact_active = true;
 				if (interact_special == "moveto"){

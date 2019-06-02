@@ -1,6 +1,9 @@
 // Setup
 scr_level_current_control();
 
+global.game_is_playthrough = true;
+scr_companion_register(obj_companion_0);
+
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
 
@@ -106,6 +109,14 @@ var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
 	if (room == global.level_room[i]){
 		if (!global.level_entered[i]){
+			if (!global.game_is_playthrough){
+				if (global.level_current >= Level.WesternFarmland) && (global.level_current <= Level.TrainStation){
+					if (room != rm_level_2_00) && (room != rm_level_6_00) && (room != rm_level_6_01){
+						scr_companion_register(obj_companion_0);
+					}
+				}
+			}
+			
 			if (!global.game_is_playthrough){
 				scr_set_kills_and_findings();
 			}

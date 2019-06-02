@@ -42,11 +42,13 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_multiplier = 1;
 
-health_max = 2;
+health_max = 1;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
+
+cutscene_prop = false;
 
 owner = noone;
 

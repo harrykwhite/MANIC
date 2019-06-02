@@ -140,6 +140,10 @@ if (!global.game_pause){
 	}
 	
 	// Weapon Switching
+	if (weaponswitch_break > 0){
+		weaponswitch_break --;
+	}
+	
 	if (instance_exists(obj_player)){
 		var weapon = noone;
 		
@@ -151,7 +155,7 @@ if (!global.game_pause){
 			}
 		}
 		
-		if (global.cutscene_current == -1) && (obj_player.move_x_to == -1 && (obj_player.move_y_to == -1)){
+		if (global.cutscene_current == -1) && (obj_player.move_x_to == -1 && (obj_player.move_y_to == -1)) && (weaponswitch_break <= 0){
 			if (global.weapon_slot_standalone == -1){
 				if (instance_exists(weapon)) || (weapon == noone){
 					if (weapon != noone){
@@ -170,6 +174,20 @@ if (!global.game_pause){
 					
 					var switched = false;
 					
+					var slotcount = global.weapon_slotmax;
+					for(var i = 0; i < slotcount; i ++){
+						if (global.weapon_slotcurrent == i){
+							continue;
+						}
+						
+						if (keyboard_check_pressed(ord(string(i + 1)))){
+							obj_controller_mouse.mouse_scale = 2;
+							scr_weapon_switch(false, i);
+							switched = true;
+							break;
+						}
+					}
+					
 					if (mouse_wheel_up()){
 						obj_controller_mouse.mouse_scale = 2;
 						scr_weapon_switch(false);
@@ -181,6 +199,8 @@ if (!global.game_pause){
 					}
 					
 					if (switched){
+						weaponswitch_break = 10;
+						
 						if (levelcur == Level.Prologue){
 							with(obj_controller_ui){
 								if (tutourial) && (tutourial_stage == TutourialStage.Switch) && (tutourial_stage_timer == -1){
@@ -207,7 +227,7 @@ if (!global.game_pause){
 	}
 }
 
-// Score
+/* Score
 global.game_score  = 
 global.game_score_bonus +
 global.game_score_collectables +
@@ -235,4 +255,4 @@ if (bonus_killtime > 0){
 	
 	bonus_killamount = 0;
 	bonus_killtime = 0;
-}
+}*/

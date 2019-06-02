@@ -61,8 +61,8 @@ if (!global.game_pause){
 // Spawning
 var lighting_level; 
 lighting_level[CombatState.Climax] = 1;
-lighting_level[CombatState.Buildup] = 0.925;
-lighting_level[CombatState.Idle] = 0.85;
+lighting_level[CombatState.Buildup] = 0.94;
+lighting_level[CombatState.Idle] = 0.875;
 
 var lighting_to = lighting_level[global.game_combat_state];
 if (global.game_combat_in_hordechallenge){

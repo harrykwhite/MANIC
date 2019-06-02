@@ -2,7 +2,7 @@ global.pt_fire_1 = part_type_create();
 var pt = global.pt_fire_1;
 
 part_type_sprite(pt, spr_ef_fire_0, false, false, true);
-part_type_alpha3(pt, 1, 0.8, 0);
+part_type_alpha3(pt, 0.8, 0.6, 0);
 part_type_speed(pt, 2.6, 4.2, -0.2, 0);
 part_type_life(pt, 25, 40);
 part_type_direction(pt, 0, 360, 0, 0);

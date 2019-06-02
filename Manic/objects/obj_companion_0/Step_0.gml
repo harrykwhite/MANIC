@@ -6,17 +6,19 @@ if (global.game_pause){
 }
 
 if (global.cutscene_current != -1){
-	if (global.cutscene_current == 2) || (global.cutscene_current == 52){
-		if (cutscene_prop) || (in_cutscene){
-			ispaused = true;
+	if (!depart){
+		if (global.cutscene_current == 2) || (global.cutscene_current == 52){
+			if (cutscene_prop) || (in_cutscene){
+				ispaused = true;
 			
-			if (room == rm_level_2_00){
-				image_xscale = -scale;
-				weapon.dir = 180;
+				if (room == rm_level_2_00){
+					image_xscale = -scale;
+					weapon.dir = 180;
+				}
 			}
+		}else if (!in_cutscene){
+			ispaused = true;
 		}
-	}else if (!in_cutscene){
-		ispaused = true;
 	}
 }else{
 	if (cutscene_prop){
@@ -63,7 +65,7 @@ if (ispaused){
 
 if (!registered){
 	global.game_companion_farmer_found = true;
-	scr_companion_register_me();
+	scr_companion_register(object_index);
 	registered = true;
 }else{
 	global.player_companions[# 1, order] = health_current;

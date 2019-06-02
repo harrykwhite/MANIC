@@ -49,7 +49,7 @@ if (instance_exists(target)) && (!walk_off){
 				}
 			}else{
 				var dir = random(360);
-				var len = random_range(95, 130);
+				var len = random_range(135, 170);
 				run_x = target.x + lengthdir_x(len, dir);
 				run_y = target.y + lengthdir_y(len, dir);
 				run_time = 40;

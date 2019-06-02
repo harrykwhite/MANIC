@@ -3,7 +3,7 @@ enum Level{
 	RavagedTown,
 	WesternFarmland,
 	UndergroundBunker,
-	StorageFacility,
+	WinterTown,
 	HumanPrison,
 	TrainStation,
 	TheCemetery,
@@ -35,7 +35,7 @@ global.level_kill_count[Level.RavagedTown] = 0;
 global.level_kill_max[Level.RavagedTown] = 40;
 
 global.level_name[Level.WesternFarmland] = "Western Farmland";
-global.level_room[Level.WesternFarmland] = rm_level_2_post_00;
+global.level_room[Level.WesternFarmland] = rm_level_2_00;
 global.level_preroom[Level.WesternFarmland] = rm_level_2_pre_00;
 global.level_collectable_current[Level.WesternFarmland] = 0;
 global.level_collectable_number[Level.WesternFarmland] = 4;
@@ -56,16 +56,16 @@ global.level_cleared[Level.UndergroundBunker] = false;
 global.level_kill_count[Level.UndergroundBunker] = 0;
 global.level_kill_max[Level.UndergroundBunker] = 100;
 
-global.level_name[Level.StorageFacility] = "Storage Facility";
-global.level_room[Level.StorageFacility] = rm_level_4_00;
-global.level_preroom[Level.StorageFacility] = noone;
-global.level_collectable_current[Level.StorageFacility] = 0;
-global.level_collectable_number[Level.StorageFacility] = 3;
-global.level_turret_number[Level.StorageFacility] = 0;
-global.level_entered[Level.StorageFacility] = false;
-global.level_cleared[Level.StorageFacility] = false;
-global.level_kill_count[Level.StorageFacility] = 0;
-global.level_kill_max[Level.StorageFacility] = 50;
+global.level_name[Level.WinterTown] = "Winter Town";
+global.level_room[Level.WinterTown] = rm_level_4_00;
+global.level_preroom[Level.WinterTown] = noone;
+global.level_collectable_current[Level.WinterTown] = 0;
+global.level_collectable_number[Level.WinterTown] = 3;
+global.level_turret_number[Level.WinterTown] = 0;
+global.level_entered[Level.WinterTown] = false;
+global.level_cleared[Level.WinterTown] = false;
+global.level_kill_count[Level.WinterTown] = 0;
+global.level_kill_max[Level.WinterTown] = 50;
 
 global.level_name[Level.HumanPrison] = "Human Prison";
 global.level_room[Level.HumanPrison] = rm_level_5_00;

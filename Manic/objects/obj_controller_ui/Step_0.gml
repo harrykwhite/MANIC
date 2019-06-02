@@ -192,7 +192,7 @@ if (!global.game_pause){
 				scr_toggle_pause(false);
 			}else{
 				if (mouse_check_button_pressed(mb_left)){
-					if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected != pausedialogue_option_max){
+					if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected < pausedialogue_option_max){
 						if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
 							global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
 						}
@@ -205,7 +205,7 @@ if (!global.game_pause){
 							case 0:
 								global.game_combat_in_hordechallenge = true;
 								global.game_combat_in_hordechallenge_time = 60 * 30;
-							
+								
 								if (instance_exists(obj_hordepost_0)){
 									obj_hordepost_0.activated = true;
 								}

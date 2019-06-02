@@ -16,8 +16,8 @@ if (random(3) < 1){
 x += lengthdir_x(spd, dir);
 y += lengthdir_y(spd, dir);
 
-if (grav < 6){
-	grav += 0.05;
+if (grav < 8){
+	grav += 0.01;
 	y += grav;
 }else{
 	destroy = true;

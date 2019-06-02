@@ -23,7 +23,7 @@ if (global.cutscene_current == 58){
 		obj_player.move_y_to = obj_player.y;
 		obj_player.move_extSpd = 0;
 	}
-}else{
+}else if (global.cutscene_current == -1){
 	if (in_cutscene){
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
@@ -71,6 +71,7 @@ if (!active){
 	if (instance_exists(obj_player)){
 		if (weapon != -1){
 			if (instance_exists(weapon)){
+				weapon.attack = false;
 				weapon.dir = point_direction(x, y, obj_player.x, obj_player.y);
 			}
 		}

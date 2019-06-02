@@ -263,7 +263,7 @@ if (!paused){
 			audio_resume_sound(rain);
 		}
 		
-		if (level == Level.Prologue) || (level == Level.StorageFacility) || (level == Level.TrainStation) || (level == Level.DesolateVillage){
+		if (level == Level.Prologue) || (level == Level.WinterTown) || (level == Level.TrainStation) || (level == Level.DesolateVillage){
 			audio_resume_sound(wind);
 		}
 		

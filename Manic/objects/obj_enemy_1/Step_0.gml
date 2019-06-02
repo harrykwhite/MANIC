@@ -49,20 +49,9 @@ if (distance_to_point(move_x_to, move_y_to) < 10) || (move_time <= 0){
 			move_y_to = y + choose(-40, 40, -40, 40);
 		}
 	}else{
-		if (owner == obj_player) || (object_get_parent(owner) == obj_p_player){
+		if (owner == obj_player){
 			move_x_to = owner.x + random_range(-18, 18);
 			move_y_to = owner.y + random_range(-18, 18);
-			
-			var csize = array_length_1d(global.companion);
-			for(var i = 0; i < csize; i ++){
-				if (instance_exists(global.companion[i])){
-					var nearest = instance_nearest(x, y, global.companion[i]);
-					if (distance_to_object(nearest) < 30){
-						owner = nearest;
-						break;
-					}
-				}
-			}
 		}else{
 			move_x_to = owner.x + random_range(-30, 30);
 			move_y_to = owner.y + random_range(-30, 30);

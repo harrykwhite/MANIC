@@ -165,30 +165,6 @@ if (instance_exists(obj_player)){
 					mouse_alpha = 0.25;
 					mouse_scale = 2;
 				}
-				
-				with(obj_controller_gameplay){
-					
-					var isnew = true;
-					
-					if (ds_exists(weaponlist, ds_type_list)){
-						
-						var length = ds_list_size(weaponlist);
-						
-						for(var i = length - 1; i > -1; i--){
-							
-							if (weaponlist[| i] == other.index){
-								isnew = false;
-								return;
-							}
-						}
-						
-						if (isnew){
-							global.game_score_wpnvariation += 500;
-							scr_points_display("WEAPON VARIATION 500+");
-							weaponlist[| length] = other.index;
-						}
-					}
-				}
 			}
 		}
     }

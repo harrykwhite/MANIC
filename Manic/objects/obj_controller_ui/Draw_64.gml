@@ -312,19 +312,27 @@ if (global.weapon_slot_standalone != -1){
 }
 
 if (instance_exists(obj_player)){
-	repeat(2){
+	counter = 0;
+	var slotmax = global.weapon_slotmax;
+	
+	draw_set_alpha(ui_alpha);
+	draw_set_font(fnt_cambria_0);
+	
+	repeat(slotmax){
+		var xx = 51, yy = (74 * (counter + 1)) + 12;
+		draw_set_halign(fa_left);
+		
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
-				var xx = 51, yy = (74 * (counter + 1)) + 12;
 				var col = c_white;
 				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
 				
-				draw_set_halign(fa_left);
-				draw_set_font(fnt_cambria_0);
-				draw_set_alpha(ui_alpha);
 				scr_text_shadow_transformed(xx, yy, "x" + string(quantity), col, weaponammo_scale, weaponammo_scale, 0);
 			}
 		}
+		
+		draw_set_halign(fa_right);
+		scr_text_shadow_transformed(xx + 16, yy - 36, string(counter + 1), c_gray, 1, 1, 0);
 		
 		counter ++;
 	}
@@ -596,7 +604,7 @@ if (rank_display_draw){
 // Pause Backdrop
 if (pause_text_alpha > 0) || (pausedialogue_alpha > 0){
 	draw_set_colour(c_black);
-	draw_set_alpha((pause_text_alpha + (pausedialogue_alpha * 0.8)) * 0.35);
+	draw_set_alpha((pause_text_alpha + pausedialogue_alpha) * 0.5);
 	draw_rectangle(0, 0, dwidth, dheight, false);
 }
 
@@ -666,11 +674,11 @@ var optyy = (dheight / 2) - ((30 * pausedialogue_option_max) / 2);
 
 if (pausedialogue){
 	if (pausedialogue_alpha < 1){
-		pausedialogue_alpha += 0.05;
+		pausedialogue_alpha += 0.1;
 	}
 }else{
 	if (pausedialogue_alpha > 0){
-		pausedialogue_alpha -= 0.05;
+		pausedialogue_alpha -= 0.1;
 	}else{
 		pausedialogue_option_selected = 0;
 		pausedialogue_type = 0;
@@ -695,9 +703,13 @@ if (pausedialogue_alpha > 0){
 	
 		case 1:
 			optyy += string_height(pausedialogue_type_text) + 20;
-			scr_text_shadow(dwidth / 2, (dheight / 2) - 30, pausedialogue_type_text, c_white);
+			
+			draw_set_font(fnt_cambria_1);
+			scr_text_shadow(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, c_white);
 			
 			pausedialogue_option_selected = -1;
+			
+			draw_set_font(fnt_cambria_0);
 			
 			for(var counter = 0; counter < pausedialogue_option_max; counter ++){
 				var optrealy = optyy + (counter * 42);

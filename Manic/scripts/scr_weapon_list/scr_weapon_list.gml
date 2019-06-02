@@ -40,6 +40,7 @@ enum PlayerWeapon{
 	DartRifle,
 	HuntingRifle,
 	Sickle,
+	Battleaxe,
 }
 
 enum AmmoType{
@@ -398,6 +399,15 @@ global.weapon_heavy[33] = false;
 global.weapon_camerarange[33] = 15;
 global.weapon_mouse[33] = MouseType.SmallCircle;
 global.weapon_dualhanded[33] = false;
+
+global.weapon_name[34] = "Battleaxe";
+global.weapon_object[34] = obj_weapon_34;
+global.weapon_sprite[34] = spr_weapon_34;
+global.weapon_type[34] = WeaponType.Melee;
+global.weapon_heavy[34] = false;
+global.weapon_camerarange[34] = 24;
+global.weapon_mouse[34] = MouseType.SmallCircle;
+global.weapon_dualhanded[34] = false;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
