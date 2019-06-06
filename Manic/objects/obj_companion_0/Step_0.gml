@@ -16,7 +16,7 @@ if (global.cutscene_current != -1){
 					weapon.dir = 180;
 				}
 			}
-		}else if (!in_cutscene){
+		}else if (cutscene_prop){
 			ispaused = true;
 		}
 	}

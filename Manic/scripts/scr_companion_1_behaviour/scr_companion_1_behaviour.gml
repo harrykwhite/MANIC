@@ -1,4 +1,4 @@
-var speed_multiplier = 0.9;
+var speed_multiplier = 1;
 var face_player = false;
 var speed_final;
 var distTo = 0;
@@ -11,61 +11,61 @@ if (instance_exists(obj_player)){
 	}
 	
 	if (!in_cutscene){
-		if (!instance_exists(target) || (target == noone)){
+		if (!instance_exists(target)){
 			if (global.cutscene_current == -1){
 				var enemyCount = array_length_1d(global.enemy);
 				for(var i = 0; i < enemyCount; i ++){
+					if (i == 1){
+						continue;
+					}
+					
 					if (instance_exists(global.enemy[i])){
 						target = instance_nearest(x, y, global.enemy[i]);
-				
-						if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
+						
+						if (target.object_index == obj_antagonist){
+							if (target.walk_off) || (target.near_dead){
+								target = noone;
+								continue;
+							}
+						}
+						
+						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 500){
 							target = noone;
+							continue;
 						}
-				
-						if (distance_to_object(target) > 200){
-							target = noone;
-						}
-					}
-				}
-			
-				if (health_current < 5){
-					speed_multiplier = 0;
-				
-					if (heal_time > 0){
-						heal_time--;
-					}else{
-						whiteflash_alpha = 0.7;
-						health_scale = 1.5;
-						health_current += 2;
-						scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
-				
-						repeat(5){
-							part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);
-						}
-				
-						part_type_direction(global.pt_heal_0, 0, 360, 0, 0);
-				
-						repeat(14){
-							part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-13, 13), global.pt_heal_0, 1);
-						}
-				
-						heal_time = heal_time_max;
 					}
 				}
 			}
 			
-			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52){
+			while(weapon_index == PawnWeapon.Knife){
+				instance_destroy(weapon);
+				weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
+			    weapon.owner = id;
+			    weapon_index = PawnWeapon.Grenade;
+			}
+		
+			var dist_to_player = distance_to_object(obj_player);
+			
+			if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 1.8;
 				
-				if (distance_to_object(obj_player) > 100 + (30 * order)){
+				if (dist_to_player > 100 + (60 * order)){
 					move_speed = 2.1;
 				}
-			
+				
+				if (dist_to_player > 140 + (60 * order)){
+					move_speed = 2.7;
+				}
+				
+				if (dist_to_player > 180 + (60 * order)){
+					move_speed = 3.4;
+				}
+				
 				face_player = true;
-			}else if (global.cutscene_current != 2){
-				if (distance_to_point(move_x_to, move_y_to) > 40){
+			}else if (global.cutscene_current == -1){
+				if (distance_to_point(move_x_to, move_y_to) > 20){
 					move_speed = 1.3;
 					move_time = 35;
 				}else{
@@ -75,8 +75,8 @@ if (instance_exists(obj_player)){
 					}else{
 						var attempts = 0;
 						var dirto = point_direction(obj_player.x, obj_player.y, x, y);
-						var xx = obj_player.x + lengthdir_x(40 * order, dirto);
-						var yy = obj_player.y + lengthdir_y(40 * order, dirto);
+						var xx = obj_player.x + lengthdir_x(70 * order, dirto);
+						var yy = obj_player.y + lengthdir_y(70 * order, dirto);
 						
 						var dir = random(360);
 						move_x_to = xx + lengthdir_x(65, dir);
@@ -97,6 +97,11 @@ if (instance_exists(obj_player)){
 						move_time = random_range(30, 60);
 					}
 				}
+			}else{
+				move_speed = 0;
+				move_x_to = obj_player.x;
+				move_y_to = obj_player.y;
+				face_player = true;
 			}
 		}else{
 			if (runaway_time > 0){
@@ -110,29 +115,31 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y;
 				
-				if (distance_to_object(target) > 138){
-					move_speed = 1.2;
+				if (distance_to_object(target) > 80){
+					move_speed = 1.5;
 				}else{
 					move_speed = 0;
-					if (!collision_line(x, y - 6, target.x, target.y, obj_p_solid, false, false)){
-						if (weapon_does_exist){
-							if (attack_time > 0){
-								attack_time --;
-							}else{
+					move_x_to = target.x;
+					move_y_to = target.y;
+					
+					if (weapon_does_exist){
+						if (attack_time > 0){
+							attack_time --;
+						}else{
+							if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
 								if (weapon.attack_time <= 0){
 									runaway_starttime = 2;
 								}
 							
-								if (weapon_index == -1) || (weapon_index == PawnWeapon.Knife){
+								if (weapon_index == PawnWeapon.Knife){
 									instance_destroy(weapon);
-									weapon = instance_create(x, y, obj_pawnweapon_4);
-									weapon.owner = id;
-									weapon_index = PawnWeapon.Grenade;
-									attack_time = attack_time_max;
-									return;
+									weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
+							        weapon.owner = id;
+							        weapon_index = PawnWeapon.Grenade;
+								}else{
+									weapon.attack = true;
 								}
-									
-								weapon.attack = true;
+							
 								attack_time = attack_time_max;
 							}
 						}
@@ -141,10 +148,10 @@ if (instance_exists(obj_player)){
 			}
 			
 			if (runaway_starttime > 0){
-				runaway_starttime--;
+				runaway_starttime --;
 			}else if (runaway_starttime != -2){
 				runaway_starttime = -2;
-				runaway_time = 24;
+				runaway_time = 27;
 			}
 			
 			/*if (distance_to_object(obj_player) > 85){
@@ -157,20 +164,46 @@ if (instance_exists(obj_player)){
 				}
 			}*/
 		}
-	}else{
-		if (distance_to_object(obj_player) > 27 + (30 * order)){
-			move_speed = 1;
-		}else{
-			move_speed = 0;
+		
+		if (health_current == health_max){
+			heal_can = false;
 		}
 		
-		move_x_to = obj_player.x;
-		move_y_to = obj_player.y;
+		if (health_current < health_max - 1){
+			heal_can = true;
+		}
+		
+		if (heal_can){
+			speed_multiplier = 0;
+			
+			if (heal_time > 0){
+				heal_time--;
+			}else{
+				whiteflash_alpha = 0.7;
+				health_scale = 1.5;
+				health_current ++;
+				scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
+				
+				repeat(5){
+					part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);
+				}
+				
+				part_type_direction(global.pt_heal_0, 0, 360, 0, 0);
+				
+				repeat(14){
+					part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-13, 13), global.pt_heal_0, 1);
+				}
+				
+				heal_time = heal_time_max;
+			}
+		}
+	}else{
+		face_player = false;
 	}
 	
 	distTo = distance_to_point(move_x_to, move_y_to);
 	if (weapon_does_exist){
-		if (distTo > 26){
+		if (distTo > 5){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 		}
 	}
@@ -181,18 +214,14 @@ if (instance_exists(obj_player)){
 		weapon.dir = 180;
 	}
 	
-	face_player = false;
 	move_speed = 0;
+	face_player = false;
 }
 
 // Off - screen movement.
-if (global.cutscene_current != 2){
+if (global.cutscene_current == -1){
 	x = clamp(x, 22, room_width - 22);
 	y = clamp(y, 22, room_height - 22);
-
-	if (!onscreen(x, y)){
-		speed_multiplier = 0;
-	}
 }
 
 // Dash
@@ -200,7 +229,7 @@ if (dash){
 	image_speed = 0;
 	
 	if (dashtime > 0){
-		dashtime--;
+		dashtime --;
 	}else{
 		dash = false;
 	}
@@ -227,7 +256,7 @@ if (move_speed_real < speed_final){
 }
 
 if (dash){
-	if (!place_meeting(x + lengthdir_x(dashspeed + 1, dashdirection), y + lengthdir_y(dashspeed + 1, dashdirection), obj_p_solid)){
+	if (!place_meeting(x + lengthdir_x(dashspeed + 2, dashdirection), y + lengthdir_y(dashspeed + 2, dashdirection), obj_p_solid)){
 		x += lengthdir_x(dashspeed, dashdirection);
 		y += lengthdir_y(dashspeed, dashdirection);
 	}else{
@@ -235,12 +264,18 @@ if (dash){
 	}
 }else{
 	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
+	
+	var dir = point_direction(x, y, move_x_to, move_y_to);
+	while (place_meeting(x, y, obj_p_solid)){
+		x += lengthdir_x(1, dir);
+		y += lengthdir_y(1, dir);
+	}
 }
 
 // Facing
 if (!face_player){
 	if (distTo > 15){
-		if (move_x_to > x){
+		if (move_x_to > x) || (weapon.dir <= 90) || (weapon.dir >= 270){
 			image_xscale = scale;
 		}else{
 			image_xscale = -scale;

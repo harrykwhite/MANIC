@@ -23,18 +23,28 @@ if (instance_exists(obj_player)){
 				}
 			}
 		
-			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52){
+			var dist_to_player = distance_to_object(obj_player);
+			
+			if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 1.8;
 				
-				if (distance_to_object(obj_player) > 100 + (30 * order)){
+				if (dist_to_player > 100 + (60 * order)){
 					move_speed = 2.1;
 				}
-			
+				
+				if (dist_to_player > 140 + (60 * order)){
+					move_speed = 2.7;
+				}
+				
+				if (dist_to_player > 180 + (60 * order)){
+					move_speed = 3.4;
+				}
+				
 				face_player = true;
-			}else if (global.cutscene_current != 2){
-				if (distance_to_point(move_x_to, move_y_to) > 40){
+			}else if (global.cutscene_current == -1){
+				if (distance_to_point(move_x_to, move_y_to) > 20){
 					move_speed = 1.3;
 					move_time = 35;
 				}else{
@@ -44,8 +54,8 @@ if (instance_exists(obj_player)){
 					}else{
 						var attempts = 0;
 						var dirto = point_direction(obj_player.x, obj_player.y, x, y);
-						var xx = obj_player.x + lengthdir_x(40 * order, dirto);
-						var yy = obj_player.y + lengthdir_y(40 * order, dirto);
+						var xx = obj_player.x + lengthdir_x(70 * order, dirto);
+						var yy = obj_player.y + lengthdir_y(70 * order, dirto);
 						
 						var dir = random(360);
 						move_x_to = xx + lengthdir_x(35, dir);
@@ -66,6 +76,11 @@ if (instance_exists(obj_player)){
 						move_time = random_range(30, 60) * 0.6;
 					}
 				}
+			}else{
+				move_speed = 0;
+				move_x_to = obj_player.x;
+				move_y_to = obj_player.y;
+				face_player = true;
 			}
 		}else{
 			if (bite_to){
@@ -109,7 +124,7 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}else{
-		if (distance_to_object(obj_player) > 37 + (30 * order)){
+		if (distance_to_object(obj_player) > 37 + (60 * order)){
 			move_speed = 1;
 		}else{
 			move_speed = 0;
@@ -133,7 +148,7 @@ if (instance_exists(obj_player)){
 }
 
 // Off - screen movement.
-if (global.cutscene_current != 2){
+if (global.cutscene_current == -1){
 	x = clamp(x, 22, room_width - 22);
 	y = clamp(y, 22, room_height - 22);
 

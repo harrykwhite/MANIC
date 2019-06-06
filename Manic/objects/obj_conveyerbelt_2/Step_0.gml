@@ -6,7 +6,7 @@ if (global.game_pause){
 sprite_index = spr_conveyerbelt_2;
 image_speed = 1;
 
-if (global.cutscene_current == -1) && (!deactivated){
+if (global.cutscene_current == -1) && (!deactivated) && (global.boss_current == -1){
 	if (place_meeting(x, y + 15, obj_player)){
 		scr_ui_control_indicate("Interact");
 		sprite_index = spr_conveyerbelt_2_interact;

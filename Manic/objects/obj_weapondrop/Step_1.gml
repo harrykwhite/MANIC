@@ -17,7 +17,3 @@ if (!ammodetermined){
 	
 	ammodetermined = true;
 }
-
-if (index == PlayerWeapon.Battleaxe){
-	specialweapon = true;
-}

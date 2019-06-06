@@ -1,5 +1,5 @@
 // Movement
-spd_build = 0.32;
+spd_build = 0.1//0.32;
 spd_max = 1.6;
 spd_offset = 1;
 spd_offset_change = 0.05;
@@ -29,6 +29,7 @@ move_extSpd = -1;
 dash_length = 0;
 dash_length_current = 0;
 dash_speed = 0;
+dash_after_speed = 0;
 dash_direction = 0;
 dash_time = 30;
 dash_time_short = 0;

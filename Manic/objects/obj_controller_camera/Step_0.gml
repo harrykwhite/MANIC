@@ -26,6 +26,11 @@ if (instance_exists(obj_player)) && (!global.game_pause){
 	        xx = global.cutscene_camera_x[global.cutscene_current];
 	        yy = global.cutscene_camera_y[global.cutscene_current];
 	    }
+		
+		if (obj_player.state == scr_player_dash){
+			xx += lengthdir_x(30, obj_player.dash_direction);
+			yy += lengthdir_y(30, obj_player.dash_direction);
+		}
 	
 		dir = point_direction(x, y, mouse_x, mouse_y);
 		x_to = clamp(xx, 0, room_width);

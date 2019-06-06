@@ -87,12 +87,14 @@ knockback_multiplier = 0;
 cutscene_prop = true;
 in_cutscene = false;
 
-health_max = 40;
+health_max = 50;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 
 target = obj_player;
+
+mid_cutscene_played = false;
 
 var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;

@@ -20,9 +20,9 @@ if (global.game_pause){
 }
 
 if (cutscene_prop){
-	if (!in_cutscene){
-		ispaused = true;
-	}
+	ispaused = true;
+	sprite_index = spr_thedogkeeper_idle_0;
+	image_index = 0;
 }
 
 if (ispaused){
@@ -80,7 +80,15 @@ if (!dogs_downed){
 }else{
 	if (!weapon_has){
 		weapon_has = true;
+		weapon_index = PawnWeapon.Shotgun;
 		return;
+	}
+	
+	if (health_current > (health_max / 4)) && (!mid_cutscene_played){
+		global.cutscene_current = 58;
+		cutscene_prop = true;
+		in_cutscene = true;
+		mid_cutscene_played = true;
 	}
 	
 	scr_thedogkeeper_behaviour_1();

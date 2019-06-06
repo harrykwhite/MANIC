@@ -10,9 +10,20 @@ spawn_time = 60 * 10;
 
 switch(room){
 	case rm_level_4_00:
+		if (global.game_level_opening_type == 0){
+			if (global.worldtrain_room == room){
+				obj_player.y = 196;
+			}
+		}
+		
 		spawn_x = 463;
+		
 		if (global.game_level_opening_type == 0){
 			spawn_y = 183;
+			
+			if (global.worldtrain_room == room){
+				spawn_y = 250;
+			}
 		}else if (global.game_level_opening_type == 2){
 			spawn_y = 600;
 		}

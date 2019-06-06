@@ -5,7 +5,7 @@ var drawshader = (health_current <= floor(health_max / 3)) || (burn) || (poison)
 if (drawshader){
 	if (weapon != -1){
 		if (instance_exists(weapon)){
-			var wcurrent = global.pawnweapon_playerindex[weapon.index];
+			var wcurrent = global.pawnweapon_playerindex[weapon_index];
 			var angle = 0;
 			
 			if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){

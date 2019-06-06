@@ -58,8 +58,10 @@ if (instance_exists(obj_player)){
 					global.cutscene_time[index] = 0;
 				}
 			}else if (room == rm_level_4_01){
-				if (terminal_deactivate_count < 2){
-					terminal_deactivate_count ++;
+				var levelobj = scr_get_level_object();
+				
+				if (levelobj.terminal_deactivate_count < 2){
+					levelobj.terminal_deactivate_count ++;
 					
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;

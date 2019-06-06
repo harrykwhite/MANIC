@@ -167,6 +167,83 @@ if (instance_exists(obj_player)){
 			linefrom[4] = obj_player;
 			break;
 		
+		case rm_level_3_01:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_1);
+			
+			if (instance_exists(inst)){
+				global.game_companion_grenadier_found = true;
+				
+				line[0] = "Hello?";
+				linefrom[0] = obj_player;
+			
+				line[1] = "I'm in here to help shut down the base.";
+				linefrom[1] = inst;
+			
+				line[2] = "I imagine that you two are doing the same?";
+				linefrom[2] = inst;
+			
+				line[3] = "Yes, we will need some assistance however.";
+				linefrom[3] = obj_player;
+			
+				line[4] = "I'll be able to help.";
+				linefrom[4] = inst;
+				
+				line[5] = "Once I'm out of the bunker though, I can find my own way.";
+				linefrom[5] = inst;
+			}
+			break;
+		
+		case rm_level_3_02:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_1);
+			
+			if (instance_exists(inst)){
+				inst.in_cutscene = true;
+				special = "grenadierdepart";
+				
+				line[0] = "Alright, the base seems to be clear now.";
+				linefrom[0] = obj_player;
+			
+				line[1] = "We can leave through the exit here.";
+				linefrom[1] = obj_player;
+			
+				line[2] = "Thank you for the help!";
+				linefrom[2] = obj_player;
+			
+				line[3] = "No problem.";
+				linefrom[3] = inst;
+				
+				line[4] = "Good luck with your quest!";
+				linefrom[4] = inst;
+			}
+			break;
+		
+		case rm_level_4_01:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_thedogkeeper);
+			
+			if (inst.dogs_downed){
+				line[0] = "Such hostility from a man of peace?";
+				linefrom[0] = inst;
+				
+				line[1] = "Let's see how you go against this!";
+				linefrom[1] = inst;
+			}else{
+				line[0] = "You... you seem familiar.";
+				linefrom[0] = inst;
+				
+				line[1] = "You're from the house up north?";
+				linefrom[1] = inst;
+				
+				line[2] = "I see you came back to avenge your family.";
+				linefrom[2] = inst;
+				
+				line[3] = "Yes. You aren't getting out of this alive.";
+				linefrom[3] = obj_player;
+				
+				line[4] = "Oh, we'll see!";
+				linefrom[4] = inst;
+			}
+			break;
+		
 		case rm_level_5_00:
 			if (cutscene_dialogue_special == 0){
 				inst = instance_nearest(obj_player.x, obj_player.y, obj_pawn_other_prisoner_0);
@@ -202,6 +279,59 @@ if (instance_exists(obj_player)){
 			}
 			break;
 		
+		case rm_level_5_01:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_2);
+			
+			if (instance_exists(inst)){
+				global.game_companion_prisoner_found = true;
+				
+				line[0] = "...Hello?";
+				linefrom[0] = inst;
+			
+				line[1] = "Hi. We're here to help you.";
+				linefrom[1] = obj_companion_0;
+			
+				line[2] = "Okay...";
+				linefrom[2] = inst;
+			
+				line[3] = "Are... are you trying to stop them? The robots?";
+				linefrom[3] = inst;
+				
+				line[3] = "I can fight alongside you too.";
+				linefrom[3] = inst;
+				
+				line[4] = "That'd be really useful.";
+				linefrom[4] = obj_player;
+				
+				line[5] = "Thank you!";
+				linefrom[5] = obj_companion_0;
+			}
+			break;
+		
+		case rm_level_5_04:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_2);
+			
+			if (instance_exists(inst)){
+				inst.in_cutscene = true;
+				special = "prisonerdepart";
+				
+				line[0] = "Here's the exit, you can leave now.";
+				linefrom[0] = obj_player;
+			
+				line[1] = "Thanks for joining us!";
+				linefrom[1] = obj_companion_0;
+			
+				line[2] = "No problem. Thanks for getting me out of here.";
+				linefrom[2] = inst;
+				
+				line[3] = "Good luck with everything else you are doing.";
+				linefrom[3] = inst;
+				
+				line[3] = "Good bye.";
+				linefrom[3] = inst;
+			}
+			break;
+		
 		case rm_level_6_pre_00:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
 			
@@ -215,7 +345,7 @@ if (instance_exists(obj_player)){
 						inst.depart = false;
 					}
 					
-					special = "compdeparture";
+					special = "farmerdepart";
 					
 					line[0] = "I'm not too sure about this...";
 					linefrom[0] = inst;
@@ -280,12 +410,28 @@ if (instance_exists(obj_player)){
 		global.cutscene_time[index] ++;
 	}else{
 		if (obj_controller_ui.dialogue_next) || (cutscene_dialogue_line == -1){
-			if (special == "compdeparture") && (instexists){
-				if (cutscene_dialogue_line >= 6){
-					inst.depart_standaway = false;
-					inst.depart = true;
+			if (instexists){
+				if (special == "farmerdepart"){
+					if (cutscene_dialogue_line >= 6){
+						inst.depart_standaway = false;
+						inst.depart = true;
 					
-					global.cutscene_time[index] = -50;
+						global.cutscene_time[index] = -120;
+					}
+				}
+			
+				if (special == "grenadierdepart"){
+					if (cutscene_dialogue_line >= 3){
+						inst.depart = true;
+						global.cutscene_time[index] = -120;
+					}
+				}
+				
+				if (special == "prisonerdepart"){
+					if (cutscene_dialogue_line >= 3){
+						inst.depart = true;
+						global.cutscene_time[index] = -120;
+					}
 				}
 			}
 			
@@ -302,16 +448,39 @@ if (instance_exists(obj_player)){
 				obj_controller_ui.dialogue_pause = false;
 				obj_controller_ui.dialogue_time = 0;
 				
-				if (special == "compdeparture"){
+				if (special == "farmerdepart") || (special == "grenadierdepart") || (special == "prisonerdepart"){
 					global.cutscene_current = 52;
 					global.cutscene_camera_x[52] = obj_player.x;
 					global.cutscene_camera_y[52] = obj_player.y;
 					
-					obj_controller_gameplay.cutscene_moveto_level = 6;
-					obj_controller_gameplay.cutscene_moveto_room = rm_level_6_00;
-					obj_controller_gameplay.cutscene_moveto_type = 0;
-					obj_controller_gameplay.cutscene_moveto_dir = 1;
-					obj_controller_gameplay.cutscene_moveto_instant = false;
+					switch(special){
+						case "farmerdepart":
+							scr_companion_remove(obj_companion_0);
+							obj_controller_gameplay.cutscene_moveto_level = Level.TrainStation;
+							obj_controller_gameplay.cutscene_moveto_room = global.level_room[Level.TrainStation];
+							obj_controller_gameplay.cutscene_moveto_type = 0;
+							obj_controller_gameplay.cutscene_moveto_dir = 1;
+							obj_controller_gameplay.cutscene_moveto_instant = false;
+							break;
+						
+						case "grenadierdepart":
+							scr_companion_remove(obj_companion_1);
+							obj_controller_gameplay.cutscene_moveto_level = Level.WinterTown;
+							obj_controller_gameplay.cutscene_moveto_room = global.level_room[Level.WinterTown];
+							obj_controller_gameplay.cutscene_moveto_type = 0;
+							obj_controller_gameplay.cutscene_moveto_dir = 0;
+							obj_controller_gameplay.cutscene_moveto_instant = false;
+							break;
+						
+						case "prisonerdepart":
+							scr_companion_remove(obj_companion_2);
+							obj_controller_gameplay.cutscene_moveto_level = Level.TrainStation;
+							obj_controller_gameplay.cutscene_moveto_room = rm_level_6_pre_00;
+							obj_controller_gameplay.cutscene_moveto_type = 0;
+							obj_controller_gameplay.cutscene_moveto_dir = 2;
+							obj_controller_gameplay.cutscene_moveto_instant = false;
+							break;
+					}
 				}else{
 					global.cutscene_current = -1;
 					inst.cutscene_prop = false;
@@ -371,7 +540,8 @@ if (instance_exists(obj_player)){
 		
 		obj_controller_ui.dialogue_time = 0;
 		
-		if (special == "compdeparture"){
+		if (special == "farmerdepart"){
+			scr_companion_remove(obj_companion_0);
 			global.cutscene_current = 52;
 			global.cutscene_camera_x[52] = obj_player.x;
 			global.cutscene_camera_y[52] = obj_player.y;

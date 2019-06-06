@@ -10,7 +10,7 @@ if (global.cutscene_current != -1){
 		if (cutscene_prop) || (in_cutscene){
 			ispaused = true;
 		}
-	}else if (!in_cutscene){
+	}else if (cutscene_prop){
 		ispaused = true;
 	}
 }else{

@@ -26,8 +26,10 @@ if (ammo == 0) && (global.weapon_type[index] == WeaponType.Ranged){
 }
 
 if (specialweapon){
-	if (random(15) < 1){
-		part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
+	if (!place_meeting(x, y, obj_environment_cover_0)){
+		if (random(15) < 1){
+			part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
+		}
 	}
 	
 	var glow = wave(0.4, 1, 2, 0);

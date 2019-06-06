@@ -9,8 +9,13 @@ if (global.cutscene_current != -1){
 	if (global.cutscene_current == 2) || (global.cutscene_current == 52){
 		if (cutscene_prop) || (in_cutscene){
 			ispaused = true;
+			
+			if (room == rm_level_5_01){
+				image_xscale = scale;
+				weapon.dir = 360;
+			}
 		}
-	}else if (!in_cutscene){
+	}else if (cutscene_prop){
 		ispaused = true;
 	}
 }else{

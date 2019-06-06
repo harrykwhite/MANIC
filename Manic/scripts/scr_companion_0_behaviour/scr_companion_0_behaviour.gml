@@ -36,19 +36,29 @@ if (instance_exists(obj_player)){
 					}
 				}
 			}
-		
-			if (distance_to_object(obj_player) > 70 + (30 * order)) || (global.cutscene_current == 52){
+			
+			var dist_to_player = distance_to_object(obj_player);
+			
+			if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 1.8;
 				
-				if (distance_to_object(obj_player) > 100 + (30 * order)){
+				if (dist_to_player > 100 + (60 * order)){
 					move_speed = 2.1;
 				}
-			
+				
+				if (dist_to_player > 140 + (60 * order)){
+					move_speed = 2.7;
+				}
+				
+				if (dist_to_player > 180 + (60 * order)){
+					move_speed = 3.4;
+				}
+				
 				face_player = true;
-			}else if (global.cutscene_current != 2){
-				if (distance_to_point(move_x_to, move_y_to) > 40){
+			}else if (global.cutscene_current == -1){
+				if (distance_to_point(move_x_to, move_y_to) > 20){
 					move_speed = 1.3;
 					move_time = 35;
 				}else{
@@ -58,8 +68,8 @@ if (instance_exists(obj_player)){
 					}else{
 						var attempts = 0;
 						var dirto = point_direction(obj_player.x, obj_player.y, x, y);
-						var xx = obj_player.x + lengthdir_x(40 * order, dirto);
-						var yy = obj_player.y + lengthdir_y(40 * order, dirto);
+						var xx = obj_player.x + lengthdir_x(70 * order, dirto);
+						var yy = obj_player.y + lengthdir_y(70 * order, dirto);
 						
 						var dir = random(360);
 						move_x_to = xx + lengthdir_x(65, dir);
@@ -80,6 +90,11 @@ if (instance_exists(obj_player)){
 						move_time = random_range(30, 60);
 					}
 				}
+			}else{
+				move_speed = 0;
+				move_x_to = obj_player.x;
+				move_y_to = obj_player.y;
+				face_player = true;
 			}
 		}else{
 			if (runaway_time > 0){
@@ -97,6 +112,9 @@ if (instance_exists(obj_player)){
 					move_speed = 1.5;
 				}else{
 					move_speed = 0;
+					move_x_to = target.x;
+					move_y_to = target.y;
+					
 					if (weapon_does_exist){
 						if (attack_time > 0){
 							attack_time --;
@@ -171,7 +189,7 @@ if (instance_exists(obj_player)){
 			move_x_to = x;
 			move_y_to = room_height;
 			
-			if (distance_to_point(move_x_to, move_y_to) > 32 + (30 * order)){
+			if (distance_to_point(move_x_to, move_y_to) > 32 + (60 * order)){
 				move_speed = 1.7;
 			}else{
 				move_speed = 0;
@@ -180,7 +198,7 @@ if (instance_exists(obj_player)){
 			var xx = obj_player.x + 10;
 			var yy = obj_player.y + 95;
 			
-			if (distance_to_point(xx, yy) > 20 + (30 * order)){
+			if (distance_to_point(xx, yy) > 20 + (60 * order)){
 				move_x_to = xx;
 				move_y_to = yy;
 				move_speed = 1.7;
@@ -191,7 +209,7 @@ if (instance_exists(obj_player)){
 				move_y_to = obj_player.y;
 			}
 		}else{
-			if (distance_to_object(obj_player) > 67 + (30 * order)){
+			if (distance_to_object(obj_player) > 67 + (60 * order)){
 				move_speed = 1.5;
 			}else{
 				face_player = true;
@@ -225,13 +243,9 @@ if (instance_exists(obj_player)){
 }
 
 // Off - screen movement.
-if (global.cutscene_current != 2){
+if (global.cutscene_current == -1){
 	x = clamp(x, 22, room_width - 22);
 	y = clamp(y, 22, room_height - 22);
-
-	if (!onscreen(x, y)){
-		speed_multiplier = 0;
-	}
 }
 
 // Dash
@@ -266,7 +280,7 @@ if (move_speed_real < speed_final){
 }
 
 if (dash){
-	if (!place_meeting(x + lengthdir_x(dashspeed + 1, dashdirection), y + lengthdir_y(dashspeed + 1, dashdirection), obj_p_solid)){
+	if (!place_meeting(x + lengthdir_x(dashspeed + 2, dashdirection), y + lengthdir_y(dashspeed + 2, dashdirection), obj_p_solid)){
 		x += lengthdir_x(dashspeed, dashdirection);
 		y += lengthdir_y(dashspeed, dashdirection);
 	}else{
@@ -274,6 +288,12 @@ if (dash){
 	}
 }else{
 	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
+	
+	var dir = point_direction(x, y, move_x_to, move_y_to);
+	while (place_meeting(x, y, obj_p_solid)){
+		x += lengthdir_x(1, dir);
+		y += lengthdir_y(1, dir);
+	}
 }
 
 // Facing

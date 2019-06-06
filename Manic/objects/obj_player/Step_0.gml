@@ -112,7 +112,7 @@ if (instance_exists(flashlight)){
 	flashlight.light[| eLight.X] = x + lengthdir_x(4, flashlight_direction);
 	flashlight.light[| eLight.Y] = y + lengthdir_y(4, flashlight_direction);
 	flashlight.light[| eLight.LutIntensity] = 1.75;
-	flashlight.light[| eLight.Range] = 400 * light_brightness;
+	flashlight.light[| eLight.Range] = 360 * light_brightness;
 	flashlight.light[| eLight.Direction] = flashlight_direction;
 	flashlight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }

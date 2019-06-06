@@ -1,5 +1,5 @@
-var rectx = x - (sprite_width / 2);
-var recty = y - (sprite_height / 2);
+var rectx = x;
+var recty = y;
 var rectw = sprite_width;
 var recth = sprite_height + 10;
 var list = ds_list_create();
@@ -15,14 +15,13 @@ if (count > 0){
 ds_list_destroy(list);
 
 if (explode_anim){
-	if (scale < 1.3){
-		scale += 0.03;
+	if (explode_anim_time < 15){
+		explode_anim_time ++;
 	}else{
+		explode_anim_time = 0;
+		explode_anim = false;
 		explode = true;
 	}
-	
-	image_xscale = scale;
-	image_yscale = scale;
 }
 
 if (explode){

@@ -4,13 +4,15 @@ var face_player = true;
 target = obj_player;
 
 if (instance_exists(target)){
+	var offs = ((1 - (health_current / health_max)) * 1.5);
+	
 	if (move_time > 0){
 		move_time--;
 	}else{
 		move_x_to = obj_player.x + random_range(-50, 50);
 		move_y_to = obj_player.y + random_range(-50, 50);
 		weapon.attack = true;
-		move_time = weapon.attack_time_max / 4;
+		move_time = (weapon.attack_time_max / 4) * max(0.4, health_current / health_max);
 		
 		while(distance_to_point(move_x_to, move_y_to) < 20){
 			move_x_to = obj_player.x + random_range(-50, 50);
@@ -18,7 +20,8 @@ if (instance_exists(target)){
 		}
 	}
 	
-	move_speed = 1.4;
+	move_speed = 1.4 + offs;
+	
 	if (distance_to_point(move_x_to, move_y_to) < 18){
 		move_speed = 0;
 	}
@@ -57,7 +60,7 @@ if (instance_exists(nbarrel)) && (barrel_pause_break <= 0){
 	if (distance_to_object(nbarrel) < 140){
 		if (barrel_pause_time > 0){
 			barrel_pause_time --;
-			speed_multiplier = max(speed_multiplier - 0.5, 0);
+			speed_multiplier = max(speed_multiplier - 0.3, 0);
 		}else{
 			barrel_pause_time = random(40);
 			barrel_pause_break = random_range(60, 120);

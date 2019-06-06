@@ -31,6 +31,9 @@ for(var i = 0; i < (dash_speed) + 1; i ++){
 // Moving
 dash_length_current += dash_speed;
 
+dash_after_speed = dash_speed;
+dash_after_dir = dash_direction;
+
 x += lengthdir_x(dash_speed, dash_direction);
 y += lengthdir_y(dash_speed, dash_direction);
 sprite_index = spr_player_idle_1;

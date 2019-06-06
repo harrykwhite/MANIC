@@ -10,8 +10,8 @@ if (instance_exists(target)){
 		leash_dir = point_direction(x, y, target.x, target.y + 6);
 	}
 	
-	move_x_to = keeper.x + lengthdir_x(leash_length + leash_length_offset, leash_dir + leash_offset);
-	move_y_to = keeper.y + lengthdir_y(leash_length + leash_length_offset, leash_dir + leash_offset);
+	move_x_to = keeper.x + lengthdir_x(leash_length + leash_length_offset + 10, leash_dir + leash_offset);
+	move_y_to = keeper.y + lengthdir_y(leash_length + leash_length_offset + 10, leash_dir + leash_offset);
 	
 	if (leash_bite){
 		var dirToTarget = point_direction(x, y, target.x, target.y);
@@ -49,7 +49,7 @@ if (instance_exists(target)){
 		leash_length_offset  = 0;
 	}
 	
-	if (distance_to_point(move_x_to, move_y_to) > 8){
+	if (distance_to_point(move_x_to, move_y_to) > 22){
 		move_speed = 1.8;
 	}else{
 		move_speed = 0;

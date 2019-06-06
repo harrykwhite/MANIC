@@ -197,7 +197,6 @@ switch(ctype){
 						if (inst.hit_time <= 0){
 							isEnv = true;
 							inst.flash = 0.8;
-							scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 220, 0.8, 1.2);
 					
 							switch(obj){
 								case obj_proj_1:
@@ -211,14 +210,24 @@ switch(ctype){
 								case obj_proj_3:
 									inst.hit -= 3;
 									break;
+								
+								default:
+									show_debug_message("Proj environmental damage has not been applied");
+									break;
 							}
 						
 							inst.hit_time = 6;
 							inst.spd = 0.8;
 							inst.dir = dir;
 							
-							part_type_direction(global.pt_wood_1, (dir - 180) - 50, (dir - 180) + 50, 0, 0);
-							repeat(10)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_wood_1, 2);
+							if (inst.object_index == obj_prisonbar_3){
+								scr_sound_play_distance_pitch(snd_object_metal_hit_0, false, 220, 0.8, 1.2);
+								scr_effect_object(xEnd + random_range(-13, 13), yEnd + random_range(-6, 6), obj_ef_blood, spr_ef_metal_0, 0, 1);
+							}else{
+								scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 220, 0.8, 1.2);
+								part_type_direction(global.pt_wood_1, (dir - 180) - 30, (dir - 180) + 30, 0, 0);
+								repeat(7) part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_wood_1, 2);
+							}
 						}
 
 						break;

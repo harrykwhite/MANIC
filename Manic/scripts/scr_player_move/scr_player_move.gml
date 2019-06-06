@@ -220,7 +220,7 @@ if (global.weapon_slot_standalone == -1){
 			    if (len < (spd_max * spd_multiplier)){
 			        len += (spd_build * spd_multiplier);
 			    }else if (len > (spd_max * spd_multiplier)){
-			        len -= 0.05;
+			        len -= 0.1;
 			    }
 			}
 			
@@ -314,4 +314,18 @@ if (move_x_to == -1) && (move_y_to == -1){
 	y += vspd;
 }else{
 	mp_potential_step_object(move_x_to, move_y_to, len, obj_p_solid);
+}
+
+// Dash After Speed
+if (dash_after_speed > 0.01){
+	if (!place_meeting(x + lengthdir_x((dash_after_speed * spd_multiplier) + 2, dash_after_dir), y + lengthdir_y((dash_after_speed * spd_multiplier) + 2, dash_after_dir), obj_p_solid)){
+		x += lengthdir_x(dash_after_speed * spd_multiplier, dash_after_dir);
+		y += lengthdir_y(dash_after_speed * spd_multiplier, dash_after_dir);
+		dash_after_speed *= 0.6 * spd_multiplier;
+	}else{
+		dash_after_speed = 0;
+		dash_after_dir = 0;
+	}
+	
+	img_speed += dash_after_speed * 0.165;
 }
