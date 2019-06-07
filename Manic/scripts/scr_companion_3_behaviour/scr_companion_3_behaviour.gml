@@ -9,15 +9,34 @@ if (instance_exists(obj_player)){
 			if (global.cutscene_current == -1){
 				var enemyCount = array_length_1d(global.enemy);
 				for(var i = 0; i < enemyCount; i ++){
+					if (i == 1){
+						continue;
+					}
+					
 					if (instance_exists(global.enemy[i])){
 						target = instance_nearest(x, y, global.enemy[i]);
-				
-						if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
-							target = noone;
+					
+						if (target.object_index == obj_antagonist){
+							if (target.walk_off) || (target.near_dead){
+								target = noone;
+								continue;
+							}
 						}
-				
-						if (distance_to_object(target) > 150){
+						
+						if (target.object_index == obj_thedogkeeper){
+							if (!target.dogs_downed){
+								var dog = instance_nearest(x, y, obj_thedogkeeper_dog);
+							
+								if (dog != noone){
+									target = dog;
+									break;
+								}
+							}
+						}
+						
+						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
 							target = noone;
+							continue;
 						}
 					}
 				}
@@ -82,7 +101,7 @@ if (instance_exists(obj_player)){
 				move_y_to = obj_player.y;
 				face_player = true;
 			}
-		}else{
+		}else if (global.cutscene_current != 58){
 			if (bite_to){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;

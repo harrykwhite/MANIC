@@ -23,7 +23,7 @@ release_offset = 0;
 
 weapon = -1;
 weapon_has = false;
-weapon_index = 0;
+weapon_index = PawnWeapon.HeavyShotgun;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;

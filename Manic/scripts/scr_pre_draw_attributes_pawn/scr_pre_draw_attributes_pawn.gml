@@ -2,40 +2,40 @@ var is_metal = false;
 var alpha_mult = 1;
 var drawshader = (health_current <= floor(health_max / 3)) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha);
 
-if (drawshader){
-	if (weapon != -1){
-		if (instance_exists(weapon)){
-			var wcurrent = global.pawnweapon_playerindex[weapon_index];
-			var angle = 0;
+if (weapon != -1){
+	if (instance_exists(weapon)){
+		var wcurrent = global.pawnweapon_playerindex[weapon_index];
+		var angle = 0;
+		
+		if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
+			is_metal = true;
+		}
+		
+		if (object_get_parent(object_index) == obj_p_player){
+			alpha_mult = i_time_alpha;
+		}
+		
+		if (global.weapon_heavy[wcurrent]){
+			if (image_xscale == -scale){
+	            angle = clamp(weapon.dir, 130, 220);
+	        }else{
+		        if (weapon.dir > 0) && (weapon.dir < 90){
+	                angle = min(weapon.dir, 50);
+	            }else{
+	                angle = max(weapon.dir, 320);
+	            }
+		    }
 			
-			if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
-				is_metal = true;
-			}
+			var armx = arm.x + lengthdir_x(4, angle);
+			var army = (arm.y - 2) + lengthdir_y(4, angle);
 			
-			if (object_get_parent(object_index) == obj_p_player){
-				alpha_mult = i_time_alpha;
-			}
-			
-			if (global.weapon_heavy[wcurrent]) && (global.cutscene_current == -1){
-				if (image_xscale == -scale){
-		            angle = clamp(weapon.dir, 130, 220);
-		        }else{
-			        if (weapon.dir > 0) && (weapon.dir < 90){
-		                angle = min(weapon.dir, 50);
-		            }else{
-		                angle = max(weapon.dir, 320);
-		            }
-			    }
-				
-				var armx = arm.x + lengthdir_x(4, angle);
-				var army = (arm.y - 2) + lengthdir_y(4, angle);
-				
-				if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
+			if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
 					army --;
-				}
-				
-				draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, arm.image_yscale, angle, c_white, image_alpha * alpha_mult);
-				
+			}
+			
+			draw_sprite_ext(spr_enemy_0_arm_0, 1, armx, army, scale, arm.image_yscale, angle, c_white, image_alpha * alpha_mult);
+			
+			if (drawshader){
 				shader_set(sh_pawntint);
 				var shader_alpha = shader_get_uniform(sh_pawntint, "_alpha");
 				var shader_red = shader_get_uniform(sh_pawntint, "_red");
@@ -57,14 +57,14 @@ if (drawshader){
 					g = 0;
 					b = 0;
 				}
-				
+			
 				if (burn){
 					a = wv;
 					r = 255;
 					g = 255;
 					b = 255;
 				}
-				
+			
 				if (object_index != obj_thescorched){
 					if (poison){
 						a = wv * 0.7;
@@ -73,27 +73,27 @@ if (drawshader){
 						b = 255;
 					}
 				}
-				
+			
 				if (i_blend_time > 0){
 					var colour = c_red;
 					if (is_metal){
 						colour = c_white;
 					}
-
+					
 					var alpha = 1 - (1 / i_blend_time);
 					a = alpha * 0.5;
 					r = color_get_red(colour);
 					g = color_get_green(colour);
 					b = color_get_blue(colour);
 				}
-				
+			
 				if (whiteflash_alpha > 0){
 					a = whiteflash_alpha;
 					r = 255;
 					g = 255;
 					b = 255;
 				}
-				
+			
 				if (r > 0) || (g > 0) || (b > 0) || (a > 0){
 					shader_set_uniform_f(shader_alpha, a);
 					shader_set_uniform_f(shader_red, r);
@@ -101,9 +101,9 @@ if (drawshader){
 					shader_set_uniform_f(shader_blue, b);
 					draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, image_xscale, angle, c_white, image_alpha * alpha_mult);
 				}
-		    }
-			
-			shader_reset();
-		}
+				
+				shader_reset();
+			}
+	    }
 	}
 }

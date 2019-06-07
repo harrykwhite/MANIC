@@ -10,8 +10,7 @@ if (arm == -1){
 
 if (weapon_has){
 	if (weapon == -1) || (!instance_exists(weapon)){
-		weapon_index = PawnWeapon.Shotgun;
-		weapon = instance_create(x, y, obj_pawnweapon_11);
+		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
 		weapon.owner = self;
 	}
 }

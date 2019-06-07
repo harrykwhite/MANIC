@@ -11,6 +11,7 @@ spawn_time = 60 * 10;
 switch(room){
 	case rm_level_4_00:
 		if (global.game_level_opening_type == 0){
+			show_debug_message(room_get_name(global.worldtrain_room))
 			if (global.worldtrain_room == room){
 				obj_player.y = 196;
 			}

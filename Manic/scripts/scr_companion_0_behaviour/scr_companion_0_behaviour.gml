@@ -29,6 +29,17 @@ if (instance_exists(obj_player)){
 							}
 						}
 						
+						if (target.object_index == obj_thedogkeeper){
+							if (!target.dogs_downed){
+								var dog = instance_nearest(x, y, obj_thedogkeeper_dog);
+								
+								if (dog != noone){
+									target = dog;
+									break;
+								}
+							}
+						}
+						
 						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
 							target = noone;
 							continue;
@@ -96,7 +107,7 @@ if (instance_exists(obj_player)){
 				move_y_to = obj_player.y;
 				face_player = true;
 			}
-		}else{
+		}else if (global.cutscene_current != 58){
 			if (runaway_time > 0){
 				runaway_time--;
 		
@@ -146,6 +157,8 @@ if (instance_exists(obj_player)){
 					move_speed = 2.1;
 				}
 			}*/
+		}else{
+			move_speed = 0;
 		}
 		
 		if (health_current == health_max){

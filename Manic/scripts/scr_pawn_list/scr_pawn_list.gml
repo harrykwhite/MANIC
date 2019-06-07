@@ -85,7 +85,7 @@ enum PawnWeapon{
 	SniperRifle,
 	Spear,
 	Flamethrower,
-	Shotgun,
+	HeavyShotgun,
 	Revolver,
 	Katana,
 }

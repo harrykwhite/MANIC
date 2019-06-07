@@ -6,7 +6,6 @@ if (global.game_pause){
 
 // Attacking
 if (instance_exists(owner)){
-    
 	if (attack_time > 0){
 		attack_time --;
 		
