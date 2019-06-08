@@ -47,7 +47,7 @@ headless = false;
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
 
-defense = 0;
+defense = 3;
 arm = -1;
 
 dog_count = 3;

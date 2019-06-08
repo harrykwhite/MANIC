@@ -28,7 +28,7 @@ if (instance_exists(target)){
 			sniperboss_movetime = 60 * 1.4;
 		}
 		
-		if (distance_to_object(target) < 60){
+		if (distance_to_object(target) < 120){
 			sniperboss_opening = false;
 		}
 	}else{

@@ -1,6 +1,6 @@
 scr_interior_fade();
 
-if (image_alpha > 0.2){
+if (image_alpha > 0.2) && (!global.game_pause){
 	if (smoke_time > 0){
 		smoke_time --;
 	}else{

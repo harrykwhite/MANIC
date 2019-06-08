@@ -5,6 +5,14 @@ if (burn){
 	}
 }
 
+if (health_current > 0){
+	for(var i = 0; i < dog_count; i ++){
+		if (instance_exists(dog[i])){
+			instance_destroy(dog[i]);
+		}
+	}
+}
+
 if (instance_exists(mylight)){
 	instance_destroy(mylight);
 }

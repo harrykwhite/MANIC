@@ -1,1 +1,1 @@
-text = "Constructed in 1867\n\n(Please do not step on the grass!)";
+text = "'Acacia Farmlands'\nConstructed in 1867";

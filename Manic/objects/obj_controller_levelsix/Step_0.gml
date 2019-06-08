@@ -93,7 +93,7 @@ if (!global.game_pause){
 	
 	// Train Arrival
 	if (global.cutscene_current == -1) && (room == rm_level_6_00){
-		if (global.worldtrain_room == room){
+		if (global.game_boss_trainhorde_killed) && (global.worldtrain_room == room){
 			trainboss_spawned = true;
 		}
 		

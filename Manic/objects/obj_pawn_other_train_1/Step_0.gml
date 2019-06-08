@@ -112,7 +112,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 				level.trainboss_leader.type = Enemy0_Type.TrainBoss;
 				level.trainboss_leader.weapon_index = PawnWeapon.SniperRifle;
 				
-				global.cutscene_current = 37;
+				global.cutscene_current = 58;
 			}
 		}
 	}

@@ -47,13 +47,13 @@ if (instance_exists(owner)){
 		proj = instance_create(xpos, ypos, obj_proj_0);
 		proj.dir = dir;
 		proj.image_angle = dir;
-		proj.spd = 13;
+		proj.spd = 15;
 		proj.damage = scr_pawn_weapon_damage(-1);
-		proj.strength = 2;
+		proj.strength = 2.25;
 		proj.enemy = isEnemy;
 		proj.creator = owner;
 		
-	    owner.knockback_speed = -1;
+	    owner.knockback_speed = -2;
 	    owner.knockback_direction = dir;
 		line_alpha = -4.96;
 		

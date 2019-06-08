@@ -59,7 +59,7 @@ if (instance_exists(obj_player)){
 					line[2] = "No, I lived in a house up north.";
 					linefrom[2] = obj_player;
 			
-					line[3] = "What about you?";
+					line[3] = "How about you?";
 					linefrom[3] = obj_player;
 			
 					line[4] = "A friend of mine lived here, I came to see if he was okay.";
@@ -221,26 +221,17 @@ if (instance_exists(obj_player)){
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_thedogkeeper);
 			
 			if (inst.dogs_downed){
-				line[0] = "Such hostility from a man of peace?";
-				linefrom[0] = inst;
-				
-				line[1] = "Let's see how you go against this!";
-				linefrom[1] = inst;
+				//line[0] = "";
+				//linefrom[0] = inst;
 			}else{
-				line[0] = "You... you seem familiar.";
+				line[0] = "Another fool, I see?";
 				linefrom[0] = inst;
 				
-				line[1] = "You're from the house up north?";
+				line[1] = "Why do you keep fighting?";
 				linefrom[1] = inst;
 				
-				line[2] = "I see you came back to avenge your family.";
+				line[2] = "You're not going to survive.";
 				linefrom[2] = inst;
-				
-				line[3] = "Yes. You aren't getting out of this alive.";
-				linefrom[3] = obj_player;
-				
-				line[4] = "Oh, we'll see!";
-				linefrom[4] = inst;
 			}
 			break;
 		
@@ -397,6 +388,27 @@ if (instance_exists(obj_player)){
 					line[3] = "Let's see if you're as good as you think you are.";
 					linefrom[3] = inst;
 				}
+			}
+			break;
+		
+		case rm_level_6_00:
+			var num = instance_number(obj_enemy_0);
+			
+			for(var i = 0; i < num; i ++){
+				var this = instance_find(obj_enemy_0, i);
+				
+				if (this.type == Enemy0_Type.TrainBoss){
+					inst = this;
+					break;
+				}
+			}
+			
+			if (instance_exists(inst)){
+				line[0] = "I was told that there was someone with you.";
+				linefrom[0] = inst;
+				
+				line[1] = "Oh well...";
+				linefrom[1] = inst;
 			}
 			break;
 	}

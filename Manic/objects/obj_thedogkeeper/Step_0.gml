@@ -30,12 +30,12 @@ if (global.cutscene_current == 58) || (cutscene_prop){
 	
 	if (instance_exists(obj_player)){
 		move_dir = point_direction(x, y, obj_player.x, obj_player.y);
+		weapon.dir = move_dir;
+		
 		if (obj_player.x > x){
 			image_xscale = scale;
-			weapon.dir = 360;
 		}else{
 			image_xscale = -scale;
-			weapon.dir = 180;
 		}
 	}
 	
@@ -107,13 +107,13 @@ if (!dogs_downed){
 		weapon_index = PawnWeapon.HeavyShotgun;
 	}
 	
-	if (health_current > (health_max / 4)) && (!mid_cutscene_played){
-		global.cutscene_current = 58;
-		cutscene_prop = true;
-		in_cutscene = true;
-		mid_cutscene_played = true;
-		return;
-	}
+	//if (health_current > (health_max / 4)) && (!mid_cutscene_played){
+	//	global.cutscene_current = 58;
+	//	cutscene_prop = true;
+	//	in_cutscene = true;
+	//	mid_cutscene_played = true;
+	//	return;
+	//}
 	
 	scr_thedogkeeper_behaviour_1();
 }

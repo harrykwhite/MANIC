@@ -77,10 +77,14 @@ if (instance_exists(obj_player)){
 			global.game_level_opening_type = cutscene_trainstart_type;
 		}
 		
-		if (cutscene_trainroom == -1){
-			obj_controller_ui.area_next_room = global.level_room[cutscene_traingoto];
+		if (global.game_is_playthrough){
+			if (cutscene_trainroom == -1){
+				obj_controller_ui.area_next_room = global.level_room[cutscene_traingoto];
+			}else{
+				obj_controller_ui.area_next_room = cutscene_trainroom;
+			}
 		}else{
-			obj_controller_ui.area_next_room = cutscene_trainroom;
+			obj_controller_ui.area_next_room = rm_title_0;
 		}
 	}
 }

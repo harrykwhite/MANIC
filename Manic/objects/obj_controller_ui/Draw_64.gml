@@ -471,7 +471,7 @@ if (bosshealth_width_current > 0){
 	var xx = dwidth / 2;
 	var yy = dheight - 50;
 	var w = bosshealth_width_current;
-	var h = 12;
+	var h = 6;
 	
 	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_color_rgb(45, 45, 45), c_ltgray, c_ltgray, 0, true, false);
 	

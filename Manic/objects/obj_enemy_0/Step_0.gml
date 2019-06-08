@@ -32,9 +32,7 @@ if (global.game_pause){
 
 if (global.cutscene_current != -1){
 	if (!in_cutscene){
-		if (type != Enemy0_Type.TrainBoss){
-			ispaused = true;
-		}
+		ispaused = true;
 	}
 }else{
 	if (cutscene_prop){
@@ -52,6 +50,22 @@ if (ispaused){
 	if (audio_is_playing(burn_sound)){
 		audio_pause_sound(burn_sound);
 		burn_sound_paused = true;
+	}
+	
+	// Train Boss Dialogue Cutscene Defaults
+	if (type == Enemy0_Type.TrainBoss) && (global.cutscene_current == 58){
+		if (weapon != -1){
+			if (instance_exists(weapon)) && (instance_exists(obj_player)){
+				weapon.dir = point_direction(x, y, obj_player.x, obj_player.y);
+				weapon.attack = false;
+				
+				if (obj_player.x > x){
+					image_xscale = scale;
+				}else{
+					image_xscale = -scale;
+				}
+			}
+		}
 	}
 	return;
 }else{

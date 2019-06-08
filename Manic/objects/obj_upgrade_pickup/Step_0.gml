@@ -25,10 +25,15 @@ if (instance_exists(obj_player)){
 		scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
 		scr_player_stamina_drain(6);
 		scr_effect_screenshake(1);
-		scr_upgrade_add(index);
+		scr_upgrade_add(index);	
 		
 		if (global.game_is_playthrough){
 			scr_save_game();
+		}
+		
+		if (index == PlayerUpgrade.Chestplate){
+			global.player_health_max = 12;
+			global.player_health_current = global.player_health_max;
 		}
 		
 		obj_controller_ui.upgrade_indicate_index = index;

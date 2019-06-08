@@ -107,10 +107,10 @@ for(var i = 0; i < levelcount; i ++){
 	if (room == global.level_room[i]){
 		if (!global.level_entered[i]){
 			if (!global.game_is_playthrough){
-				if (global.level_current >= Level.WesternFarmland) && (global.level_current <= Level.TrainStation){
-					if (room != rm_level_2_00) && (room != rm_level_6_00) && (room != rm_level_6_01){
-						scr_companion_register(obj_companion_0);
-					}
+				if (global.level_current > Level.WesternFarmland) && (global.level_current < Level.TrainStation){
+					scr_companion_register(obj_companion_0);
+				}else{
+					scr_companion_remove(obj_companion_0);
 				}
 			}
 			

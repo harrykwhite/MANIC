@@ -351,6 +351,7 @@ if (fade){
 					global.game_save_seconds = 0;
 					global.level_current = selected;
 					scr_level_list();
+					scr_set_kills_and_findings();
 					
 					fade = true;
 					fade_goto = option_levelselect_goto[selected];

@@ -156,16 +156,16 @@ if (global.weapon_slot_standalone == -1){
 		dash_time = 18;
 		
 		if (scr_player_has_upgrade(PlayerUpgrade.KneePads)){
-			dash_speed *= 2;
+			dash_speed *= 1.35;
 			
 			if (dash_count < 1){
 				dash_count ++;
 				dash_time = 2;
-				dash_time_short = 12;
+				dash_time_short = 15;
 				scr_sound_play(snd_character_dash_0, false, 0.9, 1);
 			}else{
 				dash_count = 0;
-				dash_time = 20;
+				dash_time = 24;
 				scr_sound_play(snd_character_dash_0, false, 1.15, 1.25);
 			}
 		}else{

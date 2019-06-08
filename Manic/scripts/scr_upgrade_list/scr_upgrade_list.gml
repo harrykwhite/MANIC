@@ -3,7 +3,7 @@ enum PlayerUpgrade{
 	Backpack, // Collectable
 	Chestplate, // Collectable
 	AmmoPack, // Collectable
-	GasMask, // Collectable, position must change
+	GasMask, // Collectable
 	RunningBoots, // Collectable
 	KneePads, // Collectable
 	IronGlove, // Collectable
@@ -27,7 +27,7 @@ global.upgrade_behind[1] = true;
 global.upgrade_equipped[1] = false;
 
 global.upgrade_name[2] = "Chestplate";
-global.upgrade_description[2] = "Doubles the maximum health";
+global.upgrade_description[2] = "Maximum health is doubled";
 global.upgrade_sprite[2] = spr_player_upgrade_chestpiece_0;
 global.upgrade_sprite_corpse[2] = spr_player_upgrade_chestpiece_0_corpse;
 global.upgrade_sprite_pickup[2] = spr_player_upgrade_chestpiece_0_pickup;
