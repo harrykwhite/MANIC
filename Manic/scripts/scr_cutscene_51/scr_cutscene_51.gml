@@ -10,7 +10,6 @@ if (instance_exists(obj_player)){
 	y_to = cutscene_trainopening_inst.y + 12;
 	global.cutscene_camera_x[index] = x_to;
 	global.cutscene_camera_y[index] = y_to;
-	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = 90;
 	
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 40){
@@ -77,7 +76,7 @@ if (instance_exists(obj_player)){
 			global.game_level_opening_type = cutscene_trainstart_type;
 		}
 		
-		if (global.game_is_playthrough){
+		if (global.game_is_playthrough) || (global.level_current == cutscene_traingoto){
 			if (cutscene_trainroom == -1){
 				obj_controller_ui.area_next_room = global.level_room[cutscene_traingoto];
 			}else{

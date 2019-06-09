@@ -6,7 +6,6 @@ sound_break_0 = 0;
 lighting = 1;
 
 spawn = false;
-spawn_time = 60 * 10;
 
 // Spawn System
 scr_spawn_setup("city", 1.6);
@@ -48,11 +47,15 @@ switch(room){
 }
 
 // Other
+room_music_transition = false;
 global.cutscene_current = 2;
 fly_can_spawn = global.game_firstflyhead_killed;
 sprite_index = noone;
 depth = -5;
 
-rain = audio_play_sound(m_ambience_rain_0, 3, true);
-audio_sound_gain(rain, 0, 0);
-audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 8000);
+if (!audio_is_playing(m_ambience_rain_0)){
+	audio_play_sound(m_ambience_rain_0, 3, true);
+	audio_sound_gain(m_ambience_rain_0, 0, 0);
+}
+
+audio_sound_gain(m_ambience_rain_0, 1 * obj_controller_all.real_ambience_volume, 7000);

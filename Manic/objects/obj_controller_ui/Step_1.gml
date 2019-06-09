@@ -14,6 +14,10 @@ if (dialogue_time > 0){
 			if (dialogue_skip < dialogue_skip_max){
 				dialogue_skip ++;
 			}
+		}else{
+			if (dialogue_skip > 0){
+				dialogue_skip --;
+			}
 		}
 	}
 }

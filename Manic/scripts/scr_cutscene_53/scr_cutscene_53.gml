@@ -5,7 +5,6 @@ obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
-	obj_player.flashlight_move = false;
 	
 	var inst = instance_nearest(obj_player.x, obj_player.y, obj_upgrade_pickup);
 	if (inst != noone){

@@ -5,8 +5,6 @@ obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
-	obj_player.flashlight_move = false;
-	
 	if (cutscene_ending_stage == 0){
 		if (global.cutscene_time[index] < 70){
 			global.cutscene_time[index] ++;

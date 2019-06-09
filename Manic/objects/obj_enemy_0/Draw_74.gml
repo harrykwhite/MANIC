@@ -47,7 +47,7 @@ if (type != Enemy0_Type.Mother) && (type != Enemy0_Type.Sniper) && (type != Enem
 	gpu_set_fog(false, c_white, 0, 0);
 }else if (type != Enemy0_Type.TrainBoss){
 	var width = 56;
-	var height = 6;
+	var height = 4;
 	var xx = x;
 	var yy = y + 36;
 	

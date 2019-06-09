@@ -20,6 +20,7 @@ global.game_firstflyhead_killed = ini_read_real("Save", "FirstFlyHeadKilled", fa
 global.game_firstturret_killed = ini_read_real("Save", "FirstTurretKilled", false);
 global.game_firstmaggot_killed = ini_read_real("Save", "FirstMaggotKilled", false);
 global.game_companion_farmer_found = ini_read_real("Save", "CompanionFarmerFound", false);
+global.game_companion_farmer_level2post_talked = ini_read_real("Save", "CompanionFarmerLevel2PostTalked", false);
 global.game_companion_grenadier_found = ini_read_real("Save", "CompanionGrenadierFound", false);
 global.game_companion_prisoner_found = ini_read_real("Save", "CompanionPrisonerFound", false);
 global.game_companion_dog_found = ini_read_real("Save", "CompanionDogFound", false);

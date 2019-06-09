@@ -52,7 +52,14 @@ if (dialogue_time > 0){
 			scr_text_shadow(dwidth - 24, dheight - 48, "Continue [" + string(scr_keycheck_string(obj_controller_all.key_interact)) + "]", c_white);
 		}
 		
-		scr_text_shadow(dwidth - 24, dheight - 24, "Hold [" + string(scr_mousecheck_string(obj_controller_all.key_attack)) + "] to skip", c_white);
+		var holdstr =  "Hold [" + string(scr_mousecheck_string(obj_controller_all.key_attack)) + "] to skip";
+		scr_text_shadow(dwidth - 24, dheight - 24, holdstr, c_white);
+		
+		if (dialogue_skip > 0){
+			var barw = string_width(holdstr);
+			var barh = 5;
+			draw_healthbar(dwidth - 24 - barw, dheight - 20 - barh, dwidth - 24, dheight - 24, (dialogue_skip / dialogue_skip_max) * 100, c_black, c_white, c_white, 0, false, false);
+		}
 	}
 	
 	draw_set_valign(fa_top);
@@ -88,7 +95,7 @@ if (area_next_fade){
 		area_next_alpha_speed = 0.02;
 		scr_fade_object_list_reset();
 		if (area_next_room != noone){
-			scr_level_cleanup();
+			scr_level_cleanup(scr_level_get_index(area_next_room) != scr_level_get_index(room));
 			
 			if (area_next_room == rm_title_0){
 				ds_grid_clear(global.player_companions, -1);

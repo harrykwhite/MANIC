@@ -14,23 +14,18 @@ if (!global.game_pause){
 		if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
 	}else{
 		// Rain
-		if (instance_exists(obj_player)){
-			rainamount = (obj_player.x / room_width) * 5;
-			rainamount ++;
-		}
-		
-		if (random(rainamount / 1.15) < 1){
+		if (random(2) < 1){
 			part_particles_create(global.ps_front, camx + random_range(0, camw + 150), camy - 10, global.pt_rain_0, 1);
 		}
 		
-		if (random(2 * rainamount) < 1){
+		if (random(3) < 1){
 		    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), choose(global.pt_rain_1, global.pt_rain_2), 1);
 		}
 		
-		if (!audio_is_playing(rain)){
-			rain = audio_play_sound(m_ambience_rain_0, 3, true);
-			audio_sound_gain(rain, 0, 0);
-			audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 8000);
+		if (!audio_is_playing(m_ambience_rain_0)){
+			audio_play_sound(m_ambience_rain_0, 3, true);
+			audio_sound_gain(m_ambience_rain_0, 0, 0);
+			audio_sound_gain(m_ambience_rain_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
 		}
 	}
 	
@@ -71,70 +66,71 @@ if (!global.game_pause){
 	}
 	
 	// Post Level Dialogue
-	if (room == rm_level_2_post_00) && (global.cutscene_current == -1) && (postlevel_dialogue_index <= postlevel_dialogue_index_max){
-		if (postlevel_dialogue_time > 0){
-			postlevel_dialogue_time --;
+	if (room == rm_level_2_post_00){
+		if (postlevel_dialogue_index <= postlevel_dialogue_index_max) && (!global.game_companion_farmer_level2post_talked){
+			if (global.cutscene_current == -1){
+				if (postlevel_dialogue_time > 0){
+					postlevel_dialogue_time --;
 			
-			if (instance_exists(postlevel_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
-				obj_controller_ui.dialogue_x = postlevel_dialogue_inst.x;
-				obj_controller_ui.dialogue_y = postlevel_dialogue_inst.y - 24;
+					if (instance_exists(postlevel_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
+						obj_controller_ui.dialogue_x = postlevel_dialogue_inst.x;
+						obj_controller_ui.dialogue_y = postlevel_dialogue_inst.y - 24;
+					}
+				}else{
+					var text = "", inst = noone, dodraw = true;
+			
+					switch(postlevel_dialogue_index){
+						case 0:
+							text = "So what's making you want to fight them?";
+							inst = obj_companion_0;
+							break;
+			
+						case 1:
+							text = "My family was murdered by the group. I can't let that happen to anyone else.";
+							inst = obj_player;
+							break;
+				
+						case 2:
+							text = "I understand.";
+							inst = obj_companion_0;
+							break;
+				
+						case 3:
+							text = "It's lucky that you found me when you did.";
+							inst = obj_companion_0;
+							break;
+				
+						case 4:
+							text = "Just a couple more hours there and I would have been killed.";
+							inst = obj_companion_0;
+							break;
+				
+						case 5:
+							text = "Thank you for helping me.";
+							inst = obj_companion_0;
+							break;
+				
+						default:
+							dodraw = false;
+							break;
+					}
+			
+					if (dodraw) && (instance_exists(inst)){
+						obj_controller_ui.dialogue = text;
+						obj_controller_ui.dialogue_time = 60 * 3;
+						obj_controller_ui.dialogue_pause = false;
+						obj_controller_ui.dialogue_count = 0;
+						obj_controller_ui.dialogue_x = inst.x;
+						obj_controller_ui.dialogue_y = inst.y - 24;
+				
+						postlevel_dialogue_inst = inst;
+						postlevel_dialogue_index ++;
+						postlevel_dialogue_time  = 60 * 3.5;
+					}
+				}
 			}
 		}else{
-			var text = "", inst = noone, dodraw = true;
-			
-			switch(postlevel_dialogue_index){
-				case 0:
-					text = "So what's making you want to fight them?";
-					inst = obj_companion_0;
-					break;
-				
-				case 1:
-					text = "To help stop this?";
-					inst = obj_companion_0;
-					break;
-			
-				case 2:
-					text = "My family was murdered by the group. I can't let that happen again.";
-					inst = obj_player;
-					break;
-				
-				case 3:
-					text = "I understand.";
-					inst = obj_companion_0;
-					break;
-				
-				case 4:
-					text = "It's lucky that you found me when you did.";
-					inst = obj_companion_0;
-					break;
-				
-				case 5:
-					text = "Just a couple more hours there and I would have been killed.";
-					inst = obj_companion_0;
-					break;
-				
-				case 6:
-					text = "Thank you for helping me.";
-					inst = obj_companion_0;
-					break;
-				
-				default:
-					dodraw = false;
-					break;
-			}
-			
-			if (dodraw) && (instance_exists(inst)){
-				obj_controller_ui.dialogue = text;
-				obj_controller_ui.dialogue_time = 60 * 3;
-				obj_controller_ui.dialogue_pause = false;
-				obj_controller_ui.dialogue_count = 0;
-				obj_controller_ui.dialogue_x = inst.x;
-				obj_controller_ui.dialogue_y = inst.y - 24;
-				
-				postlevel_dialogue_inst = inst;
-				postlevel_dialogue_index ++;
-				postlevel_dialogue_time  = 60 * 3.5;
-			}
+			global.game_companion_farmer_level2post_talked = true;
 		}
 	}
 }
@@ -187,7 +183,6 @@ if (player_exists) && (room != rm_level_2_pre_00) && (room != rm_level_2_post_00
 		}
 	
 		if (spawn){
-		
 			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
 				var xpos = random_range(camx - 10, camx + camw + 10);
 				var ypos = random_range(camy - 10, camy + camh + 10);
@@ -247,8 +242,8 @@ if (player_exists) && (room != rm_level_2_pre_00) && (room != rm_level_2_post_00
 		}
 		
 	}else if (global.game_pause){
-		if (audio_is_playing(rain)){
-			audio_pause_sound(rain);
+		if (audio_is_playing(m_ambience_rain_0)){
+			audio_pause_sound(m_ambience_rain_0);
 		}
 		
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){

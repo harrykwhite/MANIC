@@ -12,7 +12,6 @@ if (instance_exists(obj_player)){
 		y_to = cutscene_look_object.y;
 	}
 	
-	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 	
 	if (global.cutscene_time[index] < cutscene_look_time){

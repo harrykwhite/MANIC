@@ -219,7 +219,7 @@ if (fade){
 				switch(selected){
 					case 0:
 						isvalid = false;
-						audio_sound_gain(rain, 0, 2000);
+						audio_sound_gain(m_ambience_rain_0, 0, 2000);
 						
 						global.game_is_playthrough = true;
 						fade = true;
@@ -345,7 +345,7 @@ if (fade){
 					scr_titlescreen_options_scale_reset();
 				}else{
 					isvalid = false;
-					audio_sound_gain(rain, 0, 2000);
+					audio_sound_gain(m_ambience_rain_0, 0, 2000);
 				
 					global.game_is_playthrough = false;
 					global.game_save_seconds = 0;

@@ -4,9 +4,9 @@ if (!ds_exists(global.game_option, ds_type_list)){
 	scr_option_init();
 }
 
-rain = audio_play_sound(m_ambience_rain_0, 3, true);
-audio_sound_gain(rain, 0, 0);
-audio_sound_gain(rain, 0.6 * obj_controller_all.real_ambience_volume, 4000);
+audio_play_sound(m_ambience_rain_0, 3, true);
+audio_sound_gain(m_ambience_rain_0, 0, 0);
+audio_sound_gain(m_ambience_rain_0, 0.6 * obj_controller_all.real_ambience_volume, 4000);
 
 sprite_index = noone;
 
@@ -39,7 +39,7 @@ if (global.game_save_started){
 	option[0] = "Continue Game";
 }
 
-if (global.game_boss_final_killed){
+if (global.game_boss_final_killed) || (devmode){
 	option_locked[1] = false;
 }
 

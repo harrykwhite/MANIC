@@ -238,7 +238,7 @@ if (tutourial) && (global.cutscene_current == -1){
 }
 
 // Kill Display
-if (global.level_current != Level.CityHeadquarters){
+if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
 	var text = "";
 	var textx = 40;
 	var texty = dheight - 50;

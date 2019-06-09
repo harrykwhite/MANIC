@@ -5,7 +5,6 @@ sound_break_0 = 0;
 lighting = 1;
 
 spawn = false;
-spawn_time = 60 * 8;
 
 switch(room){
 	case rm_level_3_00:
@@ -40,6 +39,7 @@ switch(room){
 }
 
 // Spawn System
+room_music_transition = false;
 scr_spawn_setup("underground", 1.2);
 spawn_pause_update = false;
 global.game_combat_state_time_real = 0;

@@ -5,7 +5,6 @@ sound_break_0 = 0;
 lighting = 1;
 
 spawn = false;
-spawn_time = 60 * 10;
 
 spawn_x = 572;
 if (global.game_level_opening_type == 0){
@@ -15,6 +14,7 @@ if (global.game_level_opening_type == 0){
 }
 
 // Spawn System
+room_music_transition = false;
 scr_spawn_setup("windy", 1);
 spawn_pause_update = false;
 global.game_combat_state_time_real = 0;
@@ -22,9 +22,13 @@ spawn_rate_real = 1;
 spawn_cleared = false;
 
 // Other
-rain = audio_play_sound(m_ambience_rain_0, 3, true);
-audio_sound_gain(rain, 0, 0);
-audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 12000);
+if (!audio_is_playing(m_ambience_rain_0)){
+	audio_play_sound(m_ambience_rain_0, 3, true);
+	audio_sound_gain(m_ambience_rain_0, 0, 0);
+}
+
+audio_sound_gain(m_ambience_rain_0, 1 * obj_controller_all.real_ambience_volume, 7000);
+
 rain_thunder = noone;
 rain_thunder_interval = 60 * 9;
 

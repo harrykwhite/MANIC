@@ -6,7 +6,6 @@ sound_break_0 = 0;
 lighting = 1;
 
 spawn = false;
-spawn_time = 60 * 10;
 
 // Spawn System
 scr_spawn_setup("main", 1.5);
@@ -53,12 +52,17 @@ if (global.game_level_opening_type == 1) && (room == rm_level_6_00){
 }
 
 // Other
+room_music_transition = false;
+
 sprite_index = noone;
 depth = -5;
 
-wind = audio_play_sound(m_ambience_wind_0, 3, true);
-audio_sound_gain(wind, 0, 0);
-audio_sound_gain(wind, 1 * obj_controller_all.real_ambience_volume, 7000);
+if (!audio_is_playing(m_ambience_wind_0)){
+	audio_play_sound(m_ambience_wind_0, 3, true);
+	audio_sound_gain(m_ambience_wind_0, 0, 0);
+}
+
+audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
 
 train_time = 0;
 train_timemax = 10 * 60;
@@ -66,7 +70,7 @@ train_timemax = 10 * 60;
 trainboss_trainhead = noone;
 trainboss_leader = noone;
 trainboss_time = 0;
-trainboss_timemax = 60 * 15//60 * 45;
+trainboss_timemax = 60 * 45;
 trainboss_spawned = false;
 
 healer_can_spawn = global.game_firsthealer_killed;

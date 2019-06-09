@@ -26,6 +26,7 @@ switch(room){
 }
 
 // Other
+room_music_transition = false;
 weaponstart_set = false;
 
 global.cutscene_current = 2;

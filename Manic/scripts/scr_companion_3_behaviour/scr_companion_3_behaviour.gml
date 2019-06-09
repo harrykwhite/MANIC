@@ -5,8 +5,7 @@ var distTo = 0;
 
 if (instance_exists(obj_player)){
 	if (!in_cutscene){
-		if (!instance_exists(target) || (target == noone)){
-			if (global.cutscene_current == -1){
+		if (!instance_exists(target) || (target == noone)){if (global.cutscene_current == -1){
 				var enemyCount = array_length_1d(global.enemy);
 				for(var i = 0; i < enemyCount; i ++){
 					if (i == 1){
@@ -77,13 +76,15 @@ if (instance_exists(obj_player)){
 						var yy = obj_player.y + lengthdir_y(70 * order, dirto);
 						
 						var dir = random(360);
-						move_x_to = xx + lengthdir_x(35, dir);
-						move_y_to = yy + lengthdir_y(35, dir);
+						var len = random_range(20, 45);
+						move_x_to = xx + lengthdir_x(len, dir);
+						move_y_to = yy + lengthdir_y(len, dir);
 						
-						while(distance_to_point(move_x_to, move_y_to) < 30) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
+						while(distance_to_point(move_x_to, move_y_to) < 15) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
 							dir = random(360);
-							move_x_to = xx + lengthdir_x(35, dir);
-							move_y_to = yy + lengthdir_y(35, dir);
+							len = random_range(20, 65);
+							move_x_to = xx + lengthdir_x(len, dir);
+							move_y_to = yy + lengthdir_y(len, dir);
 							
 							if (attempts < 200){
 								attempts ++;
@@ -92,7 +93,7 @@ if (instance_exists(obj_player)){
 							}
 						}
 						
-						move_time = random_range(30, 60) * 0.6;
+						move_time = random_range(30, 60) * 3;
 					}
 				}
 			}else{

@@ -21,8 +21,6 @@ if (!canmove){
 	return;
 }
 
-flashlight_move = true;
-
 // Blend Time
 if (i_blend_time > 0){
     i_blend_time--;
@@ -31,14 +29,9 @@ if (i_blend_time > 0){
     blend = -1;
 }
 
-if (global.cutscene_current != -1){
-	flashlight_move = false;
-}
-
 // Pause
 if (global.game_pause){
 	image_speed = 0;
-	flashlight_move = false;
 	
 	if (audio_is_playing(heartbeat)){
 		audio_stop_sound(heartbeat);

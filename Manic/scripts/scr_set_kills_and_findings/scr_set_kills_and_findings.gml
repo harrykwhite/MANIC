@@ -15,6 +15,7 @@ global.game_firstflyhead_killed = false;
 global.game_firstturret_killed = false;
 global.game_firstmaggot_killed = false;
 global.game_companion_farmer_found = false;
+global.game_companion_farmer_level2post_talked = false;
 global.game_companion_grenadier_found = false;
 global.game_companion_prisoner_found = false;
 global.game_companion_dog_found = false;

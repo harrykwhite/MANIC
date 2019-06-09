@@ -62,7 +62,7 @@ if (instance_exists(obj_player)){
 					line[3] = "How about you?";
 					linefrom[3] = obj_player;
 			
-					line[4] = "A friend of mine lived here, I came to see if he was okay.";
+					line[4] = "A friend of mine was here, I came to see if he was okay.";
 					linefrom[4] = inst;
 			
 					line[5] = "The town seems to be deserted, though.";
@@ -149,7 +149,7 @@ if (instance_exists(obj_player)){
 			break;
 		
 		case rm_level_2_post_00:
-			inst = instance_nearest(obj_player.x, obj_player.y, obj_thescorched);
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_0);
 			
 			line[0] = "This looks to be another one of their bases.";
 			linefrom[0] = obj_player;
@@ -404,19 +404,19 @@ if (instance_exists(obj_player)){
 			}
 			
 			if (instance_exists(inst)){
-				line[0] = "I was told that there was someone with you.";
+				line[0] = "I was told that there was farmer with you.";
 				linefrom[0] = inst;
 				
-				line[1] = "Oh well...";
+				line[1] = "I guess not...";
 				linefrom[1] = inst;
+				
+				line[2] = "Oh well...";
+				linefrom[2] = inst;
 			}
 			break;
 	}
 	
 	var instexists = inst != noone;
-	
-	obj_player.flashlight_move = false;
-	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 	
 	if (global.cutscene_time[index] < 25){
 		global.cutscene_time[index] ++;
@@ -518,25 +518,32 @@ if (instance_exists(obj_player)){
 	
 	
 	if (instexists){
+		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
+		
 		if (inst.x > obj_player.x){
 			obj_player.image_xscale = 1;
 		}else{
 			obj_player.image_xscale = -1;
 		}
 		
+		var from;
 		if (cutscene_dialogue_line != -1){
 			// Update dialogue position
 			obj_controller_ui.dialogue_x = linefrom[cutscene_dialogue_line].x;
 			obj_controller_ui.dialogue_y = linefrom[cutscene_dialogue_line].y - 24;
 			
 			// Set the camera position based on speaker
-			x_to = linefrom[cutscene_dialogue_line].x;
-			y_to = linefrom[cutscene_dialogue_line].y - 8;
+			from = linefrom[cutscene_dialogue_line];
+			x_to = from.x;
+			y_to = from.y - 8;
 		}else{
 			// Set the camera position to the next upcoming speaker
-			x_to = linefrom[cutscene_dialogue_line + 1].x;
-			y_to = linefrom[cutscene_dialogue_line + 1].y - 8;
+			from = linefrom[cutscene_dialogue_line + 1];
+			x_to = from.x;
+			y_to = from.y - 8;
 		}
+	}else{
+		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 	}
 	
 	// Dialogue skipping

@@ -23,7 +23,6 @@ if (instance_exists(obj_player)){
 		y_to = eobj.y;
 		eobj.in_cutscene = true;
 		
-		obj_player.flashlight_move = false;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 		
 		if (global.cutscene_time[index] > 130){

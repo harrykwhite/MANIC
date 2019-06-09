@@ -193,8 +193,8 @@ if (player_exists){
 			}
 		}
 		
-		if (audio_is_playing(rain)){
-			audio_pause_sound(rain);
+		if (audio_is_playing(m_ambience_rain_0)){
+			audio_pause_sound(m_ambience_rain_0);
 		}
 		
 		spawn_pause_update = false;
@@ -227,9 +227,9 @@ if (!global.game_pause){
 		scr_effect_flash(rain_thunder_flash_amount[index], 0.03, c_white, true);
 	}
 	
-	if (!audio_is_playing(rain)){
-		rain = audio_play_sound(m_ambience_rain_0, 3, true);
-		audio_sound_gain(rain, 0, 0);
-		audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 8000);
+	if (!audio_is_playing(m_ambience_rain_0)){
+		audio_play_sound(m_ambience_rain_0, 3, true);
+		audio_sound_gain(m_ambience_rain_0, 0, 0);
+		audio_sound_gain(m_ambience_rain_0, 1 * obj_controller_all.real_ambience_volume, 8000);
 	}
 }

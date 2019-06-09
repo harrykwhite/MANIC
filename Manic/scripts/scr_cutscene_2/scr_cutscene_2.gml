@@ -8,7 +8,6 @@ obj_controller_camera.camera_screenshake_amount = 0;
 if (instance_exists(obj_player)){
 	global.cutscene_camera_x[index] = level.spawn_x;
 	global.cutscene_camera_y[index] = level.spawn_y;
-	obj_player.flashlight_move = false;
 	
 	if (obj_controller_ui.screen_fade_opening >= 1){
 		return;

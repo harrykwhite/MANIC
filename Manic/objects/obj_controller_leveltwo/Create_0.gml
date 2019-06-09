@@ -5,9 +5,6 @@ sound_break_0 = 0;
 lighting = 1;
 
 spawn = false;
-spawn_time = 60 * 10;
-
-rain = noone;
 
 switch(room){
 	case rm_level_2_pre_00:
@@ -19,9 +16,12 @@ switch(room){
 			spawn_y = 428;
 		}
 		
-		rain = audio_play_sound(m_ambience_rain_0, 3, true);
-		audio_sound_gain(rain, 0, 0);
-		audio_sound_gain(rain, 1 * obj_controller_all.real_ambience_volume, 12000);
+		if (!audio_is_playing(m_ambience_rain_0)){
+			audio_play_sound(m_ambience_rain_0, 3, true);
+			audio_sound_gain(m_ambience_rain_0, 0, 0);
+		}
+		
+		audio_sound_gain(m_ambience_rain_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
 		break;
 	
 	case rm_level_2_00:
@@ -59,8 +59,8 @@ switch(room){
 			spawn_x = 368;
 			spawn_y = 160;
 		}else{
-			spawn_x = 1302;
-			spawn_y = 1100;
+			spawn_x = 2106;
+			spawn_y = 730;
 		}
 		break;
 }
@@ -74,14 +74,13 @@ global.game_combat_state_time_real = 0;
 spawn_rate_real = 1;
 spawn_cleared = false;
 
-rainamount = 1;
-
 postlevel_dialogue_time = 60 * 3;
 postlevel_dialogue_index = 0;
 postlevel_dialogue_index_max = 7;
 postlevel_dialogue_inst = noone;
 
 // Other
+room_music_transition = false;
 global.cutscene_current = 2;
 sprite_index = noone;
 depth = -5;

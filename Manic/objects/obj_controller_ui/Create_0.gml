@@ -1,5 +1,5 @@
 // Setup
-scr_level_current_control();
+global.level_current = scr_level_get_index(room);
 
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
@@ -82,7 +82,7 @@ pause_selectoption_scale[3] = 1;
 pause_selectedmax = array_length_1d(pause_selectoption);
 
 game_opening_intro = true;
-game_opening_intro_speed = 1.1;
+game_opening_intro_speed = 1.2;
 game_opening_intro_alpha = 4.7;
 game_opening_intro_text_alpha = -0.25;
 game_opening_intro_text_stage = 0;
@@ -107,14 +107,12 @@ for(var i = 0; i < levelcount; i ++){
 	if (room == global.level_room[i]){
 		if (!global.level_entered[i]){
 			if (!global.game_is_playthrough){
+				scr_companions_clear();
+				
 				if (global.level_current > Level.WesternFarmland) && (global.level_current < Level.TrainStation){
 					scr_companion_register(obj_companion_0);
-				}else{
-					scr_companion_remove(obj_companion_0);
 				}
-			}
-			
-			if (!global.game_is_playthrough){
+				
 				scr_set_kills_and_findings();
 			}
 			

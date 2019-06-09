@@ -58,5 +58,7 @@ spawn_music_main[CombatState.Climax] = combat_2;
 spawn_music_pause_gain[CombatState.Climax] = 0;
 spawn_music_pause_position[CombatState.Climax] = 0;
 
+spawn_time = spawn_interval[global.game_combat_state];
+
 global.game_combat_in_hordechallenge = false;
 global.game_combat_in_hordechallenge_time = 0;

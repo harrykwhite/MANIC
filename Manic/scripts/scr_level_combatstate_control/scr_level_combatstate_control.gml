@@ -1,6 +1,6 @@
 // Changing Combat States
 var bossmusic = noone;
-var level = global.level_current;
+var level = scr_level_get_index(room);
 var paused = global.game_pause;
 var inrealboss = global.boss_current != -1;
 var inhordechallenge = global.game_combat_in_hordechallenge;
@@ -32,7 +32,7 @@ if (inhordechallenge){
 		var uindex = -1;
 		var ux = -1;
 		var uy = -1;
-		switch(global.level_current){
+		switch(level){
 			case Level.UndergroundBunker:
 				uindex = PlayerUpgrade.Goggles;
 				ux = 1760;
@@ -149,7 +149,7 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 					audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 5000);
 				}
 				
-				// Build - Up Music
+				// Buildup Music
 				if (!audio_is_playing(spawn_music_main[CombatState.Buildup])){
 					audio_play_sound(spawn_music_main[CombatState.Buildup], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 0);
@@ -159,6 +159,14 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 				if (!audio_is_playing(spawn_music_main[CombatState.Climax])){
 					audio_play_sound(spawn_music_main[CombatState.Climax], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 0);
+				}
+				
+				if (room_music_transition){
+					audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 5000);
+					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+					
+					room_music_transition = false;
 				}
 			}
 		
@@ -186,7 +194,7 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 					audio_sound_gain(spawn_music_main[CombatState.Idle], 0.7 * obj_controller_all.real_music_volume, 5000);
 				}
 				
-				// Build - Up Music
+				// Buildup Music
 				if (!audio_is_playing(spawn_music_main[CombatState.Buildup])) || (audio_sound_get_gain(spawn_music_main[CombatState.Buildup]) <= 0){
 					audio_play_sound(spawn_music_main[CombatState.Buildup], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Buildup], 1 * obj_controller_all.real_music_volume, 5000);
@@ -196,6 +204,14 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 				if (!audio_is_playing(spawn_music_main[CombatState.Climax])){
 					audio_play_sound(spawn_music_main[CombatState.Climax], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 0);
+				}
+				
+				if (room_music_transition){
+					audio_sound_gain(spawn_music_main[CombatState.Idle], 0.7 * obj_controller_all.real_music_volume, 5000);
+					audio_sound_gain(spawn_music_main[CombatState.Climax], 1 * obj_controller_all.real_music_volume, 5000);
+					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
+					
+					room_music_transition = false;
 				}
 			}
 		
@@ -222,7 +238,7 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 					audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
 				}
 				
-				// Build - Up Music
+				// Buildup Music
 				if (!audio_is_playing(spawn_music_main[CombatState.Buildup])) || (audio_sound_get_gain(spawn_music_main[CombatState.Buildup]) <= 0){
 					audio_play_sound(spawn_music_main[CombatState.Buildup], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Buildup], 0.7 * obj_controller_all.real_music_volume, 5000);
@@ -233,6 +249,14 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 					audio_play_sound(spawn_music_main[CombatState.Climax], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 0);
 					audio_sound_gain(spawn_music_main[CombatState.Buildup], 1 * obj_controller_all.real_music_volume, 5000);
+				}
+				
+				if (room_music_transition){
+					audio_sound_gain(spawn_music_main[CombatState.Idle], 0 * obj_controller_all.real_music_volume, 3000);
+					audio_sound_gain(spawn_music_main[CombatState.Climax], 0.7 * obj_controller_all.real_music_volume, 5000);
+					audio_sound_gain(spawn_music_main[CombatState.Climax], 1 * obj_controller_all.real_music_volume, 5000);
+					
+					room_music_transition = false;
 				}
 			}
 		
@@ -260,11 +284,11 @@ if (!paused){
 		}
 		
 		if (level == Level.RavagedTown) || (level == Level.TheCemetery) || (room == rm_level_2_pre_00){
-			audio_resume_sound(rain);
+			audio_resume_sound(m_ambience_rain_0);
 		}
 		
 		if (level == Level.Prologue) || (level == Level.WinterTown) || (level == Level.TrainStation) || (level == Level.DesolateVillage){
-			audio_resume_sound(wind);
+			audio_resume_sound(m_ambience_wind_0);
 		}
 		
 		if (bossmusic != noone){

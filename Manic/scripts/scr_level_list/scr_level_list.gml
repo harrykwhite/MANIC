@@ -1,5 +1,5 @@
 enum Level{
-	Prologue,
+	Prologue = 0,
 	RavagedTown,
 	WesternFarmland,
 	UndergroundBunker,
@@ -46,7 +46,7 @@ global.level_kill_count[Level.WesternFarmland] = 0;
 global.level_kill_max[Level.WesternFarmland] = 40;
 
 global.level_name[Level.UndergroundBunker] = "Underground Bunker";
-global.level_room[Level.UndergroundBunker] = rm_level_3_01;
+global.level_room[Level.UndergroundBunker] = rm_level_3_00;
 global.level_preroom[Level.UndergroundBunker] = noone;
 global.level_collectable_current[Level.UndergroundBunker] = 0;
 global.level_collectable_number[Level.UndergroundBunker] = 4;
@@ -54,7 +54,7 @@ global.level_turret_number[Level.UndergroundBunker] = 0;
 global.level_entered[Level.UndergroundBunker] = false;
 global.level_cleared[Level.UndergroundBunker] = false;
 global.level_kill_count[Level.UndergroundBunker] = 0;
-global.level_kill_max[Level.UndergroundBunker] = 1//100;
+global.level_kill_max[Level.UndergroundBunker] = 100;
 
 global.level_name[Level.WinterTown] = "Winter Town";
 global.level_room[Level.WinterTown] = rm_level_4_00;
@@ -68,7 +68,7 @@ global.level_kill_count[Level.WinterTown] = 0;
 global.level_kill_max[Level.WinterTown] = 50;
 
 global.level_name[Level.HumanPrison] = "Human Prison";
-global.level_room[Level.HumanPrison] = rm_level_5_01;
+global.level_room[Level.HumanPrison] = rm_level_5_00;
 global.level_preroom[Level.HumanPrison] = noone;
 global.level_collectable_current[Level.HumanPrison] = 0;
 global.level_collectable_number[Level.HumanPrison] = 7;
@@ -76,7 +76,7 @@ global.level_turret_number[Level.HumanPrison] = 1;
 global.level_entered[Level.HumanPrison] = false;
 global.level_cleared[Level.HumanPrison] = false;
 global.level_kill_count[Level.HumanPrison] = 0;
-global.level_kill_max[Level.HumanPrison] = 1//120;
+global.level_kill_max[Level.HumanPrison] = 120;
 
 global.level_name[Level.TrainStation] = "Train Station";
 global.level_room[Level.TrainStation] = rm_level_6_00;

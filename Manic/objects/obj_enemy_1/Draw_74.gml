@@ -33,7 +33,7 @@ if (health_flash > 0.01){
 }
 
 var width = 30;
-var height = 5;
+var height = 4;
 var xx = x;
 var yy = y + 6;
 

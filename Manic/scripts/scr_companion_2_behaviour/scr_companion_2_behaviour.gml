@@ -13,6 +13,9 @@ if (instance_exists(obj_player)){
 	if (weapon_does_exist) && (weapon_index != PawnWeapon.Knife){
 		if (!in_cutscene){
 			if (!instance_exists(target) || (target == noone)){
+				runaway_starttime = 0;
+				runaway_time = 0;
+				
 				if (global.cutscene_current == -1){
 					var enemyCount = array_length_1d(global.enemy);
 					for(var i = 0; i < enemyCount; i ++){
@@ -96,7 +99,7 @@ if (instance_exists(obj_player)){
 					face_player = true;
 				}else if (global.cutscene_current == -1){
 					if (distance_to_point(move_x_to, move_y_to) > 20){
-						move_speed = 1.3;
+						move_speed = 1.4;
 						move_time = 35;
 					}else{
 						move_speed = 0;
@@ -109,13 +112,15 @@ if (instance_exists(obj_player)){
 							var yy = obj_player.y + lengthdir_y(70 * order, dirto);
 						
 							var dir = random(360);
-							move_x_to = xx + lengthdir_x(65, dir);
-							move_y_to = yy + lengthdir_y(65, dir);
+							var len = random_range(20, 65);
+							move_x_to = xx + lengthdir_x(len, dir);
+							move_y_to = yy + lengthdir_y(len, dir);
 						
-							while(distance_to_point(move_x_to, move_y_to) < 45) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
+							while(distance_to_point(move_x_to, move_y_to) < 15) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
 								dir = random(360);
-								move_x_to = xx + lengthdir_x(65, dir);
-								move_y_to = yy + lengthdir_y(65, dir);
+								len = random_range(20, 65);
+								move_x_to = xx + lengthdir_x(len, dir);
+								move_y_to = yy + lengthdir_y(len, dir);
 							
 								if (attempts < 200){
 									attempts ++;
@@ -124,7 +129,7 @@ if (instance_exists(obj_player)){
 								}
 							}
 						
-							move_time = random_range(30, 60) * 0.8;
+							move_time = random_range(30, 60) * 3;
 						}
 					}
 				}else{
@@ -253,47 +258,6 @@ if (instance_exists(obj_player)){
 						weapon.owner = id;
 						weapon_index = wind;
 						attack_time = attack_time_max;
-					}
-				}
-			}
-		}
-		
-		if (!run_to_drop){
-			move_speed = 1;
-			
-			if (distance_to_object(obj_player) > 100 + (60 * order)){
-				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
-				move_speed = 1.5;
-				
-				if (distance_to_object(obj_player) > 130 + (60 * order)){
-					move_speed = 1.95;
-				}
-			
-				face_player = true;
-			}else{
-				if (distance_to_point(move_x_to, move_y_to) > 27 + (60 * order)){
-					move_speed = 1.3;
-					move_time = 35;
-				}else{
-					move_speed = 0;
-					if (move_time > 0){
-						move_time--;
-					}else{
-						var attempts = 0;
-						move_x_to = obj_player.x + lengthdir_x(35, random(360));
-						move_y_to = obj_player.y + lengthdir_y(35, random(360));
-				
-						while(distance_to_point(move_x_to, move_y_to) < 15) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
-							move_x_to = obj_player.x + lengthdir_x(35, random(360));
-							move_y_to = obj_player.y + lengthdir_y(35, random(360));
-							
-							if (attempts < 200){
-								attempts ++;
-							}else{
-								break;
-							}
-						}
 					}
 				}
 			}

@@ -21,16 +21,16 @@ if (!global.game_pause){
 
 // Wind
 if (!global.game_pause){
-	if (!audio_is_playing(wind)){
-		wind = audio_play_sound(m_ambience_wind_0, 3, true);
-		audio_sound_gain(wind, 0, 0);
-		audio_sound_gain(wind, 1 * obj_controller_all.real_ambience_volume, 20000);
+	if (!audio_is_playing(m_ambience_wind_0)){
+		audio_play_sound(m_ambience_wind_0, 3, true);
+		audio_sound_gain(m_ambience_wind_0, 0, 0);
+		audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 15000);
 	}
 }else{
 	spawn_pause_update = false;
 	
-	if (audio_is_playing(wind)){
-		audio_pause_sound(wind);
+	if (audio_is_playing(m_ambience_wind_0)){
+		audio_pause_sound(m_ambience_wind_0);
 	}
 }
 
@@ -40,10 +40,12 @@ if (!global.level_cleared[global.level_current]){
 }else{
 	var to = 0.95;
 	
-	if (lighting < to){
-		lighting += 0.0005;
-	}else if (lighting > to){
-		lighting -= 0.0005;
+	if (!global.game_pause){
+		if (lighting < to){
+			lighting += 0.0005;
+		}else if (lighting > to){
+			lighting -= 0.0005;
+		}
 	}
 	
 	if (!endscene_initiated){
@@ -117,17 +119,21 @@ if (!global.level_cleared[global.level_current]){
 		knifedrop.index = PlayerWeapon.Knife;
 		knifedrop.angle = 110;
 		
-		var robotprop = instance_create(446, 754, obj_pawn_other_robotrunning_0);
+		var robotprop = instance_create_layer(446, 754, "EndingObjects", obj_pawn_other_robotrunning_0);
 		robotprop.dir = 180;
+		robotprop.dir_to = robotprop.dir;
 		
-		robotprop = instance_create(562, 570, obj_pawn_other_robotrunning_0);
+		robotprop = instance_create_layer(562, 570, "EndingObjects", obj_pawn_other_robotrunning_0);
 		robotprop.dir = 360;
+		robotprop.dir_to = robotprop.dir;
 		
-		robotprop = instance_create(532, 550, obj_pawn_other_robotrunning_0);
+		robotprop = instance_create_layer(532, 550, "EndingObjects", obj_pawn_other_robotrunning_0);
 		robotprop.dir = 360;
+		robotprop.dir_to = robotprop.dir;
 		
-		robotprop = instance_create(756, 516, obj_pawn_other_robotrunning_0);
-		robotprop.dir = 90;
+		robotprop = instance_create_layer(756, 516, "EndingObjects", obj_pawn_other_robotrunning_0);
+		robotprop.dir = 270;
+		robotprop.dir_to = robotprop.dir
 		
 		endscene_initiated = true;
 	}
@@ -143,14 +149,14 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 		if (deer_spawn_time > 0){
 			deer_spawn_time --;
 		}else{
-			var xx = random_range(camx - 60, camx + camw + 60);
-			var yy = random_range(camy - 60, camy + camh + 60);
+			var xx = random_range(camx - 40, camx + camw + 40);
+			var yy = random_range(camy - 40, camy + camh + 40);
 			var counter = 0;
 			var dospawn = true;
 			
 			while (onscreen(xx, yy) || !inroom(xx, yy) || collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)){
-				xx = random_range(camx - 60, camx + camw + 60);
-				yy = random_range(camy - 60, camy + camh + 60);
+				xx = random_range(camx - 40, camx + camw + 40);
+				yy = random_range(camy - 40, camy + camh + 40);
 				
 				if (counter < 200){
 					counter ++;

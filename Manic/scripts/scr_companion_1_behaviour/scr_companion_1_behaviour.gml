@@ -12,6 +12,9 @@ if (instance_exists(obj_player)){
 	
 	if (!in_cutscene){
 		if (!instance_exists(target)){
+			runaway_starttime = 0;
+			runaway_time = 0;
+			
 			if (global.cutscene_current == -1){
 				var enemyCount = array_length_1d(global.enemy);
 				for(var i = 0; i < enemyCount; i ++){
@@ -78,7 +81,6 @@ if (instance_exists(obj_player)){
 			}else if (global.cutscene_current == -1){
 				if (distance_to_point(move_x_to, move_y_to) > 20){
 					move_speed = 1.3;
-					move_time = 35;
 				}else{
 					move_speed = 0;
 					if (move_time > 0){
@@ -90,13 +92,15 @@ if (instance_exists(obj_player)){
 						var yy = obj_player.y + lengthdir_y(70 * order, dirto);
 						
 						var dir = random(360);
-						move_x_to = xx + lengthdir_x(65, dir);
-						move_y_to = yy + lengthdir_y(65, dir);
+						var len = random_range(20, 65);
+						move_x_to = xx + lengthdir_x(len, dir);
+						move_y_to = yy + lengthdir_y(len, dir);
 						
-						while(distance_to_point(move_x_to, move_y_to) < 45) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
+						while(distance_to_point(move_x_to, move_y_to) < 15) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
 							dir = random(360);
-							move_x_to = xx + lengthdir_x(65, dir);
-							move_y_to = yy + lengthdir_y(65, dir);
+							len = random_range(20, 65);
+							move_x_to = xx + lengthdir_x(len, dir);
+							move_y_to = yy + lengthdir_y(len, dir);
 							
 							if (attempts < 200){
 								attempts ++;
@@ -105,7 +109,7 @@ if (instance_exists(obj_player)){
 							}
 						}
 						
-						move_time = random_range(30, 60);
+						move_time = random_range(30, 60) * 7;
 					}
 				}
 			}else{
@@ -127,7 +131,7 @@ if (instance_exists(obj_player)){
 				move_y_to = target.y;
 				
 				if (distance_to_object(target) > 80){
-					move_speed = 1.5;
+					move_speed = 1.3;
 				}else{
 					move_speed = 0;
 					move_x_to = target.x;

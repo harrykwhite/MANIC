@@ -25,6 +25,7 @@ ini_write_real("Save", "FirstFlyHeadKilled", global.game_firstflyhead_killed);
 ini_write_real("Save", "FirstTurretKilled", global.game_firstturret_killed);
 ini_write_real("Save", "FirstMaggotKilled", global.game_firstmaggot_killed);
 ini_write_real("Save", "CompanionFarmerFound", global.game_companion_farmer_found);
+ini_write_real("Save", "CompanionFarmerLevel2PostTalked", global.game_companion_farmer_level2post_talked);
 ini_write_real("Save", "CompanionGrenadierFound", global.game_companion_grenadier_found);
 ini_write_real("Save", "CompanionPrisonerFound", global.game_companion_prisoner_found);
 ini_write_real("Save", "CompanionDogFound", global.game_companion_dog_found);

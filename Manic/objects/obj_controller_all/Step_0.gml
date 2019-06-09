@@ -1,5 +1,4 @@
 if (!instance_exists(obj_ef_freeze)){
-	game_set_speed(60, gamespeed_fps);
 	room_speed = 60;
 }
 
@@ -28,6 +27,7 @@ if (full <= 0){
 		full = 40;
 		
 		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
+		game_set_speed(60, gamespeed_fps);
 		scr_options_refresh();
 	}
 }else{

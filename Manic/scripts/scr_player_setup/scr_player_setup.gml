@@ -12,7 +12,6 @@ dir = 0;
 canmove = true;
 
 // Light
-flashlight_move = false;
 flashlight_direction = 0;
 flashlight_alpha = 0;
 

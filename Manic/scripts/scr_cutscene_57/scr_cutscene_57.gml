@@ -43,7 +43,7 @@ if (instance_exists(obj_player)){
 			if (global.cutscene_time[index] > 20){
 				obj_player.move_x_to = xto;
 				obj_player.move_y_to = yto;
-				obj_player.move_extSpd = 1;
+				obj_player.move_extSpd = 1.25;
 				
 				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 40){
 					global.cutscene_time[index] = 130;
@@ -60,13 +60,13 @@ if (instance_exists(obj_player)){
 			
 			obj_player.move_x_to = xto;
 			obj_player.move_y_to = yto;
-			obj_player.move_extSpd = 1;
+			obj_player.move_extSpd = 1.25;
 			
 			global.cutscene_camera_x[index] = obj_player.x;
 			global.cutscene_camera_y[index] = obj_player.y;
 			
 			// Give the player the revolver and knife
-			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 20){
+			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 12){
 				obj_player.move_extSpd = 0;
 				obj_player.move_x_to = obj_player.x + lengthdir_x(5, 180);
 				obj_player.move_y_to = obj_player.y + lengthdir_y(5, 180);
@@ -109,23 +109,19 @@ if (instance_exists(obj_player)){
 					global.cutscene_time[index] = 300;
 				}
 			}
-		}else if (global.cutscene_time[index] < 400){
+		}else if (global.cutscene_time[index] < 340){
 			xto = 795;
 			yto = 604;
 			
 			global.cutscene_time[index] ++;
 			
-			if (global.cutscene_time[index] < 360){
-				obj_player.image_xscale = -1;
-			}else{
-				obj_player.move_extSpd = 1;
-				obj_player.move_x_to = xto;
-				obj_player.move_y_to = yto;
-			}
+			obj_player.move_extSpd = 1.25;
+			obj_player.move_x_to = xto;
+			obj_player.move_y_to = yto;
 			
 			global.cutscene_camera_x[index] = obj_player.x;
 			global.cutscene_camera_y[index] = obj_player.y;
-		}else if (global.cutscene_time[index] < 610){
+		}else if (global.cutscene_time[index] < 570){
 			xto = obj_player.x;
 			yto = 1076;
 			
@@ -140,14 +136,13 @@ if (instance_exists(obj_player)){
 			
 			obj_player.move_x_to = xto;
 			obj_player.move_y_to = yto;
-			obj_player.move_extSpd = 1;
+			obj_player.move_extSpd = 1.25;
 			
 			global.cutscene_camera_x[index] = obj_player.x;
 			global.cutscene_camera_y[index] = obj_player.y;
 		}
 	}
 	
-	obj_player.flashlight_move = false;
 	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xto, yto);
 }else{
 	global.cutscene_current = -1;

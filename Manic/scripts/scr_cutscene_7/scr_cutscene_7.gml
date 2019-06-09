@@ -8,7 +8,6 @@ obj_controller_camera.camera_screenshake_amount = 0;
 if (instance_exists(obj_player)){
 	global.cutscene_camera_x[index] = cutscene_conveyerbelt_x;
 	global.cutscene_camera_y[index] = cutscene_conveyerbelt_y;
-	obj_player.flashlight_move = false;
 	
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 24){
 		obj_player.move_x_to = -1;
@@ -31,7 +30,7 @@ if (instance_exists(obj_player)){
 				if (instance_exists(obj_conveyerbelt_0)){ with(obj_conveyerbelt_0) stop = true; }
 				if (instance_exists(obj_conveyerbelt_1)){ with(obj_conveyerbelt_1) stop = true; }
 				if (instance_exists(obj_conveyerbelt_2)){ with(obj_conveyerbelt_2) stop = true; }
-				audio_play_sound(snd_other_conveyorbelt_1, 3, false);
+				audio_play_sound(snd_other_conveyerbelt_1, 3, false);
 			}
 			
 			if (room == rm_level_1_00){

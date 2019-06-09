@@ -129,6 +129,8 @@ if (instance_exists(target)){
 		weapon.dir = 180;
 	}
 	
+	weapon.attack = false;
+	
 	move_speed = 0;
 	face_player = false;
 }

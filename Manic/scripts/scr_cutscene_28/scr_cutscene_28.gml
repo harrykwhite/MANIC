@@ -9,7 +9,7 @@ if (instance_exists(obj_player)){
 	
 	global.cutscene_camera_x[index] = x_to;
 	global.cutscene_camera_y[index] = y_to;
-	obj_player.flashlight_move = false;
+	
 	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, room_width + 100, y_to);
 	
 	if (point_distance(obj_player.x, obj_player.y, room_width + 80, y_to) < 90){

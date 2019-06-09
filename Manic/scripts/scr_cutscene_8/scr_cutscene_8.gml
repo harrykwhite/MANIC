@@ -10,7 +10,6 @@ if (instance_exists(obj_player)){
 	
 	global.cutscene_camera_x[index] = 577;
 	global.cutscene_camera_y[index] = 503;
-	obj_player.flashlight_move = false;
 	
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 15){
 		obj_player.move_x_to = -1;

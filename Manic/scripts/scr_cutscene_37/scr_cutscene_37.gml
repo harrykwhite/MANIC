@@ -19,8 +19,6 @@ if (instance_exists(obj_player)){
 	if (instance_exists(eobj)){
 		x_to = x_to + eobj.x;
 		y_to = y_to + eobj.y;
-	
-		obj_player.flashlight_move = false;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 		
 		if (global.cutscene_time[index] < maxtime){

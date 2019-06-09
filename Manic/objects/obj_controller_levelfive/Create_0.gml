@@ -6,7 +6,6 @@ sound_break_0 = 0;
 lighting = 1;
 
 spawn = false;
-spawn_time = 60 * 8;
 
 switch(room){
 	case rm_level_5_00:
@@ -66,6 +65,7 @@ spawn_rate_real = 1;
 spawn_cleared = false;
 
 // Other
+room_music_transition = false;
 global.cutscene_current = 2;
 sniper_can_spawn = global.game_firstsniper_killed;
 sprite_index = noone;

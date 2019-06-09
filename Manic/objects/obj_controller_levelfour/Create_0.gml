@@ -6,7 +6,6 @@ sound_break_0 = 0;
 lighting = 1;
 
 spawn = false;
-spawn_time = 60 * 10;
 
 switch(room){
 	case rm_level_4_00:
@@ -46,11 +45,16 @@ global.game_combat_state_time_real = 0;
 spawn_rate_real = 1;
 spawn_cleared = false;
 
-wind = audio_play_sound(m_ambience_wind_0, 3, true);
-audio_sound_gain(wind, 0, 0);
-audio_sound_gain(wind, 1 * obj_controller_all.real_ambience_volume, 7000);
+if (!audio_is_playing(m_ambience_wind_0)){
+	audio_play_sound(m_ambience_wind_0, 3, true);
+	audio_sound_gain(m_ambience_wind_0, 0, 0);
+}
+
+audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
 
 // Other
+room_music_transition = false;
+
 dogkeeper = noone;
 dogkeeper_failed = false;
 

@@ -12,7 +12,6 @@ if (instance_exists(obj_player)){
 		x_to = cobj.x;
 		y_to = cobj.y;
 		
-		obj_player.flashlight_move = false;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 		
 		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 56){

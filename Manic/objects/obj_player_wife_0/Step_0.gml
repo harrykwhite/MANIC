@@ -6,7 +6,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 interact = false;
 
 if (instance_exists(obj_player)){
-	if (distance_to_object(obj_player) < 20){
+	if (distance_to_object(obj_player) < 10){
 		if (obj_controller_ui.dialogue_time <= 0){
 			interact = true;
 			scr_ui_control_indicate("Talk");
@@ -16,16 +16,14 @@ if (instance_exists(obj_player)){
 					interact_break = 15;
 					talking = true;
 			
-					obj_controller_ui.dialogue = "Hello!";
-					obj_controller_ui.dialogue_time = 60 * 4;
+					obj_controller_ui.dialogue = choose("Hi!", "Hello!");
+					obj_controller_ui.dialogue_time = 60 * 1.5;
 					obj_controller_ui.dialogue_pause = false;
 					obj_controller_ui.dialogue_count = 0;
 				}
 			}else{
 				interact_break --;
 			}
-		}else{
-			talking = false;
 		}
 	}
 }
@@ -33,6 +31,10 @@ if (instance_exists(obj_player)){
 if (talking){
 	obj_controller_ui.dialogue_x = x;
 	obj_controller_ui.dialogue_y = y - 24;
+	
+	if (obj_controller_ui.dialogue_time <= 0){
+		talking = false;
+	}
 }
 
 scr_family_behaviour_0();
