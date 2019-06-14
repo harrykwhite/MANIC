@@ -54,3 +54,5 @@ if (room == rm_title_0){
 		scr_titlescreen_options_reload();
 	}
 }
+
+obj_controller_all.option_refresh = true;

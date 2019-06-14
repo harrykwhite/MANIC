@@ -70,6 +70,8 @@ health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
 
+idleanim_time = 0;
+
 target = obj_player;
 
 var feet = instance_create(x, y, obj_feetbox_0);

@@ -58,7 +58,7 @@ if (mouse_check_button(obj_controller_all.key_attack)) && (!global.game_pause){
         angle_offset = 1;
         flash_draw = true;
 		flash_time = 0;
-    }else if (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
+    }else if (global.weapon_slotammo[global.weapon_slotcurrent] <= 0){
 		if (audio_is_playing(shoot_onsound)){
 			audio_stop_sound(shoot_onsound);
 		}

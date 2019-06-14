@@ -16,7 +16,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
         scr_mouse_control(MouseType.SmallCircle, 2.5, 25);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
         scr_player_knockback_initiate(0.8, mdir);
-        scr_player_stamina_drain(7);
+        scr_player_stamina_drain(9);
         angle_offset = -angle_offset;
 		
 	    s = instance_create(xpos, ypos, obj_proj_2);
@@ -25,7 +25,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
 	    
 		scr_weapon_melee_detect(false, x, y, s.image_angle, choose(attack_damage, attack_damage - 1), attack_strength, 35, obj_proj_2);
         
-        attack_time = 15;
+        attack_time = 16;
         attack_can = false;
     }
 }

@@ -21,6 +21,8 @@ part = 0;
 center_window_time = -1;
 //wsize = 2;
 
+option_refresh = false;
+
 debug = false;
 sprite_index = noone;
 

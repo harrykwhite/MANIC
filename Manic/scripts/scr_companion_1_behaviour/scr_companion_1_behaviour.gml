@@ -1,7 +1,5 @@
 var speed_multiplier = 1;
 var face_player = false;
-var speed_final;
-var distTo = 0;
 
 if (instance_exists(obj_player)){
 	var weapon_does_exist = false;
@@ -15,7 +13,7 @@ if (instance_exists(obj_player)){
 			runaway_starttime = 0;
 			runaway_time = 0;
 			
-			if (global.cutscene_current == -1){
+			if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150){
 				var enemyCount = array_length_1d(global.enemy);
 				for(var i = 0; i < enemyCount; i ++){
 					if (i == 1){
@@ -118,14 +116,21 @@ if (instance_exists(obj_player)){
 				move_y_to = obj_player.y;
 				face_player = true;
 			}
-		}else if (global.cutscene_current != 58){
+		}else if (global.cutscene_current == -1){
+			if (distance_to_object(obj_player) > 200){
+				target = noone;
+				runaway_time = 0;
+				runaway_starttime = 0;
+				return;
+			}
+			
 			if (runaway_time > 0){
 				runaway_time--;
 		
 				var dir = point_direction(target.x, target.y, x, y);
 				move_x_to = target.x + lengthdir_x(500, dir);
 				move_y_to = target.y + lengthdir_y(500, dir);
-				move_speed = 2;
+				move_speed = 1.5;
 			}else{
 				move_x_to = target.x;
 				move_y_to = target.y;
@@ -142,7 +147,7 @@ if (instance_exists(obj_player)){
 							attack_time --;
 						}else{
 							if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
-								if (weapon.attack_time <= 0){
+								if (weapon.attack_time <= 0) && (target.target == id){
 									runaway_starttime = 2;
 								}
 							
@@ -166,7 +171,7 @@ if (instance_exists(obj_player)){
 				runaway_starttime --;
 			}else if (runaway_starttime != -2){
 				runaway_starttime = -2;
-				runaway_time = 27;
+				runaway_time = 17;
 			}
 			
 			/*if (distance_to_object(obj_player) > 85){
@@ -213,7 +218,10 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}else{
-		face_player = false;
+		face_player = true;
+		move_speed = 0;
+		move_x_to = obj_player.x;
+		move_y_to = obj_player.y;
 	}
 	
 	distTo = distance_to_point(move_x_to, move_y_to);
@@ -278,13 +286,13 @@ if (dash){
 		dash = false;
 	}
 }else{
-	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
-	
 	var dir = point_direction(x, y, move_x_to, move_y_to);
 	while (place_meeting(x, y, obj_p_solid)){
 		x += lengthdir_x(1, dir);
 		y += lengthdir_y(1, dir);
 	}
+	
+	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 }
 
 // Facing

@@ -9,7 +9,7 @@ if (argument_count > 1){
 
 if (global.weapon_slot_standalone == -1){
 	if (global.weapon_slot[global.weapon_slotcurrent] != -1){
-	    old_weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]].id;
+	    old_weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
 	}
 	
 	var slotcount = global.weapon_slotmax - 1;

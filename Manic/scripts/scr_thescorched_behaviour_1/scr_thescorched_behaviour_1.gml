@@ -60,7 +60,7 @@ if (instance_exists(target)){
 			face_player = true;
 		}
 		
-		if (release_count < 5){
+		if (release_count < 4){
 			if (release_time > 0){
 				release_time --;
 			}else{
@@ -93,12 +93,12 @@ if (instance_exists(target)){
 			state = 2;
 		}
 	}else if (state == 2){
-		var maxtime = max(60 * 3 * ((health_current / health_max) * 2), 60 * 1.75);
+		var maxtime = max(60 * 2.25 * ((health_current / health_max) * 2), 60 * 1.75);
 		
 		if (slowfire_time < maxtime){
 			face_player = true;
 			
-			if (slowfire_time > 40) && (slowfire_time < maxtime - 30){
+			if (slowfire_time > 70) && (slowfire_time < maxtime - 30){
 				weapon.attack = true;
 			}
 			

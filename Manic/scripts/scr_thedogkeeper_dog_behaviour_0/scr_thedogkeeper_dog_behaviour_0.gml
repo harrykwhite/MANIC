@@ -10,8 +10,8 @@ if (instance_exists(target)){
 		leash_dir = point_direction(x, y, target.x, target.y + 6);
 	}
 	
-	move_x_to = keeper.x + lengthdir_x(leash_length + leash_length_offset + 10, leash_dir + leash_offset);
-	move_y_to = keeper.y + lengthdir_y(leash_length + leash_length_offset + 10, leash_dir + leash_offset);
+	move_x_to = keeper.x + lengthdir_x(leash_length + leash_length_offset + 20, leash_dir + leash_offset);
+	move_y_to = keeper.y + lengthdir_y(leash_length + leash_length_offset + 20, leash_dir + leash_offset);
 	
 	if (leash_bite){
 		var dirToTarget = point_direction(x, y, target.x, target.y);
@@ -122,9 +122,18 @@ if (!face_player){
 }
 
 // Animation
-if (speed_final > 0.5){
+if (speed_final > 0.5) || (idleanim_time > 0){
 	sprite_index = spr_thedogkeeper_dog_walk_0;
+	
+	if (idleanim_time == -1){
+		idleanim_time = 10;
+	}
+	
+	if (idleanim_time > 0){
+		idleanim_time --;
+	}
 }else{
+	idleanim_time = -1;
 	sprite_index = spr_thedogkeeper_dog_idle_0;
 }
 

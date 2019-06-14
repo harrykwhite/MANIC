@@ -54,8 +54,8 @@ if (death){
 	fl.fadeSpeed = 0.015;
 	
     instance_destroy();
-    scr_damage_custom(7, 1, 46, 46, 5, true, true, true, true);
-	scr_damage_custom(6, 1, 66, 66, 5, true, true, true, true);
+    scr_damage_custom(10, 1, 46, 46, 5, true, true, true, true);
+	scr_damage_custom(9, 1, 66, 66, 5, true, true, true, true);
     scr_effect_screenshake(5);
 	scr_effect_freeze(4);
 	scr_effect_vignette_flash(c_ltgray, 0.34, 0.01);

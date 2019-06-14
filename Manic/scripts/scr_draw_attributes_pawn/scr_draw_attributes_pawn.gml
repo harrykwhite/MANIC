@@ -20,7 +20,7 @@ if (drawshader){
 	var shader_blue = shader_get_uniform(sh_pawntint, "_blue");
 	var r = 0, g = 0, b = 0, a = 0;
 	
-	var drawlowhealth = true;
+	var drawlowhealth = (health_current <= max(floor(health_max / 3), 1)) || (bleed);
 	if (object_index == obj_antagonist){
 		if (room == rm_level_6_pre_00){
 			drawlowhealth = false;
@@ -28,18 +28,16 @@ if (drawshader){
 	}
 	
 	if (!is_metal) && (drawlowhealth){
-		if (health_current <= max(floor(health_max / 3), 1)) || (bleed){
-			if (!global.game_pause){
-			    if (random(3) < 1){
-			        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
-			    }
-			}
-		
-			a = wv;
-			r = 255 * 0.5;
-			g = 0;
-			b = 0;
+		if (!global.game_pause){
+		    if (random(3) < 1){
+		        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
+		    }
 		}
+		
+		a = wv;
+		r = 255 * 0.5;
+		g = 0;
+		b = 0;
 	}
 
 	var wradius = 6;

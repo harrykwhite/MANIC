@@ -6,3 +6,4 @@ tie = noone;
 explode = false;
 explode_anim = false;
 explode_anim_time = 0;
+explode_anim_time_max = 4;

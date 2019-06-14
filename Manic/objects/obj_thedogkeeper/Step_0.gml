@@ -105,6 +105,7 @@ if (!dogs_downed){
 	if (!weapon_has){
 		weapon_has = true;
 		weapon_index = PawnWeapon.HeavyShotgun;
+		return;
 	}
 	
 	//if (health_current > (health_max / 4)) && (!mid_cutscene_played){

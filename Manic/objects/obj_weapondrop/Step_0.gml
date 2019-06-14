@@ -8,6 +8,10 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	}
 }
 
+if (index == PlayerWeapon.Grenade) || (index == PlayerWeapon.ToxicGrenade) || (index == PlayerWeapon.LandMine){
+	pack = true;
+}
+
 var hit = false;
 
 if (spd > 0){

@@ -13,11 +13,11 @@ var xscale = argument4;
 var yscale = argument5;
 var angle = argument6;
 
-if (basecol != make_colour_rgb(189, 23, 23)){
-	draw_set_colour(make_colour_rgb(40, 40, 40));
-}else{
-	draw_set_colour(make_colour_rgb(30, 4, 4));
-}
+//if (basecol != make_colour_rgb(189, 23, 23)){
+//	draw_set_colour(make_colour_rgb(40, 40, 40));
+//}else{
+//	draw_set_colour(make_colour_rgb(30, 4, 4));
+//}
 
 //draw_text_transformed(xx + 3, yy + 3, str, xscale, yscale, angle);
 draw_set_colour(basecol);

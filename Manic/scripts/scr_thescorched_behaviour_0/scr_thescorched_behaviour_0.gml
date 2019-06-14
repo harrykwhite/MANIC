@@ -33,7 +33,7 @@ if (instance_exists(target)){
 			if (release_time > 0){
 				release_time--;
 			}else{
-				var interval = 360 / 6;
+				var interval = 360 / 5;
 				scr_sound_play_distance_pitch(snd_weapon_flare_1, false, 300, 0.8, 1.2);
 				flash_time = 5;
 				

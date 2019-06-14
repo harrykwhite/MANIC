@@ -321,7 +321,7 @@ if (dash_after_speed > 0.01){
 	if (!place_meeting(x + lengthdir_x((dash_after_speed * spd_multiplier) + 2, dash_after_dir), y + lengthdir_y((dash_after_speed * spd_multiplier) + 2, dash_after_dir), obj_p_solid)){
 		x += lengthdir_x(dash_after_speed * spd_multiplier, dash_after_dir);
 		y += lengthdir_y(dash_after_speed * spd_multiplier, dash_after_dir);
-		dash_after_speed *= 0.6 * spd_multiplier;
+		dash_after_speed *= 0.5 * spd_multiplier;
 	}else{
 		dash_after_speed = 0;
 		dash_after_dir = 0;

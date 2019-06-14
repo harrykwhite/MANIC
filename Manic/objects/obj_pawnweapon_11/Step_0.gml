@@ -11,7 +11,7 @@ if (instance_exists(owner)){
 		
 		if (within(attack_time, 25, 27)){
 			if (!audio_is_playing(snd_weapon_reload_0)){
-				scr_sound_play(snd_weapon_reload_0, false, 0.9, 1.2);
+				scr_sound_play_distance_pitch(snd_weapon_reload_0, false, 360, 1.2, 1.4);
 			}
 		}
 		

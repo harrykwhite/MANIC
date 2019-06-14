@@ -77,7 +77,7 @@ if (instance_exists(obj_player)){
 					line[8] = "I remember seeing a large group of them approaching a farm to the south-east.";
 					linefrom[8] = inst;
 			
-					line[9] = "Okay, thank you. I'll go and see what's going on.";
+					line[9] = "Okay, I'll go and see what's going on.";
 					linefrom[9] = obj_player;
 					
 					line[10] = "Thank you.";
@@ -232,6 +232,9 @@ if (instance_exists(obj_player)){
 				
 				line[2] = "You're not going to survive.";
 				linefrom[2] = inst;
+				
+				line[3] = "Oh well... let it proceed.";
+				linefrom[3] = inst;
 			}
 			break;
 		
@@ -432,19 +435,19 @@ if (instance_exists(obj_player)){
 					}
 				}
 			
-				if (special == "grenadierdepart"){
-					if (cutscene_dialogue_line >= 3){
-						inst.depart = true;
-						global.cutscene_time[index] = -120;
-					}
-				}
+				//if (special == "grenadierdepart"){
+				//	if (cutscene_dialogue_line >= 3){
+				//		inst.depart = true;
+				//		global.cutscene_time[index] = -120;
+				//	}
+				//}
 				
-				if (special == "prisonerdepart"){
-					if (cutscene_dialogue_line >= 3){
-						inst.depart = true;
-						global.cutscene_time[index] = -120;
-					}
-				}
+				//if (special == "prisonerdepart"){
+				//	if (cutscene_dialogue_line >= 3){
+				//		inst.depart = true;
+				//		global.cutscene_time[index] = -120;
+				//	}
+				//}
 			}
 			
 			obj_controller_ui.dialogue_next = false;
@@ -496,6 +499,7 @@ if (instance_exists(obj_player)){
 				}else{
 					global.cutscene_current = -1;
 					inst.cutscene_prop = false;
+					inst.in_cutscene = false;
 				}
 				return;
 			}

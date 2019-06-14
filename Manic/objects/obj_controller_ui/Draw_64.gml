@@ -13,7 +13,7 @@ if (instance_exists(obj_player)){
 		gpu_set_fog(true, c_red, 0, 0);
 		for(var i = 0; i < enemycount; i ++){
 			var inst = instance_find(obj_p_enemy, i);
-			var alpha = 0.35;
+			var alpha = 0.15;
 			
 			alpha *= (point_distance(inst.x, inst.y, obj_player.x, obj_player.y) / 400);
 			

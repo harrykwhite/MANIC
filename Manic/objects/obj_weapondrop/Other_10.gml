@@ -27,13 +27,13 @@ if (ammo == 0) && (global.weapon_type[index] == WeaponType.Ranged){
 
 if (specialweapon){
 	if (!place_meeting(x, y, obj_environment_cover_0)){
-		if (random(15) < 1){
+		if (random(13) < 1){
 			part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
 		}
 	}
 	
-	var glow = wave(0.4, 1, 2, 0);
+	var glow = wave(0.75, 1, 2, 0);
 	gpu_set_fog(true, c_white, 0, 0);
-	draw_sprite_ext(sprite, 0, x, y + yy, scale, scale, angle, c_white, 0.1 * glow);
+	draw_sprite_ext(sprite, 0, x, y + yy, scale, scale, angle, c_white, 0.025 * glow);
 	gpu_set_fog(false, c_black, 0, 0);
 }

@@ -45,12 +45,15 @@ if (bounce_time <= 0) && (spd > 0){
 
 // Explode
 if (explode){
+	var explode_scale = 1.15;
+	var explode_damage_size = 45;
+	
     repeat(9){
-        part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
+        part_particles_create(global.ps_front, x + random_range(-explode_damage_size * explode_scale * 0.5, explode_damage_size * explode_scale * 0.5), y + random_range(-explode_damage_size * explode_scale * 0.5, explode_damage_size * explode_scale * 0.5), global.pt_smoke_2, 1);
     }
 	
 	repeat(2){
-        part_particles_create(global.ps_front, x + random_range(-42, 42), y + random_range(-42, 42), global.pt_smoke_2, 1);
+        part_particles_create(global.ps_front, x + random_range(-explode_damage_size * explode_scale, explode_damage_size * explode_scale), y + random_range(-explode_damage_size * explode_scale, explode_damage_size * explode_scale), global.pt_smoke_2, 1);
     }
     
 	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
@@ -60,10 +63,10 @@ if (explode){
 	fl.fadeSpeed = 0.015;
 	
     instance_destroy();
-    scr_damage_custom(damage, 1, 45, 45, 3, damage_enemy, damage_player, damage_companion, true);
-	scr_damage_custom(round(damage / 2), 1, 60, 60, 3, damage_enemy, damage_player, damage_companion, true);
+    scr_damage_custom(damage, 1, explode_damage_size * explode_scale, explode_damage_size * explode_scale, 3, damage_enemy, damage_player, damage_companion, true);
+	scr_damage_custom(round(damage / 2), 1, (explode_damage_size * explode_scale) + 15, (explode_damage_size * explode_scale) + 15, 3, damage_enemy, damage_player, damage_companion, true);
     scr_effect_screenshake(6);
 	scr_effect_freeze(5);
 	scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
-	scr_sound_play_distance(snd_weapon_explode_0, false, 400);
+	scr_sound_play_distance(snd_weapon_explode_0, false, 400 * explode_scale);
 }

@@ -1,7 +1,3 @@
-if (!instance_exists(obj_ef_freeze)){
-	room_speed = 60;
-}
-
 if (center_window_time != -1){
 	if (center_window_time > 0){
 		center_window_time --;
@@ -9,6 +5,11 @@ if (center_window_time != -1){
 		window_center();
 		center_window_time = -1;
 	}
+}
+
+game_set_speed(60, gamespeed_fps);
+if (!instance_exists(obj_ef_freeze)){
+	room_speed = 60;
 }
 
 scr_position_view();

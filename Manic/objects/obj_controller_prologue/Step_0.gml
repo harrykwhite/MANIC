@@ -149,14 +149,14 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 		if (deer_spawn_time > 0){
 			deer_spawn_time --;
 		}else{
-			var xx = random_range(camx - 40, camx + camw + 40);
-			var yy = random_range(camy - 40, camy + camh + 40);
+			var xx = random_range(camx - 20, camx + camw + 20);
+			var yy = random_range(camy - 20, camy + camh + 20);
 			var counter = 0;
 			var dospawn = true;
 			
-			while (onscreen(xx, yy) || !inroom(xx, yy) || collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)){
-				xx = random_range(camx - 40, camx + camw + 40);
-				yy = random_range(camy - 40, camy + camh + 40);
+			while ((distance_to_object(obj_player) < 400) || !inroom(xx, yy) || collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)){
+				xx = random_range(camx - 20, camx + camw + 20);
+				yy = random_range(camy - 20, camy + camh + 20);
 				
 				if (counter < 200){
 					counter ++;
@@ -174,7 +174,7 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 				}
 			}
 			
-			deer_spawn_time = 60 * random_range(3, 5);
+			deer_spawn_time = 60 * random_range(7, 9);
 		}
 	}
 }

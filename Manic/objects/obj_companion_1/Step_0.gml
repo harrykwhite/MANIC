@@ -9,7 +9,7 @@ if (global.cutscene_current != -1){
 	if (global.cutscene_current == 2) || (global.cutscene_current == 52){
 		if (room == rm_level_3_02) && (global.cutscene_current == 52){
 			ispaused = false;
-			depart = true;
+			in_cutscene = true;
 		}else if (cutscene_prop) || (in_cutscene){
 			ispaused = true;
 			

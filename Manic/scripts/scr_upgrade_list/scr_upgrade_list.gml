@@ -10,7 +10,7 @@ enum PlayerUpgrade{
 	HeadLight, // Collectable
 }
 
-global.upgrade_name[0] = "Goggles";
+global.upgrade_name[0] = "Night Vision Goggles";
 global.upgrade_description[0] = "Opponents will glow in the dark";
 global.upgrade_sprite[0] = spr_player_upgrade_goggles_0;
 global.upgrade_sprite_corpse[0] = spr_player_upgrade_goggles_0_corpse;

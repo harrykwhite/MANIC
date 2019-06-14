@@ -15,7 +15,7 @@ if (count > 0){
 ds_list_destroy(list);
 
 if (explode_anim){
-	if (explode_anim_time < 15){
+	if (explode_anim_time < explode_anim_time_max){
 		explode_anim_time ++;
 	}else{
 		explode_anim_time = 0;

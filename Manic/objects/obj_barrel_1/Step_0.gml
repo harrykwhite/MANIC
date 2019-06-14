@@ -51,7 +51,7 @@ mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 // Object Death
 if (death){
-	scr_sound_play(snd_object_box_break_0, false, 0.8, 1.2);
+	scr_sound_play_distance_pitch(snd_object_box_break_0, false, 240, 0.8, 1.2);
 	
 	var fl = instance_create(x, y - 6, obj_block_light);
 	fl.mylight[0] = noone; fl.size[0] = 100;

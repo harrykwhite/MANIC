@@ -60,8 +60,15 @@ switch(room){
 			spawn_y = 160;
 		}else{
 			spawn_x = 2106;
-			spawn_y = 730;
+			spawn_y = 790;
 		}
+		
+		if (!audio_is_playing(m_ambience_wind_0)){
+			audio_play_sound(m_ambience_wind_0, 3, true);
+			audio_sound_gain(m_ambience_wind_0, 0, 0);
+		}
+		
+		audio_sound_gain(m_ambience_wind_0, 0.25 * obj_controller_all.real_ambience_volume, 6000);
 		break;
 }
 
@@ -76,8 +83,8 @@ spawn_cleared = false;
 
 postlevel_dialogue_time = 60 * 3;
 postlevel_dialogue_index = 0;
-postlevel_dialogue_index_max = 7;
 postlevel_dialogue_inst = noone;
+postlevel_dialogue_exception = false;
 
 // Other
 room_music_transition = false;

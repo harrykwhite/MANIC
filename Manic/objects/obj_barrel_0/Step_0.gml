@@ -31,7 +31,7 @@ if (hit_time > 0){
 
 // Object Death
 if (death){
-	scr_sound_play(snd_object_box_break_0, false, 0.8, 1.2);
+	scr_sound_play_distance_pitch(snd_object_box_break_0, false, 240, 0.8, 1.2);
     instance_destroy();
     scr_effect_screenshake(3);
 	scr_effect_freeze(8);

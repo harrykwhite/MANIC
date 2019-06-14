@@ -44,7 +44,7 @@ if (explode){
 // Object Death
 if (death){
     instance_destroy();
-	scr_damage_custom(3, 1, 45, 45, 3, true, true, true, true);
+	scr_damage_custom(6, 1, 45, 45, 3, true, true, true, true);
     scr_damage_custom_toxic(50, 50, 140, true);
     scr_effect_screenshake(3);
 	scr_effect_freeze(5);

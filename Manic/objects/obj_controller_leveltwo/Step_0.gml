@@ -12,6 +12,14 @@ if (!global.game_pause){
 	// Dust
 	if (room != rm_level_2_pre_00){
 		if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
+	
+		if (room == rm_level_2_post_00){
+			if (!audio_is_playing(m_ambience_wind_0)){
+				audio_play_sound(m_ambience_wind_0, 3, true);
+				audio_sound_gain(m_ambience_wind_0, 0, 0);
+				audio_sound_gain(m_ambience_wind_0, 0.25 * obj_controller_all.real_ambience_volume, 6000);
+			}
+		}
 	}else{
 		// Rain
 		if (random(2) < 1){
@@ -67,11 +75,14 @@ if (!global.game_pause){
 	
 	// Post Level Dialogue
 	if (room == rm_level_2_post_00){
-		if (postlevel_dialogue_index <= postlevel_dialogue_index_max) && (!global.game_companion_farmer_level2post_talked){
+		if (!global.game_companion_farmer_level2post_talked) || (postlevel_dialogue_exception){
+			global.game_companion_farmer_level2post_talked = true;
+			postlevel_dialogue_exception = true;
+			
 			if (global.cutscene_current == -1){
 				if (postlevel_dialogue_time > 0){
 					postlevel_dialogue_time --;
-			
+					
 					if (instance_exists(postlevel_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
 						obj_controller_ui.dialogue_x = postlevel_dialogue_inst.x;
 						obj_controller_ui.dialogue_y = postlevel_dialogue_inst.y - 24;
@@ -112,6 +123,8 @@ if (!global.game_pause){
 				
 						default:
 							dodraw = false;
+							obj_controller_ui.dialogue_x = postlevel_dialogue_inst.x;
+							obj_controller_ui.dialogue_y = postlevel_dialogue_inst.y - 24;
 							break;
 					}
 			
@@ -159,7 +172,7 @@ if (lighting < lighting_to){
 
 global.ambientShadowIntensity = lighting;
 
-if (player_exists) && (room != rm_level_2_pre_00) && (room != rm_level_2_post_00){
+if (player_exists) && (!scr_level_is_peaceful(room)){
 	var spawn_rate = spawn_rate_real;
 	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
@@ -244,6 +257,10 @@ if (player_exists) && (room != rm_level_2_pre_00) && (room != rm_level_2_post_00
 	}else if (global.game_pause){
 		if (audio_is_playing(m_ambience_rain_0)){
 			audio_pause_sound(m_ambience_rain_0);
+		}
+		
+		if (audio_is_playing(m_ambience_wind_0)){
+			audio_pause_sound(m_ambience_wind_0);
 		}
 		
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){

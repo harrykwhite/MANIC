@@ -1,4 +1,7 @@
-scr_option_init();
+if (option_refresh){
+	scr_option_init();
+	option_refresh = false;
+}
 
 //if (global.game_is_playthrough){
 	//scr_save_game_reader();

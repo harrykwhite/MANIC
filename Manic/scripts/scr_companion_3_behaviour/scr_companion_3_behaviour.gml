@@ -5,7 +5,8 @@ var distTo = 0;
 
 if (instance_exists(obj_player)){
 	if (!in_cutscene){
-		if (!instance_exists(target) || (target == noone)){if (global.cutscene_current == -1){
+		if (!instance_exists(target) || (target == noone)){
+			if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150){
 				var enemyCount = array_length_1d(global.enemy);
 				for(var i = 0; i < enemyCount; i ++){
 					if (i == 1){
@@ -102,12 +103,19 @@ if (instance_exists(obj_player)){
 				move_y_to = obj_player.y;
 				face_player = true;
 			}
-		}else if (global.cutscene_current != 58){
+		}else if (global.cutscene_current == -1){
+			if (distance_to_object(obj_player) > 200){
+				target = noone;
+				bite_to = false;
+				bite_retreat = false;
+				return;
+			}
+			
 			if (bite_to){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
-				move_speed = 1.85;
-		
+				move_speed = 1.75;
+				
 				if (distance_to_point(move_x_to, move_y_to) < 3){
 					bite_to = false;
 					bite_retreat = true;
@@ -118,7 +126,7 @@ if (instance_exists(obj_player)){
 			}else if (bite_retreat){
 				move_x_to = bite_retreat_x + lengthdir_x(80, bite_retreat_direction);
 				move_y_to = bite_retreat_y + lengthdir_y(80, bite_retreat_direction);
-				move_speed = 1.7;
+				move_speed = 1.6;
 		
 				if (distance_to_point(move_x_to, move_y_to) < 24) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 80){
 					bite_to = false;
