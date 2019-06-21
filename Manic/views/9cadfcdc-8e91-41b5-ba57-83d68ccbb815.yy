@@ -8,6 +8,8 @@
         "628f634b-4de2-4f6a-89d7-78a11c0ea367",
         "ed6679cb-2c09-4195-a79b-0e3753808aab",
         "fa5d9c20-e044-4ec8-ab93-eee2022a7610",
+        "750679bd-5d00-4277-a417-3ba7de37e273",
+        "6f441883-680b-4063-bcf5-cb1e0728b2b1",
         "4593ff78-1363-400e-a815-a3f0e3c2a0df",
         "90afc8c1-76c3-4b50-8043-ca630248d087",
         "1baea385-cfa2-42c2-ac54-03f4d1d74d90",
@@ -20,7 +22,10 @@
         "39940bb1-9a5d-4415-8619-1fca5c19c1ad",
         "551dad59-1b15-4e82-8c6f-de4c7f895a78",
         "bb3e924d-0c90-41c2-b616-6dab7e41008f",
-        "632a5e89-9cc1-476a-8b5f-ece6a329524c"
+        "632a5e89-9cc1-476a-8b5f-ece6a329524c",
+        "fbef7afc-7bfe-4e21-a265-b4f3358e1ddf",
+        "131501c6-759b-4acc-bce3-553425105f66",
+        "c4bcb09c-7945-4549-ac92-91611c7b9b64"
     ],
     "filterType": "GMSound",
     "folderName": "Weapons",

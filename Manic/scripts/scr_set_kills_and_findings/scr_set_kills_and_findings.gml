@@ -1,9 +1,13 @@
 global.worldtrain_room = rm_level_6_00;
 
 global.game_boss_thescorched_killed = false;
+global.game_boss_thescorched_talked = false;
 global.game_boss_thedogkeeper_killed = false;
+global.game_boss_thedogkeeper_talked = false;
 global.game_boss_firstantag_killed = false;
+global.game_boss_firstantag_talked = false;
 global.game_boss_trainhorde_killed = false;
+global.game_boss_trainhorde_talked = false;
 global.game_boss_final_killed = false;
 global.game_firstenemy_killed = false;
 global.game_firstdog_killed = false;

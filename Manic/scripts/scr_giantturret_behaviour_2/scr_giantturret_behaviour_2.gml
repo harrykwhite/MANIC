@@ -21,8 +21,8 @@ if (instance_exists(target)){
 			
 			var xpos = x + lengthdir_x(29, shoot_dir);
 			var ypos = y + lengthdir_y(29, shoot_dir);
-			part_type_direction(global.pt_smoke_5, dir - 6, dir + 6, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
+			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
+			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
 			
 			var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.enemy = true;
@@ -132,8 +132,8 @@ if (instance_exists(target)){
 				scr_sound_play(snd_weapon_shoot_3, false, 0.8, 1.2);
 				light_brightness = 1.25;
 				
-		        part_type_direction(global.pt_smoke_5, shoot_dir - 17, shoot_dir + 17, 0, 0);
-				part_particles_create(global.ps_front, xpos + lengthdir_x(5, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(5, shoot_dir) + random_range(-3, 3), global.pt_smoke_5, 1);
+		        part_type_direction(global.pt_smoke_4, shoot_dir - 17, shoot_dir + 17, 0, 0);
+				part_particles_create(global.ps_front, xpos + lengthdir_x(5, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(5, shoot_dir) + random_range(-3, 3), global.pt_smoke_4, 1);
 			
 			    var rocket = instance_create(xpos, ypos, obj_proj_8);
 				rocket.dir = shoot_dir;

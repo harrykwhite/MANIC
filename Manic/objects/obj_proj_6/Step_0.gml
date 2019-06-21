@@ -15,10 +15,6 @@ if (owner != noone){
 	y = owner.y - owner_offset_y;
 	
 }else{
-	if (collision_line(xprevious, yprevious, x + lengthdir_x(4, dir), y + lengthdir_y(4, dir), obj_p_solid, false, true)){
-		instance_destroy();
-	}
-
 	x += lengthdir_x(spd, dir);
 	y += lengthdir_y(spd, dir);
 }

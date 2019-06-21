@@ -68,8 +68,8 @@ if (!global.game_pause){
 
 	// Fog
 	if (random(3) < 1){
-		if (part_particles_count(global.pt_smoke_3) < 40){
-			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_smoke_3, 1);
+		if (part_particles_count(global.pt_fog_0) < 40){
+			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_0, 1);
 		}
 	}
 	

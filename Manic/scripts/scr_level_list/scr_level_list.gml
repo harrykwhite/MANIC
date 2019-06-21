@@ -43,7 +43,7 @@ global.level_turret_number[Level.WesternFarmland] = 0;
 global.level_entered[Level.WesternFarmland] = false;
 global.level_cleared[Level.WesternFarmland] = false;
 global.level_kill_count[Level.WesternFarmland] = 0;
-global.level_kill_max[Level.WesternFarmland] = 40;
+global.level_kill_max[Level.WesternFarmland] = 1//40;
 
 global.level_name[Level.UndergroundBunker] = "Underground Bunker";
 global.level_room[Level.UndergroundBunker] = rm_level_3_00;
@@ -65,7 +65,7 @@ global.level_turret_number[Level.WinterTown] = 0;
 global.level_entered[Level.WinterTown] = false;
 global.level_cleared[Level.WinterTown] = false;
 global.level_kill_count[Level.WinterTown] = 0;
-global.level_kill_max[Level.WinterTown] = 50;
+global.level_kill_max[Level.WinterTown] = 35;
 
 global.level_name[Level.HumanPrison] = "Human Prison";
 global.level_room[Level.HumanPrison] = rm_level_5_00;

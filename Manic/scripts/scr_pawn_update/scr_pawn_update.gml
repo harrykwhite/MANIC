@@ -221,7 +221,7 @@ if (health_current <= 0){
 		obj_controller_gameplay.cutscene_look_y = y;
 		obj_controller_gameplay.cutscene_look_object = obj_companion_corpse;
 		obj_controller_gameplay.cutscene_look_boss = -1;
-		obj_controller_gameplay.cutscene_look_time = 60;
+		obj_controller_gameplay.cutscene_look_time = 85;
 		obj_controller_gameplay.cutscene_look_prop = false;
 	}
 	
@@ -303,7 +303,7 @@ if (health_current <= 0){
 					ind = global.pawnweapon_playerindex[weapon_index];
 				
 					if (ind == PlayerWeapon.Grenade){
-						if (random(2.5) < 1) && (global.level_current >= 5){
+						if (random(2.5) < 1) && (global.level_current >= Level.TrainStation){
 							ind = PlayerWeapon.LandMine;
 						}
 					}

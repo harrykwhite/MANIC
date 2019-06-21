@@ -16,9 +16,3 @@ if (spd > 0){
 }else{
 	instance_destroy();
 }
-
-if (collision_line(xprevious, yprevious, x + lengthdir_x(2, dir), y + lengthdir_y(2, dir), obj_p_solid, false, true)){
-	part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_fire_0, 2);
-	part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_fire_2, 2);
-	instance_destroy();
-}

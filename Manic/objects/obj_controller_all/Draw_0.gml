@@ -3,12 +3,13 @@ if (!ds_exists(ds_depth_grid, ds_type_list)){
 }
 
 var grid = ds_depth_grid;
-var height = ds_depth_grid_height;
+var height = ds_depth_counter;
 var yy = 0;
 ds_grid_sort(grid, 1, true);
 
 repeat(height){
 	var instance = grid[# 0, yy];
+	
 	with(instance){
 		event_user(0);
 	}
@@ -17,4 +18,4 @@ repeat(height){
 }
 
 ds_depth_counter = 0;
-ds_grid_clear(grid, noone);
+ds_grid_clear(grid, min(max(6000, room_height), 6000));

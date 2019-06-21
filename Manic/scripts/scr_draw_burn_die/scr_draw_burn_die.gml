@@ -28,7 +28,7 @@ switch(argument_count){
 }
 
 
-part_type_direction(global.pt_smoke_5, 0, 360, 0, 0);
+part_type_direction(global.pt_smoke_4, 0, 360, 0, 0);
 repeat(num){
-	part_particles_create(global.ps_front, px + random_range(-wradius, wradius), py + random_range(-hradius, hradius), global.pt_smoke_5, 1);
+	part_particles_create(global.ps_front, px + random_range(-wradius, wradius), py + random_range(-hradius, hradius), global.pt_smoke_4, 1);
 }

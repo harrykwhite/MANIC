@@ -6,9 +6,13 @@ global.game_save_seconds = ini_read_real("Save", "Seconds", 0);
 global.worldtrain_room = ini_read_real("Save", "WorldTrainRoom", rm_level_6_00);
 
 global.game_boss_thescorched_killed = ini_read_real("Save", "TheScorchedKilled", false);
+global.game_boss_thescorched_talked = ini_read_real("Save", "TheScorchedTalked", false);
 global.game_boss_thedogkeeper_killed = ini_read_real("Save", "TheDogkeeperKilled", false);
+global.game_boss_thedogkeeper_talked = ini_read_real("Save", "TheDogkeeperTalked", false);
 global.game_boss_firstantag_killed = ini_read_real("Save", "FirstAntagKilled", false);
+global.game_boss_firstantag_talked = ini_read_real("Save", "FirstAntagTalked", false);
 global.game_boss_trainhorde_killed = ini_read_real("Save", "TrainHordeKilled", false);
+global.game_boss_trainhorde_talked = ini_read_real("Save", "TrainHordeTalked", false);
 global.game_boss_final_killed = ini_read_real("Save", "FinalBossKilled", false);
 global.game_firstenemy_killed = ini_read_real("Save", "FirstEnemyKilled", false);
 global.game_firstdog_killed = ini_read_real("Save", "FirstDogKilled", false);

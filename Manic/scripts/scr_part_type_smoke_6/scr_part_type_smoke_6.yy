@@ -1,5 +1,5 @@
 {
-    "id": "6a52f49f-3538-4fc9-9502-0ba156e9e480",
+    "id": "39af22f6-023f-479b-9ef9-fdd8d430f0c0",
     "modelName": "GMScript",
     "mvc": "1.0",
     "name": "scr_part_type_smoke_6",

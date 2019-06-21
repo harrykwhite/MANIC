@@ -255,6 +255,8 @@ if (instance_exists(obj_player)){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 		}
 	}
+	
+	scr_companion_teleport();
 }else{
 	if (image_xscale == scale){
 		weapon.dir = 360;

@@ -15,14 +15,20 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
         scr_effect_screenshake(1);
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
         scr_weapon_ammo_use(1);
+		
+		//if (global.weapon_slotammo[global.weapon_slotcurrent] <= 0) && (!mouse_check_button_released(mb_left)){
+		//	scr_sound_play(choose(snd_weapon_shell_0, snd_weapon_shell_1, snd_weapon_shell_2), false, 0.9, 1.2);
+		//}
         
         var xpos = x + lengthdir_x(25, mdir) + lengthdir_x(3, up(mdir));
         var ypos = y + lengthdir_y(25, mdir) + lengthdir_y(3, up(mdir));
 		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		image_speed = 1;
 		
-        part_type_direction(global.pt_smoke_5, dir - 6, dir + 6, 0, 0);
-        part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_5, 2);
+        part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
+        part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
+		part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
+        part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(1, 2));
 		scr_mouse_control(MouseType.Crosshair, 2.5, 20);
 		
 	    var shoot = instance_create(xpos, ypos, obj_proj_0);
@@ -40,6 +46,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
 	
 	if (mouse_check_button_released(mb_left)){
 		scr_sound_play(snd_weapon_reload_0, false, 0.9, 1.2);
+		//scr_sound_play(choose(snd_weapon_shell_0, snd_weapon_shell_1, snd_weapon_shell_2), false, 0.9, 1.2);
 	}
 }
 

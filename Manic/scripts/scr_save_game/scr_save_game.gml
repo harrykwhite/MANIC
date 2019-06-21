@@ -9,11 +9,14 @@ ini_write_real("Save", "Started", global.game_save_started);
 ini_write_real("Save", "Seconds", global.game_save_seconds);
 
 ini_write_real("Save", "WorldTrainRoom", global.worldtrain_room);
-
 ini_write_real("Save", "TheScorchedKilled", global.game_boss_thescorched_killed);
+ini_write_real("Save", "TheScorchedTalked", global.game_boss_thescorched_talked);
 ini_write_real("Save", "TheDogkeeperKilled", global.game_boss_thedogkeeper_killed);
+ini_write_real("Save", "TheDogkeeperTalked", global.game_boss_thedogkeeper_talked);
 ini_write_real("Save", "FirstAntagKilled", global.game_boss_firstantag_killed);
+ini_write_real("Save", "FirstAntagTalked", global.game_boss_firstantag_talked);
 ini_write_real("Save", "TrainHordeKilled", global.game_boss_trainhorde_killed);
+ini_write_real("Save", "TrainHordeTalked", global.game_boss_trainhorde_talked);
 ini_write_real("Save", "FinalBossKilled", global.game_boss_final_killed);
 ini_write_real("Save", "FirstEnemyKilled", global.game_firstenemy_killed);
 ini_write_real("Save", "FirstDogKilled", global.game_firstdog_killed);

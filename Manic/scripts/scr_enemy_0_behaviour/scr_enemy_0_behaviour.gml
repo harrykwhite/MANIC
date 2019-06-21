@@ -288,25 +288,31 @@ if (move_speed_real < speed_final){
 mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
 
 // Facing
-if (!face_target){
-	if (move_x_to > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
-}else{
-	if (target.x > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
-}
+//if (!face_target){
+//	if (move_x_to > x){
+//		image_xscale = scale;
+//	}else{
+//		image_xscale = -scale;
+//	}
+//}else{
+//	if (target.x > x){
+//		image_xscale = scale;
+//	}else{
+//		image_xscale = -scale;
+//	}
+//}
 
 // Animation
 if (instance_exists(weapon)){
 	var Idle0, Walk0;
 	var Idle1, Walk1;
 	var Idle2, Walk2;
+	
+	if (weapon.dir >= 270) || (weapon.dir <= 90){
+		image_xscale = scale;
+	}else{
+		image_xscale = -scale;
+	}
 	
 	switch(type){
 		

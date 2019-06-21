@@ -42,11 +42,17 @@ if (!global.game_pause){
 	
 	// Fog
 	if (random(2.5) < 1){
-		if (part_particles_count(global.pt_smoke_3) < 40){
-			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_smoke_3, 1);
+		if (part_particles_count(global.pt_fog_0) < 40){
+			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_0, 1);
 		}
 	}
-
+	
+	if (random(4) < 1){
+		if (part_particles_count(global.pt_fog_1) < 20){
+			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_1, 1);
+		}
+	}
+	
 	// Snow
 	repeat(4){
 	    part_particles_create(global.ps_front, camx + random_range(-350, camw), camy - 10, global.pt_snow_0, 1);
@@ -174,7 +180,6 @@ if (player_exists){
 		}
 		
 	}else if (global.game_pause){
-		
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
 			audio_pause_sound(spawn_music_main[CombatState.Idle]);
 		}

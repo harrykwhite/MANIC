@@ -4,7 +4,12 @@ if (global.game_pause){
 }
 
 if (open){
-	sprite_index = spr_prisonbar_4_open;
+	if (electronic){
+		sprite_index = spr_prisonbar_5_open;
+	}else{
+		sprite_index = spr_prisonbar_4_open;
+	}
+	
 	if (open_animation){
 		image_speed = 1;
 		if (image_index == image_number - 1){
@@ -15,8 +20,13 @@ if (open){
 		image_index = image_number - 1;
 	}
 }else{
-	sprite_index = spr_prisonbar_4;
-	if (global.cutscene_current == -1) && (!locked){
+	if (electronic){
+		sprite_index = spr_prisonbar_5;
+	}else{
+		sprite_index = spr_prisonbar_4;
+	}
+	
+	if (global.cutscene_current == -1) && (!locked) && (!electronic){
 		if (place_meeting(x, y + 15, obj_player)){
 			scr_ui_control_indicate("Unlock");
 			sprite_index = spr_prisonbar_4_interact;

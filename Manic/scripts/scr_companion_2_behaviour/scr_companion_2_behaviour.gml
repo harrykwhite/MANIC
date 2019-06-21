@@ -270,10 +270,18 @@ if (instance_exists(obj_player)){
 	
 	distTo = distance_to_point(move_x_to, move_y_to);
 	if (weapon_does_exist){
-		if (distTo > 26){
+		if (distTo > 3){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
+			
+			if (image_xscale == -scale) && (weapon.dir < 90 || weapon.dir > 270){
+				weapon.dir = 180;
+			}else if (image_xscale == scale) && (weapon.dir >= 90 || weapon.dir <= 270){
+				weapon.dir = 360;
+			}
 		}
 	}
+	
+	scr_companion_teleport();
 }else{
 	if (image_xscale == scale){
 		weapon.dir = 360;

@@ -7,8 +7,10 @@ if (level_opening){
 	if (level_opening_time > 0){
 		level_opening_time --;
 		
-		if (level_opening_text_alpha < 1.25){
-			level_opening_text_alpha += 0.015;
+		if (level_opening_line_width > 100){
+			if (level_opening_text_alpha < 1.25){
+				level_opening_text_alpha += 0.015;
+			}
 		}
 	}else{
 		level_opening_time = 0;

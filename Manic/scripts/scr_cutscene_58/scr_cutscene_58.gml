@@ -124,6 +124,22 @@ if (instance_exists(obj_player)){
 		case rm_level_2_02:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_thescorched);
 			
+			if (global.game_boss_thescorched_talked){
+				global.cutscene_current = 40;
+				global.cutscene_time[index] = 0;
+				
+				with(obj_controller_gameplay){
+					cutscene_look_x = inst.x;
+					cutscene_look_y = inst.y;
+					cutscene_look_time = 70;
+					cutscene_look_object = inst;
+					cutscene_look_prop = true;
+					cutscene_look_boss = Boss.TheScorched;
+				}
+				
+				return;
+			}
+			
 			if (inst.health_current <= inst.health_max / 2){
 				line[0] = "Such hostility from a man of peace?";
 				linefrom[0] = inst;
@@ -220,10 +236,28 @@ if (instance_exists(obj_player)){
 		case rm_level_4_01:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_thedogkeeper);
 			
+			if (global.game_boss_thedogkeeper_talked){
+				global.cutscene_current = 40;
+				global.cutscene_time[index] = 0;
+				
+				with(obj_controller_gameplay){
+					cutscene_look_x = inst.x;
+					cutscene_look_y = inst.y;
+					cutscene_look_time = 70;
+					cutscene_look_object = inst;
+					cutscene_look_prop = true;
+					cutscene_look_boss = Boss.TheDogkeeper;
+				}
+				
+				return;
+			}
+			
 			if (inst.dogs_downed){
 				//line[0] = "";
 				//linefrom[0] = inst;
 			}else{
+				global.game_boss_thedogkeeper_talked = true;
+				
 				line[0] = "Another fool, I see?";
 				linefrom[0] = inst;
 				
@@ -279,10 +313,10 @@ if (instance_exists(obj_player)){
 			if (instance_exists(inst)){
 				global.game_companion_prisoner_found = true;
 				
-				line[0] = "...Hello?";
+				line[0] = "Hello?";
 				linefrom[0] = inst;
 			
-				line[1] = "Hi. We're here to help you.";
+				line[1] = "Hi. We're here to rescue you.";
 				linefrom[1] = obj_companion_0;
 			
 				line[2] = "Okay...";
@@ -291,10 +325,10 @@ if (instance_exists(obj_player)){
 				line[3] = "Are... are you trying to stop them? The robots?";
 				linefrom[3] = inst;
 				
-				line[3] = "I can fight alongside you too.";
+				line[3] = "I can fight alongside you if you need.";
 				linefrom[3] = inst;
 				
-				line[4] = "That'd be really useful.";
+				line[4] = "That'd be very useful.";
 				linefrom[4] = obj_player;
 				
 				line[5] = "Thank you!";
@@ -328,6 +362,22 @@ if (instance_exists(obj_player)){
 		
 		case rm_level_6_pre_00:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
+			
+			if (global.game_boss_firstantag_talked){
+				global.cutscene_current = 40;
+				global.cutscene_time[index] = 0;
+				
+				with(obj_controller_gameplay){
+					cutscene_look_x = inst.x;
+					cutscene_look_y = inst.y;
+					cutscene_look_time = 70;
+					cutscene_look_object = inst;
+					cutscene_look_prop = true;
+					cutscene_look_boss = Boss.Antagonist;
+				}
+				
+				return;
+			}
 			
 			if (inst == noone) || (obj_player.y < 200){
 				if (obj_player.y < 200){
@@ -407,13 +457,29 @@ if (instance_exists(obj_player)){
 			}
 			
 			if (instance_exists(inst)){
+				if (global.game_boss_trainhorde_talked){
+					global.cutscene_current = 40;
+					global.cutscene_time[index] = 0;
+				
+					with(obj_controller_gameplay){
+						cutscene_look_x = inst.x;
+						cutscene_look_y = inst.y;
+						cutscene_look_time = 70;
+						cutscene_look_object = inst;
+						cutscene_look_prop = true;
+						cutscene_look_boss = Boss.TrainBoss;
+					}
+				
+					return;
+				}
+				
 				line[0] = "I was told that there was farmer with you.";
 				linefrom[0] = inst;
 				
 				line[1] = "I guess not...";
 				linefrom[1] = inst;
 				
-				line[2] = "Oh well...";
+				line[2] = "Oh well. I guess you'll have to die alone.";
 				linefrom[2] = inst;
 			}
 			break;
@@ -430,7 +496,7 @@ if (instance_exists(obj_player)){
 					if (cutscene_dialogue_line >= 6){
 						inst.depart_standaway = false;
 						inst.depart = true;
-					
+						
 						global.cutscene_time[index] = -120;
 					}
 				}
@@ -455,6 +521,26 @@ if (instance_exists(obj_player)){
 			
 			// End the dialogue sequence
 			if (cutscene_dialogue_line >= array_length_1d(line)){
+				switch(inst.object_index){
+					case obj_thescorched:
+						global.game_boss_thescorched_talked = true;
+						break;
+					
+					case obj_thedogkeeper:
+						global.game_boss_thedogkeeper_talked = true;
+						break;
+					
+					case obj_antagonist:
+						global.game_boss_firstantag_talked = true;
+						break;
+					
+					case obj_enemy_0:
+						if (inst.type == Enemy0_Type.TrainBoss){
+							global.game_boss_trainhorde_talked = true;
+						}
+						break;
+				}
+				
 				global.cutscene_time[index] = 0;
 				
 				cutscene_dialogue_line = -1;
@@ -552,6 +638,26 @@ if (instance_exists(obj_player)){
 	
 	// Dialogue skipping
 	if (obj_controller_ui.dialogue_skip >= obj_controller_ui.dialogue_skip_max){
+		switch(inst.object_index){
+			case obj_thescorched:
+				global.game_boss_thescorched_talked = true;
+				break;
+			
+			case obj_thedogkeeper:
+				global.game_boss_thedogkeeper_talked = true;
+				break;
+			
+			case obj_antagonist:
+				global.game_boss_firstantag_talked = true;
+				break;
+			
+			case obj_enemy_0:
+				if (inst.type == Enemy0_Type.TrainBoss){
+					global.game_boss_trainhorde_talked = true;
+				}
+				break;
+		}
+		
 		global.cutscene_current = -1;
 		global.cutscene_time[index] = 0;
 		cutscene_dialogue_line = -1;

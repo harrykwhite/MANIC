@@ -7,11 +7,6 @@ if (center_window_time != -1){
 	}
 }
 
-game_set_speed(60, gamespeed_fps);
-if (!instance_exists(obj_ef_freeze)){
-	room_speed = 60;
-}
-
 scr_position_view();
 scr_update_real_volumes();
 
@@ -28,7 +23,6 @@ if (full <= 0){
 		full = 40;
 		
 		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
-		game_set_speed(60, gamespeed_fps);
 		scr_options_refresh();
 	}
 }else{

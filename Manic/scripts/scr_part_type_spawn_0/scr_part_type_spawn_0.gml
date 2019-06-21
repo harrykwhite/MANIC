@@ -8,4 +8,4 @@ part_type_orientation(pt, 0, 360, 0, 0, 0);
 part_type_direction(pt, 0, 360, 0, 0);
 part_type_speed(pt, 1, 1.2, -0.005, 0);
 part_type_life(pt, 80, 110);
-part_type_size(pt, 0.5, 0.6, -0.025, 0);
+part_type_size(pt, 0.6, 0.7, -0.015, 0);

@@ -75,11 +75,21 @@ if (level_opening){
 	draw_set_colour(c_black);
 	draw_rectangle(0, 0, dwidth, dheight, false);
 	
-	draw_set_alpha(level_opening_text_alpha);
 	draw_set_halign(fa_center);
 	draw_set_font(fnt_cambria_3);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 25, string(global.level_name[global.level_current]), c_white);
-	//draw_rectangle((dwidth / 2) - 110, (dheight / 2) + 8, (dwidth / 2) + 110, (dheight / 2) + 8 + 1, false);
+	
+	var line_width_to = string_width(string(global.level_name[global.level_current])) + 30;
+	
+	draw_set_alpha(level_opening_text_alpha * (level_opening_line_width / line_width_to));
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 26 + ((1 - (level_opening_line_width / line_width_to)) * 50), string(global.level_name[global.level_current]), c_white);
+	
+	if (level_opening_time < 60 * 4.5){
+		level_opening_line_width = approach(level_opening_line_width, line_width_to, 5);
+	}
+	
+	draw_set_colour(c_white);
+	draw_rectangle((dwidth / 2) - (level_opening_line_width / 2), (dheight / 2) + 8, (dwidth / 2) + (level_opening_line_width / 2), (dheight / 2) + 8 + 1, false);
+	
 	draw_set_font(fnt_cambria_1);
 	scr_text_shadow((dwidth / 2), (dheight / 2) + 13, "PART " + string(global.level_current), c_white);
 }

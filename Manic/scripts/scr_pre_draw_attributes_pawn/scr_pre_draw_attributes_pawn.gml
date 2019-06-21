@@ -27,10 +27,10 @@ if (weapon != -1){
 		    }
 			
 			var armx = arm.x + lengthdir_x(4, angle);
-			var army = (arm.y - 2) + lengthdir_y(4, angle);
+			var army = (arm.y - 1) + lengthdir_y(4, angle);
 			
 			if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
-					army --;
+				army --;
 			}
 			
 			draw_sprite_ext(spr_enemy_0_arm_0, 1, armx, army, scale, arm.image_yscale, angle, c_white, image_alpha * alpha_mult);

@@ -42,6 +42,9 @@ scr_part_type_bodypart_companion_1();
 scr_part_type_bodypart_companion_2();
 scr_part_type_bodypart_companion_3();
 
+scr_part_type_fog_0();
+scr_part_type_fog_1();
+
 scr_part_type_smoke_0();
 scr_part_type_smoke_1();
 scr_part_type_smoke_2();
@@ -49,12 +52,12 @@ scr_part_type_smoke_3();
 scr_part_type_smoke_4();
 scr_part_type_smoke_5();
 scr_part_type_smoke_6();
-scr_part_type_smoke_7();
-scr_part_type_smoke_8();
 
 scr_part_type_wood_0();
 scr_part_type_wood_1();
 scr_part_type_wood_2();
+
+scr_part_type_shell_0();
 
 scr_part_type_dust_0();
 scr_part_type_dust_1();

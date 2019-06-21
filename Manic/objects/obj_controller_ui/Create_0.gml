@@ -1,6 +1,11 @@
 // Setup
 global.level_current = scr_level_get_index(room);
 
+if (room == rm_level_2_01) && (!global.game_companion_farmer_found){
+	scr_companion_register(obj_companion_0);
+	global.game_companion_farmer_found = true;
+}
+
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
 
@@ -97,6 +102,7 @@ upgrade_indicate_time = 0;
 upgrade_indicate_alpha = 0;
 
 level_opening = false;
+level_opening_line_width = 0;
 level_opening_text_alpha = 0;
 level_opening_alpha = 1;
 level_opening_time = 0;
@@ -122,7 +128,7 @@ for(var i = 0; i < levelcount; i ++){
 			if (global.level_current != Level.Prologue){
 				level_opening = true;
 				level_opening_active = true;
-				level_opening_time = 60 * 4;
+				level_opening_time = 60 * 4.65;
 			}
 			
 			global.level_entered[i] = true;

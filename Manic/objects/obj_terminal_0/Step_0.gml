@@ -1,6 +1,6 @@
 var player = obj_player;
 if (instance_exists(player)){
-	if (point_distance(x + (sprite_width / 2), y + (sprite_height / 2), player.x, player.y) < 30){
+	if (point_distance(x, y, player.x, player.y) < 30){
 		interact = true;
 	}else{
 		interact = false;
@@ -33,6 +33,11 @@ if (interact) && (active){
 		sprite_index = spr_terminal_0;
 	}else{
 		sprite_index = spr_terminal_0_off;
+		
+		if (instance_exists(mylight)){
+			instance_destroy(mylight);
+			mylight = noone;
+		}
 		
 		if (special == "unlock_prison_door"){
 			var inst = inst_37AAB649;

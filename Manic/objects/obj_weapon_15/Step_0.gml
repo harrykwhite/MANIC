@@ -20,8 +20,10 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
         var ypos = y + lengthdir_y(16, mdir) + lengthdir_y(1, up(mdir));
 		image_speed = 1;
 		
-        part_type_direction(global.pt_smoke_5, mdir - 17, mdir + 17, 0, 0);
-        part_particles_create(global.ps_front, xpos + lengthdir_x(10, mdir) + random_range(-3, 3), ypos + lengthdir_y(10, mdir) + random_range(-3, 3), global.pt_smoke_5, 1);
+        part_type_direction(global.pt_smoke_4, mdir - 17, mdir + 17, 0, 0);
+        part_particles_create(global.ps_front, xpos + lengthdir_x(10, mdir) + random_range(-3, 3), ypos + lengthdir_y(10, mdir) + random_range(-3, 3), global.pt_smoke_4, 1);
+		part_type_direction(global.pt_shell_0, (mdir - 180) - 15, (mdir - 180) + 15, 0, 0);
+        part_particles_create(global.ps_bottom, x + lengthdir_x(3, mdir) + random_range(-3, 3), y + 4 + lengthdir_y(3, mdir) + random_range(-3, 3), global.pt_shell_0, choose(1, 2));
 		scr_mouse_control(MouseType.SmallCrosshair, 2.5, 15);
 		
 	    var shoot = instance_create(xpos, ypos, obj_proj_7);

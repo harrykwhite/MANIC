@@ -15,9 +15,9 @@ if (instance_exists(target)){
 	image_angle = dir;
 }
 
-part_type_speed(global.pt_smoke_8, 2, 4, -0.1, 0);
-part_type_direction(global.pt_smoke_8, (dir - 180) - 10, (dir - 180) + 10, 0, 0);
-part_particles_create(global.ps_front, x + lengthdir_x(-5, dir), y + lengthdir_y(-5, dir), global.pt_smoke_8, 1);
+part_type_speed(global.pt_smoke_6, 2, 4, -0.1, 0);
+part_type_direction(global.pt_smoke_6, (dir - 180) - 10, (dir - 180) + 10, 0, 0);
+part_particles_create(global.ps_front, x + lengthdir_x(-5, dir), y + lengthdir_y(-5, dir), global.pt_smoke_6, 1);
 
 x += lengthdir_x(spd, dir);
 y += lengthdir_y(spd, dir);

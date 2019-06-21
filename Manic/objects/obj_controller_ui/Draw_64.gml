@@ -108,17 +108,11 @@ if (instance_exists(obj_player)){
         if (global.weapon_slot[counter] != -1) && (global.weapon_slot[counter] != 4){
             var spr = global.weapon_sprite[global.weapon_slot[counter]];
             
-			gpu_set_fog(true, c_gray, 0, 0);
-			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
-			
             gpu_set_fog(true, c_white, 0, 0);
             draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_white, 0, 0);
         }else if (global.level_current != Level.Prologue){
             var spr = spr_weapon_4;
-			
-			gpu_set_fog(true, c_dkgray, 0, 0);
-			draw_sprite_ext(spr, 0, (xx - 9) + 1, (yy + 8) + 1, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 0.75 * weapon_standalone_alpha * ui_alpha);
 			
             gpu_set_fog(true, c_gray, 0, 0);
             draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
