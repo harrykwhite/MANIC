@@ -21,6 +21,7 @@ run_y = y;
 run_time = 0;
 run_away_time = 0;
 run_away_direction = 0;
+run_away_complete = false;
 
 dash = false;
 dash_time = random_range(80, 120);
@@ -81,9 +82,9 @@ in_cutscene = false;
 active = false;
 
 if (room == rm_level_6_pre_00){
-	health_max = 80;
+	health_max = 100;
 }else{
-	health_max = 50;
+	health_max = 65;
 }
 
 health_current = health_max;

@@ -43,7 +43,7 @@ global.upgrade_behind[3] = false;
 global.upgrade_equipped[3] = false;
 
 global.upgrade_name[4] = "Gas Mask";
-global.upgrade_description[4] = "Provides immunity to poison and toxic gas";
+global.upgrade_description[4] = "Provides immunity to poison\nand toxic gas";
 global.upgrade_sprite[4] = spr_player_upgrade_gasmask_0;
 global.upgrade_sprite_corpse[4] = spr_player_upgrade_gasmask_0_corpse;
 global.upgrade_sprite_pickup[4] = spr_player_upgrade_gasmask_0_pickup;

@@ -6,7 +6,7 @@ start_offset = 35;
 
 shoot_can = true;
 shoot_range = 9;
-shoot_damage = 1;
+shoot_damage = 2;
 shoot_time = 0;
 shoot_strength = 0.5;
 shoot_bounceback = 0;

@@ -5,30 +5,6 @@ var mousey = scr_world_to_screen_y(obj_controller_mouse.y);
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
-// Player goggle effect
-if (instance_exists(obj_player)){
-	if (scr_player_has_upgrade(PlayerUpgrade.Goggles)){
-		var enemycount = instance_number(obj_p_enemy);
-		
-		gpu_set_fog(true, c_red, 0, 0);
-		for(var i = 0; i < enemycount; i ++){
-			var inst = instance_find(obj_p_enemy, i);
-			var alpha = 0.15;
-			
-			alpha *= (point_distance(inst.x, inst.y, obj_player.x, obj_player.y) / 400);
-			
-			var xx = (inst.x - camera_get_view_x(view_camera[0])) * gui_scale_x;
-			var yy = (inst.y - camera_get_view_y(view_camera[0])) * gui_scale_y;
-			
-			with(inst){
-				draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale * gui_scale_x, image_yscale * gui_scale_y, image_angle, c_white, alpha * image_alpha);
-			}
-		}
-		
-		gpu_set_fog(false, c_black, 0, 0);
-	}
-}
-
 // Red Tint
 redtint_alphato = 0;
 if (global.game_combat_state == CombatState.Buildup){
@@ -315,6 +291,7 @@ if (instance_exists(obj_player)){
 	repeat(slotmax){
 		var xx = 51, yy = (74 * (counter + 1)) + 12;
 		draw_set_halign(fa_left);
+		draw_set_alpha(weapon_standalone_alpha);
 		
 		if (global.weapon_slot[counter] != -1){
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
@@ -327,6 +304,7 @@ if (instance_exists(obj_player)){
 		
 		draw_set_halign(fa_right);
 		scr_text_shadow_transformed(xx + 16, yy - 36, string(counter + 1), c_gray, 1, 1, 0);
+		draw_set_alpha(1);
 		
 		counter ++;
 	}
@@ -382,6 +360,10 @@ if (instance_exists(obj_player)){
 					
 					case AmmoType.Darts:
 						scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, weaponammo_scale, weaponammo_scale, 0);
+						break;
+					
+					case AmmoType.Shells:
+						scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col, weaponammo_scale, weaponammo_scale, 0);
 						break;
 				}
 	        }else{
@@ -486,17 +468,26 @@ if (upgrade_indicate_time > 0){
 }else{
 	if (upgrade_indicate_alpha > 0){
 		upgrade_indicate_alpha -= 0.05;
+	}else{
+		upgrade_indicate_line_width = 0;
 	}
 }
 
 if (upgrade_indicate_alpha > 0){
-	draw_set_alpha(upgrade_indicate_alpha);
-	
-	draw_set_halign(fa_center);
-	draw_set_font(fnt_cambria_3);
-	scr_text_shadow(dwidth / 2, dheight - 249, global.upgrade_name[upgrade_indicate_index], c_white);
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow(dwidth / 2, dheight - 220, global.upgrade_description[upgrade_indicate_index], c_white);
+	
+	var line_width_to = string_width(global.upgrade_description[upgrade_indicate_index]) + 30;
+	upgrade_indicate_line_width = approach(upgrade_indicate_line_width, line_width_to, 5);
+	
+	draw_set_font(fnt_cambria_3);
+	draw_set_alpha(upgrade_indicate_alpha * (upgrade_indicate_line_width / line_width_to));
+	draw_set_halign(fa_center);
+	scr_text_shadow(dwidth / 2, 232 + ((1 - (upgrade_indicate_line_width / line_width_to)) * 40), global.upgrade_name[upgrade_indicate_index], c_white);
+	
+	draw_rectangle((dwidth / 2) - (upgrade_indicate_line_width / 2), 264, (dwidth / 2) + (upgrade_indicate_line_width / 2), 265, false);
+	
+	draw_set_font(fnt_cambria_1);
+	scr_text_shadow(dwidth / 2, 264, global.upgrade_description[upgrade_indicate_index], c_white);
 	
 	draw_set_alpha(1);
 }
@@ -779,30 +770,6 @@ if (global.level_current == Level.Prologue){
 
 // Game Ending
 if (ending){
-	if (ending_back_time > 0){
-		ending_back_time --;
-	}else{
-		if (ending_back_alpha < 1){
-			ending_back_alpha += 0.0025;
-		}
-	}
-	
-	if (ending_logo_text_time > 0){
-		ending_logo_text_time --;
-		
-		if (ending_logo_text_alpha < 1){
-			ending_logo_text_alpha += 0.0025;
-		}
-	}else{
-		if (ending_logo_text_alpha > 0){
-			ending_logo_text_alpha -= 0.005;
-		}else{
-			if (ending_credits_text_alpha < 1){
-				ending_credits_text_alpha += 0.005;
-			}
-		}
-	}
-	
 	draw_set_alpha(ending_back_alpha);
 	draw_set_colour(c_black);
 	draw_rectangle(0, 0, dwidth, dheight, false);
@@ -815,14 +782,16 @@ if (ending){
 	draw_set_font(fnt_cambria_3);
 	draw_set_halign(fa_center);
 	draw_set_alpha(ending_credits_text_alpha);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 200, "A GAME BY GETA", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 165, "A GAME BY GETA", c_white);
 	
 	draw_set_font(fnt_cambria_2);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 120, "Programming, artwork and game design by Harry White", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 60, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 100, "Programming, artwork and game design by Harry White", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 50, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
 	scr_text_shadow(dwidth / 2, (dheight / 2), "Art assistance for character design by Ulkenstride", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 60, "Programming assistance from Gideon the Bard and Zyro", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 120, "Thanks for playing!", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Zyro", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
+	
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 165, "Press [" + scr_mousecheck_string(global.game_option[| Options.Input_Attack]) + "] to continue", c_white);
 }
 
 draw_set_alpha(1);

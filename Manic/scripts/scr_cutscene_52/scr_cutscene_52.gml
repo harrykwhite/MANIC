@@ -28,8 +28,8 @@ if (instance_exists(obj_player)){
 				break;
 		}
 	
-		global.cutscene_camera_x[index] = x_to;
-		global.cutscene_camera_y[index] = y_to;
+		global.cutscene_camera_x[index] = obj_player.x;
+		global.cutscene_camera_y[index] = obj_player.y;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
 		
 		obj_player.move_x_to = x_to;

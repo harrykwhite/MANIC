@@ -6,7 +6,7 @@ light_brightness = 0;
 scale = random_range(0.975, 1.025);
 destroy = false;
 sporadic = false;
-sporadic_timemax = random_range(30, 50);
+sporadic_timemax = random_range(45, 150);
 sporadic_time = sporadic_timemax;
 
 whiteflash_alpha = 0;

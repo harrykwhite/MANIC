@@ -60,9 +60,9 @@ spawn_music_pause_position[CombatState.Climax] = 0;
 
 spawn_time = spawn_interval[global.game_combat_state];
 
-if (room == rm_level_1_00) && (global.game_combat_state == CombatState.Idle) && (!global.game_firstenemy_killed){
-	spawn_time *= 2.5;
-}
-
 global.game_combat_in_hordechallenge = false;
 global.game_combat_in_hordechallenge_time = 0;
+
+if (global.game_combat_state == CombatState.Idle){
+	spawn_time = 60 * 8;
+}

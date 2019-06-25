@@ -1,3 +1,7 @@
+if (object_index == obj_companion_0){
+	return;
+}
+
 if (global.player_health_current > 0){
 	if (object_index == obj_player){
 		scr_player_damage(global.player_health_max, 2, random(360), 6);

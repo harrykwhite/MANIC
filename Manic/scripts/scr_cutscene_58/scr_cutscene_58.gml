@@ -1,5 +1,5 @@
 ///scr_cutscene_58();
-var index = 58, x_to = 0, y_to = 0, special = "";
+var index = 58, x_to = 0, y_to = 0, special = "", is_last_interaction = false;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
@@ -141,6 +141,8 @@ if (instance_exists(obj_player)){
 			}
 			
 			if (inst.health_current <= inst.health_max / 2){
+				is_last_interaction = true;
+				
 				line[0] = "Such hostility from a man of peace?";
 				linefrom[0] = inst;
 				
@@ -173,13 +175,13 @@ if (instance_exists(obj_player)){
 			line[1] = "I imagine that there'd be several around the country.";
 			linefrom[1] = obj_player;
 			
-			line[2] = "We should try and clear them out.";
+			line[2] = "We should try and clear each of them out.";
 			linefrom[2] = inst;
 			
-			line[3] = "Definitely. Let's also try to find out more about them.";
+			line[3] = "Yes, definitely.";
 			linefrom[3] = obj_player;
 			
-			line[4] = "In doing that we will be able to locate where the group first came from.";
+			line[4] = "In doing that we'll be able to locate where the group first came from.";
 			linefrom[4] = obj_player;
 			break;
 		
@@ -218,18 +220,31 @@ if (instance_exists(obj_player)){
 				
 				line[0] = "Alright, the base seems to be clear now.";
 				linefrom[0] = obj_player;
-			
+				
 				line[1] = "We can leave through the exit here.";
 				linefrom[1] = obj_player;
-			
+				
 				line[2] = "Thank you for the help!";
 				linefrom[2] = obj_player;
-			
+				
 				line[3] = "No problem.";
 				linefrom[3] = inst;
 				
 				line[4] = "Good luck with your quest!";
 				linefrom[4] = inst;
+			}else{
+				global.cutscene_current = 52;
+				global.cutscene_time[index] = 0;
+				
+				with(obj_controller_gameplay){
+					cutscene_moveto_dir = 0;
+					cutscene_moveto_level = Level.WinterTown;
+					cutscene_moveto_room = rm_level_4_00;
+					cutscene_moveto_type = 0;
+					cutscene_moveto_instant = false;
+				}
+				
+				return;
 			}
 			break;
 		
@@ -252,12 +267,12 @@ if (instance_exists(obj_player)){
 				return;
 			}
 			
+			is_last_interaction = true;
+			
 			if (inst.dogs_downed){
 				//line[0] = "";
 				//linefrom[0] = inst;
 			}else{
-				global.game_boss_thedogkeeper_talked = true;
-				
 				line[0] = "Another fool, I see?";
 				linefrom[0] = inst;
 				
@@ -280,13 +295,13 @@ if (instance_exists(obj_player)){
 					line[0] = "Who are you?";
 					linefrom[0] = inst;
 					
-					line[1] = "I'm here to get you out of here.";
+					line[1] = "I'm here to get you out of this place.";
 					linefrom[1] = obj_player;
 					
 					line[2] = "What? What do you mean?";
 					linefrom[2] = inst;
 					
-					line[3] = "Tell me, how did you get here?";
+					line[3] = "Just tell me, how did you get here?";
 					linefrom[3] = obj_player;
 					
 					line[4] = "I was just at my home...";
@@ -357,90 +372,109 @@ if (instance_exists(obj_player)){
 				
 				line[3] = "Good bye.";
 				linefrom[3] = inst;
-			}
-			break;
-		
-		case rm_level_6_pre_00:
-			inst = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
-			
-			if (global.game_boss_firstantag_talked){
-				global.cutscene_current = 40;
+			}else{
+				global.cutscene_current = 52;
 				global.cutscene_time[index] = 0;
 				
 				with(obj_controller_gameplay){
-					cutscene_look_x = inst.x;
-					cutscene_look_y = inst.y;
-					cutscene_look_time = 70;
-					cutscene_look_object = inst;
-					cutscene_look_prop = true;
-					cutscene_look_boss = Boss.Antagonist;
+					cutscene_moveto_dir = 3;
+					cutscene_moveto_level = Level.TrainStation;
+					cutscene_moveto_room = rm_level_6_pre_00;
+					cutscene_moveto_type = 0;
+					cutscene_moveto_instant = false;
 				}
 				
 				return;
 			}
 			
-			if (inst == noone) || (obj_player.y < 200){
-				if (obj_player.y < 200){
-					inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_0);
-					inst.in_cutscene = true;
-					
-					if (cutscene_dialogue_line < 6){
-						inst.depart_standaway = true;
-						inst.depart = false;
+			break;
+		
+		case rm_level_6_pre_00:
+			inst = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
+			
+			if (cutscene_dialogue_special == 1){
+				if (cutscene_dialogue_line >= 3){
+					inst = obj_companion_0;
+				}
+			}
+			
+			if (inst != noone) && (instance_exists(inst)){
+				if (inst.object_index == obj_antagonist){
+					if (inst.near_dead){
+						cutscene_dialogue_special = 1;
 					}
-					
-					special = "farmerdepart";
-					
-					line[0] = "I'm not too sure about this...";
-					linefrom[0] = inst;
-					
-					line[1] = "About what?";
-					linefrom[1] = obj_player;
-					
-					line[2] = "You need to learn to control yourself.";
-					linefrom[2] = inst;
-					
-					line[3] = "You've completely lost track of the bigger picture here.";
-					linefrom[3] = inst;
-					
-					line[4] = "This isn't about winning a fight, it's about saving others.";
-					linefrom[4] = inst;
-					
-					line[5] = "I'm not going to help you any longer.";
-					linefrom[5] = inst;
-					
-					line[6] = "I'm sorry.";
-					linefrom[6] = inst;
-					
-					line[7] = "...";
-					linefrom[7] = obj_player;
-					
-					line[8] = "...I won't need him.";
-					linefrom[8] = obj_player;
 				}
 			}else{
-				if (inst.near_dead){
-					line[0] = "I may have underestimated you...";
-					linefrom[0] = inst;
+				x_to = obj_player.x;
+				y_to = obj_player.y - 8;
+			}
+			
+			if (cutscene_dialogue_special == 1){
+				special = "farmerdepart";
 				
-					line[1] = "Meet me at the city if you truly think you're worthy.";
-					linefrom[1] = inst;
+				line[0] = "I may have underestimated you...";
+				linefrom[0] = inst;
+			
+				line[1] = "Meet me at the city if you truly think you're worthy.";
+				linefrom[1] = inst;
+			
+				line[2] = "There we will fight again.";
+				linefrom[2] = inst;
+					
+				line[3] = "I'm not too sure about this...";
+				linefrom[3] = obj_companion_0;
 				
-					line[2] = "There we will fight again.";
-					linefrom[2] = inst;
-				}else{
-					line[0] = "So, you're finally here?";
-					linefrom[0] = inst;
+				line[4] = "About what?";
+				linefrom[4] = obj_player;
 				
-					line[1] = "I am. Do you think you've got the strength to fight me?";
-					linefrom[1] = obj_player;
+				line[5] = "You need to learn to control yourself.";
+				linefrom[5] = obj_companion_0;
+					
+				line[6] = "You've completely lost track of the bigger picture here.";
+				linefrom[6] = obj_companion_0;
 				
-					line[2] = "Oh, for sure.";
-					linefrom[2] = inst;
+				line[6] = "This isn't about winning a fight, it's about saving others.";
+				linefrom[6] = obj_companion_0;
 				
-					line[3] = "Let's see if you're as good as you think you are.";
-					linefrom[3] = inst;
+				line[7] = "I'm not going to help you any longer.";
+				linefrom[7] = obj_companion_0;
+				
+				line[8] = "I'm sorry.";
+				linefrom[8] = obj_companion_0;
+				
+				line[9] = "...";
+				linefrom[9] = obj_player;
+				
+				line[10] = "...I won't need him.";
+				linefrom[10] = obj_player;
+			}else{
+				if (global.game_boss_firstantag_talked){
+					global.cutscene_current = 40;
+					global.cutscene_time[index] = 0;
+					
+					with(obj_controller_gameplay){
+						cutscene_look_x = inst.x;
+						cutscene_look_y = inst.y;
+						cutscene_look_time = 70;
+						cutscene_look_object = inst;
+						cutscene_look_prop = true;
+						cutscene_look_boss = Boss.Antagonist;
+					}
+					
+					return;
 				}
+				
+				line[0] = "So, you're finally here?";
+				linefrom[0] = inst;
+				
+				line[1] = "I am. Do you think you've got the strength to fight me?";
+				linefrom[1] = obj_player;
+				
+				line[2] = "Oh, for sure.";
+				linefrom[2] = inst;
+				
+				line[3] = "Let's see if you're as good as you think you are!";
+				linefrom[3] = inst;
 			}
 			break;
 		
@@ -451,6 +485,7 @@ if (instance_exists(obj_player)){
 				var this = instance_find(obj_enemy_0, i);
 				
 				if (this.type == Enemy0_Type.TrainBoss){
+					is_last_interaction = true;
 					inst = this;
 					break;
 				}
@@ -473,7 +508,7 @@ if (instance_exists(obj_player)){
 					return;
 				}
 				
-				line[0] = "I was told that there was farmer with you.";
+				line[0] = "I was told that there was a farmer with you.";
 				linefrom[0] = inst;
 				
 				line[1] = "I guess not...";
@@ -485,7 +520,7 @@ if (instance_exists(obj_player)){
 			break;
 	}
 	
-	var instexists = inst != noone;
+	var instexists = instance_exists(inst);
 	
 	if (global.cutscene_time[index] < 25){
 		global.cutscene_time[index] ++;
@@ -493,14 +528,23 @@ if (instance_exists(obj_player)){
 		if (obj_controller_ui.dialogue_next) || (cutscene_dialogue_line == -1){
 			if (instexists){
 				if (special == "farmerdepart"){
-					if (cutscene_dialogue_line >= 6){
-						inst.depart_standaway = false;
-						inst.depart = true;
+					switch(cutscene_dialogue_line){
+						case 2:
+							inst.walk_off = true;
+							break;
 						
-						global.cutscene_time[index] = -120;
+						case 3:
+							obj_companion_0.depart_standaway = true;
+							obj_companion_0.depart = false;
+							break;
+						
+						case 8:
+							obj_companion_0.depart_standaway = false;
+							obj_companion_0.depart = true;
+							break;
 					}
 				}
-			
+				
 				//if (special == "grenadierdepart"){
 				//	if (cutscene_dialogue_line >= 3){
 				//		inst.depart = true;
@@ -521,21 +565,25 @@ if (instance_exists(obj_player)){
 			
 			// End the dialogue sequence
 			if (cutscene_dialogue_line >= array_length_1d(line)){
-				switch(inst.object_index){
+				switch(inst){
 					case obj_thescorched:
-						global.game_boss_thescorched_talked = true;
+						if (is_last_interaction){
+							global.game_boss_thescorched_talked = true;
+						}
 						break;
 					
 					case obj_thedogkeeper:
 						global.game_boss_thedogkeeper_talked = true;
 						break;
 					
-					case obj_antagonist:
-						global.game_boss_firstantag_talked = true;
+					case obj_companion_0:
+						if (is_last_interaction) && (room == rm_level_6_pre_00){
+							global.game_boss_firstantag_talked = true;
+						}
 						break;
 					
 					case obj_enemy_0:
-						if (inst.type == Enemy0_Type.TrainBoss){
+						if (inst.type == Enemy0_Type.TrainBoss) && (is_last_interaction){
 							global.game_boss_trainhorde_talked = true;
 						}
 						break;
@@ -545,6 +593,10 @@ if (instance_exists(obj_player)){
 				
 				cutscene_dialogue_line = -1;
 				cutscene_dialogue_special = -1;
+				
+				obj_player.move_x_to = -1;
+				obj_player.move_y_to = -1;
+				obj_player.move_extSpd = 0;
 				
 				obj_controller_ui.dialogue_pause = false;
 				obj_controller_ui.dialogue_time = 0;
@@ -606,7 +658,6 @@ if (instance_exists(obj_player)){
 		}
 	}
 	
-	
 	if (instexists){
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
 		
@@ -633,14 +684,18 @@ if (instance_exists(obj_player)){
 			y_to = from.y - 8;
 		}
 	}else{
-		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
+		if (x_to != obj_player.x) && (y_to != obj_player.y){
+			obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
+		}
 	}
 	
 	// Dialogue skipping
 	if (obj_controller_ui.dialogue_skip >= obj_controller_ui.dialogue_skip_max){
 		switch(inst.object_index){
 			case obj_thescorched:
-				global.game_boss_thescorched_talked = true;
+				if (is_last_interaction){
+					global.game_boss_thescorched_talked = true;
+				}
 				break;
 			
 			case obj_thedogkeeper:
@@ -648,7 +703,9 @@ if (instance_exists(obj_player)){
 				break;
 			
 			case obj_antagonist:
-				global.game_boss_firstantag_talked = true;
+				if (is_last_interaction){
+					global.game_boss_firstantag_talked = true;
+				}
 				break;
 			
 			case obj_enemy_0:
@@ -660,6 +717,11 @@ if (instance_exists(obj_player)){
 		
 		global.cutscene_current = -1;
 		global.cutscene_time[index] = 0;
+		
+		obj_player.move_x_to = -1;
+		obj_player.move_y_to = -1;
+		obj_player.move_extSpd = 0;
+		
 		cutscene_dialogue_line = -1;
 		cutscene_dialogue_special = -1;
 		

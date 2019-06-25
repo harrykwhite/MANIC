@@ -9,17 +9,25 @@ var camh = camera_get_view_height(view_camera[0]);
 
 if (!global.game_pause){
 	
+	
 	// Dust
 	if (room != rm_level_2_pre_00){
 		if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
 	
 		if (room == rm_level_2_post_00){
+			if (!audio_is_playing(m_ambience_birds_0)){
+				audio_play_sound(m_ambience_birds_0, 3, true);
+				audio_sound_gain(m_ambience_birds_0, 0, 0);
+				audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 6000);
+			}
+			
 			if (!audio_is_playing(m_ambience_wind_0)){
 				audio_play_sound(m_ambience_wind_0, 3, true);
 				audio_sound_gain(m_ambience_wind_0, 0, 0);
-				audio_sound_gain(m_ambience_wind_0, 0.25 * obj_controller_all.real_ambience_volume, 6000);
+				audio_sound_gain(m_ambience_wind_0, 0.75 * obj_controller_all.real_ambience_volume, 6000);
 			}
 		}
+		
 	}else{
 		// Rain
 		if (random(2) < 1){
@@ -174,7 +182,7 @@ global.ambientShadowIntensity = lighting;
 
 if (player_exists) && (!scr_level_is_peaceful(room)){
 	var spawn_rate = spawn_rate_real;
-	if (global.game_combat_active) && (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
+	if (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
 			spawn_rate ++;
 		}
@@ -263,6 +271,10 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 			audio_pause_sound(m_ambience_wind_0);
 		}
 		
+		if (audio_is_playing(m_ambience_birds_0)){
+			audio_pause_sound(m_ambience_birds_0);
+		}
+		
 		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
 			audio_pause_sound(spawn_music_main[CombatState.Idle]);
 		}
@@ -300,5 +312,4 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 	}
 }
 
-global.game_combat_active = true;
 scr_level_combatstate_control();

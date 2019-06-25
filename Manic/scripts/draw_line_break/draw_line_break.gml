@@ -12,7 +12,7 @@ var obj = argument[3];
 var thickness = argument[4];
 var gui = argument[5];
 var off = 0;
-var xx_to = 0, yy_to = 0, dist = 0, jump = 20;
+var xx_to = 0, yy_to = 0, dist = 0, jump = 2;
 
 if (argument_count == 7){
 	off = argument[6];

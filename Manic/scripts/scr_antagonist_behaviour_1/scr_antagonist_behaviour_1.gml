@@ -15,7 +15,7 @@ if (instance_exists(target)) && (!walk_off){
 	if (state == 0){
 		var dist = distance_to_point(run_x, run_y);
 		var dir = point_direction(x, y, run_x, run_y);
-		move_speed = 1.75;
+		move_speed = 2;
 		state_time_max = 60 * 10;
 		
 		/*if (dist < 50){
@@ -56,7 +56,6 @@ if (instance_exists(target)) && (!walk_off){
 			}
 		}
 	}else if (state == 1){
-		var nearest_barrel_from_target = instance_nearest(target.x, target.y, obj_barrel_2);
 		move_speed = 2.2;
 		state_time_max = 60 * 7;
 		
@@ -107,12 +106,6 @@ if (instance_exists(target)) && (!walk_off){
 			if (weapon_exists){
 				weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 				weapon.attack = true;
-				
-				if (nearest_barrel_from_target != noone){
-					if (point_distance(target.x, target.y, nearest_barrel_from_target.x, nearest_barrel_from_target.y) < 70){
-						weapon.dir = point_direction(x, y, nearest_barrel_from_target.x, nearest_barrel_from_target.y + 4);
-					}
-				}
 			}
 		}
 	}
@@ -173,6 +166,8 @@ if (instance_exists(target)) && (!walk_off){
 	}
 }else{
 	if (weapon_exists) && (instance_exists(weapon)){
+		weapon.attack = false;
+		
 		if (image_xscale == scale){
 			weapon.dir = 360;
 		}else{
@@ -194,30 +189,11 @@ if (!walk_off){
 	}
 }
 
-// Barrel
-var nbarrel = instance_nearest(x, y, obj_barrel_2);
-
-if (instance_exists(nbarrel)) && (barrel_pause_break <= 0){
-	if (distance_to_object(nbarrel) < 140){
-		if (barrel_pause_time > 0){
-			barrel_pause_time --;
-			speed_multiplier = max(speed_multiplier - 0.5, 0);
-		}else{
-			barrel_pause_time = random(40);
-			barrel_pause_break = random_range(60, 120);
-		}
-	}
-}else{
-	if (barrel_pause_break > 0){
-		barrel_pause_break--;
-	}
-}
-
 // Walk Off
 if (walk_off){
 	move_x_to = 522;
 	move_y_to = -120;
-	move_speed = 3;
+	move_speed = 2.5;
 	
 	speed_multiplier = 1;
 	face_player = false;

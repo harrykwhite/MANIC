@@ -9,7 +9,7 @@ if (mucus_is_releasing){
 				var mucus = instance_create(xx + random_range(-4, 4), yy + random_range(-4, 4), obj_proj_9);
 				mucus.spd = 5;
 				mucus.dir = point_direction(x, y, target.x, target.y) + random_range(-10, 10);
-				mucus.damage = 1;
+				mucus.damage = 3;
 				mucus.strength = 0.5;
 				mucus.image_angle = mucus.dir;
 				mucus.creator = id;

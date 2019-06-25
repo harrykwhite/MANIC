@@ -5,41 +5,39 @@ if (light_brightness < 1){
 }
 
 if (global.cutscene_current == 58){
-	active = false;
 	in_cutscene = true;
 	
-	if (distance_to_object(obj_player) < 60){
-		var dirto = point_direction(x, y, obj_player.x, obj_player.y);
-		obj_player.move_x_to = x + lengthdir_x(30, dirto);
-		obj_player.move_y_to = y + lengthdir_y(30, dirto);
-		obj_player.move_extSpd = 1.5;
-	}else{
-		if (obj_player.x > x){
-			obj_player.move_x_to = obj_player.x - 5;
-		}else{
-			obj_player.move_x_to = obj_player.x + 5;
-		}
+	if (!walk_off){
+		active = false;
 		
-		obj_player.move_y_to = obj_player.y;
-		obj_player.move_extSpd = 0;
+		if (distance_to_object(obj_player) < 60){
+			var dirto = point_direction(x, y, obj_player.x, obj_player.y);
+			obj_player.move_x_to = x + lengthdir_x(30, dirto);
+			obj_player.move_y_to = y + lengthdir_y(30, dirto);
+			obj_player.move_extSpd = 1.5;
+		}else{
+			if (obj_player.x > x){
+				obj_player.move_x_to = obj_player.x - 5;
+			}else{
+				obj_player.move_x_to = obj_player.x + 5;
+			}
+		
+			obj_player.move_y_to = obj_player.y;
+			obj_player.move_extSpd = 0;
+		}
+	}else{
+		active = true;
 	}
 }else if (global.cutscene_current == -1){
 	if (in_cutscene){
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
 		obj_player.move_extSpd = 0;
-		
-		if (near_dead){
-			walk_off = true;
-			global.game_boss_firstantag_killed = true;
-			
-			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
-			audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
-			global.boss_current = -1;
-		}
-		
-		active = true;
 		in_cutscene = false;
+	}
+	
+	if (!cutscene_prop){
+		active = true;
 	}
 }
 
@@ -121,7 +119,12 @@ if (room == rm_level_6_pre_00){
 		health_current = 10;
 		
 		if (!near_dead){
+			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
+			audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
+			global.boss_current = -1;
+			
 			near_dead = true;
+			global.game_boss_firstantag_killed = true;
 			global.cutscene_current = 58;
 		}
 	}

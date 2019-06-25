@@ -53,4 +53,4 @@ if (i_time <= 0){
 	}
 }
 
-instance_destroy(other);
+other.destroy = true;

@@ -29,6 +29,70 @@ if (level_opening){
 	}
 }
 
+// Game Ending
+if (ending){
+	if (!ending_close){
+		if (ending_back_time > 0){
+			ending_back_time --;
+		}else{
+			if (ending_back_alpha < 1){
+				ending_back_alpha += 0.0025;
+			}else{
+				if (mouse_check_button_pressed(global.game_option[| Options.Input_Attack])){
+					ending_close = true;
+				}
+			}
+		}
+	
+		if (ending_logo_text_time > 0){
+			ending_logo_text_time --;
+		
+			if (ending_logo_text_alpha < 1){
+				ending_logo_text_alpha += 0.0025;
+			}
+		}else{
+			if (ending_logo_text_alpha > 0){
+				ending_logo_text_alpha -= 0.005;
+			}else{
+				if (ending_credits_text_alpha < 1){
+					ending_credits_text_alpha += 0.005;
+				}
+			}
+		}
+	}else{
+		var canreturn = true;
+		
+		if (ending_logo_text_alpha > 0){
+			ending_logo_text_alpha -= 0.025;
+			canreturn = false;
+		}
+		
+		if (ending_credits_text_alpha > 0){
+			ending_credits_text_alpha -= 0.025;
+			canreturn = false;
+		}
+		
+		if (ending_back_alpha < 1){
+			ending_back_alpha += 0.025;
+			canreturn = false;
+		}
+		
+		if (canreturn){
+			if (global.game_is_playthrough){
+				scr_save_game();
+			}
+			
+			ds_grid_clear(global.player_companions, -1);
+			scr_fade_object_list_reset();
+			scr_global_set();
+			audio_stop_all();
+			room_goto(rm_title_0);
+			
+			obj_controller_gameplay.has_saved = true;
+		}
+	}
+}
+
 // Screen Blend
 if (screenblend_draw){
     if (screenblend_alpha < screenblend_endalpha){

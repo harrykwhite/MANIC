@@ -39,7 +39,7 @@ image_speed = 1;
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
-if (distance_to_point(move_x_to, move_y_to) < 10) || (move_time <= 0){
+if ((distance_to_point(move_x_to, move_y_to) < 10) || (move_time <= 0)) && (onscreen(x, y, -10)){
 	if (owner == noone) || (!instance_exists(owner)){
 		if (instance_exists(obj_player)){
 			owner = obj_player;

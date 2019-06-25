@@ -75,7 +75,7 @@ if (instance_exists(obj_player)){
 			if (isme){
 				visible = false;
 
-				if (pressed){
+				if (pressed) || (global.cutscene_current != -1){
 					sprite_index = obj_player.minecart_sprite;
 					obj_player.minecart = noone;
 					obj_player.minecart_sprite = noone;

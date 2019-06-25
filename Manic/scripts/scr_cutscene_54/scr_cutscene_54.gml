@@ -17,8 +17,8 @@ if (instance_exists(obj_player)){
 		if (inst != noone){
 			var x_to = inst.x;
 			var y_to = inst.y;
-		
-			if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 15){
+			
+			if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 20){
 				obj_player.move_x_to = x_to;
 				obj_player.move_y_to = y_to;
 				obj_player.move_extSpd = obj_player.spd_max * 0.75;
@@ -32,7 +32,7 @@ if (instance_exists(obj_player)){
 					scr_effect_screenshake(1);
 					obj_player.has_antagonist_mask = true;
 				}
-			
+				
 				stationary = true;
 			}
 		}else{

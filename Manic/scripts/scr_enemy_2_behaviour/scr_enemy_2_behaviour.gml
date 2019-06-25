@@ -7,6 +7,10 @@ if (instance_exists(target)){
 	if (companion_attack_break > 240){
 		var csize = array_length_1d(global.companion);
 		for(var i = 0; i < csize; i ++){
+			if (global.companion[i] == obj_companion_0){
+				continue;
+			}
+			
 			if (instance_exists(global.companion[i])){
 				var nearest = instance_nearest(x, y, global.companion[i]);
 				if (distance_to_object(nearest) < 50){

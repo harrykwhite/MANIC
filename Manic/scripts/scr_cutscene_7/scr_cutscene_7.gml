@@ -68,17 +68,33 @@ if (instance_exists(obj_player)){
 					var lookx = 882;
 					var looky = 618;
 					
+					obj_player.move_x_to = lookx;
+					obj_player.move_y_to = looky;
+					obj_player.move_extSpd = 0;
+					
 					if (global.cutscene_time[index] < 170) && (!scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){
-						if (global.cutscene_time[index] == 0){
-							var upgrade = instance_create(x, y, obj_upgrade_pickup);
+						var does_exist = false;
+						var num = instance_number(obj_upgrade_pickup);
+						
+						for(var i = 0; i < num; i ++){
+							var inst = instance_find(obj_upgrade_pickup, i);
+							if (inst.index == PlayerUpgrade.AmmoPack){
+								does_exist = true;
+							}
+						}
+						
+						if (!does_exist){
+							var upgrade = instance_create(lookx, looky, obj_upgrade_pickup);
 							upgrade.index = PlayerUpgrade.AmmoPack;
 							upgrade.angle = 20;
 							
-							var cblock = instance_create(x - 64, y - 64, obj_block_cutscene);
+							var cblock = instance_create(lookx - 64, looky - 64, obj_block_cutscene);
 							cblock.image_xscale = 8;
 							cblock.image_yscale = 8;
 							cblock.index = 53;
 							cblock.destroy_on_activate = true;
+							
+							does_exist = true;
 						}
 						
 						global.cutscene_time[index] ++;

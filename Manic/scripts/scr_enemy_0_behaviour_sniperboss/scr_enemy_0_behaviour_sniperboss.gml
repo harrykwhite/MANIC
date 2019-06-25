@@ -5,6 +5,10 @@ target = obj_player;
 if (instance_exists(target)){
 	var csize = array_length_1d(global.companion);
 	for(var i = 0; i < csize; i ++){
+		if (global.companion[i] == obj_companion_0){
+			continue;
+		}
+		
 		if (instance_exists(global.companion[i])){
 			var nearest = instance_nearest(x, y, global.companion[i]);
 			if (distance_to_object(nearest) < 250){
@@ -31,7 +35,7 @@ if (instance_exists(target)){
 		if (distance_to_object(target) < 120){
 			sniperboss_opening = false;
 		}
-	}else{
+	}else if (global.cutscene_current == -1){
 		if (sniperboss_movetime > 0){
 			sniperboss_movetime --;
 			
@@ -101,48 +105,48 @@ if (instance_exists(target)){
 				sniperboss_movetime = 60 * 1.5;
 			}
 		}
+		
+		if (weapon_index == PawnWeapon.SniperRifle){
+			if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
+				if (sniper_shotcancel < 40){
+					sniper_shotcancel ++;
+				}else{
+					sniper_shotcancel = 0;
+					weapon.attack_time = weapon.attack_time_max;
+					weapon.line_alpha = -4.96;
+				
+					sniperboss_melee = true;
+					instance_destroy(weapon);
+		
+					weapon = instance_create(x, y, obj_pawnweapon_2);
+					weapon.dir = 0;
+					weapon.owner = self;
+					weapon_index = 2;
+				}
+			}
+		
+			if (weapon.attack_time < weapon.attack_time_max / 2){
+				speed_multiplier = 0;
+			}
+		}
+	
+		if (distance_to_point(move_x_to, move_y_to) > 15){
+			if (sniperboss_melee){
+				move_speed = 2.1;
+			}else{
+				move_speed = 1.5;
+			}
+		}else{
+			move_speed = 0;
+			sniperboss_dash = false;
+			sniperboss_dashtime = 0;
+		}
 	}
 	
 	if (place_meeting(x - 200, y, obj_pawn_other_train_0)) || (place_meeting(x + 200, y, obj_pawn_other_train_0)){
 		move_x_to = x;
 		move_y_to = y + 300;
 		speed_multiplier ++;
-	}
-	
-	if (weapon_index == PawnWeapon.SniperRifle){
-		if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
-			if (sniper_shotcancel < 40){
-				sniper_shotcancel ++;
-			}else{
-				sniper_shotcancel = 0;
-				weapon.attack_time = weapon.attack_time_max;
-				weapon.line_alpha = -4.96;
-				
-				sniperboss_melee = true;
-				instance_destroy(weapon);
-		
-				weapon = instance_create(x, y, obj_pawnweapon_2);
-				weapon.dir = 0;
-				weapon.owner = self;
-				weapon_index = 2;
-			}
-		}
-		
-		if (weapon.attack_time < weapon.attack_time_max / 2){
-			speed_multiplier = 0;
-		}
-	}
-	
-	if (distance_to_point(move_x_to, move_y_to) > 15){
-		if (sniperboss_melee){
-			move_speed = 2.1;
-		}else{
-			move_speed = 1.5;
-		}
-	}else{
-		move_speed = 0;
-		sniperboss_dash = false;
-		sniperboss_dashtime = 0;
 	}
 	
 	if (instance_exists(weapon)){

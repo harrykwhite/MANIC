@@ -40,6 +40,10 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 			case AmmoType.Darts:
 				object = obj_ammo_4;
 				break;
+			
+			case AmmoType.Shells:
+				object = obj_ammo_5;
+				break;
 		}
 	}
 }
@@ -80,6 +84,10 @@ repeat(amount){
 				
 						case AmmoType.Darts:
 							tobject = obj_ammo_4;
+							break;
+						
+						case AmmoType.Shells:
+							tobject = obj_ammo_5;
 							break;
 					}
 					

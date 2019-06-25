@@ -1,7 +1,7 @@
 object[0] = obj_weapondrop;
 object_x[0] = x;
 object_y[0] = y;
-object_weapon[0] = PlayerWeapon.Rake;
+object_weapon[0] = PlayerWeapon.MachineGun;
 object_weapon_angle[0] = 30;
 object_inst[0] = noone;
 object_weapon_pack[0] = false;

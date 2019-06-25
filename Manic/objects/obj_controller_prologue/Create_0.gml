@@ -21,7 +21,13 @@ if (!audio_is_playing(m_ambience_wind_0)){
 	audio_sound_gain(m_ambience_wind_0, 0, 0);
 }
 
+if (!audio_is_playing(m_ambience_birds_0)){
+	audio_play_sound(m_ambience_birds_0, 3, true);
+	audio_sound_gain(m_ambience_birds_0, 0, 0);
+}
+
 audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 15000);
+audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 15000);
 
 global.cutscene_current = 56;
 sprite_index = noone;

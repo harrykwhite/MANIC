@@ -18,11 +18,7 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
 			shoot_bounceback = -5;
 			angle_offset = 20;
 			
-			if (ammo == 1){
-				shoot_continue_time = 1;
-			}
-			
-			scr_weapon_ammo_use(2);
+			scr_weapon_ammo_use(1);
 			scr_player_flash(8);
 			scr_camera_to_player();
 			scr_sound_play(snd_weapon_shotgun_0, false, 0.8, 1.2);

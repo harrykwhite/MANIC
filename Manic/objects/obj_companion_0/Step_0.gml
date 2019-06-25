@@ -6,7 +6,7 @@ if (global.game_pause){
 }
 
 if (global.cutscene_current != -1){
-	if (!depart){
+	if (!depart) && (!depart_standaway){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52){
 			if (cutscene_prop) || (in_cutscene){
 				ispaused = true;
@@ -19,6 +19,8 @@ if (global.cutscene_current != -1){
 		}else if (cutscene_prop){
 			ispaused = true;
 		}
+	}else{
+		in_cutscene = true;
 	}
 }else{
 	if (cutscene_prop){
@@ -75,6 +77,10 @@ order = scr_companion_get_order();
 
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
+
+burn = false;
+poison = false;
+headless = false;
 
 scr_pawn_status_handler();
 

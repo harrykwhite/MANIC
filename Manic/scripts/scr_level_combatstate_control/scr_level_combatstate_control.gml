@@ -309,6 +309,10 @@ if (!paused){
 			audio_resume_sound(m_ambience_wind_0);
 		}
 		
+		if (level == Level.Prologue) || (room == rm_level_2_post_00){
+			audio_resume_sound(m_ambience_birds_0);
+		}
+		
 		if (bossmusic != noone){
 			audio_resume_sound(bossmusic);
 		}

@@ -1,6 +1,7 @@
 ini_open(working_directory + "save.ini");
 global.game_save_started = ini_read_real("Save", "Started", false);
 global.game_save_level = ini_read_real("Save", "LevelAt", 0);
+global.game_save_level_atpreroom = ini_read_real("Save", "LevelAtPreRoom", true);
 global.game_save_seconds = ini_read_real("Save", "Seconds", 0);
 
 global.worldtrain_room = ini_read_real("Save", "WorldTrainRoom", rm_level_6_00);
@@ -37,6 +38,23 @@ global.game_npc_prisoner5_left = ini_read_real("Save", "Prisoner5Left", false);
 global.game_npc_prisoner6_left = ini_read_real("Save", "Prisoner6Left", false);
 global.game_npc_townperson0_talked = ini_read_real("Save", "TownPerson0Talked", false);
 global.game_npc_townperson1_talked = ini_read_real("Save", "TownPerson1Talked", false);
+
+var weaponcount = global.weapon_potential_slotmax;
+for(var i = 0; i < weaponcount; i ++){
+	if (i == 0){
+		global.weapon_slot[i] = ini_read_real("Save", "WeaponSlot" + string(i), PlayerWeapon.Revolver);
+		global.weapon_slotammo[i] = ini_read_real("Save", "WeaponSlotAmmo" + string(i), global.weapon_ammomax[PlayerWeapon.Revolver]);
+	}else{
+		global.weapon_slot[i] = ini_read_real("Save", "WeaponSlot" + string(i), -1);
+		global.weapon_slotammo[i] = ini_read_real("Save", "WeaponSlotAmmo" + string(i), 0);
+	}
+	
+	if (global.weapon_slot[i] != -1){
+		if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
+			global.weapon_quantity[global.weapon_slot[i]] = ini_read_real("Save", "WeaponSlotQuantity" + string(i), 0);
+		}
+	}
+}
 
 var upgradecount = array_length_1d(global.upgrade_name);
 for(var i = 0; i < upgradecount; i ++){

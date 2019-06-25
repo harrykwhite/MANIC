@@ -13,7 +13,6 @@ if (global.game_level_opening_type == 1){
 if (global.game_level_opening_type == 2){
 	var train = instance_create_layer(-115, 1984, "Trains", obj_pawn_other_train_1);
 	train.component_spawn = true;
-	train.type = 1;
 	obj_player.x = -100;
 	obj_player.y = -100;
 }

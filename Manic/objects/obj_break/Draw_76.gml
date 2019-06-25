@@ -1,1 +1,1 @@
-scr_render_me(y - 20);
+scr_render_me(y - 30);

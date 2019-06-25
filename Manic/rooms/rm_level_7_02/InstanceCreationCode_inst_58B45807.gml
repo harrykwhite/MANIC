@@ -1,1 +1,1 @@
-text = "The City - Up North";
+text = "- The City -\n3km north";

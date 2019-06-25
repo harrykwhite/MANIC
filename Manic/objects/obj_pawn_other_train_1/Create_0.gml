@@ -13,7 +13,6 @@ open_pause = false;
 open_set = false;
 close = false;
 sprite_set = false;
-type = 0;
 interact = false;
 interact_break = 10;
 stop_on_end = false;
@@ -23,6 +22,23 @@ component = 0;
 
 for(var i = 0; i < 18; i ++){
 	boss_entity[i] = noone;
+}
+
+switch(room){
+	case rm_level_1_00:
+		type = 1;
+		break;
+	
+	case rm_level_4_00:
+		type = 0;
+		break;
+	
+	case rm_level_6_00:
+		type = 0;
+		break;
+	
+	case rm_level_6_01:
+		type = 0;
 }
 
 horde_dospawn = false;

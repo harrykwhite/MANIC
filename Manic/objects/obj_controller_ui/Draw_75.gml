@@ -90,8 +90,14 @@ if (level_opening){
 	draw_set_colour(c_white);
 	draw_rectangle((dwidth / 2) - (level_opening_line_width / 2), (dheight / 2) + 8, (dwidth / 2) + (level_opening_line_width / 2), (dheight / 2) + 8 + 1, false);
 	
+	var part_text = "PART " + string(global.level_current);
+	
+	if (global.level_current == Level.CityHeadquarters){
+		part_text = "FINAL PART";
+	}
+	
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow((dwidth / 2), (dheight / 2) + 13, "PART " + string(global.level_current), c_white);
+	scr_text_shadow((dwidth / 2), (dheight / 2) + 13, part_text, c_white);
 }
 
 // Area Next

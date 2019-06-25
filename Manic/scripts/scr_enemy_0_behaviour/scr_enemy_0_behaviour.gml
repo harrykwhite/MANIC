@@ -41,10 +41,11 @@ if (instance_exists(target)){
 		if (sporadic_time < sporadic_timemax){
 			sporadic_time ++;
 		}else{
-			var dir_to = point_direction(x, y, target.x, target.y + 6);
-			move_x_to = x + lengthdir_x(200, dir_to + random_range(-20, 20));
-			move_y_to = y + lengthdir_y(200, dir_to + random_range(-20, 20));
+			var dir_to = point_direction(x, y, target.x, target.y + 6) + random_range(-30, 30);
+			move_x_to = x + lengthdir_x(200, dir_to);
+			move_y_to = y + lengthdir_y(200, dir_to);
 			sporadic_time = 0;
+			speed_multiplier = 1.5;
 			face_target = true;
 		}
 	}else{
@@ -107,6 +108,10 @@ if (instance_exists(target)){
 		if (companion_attack_break > 240){
 			var csize = array_length_1d(global.companion);
 			for(var i = 0; i < csize; i ++){
+				if (global.companion[i] == obj_companion_0){
+					continue;
+				}
+				
 				if (instance_exists(global.companion[i])){
 					var nearest = instance_nearest(x, y, global.companion[i]);
 					if (distance_to_object(nearest) < 50){

@@ -1,3 +1,11 @@
+if (demount) && (!global.game_pause){
+	scr_player_stamina_drain(6);
+	use_current = false;
+	global.weapon_slot_standalone = -1;
+	weapon_slot_standalone = -1;
+	demount = false;
+}
+
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	image_index = 0;
@@ -24,7 +32,7 @@ if (use_current){
 			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
 			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
 		    part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
-        part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(2, 3));
+			part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(2, 3));
 			
 			var shoot = instance_create(xpos, ypos, obj_proj_0);
 			shoot.damage = shoot_damage;
@@ -73,12 +81,4 @@ if (interact) && (!use_current){
 		interact_activate = false;
 		interact = false;
 	}
-}
-
-if (demount){
-	scr_player_stamina_drain(6);
-	use_current = false;
-	global.weapon_slot_standalone = -1;
-	weapon_slot_standalone = -1;
-	demount = false;
 }

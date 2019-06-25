@@ -1,3 +1,7 @@
+if (object_index == obj_companion_0){
+	return;
+}
+
 if (!other.enemy){
 	return;
 }
@@ -39,5 +43,5 @@ if (i_time < 1){
 	repeat(20)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
 }
 
-instance_destroy(other);
+other.destroy = true;
 event_inherited();

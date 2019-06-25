@@ -53,6 +53,6 @@ if (i_time <= 0){
 
 if (!other.pierce){
 	if (object_index != obj_enemy_1){
-		instance_destroy(other);
+		other.destroy = true;
 	}
 }

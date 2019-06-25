@@ -221,16 +221,18 @@ if (health_current <= 0){
 			break;
 		
 		case obj_antagonist:
-			corpse = instance_create(x, y - 16, obj_antagonist_corpse);
-			corpse.sprite_index = spr_antagonist_corpse_0;
+			if (room != rm_level_6_pre_00){
+				corpse = instance_create(x, y - 16, obj_antagonist_corpse);
+				corpse.sprite_index = spr_antagonist_corpse_0;
 			
-			var mask = instance_create(x, y + 4, obj_antagonist_mask);
-			mask.dir = knockback_direction;
+				var mask = instance_create(x, y + 4, obj_antagonist_mask);
+				mask.dir = knockback_direction;
 			
-			knockback_speed *= 0.7;
+				knockback_speed *= 0.7;
 			
-			if (room == rm_level_10_01){
-				obj_controller_gameplay.cutscene_ending_corpse = corpse;
+				if (room == rm_level_10_01){
+					obj_controller_gameplay.cutscene_ending_corpse = corpse;
+				}
 			}
 			break;
 	}

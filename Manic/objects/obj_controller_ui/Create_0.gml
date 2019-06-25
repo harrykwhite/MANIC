@@ -1,11 +1,6 @@
 // Setup
 global.level_current = scr_level_get_index(room);
 
-if (room == rm_level_2_01) && (!global.game_companion_farmer_found){
-	scr_companion_register(obj_companion_0);
-	global.game_companion_farmer_found = true;
-}
-
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
 
@@ -100,6 +95,7 @@ if (global.level_current != Level.Prologue){
 upgrade_indicate_index = 0;
 upgrade_indicate_time = 0;
 upgrade_indicate_alpha = 0;
+upgrade_indicate_line_width = 0;
 
 level_opening = false;
 level_opening_line_width = 0;
@@ -114,11 +110,6 @@ for(var i = 0; i < levelcount; i ++){
 		if (!global.level_entered[i]){
 			if (!global.game_is_playthrough){
 				scr_companions_clear();
-				
-				if (global.level_current > Level.WesternFarmland) && (global.level_current < Level.TrainStation){
-					scr_companion_register(obj_companion_0);
-				}
-				
 				scr_set_kills_and_findings();
 			}
 			
@@ -137,9 +128,28 @@ for(var i = 0; i < levelcount; i ++){
 	}
 }
 
+if (!global.game_boss_firstantag_killed){
+	if (room == rm_level_2_01) && (!global.game_companion_farmer_found){
+		scr_companion_register(obj_companion_0);
+		global.game_companion_farmer_found = true;
+	}
+	
+	if (room == rm_level_6_pre_00){
+		scr_companion_register(obj_companion_0);
+	}
+	
+	if (global.level_current >= Level.UndergroundBunker) && (global.level_current < Level.TrainStation){
+		scr_companion_register(obj_companion_0);
+		global.game_companion_farmer_found = true;
+	}
+}else{
+	scr_companion_remove(obj_companion_0);
+}
+
 screen_fade_opening = 1.15;
 
 ending = false;
+ending_close = false;
 ending_logo_text_time = 60 * 6;
 ending_logo_text_alpha = 0;
 ending_credits_text_alpha = 0;

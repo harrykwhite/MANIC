@@ -19,18 +19,28 @@ if (!global.game_pause){
 	}
 }
 
-// Wind
+// Ambience
 if (!global.game_pause){
 	if (!audio_is_playing(m_ambience_wind_0)){
 		audio_play_sound(m_ambience_wind_0, 3, true);
 		audio_sound_gain(m_ambience_wind_0, 0, 0);
 		audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 15000);
 	}
+	
+	if (!audio_is_playing(m_ambience_birds_0)){
+		audio_play_sound(m_ambience_birds_0, 3, true);
+		audio_sound_gain(m_ambience_birds_0, 0, 0);
+		audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 15000);
+	}
 }else{
 	spawn_pause_update = false;
 	
 	if (audio_is_playing(m_ambience_wind_0)){
 		audio_pause_sound(m_ambience_wind_0);
+	}
+	
+	if (audio_is_playing(m_ambience_birds_0)){
+		audio_pause_sound(m_ambience_birds_0);
 	}
 }
 
@@ -180,5 +190,4 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 }
 
 global.ambientShadowIntensity = lighting;
-global.game_combat_active = false;
 scr_level_combatstate_control();

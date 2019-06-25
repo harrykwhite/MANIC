@@ -52,5 +52,5 @@ if (i_time <= 0){
 }
 
 if (!other.pierce){
-	instance_destroy(other);
+	other.destroy = true;
 }

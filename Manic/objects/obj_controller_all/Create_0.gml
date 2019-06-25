@@ -1,6 +1,7 @@
 global.game_option = 0;
 scr_part_setup();
 scr_option_init();
+scr_options_refresh();
 scr_update_real_volumes();
 
 key_right = global.game_option[| Options.Input_MoveRight];

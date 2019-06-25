@@ -5,27 +5,27 @@ if (global.game_pause) || (global.cutscene_current != -1){
 }
 
 var mdir = point_direction(x, y, mouse_x, mouse_y);
-var xpos = x + lengthdir_x(35, mdir);
-var ypos = y + lengthdir_y(35, mdir);
+var xpos = x + lengthdir_x(38, mdir);
+var ypos = y + lengthdir_y(38, mdir);
 
 if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player_stamina_active) && (!global.game_pause){
     if (attack_can){
 		scr_camera_to_player();
-        scr_effect_screenshake(3);
+        scr_effect_screenshake(1);
 		
-        scr_mouse_control(MouseType.SmallCircle, 2.5, 25);
+        scr_mouse_control(MouseType.SmallCircle, 2, 25);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
-        scr_player_knockback_initiate(0.8, mdir);
-        scr_player_stamina_drain(6);
+        scr_player_knockback_initiate(0.2, mdir);
+        scr_player_stamina_drain(3);
         angle_offset = -angle_offset;
 		
 	    s = instance_create(xpos, ypos, obj_proj_2);
 	    s.image_angle = mdir;
 	    s.depth = depth + 1;
 	    
-		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 35, obj_proj_2);
+		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 38, obj_proj_2);
         
-        attack_time = 10;
+        attack_time = 7;
         attack_can = false;
     }
 }

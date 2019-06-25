@@ -82,7 +82,8 @@ if (instance_exists(obj_player)){
 				
 				obj_controller_mouse.mouse_scale = 2;
 				
-				for(var i = 0; i < 2; i ++){
+				var slotcount = global.weapon_slotmax;
+				for(var i = 0; i < slotcount; i ++){
 					if (global.weapon_slot[i] == index){
 						if (i != global.weapon_slotcurrent){
 							with(obj_controller_gameplay){ scr_weapon_switch(true, i); }
@@ -102,8 +103,7 @@ if (instance_exists(obj_player)){
 						}
 						
 						obj_controller_ui.weaponslot_shake = 4;
-			            obj_controller_ui.weaponslot_weaponscale[i] = 0;    
-						
+			            obj_controller_ui.weaponslot_weaponscale[i] = 0;
 						return;
 					}
 				}

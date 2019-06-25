@@ -13,8 +13,10 @@ if (index == PlayerUpgrade.HeadLight){
 }
 
 // Particles
-if (random(15) < 1){
-	part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
+if (!global.game_pause){
+	if (random(15) < 1){
+		part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
+	}
 }
 
 // Pickup
@@ -37,6 +39,6 @@ if (instance_exists(obj_player)){
 		}
 		
 		obj_controller_ui.upgrade_indicate_index = index;
-		obj_controller_ui.upgrade_indicate_time = 60 * 10;
+		obj_controller_ui.upgrade_indicate_time = 60 * 7;
     }
 }

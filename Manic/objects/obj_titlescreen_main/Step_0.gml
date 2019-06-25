@@ -223,7 +223,13 @@ if (fade){
 						
 						global.game_is_playthrough = true;
 						fade = true;
-						fade_goto = global.level_room[global.game_save_level];
+						
+						if (global.game_save_level_atpreroom) && (global.level_preroom[global.game_save_level] != noone){
+							fade_goto = global.level_preroom[global.game_save_level];
+						}else{
+							fade_goto = global.level_room[global.game_save_level];
+						}
+						
 						fade_speed = 0.01;
 						
 						global.level_current = global.game_save_level;
@@ -346,7 +352,7 @@ if (fade){
 				}else{
 					isvalid = false;
 					audio_sound_gain(m_ambience_rain_0, 0, 2000);
-				
+					
 					global.game_is_playthrough = false;
 					global.game_save_seconds = 0;
 					global.level_current = selected;

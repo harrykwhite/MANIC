@@ -32,3 +32,6 @@ global.game_npc_prisoner5_left = false;
 global.game_npc_prisoner6_left = false;
 global.game_npc_townperson0_talked = false;
 global.game_npc_townperson1_talked = false;
+
+scr_level_turret_reset();
+scr_weapon_list();

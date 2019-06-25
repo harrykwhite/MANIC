@@ -1,3 +1,7 @@
+if (object_index == obj_companion_0){
+	return;
+}
+
 if (!other.enemy){
 	return;
 }
@@ -48,5 +52,5 @@ if (i_time < 1){
 }
 
 if (!other.pierce){
-	instance_destroy(other);
+	other.destroy = true;
 }

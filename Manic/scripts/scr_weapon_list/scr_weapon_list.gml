@@ -49,6 +49,7 @@ enum AmmoType{
 	Explosives,
 	Arrows,
 	Darts,
+	Shells,
 }
 
 global.weapon_name[0] = "Machine Gun";
@@ -116,8 +117,8 @@ global.weapon_object[6] = obj_weapon_6;
 global.weapon_sprite[6] = spr_weapon_6;
 global.weapon_type[6] = WeaponType.Ranged;
 global.weapon_heavy[6] = true;
-global.weapon_ammomax[6] = 6;
-global.weapon_ammotype[6] = AmmoType.Bullets;
+global.weapon_ammomax[6] = 4;
+global.weapon_ammotype[6] = AmmoType.Shells;
 global.weapon_camerarange[6] = 30;
 global.weapon_mouse[6] = MouseType.LargeCircle;
 global.weapon_dualhanded[6] = false;
@@ -310,8 +311,8 @@ global.weapon_object[25] = obj_weapon_25;
 global.weapon_sprite[25] = spr_weapon_25;
 global.weapon_type[25] = WeaponType.Ranged;
 global.weapon_heavy[25] = true;
-global.weapon_ammomax[25] = 6;
-global.weapon_ammotype[25] = AmmoType.Bullets;
+global.weapon_ammomax[25] = 3;
+global.weapon_ammotype[25] = AmmoType.Shells;
 global.weapon_camerarange[25] = 35;
 global.weapon_mouse[25] = MouseType.LargeCircle;
 global.weapon_dualhanded[25] = false;
@@ -423,9 +424,12 @@ global.weapon_slotscale[2] = 1;
 
 global.weapon_slot_standalone = -1;
 global.weapon_slot_standalone_ammo = -1;
+
 global.weapon_slotcurrent = 0;
 global.weapon_slotprevious = 1;
-global.weapon_slotmax = 2;
+
+global.weapon_slotmax = 2; // How many slots the player currently has
+global.weapon_potential_slotmax = 3; // How many slots the player can potentially have throughout the game
 
 if (room == rm_ini){
 	var count = array_length_1d(global.weapon_name);

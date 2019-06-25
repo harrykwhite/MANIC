@@ -141,6 +141,10 @@ switch(ctype){
 			for(var i = 0; i < num; i ++){
 				var inst = playerline[| i];
 				
+				if (inst.object_index == obj_companion_0){
+					continue;
+				}
+				
 				if (inst.i_time < 1){
 					len = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player);
 					xEnd = xx + lengthdir_x(len, dir);
@@ -221,10 +225,10 @@ switch(ctype){
 							inst.dir = dir;
 							
 							if (inst.object_index == obj_prisonbar_3){
-								scr_sound_play_distance_pitch(snd_object_metal_hit_0, false, 120, 0.8, 1.2);
+								scr_sound_play_distance_pitch(snd_object_metal_hit_0, false, 220, 0.8, 1.2);
 								scr_effect_object(xEnd + random_range(-13, 13), yEnd + random_range(-6, 6), obj_ef_blood, spr_ef_metal_0, 0, 1);
 							}else{
-								scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 120, 0.8, 1.2);
+								scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 220, 0.8, 1.2);
 								part_type_direction(global.pt_wood_1, (dir - 180) - 30, (dir - 180) + 30, 0, 0);
 								repeat(7) part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_wood_1, 2);
 							}

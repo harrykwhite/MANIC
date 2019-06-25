@@ -8,6 +8,8 @@ scr_part_type_snowground_0();
 
 scr_part_type_heal_0();
 
+scr_part_type_bullet_bounce_0();
+
 scr_part_type_glow_0();
 
 scr_part_type_rain_0();

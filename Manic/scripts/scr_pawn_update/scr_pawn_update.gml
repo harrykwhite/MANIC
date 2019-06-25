@@ -89,7 +89,7 @@ if (health_current <= 0){
 		
 		if (object_index == obj_enemy_0){
 			global.game_firstenemy_killed = true;
-			global.level_kill_count[global.level_current] ++;
+			scr_level_increase_kill_count();
 			
 			switch(type){
 				case Enemy0_Type.Grenadier:
@@ -130,12 +130,12 @@ if (health_current <= 0){
 				}
 			}
 		}else if (object_index == obj_enemy_2){
-			global.level_kill_count[global.level_current] ++;
+			scr_level_increase_kill_count();
 			global.game_firstdog_killed = true;
 		}else if (object_index == obj_enemy_3){
-			global.level_kill_count[global.level_current] ++;
-			doexplode = true;
+			scr_level_increase_kill_count();
 			global.game_firstturret_killed = true;
+			doexplode = true;
 			
 			global.level_turret_killed[# 0, listnum] = true;
 			if (global.game_is_playthrough){
@@ -200,14 +200,14 @@ if (health_current <= 0){
 		}else if (object_index == obj_giantturret_flamethrower){
 			doexplode = true;
 		}else if (object_index == obj_enemy_4){
-			global.level_kill_count[global.level_current] ++;
+			scr_level_increase_kill_count();
 			global.game_firstmaggot_killed = true;
 			
 			if (chance(30)){
 				instance_create(x + random_range(-4, 4), y + random_range(-4, 4), obj_health_pack_1);
 			}
 		}else if (object_index == obj_enemy_5){
-			global.level_kill_count[global.level_current] ++;
+			scr_level_increase_kill_count();
 		}else if (object_index == obj_antagonist){
 			global.cutscene_current = 54;
 			obj_controller_gameplay.cutscene_ending_stage = 0;
@@ -295,26 +295,26 @@ if (health_current <= 0){
 		if (weapon.index != PawnWeapon.Knife) && (weapon.index != -1){
 		    if (chance(dropchance)){
 				var xx, yy, angle, ind, w;
-			
+				
 				if (instance_exists(weapon)){
 					xx = weapon.x;
 					yy = weapon.y;
 					angle = weapon.image_angle + random_range(-30, 30);
 					ind = global.pawnweapon_playerindex[weapon_index];
-				
+					
 					if (ind == PlayerWeapon.Grenade){
 						if (random(2.5) < 1) && (global.level_current >= Level.TrainStation){
 							ind = PlayerWeapon.LandMine;
 						}
 					}
-
+					
 					w = instance_create(xx, yy, obj_weapondrop);
 					w.angle = angle;
 					w.index = ind;
 					w.drop = true;
 					w.spd = random_range(1.5, 2.5);
 					w.dir = random(360);
-				
+					
 					if (ind == PlayerWeapon.Grenade) || (ind == PlayerWeapon.LandMine){
 						w.pack = true;
 						w.angle = 0;
