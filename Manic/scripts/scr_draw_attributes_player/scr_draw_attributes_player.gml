@@ -21,7 +21,7 @@ if (ucount > 0) || (has_antagonist_mask){
 	}
 	
 	for(var i = 0; i < ucount; i ++){
-		if (scr_player_has_upgrade(i)){
+		if (upgrade_has[i]){
 			if (!global.upgrade_behind[i]){
 				if (i == PlayerUpgrade.RunningBoots) || (i == PlayerUpgrade.KneePads) || (i == PlayerUpgrade.IronGlove){
 					if (!in_minecart){

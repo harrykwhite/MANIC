@@ -19,6 +19,14 @@ if (!global.game_pause){
 	}
 }
 
+// Checkpoint
+if (room == rm_level_10_01){
+	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
+		obj_controller_gameplay.checkpoint_create = true;
+		global.level_checkpoint_found[global.level_current] = true;
+	}
+}
+
 // Spawning
 lighting = 0.9;
 

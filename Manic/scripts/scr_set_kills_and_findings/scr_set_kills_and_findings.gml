@@ -30,8 +30,14 @@ global.game_npc_prisoner3_left = false;
 global.game_npc_prisoner4_left = false;
 global.game_npc_prisoner5_left = false;
 global.game_npc_prisoner6_left = false;
+global.game_hordechallenge0_completed = false;
+global.game_hordechallenge1_completed = false;
+global.game_hordechallenge2_completed = false;
 global.game_npc_townperson0_talked = false;
 global.game_npc_townperson1_talked = false;
 
+scr_checkpoint_reset();
+
 scr_level_turret_reset();
 scr_weapon_list();
+scr_level_list();

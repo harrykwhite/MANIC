@@ -169,19 +169,25 @@ if (instance_exists(obj_player)){
 		case rm_level_2_post_00:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_0);
 			
+			if (!instance_exists(inst)){
+				global.cutscene_time[index] = 0;
+				global.cutscene_current = -1;
+				return;
+			}
+			
 			line[0] = "This looks to be another one of their bases.";
 			linefrom[0] = obj_player;
 			
 			line[1] = "I imagine that there'd be several around the country.";
 			linefrom[1] = obj_player;
 			
-			line[2] = "We should try and clear each of them out.";
+			line[2] = "We should try and clear each of them out, there may even be some people inside.";
 			linefrom[2] = inst;
 			
-			line[3] = "Yes, definitely.";
-			linefrom[3] = obj_player;
+			line[3] = "Perhaps they might know where where the group originated from?";
+			linefrom[3] = inst;
 			
-			line[4] = "In doing that we'll be able to locate where the group first came from.";
+			line[4] = "That would be really helpful. Let's go.";
 			linefrom[4] = obj_player;
 			break;
 		
@@ -691,7 +697,7 @@ if (instance_exists(obj_player)){
 	
 	// Dialogue skipping
 	if (obj_controller_ui.dialogue_skip >= obj_controller_ui.dialogue_skip_max){
-		switch(inst.object_index){
+		switch(inst){
 			case obj_thescorched:
 				if (is_last_interaction){
 					global.game_boss_thescorched_talked = true;

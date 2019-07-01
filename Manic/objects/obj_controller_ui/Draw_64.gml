@@ -459,36 +459,72 @@ if (bosshealth_width_current > 0){
 
 bosshealth_value_previous = bosshealth_value_current;
 
-// Upgrade Indication
-if (upgrade_indicate_time > 0){
-	upgrade_indicate_time --;
-	if (upgrade_indicate_alpha < 1){
-		upgrade_indicate_alpha += 0.05;
+// Header Display
+if (header_display_time > 0){
+	header_display_time --;
+	if (header_display_alpha < 1){
+		header_display_alpha += 0.05;
 	}
 }else{
-	if (upgrade_indicate_alpha > 0){
-		upgrade_indicate_alpha -= 0.05;
+	if (header_display_alpha > 0){
+		header_display_alpha -= 0.05;
 	}else{
-		upgrade_indicate_line_width = 0;
+		header_display_line_width = 0;
 	}
 }
 
-if (upgrade_indicate_alpha > 0){
+if (header_display_alpha > 0){
 	draw_set_font(fnt_cambria_1);
-	
-	var line_width_to = string_width(global.upgrade_description[upgrade_indicate_index]) + 30;
-	upgrade_indicate_line_width = approach(upgrade_indicate_line_width, line_width_to, 5);
+	var subtwidth = string_width(header_display_subtext);
 	
 	draw_set_font(fnt_cambria_3);
-	draw_set_alpha(upgrade_indicate_alpha * (upgrade_indicate_line_width / line_width_to));
-	draw_set_halign(fa_center);
-	scr_text_shadow(dwidth / 2, 232 + ((1 - (upgrade_indicate_line_width / line_width_to)) * 40), global.upgrade_name[upgrade_indicate_index], c_white);
+	var twidth = string_width(header_display_text);
 	
-	draw_rectangle((dwidth / 2) - (upgrade_indicate_line_width / 2), 264, (dwidth / 2) + (upgrade_indicate_line_width / 2), 265, false);
+	var line_width_to = max(twidth, subtwidth) + 30;
+	header_display_line_width = approach(header_display_line_width, line_width_to, 5);
+	
+	draw_set_alpha(header_display_alpha * (header_display_line_width / line_width_to));
+	draw_set_halign(fa_center);
+	scr_text_shadow(dwidth / 2, 228 + ((1 - (header_display_line_width / line_width_to)) * 30), header_display_text, c_white);
+	
+	draw_rectangle((dwidth / 2) - (header_display_line_width / 2), 264, (dwidth / 2) + (header_display_line_width / 2), 265, false);
 	
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow(dwidth / 2, 264, global.upgrade_description[upgrade_indicate_index], c_white);
+	scr_text_shadow(dwidth / 2, 269, header_display_subtext, c_white);
 	
+	draw_set_alpha(1);
+}
+
+// Checkpoint Display
+if (checkpoint_text_time > 0){
+	if (checkpoint_text_alpha < 1){
+		checkpoint_text_alpha += 0.05;
+	}
+	
+	checkpoint_text_time --;
+}else{
+	if (checkpoint_text_alpha > 0){
+		checkpoint_text_alpha -= 0.05;
+	}
+}
+
+if (checkpoint_text_alpha > 0){
+	var yy = 50;
+	
+	draw_set_alpha(checkpoint_text_alpha);
+	draw_set_font(fnt_cambria_1);
+	draw_set_halign(fa_center);
+	
+	if (checkpoint_text_time > 0){
+		scr_text_shadow((dwidth / 2), yy + ((1 - checkpoint_text_alpha) * 30), "Checkpoint Reached", c_white);
+	}else{
+		scr_text_shadow((dwidth / 2), yy, "Checkpoint Reached", c_white);
+	}
+	
+	var line_width_to = string_width("Checkpoint Reached") + 30;
+	checkpoint_text_line_width = approach(checkpoint_text_line_width, line_width_to, 5);
+	
+	draw_rectangle((dwidth / 2) - (checkpoint_text_line_width / 2), yy + 30, (dwidth / 2) + (checkpoint_text_line_width / 2), yy + 31, false);
 	draw_set_alpha(1);
 }
 
@@ -697,7 +733,7 @@ if (pausedialogue_alpha > 0){
 			draw_set_font(fnt_cambria_0);
 			
 			for(var counter = 0; counter < pausedialogue_option_max; counter ++){
-				var optrealy = optyy + (counter * 42);
+				var optrealy = optyy + (counter * 34);
 				 vslot ++;
 				
 				if (!selected_set){

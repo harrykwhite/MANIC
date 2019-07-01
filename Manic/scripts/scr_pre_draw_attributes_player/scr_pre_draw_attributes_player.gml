@@ -26,7 +26,7 @@ if (sprite_index == spr_player_walk_0) || (sprite_index == spr_player_walk_1) ||
 }
 
 for(var i = 0; i < ucount; i ++){
-	if (scr_player_has_upgrade(i)){
+	if (upgrade_has[i]){
 		if (global.upgrade_behind[i]){
 			draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 		}

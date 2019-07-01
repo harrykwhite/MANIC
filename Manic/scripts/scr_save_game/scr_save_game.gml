@@ -42,6 +42,9 @@ ini_write_real("Save", "Prisoner3Left", global.game_npc_prisoner3_left);
 ini_write_real("Save", "Prisoner4Left", global.game_npc_prisoner4_left);
 ini_write_real("Save", "Prisoner5Left", global.game_npc_prisoner5_left);
 ini_write_real("Save", "Prisoner6Left", global.game_npc_prisoner6_left);
+ini_write_real("Save", "HordeChallenge0Completed", global.game_hordechallenge0_completed);
+ini_write_real("Save", "HordeChallenge1Completed", global.game_hordechallenge1_completed);
+ini_write_real("Save", "HordeChallenge2Completed", global.game_hordechallenge2_completed);
 ini_write_real("Save", "TownPerson0Talked", global.game_npc_townperson0_talked);
 ini_write_real("Save", "TownPerson1Talked", global.game_npc_townperson1_talked);
 

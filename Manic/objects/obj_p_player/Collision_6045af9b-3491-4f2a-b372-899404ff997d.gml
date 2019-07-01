@@ -13,7 +13,7 @@ if (object_index == obj_player){
 }
 
 if (i_time < 1){
-	if (!scr_player_has_upgrade(PlayerUpgrade.GasMask)){
+	if (!upgrade_has[PlayerUpgrade.GasMask]){
 		poison = true;
 	}
 	

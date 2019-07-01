@@ -82,6 +82,10 @@ switch(rm){
 		return Level.TrainStation;
 		break;
 	
+	case rm_level_6_02:
+		return Level.TrainStation;
+		break;
+	
 	case rm_level_7_00:
 		return Level.TheCemetery;
 		break;

@@ -30,6 +30,19 @@ if (global.weapon_slot_standalone == -1){
 	xaxis = key_right - key_left;
 	yaxis = key_down - key_up;
 	
+	if (!window_has_focus()){
+		xaxis = 0;
+		yaxis = 0;
+	}
+	
+	if (!key_right) && (!key_left){
+		xaxis = 0;
+	}
+	
+	if (!key_down) && (!key_up){
+		yaxis = 0;
+	}
+	
 	dir = point_direction(0, 0, xaxis, yaxis);
 	image_angle = 0;
 
@@ -38,7 +51,7 @@ if (global.weapon_slot_standalone == -1){
 		spd_multiplier += 0.125;
 	}
 	
-	if (scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
+	if (upgrade_has[PlayerUpgrade.RunningBoots]){
 		spd_multiplier += 0.2;
 	}
 	
@@ -155,7 +168,7 @@ if (global.weapon_slot_standalone == -1){
 		dash_speed = spd_max * 3.65;
 		dash_time = 18;
 		
-		if (scr_player_has_upgrade(PlayerUpgrade.KneePads)){
+		if (upgrade_has[PlayerUpgrade.KneePads]){
 			dash_speed *= 1.35;
 			
 			if (dash_count < 1){
@@ -304,6 +317,11 @@ if (global.cutscene_current != -1){
 	}else if (flashlight_direction > 90) || (flashlight_direction < 270){
 		image_xscale = -1;
 	}
+}
+
+if (!window_has_focus()){
+	hspd = 0;
+	vspd = 0;
 }
 
 scr_player_collision();

@@ -25,7 +25,7 @@ if (global.boss_current != -1){
 global.player_health_current = global.player_health_max;
 global.weapon_slotcurrent = 0;
 
-if (!global.player_has_bossrespawn) && (global.player_is_respawning){
+if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	var roomto = global.level_room[global.level_current];
 	
 	if (!global.level_cleared[global.level_current]){
@@ -38,19 +38,8 @@ if (!global.player_has_bossrespawn) && (global.player_is_respawning){
 		room_goto(roomto);
 	}
 }else{
-	room_restart();
-	
-	var rslotcount = array_length_1d(global.weapon_slot);
-	for(var i = 0; i < rslotcount; i ++){
-		global.weapon_slot[i] = global.sectionstart_weapon[i];
-		global.weapon_slotammo[i] = global.sectionstart_weaponammo[i];
-		
-		if (global.weapon_slot[i] != -1){
-			if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
-				global.weapon_quantity[global.weapon_slot[i]] = global.sectionstart_weaponquantity[i];
-			}
-		}
-	}
-	
-	global.player_health_current = global.sectionstart_playerhealth;
+	room_goto(global.checkpoint_room);
+	global.checkpoint_goto = true;
+	global.level_kill_count[global.level_current] = global.checkpoint_killcount;
+	global.level_cleared[global.level_current] = global.checkpoint_levelcleared;
 }

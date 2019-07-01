@@ -7,7 +7,7 @@ if (object_index != obj_player){
 		return;
 	}
 }else{
-	if (scr_player_has_upgrade(PlayerUpgrade.GasMask)){
+	if (upgrade_has[PlayerUpgrade.GasMask]){
 		return;
 	}
 }

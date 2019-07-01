@@ -38,12 +38,14 @@ if (instance_exists(target)){
 	var weapon_exists = instance_exists(weapon) && weapon != -1;
 	
 	if (sporadic){
-		if (sporadic_time < sporadic_timemax){
+		mindist = 40;
+		
+		if (sporadic_time < sporadic_timemax) && (point_distance(x, y + 6, move_x_to, move_y_to) > 15){
 			sporadic_time ++;
 		}else{
 			var dir_to = point_direction(x, y, target.x, target.y + 6) + random_range(-30, 30);
-			move_x_to = x + lengthdir_x(200, dir_to);
-			move_y_to = y + lengthdir_y(200, dir_to);
+			move_x_to = x + lengthdir_x(80, dir_to);
+			move_y_to = y + lengthdir_y(80, dir_to);
 			sporadic_time = 0;
 			speed_multiplier = 1.5;
 			face_target = true;
@@ -156,10 +158,14 @@ if (instance_exists(target)){
 			}
 		}
 		
-		if (distance_to_point(move_x_to, move_y_to) > mindist){
-			move_speed = 1;
+		if (!sporadic){
+			if (distance_to_point(move_x_to, move_y_to) > mindist){
+				move_speed = 1;
+			}else{
+				move_speed = 0;
+			}
 		}else{
-			move_speed = 0;
+			move_speed = 1.25;
 		}
 	
 		if (weapon_exists){

@@ -356,7 +356,6 @@ if (fade){
 					global.game_is_playthrough = false;
 					global.game_save_seconds = 0;
 					global.level_current = selected;
-					scr_level_list();
 					scr_set_kills_and_findings();
 					
 					fade = true;

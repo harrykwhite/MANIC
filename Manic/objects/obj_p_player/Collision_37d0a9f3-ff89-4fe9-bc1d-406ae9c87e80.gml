@@ -4,7 +4,7 @@ if (object_index == obj_companion_0){
 
 if (i_time < 1) && (other.owner == obj_player) && (other.attack_ready_time <= 0){
 	if (object_index == obj_player){
-		if (!scr_player_has_upgrade(PlayerUpgrade.GasMask)){
+		if (!upgrade_has[PlayerUpgrade.GasMask]){
 			poison = true;
 		}
 	}

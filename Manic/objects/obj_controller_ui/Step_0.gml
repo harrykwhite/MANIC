@@ -167,29 +167,30 @@ if (!global.game_pause){
 				scr_toggle_pause(false);
 				
 				switch(pause_has_selected_index){
-					case 1:
-						part_system_clear(global.ps_front);
-						part_system_clear(global.ps_bottom);
+					//case 1:
+					//	part_system_clear(global.ps_front);
+					//	part_system_clear(global.ps_bottom);
 						
-						var rslotcount = array_length_1d(global.weapon_slot);
-						for(var i = 0; i < rslotcount; i ++){
-							global.weapon_slot[i] = global.sectionstart_weapon[i];
-							global.weapon_slotammo[i] = global.sectionstart_weaponammo[i];
-							
-							if (global.weapon_slot[i] != -1){
-								if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
-									global.weapon_quantity[global.weapon_slot[i]] = global.sectionstart_weaponquantity[i];
-								}
-							}
-						}
+					//	scr_checkpoint_reset();
+					//	scr_weapon_list();
 						
-						global.game_combat_state = CombatState.Idle;
-						global.player_health_current = global.sectionstart_playerhealth;
-						global.weapon_slotcurrent = 0;
-						room_restart();
-						break;
+					//	var roomto = global.level_room[global.level_current];
+						
+					//	if (!global.level_cleared[global.level_current]){
+					//		global.level_kill_count[global.level_current] = 0;
+					//	}
+						
+					//	if (roomto == room){
+					//		room_restart();
+					//	}else{
+					//		room_goto(roomto);
+					//	}
+						
+					//	global.game_combat_state = CombatState.Idle;
+					//	global.weapon_slotcurrent = 0;
+					//	break;
 					
-					case 2:
+					case 1:
 						if (global.game_is_playthrough){
 							scr_save_game();
 						}
@@ -203,7 +204,7 @@ if (!global.game_pause){
 						obj_controller_gameplay.has_saved = true;
 						break;
 					
-					case 3:
+					case 2:
 						if (global.game_is_playthrough){
 							scr_save_game();
 						}
@@ -272,9 +273,6 @@ if (!global.game_pause){
 								global.game_combat_in_hordechallenge = true;
 								global.game_combat_in_hordechallenge_time = 60 * 30;
 								
-								if (instance_exists(obj_hordepost_0)){
-									obj_hordepost_0.activated = true;
-								}
 								break;
 						}
 			

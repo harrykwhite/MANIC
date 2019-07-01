@@ -17,7 +17,7 @@ if (!global.game_pause){
 	// Tumbleweed
 	var tw_chance = 200;
 	
-	if (room == rm_level_6_01){
+	if (room == rm_level_6_01) || (room == rm_level_6_02){
 		tw_chance = 180;
 	}
 	
@@ -54,21 +54,23 @@ if (!global.game_pause){
 	}
 
 	// Weather
-	if (room == rm_level_6_01){
+	if (room == rm_level_6_01) || (room == rm_level_6_02){
 		// Rain
 		if (random(2) < 1){
 			part_particles_create(global.ps_front, camx + random_range(-350, camw), camy - 10, global.pt_rain_0, 1);
 		}
-	
+		
 		if (random(5) < 1){
 		    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), choose(global.pt_rain_1, global.pt_rain_2), 1);
 		}
 		
-		// Snow
-		part_particles_create(global.ps_front, camx + random_range(-350, camw), camy - 10, global.pt_snow_0, 1);
-
-		if (random(8) < 1){
-		    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_snow_1, 1);
+		if (room == rm_level_6_01){
+			// Snow
+			part_particles_create(global.ps_front, camx + random_range(-350, camw), camy - 10, global.pt_snow_0, 1);
+		
+			if (random(8) < 1){
+			    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_snow_1, 1);
+			}
 		}
 	}else{
 		// Snow
@@ -126,6 +128,14 @@ if (!global.game_pause){
 	}
 }
 
+// Checkpoint
+if (room == rm_level_6_01){
+	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
+		obj_controller_gameplay.checkpoint_create = true;
+		global.level_checkpoint_found[global.level_current] = true;
+	}
+}
+
 // Spawning
 var lighting_level; 
 lighting_level[CombatState.Climax] = 1;
@@ -158,7 +168,7 @@ if (player_exists) && (room != rm_level_6_pre_00){
 		}
 		
 		if (global.game_combat_in_hordechallenge){
-			spawn_rate += 5;
+			spawn_rate += horde_spawn_rate;
 		}
 		
 		if (spawn_time > 0){

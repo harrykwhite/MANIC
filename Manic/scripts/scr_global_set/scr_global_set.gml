@@ -59,28 +59,7 @@ global.player_respawn_x = 0;
 global.player_respawn_y = 0;
 global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
-global.player_has_bossrespawn = false;
 global.player_is_respawning = false;
-
-var rslotcount = array_length_1d(global.weapon_slot);
-for(var i = 0; i < rslotcount; i ++){
-	global.sectionstart_weapon[i] = global.weapon_slot[i];
-	
-	if (global.weapon_slot[i] != -1){
-		global.sectionstart_weaponammo[i] = global.weapon_ammomax[global.weapon_slot[i]];
-	}else{
-		global.sectionstart_weaponammo[i] = -1;
-	}
-	
-	global.sectionstart_weaponquantity[i] = -1;
-	if (global.weapon_slot[i] != -1){
-		if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
-			global.sectionstart_weaponquantity[i] = global.weapon_quantity[global.weapon_slot[i]];
-		}
-	}
-}
-
-global.sectionstart_playerhealth = 0;
 
 part_system_clear(global.ps_bottom);
 part_system_clear(global.ps_front);

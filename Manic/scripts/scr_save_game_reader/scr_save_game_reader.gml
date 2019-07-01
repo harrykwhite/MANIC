@@ -36,6 +36,9 @@ global.game_npc_prisoner3_left = ini_read_real("Save", "Prisoner3Left", false);
 global.game_npc_prisoner4_left = ini_read_real("Save", "Prisoner4Left", false);
 global.game_npc_prisoner5_left = ini_read_real("Save", "Prisoner5Left", false);
 global.game_npc_prisoner6_left = ini_read_real("Save", "Prisoner6Left", false);
+global.game_hordechallenge0_completed = ini_read_real("Save", "HordeChallenge0Completed", false);
+global.game_hordechallenge1_completed = ini_read_real("Save", "HordeChallenge1Completed", false);
+global.game_hordechallenge2_completed = ini_read_real("Save", "HordeChallenge2Completed", false);
 global.game_npc_townperson0_talked = ini_read_real("Save", "TownPerson0Talked", false);
 global.game_npc_townperson1_talked = ini_read_real("Save", "TownPerson1Talked", false);
 

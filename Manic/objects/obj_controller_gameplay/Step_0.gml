@@ -3,8 +3,6 @@ var levelcur = global.level_current;
 scr_position_view();
 scr_inboss();
 
-global.player_has_bossrespawn = global.boss_current != -1;
-
 // Level clear
 //if (keyboard_check_pressed(vk_left)){
 //	global.level_kill_count[levelcur] += 10;
@@ -51,23 +49,34 @@ if (levelcur != Level.Prologue){
 	}
 }
 
-// Recording level and section start data
-if (!sectionstart_record_set){
-	var rslotcount = array_length_1d(global.weapon_slot);
-	for(var i = 0; i < rslotcount; i ++){
-		global.sectionstart_weapon[i] = global.weapon_slot[i];
-		global.sectionstart_weaponammo[i] = global.weapon_slotammo[i];
-		
-		global.sectionstart_weaponquantity[i] = -1;
-		if (global.weapon_slot[i] != -1){
-			if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
-				global.sectionstart_weaponquantity[i] = global.weapon_quantity[global.weapon_slot[i]];
-			}
-		}
-	}
+// Recording level start data
+//if (!levelstart_record_set){
+//	var rslotcount = array_length_1d(global.weapon_slot);
+//	for(var i = 0; i < rslotcount; i ++){
+//		global.levelstart_weapon[i] = global.weapon_slot[i];
+//		global.levelstart_weaponammo[i] = global.weapon_slotammo[i];
 	
-	global.sectionstart_playerhealth = global.player_health_current;
-	sectionstart_record_set = true;
+//		global.levelstart_weaponquantity[i] = -1;
+//		if (global.weapon_slot[i] != -1){
+//			if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
+//				global.levelstart_weaponquantity[i] = global.weapon_quantity[global.weapon_slot[i]];
+//			}
+//		}
+//	}
+	
+//	global.levelstart_playerhealth = global.player_health_current;
+//}
+
+// Recording checkpoint data
+if (checkpoint_create) && (instance_exists(obj_player)){
+	global.checkpoint_killcount = global.level_kill_count[levelcur];
+	global.checkpoint_levelcleared = global.level_cleared[levelcur];
+	global.checkpoint_room = room;
+	global.checkpoint_goto = false;
+	
+	obj_controller_ui.checkpoint_text_time = 60 * 5;
+	
+	checkpoint_create = false;
 }
 
 // Managing corpse count

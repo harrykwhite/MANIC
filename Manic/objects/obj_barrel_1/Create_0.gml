@@ -16,7 +16,7 @@ mylight = instance_create_layer(x, y - 5, "Lights", obj_barrel_1_light);
 
 image_speed = 0;
 
-while(place_meeting(x, y - 5, obj_p_solid)){
+while(place_meeting(x, y + 2, obj_p_solid)){
 	y ++;
 }
 

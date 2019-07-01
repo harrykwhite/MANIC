@@ -6,7 +6,8 @@
     "children": [
         "144bd5f4-8939-40e1-912b-a0696a296953",
         "6c08e3de-39fb-47f0-bb4a-a34bf93c0499",
-        "f9654ed5-cf85-4e66-a774-96d5eb1dc80c"
+        "f9654ed5-cf85-4e66-a774-96d5eb1dc80c",
+        "6583ab7f-cea5-440f-b18c-f91c93e7bd2d"
     ],
     "filterType": "GMRoom",
     "folderName": "Level Six",

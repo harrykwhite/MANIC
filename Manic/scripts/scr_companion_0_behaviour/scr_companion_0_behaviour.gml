@@ -32,7 +32,24 @@ if (instance_exists(obj_player)){
 							}
 						}
 						
+						if (target.object_index == obj_thedogkeeper_dog){
+							if (instance_exists(target)){
+								if (target.owner.cutscene_prop) || (target.owner.in_cutscene){
+									target = noone;
+									continue;
+								}
+							}else{
+								target = noone;
+								continue;
+							}
+						}
+						
 						if (target.object_index == obj_thedogkeeper){
+							if (target.cutscene_prop) || (target.in_cutscene){
+								target = noone;
+								continue;
+							}
+							
 							if (!target.dogs_downed){
 								var dog = instance_nearest(x, y, obj_thedogkeeper_dog);
 								

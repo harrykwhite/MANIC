@@ -4,16 +4,7 @@
     "mvc": "1.0",
     "name": "obj_p_solid_shadow",
     "eventList": [
-        {
-            "id": "80f23d22-000f-4ea0-b79f-de2706942b24",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 0,
-            "m_owner": "8c6cee5d-f152-43a4-805c-cff853c22e26"
-        }
+        
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "overriddenProperties": null,

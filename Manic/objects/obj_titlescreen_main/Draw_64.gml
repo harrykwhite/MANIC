@@ -397,6 +397,6 @@ if (window_get_fullscreen()){
 scr_text_shadow(23, display_get_gui_height() - 30, ftxt, c_white);
 
 draw_set_halign(fa_right);
-scr_text_shadow(display_get_gui_width() - 23, display_get_gui_height() - 30, "Beta v0.01\nCopyright 2019 Geta Games", c_white);
+scr_text_shadow(display_get_gui_width() - 23, display_get_gui_height() - 30, gameversion + "\nCopyright 2019 Geta Games", c_white);
 draw_set_valign(fa_top);
 draw_set_alpha(1);

@@ -37,18 +37,24 @@ if (inhordechallenge){
 				uindex = PlayerUpgrade.Goggles;
 				ux = 1760;
 				uy = 552;
+				
+				global.game_hordechallenge0_completed = true;
 				break;
 			
 			case Level.TrainStation:
 				uindex = PlayerUpgrade.HeadLight;
 				ux = 500;
 				uy = 208;
+				
+				global.game_hordechallenge1_completed = true;
 				break;
 			
 			case Level.DesolateVillage:
 				uindex = PlayerUpgrade.IronGlove;
 				ux = 636;
 				uy = 616;
+				
+				global.game_hordechallenge2_completed = true;
 				break;
 		}
 		

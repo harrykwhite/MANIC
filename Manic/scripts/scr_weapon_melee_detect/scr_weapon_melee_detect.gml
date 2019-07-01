@@ -19,15 +19,15 @@ var width;
 
 switch(obj){
 	case obj_proj_1:
-		width = 7;
+		width = 10;
 		break;
 	
 	case obj_proj_2:
-		width = 5;
+		width = 7;
 		break;
 	
 	case obj_proj_3:
-		width = 4;
+		width = 6;
 		break;
 }
 

@@ -85,7 +85,7 @@ if (player_exists){
 		}
 		
 		if (global.game_combat_in_hordechallenge){
-			spawn_rate += 5;
+			spawn_rate += horde_spawn_rate;
 		}
 		
 		if (spawn_time > 0){
@@ -106,7 +106,7 @@ if (player_exists){
 				var ypos = random_range(camy - 10, camy + camh + 10);
 				var spawn_trial = 0;
 				
-				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80){
+				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80) || ((!enemy_has_panned) && (point_distance(xpos, ypos, player.x, player.y) < 110)){
 					xpos = random_range(camx - 10, camx + camw + 10);
 					ypos = random_range(camy - 10, camy + camh + 10);
 					spawn_trial ++;

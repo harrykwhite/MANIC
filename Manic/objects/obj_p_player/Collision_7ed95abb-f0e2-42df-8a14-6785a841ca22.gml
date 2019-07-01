@@ -41,7 +41,7 @@ if (i_time < 1) && (other.contact_attack_ready_time <= 0){
 	part_type_speed(global.pt_blood_5, 3, 5, -0.2, 0);
 	repeat(12)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
 	
-	if (!scr_player_has_upgrade(PlayerUpgrade.GasMask)){
+	if (!upgrade_has[PlayerUpgrade.GasMask]){
 		poison = true;
 	}
 	

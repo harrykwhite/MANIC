@@ -66,3 +66,5 @@ global.game_combat_in_hordechallenge_time = 0;
 if (global.game_combat_state == CombatState.Idle){
 	spawn_time = 60 * 8;
 }
+
+horde_spawn_rate = scr_horde_get_spawnrate(scr_level_get_index(room));

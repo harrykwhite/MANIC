@@ -5,12 +5,15 @@ if (instance_exists(obj_player)){
 	
 	if (!global.game_pause){
 	    var mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
-	    angle_offset_current = approach(angle_offset_current, angle_offset, 40);
+	    var angle = mdir + (0.3 * angle_offset_current);
+		angle_offset_current = approach(angle_offset_current, angle_offset, 40);
 		
-		x = obj_player_arm.x + lengthdir_x(length, mdir);
-		y = obj_player_arm.y + lengthdir_y(length, mdir);
+		x = obj_player_arm.x + lengthdir_x(length + 1, angle);
+		y = obj_player_arm.y + lengthdir_y(length + 1, angle);
+		
+		obj_player_arm.image_angle = angle;
 		image_angle = mdir + angle_offset_current;
-			
+		
 		if (angle_offset_current < 0){
 			image_yscale = 1;
 		}else{

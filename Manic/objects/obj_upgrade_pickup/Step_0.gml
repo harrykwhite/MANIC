@@ -38,7 +38,6 @@ if (instance_exists(obj_player)){
 			global.player_health_current = global.player_health_max;
 		}
 		
-		obj_controller_ui.upgrade_indicate_index = index;
-		obj_controller_ui.upgrade_indicate_time = 60 * 7;
+		scr_header_display_text(global.upgrade_name[index], global.upgrade_description[index], 60 * 7);
     }
 }

@@ -11,7 +11,7 @@ has_saved = false;
 bonus_killtime = 0;
 bonus_killamount = 0;
 
-sectionstart_record_set = false;
+checkpoint_create = false;
 
 corpse_queue = ds_queue_create();
 cutscene_look_x = 0;
@@ -41,6 +41,7 @@ cutscene_dialogue_line = -1;
 cutscene_dialogue_special = -1;
 
 weaponswitch_break = 10;
+//levelstart_record_set = false;
 
 global.player_is_respawning = false;
 

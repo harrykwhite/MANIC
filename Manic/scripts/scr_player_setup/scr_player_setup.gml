@@ -80,6 +80,7 @@ feet.owner = id;
 var upgradecount = array_length_1d(global.upgrade_name);
 for(var i = 0; i < upgradecount; i ++){
 	global.upgrade_equipped[i] = false;
+	upgrade_has[i] = false;
 }
 
 if (global.game_is_playthrough){
@@ -110,6 +111,8 @@ if (global.game_is_playthrough){
 		scr_upgrade_add(PlayerUpgrade.GasMask);
 	}
 }
+
+scr_player_upgrade_refresh();
 
 // Fly
 fly[0] = noone; fly[1] = noone; fly[2] = noone;

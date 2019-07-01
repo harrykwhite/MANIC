@@ -1,6 +1,6 @@
 ///scr_cutscene_51();
 var index = 51;
-var x_to = 0, y_to = 0, drawlight = false;
+var x_to = 0, y_to = 0;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
@@ -66,7 +66,6 @@ if (instance_exists(obj_player)){
 	if (global.cutscene_time[index] < 100){
 		global.cutscene_time[index] ++;
 	}else{
-		global.level_current = cutscene_traingoto;
 		obj_controller_ui.area_next_fade = true;
 		obj_pawn_other_train_1.leave = true;
 		
@@ -76,12 +75,16 @@ if (instance_exists(obj_player)){
 			global.game_level_opening_type = cutscene_trainstart_type;
 		}
 		
-		if (global.game_is_playthrough) || (global.level_current == cutscene_traingoto){
+		var level = scr_level_get_index(room);
+		
+		if (global.game_is_playthrough) || (level == cutscene_traingoto){
 			if (cutscene_trainroom == -1){
 				obj_controller_ui.area_next_room = global.level_room[cutscene_traingoto];
 			}else{
 				obj_controller_ui.area_next_room = cutscene_trainroom;
 			}
+			
+			global.level_current = cutscene_traingoto;
 		}else{
 			obj_controller_ui.area_next_room = rm_title_0;
 		}

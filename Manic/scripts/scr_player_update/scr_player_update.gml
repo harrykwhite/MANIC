@@ -34,7 +34,7 @@ if (i_time > 0){
 
 // Upgrades
 global.weapon_slotmax = 2;
-if (scr_player_has_upgrade(PlayerUpgrade.Backpack)){
+if (upgrade_has[PlayerUpgrade.Backpack]){
 	global.weapon_slotmax = 3;
 }
 
@@ -57,7 +57,7 @@ if (global.weapon_slotcurrent > global.weapon_slotmax - 1){
 }
 
 global.player_health_max = 6;
-if (scr_player_has_upgrade(PlayerUpgrade.Chestplate)){
+if (upgrade_has[PlayerUpgrade.Chestplate]){
 	global.player_health_max = 12;
 }
 
