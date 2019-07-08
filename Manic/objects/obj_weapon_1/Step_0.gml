@@ -51,6 +51,33 @@ if (global.player_stamina_active){
     }
 }
 
+if (burn){
+	if (burn_time > 0){
+		burn_time --;
+	}else{
+		kill = true;
+	}
+	
+	if (!global.game_pause){
+		var lenp = random_range(7, 25);
+		var lenop = random(3) * choose(-1, 1);
+		var xp = x + lengthdir_x(lenp, image_angle);
+		var yp = y + lengthdir_y(lenp, image_angle);
+		xp += lengthdir_x(lenop, image_angle + 90);
+		yp += lengthdir_y(lenop, image_angle + 90);
+		
+		if (random(3) < 1){
+			part_particles_create(global.ps_front, xp, yp, global.pt_fire_0, 1);
+		}
+		
+		if (random(5) < 1){
+			part_particles_create(global.ps_front, xp, yp, global.pt_fire_2, 1);
+		}
+	}
+}else{
+	burn_time = burn_time_max;
+}
+
 if (!attack_can){
 	attack_time = max(attack_time, 0.1);
 }

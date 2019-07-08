@@ -83,8 +83,8 @@ if (!global.game_pause){
 	
 	// Post Level Dialogue
 	if (room == rm_level_2_post_00){
-		if (!global.game_companion_farmer_level2post_talked) || (postlevel_dialogue_exception){
-			global.game_companion_farmer_level2post_talked = true;
+		if (!global.game_companion_farmer_level2post_talked_0) || (postlevel_dialogue_exception){
+			global.game_companion_farmer_level2post_talked_0 = true;
 			postlevel_dialogue_exception = true;
 			
 			if (global.cutscene_current == -1){
@@ -144,25 +144,25 @@ if (!global.game_pause){
 						obj_controller_ui.dialogue_x = inst.x;
 						obj_controller_ui.dialogue_y = inst.y - 24;
 						
-						if (postlevel_dialogue_index < 5){
+						if (postlevel_dialogue_index < 6){
 							postlevel_dialogue_inst = inst;
 							postlevel_dialogue_index ++;
 							postlevel_dialogue_time  = 60 * 3.5;
 						}else{
 							postlevel_dialogue_exception = false;
-							global.game_companion_farmer_level2post_talked = true;
+							global.game_companion_farmer_level2post_talked_0 = true;
 						}
 					}
 				}
 			}
 		}else{
-			global.game_companion_farmer_level2post_talked = true;
+			global.game_companion_farmer_level2post_talked_0 = true;
 		}
 	}
 }
 
 // Checkpoint
-if (room == rm_level_2_02){
+if (room == rm_level_2_03){
 	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
 		obj_controller_gameplay.checkpoint_create = true;
 		global.level_checkpoint_found[global.level_current] = true;
@@ -203,6 +203,8 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 		if (global.game_combat_in_hordechallenge){
 			spawn_rate += horde_spawn_rate;
 		}
+		
+		spawn_rate += global.game_combat_playerskill - 1;
 		
 		if (spawn_time > 0){
 			spawn_time -= spawn_rate;

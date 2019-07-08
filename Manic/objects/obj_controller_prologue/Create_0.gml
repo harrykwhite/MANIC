@@ -45,7 +45,7 @@ var lflr = layer_tilemap_get_id(flr);
 var oldx = 0;
 var oldy = 0;
 
-repeat(620){
+repeat(590){
 	var xx = random(room_width);
 	var yy = random(room_height);
 	

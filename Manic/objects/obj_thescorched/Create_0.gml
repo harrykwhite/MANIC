@@ -5,6 +5,10 @@ destroy = false;
 state = 0;
 mid_cutscene_played = false;
 
+hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox.sprite_index = spr_human_hitbox_0;
+hitbox.owner = id;
+
 light_brightness = 0;
 mylight = instance_create_layer(x, y, "Lights", obj_thescorched_light);
 

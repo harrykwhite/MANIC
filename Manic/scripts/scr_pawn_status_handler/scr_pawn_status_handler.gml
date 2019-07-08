@@ -1,5 +1,10 @@
 // Burn control
 var is_fly = object_index == obj_enemy_1;
+var hurt_sound = choose(snd_character_hit_0, snd_character_hit_1);
+
+if (object_index == obj_enemy_3 || object_index == obj_giantturret || object_index == obj_giantturret_flamethrower){
+	hurt_sound = snd_object_metal_hit_0;
+}
 
 if (burn){
 	if (!burn_start){
@@ -28,7 +33,7 @@ if (burn){
 				burn_cycle--;
 				burn_time = 55;
 				scr_pawn_damage(1, 0, 0, 5);
-				scr_sound_play_distance(choose(snd_character_hit_0, snd_character_hit_1), false, 200);
+				scr_sound_play_distance(hurt_sound, false, 200);
 			}else{
 				scr_draw_burn_die(6, 18, x, y, 5);
 				burn_time = -1;
@@ -69,7 +74,7 @@ if (poison){
 	}else{
 		poison_time = 50;
 		scr_pawn_damage(2, 0, 0, 5);
-		scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+		scr_sound_play(hurt_sound, false, 0.8, 1.2);
 	}
 }
 
@@ -79,7 +84,7 @@ if (bleed){
 		bleed_time ++;
 	}else{
 		scr_pawn_damage(1, 0, 0, 5);
-		scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+		scr_sound_play(hurt_sound, false, 0.8, 1.2);
 		bleed_time = 0;
 	}
 }

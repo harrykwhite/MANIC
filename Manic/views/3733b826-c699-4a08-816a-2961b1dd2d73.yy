@@ -7,7 +7,15 @@
         "04336586-4566-4410-957b-b52ad40bdb1d",
         "9af1fbd1-6641-474c-bede-a51550b87923",
         "af8fba78-176d-4366-b182-ff52b785e08c",
-        "24386115-f5a1-46e0-8d75-3259dae86f47"
+        "24386115-f5a1-46e0-8d75-3259dae86f47",
+        "91aead37-87d6-421c-84a6-0f3b22f79b66",
+        "2a4066fa-fa13-434b-9e31-3e399c0f3641",
+        "ffbc1341-22e1-4136-a6c1-66db314f3209",
+        "ede96453-faf5-414a-9c10-d50e4041d5ba",
+        "c3d0feea-0640-463e-b3cc-dca594b336b7",
+        "8d3cd0cc-5ad5-45e1-a35e-0654dd948023",
+        "8e4fcd05-b12a-45a7-bfb2-42d4d5d03d8f",
+        "a07b9dff-bc68-4ba8-8890-5b1fb9389e3b"
     ],
     "filterType": "GMSprite",
     "folderName": "Pawns",

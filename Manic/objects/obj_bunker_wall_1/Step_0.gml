@@ -42,6 +42,6 @@ if (explode){
 	brk.sprite_index = spr_bunker_wall_1_remains;
 	
 	scr_effect_screenshake(4);
-	scr_effect_freeze(7);
+	scr_effect_freeze(13);
 	instance_destroy();
 }

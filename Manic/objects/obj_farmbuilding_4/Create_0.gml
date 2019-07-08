@@ -1,2 +1,1 @@
-fadeOwner = noone;
-dec_set = false;
+fade_owner = noone;

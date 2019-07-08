@@ -34,7 +34,7 @@ if (death){
 	scr_sound_play_distance_pitch(snd_object_box_break_0, false, 240, 0.8, 1.2);
     instance_destroy();
     scr_effect_screenshake(3);
-	scr_effect_freeze(8);
+	scr_effect_freeze(15);
 	scr_effect_vignette_flash(c_ltgray, 0.1, 0.01);
 	part_type_direction(global.pt_wood_2, 0, 360, 0, 0);
     repeat(15)part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-8, 8), global.pt_wood_2, 1);

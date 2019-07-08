@@ -1,2 +1,2 @@
-index = PlayerWeapon.Katana;
+index = PlayerWeapon.Machete;
 angle = 70;

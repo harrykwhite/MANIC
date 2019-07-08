@@ -14,4 +14,24 @@ if (instance_exists(owner)){
 	
 		angle_offset_current = approach(angle_offset_current, angle_offset, 50);
 	}
+	
+	// Kill
+	if (kill){
+		instance_destroy();
+		
+		owner.weapon = instance_create(x, y, obj_pawnweapon_3);
+		owner.weapon.owner = owner;
+		owner.weapon_index = PawnWeapon.Knife;
+		
+		scr_effect_screenshake(3);
+		scr_effect_freeze(13);
+		scr_sound_play_distance_pitch(snd_weapon_stick_break_0, false, 220, 0.8, 1.2);
+		
+		var sticklen = 20, thislen = 1;
+		repeat(sticklen){
+			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_0, 1);
+			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_flash_0, 1);
+			thislen ++;
+		}
+	}
 }

@@ -1,4 +1,5 @@
 image_alpha = 0;
+depth = layer_get_depth("Main") + 1;
 
 dir = choose(-1, 1);
 rspd = 0;

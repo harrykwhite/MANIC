@@ -7,6 +7,10 @@ scale = 1.05;
 damage = 2;
 strength = 1;
 
+hitbox = instance_create(x, y, obj_player_hitbox_0);
+hitbox.sprite_index = spr_dog_hitbox_0;
+hitbox.owner = id;
+
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 mylight = noone;

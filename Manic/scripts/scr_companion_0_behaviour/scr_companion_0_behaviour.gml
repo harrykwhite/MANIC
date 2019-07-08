@@ -138,7 +138,7 @@ if (instance_exists(obj_player)){
 			
 			if (runaway_time > 0){
 				runaway_time--;
-		
+				
 				var dir = point_direction(target.x, target.y, x, y);
 				move_x_to = target.x + lengthdir_x(500, dir);
 				move_y_to = target.y + lengthdir_y(500, dir);
@@ -147,7 +147,9 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y;
 				
-				if (distance_to_object(target) > 40){
+				var tdist = 40 + (10 * (global.level_current - 1));
+				
+				if (distance_to_object(target) > tdist){
 					move_speed = 1.3;
 				}else{
 					move_speed = 0;
@@ -270,6 +272,15 @@ if (instance_exists(obj_player)){
 	if (weapon_does_exist){
 		if (distTo > 3){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
+			
+			while((image_xscale == -scale && (weapon.dir <= 90 || weapon.dir >= 270))
+			|| (image_xscale == scale && weapon.dir > 90 && weapon.dir < 270)){
+				if (sign(image_xscale) == 1){
+					weapon.dir = 360;
+				}else{
+					weapon.dir = 180;
+				}
+			}
 		}
 	}
 	

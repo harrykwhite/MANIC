@@ -7,7 +7,7 @@ if (parent != -1){
 		
 		parent = -1;
 	}else{
-		depth_offset = -25;
+		depth_offset = -28;
 	}
 }
 
@@ -34,7 +34,7 @@ if (instance_exists(obj_player)){
 			global.level_collectable_current[global.level_current] ++;
 			
 			global.level_collectable_found[# 0, listnum] = true;
-			if (global.game_is_playthrough){
+			if (global.game_is_playthrough) || (room == rm_prologue_00){
 				scr_save_game();
 			}
 			

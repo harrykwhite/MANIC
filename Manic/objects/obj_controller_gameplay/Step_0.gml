@@ -71,6 +71,7 @@ if (levelcur != Level.Prologue){
 if (checkpoint_create) && (instance_exists(obj_player)){
 	global.checkpoint_killcount = global.level_kill_count[levelcur];
 	global.checkpoint_levelcleared = global.level_cleared[levelcur];
+	global.checkpoint_starttype = global.game_level_opening_type;
 	global.checkpoint_room = room;
 	global.checkpoint_goto = false;
 	

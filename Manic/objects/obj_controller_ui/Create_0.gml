@@ -100,7 +100,7 @@ header_display_line_width = 0;
 
 checkpoint_text_alpha = 0;
 checkpoint_text_time = 0;
-checkpoint_text_line_width = 0;
+//checkpoint_text_line_width = 0;
 
 level_opening = false;
 level_opening_line_width = 0;
@@ -110,10 +110,15 @@ level_opening_time = 0;
 level_opening_active = false;
 
 var levelcount = array_length_1d(global.level_name);
+
+if (room == rm_prologue_00){
+	global.level_entered[0] = false;
+}
+
 for(var i = 0; i < levelcount; i ++){
 	if (room == global.level_room[i]){
 		if (!global.level_entered[i]){
-			if (!global.game_is_playthrough){
+			if (!global.game_is_playthrough) || (room == rm_prologue_00){
 				scr_companions_clear();
 				scr_set_kills_and_findings();
 			}
@@ -140,7 +145,7 @@ if (!global.game_boss_firstantag_killed){
 		scr_companion_register(obj_companion_0);
 	}
 	
-	if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation) && (room != rm_level_2_00){
+	if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation) && (room != rm_level_2_pre_00) && (room != rm_level_2_00){
 		scr_companion_register(obj_companion_0);
 		global.game_companion_farmer_found = true;
 	}

@@ -38,13 +38,13 @@ var enemyline = ds_list_create();
 var playerline = ds_list_create();
 var envline = ds_list_create();
 
-var enemylinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, enemyline, obj_p_enemy);
-var playerlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, playerline, obj_p_player);
+var enemylinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, enemyline, obj_p_enemy_hitbox);
+var playerlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, playerline, obj_p_player_hitbox);
 var envlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, envline, obj_p_solid);
 
 var ctype = "default";
-var enemydist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy, width);
-var playerdist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player, width);
+var enemydist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy_hitbox, width);
+var playerdist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player_hitbox, width);
 var envdist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_solid, width);
 
 if (envdist < len){
@@ -64,13 +64,15 @@ if (!enemyproj){
 	}
 }
 
+var stick_kill = false;
+
 switch(ctype){
 	case "enemy":
 		var num = enemylinelength;
 		
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
-				var inst = enemyline[| i];
+				var inst = enemyline[| i].owner;
 				
 				if (inst.i_time <= 0){
 					len = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy);
@@ -78,7 +80,6 @@ switch(ctype){
 					yEnd = yy + lengthdir_y(len, dir);
 					
 					scr_effect_screenshake(2);
-					scr_effect_freeze(5);
 					
 					if (inst.object_index == obj_enemy_1){
 						if (inst.owner != obj_player) && (inst.owner != noone){
@@ -128,6 +129,8 @@ switch(ctype){
 					if (string_char_at(object_get_name(object_index), 4) != "p"){
 						scr_mouse_cross();
 					}
+					
+					stick_kill = true;
 				}
 			}
 		}
@@ -139,7 +142,7 @@ switch(ctype){
 		
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
-				var inst = playerline[| i];
+				var inst = playerline[| i].owner;
 				
 				if (inst.object_index == obj_companion_0){
 					continue;
@@ -180,6 +183,8 @@ switch(ctype){
 						part_type_speed(global.pt_blood_5, 3, 5, -0.2, 0);
 						repeat(3)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_blood_5, 1);
 					}
+					
+					stick_kill = true;
 				}
 			}
 		}
@@ -219,7 +224,7 @@ switch(ctype){
 									show_debug_message("Proj environmental damage has not been applied");
 									break;
 							}
-						
+							
 							inst.hit_time = 6;
 							inst.spd = 0.8;
 							inst.dir = dir;
@@ -232,6 +237,8 @@ switch(ctype){
 								part_type_direction(global.pt_wood_1, (dir - 180) - 30, (dir - 180) + 30, 0, 0);
 								repeat(7) part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_wood_1, 2);
 							}
+							
+							stick_kill = true;
 						}
 
 						break;
@@ -245,6 +252,10 @@ switch(ctype){
 		
 			break;
 		}
+}
+
+if (object_index == obj_weapon_1) && (stick_kill){
+	kill = true;
 }
 
 ds_list_destroy(enemyline);

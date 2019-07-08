@@ -1,6 +1,6 @@
 // Movement
-spd_build = 0.1//0.32;
-spd_max = 1.6;
+spd_build = 0.19//0.32;
+spd_max = 1.9;
 spd_offset = 1;
 spd_offset_change = 0.05;
 move_time = 0;
@@ -10,6 +10,11 @@ yaxis = 0;
 len = 0;
 dir = 0;
 canmove = true;
+
+// Hitbox
+hitbox = instance_create(x, y, obj_player_hitbox_0);
+hitbox.sprite_index = spr_human_hitbox_0;
+hitbox.owner = id;
 
 // Light
 flashlight_direction = 0;
@@ -83,7 +88,7 @@ for(var i = 0; i < upgradecount; i ++){
 	upgrade_has[i] = false;
 }
 
-if (global.game_is_playthrough){
+if (global.game_is_playthrough) || (room == rm_prologue_00){
 	var upgradecount = array_length_1d(global.upgrade_name);
 	for(var i = 0; i < upgradecount; i ++){
 		if (global.game_save_upgrade_unlocked[i]){

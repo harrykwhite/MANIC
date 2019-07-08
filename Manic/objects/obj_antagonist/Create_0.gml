@@ -7,6 +7,10 @@ state_time = 0;
 state_time_max = 0;
 type = -1;
 
+hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox.sprite_index = spr_human_hitbox_0;
+hitbox.owner = id;
+
 light_brightness = 0;
 mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 

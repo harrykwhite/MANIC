@@ -184,15 +184,16 @@ if (tutourial) && (global.cutscene_current == -1){
 	var scalem = wave(1, 1.025, 3.5, 0);
 	tutourial_scale = approach(tutourial_scale, 1, 15);
 	
+	var tscale = tutourial_scale * scalem;
 	var tstage = min(tutourial_stage, tut_count - 1);
 	
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
 	draw_set_alpha(tutourial_alpha);
-	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_white, tutourial_scale * scalem, tutourial_scale * scalem, 0);
+	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_white, tscale, tscale, 0);
 	
-	draw_set_alpha(((tutourial_scale * scalem) - 1) * 3 * tutourial_alpha);
-	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_maroon, tutourial_scale * scalem, tutourial_scale * scalem, 0);
+	draw_set_alpha((tscale - 1) * 3 * tutourial_alpha);
+	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_maroon, tscale, tscale, 0);
 	draw_set_alpha(1);
 	
 	if (tutourial_fade){
@@ -343,27 +344,51 @@ if (instance_exists(obj_player)){
 				
 				switch(global.weapon_ammotype[w]){
 					case AmmoType.Bullets:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, weaponammo_scale, weaponammo_scale, 0);
+						if (weaponammo_scale > 1.01){
+							scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, weaponammo_scale, weaponammo_scale, 0);
+						}else{
+							scr_text_shadow(xx, yy, string(ammo) + "/" + string(maxammo), col);
+						}
 						break;
 					
 					case AmmoType.Fuel:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " fuel", col, weaponammo_scale, weaponammo_scale, 0);
+						if (weaponammo_scale > 1.01){
+							scr_text_shadow_transformed(xx, yy, string(ammo) + " fuel", col, weaponammo_scale, weaponammo_scale, 0);
+						}else{
+							scr_text_shadow(xx, yy, string(ammo) + " fuel", col);
+						}
 						break;
 					
 					case AmmoType.Explosives:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " explosives", col, weaponammo_scale, weaponammo_scale, 0);
+						if (weaponammo_scale > 1.01){
+							scr_text_shadow_transformed(xx, yy, string(ammo) + " explosives", col, weaponammo_scale, weaponammo_scale, 0);
+						}else{
+							scr_text_shadow(xx, yy, string(ammo) + " explosives", col);
+						}
 						break;
 					
 					case AmmoType.Arrows:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " arrows", col, weaponammo_scale, weaponammo_scale, 0);
+						if (weaponammo_scale > 1.01){
+							scr_text_shadow_transformed(xx, yy, string(ammo) + " arrows", col, weaponammo_scale, weaponammo_scale, 0);
+						}else{
+							scr_text_shadow(xx, yy, string(ammo) + " arrows", col);
+						}
 						break;
 					
 					case AmmoType.Darts:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, weaponammo_scale, weaponammo_scale, 0);
+						if (weaponammo_scale > 1.01){
+							scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, weaponammo_scale, weaponammo_scale, 0);
+						}else{
+							scr_text_shadow(xx, yy, string(ammo) + " darts", col);
+						}
 						break;
 					
 					case AmmoType.Shells:
-						scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col, weaponammo_scale, weaponammo_scale, 0);
+						if (weaponammo_scale > 1.01){
+							scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col, weaponammo_scale, weaponammo_scale, 0);
+						}else{
+							scr_text_shadow(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col);
+						}
 						break;
 				}
 	        }else{
@@ -509,22 +534,24 @@ if (checkpoint_text_time > 0){
 }
 
 if (checkpoint_text_alpha > 0){
-	var yy = 50;
+	var yy = dheight - 56;
 	
 	draw_set_alpha(checkpoint_text_alpha);
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_center);
+	draw_set_valign(fa_bottom);
 	
 	if (checkpoint_text_time > 0){
-		scr_text_shadow((dwidth / 2), yy + ((1 - checkpoint_text_alpha) * 30), "Checkpoint Reached", c_white);
+		scr_text_shadow((dwidth / 2), yy + ((1 - checkpoint_text_alpha) * 30), "[Checkpoint Reached]", c_white);
 	}else{
-		scr_text_shadow((dwidth / 2), yy, "Checkpoint Reached", c_white);
+		scr_text_shadow((dwidth / 2), yy, "[Checkpoint Reached]", c_white);
 	}
 	
-	var line_width_to = string_width("Checkpoint Reached") + 30;
-	checkpoint_text_line_width = approach(checkpoint_text_line_width, line_width_to, 5);
+	//var line_width_to = string_width("[Checkpoint Reached]") + 30;
+	//checkpoint_text_line_width = approach(checkpoint_text_line_width, line_width_to, 5);
 	
-	draw_rectangle((dwidth / 2) - (checkpoint_text_line_width / 2), yy + 30, (dwidth / 2) + (checkpoint_text_line_width / 2), yy + 31, false);
+	//draw_rectangle((dwidth / 2) - (checkpoint_text_line_width / 2), yy - 3, (dwidth / 2) + (checkpoint_text_line_width / 2), yy - 2, false);
+	draw_set_valign(fa_top);
 	draw_set_alpha(1);
 }
 

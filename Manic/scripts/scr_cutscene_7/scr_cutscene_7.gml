@@ -43,7 +43,7 @@ if (instance_exists(obj_player)){
 					if (global.cutscene_time[index] == 155){
 						audio_play_sound(snd_weapon_swing_0, 3, false);
 						var drop = instance_create(dropx, dropy + 10, obj_weapondrop);
-						drop.index = PlayerWeapon.WireCables;
+						drop.index = PlayerWeapon.Wrench;
 						drop.spd = 5;
 						drop.dir = 270 + random_range(-5, 5);
 						drop.angle = 0;
@@ -56,7 +56,7 @@ if (instance_exists(obj_player)){
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;
 				}
-			}else if (room == rm_level_4_01){
+			}else if (room == rm_level_4_02){
 				var levelobj = scr_get_level_object();
 				
 				if (levelobj.terminal_deactivate_count < 2){

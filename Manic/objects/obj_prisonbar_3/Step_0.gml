@@ -16,7 +16,7 @@ if (death){
 	scr_sound_play_distance_pitch(snd_object_box_break_0, false, 240, 0.8, 1.2);
     instance_destroy();
     scr_effect_screenshake(3);
-	scr_effect_freeze(8);
+	scr_effect_freeze(13);
 	scr_effect_vignette_flash(c_ltgray, 0.1, 0.01);
 	var brk = instance_create(x, y, obj_break); brk.shake = 3; brk.sprite_index = spr_prisonbar_3_break;
 }

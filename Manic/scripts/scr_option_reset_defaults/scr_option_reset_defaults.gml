@@ -36,4 +36,4 @@ switch(type){
 		break;
 }
 
-scr_options_refresh();
+scr_options_refresh(type == "display");

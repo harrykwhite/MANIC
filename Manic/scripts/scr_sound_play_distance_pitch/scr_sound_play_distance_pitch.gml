@@ -8,15 +8,27 @@ var loop = argument1;
 var radius = argument2;
 var pmin = argument3;
 var pmax = argument4;
+var centerx, centery, vol, dist;
 
-var centerx = camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2);
-var centery = camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2);
-var dist = distance_to_point(centerx, centery);
+if (!instance_exists(obj_player)){
+	if (instance_exists(obj_player_death)){
+		centerx = obj_player_death.x;
+		centery = obj_player_death.y;
+	}else{
+		centerx = camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2);
+		centery = camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2);
+	}
+}else{
+	centerx = obj_player.x;
+	centery = obj_player.y;
+}
+
+dist = distance_to_point(centerx, centery);
 
 if (dist < radius){
-	var vol = 1 - (dist / radius);
+	vol = 1 - (dist / radius);
 }else{
-	var vol = 0;
+	vol = 0;
 }
    
 vol = clamp(vol, 0, 1);

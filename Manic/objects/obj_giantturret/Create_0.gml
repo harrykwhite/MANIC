@@ -5,6 +5,10 @@ destroy = false;
 state = 0;
 active = false;
 
+hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox.sprite_index = spr_giantturret_hitbox_0;
+hitbox.owner = id;
+
 attack = 0;
 attack_time = 0;
 attack_time_max = 1;

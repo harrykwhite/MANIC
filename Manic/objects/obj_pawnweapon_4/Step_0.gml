@@ -48,7 +48,7 @@ if (instance_exists(owner)){
 			
 			owner.weapon = instance_create(x, y, obj_pawnweapon_3);
 	        owner.weapon.owner = owner;
-	        owner.weapon_index = 3;
+	        owner.weapon_index = PawnWeapon.Knife;
 	    }
 	}
 }

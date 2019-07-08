@@ -72,7 +72,7 @@ if (drawshader){
 			if (random(3) < 1){
 				part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_fire_0, 1);
 			}
-
+			
 			if (random(5) < 1){
 				part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_fire_2, 1);
 			}

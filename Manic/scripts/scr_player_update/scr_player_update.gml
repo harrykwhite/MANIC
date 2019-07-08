@@ -1,3 +1,6 @@
+// Skill
+global.game_combat_playerskill = scr_player_determine_skill();
+
 // Equipment
 var weapon;
 

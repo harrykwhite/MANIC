@@ -26,6 +26,10 @@ switch(rm){
 		return Level.WesternFarmland;
 		break;
 	
+	case rm_level_2_03:
+		return Level.WesternFarmland;
+		break;
+	
 	case rm_level_2_post_00:
 		return Level.WesternFarmland;
 		break;
@@ -47,6 +51,10 @@ switch(rm){
 		break;
 	
 	case rm_level_4_01:
+		return Level.WinterTown;
+		break;
+	
+	case rm_level_4_02:
 		return Level.WinterTown;
 		break;
 	

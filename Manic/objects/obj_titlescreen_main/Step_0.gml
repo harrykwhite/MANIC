@@ -164,7 +164,7 @@ if (fade){
 							}
 				
 							global.game_option[| option_setting_display_edit[selected]] = option_setting_display_value[selected];
-							scr_options_refresh();
+							scr_options_refresh(true);
 							press_break = 5;
 						}
 					}else if (in_settings_audio){

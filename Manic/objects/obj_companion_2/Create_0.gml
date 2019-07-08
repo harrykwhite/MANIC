@@ -5,6 +5,10 @@ wait = 0;
 light_brightness = 0;
 scale = random_range(0.975, 1.025);
 
+hitbox = instance_create(x, y, obj_player_hitbox_0);
+hitbox.sprite_index = spr_human_hitbox_0;
+hitbox.owner = id;
+
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 mylight = noone;

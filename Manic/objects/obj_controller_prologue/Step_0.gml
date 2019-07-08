@@ -159,14 +159,12 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 		if (deer_spawn_time > 0){
 			deer_spawn_time --;
 		}else{
-			var xx = random_range(camx - 20, camx + camw + 20);
-			var yy = random_range(camy - 20, camy + camh + 20);
 			var counter = 0;
 			var dospawn = true;
 			
-			while ((distance_to_object(obj_player) < 400) || !inroom(xx, yy) || collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)){
-				xx = random_range(camx - 20, camx + camw + 20);
-				yy = random_range(camy - 20, camy + camh + 20);
+			do{
+				var xx = random_range(camx - 20, camx + camw + 20);
+				var yy = random_range(camy - 20, camy + camh + 20);
 				
 				if (counter < 200){
 					counter ++;
@@ -174,11 +172,11 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 					dospawn = false;
 					break;
 				}
-			}
+			}until ((distance_to_object(obj_player) >= 250) && inroom(xx, yy) && !collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true))
 			
 			if (dospawn){
 				instance_create(xx, yy, obj_enemy_5);
-			
+				
 				repeat(15){
 					part_particles_create(global.ps_front, xx + random_range(-7, 7), yy + random_range(-18, 18), global.pt_spawn_0, 1);
 				}

@@ -67,7 +67,7 @@ if (!global.game_pause){
 }
 
 // Checkpoint
-if (room == rm_level_4_01){
+if (room == rm_level_4_02){
 	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
 		obj_controller_gameplay.checkpoint_create = true;
 		global.level_checkpoint_found[global.level_current] = true;
@@ -103,6 +103,8 @@ if (player_exists){
 		if (global.game_combat_in_hordechallenge){
 			spawn_rate += horde_spawn_rate;
 		}
+		
+		spawn_rate += global.game_combat_playerskill - 1;
 		
 		if (spawn_time > 0){
 			spawn_time -= spawn_rate;

@@ -9,6 +9,10 @@ sporadic = false;
 sporadic_timemax = random_range(45, 150);
 sporadic_time = sporadic_timemax;
 
+hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox.sprite_index = spr_human_hitbox_0;
+hitbox.owner = id;
+
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 mylight = noone;

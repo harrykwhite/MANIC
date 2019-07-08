@@ -99,7 +99,7 @@ if (instance_exists(flashlight)){
 	if (global.cutscene_current == -1) && (!global.game_pause){
 		flashlight_direction = point_direction(x, y, mouse_x, mouse_y);
 	}
-
+	
 	flashlight.x = x + lengthdir_x(4, flashlight_direction);
 	flashlight.y = y + lengthdir_y(4, flashlight_direction);
 	flashlight.light[| eLight.X] = x + lengthdir_x(4, flashlight_direction);

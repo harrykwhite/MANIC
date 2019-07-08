@@ -8,6 +8,7 @@ var kbd = argument2;
 var it = argument3;
 
 global.player_health_current -= dmg;
+
 knockback_speed = kbs;
 knockback_direction = kbd;
 blend = c_red;

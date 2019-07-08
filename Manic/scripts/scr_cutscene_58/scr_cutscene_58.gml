@@ -121,7 +121,7 @@ if (instance_exists(obj_player)){
 			linefrom[6] = inst;
 			break;
 		
-		case rm_level_2_02:
+		case rm_level_2_03:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_thescorched);
 			
 			if (global.game_boss_thescorched_talked){
@@ -175,6 +175,8 @@ if (instance_exists(obj_player)){
 				return;
 			}
 			
+			global.game_companion_farmer_level2post_talked_1 = true;
+			
 			line[0] = "This looks to be another one of their bases.";
 			linefrom[0] = obj_player;
 			
@@ -187,8 +189,11 @@ if (instance_exists(obj_player)){
 			line[3] = "Perhaps they might know where where the group originated from?";
 			linefrom[3] = inst;
 			
-			line[4] = "That would be really helpful. Let's go.";
+			line[4] = "Yeah, absolutely.";
 			linefrom[4] = obj_player;
+			
+			line[5] = "Let's go.";
+			linefrom[5] = obj_player;
 			break;
 		
 		case rm_level_3_01:
@@ -254,7 +259,7 @@ if (instance_exists(obj_player)){
 			}
 			break;
 		
-		case rm_level_4_01:
+		case rm_level_4_02:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_thedogkeeper);
 			
 			if (global.game_boss_thedogkeeper_talked){

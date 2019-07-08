@@ -40,6 +40,7 @@ if (global.player_is_respawning) && (global.checkpoint_room == noone){
 }else{
 	room_goto(global.checkpoint_room);
 	global.checkpoint_goto = true;
+	global.game_level_opening_type = global.checkpoint_starttype;
 	global.level_kill_count[global.level_current] = global.checkpoint_killcount;
 	global.level_cleared[global.level_current] = global.checkpoint_levelcleared;
 }

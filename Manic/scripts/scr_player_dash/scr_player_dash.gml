@@ -15,7 +15,7 @@ for(var i = 0; i < (dash_speed) + 1; i ++){
 			for(var e = 0; e < len; e ++){
 				if (inst.object_index == envobject[e]){
 					scr_effect_screenshake(3);
-					scr_effect_freeze(5);
+					scr_effect_freeze(15);
 					inst.death = true;
 					return;
 				}

@@ -70,8 +70,8 @@ if (health_current <= 0){
 		part_particles_create(global.ps_front, x + random_range(-eoffsetx, eoffsetx), y + random_range(-eoffsety, eoffsety), global.pt_blood_4, 1);
 	}
 	
-    scr_effect_freeze(5);
     scr_effect_screenshake(4);
+	scr_effect_freeze(13);
 	scr_effect_vignette_flash(c_ltgray, 0.3, 0.01);
     
     instance_destroy();
@@ -138,7 +138,7 @@ if (health_current <= 0){
 			doexplode = true;
 			
 			global.level_turret_killed[# 0, listnum] = true;
-			if (global.game_is_playthrough){
+			if (global.game_is_playthrough) || (room == rm_prologue_00){
 				scr_save_game();
 			}
 		}else if (object_index == obj_thescorched){
@@ -244,6 +244,7 @@ if (health_current <= 0){
 		scr_damage_custom(1, 1, 55, 55, 3, true, true, true, true);
 		scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
 		scr_effect_screenshake(5);
+		scr_effect_freeze(13);
 		scr_sound_play_distance(snd_weapon_explode_0, false, 600);
 		
 		if (object_index == obj_giantturret_flamethrower){

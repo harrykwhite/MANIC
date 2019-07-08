@@ -22,8 +22,8 @@ for(var i = 0; i < maxdist; i ++){
 		break;
 	}
 	
-	xx = xx + lengthdir_x(1, dir);
-	yy = yy + lengthdir_y(1, dir);
+	xx = xx + lengthdir_x(2, dir);
+	yy = yy + lengthdir_y(2, dir);
 }
 
 return i;

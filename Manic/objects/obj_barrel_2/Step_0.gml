@@ -57,7 +57,7 @@ if (death){
     scr_damage_custom(10, 1, 46, 46, 5, true, true, true, true);
 	scr_damage_custom(9, 1, 66, 66, 5, true, true, true, true);
     scr_effect_screenshake(5);
-	scr_effect_freeze(4);
+	scr_effect_freeze(10);
 	scr_effect_vignette_flash(c_ltgray, 0.34, 0.01);
 	scr_sound_play_distance(snd_weapon_explode_0, false, 500);
 	var brk = instance_create(x, y, obj_break); brk.shake = 4; brk.sprite_index = spr_barrel_0_break;

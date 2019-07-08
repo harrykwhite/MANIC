@@ -4,6 +4,10 @@ scale = random_range(1, 1.1);
 destroy = false;
 initiated = false;
 
+hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox.sprite_index = spr_turret_hitbox_0;
+hitbox.owner = id;
+
 damage = 1;
 strength = 1;
 

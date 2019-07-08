@@ -36,7 +36,7 @@ enum PlayerWeapon{
 	FlareRifle,
 	DartPistol,
 	MountedMachineGunCart,
-	WireCables,
+	Wrench,
 	DartRifle,
 	HuntingRifle,
 	Sickle,
@@ -137,7 +137,7 @@ global.weapon_object[8] = obj_weapon_8;
 global.weapon_sprite[8] = spr_weapon_8;
 global.weapon_type[8] = WeaponType.Ranged;
 global.weapon_heavy[8] = true;
-global.weapon_ammomax[8] = 15;
+global.weapon_ammomax[8] = 21;
 global.weapon_ammotype[8] = AmmoType.Bullets;
 global.weapon_camerarange[8] = 30;
 global.weapon_mouse[8] = MouseType.Crosshair;
@@ -261,7 +261,7 @@ global.weapon_object[20] = obj_weapon_20;
 global.weapon_sprite[20] = spr_weapon_20;
 global.weapon_type[20] = WeaponType.Ranged;
 global.weapon_heavy[20] = true;
-global.weapon_ammomax[20] = 128;
+global.weapon_ammomax[20] = 72;
 global.weapon_ammotype[20] = AmmoType.Fuel;
 global.weapon_camerarange[20] = 34;
 global.weapon_mouse[20] = MouseType.LargeCircle;
@@ -361,7 +361,7 @@ global.weapon_camerarange[29] = 35;
 global.weapon_mouse[29] = MouseType.Crosshair;
 global.weapon_dualhanded[29] = false;
 
-global.weapon_name[30] = "Wire Cables";
+global.weapon_name[30] = "Wrench";
 global.weapon_object[30] = obj_weapon_30;
 global.weapon_sprite[30] = spr_weapon_30;
 global.weapon_type[30] = WeaponType.Melee;
@@ -414,7 +414,7 @@ global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
 global.weapon_slotscale[0] = 1;
 
-global.weapon_slot[1] = -1;
+global.weapon_slot[1] = PlayerWeapon.Wrench;
 global.weapon_slotammo[1] = -1;
 global.weapon_slotscale[1] = 1;
 

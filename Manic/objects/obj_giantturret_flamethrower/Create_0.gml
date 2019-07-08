@@ -3,6 +3,10 @@ blend = -1;
 scale = random_range(1, 1.1);
 destroy = false;
 
+hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox.sprite_index = spr_giantturret_flamethrower_hitbox_0;
+hitbox.owner = id;
+
 shoot = false;
 shoot_dir = 0;
 turret = noone;

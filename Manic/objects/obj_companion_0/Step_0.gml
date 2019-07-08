@@ -27,14 +27,12 @@ if (global.cutscene_current != -1){
 		ispaused = true;
 		
 		if (instance_exists(obj_player)){
-			if (!collision_line(x, y, obj_player.x, obj_player.y, obj_p_solid, false, true)){
-				if (obj_player.x > x){
-					image_xscale = scale;
-					weapon.dir = 360;
-				}else{
-					image_xscale = -scale;
-					weapon.dir = 180;
-				}
+			if (obj_player.x > x){
+				image_xscale = scale;
+				weapon.dir = 360;
+			}else{
+				image_xscale = -scale;
+				weapon.dir = 180;
 			}
 		}
 	}

@@ -1,3 +1,10 @@
+///@param refresh_display
+var refresh_display = false;
+
+if (argument_count > 0){
+	refresh_display = argument[0];
+}
+
 ini_open(working_directory + "config.ini");
 
 global.game_option[| Options.Screenshake] = clamp(global.game_option[| Options.Screenshake], 0, 100);
@@ -31,8 +38,10 @@ ini_write_real("Options", "Input_Throw", global.game_option[| Options.Input_Thro
 
 ini_close();
 
-window_set_fullscreen(global.game_option[| Options.Fullscreen]);
-scr_display_update();
+if (refresh_display){
+	window_set_fullscreen(global.game_option[| Options.Fullscreen]);
+	scr_display_update();
+}
 
 with(obj_controller_all){
 	scr_update_real_volumes();

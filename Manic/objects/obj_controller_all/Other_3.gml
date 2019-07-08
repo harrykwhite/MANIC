@@ -1,5 +1,5 @@
 if (room != rm_ini) && (room != rm_title_0){
-	if (global.game_is_playthrough){
+	if (global.game_is_playthrough) || (room == rm_prologue_00){
 		scr_save_game();
 	}
 }

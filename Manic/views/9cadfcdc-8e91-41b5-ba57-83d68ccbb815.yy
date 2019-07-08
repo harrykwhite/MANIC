@@ -25,7 +25,8 @@
         "632a5e89-9cc1-476a-8b5f-ece6a329524c",
         "fbef7afc-7bfe-4e21-a265-b4f3358e1ddf",
         "131501c6-759b-4acc-bce3-553425105f66",
-        "c4bcb09c-7945-4549-ac92-91611c7b9b64"
+        "c4bcb09c-7945-4549-ac92-91611c7b9b64",
+        "b46d3218-b1eb-4c6a-84b1-504ea2f6a658"
     ],
     "filterType": "GMSound",
     "folderName": "Weapons",

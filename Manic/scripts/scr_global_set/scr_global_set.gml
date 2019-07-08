@@ -11,6 +11,7 @@ global.game_combat_state = CombatState.Idle;
 global.game_combat_state_time_real = 0;
 global.game_combat_in_hordechallenge = false;
 global.game_combat_in_hordechallenge_time = 0;
+global.game_combat_playerskill = 1;
 
 global.game_level_opening_type = 0;
 
@@ -36,6 +37,7 @@ if (room == rm_ini){
 	for(var i = 0; i < levelcount; i ++){
 		collectsize += global.level_collectable_number[i];
 	}
+	
 	global.level_collectable_found = ds_grid_create(1, collectsize);
 	
 	var turretsize = 0;
@@ -59,6 +61,7 @@ global.player_respawn_x = 0;
 global.player_respawn_y = 0;
 global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
+global.player_health_previous = global.player_health_max;
 global.player_is_respawning = false;
 
 part_system_clear(global.ps_bottom);

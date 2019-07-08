@@ -3,7 +3,7 @@
 
 if (global.worldCustomCamera == undefined){
 	// Get active view camera
-	var camera = camera_get_active();
+	var camera = view_camera[0];
 	var cameraX = camera_get_view_x(camera);
 	var cameraY = camera_get_view_y(camera);
 	var cameraW = ceil(camera_get_view_width(camera));

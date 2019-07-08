@@ -27,12 +27,12 @@ if (instance_exists(obj_player)){
 		case rm_level_1_00: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
 		case rm_level_2_00: obj_player.image_xscale = 1; break;
 		case rm_level_2_01: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_2_02: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
+		case rm_level_2_03: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
 		case rm_level_3_00: obj_player.image_xscale = 1; break;
 		case rm_level_3_01: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
 		case rm_level_3_02: obj_player.flashlight_direction = 360; obj_player.image_xscale = 1; break;
 		case rm_level_4_00: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_4_01: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
+		case rm_level_4_02: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
 		case rm_level_5_00: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
 		case rm_level_5_01: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
 		case rm_level_5_02: obj_player.flashlight_direction = 180; obj_player.image_xscale = -1; break;

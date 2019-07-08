@@ -1,8 +1,12 @@
+// Center window
 if (center_window_time != -1){
 	if (center_window_time > 0){
 		center_window_time --;
 	}else{
-		window_center();
+		if (!window_get_fullscreen()){
+			window_center();
+		}
+		
 		center_window_time = -1;
 	}
 }
@@ -17,34 +21,17 @@ if (keyboard_check_pressed(vk_tab)){
 
 // Fullscreen
 if (full <= 0){
-	if (keyboard_check_pressed(ord("F"))){
-		window_set_fullscreen(!window_get_fullscreen());
-		global.game_option[| Options.Fullscreen] = window_get_fullscreen();
-		full = 40;
+	if (keyboard_check_pressed(ord("F")) || full_autoswitch){
+		var isfull = window_get_fullscreen();
+		global.game_option[| Options.Fullscreen] = !isfull;
+		full = 50;
+		full_autoswitch = false;
 		
-		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
-		scr_options_refresh();
+		scr_options_refresh(true);
 	}
 }else{
-	full--;
+	full --;
 }
-
-/*if (wsize_time <= 0){
-	if (keyboard_check_pressed(ord("G"))){
-		if (wsize < wsize_max){
-			wsize ++;
-		}else{
-			wsize = 1;
-		}
-		
-		window_set_size(720 * wsize, 405 * wsize);
-		window_set_position((display_get_width() / 2) - ((720 * wsize) / 2), (display_get_height() / 2) - ((405 * wsize) / 2))
-		display_set_gui_size(1920, 1080);
-		wsize_time = 30;
-	}
-}else{
-	wsize_time--;
-}*/
 
 // Mouse
 if (room != rm_title_0){

@@ -6,6 +6,10 @@ scale = random_range(0.675, 0.75);
 destroy = false;
 buzz = noone;
 
+hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox.sprite_index = spr_fly_hitbox_0;
+hitbox.owner = id;
+
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.1;
 mylight = noone;

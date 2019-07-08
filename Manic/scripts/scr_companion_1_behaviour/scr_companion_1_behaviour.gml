@@ -228,6 +228,15 @@ if (instance_exists(obj_player)){
 	if (weapon_does_exist){
 		if (distTo > 5){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
+			
+			while((image_xscale == -scale && (weapon.dir <= 90 || weapon.dir >= 270))
+			|| (image_xscale == scale && weapon.dir > 90 && weapon.dir < 270)){
+				if (sign(image_xscale) == 1){
+					weapon.dir = 360;
+				}else{
+					weapon.dir = 180;
+				}
+			}
 		}
 	}
 	

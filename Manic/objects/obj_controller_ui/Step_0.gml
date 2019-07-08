@@ -78,7 +78,7 @@ if (ending){
 		}
 		
 		if (canreturn){
-			if (global.game_is_playthrough){
+			if (global.game_is_playthrough) || (room == rm_prologue_00){
 				scr_save_game();
 			}
 			
@@ -191,7 +191,7 @@ if (!global.game_pause){
 					//	break;
 					
 					case 1:
-						if (global.game_is_playthrough){
+						if (global.game_is_playthrough) || (room == rm_prologue_00){
 							scr_save_game();
 						}
 						
@@ -205,7 +205,7 @@ if (!global.game_pause){
 						break;
 					
 					case 2:
-						if (global.game_is_playthrough){
+						if (global.game_is_playthrough) || (room == rm_prologue_00){
 							scr_save_game();
 						}
 						

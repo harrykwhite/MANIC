@@ -8,4 +8,10 @@ attack_strength = 0.1;
 
 throw_damage = 1;
 
+burn = false;
+burn_time_max = 60 * 5;
+burn_time = burn_time_max;
+
+kill = false;
+
 index = 1;

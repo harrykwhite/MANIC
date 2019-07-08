@@ -171,6 +171,8 @@ if (player_exists) && (room != rm_level_6_pre_00){
 			spawn_rate += horde_spawn_rate;
 		}
 		
+		spawn_rate += global.game_combat_playerskill - 1;
+		
 		if (spawn_time > 0){
 			spawn_time -= spawn_rate;
 		}else{
