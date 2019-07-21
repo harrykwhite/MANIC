@@ -1,7 +1,7 @@
 target = obj_player;
 
 if (instance_exists(target)){
-	if ((distance_to_object(target) < 180) || (initiated) || (shoot_in_burst)) && (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
+	if ((distance_to_object(target) < 180) || (initiated) || (shoot_in_burst)){
 		dir_to = point_direction(x, y, target.x, target.y);
 		var dirdiff = angle_difference(dir, dir_to);
 		dir += min(abs(dirdiff), 10) * -sign(dirdiff);

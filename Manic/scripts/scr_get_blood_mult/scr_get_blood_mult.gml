@@ -1,0 +1,1 @@
+return 1 + (global.game_save_level / 6);

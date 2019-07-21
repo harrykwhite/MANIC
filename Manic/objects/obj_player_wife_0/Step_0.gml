@@ -19,7 +19,7 @@ if (instance_exists(obj_player)){
 					obj_controller_ui.dialogue = choose("Hi!", "Hello!");
 					obj_controller_ui.dialogue_time = 60 * 1.5;
 					obj_controller_ui.dialogue_pause = false;
-					obj_controller_ui.dialogue_count = 0;
+					obj_controller_ui.dialogue_yoff = obj_controller_ui.dialogue_yoff_max;
 				}
 			}else{
 				interact_break --;

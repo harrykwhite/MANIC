@@ -18,6 +18,12 @@ if (global.cutscene_current == -1) && (!global.game_pause){
 		if (doteleport){
 			x = xtp;
 			y = ytp;
+			
+			light_brightness = 0;
+			
+			repeat(9){
+				part_particles_create(global.ps_front, x + random_range(-7, 7), y + random_range(-7, 7), global.pt_spawn_0, 1);
+			}
 		}
 	}
 }

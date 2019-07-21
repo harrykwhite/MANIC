@@ -92,12 +92,12 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 	}
 }else{
 	if (image_xscale == scale){
-		if (instance_exists(weapon)){
+		if (instance_exists(weapon) && weapon != -1){
 			weapon.dir = 360;
 			weapon.angle_offset = 90;
 		}
 	}else{
-		if (instance_exists(weapon)){
+		if (instance_exists(weapon) && weapon != -1){
 			weapon.dir = 180;
 			weapon.angle_offset = -90;
 		}
@@ -165,7 +165,7 @@ if (crazy_dash){
 		crazy_dash = false;
 	}
 }else{
-	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
+	scr_pawn_find_path();
 }
 
 // Facing
@@ -186,7 +186,7 @@ if (crazy_runback){
 }
 
 // Animation
-if (instance_exists(weapon)){
+if (instance_exists(weapon) && weapon != -1){
 	var Idle0 = spr_enemy_0_brain_idle_0, Walk0 = spr_enemy_0_brain_walk_0;
 	var Idle1 = spr_enemy_0_brain_idle_1, Walk1 = spr_enemy_0_brain_walk_1;
 	var Idle2 = spr_enemy_0_brain_idle_2, Walk2 = spr_enemy_0_brain_walk_2;

@@ -65,7 +65,7 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
+scr_pawn_find_path();
 
 // Facing
 if (point_distance(x, y, move_x_to, move_y_to) > 8){

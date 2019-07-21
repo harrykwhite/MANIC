@@ -85,7 +85,8 @@ repeat(70){
 	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_rock_small_0, false, true)
 	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
 	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_weapondrop, false, true)
-	|| tilemap_get_at_pixel(lflr, xx, yy)){
+	|| tilemap_get_at_pixel(lflr, xx, yy)
+	|| (x >= 266 && x <= 644 && y >= 902 && y <= 1052)){
 		xx = random(room_width);
 		yy = random(room_height);
 	}

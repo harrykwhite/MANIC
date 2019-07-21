@@ -1,4 +1,4 @@
-if (global.game_pause){
+if (global.game_pause) || (enemy && global.cutscene_current != -1){
 	image_speed = 0;
 	return;
 }

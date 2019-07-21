@@ -19,16 +19,29 @@ if (instance_exists(obj_player)){
 		var absmdir = abs(minecart_dir);
 		var mdir = absmdir - ((absmdir div 360) * 360);
 
-		var cartx = x - 4;
-		var carty = y + 17;
-		var cartw = 8;
-		var carth = 6;
+		var cartx = x - 8;
+		var carty = y - 2;
+		var cartw = 16;
+		var carth = 35;
+		
+		var xvel = lengthdir_x(minecart_speed, minecart_dir);
+		var yvel = lengthdir_y(minecart_speed, minecart_dir);
+		
+		if (yvel != 0 && xvel == 0){
+			cartx = x - 2;
+			cartw = 4;
+		}
 
+		if (xvel != 0 && yvel == 0){
+			carty = y + 13;
+			carth = 4;
+		}
+		
 		if (minecart_break > 0){
 			minecart_break --;
 			minecart_touching = false;
 		}else{
-			if (collision_rectangle(cartx, carty, cartx + cartw, carty + carth, obj_block_direction, false, true)){
+			if (collision_rectangle(cartx + xvel, carty + yvel, cartx + cartw + xvel, carty + carth + yvel, obj_block_direction, false, true)){
 				if (!minecart_touching){
 					minecart_dir -= 90 * sign(minecart_speed);
 					minecart_touching = true;
@@ -56,8 +69,8 @@ if (instance_exists(obj_player)){
 			mysprite = spr_pawn_minecart_0;
 		}
 
-		x += lengthdir_x(minecart_speed, minecart_dir);
-		y += lengthdir_y(minecart_speed, minecart_dir);
+		x += xvel;
+		y += yvel;
 	}
 	
 	// Equip

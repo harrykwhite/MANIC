@@ -8,8 +8,7 @@ var camw = camera_get_view_width(view_camera[0]);
 var camh = camera_get_view_height(view_camera[0]);
 
 if (!global.game_pause){
-	
-	
+		
 	// Dust
 	if (room != rm_level_2_pre_00){
 		if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
@@ -140,7 +139,7 @@ if (!global.game_pause){
 						obj_controller_ui.dialogue = text;
 						obj_controller_ui.dialogue_time = 60 * 3;
 						obj_controller_ui.dialogue_pause = false;
-						obj_controller_ui.dialogue_count = 0;
+						obj_controller_ui.dialogue_yoff = obj_controller_ui.dialogue_yoff_max;
 						obj_controller_ui.dialogue_x = inst.x;
 						obj_controller_ui.dialogue_y = inst.y - 24;
 						

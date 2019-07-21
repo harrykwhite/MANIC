@@ -1,9 +1,9 @@
 // Lights
-if (!instance_exists(obj_player_light)){
+if (!instance_exists(obj_player_light) && surrounding_light >= 0.1){
 	mylight = instance_create_layer(x, y, "Lights", obj_player_light);
 }
 
-if (global.weapon_slot[global.weapon_slotcurrent] != -1) || (global.level_current != Level.Prologue){
+if (surrounding_light < 0.1) || (global.weapon_slot[global.weapon_slotcurrent] != -1) || (global.level_current != Level.Prologue){
 	if (!instance_exists(obj_player_flashlight)){
 		flashlight = instance_create_layer(x, y, "Lights", obj_player_flashlight);
 	}
@@ -105,7 +105,7 @@ if (instance_exists(flashlight)){
 	flashlight.light[| eLight.X] = x + lengthdir_x(4, flashlight_direction);
 	flashlight.light[| eLight.Y] = y + lengthdir_y(4, flashlight_direction);
 	flashlight.light[| eLight.LutIntensity] = 1.75;
-	flashlight.light[| eLight.Range] = 360 * light_brightness;
+	flashlight.light[| eLight.Range] = max(360 * light_brightness * surrounding_light, 1);
 	flashlight.light[| eLight.Direction] = flashlight_direction;
 	flashlight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }

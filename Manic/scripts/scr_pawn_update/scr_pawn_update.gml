@@ -71,8 +71,9 @@ if (health_current <= 0){
 	}
 	
     scr_effect_screenshake(4);
+	scr_effect_redtint_flash(0.2 + (global.game_save_level / 20));
 	scr_effect_freeze(13);
-	scr_effect_vignette_flash(c_ltgray, 0.3, 0.01);
+	scr_effect_zoom(-0.05);
     
     instance_destroy();
 	audio_play_sound(snd_other_kick_0, 3, false);
@@ -245,6 +246,7 @@ if (health_current <= 0){
 		scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
 		scr_effect_screenshake(5);
 		scr_effect_freeze(13);
+		scr_effect_zoom(-0.1);
 		scr_sound_play_distance(snd_weapon_explode_0, false, 600);
 		
 		if (object_index == obj_giantturret_flamethrower){
@@ -297,7 +299,7 @@ if (health_current <= 0){
 		    if (chance(dropchance)){
 				var xx, yy, angle, ind, w;
 				
-				if (instance_exists(weapon)){
+				if (instance_exists(weapon) && weapon != -1){
 					xx = weapon.x;
 					yy = weapon.y;
 					angle = weapon.image_angle + random_range(-30, 30);

@@ -4,7 +4,7 @@ bleed = true;
 
 if (instance_exists(obj_player)){
 	if (object_index != obj_companion_3){
-		if (instance_exists(weapon)){
+		if (instance_exists(weapon) && weapon != -1){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 		}
 	}
@@ -48,7 +48,7 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
+scr_pawn_find_path();
 
 // Facing
 if (move_x_to > x){
@@ -59,7 +59,7 @@ if (move_x_to > x){
 
 // Animation
 if (object_index != obj_companion_3){
-	if (instance_exists(weapon)){
+	if (instance_exists(weapon) && weapon != -1){
 		var Idle0, Walk0;
 		var Idle1, Walk1;
 		var Idle2, Walk2;

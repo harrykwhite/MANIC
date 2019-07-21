@@ -1,24 +1,43 @@
 // Movement
 spd_build = 0.19//0.32;
 spd_max = 1.9;
+
 spd_offset = 1;
 spd_offset_change = 0.05;
+
 move_time = 0;
 flash_time = 0;
+
 xaxis = 0;
 yaxis = 0;
+
 len = 0;
 dir = 0;
+
+idlewalk = false;
+idlewalk_time = 0;
+idlewalk_walktime = random_range(5, 10);
+idlewalk_dir = 0;
+
+offset = 0;
+offset_to = 0;
+offset_time = 0;
+offset_time_max = 30;
+
 canmove = true;
 
 // Hitbox
-hitbox = instance_create(x, y, obj_player_hitbox_0);
+hitbox = instance_create_layer(x, y, "Hitbox", obj_player_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;
 hitbox.owner = id;
 
 // Light
 flashlight_direction = 0;
 flashlight_alpha = 0;
+
+surrounding_light_to = 1;
+surrounding_light = 1;
+surrounding_light_upgradedec = 0.05;
 
 // White Flash
 whiteflash_alpha = 0;
@@ -81,46 +100,11 @@ i_time_flicker_time = 0;
 var feet = instance_create(x, y, obj_feetbox_0);
 feet.owner = id;
 
-// Upgrades
-var upgradecount = array_length_1d(global.upgrade_name);
-for(var i = 0; i < upgradecount; i ++){
-	global.upgrade_equipped[i] = false;
-	upgrade_has[i] = false;
-}
-
-if (global.game_is_playthrough) || (room == rm_prologue_00){
-	var upgradecount = array_length_1d(global.upgrade_name);
-	for(var i = 0; i < upgradecount; i ++){
-		if (global.game_save_upgrade_unlocked[i]){
-			scr_upgrade_add(i);
-		}
-	}
-}else{
-	if (global.level_current >= Level.UndergroundBunker){
-		scr_upgrade_add(PlayerUpgrade.Backpack);
-	}
-	
-	if (global.level_current >= Level.HumanPrison){
-		scr_upgrade_add(PlayerUpgrade.RunningBoots);
-	}
-	
-	if (global.level_current >= Level.TrainStation){
-		scr_upgrade_add(PlayerUpgrade.KneePads);
-	}
-	
-	if (global.level_current >= Level.TheCemetery){
-		scr_upgrade_add(PlayerUpgrade.Chestplate);
-	}
-	
-	if (global.level_current >= Level.DesolateVillage){
-		scr_upgrade_add(PlayerUpgrade.GasMask);
-	}
-}
-
-scr_player_upgrade_refresh();
-
 // Fly
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
+
+// Upgrades
+upgrades_set = false;
 
 // Other
 is_visible = true;

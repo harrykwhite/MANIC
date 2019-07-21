@@ -1,4 +1,5 @@
 var inst = other;
+var mult = 1;
 
 with(owner){
 	if (pawn == PawnType.Enemy) && (!inst.damage_enemy){
@@ -35,9 +36,9 @@ with(owner){
 				}
 			}
 		
-			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10);
-			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3);
-		    part_particles_create(global.ps_bottom, x, y + 6, global.pt_gore_0, 3);
+			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10 * mult);
+			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3 * mult);
+		    part_particles_create(global.ps_bottom, x, y + 6, global.pt_gore_0, 3 * mult);
 			part_type_direction(global.pt_blood_5, 0, 360, 0, 0);
 			part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
 			repeat(8){ part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1) };

@@ -27,7 +27,7 @@ if (instance_exists(target)){
 	}
 	
 	move_dir = point_direction(x, y, move_x_to, move_y_to);
-	if (instance_exists(weapon)){
+	if (instance_exists(weapon) && weapon != -1){
 		weapon.dir = point_direction(x, y, target.x, target.y + 6);
 		
 		if (weapon.attack_ready){
@@ -81,25 +81,12 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
-
-// Facing
-if (!face_player){
-	if (move_x_to > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
-}else{
-	if (target.x > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
-}
+scr_pawn_find_path();
 
 // Animation
-if (instance_exists(weapon)){
+if (instance_exists(weapon) && weapon != -1){
+	scr_pawn_human_facing();
+	
 	var Idle0, Walk0;
 	var Idle1, Walk1;
 	var Idle2, Walk2;

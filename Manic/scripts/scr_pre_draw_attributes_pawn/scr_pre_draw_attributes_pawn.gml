@@ -3,7 +3,7 @@ var alpha_mult = 1;
 var drawshader = (health_current <= floor(health_max / 3)) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha);
 
 if (weapon != -1){
-	if (instance_exists(weapon)){
+	if (instance_exists(weapon) && weapon != -1){
 		var wcurrent = global.pawnweapon_playerindex[weapon_index];
 		var angle = 0;
 		

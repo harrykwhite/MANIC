@@ -69,6 +69,7 @@ var stick_kill = false;
 switch(ctype){
 	case "enemy":
 		var num = enemylinelength;
+		var mult = scr_get_blood_mult();
 		
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
@@ -80,6 +81,12 @@ switch(ctype){
 					yEnd = yy + lengthdir_y(len, dir);
 					
 					scr_effect_screenshake(2);
+					
+					if (string_char_at(object_get_name(object_index), 5) != "p"){
+						scr_mouse_cross();
+					}else{
+						mult = 1;
+					}
 					
 					if (inst.object_index == obj_enemy_1){
 						if (inst.owner != obj_player) && (inst.owner != noone){
@@ -108,13 +115,13 @@ switch(ctype){
 							spurt.dir = dir + random_range(-38, 38);
 						}
 						
-					    part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3);
-					    part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_blood_1, 10);
-						part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_blood_3, 3);
-					    part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_gore_0, 3);
+					    part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3 * mult);
+					    part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_blood_1, 10 * mult);
+						part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_blood_3, 3 * mult);
+					    part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_gore_0, 3 * mult);
 						part_type_direction(global.pt_blood_5, dir - 20, dir + 20, 0, 0);
 						part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
-						repeat(9)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_blood_5, 1);
+						repeat(9 * mult)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_blood_5, 1);
 					    scr_effect_object(xEnd, yEnd, obj_ef_blood, spr_ef_blood_0, 0, 1);
 					    scr_effect_object(xEnd + random_range(-6, 6), yEnd + random_range(-6, 6), obj_ef_blood, spr_ef_blood_1, 0, 1);
 					}
@@ -124,10 +131,6 @@ switch(ctype){
 						scr_effect_object(xEnd, yEnd, obj_ef_blood, spr_ef_metal_0, 0, 1);
 					}else{
 						scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
-					}
-					
-					if (string_char_at(object_get_name(object_index), 4) != "p"){
-						scr_mouse_cross();
 					}
 					
 					stick_kill = true;
@@ -254,7 +257,7 @@ switch(ctype){
 		}
 }
 
-if (object_index == obj_weapon_1) && (stick_kill){
+if (object_index == obj_weapon_1 || object_index == obj_pawnweapon_0) && (stick_kill){
 	kill = true;
 }
 

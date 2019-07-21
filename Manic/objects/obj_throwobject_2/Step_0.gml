@@ -58,6 +58,7 @@ if (explode){
     scr_damage_custom_toxic(explode_damage_size * explode_scale, explode_damage_size * explode_scale, 140, damage_companion);
     scr_effect_screenshake(6);
 	scr_effect_freeze(13);
+	scr_effect_zoom(-0.1);
 	scr_effect_vignette_flash(c_ltgray, 0.35, 0.01);
 	scr_sound_play_distance(snd_weapon_explode_0, false, 400 * explode_scale);
 }

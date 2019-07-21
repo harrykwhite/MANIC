@@ -1,6 +1,6 @@
 var destroy = false;
 
-if (global.game_pause){
+if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	return;
 }
@@ -16,15 +16,15 @@ if (random(3) < 1){
 x += lengthdir_x(spd, dir);
 y += lengthdir_y(spd, dir);
 
-if (grav < 8){
-	grav += 0.0075;
+if (grav < 5){
+	grav += 0.025;
 	y += grav;
 }else{
 	destroy = true;
 }
 
 if (spd > 0){
-	spd -= random_range(0.01, 0.02);
+	spd -= 0.1;
 }else{
 	destroy = true;
 }

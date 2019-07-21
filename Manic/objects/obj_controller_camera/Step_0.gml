@@ -2,6 +2,16 @@ var x_to, y_to;
 var xx, yy;
 var mdist = distance_to_point(mouse_x, mouse_y);
 
+// Zoom
+camera_zoom = approach(camera_zoom, camera_zoom_to, 20);
+
+camera_zoom_to = 1;
+
+camera_zoom_add = approach(camera_zoom_add, 0, 15);
+camera_zoom_to += camera_zoom_add;
+
+camera_set_view_size(view_camera[0], camera_zoom_width * camera_zoom, camera_zoom_height * camera_zoom);
+
 if (global.weapon_slot_standalone == -1){
 	if (global.weapon_slot[global.weapon_slotcurrent]!= -1){
 	    camera_radius = global.weapon_camerarange[global.weapon_slot[global.weapon_slotcurrent]];
@@ -52,12 +62,11 @@ if (instance_exists(obj_player)) && (!global.game_pause){
 	clamp(camera_get_view_y(view_camera[0]), 0, room_height - camera_get_view_height(view_camera[0])));
 	
 	if (camera_screenshake){
-	    camera_set_view_pos(view_camera[0],
-		camera_get_view_x(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.2, 0, true), 
-		camera_get_view_y(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.2, 0, true)
-		);
+		camera_set_view_pos(view_camera[0],
+		camera_get_view_x(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.25, 0),
+		camera_get_view_y(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.25, 0));
 		
-	    if (camera_screenshake_amount > 0.01){
+	    if (camera_screenshake_amount > 0.001){
 	        camera_screenshake_amount *= 0.9;
 	    }else{
 	        camera_screenshake_amount = 0;

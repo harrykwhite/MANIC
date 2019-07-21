@@ -4,7 +4,7 @@ scale = random_range(1, 1.1);
 destroy = false;
 initiated = false;
 
-hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_turret_hitbox_0;
 hitbox.owner = id;
 
@@ -50,7 +50,7 @@ dir_to = dir;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 9;
+health_max = 6;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

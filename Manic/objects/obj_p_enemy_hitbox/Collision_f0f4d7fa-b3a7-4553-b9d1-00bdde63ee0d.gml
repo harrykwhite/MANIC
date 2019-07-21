@@ -1,4 +1,5 @@
 var inst = other;
+var mult = inst.creator == obj_p_player ? scr_get_blood_mult() : 1;
 
 with(owner){
 	if (object_index == obj_enemy_1){
@@ -18,10 +19,10 @@ with(owner){
 		scr_pawn_damage(max(inst.damage - defense, 1), inst.strength, dir, 2);
 	
 		if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog) || (object_index == obj_thescorched) || (object_index == obj_thedogkeeper){
-			part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3);
-			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10);
-			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3);
-		    part_particles_create(global.ps_bottom, x, y + 6, global.pt_gore_0, 3);
+			part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3 * mult);
+			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10 * mult);
+			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3 * mult);
+		    part_particles_create(global.ps_bottom, x, y + 6, global.pt_gore_0, 3 * mult);
 			part_type_direction(global.pt_blood_5, dir - 20, dir + 20, 0, 0);
 			part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
 			repeat(8){ part_particles_create(global.ps_bottom, inst.x + random_range(-8, 8), inst.y + random_range(-8, 8), global.pt_blood_5, 1) };

@@ -33,7 +33,7 @@ global.level_turret_number[Level.RavagedTown] = 0;
 global.level_entered[Level.RavagedTown] = false;
 global.level_cleared[Level.RavagedTown] = false;
 global.level_kill_count[Level.RavagedTown] = 0;
-global.level_kill_max[Level.RavagedTown] = 55;
+global.level_kill_max[Level.RavagedTown] = 60;
 global.level_checkpoint_found[Level.RavagedTown] = false;
 
 global.level_name[Level.WesternFarmland] = "Western Farmland";
@@ -57,7 +57,7 @@ global.level_turret_number[Level.UndergroundBunker] = 0;
 global.level_entered[Level.UndergroundBunker] = false;
 global.level_cleared[Level.UndergroundBunker] = false;
 global.level_kill_count[Level.UndergroundBunker] = 0;
-global.level_kill_max[Level.UndergroundBunker] = 120;
+global.level_kill_max[Level.UndergroundBunker] = 150;
 global.level_checkpoint_found[Level.UndergroundBunker] = false;
 
 global.level_name[Level.WinterTown] = "Winter Town";
@@ -69,7 +69,7 @@ global.level_turret_number[Level.WinterTown] = 0;
 global.level_entered[Level.WinterTown] = false;
 global.level_cleared[Level.WinterTown] = false;
 global.level_kill_count[Level.WinterTown] = 0;
-global.level_kill_max[Level.WinterTown] = 55;
+global.level_kill_max[Level.WinterTown] = 75;
 global.level_checkpoint_found[Level.WinterTown] = false;
 
 global.level_name[Level.HumanPrison] = "Human Prison";
@@ -81,7 +81,7 @@ global.level_turret_number[Level.HumanPrison] = 1;
 global.level_entered[Level.HumanPrison] = false;
 global.level_cleared[Level.HumanPrison] = false;
 global.level_kill_count[Level.HumanPrison] = 0;
-global.level_kill_max[Level.HumanPrison] = 150;
+global.level_kill_max[Level.HumanPrison] = 165;
 global.level_checkpoint_found[Level.HumanPrison] = false;
 
 global.level_name[Level.TrainStation] = "Train Station";

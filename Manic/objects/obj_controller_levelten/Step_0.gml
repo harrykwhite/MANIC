@@ -28,7 +28,7 @@ if (room == rm_level_10_01){
 }
 
 // Spawning
-lighting = 0.9;
+lighting = 0.95;
 
 global.ambientShadowIntensity = lighting;
 scr_level_combatstate_control();

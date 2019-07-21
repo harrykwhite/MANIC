@@ -1,6 +1,10 @@
 // Setup
 global.level_current = scr_level_get_index(room);
 
+if (!global.game_is_playthrough){
+	global.game_save_level = global.level_current;
+}
+
 playerhit_alpha = 0;
 playerhit_colour = c_maroon;
 
@@ -18,8 +22,8 @@ weaponammo_scaleTo = 1;
 weaponammo_x = 0;
 
 dialogue = "";
-dialogue_count = 0;
-dialogue_spd = 0.75;
+dialogue_yoff_max = 20;
+dialogue_yoff = dialogue_yoff_max;
 dialogue_time = 0;
 dialogue_pause = false;
 dialogue_next = false;
@@ -64,6 +68,7 @@ ui_alpha = 1;
 
 redtint_alpha = 0;
 redtint_alphato = 0;
+redtint_flash = 0;
 
 pause_text_update = false;
 pause_text_alpha = 0;
@@ -118,15 +123,24 @@ if (room == rm_prologue_00){
 for(var i = 0; i < levelcount; i ++){
 	if (room == global.level_room[i]){
 		if (!global.level_entered[i]){
+			var upgradecount = array_length_1d(global.upgrade_name);
+			
 			if (!global.game_is_playthrough) || (room == rm_prologue_00){
 				scr_companions_clear();
 				scr_set_kills_and_findings();
+			}else{
+				for(var i = 0; i < upgradecount; i ++){
+					if (global.game_save_upgrade_unlocked[i]){
+						scr_upgrade_add(i);
+					}
+				}
 			}
 			
 			global.game_combat_state = CombatState.Idle;
 			global.game_combat_state_time_real = 0;
 			
 			scr_checkpoint_reset();
+			scr_player_upgrade_update();
 			
 			if (global.level_current != Level.Prologue){
 				level_opening = true;

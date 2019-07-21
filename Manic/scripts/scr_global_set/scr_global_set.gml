@@ -20,6 +20,7 @@ global.boss_current = -1;
 if (room == rm_ini){
 	scr_upgrade_list();
 	scr_level_list();
+	scr_checkpoint_reset();
 	
 	global.game_save_started = false;
 	global.game_save_seconds = 0;

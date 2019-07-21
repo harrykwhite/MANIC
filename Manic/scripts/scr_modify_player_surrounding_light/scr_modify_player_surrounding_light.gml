@@ -15,10 +15,24 @@ if (instance_exists(obj_player)){
 
 object.light[| eLight.X] = xx;
 object.light[| eLight.Y] = yy;
-object.light[| eLight.Range] = 130 * lightbrightness;
+object.light[| eLight.Range] = 180 * lightbrightness;
 object.light[| eLight.LutIntensity] = 1.65 + (clamp(flashtime, 0, 2) / 10);
 object.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 if (scr_player_has_upgrade(PlayerUpgrade.HeadLight)){
 	object.light[| eLight.Range] *= 1.3;
 }
+
+if (surrounding_light < surrounding_light_to){
+	surrounding_light += 0.002;
+}else if (surrounding_light > surrounding_light_to){
+	surrounding_light -= 0.002;
+}
+
+if (surrounding_light < 0.1){
+	instance_destroy(object);
+	return;
+}
+
+object.light[| eLight.Range] = max(object.light[| eLight.Range] * surrounding_light, 1);
+object.light[| eLight.LutIntensity] = clamp(object.light[| eLight.LutIntensity] * surrounding_light, 0.1, 2);

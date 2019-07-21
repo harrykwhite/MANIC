@@ -8,14 +8,14 @@ var mdir = point_direction(x, y, mouse_x, mouse_y);
 
 if (instance_exists(obj_player)) && (global.player_stamina_active){
     if (mouse_check_button_released(mb_left)) || (mouse_check_button_released(mb_right)){
-        if (throw_time == throw_time_max){
+        if (throw_time >= throw_time_max - 5){
 			if (!collision_line(obj_player.x, obj_player.y, x + lengthdir_x(3, mdir), y + lengthdir_y(3, mdir), obj_p_solid, false, true)){
 	            scr_player_stamina_drain(20);
 				
 				scr_effect_screenshake(1.5);
 	            scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
 				global.weapon_quantity[index] = max(global.weapon_quantity[index] - 1, 0);
-			
+				
 	            throw = instance_create(x, y, obj_throwobject_2);
 	            throw.spd = 9;
 	            throw.damage = throw_damage;
@@ -36,7 +36,11 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
     
     if (mouse_check_button(obj_controller_all.key_attack)) || (mouse_check_button(obj_controller_all.key_throw)){
         if (throw_time < throw_time_max){
-            throw_time ++;
+            if (scr_player_has_upgrade(PlayerUpgrade.ShoulderBand)){
+				throw_time += 2;
+			}else{
+				throw_time ++;
+			}
         }
         
         if (throw_alpha < 1){

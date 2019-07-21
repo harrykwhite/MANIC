@@ -6,6 +6,12 @@ camera_screenshake_amount = 0;
 camera_move_to_player = false;
 camera_move_to_player_time = 4;
 
+camera_zoom = 1;
+camera_zoom_to = 1;
+camera_zoom_add = 0;
+camera_zoom_width = camera_get_view_width(view_camera[0]);
+camera_zoom_height = camera_get_view_height(view_camera[0]);
+
 autocontrol = true;
 dir = 0;
 spd = 0;

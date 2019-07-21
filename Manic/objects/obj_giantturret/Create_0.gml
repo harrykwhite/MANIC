@@ -5,7 +5,7 @@ destroy = false;
 state = 0;
 active = false;
 
-hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_giantturret_hitbox_0;
 hitbox.owner = id;
 
@@ -65,7 +65,7 @@ whiteflash_alphadec = 0.075;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 120;
+health_max = 140;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

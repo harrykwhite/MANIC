@@ -63,12 +63,12 @@ if (ending){
 		var canreturn = true;
 		
 		if (ending_logo_text_alpha > 0){
-			ending_logo_text_alpha -= 0.025;
+			ending_logo_text_alpha -= 0.005;
 			canreturn = false;
 		}
 		
 		if (ending_credits_text_alpha > 0){
-			ending_credits_text_alpha -= 0.025;
+			ending_credits_text_alpha -= 0.005;
 			canreturn = false;
 		}
 		

@@ -45,7 +45,70 @@ if (global.weapon_slot_standalone == -1){
 	
 	dir = point_direction(0, 0, xaxis, yaxis);
 	image_angle = 0;
-
+	
+	// Offset
+	var spread = 0;
+	
+	if (global.game_save_level >= Level.HumanPrison){
+		spread += global.level_current;
+	}
+	
+	if (global.game_save_level >= Level.DesolateVillage){
+		spread += 4;
+	}
+	
+	if (spread > 0){
+		if (offset > offset_to){
+			offset -= 0.1;
+		}else if (offset < offset_to){
+			offset += 0.1;
+		}
+		
+		if (offset_time > 0){
+			offset_time --;
+		}else{
+			offset_to = (irandom(spread * 10) / 10) * choose(-1, 1);
+			offset_time = offset_time_max + random_range(-10, 10);
+		}
+		
+		dir += offset;
+	}
+	
+	// Idle Walk
+	if (global.game_save_level >= Level.TrainStation){
+		if (xaxis == 0 && yaxis == 0 && global.cutscene_current == -1){
+			if (random(100) < 0.5){
+				idlewalk = true;
+				idlewalk_time = 0;
+			}
+		}
+	}
+	
+	if (idlewalk){
+		if (xaxis != 0 || yaxis != 0){
+			idlewalk = false;
+			idlewalk_walktime = random_range(5, 10);
+		}
+		
+		if (idlewalk_time > 0){
+			idlewalk_time --;
+		}else{
+			idlewalk_dir = random(360);
+			idlewalk_time = random_range(60 * 3, 60 * 4);
+			idlewalk_walktime = random_range(5, 10);
+		}
+		
+		if (idlewalk_walktime > 0){
+			xaxis = dcos(idlewalk_dir);
+			yaxis = dsin(idlewalk_dir);
+			dir = idlewalk_dir;
+			
+			idlewalk_walktime --;
+		}else{
+			idlewalk_walktime = 0;
+		}
+	}
+	
 	// Speed
 	if (i_time > 0){
 		spd_multiplier += 0.125;

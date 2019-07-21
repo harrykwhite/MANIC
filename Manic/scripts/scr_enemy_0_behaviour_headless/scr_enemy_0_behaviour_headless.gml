@@ -22,7 +22,7 @@ switch(type){
 }
 
 if (instance_exists(target)){
-	if (instance_exists(weapon)){
+	if (instance_exists(weapon) && weapon != -1){
 		weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 	}
 	
@@ -71,7 +71,7 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
+scr_pawn_find_path();
 
 // Facing
 if (move_x_to > x){
@@ -81,7 +81,7 @@ if (move_x_to > x){
 }
 
 // Animation
-if (instance_exists(weapon)){
+if (instance_exists(weapon) && weapon != -1){
 	
 	var Idle0 = spr_enemy_0_headless_idle_0, Walk0 = spr_enemy_0_headless_walk_0;
 	var Idle1 = spr_enemy_0_headless_idle_1, Walk1 = spr_enemy_0_headless_walk_1;

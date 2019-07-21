@@ -139,8 +139,8 @@ if (room == rm_level_6_01){
 // Spawning
 var lighting_level; 
 lighting_level[CombatState.Climax] = 1;
-lighting_level[CombatState.Buildup] = 0.925;
-lighting_level[CombatState.Idle] = 0.85;
+lighting_level[CombatState.Buildup] = 0.935;
+lighting_level[CombatState.Idle] = 0.875;
 
 var lighting_to = lighting_level[global.game_combat_state];
 
@@ -149,7 +149,7 @@ if (global.game_combat_in_hordechallenge){
 }
 
 if (room == rm_level_6_pre_00){
-	lighting_to = 0.9;
+	lighting_to = 0.95;
 }
 
 if (lighting < lighting_to){

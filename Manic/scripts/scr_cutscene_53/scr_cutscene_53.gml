@@ -22,6 +22,8 @@ if (instance_exists(obj_player)){
 				global.cutscene_time[index] ++;
 			}else{
 				inst.pickup = true;
+				global.cutscene_time[index] = 0;
+				obj_player.surrounding_light_to -= obj_player.surrounding_light_upgradedec;
 			}
 			
 			stationary = true;
@@ -29,7 +31,7 @@ if (instance_exists(obj_player)){
 	}else{
 		stationary = true;
 		
-		if (global.cutscene_time[index] < 70){
+		if (global.cutscene_time[index] < 50){
 			global.cutscene_time[index] ++;
 		}else{
 			global.cutscene_current = -1;

@@ -273,13 +273,10 @@ if (instance_exists(obj_player)){
 		if (distTo > 3){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 			
-			while((image_xscale == -scale && (weapon.dir <= 90 || weapon.dir >= 270))
-			|| (image_xscale == scale && weapon.dir > 90 && weapon.dir < 270)){
-				if (sign(image_xscale) == 1){
-					weapon.dir = 360;
-				}else{
-					weapon.dir = 180;
-				}
+			if (weapon.dir <= 90 || weapon.dir >= 270){
+				image_xscale = scale;
+			}else{
+				image_xscale = -scale;
 			}
 		}
 	}
@@ -345,34 +342,13 @@ if (dash){
 		dash = false;
 	}
 }else{
-	var dir = point_direction(x, y, move_x_to, move_y_to);
-	while (place_meeting(x, y, obj_p_solid)){
-		x += lengthdir_x(1, dir);
-		y += lengthdir_y(1, dir);
-	}
-	
-	mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
-}
-
-// Facing
-if (!face_player){
-	if (distTo > 15){
-		if (move_x_to > x){
-			image_xscale = scale;
-		}else{
-			image_xscale = -scale;
-		}
-	}
-}else{
-	if (obj_player.x > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
+	scr_pawn_find_path();
 }
 
 // Animation
-if (instance_exists(weapon)){
+if (instance_exists(weapon) && weapon != -1){
+	scr_pawn_human_facing();
+	
 	var Idle0, Walk0;
 	var Idle1, Walk1;
 	var Idle2, Walk2;

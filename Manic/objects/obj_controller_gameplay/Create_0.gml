@@ -41,8 +41,8 @@ cutscene_dialogue_line = -1;
 cutscene_dialogue_special = -1;
 
 weaponswitch_break = 10;
-//levelstart_record_set = false;
 
 global.player_is_respawning = false;
 
 sprite_index = noone;
+scr_pathmap_init();

@@ -5,16 +5,6 @@
     "name": "obj_p_enemy_hitbox",
     "eventList": [
         {
-            "id": "6ceb773f-d536-4387-aae4-8bac09b9a3a6",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "1a9f203e-01c3-4470-8311-322e5bfd2df3",
-            "enumb": 0,
-            "eventtype": 4,
-            "m_owner": "62a2415c-c7d3-4051-8ba0-93b97759f607"
-        },
-        {
             "id": "3ba44198-e0ac-4801-8323-d2c5bcf76861",
             "modelName": "GMEvent",
             "mvc": "1.0",
@@ -160,16 +150,6 @@
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "3607ef85-b144-4706-a94d-24c1427da3b4",
-            "enumb": 0,
-            "eventtype": 4,
-            "m_owner": "62a2415c-c7d3-4051-8ba0-93b97759f607"
-        },
-        {
-            "id": "d81f729f-924d-471d-8f3a-ef36ebcd6428",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "77bd16d7-5aba-482f-89b6-3d15b4e591cf",
             "enumb": 0,
             "eventtype": 4,
             "m_owner": "62a2415c-c7d3-4051-8ba0-93b97759f607"

@@ -414,7 +414,7 @@ global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
 global.weapon_slotscale[0] = 1;
 
-global.weapon_slot[1] = PlayerWeapon.Wrench;
+global.weapon_slot[1] = -1;
 global.weapon_slotammo[1] = -1;
 global.weapon_slotscale[1] = 1;
 

@@ -20,7 +20,7 @@ if (interact) && (obj_controller_ui.dialogue_time <= 0){
 			obj_controller_ui.dialogue = text;
 			obj_controller_ui.dialogue_time = 60 * 4;
 			obj_controller_ui.dialogue_pause = false;
-			obj_controller_ui.dialogue_count = 0;
+			obj_controller_ui.dialogue_yoff = obj_controller_ui.dialogue_yoff_max;
 			obj_controller_ui.dialogue_x = x;
 			obj_controller_ui.dialogue_y = y - 24;
 		}

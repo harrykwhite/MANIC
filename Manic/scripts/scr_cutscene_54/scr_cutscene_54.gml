@@ -30,6 +30,7 @@ if (instance_exists(obj_player)){
 					instance_destroy(inst);
 					scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
 					scr_effect_screenshake(1);
+					obj_player.surrounding_light_to = 0.05;
 					obj_player.has_antagonist_mask = true;
 				}
 				

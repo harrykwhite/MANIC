@@ -59,7 +59,7 @@ if (room == rm_level_8_01){
 // Spawning
 var lighting_level; 
 lighting_level[CombatState.Climax] = 1;
-lighting_level[CombatState.Buildup] = 0.925;
+lighting_level[CombatState.Buildup] = 0.9;
 lighting_level[CombatState.Idle] = 0.85;
 
 var lighting_to = lighting_level[global.game_combat_state];

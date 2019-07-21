@@ -315,7 +315,7 @@
             "SpriteId": "6afc539e-80b9-4ba4-aa04-c89772d93d38",
             "blendMode": 0,
             "isLocked": false,
-            "name": "Layer 1",
+            "name": "Fire",
             "opacity": 100,
             "visible": true
         },

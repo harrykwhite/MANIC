@@ -9,7 +9,9 @@ sporadic = false;
 sporadic_timemax = random_range(45, 150);
 sporadic_time = sporadic_timemax;
 
-hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
+
+hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;
 hitbox.owner = id;
 

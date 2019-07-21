@@ -7,7 +7,6 @@ if (instance_exists(obj_player)){
 	
 	var xx = x + lengthdir_x(19, shoot_dir);
 	var yy = y + lengthdir_y(19, shoot_dir);
-	shoot_dir = point_direction(xx, yy, obj_player.x, obj_player.y);
 	
 	if (distance_to_object(obj_player) > 28){
 		if (shoot_buildup_time < 120){

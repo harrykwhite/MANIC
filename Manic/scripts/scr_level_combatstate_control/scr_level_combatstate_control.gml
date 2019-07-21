@@ -34,7 +34,7 @@ if (inhordechallenge){
 		var uy = -1;
 		switch(level){
 			case Level.UndergroundBunker:
-				uindex = PlayerUpgrade.Goggles;
+				uindex = PlayerUpgrade.ShoulderBand;
 				ux = 1760;
 				uy = 552;
 				
@@ -42,7 +42,7 @@ if (inhordechallenge){
 				break;
 			
 			case Level.TrainStation:
-				uindex = PlayerUpgrade.HeadLight;
+				uindex = PlayerUpgrade.Goggles;
 				ux = 500;
 				uy = 208;
 				

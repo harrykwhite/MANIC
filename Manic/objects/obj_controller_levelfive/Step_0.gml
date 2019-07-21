@@ -23,7 +23,7 @@ if (!global.game_pause){
 }
 
 // Checkpoint
-if (room == rm_level_5_03){
+if (room == rm_level_5_02){
 	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
 		obj_controller_gameplay.checkpoint_create = true;
 		global.level_checkpoint_found[global.level_current] = true;
@@ -33,8 +33,8 @@ if (room == rm_level_5_03){
 // Spawning
 var lighting_level; 
 lighting_level[CombatState.Climax] = 1;
-lighting_level[CombatState.Buildup] = 0.925;
-lighting_level[CombatState.Idle] = 0.85;
+lighting_level[CombatState.Buildup] = 0.95;
+lighting_level[CombatState.Idle] = 0.9;
 
 var lighting_to = lighting_level[global.game_combat_state];
 if (global.game_combat_in_hordechallenge){
@@ -112,6 +112,10 @@ if (player_exists){
 						enemy.move_speed_offset = 1.45;
 						enemy.attack_time = 45;
 						enemy.type = Enemy0_Type.Normal
+						
+						while(weapon == PawnWeapon.Grenade){
+							weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
+						}
 					}else{
 						if (spawn_rate > 0.9){
 							if (global.boss_current == -1) && (room != rm_level_5_02){

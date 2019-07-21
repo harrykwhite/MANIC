@@ -33,7 +33,7 @@ if (!levelclear_called){
 			
 			if (levelcur != Level.Prologue){
 				audio_play_sound(spawn_music_stinger[2], 3, false);
-			
+				
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
 				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);

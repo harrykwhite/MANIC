@@ -1,7 +1,7 @@
 if (light_brightness < 1){
-	light_brightness += 0.05;
+	light_brightness += 0.005;
 }else if (light_brightness > 1){
-	light_brightness -= 0.05;
+	light_brightness -= 0.005;
 }
 
 if (global.cutscene_current == 58){
@@ -10,7 +10,7 @@ if (global.cutscene_current == 58){
 	if (!walk_off){
 		active = false;
 		
-		if (distance_to_object(obj_player) < 60){
+		if (distance_to_object(obj_player) > 90){
 			var dirto = point_direction(x, y, obj_player.x, obj_player.y);
 			obj_player.move_x_to = x + lengthdir_x(30, dirto);
 			obj_player.move_y_to = y + lengthdir_y(30, dirto);
@@ -41,12 +41,14 @@ if (global.cutscene_current == 58){
 	}
 }
 
-mylight.x = x;
-mylight.y = y;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) + light_brightness, 1.2);
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+if (instance_exists(mylight)){
+	mylight.x = x;
+	mylight.y = y;
+	mylight.light[| eLight.X] = x;
+	mylight.light[| eLight.Y] = y;
+	mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) + light_brightness, 1.2);
+	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+}
 
 obj_controller_ui.bosshealth_value_current = health_current;
 obj_controller_ui.bosshealth_value_max = health_max;
@@ -68,7 +70,7 @@ if (!active){
 	
 	if (instance_exists(obj_player)){
 		if (weapon != -1){
-			if (instance_exists(weapon)){
+			if (instance_exists(weapon) && weapon != -1){
 				weapon.attack = false;
 				weapon.dir = point_direction(x, y, obj_player.x, obj_player.y);
 			}

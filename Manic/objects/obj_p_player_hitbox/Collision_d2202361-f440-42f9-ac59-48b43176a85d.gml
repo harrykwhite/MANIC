@@ -10,7 +10,7 @@ with(owner){
 			return;
 		}
 	}else{
-		if (owner.upgrade_has[PlayerUpgrade.GasMask]){
+		if (upgrade_has[PlayerUpgrade.GasMask]){
 			return;
 		}
 	}

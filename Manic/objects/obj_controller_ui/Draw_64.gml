@@ -17,6 +17,9 @@ if (global.game_combat_in_hordechallenge){
 	redtint_alphato = 0.085;
 }
 
+redtint_alphato += redtint_flash;
+redtint_flash = approach(redtint_flash, 0, 20);
+
 if (redtint_alpha < redtint_alphato){
 	redtint_alpha += 0.01;
 }else if (redtint_alpha > redtint_alphato){

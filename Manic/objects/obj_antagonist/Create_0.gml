@@ -7,12 +7,15 @@ state_time = 0;
 state_time_max = 0;
 type = -1;
 
-hitbox = instance_create(x, y, obj_enemy_hitbox_0);
+mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
+
+hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;
 hitbox.owner = id;
 
 light_brightness = 0;
-mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
+//mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
+mylight = noone;
 
 shoot_time = 0;
 shoot_delay = 0;
@@ -86,9 +89,9 @@ in_cutscene = false;
 active = false;
 
 if (room == rm_level_6_pre_00){
-	health_max = 100;
+	health_max = 110;
 }else{
-	health_max = 65;
+	health_max = 85;
 }
 
 health_current = health_max;

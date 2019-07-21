@@ -19,16 +19,17 @@ if (blackbar_sizereal > 2){
 
 // Dialogue
 if (dialogue_time > 0){
-	var length = string_length(dialogue);
-	var str = string_copy(dialogue, 0, floor(dialogue_count));
+	var str = dialogue;//string_copy(dialogue, 0, floor(dialogue_count));
 	var xx = (dialogue_x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 	var yy = (dialogue_y - camera_get_view_y(view_camera[0])) * gui_scale_y;
+	
+	yy += dialogue_yoff;
 	
 	if (dialogue_break > 0){
 		dialogue_break --;
 	}else{
-		if (dialogue_count < length){
-			dialogue_count += dialogue_spd;
+		if (dialogue_yoff > 0.2){
+			dialogue_yoff = approach(dialogue_yoff, 0, 10);
 		}else{
 			if (!dialogue_pause){
 				dialogue_time --;
@@ -36,7 +37,7 @@ if (dialogue_time > 0){
 		}
 	}
 	
-	draw_set_alpha(1);
+	draw_set_alpha(1 - (dialogue_yoff / dialogue_yoff_max));
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
@@ -48,7 +49,7 @@ if (dialogue_time > 0){
 	if (global.cutscene_current != -1){
 		draw_set_font(fnt_cambria_1);
 		draw_set_halign(fa_right);
-		if (dialogue_count >= length){
+		if (dialogue_yoff <= 0){
 			scr_text_shadow(dwidth - 24, dheight - 48, "Continue [" + string(scr_keycheck_string(obj_controller_all.key_interact)) + "]", c_white);
 		}
 		
