@@ -1,3 +1,5 @@
+var inst = other;
+
 with(owner){
 	if (object_index == obj_companion_0){
 		return;

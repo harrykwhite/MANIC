@@ -80,7 +80,7 @@ if (poison){
 
 // Bleed
 if (bleed){
-	if (bleed_time < 50){
+	if (bleed_time < 30){
 		bleed_time ++;
 	}else{
 		scr_pawn_damage(1, 0, 0, 5);

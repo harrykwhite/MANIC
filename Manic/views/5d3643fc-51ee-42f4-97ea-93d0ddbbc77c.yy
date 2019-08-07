@@ -14,7 +14,12 @@
         "1f651464-a336-4f7f-aba1-3ce59d37ad0f",
         "b7c665b6-1744-48b7-b38a-4196e4c71c7e",
         "0d525085-aecb-4c35-97ad-0566a6453a06",
-        "0d8df718-ee69-4134-88cc-77c085926a98"
+        "0d8df718-ee69-4134-88cc-77c085926a98",
+        "036114a4-db80-4e37-bd35-9c733fdd44d0",
+        "e68137ed-f3e6-4230-a09b-256b01d7ee59",
+        "234faa59-064e-4f7e-ad94-3bab94930ed9",
+        "32e66b17-160a-4e87-bfaa-2a7582e913c4",
+        "63a44e78-5e83-45c5-b5ae-07a085fd2c2f"
     ],
     "filterType": "GMSprite",
     "folderName": "Snow Building",

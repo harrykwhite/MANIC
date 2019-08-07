@@ -26,7 +26,7 @@ if (instance_exists(owner)) && (global.cutscene_current == -1){
 			isEnemy = false;
 		}
 		
-		scr_weapon_melee_detect(isEnemy, x, y, dir, scr_pawn_weapon_damage(0), 2.25, 30 + 10, obj_proj_2);
+		scr_weapon_melee_detect(isEnemy, x, y, dir, scr_pawn_weapon_damage(0), 2.25, 35, obj_proj_2, owner.x, owner.y);
         
         owner.knockback_speed = 0.2;
         owner.knockback_direction = dir;

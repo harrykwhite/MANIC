@@ -27,6 +27,7 @@ if (global.cutscene_current == 58){
 	health_scale = 1;
 	health_flash = 0;
 	whiteflash_alpha = 0;
+	run_count = 0;
 	
 	if (instance_exists(obj_player)){
 		if (obj_player.x > x){

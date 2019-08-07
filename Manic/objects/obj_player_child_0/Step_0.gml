@@ -23,9 +23,10 @@ if (instance_exists(obj_player)){
 			scr_ui_control_indicate("Talk");
 	
 			if (interact_break <= 0){
-				if (keyboard_check_pressed(obj_controller_all.key_interact)){
+				if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
 					interact_break = 15;
 					talking = true;
+					scr_player_stamina_drain(4);
 			
 					obj_controller_ui.dialogue = "Hi Dad!";
 					obj_controller_ui.dialogue_time = 60 * 2;

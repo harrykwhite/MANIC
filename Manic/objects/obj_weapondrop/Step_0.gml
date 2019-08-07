@@ -1,9 +1,13 @@
+if (global.game_pause){
+	return;
+}
+
 if (global.cutscene_current == -1){
 	is_cutscene = false;
 }
 
-if (global.game_pause) || (global.cutscene_current != -1){
-	if (!global.game_pause) && (!is_cutscene){
+if (global.cutscene_current != -1){
+	if (!is_cutscene && !global.game_pause){
 		return;
 	}
 }
@@ -47,14 +51,71 @@ if (bounce_time > 0){
     bounce_time--;
 }
 
+// Burn
+if (burn && canburn){
+	if (burn_time > 0){
+		burn_time --;
+	}else{
+		kill = true;
+	}
+	
+	var lenp = random_range(7, 25);
+	var lenop = random(3) * choose(-1, 1);
+	var xp = x + lengthdir_x(lenp, angle) - lengthdir_x(10, angle);
+	var yp = y + lengthdir_y(lenp, angle) - lengthdir_y(10, angle);
+	xp += lengthdir_x(lenop, angle + 90);
+	yp += lengthdir_y(lenop, angle + 90);
+	
+	if (random(3) < 1){
+		part_particles_create(global.ps_front, xp, yp, global.pt_fire_0, 1);
+	}
+	
+	if (random(5) < 1){
+		part_particles_create(global.ps_front, xp, yp, global.pt_fire_2, 1);
+	}
+}else{
+	burn = false;
+	burn_time = burn_time_max;
+}
+
+// Kill
+if (kill){
+	instance_destroy();
+	
+	if (index == PlayerWeapon.Stick){
+		scr_effect_screenshake(3);
+		scr_effect_freeze(13);
+		scr_sound_play(snd_weapon_stick_break_0, false, 0.8, 1.2);
+		
+		var sticklen = 20, thislen = 1;
+		repeat(sticklen){
+			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_0, 1);
+			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_flash_0, 1);
+			thislen ++;
+		}
+	}
+}
+
+// Info draw
+if (pickup){
+	with(obj_controller_ui){
+		if (other.index != weaponinfo_index_prev){
+			weaponinfo = true;
+			weaponinfo_index = other.index;
+			weaponinfo_ammo = other.ammo;
+			weaponinfo_quantity = other.quantity;
+		}
+	}
+}
+
 // Pickup
 if (instance_exists(obj_player)){
 	if (time < 20){
 		time ++;
 	}else{
-	    if (distance_to_object(obj_player) < pickup_range){
+	    if (point_distance(x, y, obj_player.x, obj_player.y) < pickup_range){
 	        pickup = true;
-			scr_ui_control_indicate(string(global.weapon_name[index]) + "");
+			scr_ui_control_indicate("Pickup");
 	    }else{
 	        pickup = false;
 	    }
@@ -63,13 +124,15 @@ if (instance_exists(obj_player)){
 	if (global.weapon_slot_standalone != -1){
 		pickup = false;
 	}
+	
+	if (global.cutscene_current != -1){
+		pickup = false;
+	}
     
     if (pickup){
         if (keyboard_check_pressed(obj_controller_all.key_interact)) && (global.player_stamina_active){
 			if (global.weapon_slot_standalone == -1){
-	            
 				var oldweapon = global.weapon_slot[global.weapon_slotcurrent];
-				var exists = false;
 				var dropammo = global.weapon_slotammo[global.weapon_slotcurrent];
 				var sound = snd_weapon_pickup_1;
 				
@@ -85,9 +148,9 @@ if (instance_exists(obj_player)){
 				var slotcount = global.weapon_slotmax;
 				for(var i = 0; i < slotcount; i ++){
 					if (global.weapon_slot[i] == index){
-						if (i != global.weapon_slotcurrent){
-							with(obj_controller_gameplay){ scr_weapon_switch(true, i); }
-						}
+						//if (i != global.weapon_slotcurrent){
+						//	with(obj_controller_gameplay){ scr_weapon_switch(true, i); }
+						//}
 						
 						if (global.weapon_type[index] == WeaponType.Ranged){
 							var amm = ammo;
@@ -108,30 +171,47 @@ if (instance_exists(obj_player)){
 					}
 				}
 				
-	            obj_controller_ui.weaponslot_shake = 4;
-	            obj_controller_ui.weaponslot_weaponscale[global.weapon_slotcurrent] = 0;
-				
+	            // Destroy the current held weapon
 				if (oldweapon != -1){
 					if (instance_exists(global.weapon_object[oldweapon])){
-						instance_destroy(global.weapon_object[oldweapon]); // Destroy the old weapon.
+						instance_destroy(global.weapon_object[oldweapon]);
 			        }
 				}
 				
-				global.weapon_slot[global.weapon_slotcurrent] = index;
-				var weapon_dropindex;
+				// Set the slot of the weapon
+				var foundempty = false;
+				var newslotind = -1;
 				
-				if (!exists){
-					weapon_dropindex = oldweapon;
-				}else{
-					weapon_dropindex = index;
+				for(var i = 0; i < slotcount; i ++){
+					if (global.weapon_slot[i] == -1 || global.weapon_slot[i] == PlayerWeapon.Knife){
+						global.weapon_slot[i] = index;
+						newslotind = i;
+						foundempty = true;
+						break;
+					}
 				}
 				
-				if (weapon_dropindex != 4) && (weapon_dropindex != -1){ // If it is not a knife or empty.
-					var drop = instance_create(obj_player.x + random_range(-6, 6), obj_player.y + random_range(-6, 6), obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
+				if (!foundempty){
+					global.weapon_slot[global.weapon_slotcurrent] = index;
+					newslotind = global.weapon_slotcurrent;
+				}
+				
+				// Set the weapon index of the drop object
+				var weapon_dropindex;
+				
+				if (!foundempty){
+					weapon_dropindex = oldweapon;
+				}else{
+					weapon_dropindex = -1;
+				}
+				
+				// Create the new weapon drop
+				if (weapon_dropindex != PlayerWeapon.Knife && weapon_dropindex != -1 && !foundempty){ // If it is not a knife or empty.
+					var drop = instance_create(obj_player.x, obj_player.y, obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
 					drop.index = weapon_dropindex;
 					drop.ammo = dropammo;
 					drop.angle = angle + random_range(-30, 30);
-					drop.ammodetermined = true;
+					drop.dataset = true;
 					drop.drop = true;
 					
 					if (global.weapon_type[index] != WeaponType.Throwing) && (global.weapon_type[oldweapon] == WeaponType.Throwing){
@@ -139,18 +219,23 @@ if (instance_exists(obj_player)){
 					}
 				}
 				
+				// Shake effect
+				obj_controller_ui.weaponslot_shake = 4;
+	            obj_controller_ui.weaponslot_weaponscale[newslotind] = 0;
+				
+				// Set the new weapon quantity
 				if (global.weapon_type[index] == WeaponType.Throwing){
 					global.weapon_quantity[index] = quantity;
 				}
 				
 	            if (ammo != -1){ // Set the ammo of the new object, based on what it was originally.
-					global.weapon_slotammo[global.weapon_slotcurrent] = ammo;
+					global.weapon_slotammo[newslotind] = ammo;
 	            }
 				
 				global.weapon_collected[index] = true;
-				
 	            instance_destroy(); // Destroy this weapondrop object as it has been picked up.
 				
+				// If in the prologue, update the tutourial stage
 				if (global.level_current == Level.Prologue){
 					if (obj_controller_ui.tutourial_stage == TutourialStage.Pickup) && (index == PlayerWeapon.HuntingRifle){
 						obj_controller_ui.tutourial_stage = TutourialStage.Shoot;
@@ -165,9 +250,20 @@ if (instance_exists(obj_player)){
 					}
 				}
 				
+				// Scale the mouse
 				with(obj_controller_mouse){
 					mouse_alpha = 0.25;
 					mouse_scale = 2;
+				}
+				
+				// Create the new weapon object
+				if (index != -1 && !foundempty){
+					var new_wp_obj = instance_create(obj_player.x, obj_player.y, global.weapon_object[index]);
+					
+					if (index == PlayerWeapon.Stick){
+						new_wp_obj.burn = burn;
+						new_wp_obj.burn_time = burn_time;
+					}
 				}
 			}
 		}

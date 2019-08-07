@@ -6,11 +6,24 @@ lighting = 1;
 
 spawn = false;
 
-spawn_x = 572;
-if (global.game_level_opening_type == 0){
-	spawn_y = 247;
-}else if (global.game_level_opening_type == 1){
-	spawn_y = room_height - 247;
+switch(room){
+	case rm_level_1_00:
+		spawn_x = 572;
+		if (global.game_level_opening_type == 0){
+			spawn_y = 247;
+		}else if (global.game_level_opening_type == 1){
+			spawn_y = room_height - 247;
+		}
+		break;
+	
+	case rm_level_1_01:
+		spawn_x = 518;
+		if (global.game_level_opening_type == 0){
+			spawn_y = 168;
+		}else if (global.game_level_opening_type == 1){
+			spawn_y = room_height - 168;
+		}
+		break;
 }
 
 // Spawn System

@@ -34,7 +34,14 @@ if (!global.game_pause){
 		}
 		
 		if (random(3) < 1){
-		    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), choose(global.pt_rain_1, global.pt_rain_2), 1);
+		    var dropx, dropy;
+			
+			do{
+				dropx = camx + random_range(0, camw);
+				dropy = camy + random_range(0, camh);
+			}until(!scr_ceiling_at(dropx, dropy));
+			
+		    part_particles_create(global.ps_bottom, dropx, dropy, choose(global.pt_rain_1, global.pt_rain_2), 1);
 		}
 		
 		if (!audio_is_playing(m_ambience_rain_0)){
@@ -55,7 +62,7 @@ if (!global.game_pause){
 			var safe = 0;
 			
 			if (player_exists){
-				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
+				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (place_meeting(xx, yy, obj_interior_fade)){
 					xx = random_range(camx, camx + camw);
 					yy = random_range(camy, camy + camh);
 		
@@ -161,7 +168,7 @@ if (!global.game_pause){
 }
 
 // Checkpoint
-if (room == rm_level_2_03){
+if (room == rm_level_2_02){
 	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
 		obj_controller_gameplay.checkpoint_create = true;
 		global.level_checkpoint_found[global.level_current] = true;
@@ -180,8 +187,8 @@ if (global.game_combat_in_hordechallenge){
 	lighting_to = 1;
 }
 
-if (room == rm_level_2_pre_00) || (room == rm_level_2_post_00){
-	lighting_to = 0.8;
+if (scr_level_is_peaceful(room)){
+	lighting_to = 0.875;
 }
 
 if (lighting < lighting_to){
@@ -218,12 +225,12 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 		}
 	
 		if (spawn){
-			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
+			if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * spawn_rate)){
 				var xpos = random_range(camx - 10, camx + camw + 10);
 				var ypos = random_range(camy - 10, camy + camh + 10);
 				var spawn_trial = 0;
 				
-				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80) || (place_meeting(xpos, ypos, obj_campfire_0)){
+				while(!scr_is_valid_enemyspawn(xpos, ypos)){
 					xpos = random_range(camx - 10, camx + camw + 10);
 					ypos = random_range(camy - 10, camy + camh + 10);
 					spawn_trial ++;
@@ -313,7 +320,6 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 		
 		spawn_pause_update = false;
 	}
-	
 }else{
 	global.game_combat_state_time_real = 0;
 	spawn_rate_real = 0.75;

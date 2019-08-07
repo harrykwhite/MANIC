@@ -77,7 +77,7 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
         if (mount){
 			scr_player_stamina_drain(6);
 			if (!use_current){
-				audio_play_sound(snd_weapon_pickup_0, 3, false);
+				scr_sound_play(snd_weapon_pickup_0, false, 0.8, 1.2);
 				use_current = true;
 				global.weapon_slot_standalone = index;
 	            alarm[0] = 3;

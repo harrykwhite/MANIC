@@ -16,6 +16,10 @@ if (burn_sound == noone){
 	burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
 }
 
+if (random(5) < 1){
+	part_particles_create(global.ps_front, x + random_range(-5, 5), y - 16, global.pt_smoke_3, 1);
+}
+
 mylight.x = x;
 mylight.y = y;
 mylight.light[| eLight.X] = x;

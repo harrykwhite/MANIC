@@ -72,7 +72,7 @@ if (global.player_stamina_active){
 		    throw.dir = mdir;
 		    throw.image_angle = throw.dir;
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
-			throw.ammodetermined = true;
+			throw.dataset = true;
 
 		    instance_destroy();
 		    global.weapon_slot[global.weapon_slotcurrent] = -1;

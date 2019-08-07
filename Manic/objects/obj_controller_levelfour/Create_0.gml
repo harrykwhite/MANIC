@@ -8,9 +8,18 @@ lighting = 1;
 spawn = false;
 
 switch(room){
+	case rm_level_4_pre_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 536;
+			spawn_y = 300;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 844;
+			spawn_y = 692;
+		}
+		break;
+	
 	case rm_level_4_00:
 		if (global.game_level_opening_type == 0){
-			show_debug_message(room_get_name(global.worldtrain_room))
 			if (global.worldtrain_room == room){
 				obj_player.y = 196;
 			}

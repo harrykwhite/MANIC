@@ -1,6 +1,6 @@
 ///scr_cutscene_4();
 var index = 4;
-var level = scr_get_level_object();
+var level = scr_level_get_object();
 
 global.cutscene_camera_x[index] = 967;
 global.cutscene_camera_y[index] = room_height;

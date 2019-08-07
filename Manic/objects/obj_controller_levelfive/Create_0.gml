@@ -56,6 +56,17 @@ switch(room){
 			spawn_x = 616;
 			spawn_y = 626;
 		}
+		break;
+	
+	case rm_level_5_post_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 1528;
+			spawn_y = 148;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 208;
+			spawn_y = 140;
+		}
+		break;
 }
 
 scr_spawn_setup("underground", 1.4);

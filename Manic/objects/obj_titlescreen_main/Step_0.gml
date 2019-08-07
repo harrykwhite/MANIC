@@ -275,6 +275,18 @@ if (fade){
 							indicate_text_alpha = 1;
 						}
 					}else if (selected == omax){
+						if (in_settings_controls){
+							var optcount = array_length_1d(option_setting_controls_value);
+							for(var o = 0; o < optcount; o ++){
+								if (scr_input_value_already_set(option_setting_controls_value[o], o)){
+									option_setting_controls_value[o] = scr_input_get_default(option_setting_controls_edit[o]);
+									global.game_option[| option_setting_controls_edit[o]] = option_setting_controls_value[o];
+								}
+							}
+							
+							scr_options_refresh();
+						}
+						
 						in_settings_gameplay = false;
 						in_settings_display = false;
 						in_settings_audio = false;
@@ -320,10 +332,14 @@ if (fade){
 									}
 									
 									scr_save_game_reader();
-									option[0] = "Start Game";
+									option[0] = "New Game";
 									option_locked[1] = true;
+									
 									if (global.game_save_started){
 										option[0] = "Continue Game";
+									}
+									
+									if (global.game_boss_final_killed) || (devmode){
 										option_locked[1] = false;
 									}
 									

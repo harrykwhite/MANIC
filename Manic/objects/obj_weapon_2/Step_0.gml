@@ -36,7 +36,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
         
         shoot_can = false;
         shoot_time = 15;
-        shoot_bounceback = -3;
+        shoot_bounceback = -10;
         angle_offset = 8;
         flash_draw = true;
 		flash_time = 0;
@@ -62,7 +62,7 @@ if (global.player_stamina_active){
 		    throw.dir = mdir;
 		    throw.image_angle = throw.dir;
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
-			throw.ammodetermined = true;
+			throw.dataset = true;
 
 		    instance_destroy();
 		    global.weapon_slot[global.weapon_slotcurrent] = -1;

@@ -14,7 +14,8 @@
         "4c4deb3e-6d7a-44fd-b893-712c1eb0f3d3",
         "10a3e926-fb30-45fe-b5a0-f41d8fb5684f",
         "4d242947-8734-420e-929b-78c15103943e",
-        "8a060fc9-afdf-4c2a-b37c-96ef70ea18c3"
+        "8a060fc9-afdf-4c2a-b37c-96ef70ea18c3",
+        "0c0e4dbc-eb9f-4ac5-abb6-1353e48e3b85"
     ],
     "filterType": "GMObject",
     "folderName": "Snow Building",

@@ -2,7 +2,7 @@ event_inherited();
 death = false;
 burn_sound = noone;
 
-hit = 10;
+hit = 5;
 hit_time = 0;
 
 basex = x;

@@ -162,17 +162,6 @@ if (instance_exists(target)){
 	move_speed = 0;
 }
 
-// Off - screen movement.
-x = clamp(x, 22, room_width - 22);
-y = clamp(y, 22, room_height - 22);
-
-move_x_to = clamp(move_x_to, 22, room_width - 22);
-move_y_to = clamp(move_y_to, 22, room_height - 22);
-
-if (!onscreen(x, y)){
-	speed_multiplier = 0;
-}
-
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
@@ -200,20 +189,15 @@ if (sniperboss_dash){
 		sniperboss_dash = false;
 	}
 }else{
-	scr_pawn_find_path();
-}
-
-// Facing
-if (instance_exists(target)){
-	if (target.x > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
+	if (!scr_pawn_find_path()){
+		move_speed_real = 0;
+		speed_final = 0;
 	}
 }
 
 // Animation
 if (instance_exists(weapon) && weapon != -1){
+	scr_pawn_human_facing();
 	
 	var Idle0, Walk0;
 	var Idle1, Walk1;

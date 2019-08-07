@@ -103,7 +103,7 @@ if (instance_exists(target)){
 		
 		if (attack == 2){
 			if (instance_number(obj_weapondrop) < 3){
-				audio_play_sound(snd_weapon_swing_0, 3, false);
+				scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
 				var drop = instance_create(x, y, obj_weapondrop);
 				drop.index = choose(PlayerWeapon.Katana, PlayerWeapon.Spear, PlayerWeapon.AssaultRifle, PlayerWeapon.QuickGun);
 				drop.spd = 11;

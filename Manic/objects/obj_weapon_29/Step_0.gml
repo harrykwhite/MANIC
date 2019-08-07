@@ -69,7 +69,7 @@ if (interact) && (!use_current){
 	
 	if (interact_activate){
 		scr_player_stamina_drain(6);
-		audio_play_sound(snd_weapon_pickup_0, 3, false);
+		scr_sound_play(snd_weapon_pickup_0, false, 0.8, 1.2);
 		use_current = true;
 		global.weapon_slot_standalone = index;
 		alarm[0] = 3;

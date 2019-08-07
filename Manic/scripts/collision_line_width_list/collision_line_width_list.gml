@@ -19,18 +19,7 @@ var num = 0, onum = 0;
 var templist = ds_list_create();
 
 if (width != 1){
-	for(var off = 0; off < width; off ++){
-		num += collision_line_list(x1 + lengthdir_x(off, dir + 90), y1 + lengthdir_y(off, dir + 90), x2 + lengthdir_x(off, dir + 90), y2 + lengthdir_y(off, dir + 90), obj, false, true, templist, true);
-	
-		for(var i = onum; i < num; i ++){
-			list[| i] = templist[| i - onum];
-		}
-	
-		onum = num;
-		ds_list_clear(templist);
-	}
-
-	for(var off = -1; off > -width; off--){
+	for(var off = -width; off < width; off ++){
 		num += collision_line_list(x1 + lengthdir_x(off, dir + 90), y1 + lengthdir_y(off, dir + 90), x2 + lengthdir_x(off, dir + 90), y2 + lengthdir_y(off, dir + 90), obj, false, true, templist, true);
 	
 		for(var i = onum; i < num; i ++){
@@ -42,8 +31,7 @@ if (width != 1){
 	}
 }else{
 	num = collision_line_list(x1, y1, x2, y2, obj, false, true, templist, true);
-	list[| 0] = templist[| 0];
-	ds_list_clear(templist);
+	ds_list_copy(list, templist);
 }
 
 ds_list_destroy(templist);

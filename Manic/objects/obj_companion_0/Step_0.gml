@@ -82,6 +82,14 @@ headless = false;
 
 scr_pawn_status_handler();
 
+if (global.cutscene_current == -1){
+	if (cutscene_break_time > 0){
+		cutscene_break_time --;
+	}
+}else{
+	cutscene_break_time = 20;
+}
+
 if (headless){
 	scr_companion_headless(); 
 //}else if (burn){

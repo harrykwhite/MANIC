@@ -1,5 +1,5 @@
 // Teleport to player
-if (global.cutscene_current == -1) && (!global.game_pause){
+if (cutscene_break_time <= 0) && (!global.game_pause){
 	if (!onscreen(x, y + 4, -10)){
 		var counter = 0, doteleport = true;
 		

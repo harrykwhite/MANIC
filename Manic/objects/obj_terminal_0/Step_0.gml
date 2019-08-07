@@ -1,3 +1,7 @@
+if (global.game_pause){
+	return;
+}
+
 var player = obj_player;
 if (instance_exists(player)){
 	if (point_distance(x, y, player.x, player.y) < 30){
@@ -9,12 +13,13 @@ if (instance_exists(player)){
 	interact = false;
 }
 
-if (interact) && (active){
+if (interact) && (active) && (global.cutscene_current == -1){
 	sprite_index = spr_terminal_0_interact;
 	scr_ui_control_indicate("Interact");
 	
-	if (keyboard_check_pressed(obj_controller_all.key_interact)){
+	if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
 		active = false;
+		scr_player_stamina_drain(4);
 		
 		switch(special){
 			case "unlock_prison_door":

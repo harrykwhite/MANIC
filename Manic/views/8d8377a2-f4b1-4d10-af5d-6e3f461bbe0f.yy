@@ -9,7 +9,9 @@
         "88c2c2ca-612c-4fbe-86ed-c9a4e6a9ece5",
         "bf9f3957-d85b-42fb-b0eb-357828989fe3",
         "f23864a8-68e2-4c34-bbdd-eda17863bc50",
-        "86c0fbe0-2d8c-4b65-8476-a36cdd6e0475"
+        "86c0fbe0-2d8c-4b65-8476-a36cdd6e0475",
+        "5ad02b9d-fd7f-41ad-95ac-9a6ca5be7b2c",
+        "947bac5d-73de-49c9-be68-a321ff6b85d4"
     ],
     "filterType": "GMObject",
     "folderName": "Destroyed Building",

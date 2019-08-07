@@ -10,6 +10,9 @@ sporadic_timemax = random_range(45, 150);
 sporadic_time = sporadic_timemax;
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
+prevpath = noone;
+move_to_door = false;
+move_to_door_dir = 0;
 
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;

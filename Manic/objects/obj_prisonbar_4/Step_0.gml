@@ -31,8 +31,9 @@ if (open){
 			scr_ui_control_indicate("Unlock");
 			sprite_index = spr_prisonbar_4_interact;
 			
-			if (keyboard_check_pressed(obj_controller_all.key_interact)){
+			if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
 				scr_effect_screenshake(1);
+				scr_player_stamina_drain(4);
 				scr_sound_play(snd_object_prisondoor_open_0, false, 0.9, 1.1);
 				
 				open = true;

@@ -46,3 +46,6 @@ global.player_is_respawning = false;
 
 sprite_index = noone;
 scr_pathmap_init();
+
+pathgrid_reset_time_max = 2;
+pathgrid_reset_time = pathgrid_reset_time_max;

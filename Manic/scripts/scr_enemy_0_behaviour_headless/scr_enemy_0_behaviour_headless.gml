@@ -54,14 +54,6 @@ if (instance_exists(target)){
 	}
 }
 
-// Offscreen movement
-x = clamp(x, 22, room_width - 22);
-y = clamp(y, 22, room_height - 22);
-
-if (!onscreen(x, y + 12)){
-	speed_multiplier = 0;
-}
-
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
@@ -71,17 +63,14 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-scr_pawn_find_path();
-
-// Facing
-if (move_x_to > x){
-	image_xscale = scale;
-}else{
-	image_xscale = -scale;
+if (!scr_pawn_find_path()){
+	move_speed_real = 0;
+	speed_final = 0;
 }
 
 // Animation
 if (instance_exists(weapon) && weapon != -1){
+	scr_pawn_human_facing();
 	
 	var Idle0 = spr_enemy_0_headless_idle_0, Walk0 = spr_enemy_0_headless_walk_0;
 	var Idle1 = spr_enemy_0_headless_idle_1, Walk1 = spr_enemy_0_headless_walk_1;

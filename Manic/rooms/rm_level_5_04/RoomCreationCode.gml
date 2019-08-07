@@ -1,5 +1,5 @@
 if (!instance_exists(obj_player)){
-    instance_create(1191, 253, obj_player);
+    instance_create(room_width + 4, 253, obj_player);
 }
 
 global.player_footstep_default = snd_character_footstep_wood;

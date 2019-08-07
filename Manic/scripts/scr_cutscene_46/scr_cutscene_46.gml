@@ -1,7 +1,7 @@
 ///scr_cutscene_46();
 var index = 46, x_to = 884, y_to = 530, spawnx = 884, spawny = 508;
 var eobj = noone;
-var levelobj = scr_get_level_object();
+var levelobj = scr_level_get_object();
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;

@@ -1,7 +1,7 @@
 // Setup
 global.level_current = scr_level_get_index(room);
 
-if (!global.game_is_playthrough){
+if (global.game_is_playthrough){
 	global.game_save_level = global.level_current;
 }
 
@@ -16,6 +16,14 @@ levelcleared_alpha = 0;
 levelcleared_time = 0;
 
 stats_y = 0;
+
+weaponinfo = false;
+weaponinfo_index = 0;
+weaponinfo_index_prev = 0;
+weaponinfo_ammo = -1;
+weaponinfo_quantity = -1;
+weaponinfo_yoff = 0;
+weaponinfo_yoff_max = 30;
 
 weaponammo_scale = 1;
 weaponammo_scaleTo = 1;
@@ -127,6 +135,7 @@ for(var i = 0; i < levelcount; i ++){
 			
 			if (!global.game_is_playthrough) || (room == rm_prologue_00){
 				scr_companions_clear();
+				scr_player_upgrades_clear();
 				scr_set_kills_and_findings();
 			}else{
 				for(var i = 0; i < upgradecount; i ++){

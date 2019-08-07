@@ -19,7 +19,7 @@ fade_opening = true;
 press_break = 0;
 
 #region Options
-option[0] = "Start Game";
+option[0] = "New Game";
 option_locked[0] = false;
 option_scale[0] = 1;
 
@@ -81,23 +81,32 @@ option_setting_gameplay_value_interval[1] = 1;
 option_setting_gameplay_unit[1] = "[BOOL]";
 option_setting_gameplay_scale[1] = 1;
 
-option_setting_gameplay[2] = "Max Corpses";
-option_setting_gameplay_edit[2] = Options.MaxCorpses;
-option_setting_gameplay_value[2] = global.game_option[| Options.MaxCorpses];
-option_setting_gameplay_value_min[2] = 5;
-option_setting_gameplay_value_max[2] = 30;
-option_setting_gameplay_value_interval[2] = 5;
-option_setting_gameplay_unit[2] = "";
+option_setting_gameplay[2] = "Quick Zoom";
+option_setting_gameplay_edit[2] = Options.QuickZoom;
+option_setting_gameplay_value[2] = global.game_option[| Options.QuickZoom];
+option_setting_gameplay_value_min[2] = 0;
+option_setting_gameplay_value_max[2] = 100;
+option_setting_gameplay_value_interval[2] = 10;
+option_setting_gameplay_unit[2] = "%";
 option_setting_gameplay_scale[2] = 1;
 
-option_setting_gameplay[3] = "Flashing";
-option_setting_gameplay_edit[3] = Options.Flashing;
-option_setting_gameplay_value[3] = global.game_option[| Options.Flashing];
-option_setting_gameplay_value_min[3] = 0;
-option_setting_gameplay_value_max[3] = 100;
-option_setting_gameplay_value_interval[3] = 10;
-option_setting_gameplay_unit[3] = "%";
+option_setting_gameplay[3] = "Max Corpses";
+option_setting_gameplay_edit[3] = Options.MaxCorpses;
+option_setting_gameplay_value[3] = global.game_option[| Options.MaxCorpses];
+option_setting_gameplay_value_min[3] = 5;
+option_setting_gameplay_value_max[3] = 30;
+option_setting_gameplay_value_interval[3] = 5;
+option_setting_gameplay_unit[3] = "";
 option_setting_gameplay_scale[3] = 1;
+
+option_setting_gameplay[4] = "Flashing";
+option_setting_gameplay_edit[4] = Options.Flashing;
+option_setting_gameplay_value[4] = global.game_option[| Options.Flashing];
+option_setting_gameplay_value_min[4] = 0;
+option_setting_gameplay_value_max[4] = 100;
+option_setting_gameplay_value_interval[4] = 10;
+option_setting_gameplay_unit[4] = "%";
+option_setting_gameplay_scale[4] = 1;
 #endregion
 
 #region Options -> Settings -> Display

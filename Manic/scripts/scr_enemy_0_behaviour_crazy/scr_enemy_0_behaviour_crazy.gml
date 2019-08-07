@@ -34,8 +34,8 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 	}
 	
 	if (crazy_runback){
-		var xx = crazy_runx + lengthdir_x(160, crazy_attackdir - 180);
-		var yy = crazy_runy + lengthdir_y(160, crazy_attackdir - 180);
+		var xx = crazy_runx + lengthdir_x(30, crazy_attackdir - 180);
+		var yy = crazy_runy + lengthdir_y(30, crazy_attackdir - 180);
 		
 		if (crazy_runback_time < 42){
 			crazy_runback_time ++;
@@ -81,7 +81,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 				crazy_dashbreak ++;
 			}else{
 				crazy_dash = true;
-				crazy_dashdirection = point_direction(x, y, move_x_to, move_y_to) + random_range(-5, 5);
+				crazy_dashdirection = move_to_door ? move_to_door_dir : point_direction(x, y, move_x_to, move_y_to) + random_range(-5, 5);
 				crazy_dashspeed = 5.2;
 				crazy_dashtime = 8;
 				crazy_dashbreak = 0;
@@ -110,16 +110,6 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 	}
 	
 	crazy_dash = false;
-}
-
-// Offscreen movement
-if (!cutscene_prop){
-	x = clamp(x, 22, room_width - 22);
-	y = clamp(y, 22, room_height - 22);
-
-	if (!onscreen(x, y + 12)){
-		speed_multiplier = 0;
-	}
 }
 
 // Dash
@@ -165,28 +155,16 @@ if (crazy_dash){
 		crazy_dash = false;
 	}
 }else{
-	scr_pawn_find_path();
-}
-
-// Facing
-if (crazy_runback){
-	if (move_x_to > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
-}else{
-	if (instance_exists(target)){
-		if (target.x > x){
-			image_xscale = scale;
-		}else{
-			image_xscale = -scale;
-		}
+	if (!scr_pawn_find_path()){
+		move_speed_real = 0;
+		speed_final = 0;
 	}
 }
 
 // Animation
 if (instance_exists(weapon) && weapon != -1){
+	scr_pawn_human_facing();
+	
 	var Idle0 = spr_enemy_0_brain_idle_0, Walk0 = spr_enemy_0_brain_walk_0;
 	var Idle1 = spr_enemy_0_brain_idle_1, Walk1 = spr_enemy_0_brain_walk_1;
 	var Idle2 = spr_enemy_0_brain_idle_2, Walk2 = spr_enemy_0_brain_walk_2;

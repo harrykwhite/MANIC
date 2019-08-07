@@ -103,6 +103,7 @@
 				var str = "";
 				var adjust_str = "";
 				var isbool = false, isres = false;
+				var whitecol = c_white;
 				
 				var value_cur = 0;
 				var value_min = 0;
@@ -222,6 +223,10 @@
 						}else{
 							option_setting_controls_scale[i] = approach(option_setting_controls_scale[i], 1, 40);
 						}
+						
+						if (scr_input_value_already_set(option_setting_controls_value[i], i)){
+							whitecol = make_colour_rgb(255, 174, 173);
+						}
 					
 						scale = option_setting_controls_scale[i];
 					}
@@ -229,6 +234,7 @@
 				
 				isbool = string_pos("[BOOL]", adjust_str) != 0;
 				isres = string_pos("[RESOLUTION]", adjust_str) != 0;
+				
 				if (isbool){
 					if (!value_cur){
 						adjust_str = "Disabled";
@@ -261,7 +267,7 @@
 					if (selected == i){
 						scr_text_shadow_transformed(xx, yy, str, make_colour_rgb(189, 23, 23), scale, scale, 0);	
 					}else{
-						scr_text_shadow_transformed(xx, yy, str, c_white, scale, scale, 0);	
+						scr_text_shadow_transformed(xx, yy, str, whitecol, scale, scale, 0);	
 					}
 				}else{
 					if (selected == i){
@@ -271,9 +277,9 @@
 						scr_text_shadow_transformed(xx + 175, yy, adjust_str, make_colour_rgb(189, 23, 23), scale, scale, 0);
 					}else{
 						draw_set_halign(fa_left);
-						scr_text_shadow_transformed(xx - 175, yy, str, c_white, scale, scale, 0);
+						scr_text_shadow_transformed(xx - 175, yy, str, whitecol, scale, scale, 0);
 						draw_set_halign(fa_right);
-						scr_text_shadow_transformed(xx + 175, yy, adjust_str, c_white, scale, scale, 0);
+						scr_text_shadow_transformed(xx + 175, yy, adjust_str, whitecol, scale, scale, 0);
 					}
 				}
 			}

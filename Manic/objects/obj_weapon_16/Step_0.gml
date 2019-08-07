@@ -22,7 +22,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
 	    s = instance_create(xpos, ypos, obj_proj_1);
 	    s.image_angle = mdir;
 	    s.depth = depth + 1;
-		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 35, obj_proj_2);
+		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 35, obj_proj_2, obj_player.x, obj_player.y);
         
         attack_time = 28;
         attack_can = false;

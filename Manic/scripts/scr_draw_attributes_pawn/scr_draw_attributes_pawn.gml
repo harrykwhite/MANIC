@@ -76,6 +76,10 @@ if (drawshader){
 			if (random(5) < 1){
 				part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_fire_2, 1);
 			}
+			
+			if (random(12) < 1){
+				part_particles_create(global.ps_front, x + random_range(-wradius, wradius), y + random_range(-hradius, hradius), global.pt_smoke_3, 1);
+			}
 		}
 	
 		a = wv;

@@ -18,4 +18,8 @@ if (fire){
 	}else{
 		image_speed = 1;
 	}
+	
+	if (random(6) < 1){
+		part_particles_create(global.ps_front, x + random_range(-sprite_width / 2, sprite_width / 2), y + random_range(-sprite_height / 2, sprite_height / 2), global.pt_smoke_3, 1);
+	}
 }

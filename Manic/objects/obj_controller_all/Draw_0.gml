@@ -10,8 +10,10 @@ ds_grid_sort(grid, 1, true);
 repeat(height){
 	var instance = grid[# 0, yy];
 	
-	with(instance){
-		event_user(0);
+	if (instance != noone){
+		with(instance){
+			event_user(0);
+		}
 	}
 	
 	yy ++;

@@ -70,9 +70,5 @@ if ((distance_to_point(move_x_to, move_y_to) < 10) || (move_time <= 0)) && (onsc
 poison = false;
 bleed = false;
 
-if (attack_ready_time > 0){
-	attack_ready_time --;
-}
-
 scr_pawn_status_handler();
 scr_pawn_update();

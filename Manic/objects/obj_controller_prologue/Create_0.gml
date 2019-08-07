@@ -42,6 +42,11 @@ global.weapon_slotscale[0] = 1;
 var flr = layer_get_id("InteriorFloorWood");
 var lflr = layer_tilemap_get_id(flr);
 
+var fence_x1 = 266;
+var fence_y1 = 902;
+var fence_x2 = 644;
+var fence_y2 = 1052;
+
 var oldx = 0;
 var oldy = 0;
 
@@ -57,7 +62,8 @@ repeat(590){
 	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true)
 	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
 	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_weapondrop, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
-	|| tilemap_get_at_pixel(lflr, xx, yy)){
+	|| tilemap_get_at_pixel(lflr, xx, yy)
+	|| (xx >= fence_x1 && xx <= fence_x2 && yy >= fence_y1 && yy <= fence_y2)){
 		xx = random(room_width);
 		yy = random(room_height);
 	}
@@ -86,7 +92,7 @@ repeat(70){
 	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
 	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_weapondrop, false, true)
 	|| tilemap_get_at_pixel(lflr, xx, yy)
-	|| (x >= 266 && x <= 644 && y >= 902 && y <= 1052)){
+	|| (xx >= fence_x1 && xx <= fence_x2 && yy >= fence_y1 && yy <= fence_y2)){
 		xx = random(room_width);
 		yy = random(room_height);
 	}

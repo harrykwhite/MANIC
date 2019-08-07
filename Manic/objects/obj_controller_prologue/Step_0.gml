@@ -172,7 +172,7 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 					dospawn = false;
 					break;
 				}
-			}until ((distance_to_object(obj_player) >= 250) && inroom(xx, yy) && !collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true))
+			}until ((distance_to_object(obj_player) >= 250) && inroom(xx, yy) && !collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)) && (!place_meeting(xx, yy, obj_interior_fade))
 			
 			if (dospawn){
 				instance_create(xx, yy, obj_enemy_5);

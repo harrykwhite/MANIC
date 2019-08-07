@@ -1,5 +1,5 @@
 if (sprite == -1){
-	sprite = global.weapon_sprite[index];
+	sprite = global.weapon_centersprite[index];
 	
 	if (index == PlayerWeapon.Grenade) && (quantity > 1){
 		sprite = spr_weapon_9_pack;
@@ -14,4 +14,4 @@ if (sprite == -1){
 	}
 }
 
-scr_render_me(y - (36 + offset));
+scr_render_me(y - (29 + offset));

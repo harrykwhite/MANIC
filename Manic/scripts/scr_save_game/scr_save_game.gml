@@ -1,6 +1,6 @@
 ini_open(working_directory + "save.ini");
 
-if (global.level_current > global.game_save_level){
+if (global.level_current >= global.game_save_level){
 	global.game_save_level = global.level_current;
 	ini_write_real("Save", "LevelAt", global.game_save_level);
 }

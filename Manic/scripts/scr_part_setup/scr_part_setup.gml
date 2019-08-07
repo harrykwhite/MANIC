@@ -58,6 +58,8 @@ scr_part_type_smoke_6();
 scr_part_type_stick_break_0();
 scr_part_type_stick_break_flash_0();
 
+scr_part_type_scraps_0();
+
 scr_part_type_wood_0();
 scr_part_type_wood_1();
 scr_part_type_wood_2();

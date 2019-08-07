@@ -17,7 +17,7 @@ if (instance_exists(obj_player)){
 		if (global.cutscene_time[index] < 120){
 			global.cutscene_time[index] ++;
 			if (!audio_is_playing(snd_other_typing_0)){
-				audio_play_sound(snd_other_typing_0, 3, false);
+				scr_sound_play(snd_other_typing_0, false, 1, 1);
 			}
 		}else{
 			if (audio_is_playing(snd_other_typing_0)){
@@ -30,7 +30,7 @@ if (instance_exists(obj_player)){
 				if (instance_exists(obj_conveyerbelt_0)){ with(obj_conveyerbelt_0) stop = true; }
 				if (instance_exists(obj_conveyerbelt_1)){ with(obj_conveyerbelt_1) stop = true; }
 				if (instance_exists(obj_conveyerbelt_2)){ with(obj_conveyerbelt_2) stop = true; }
-				audio_play_sound(snd_other_conveyerbelt_1, 3, false);
+				scr_sound_play(snd_other_conveyerbelt_1, false, 1, 1);
 			}
 			
 			if (room == rm_level_1_00){
@@ -41,7 +41,7 @@ if (instance_exists(obj_player)){
 					global.cutscene_time[index] ++;
 					
 					if (global.cutscene_time[index] == 155){
-						audio_play_sound(snd_weapon_swing_0, 3, false);
+						scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
 						var drop = instance_create(dropx, dropy + 10, obj_weapondrop);
 						drop.index = PlayerWeapon.Wrench;
 						drop.spd = 5;
@@ -57,7 +57,7 @@ if (instance_exists(obj_player)){
 					global.cutscene_time[index] = 0;
 				}
 			}else if (room == rm_level_4_02){
-				var levelobj = scr_get_level_object();
+				var levelobj = scr_level_get_object();
 				
 				if (levelobj.terminal_deactivate_count < 2){
 					levelobj.terminal_deactivate_count ++;

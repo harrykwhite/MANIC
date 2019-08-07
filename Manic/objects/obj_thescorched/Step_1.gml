@@ -3,6 +3,10 @@ if (weapon_has){
 		weapon_index = PawnWeapon.Flamethrower;
 		weapon = instance_create(x, y, obj_pawnweapon_10);
 		weapon.owner = self;
+	}else if (!instance_exists(weapon)){
+		weapon_index = PawnWeapon.Flamethrower;
+		weapon = instance_create(x, y, obj_pawnweapon_10);
+		weapon.owner = self;
 	}
 	
 	if (arm == -1){

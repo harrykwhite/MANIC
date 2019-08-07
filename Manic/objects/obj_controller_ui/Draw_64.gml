@@ -2,6 +2,7 @@
 var counter = 0;
 var mousex = scr_world_to_screen_x(obj_controller_mouse.x);
 var mousey = scr_world_to_screen_y(obj_controller_mouse.y);
+
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
@@ -58,10 +59,21 @@ if (instance_exists(obj_player)){
         }else{
             weaponslot_weaponscale[counter] = 1.875;
         }
-        
-        // Drawing Slot
+		
+		// Drawing Slot
         var xx = 78;
         var yy = 78 + (yspace * counter);
+		
+		var isred = false;
+		
+		if (global.weapon_slot[counter] != -1){
+			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Ranged){
+				if (global.weapon_slotammo[counter] <= 0){
+					isred = true;
+					gpu_set_fog(true, c_red, 0, 0);
+				}
+			}
+		}
 		
         if (global.weapon_slotcurrent == counter){
 			draw_sprite_ext(spr_ui_weaponslot_1, 0, xx + random_range(-shake, shake), yy + random_range(-shake, shake), 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
@@ -74,27 +86,28 @@ if (instance_exists(obj_player)){
 				global.weapon_slotscale[counter] -= 0.025;
 			}
 			
-            if (counter > 0){
-				if (global.weapon_slotcurrent == counter - 1){
-					//yy += 10 * global.weapon_slotscale[counter - 1];
-				}
-			}
-			
 			draw_sprite_ext(spr_ui_weaponslot_0, 0, xx, yy, 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
         }
         
+		// Drawin Slot Number
+		draw_set_halign(fa_right);
+		scr_text_shadow_transformed(xx - 8, yy - 8, string(counter + 1), c_gray, 1, 1, 0);
+		draw_set_alpha(1);
+		
+		gpu_set_fog(false, c_white, 0, 0);
+		
         // Drawing Weapon
         if (global.weapon_slot[counter] != -1) && (global.weapon_slot[counter] != 4){
-            var spr = global.weapon_sprite[global.weapon_slot[counter]];
+            var spr = global.weapon_centersprite[global.weapon_slot[counter]];
             
-            gpu_set_fog(true, c_white, 0, 0);
-            draw_sprite_ext(spr, 0, xx - 9, yy + 8, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
+            gpu_set_fog(true, isred ? c_red : c_white, 0, 0);
+            draw_sprite_ext(spr, 0, xx, yy, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_white, 0, 0);
         }else if (global.level_current != Level.Prologue){
-            var spr = spr_weapon_4;
+            var spr = spr_weapon_4_center;
 			
             gpu_set_fog(true, c_gray, 0, 0);
-            draw_sprite_ext(spr, 0, xx - 9, yy + 8, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
+            draw_sprite_ext(spr, 0, xx, yy, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_black, 0, 0);
         }
 		
@@ -193,10 +206,10 @@ if (tutourial) && (global.cutscene_current == -1){
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
 	draw_set_alpha(tutourial_alpha);
-	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_white, tscale, tscale, 0);
+	scr_text_shadow_transformed((dwidth / 2), (dheight - 160), tutourial_text[tstage], c_white, tscale, tscale, 0);
 	
 	draw_set_alpha((tscale - 1) * 3 * tutourial_alpha);
-	scr_text_shadow_transformed(dwidth / 2, dheight - 160, tutourial_text[tstage], c_maroon, tscale, tscale, 0);
+	scr_text_shadow_transformed((dwidth / 2), (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
 	draw_set_alpha(1);
 	
 	if (tutourial_fade){
@@ -277,6 +290,56 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 //	draw_set_valign(fa_top);
 //}
 
+// Weapon Info
+if (weaponinfo){
+	weaponinfo_yoff = approach(weaponinfo_yoff, weaponinfo_yoff_max, 20);
+}else{
+	weaponinfo_yoff = approach(weaponinfo_yoff, 0, 20);
+}
+
+if (weaponinfo_yoff > 0.02){
+	var wname = global.weapon_name[weaponinfo_index];
+	var wdamage = global.weapon_damage[weaponinfo_index];
+	var wspeed = global.weapon_speed[weaponinfo_index];
+	var wtype = global.weapon_type[weaponinfo_index];
+	var gapwidth = 100;
+	
+	draw_set_alpha(weaponinfo_yoff / weaponinfo_yoff_max);
+	draw_set_font(fnt_cambria_2);
+	draw_set_halign(fa_center);
+	scr_text_shadow(dwidth / 2, dheight - 110 + weaponinfo_yoff, wname, c_white);
+	
+	draw_set_font(fnt_cambria_0);
+	
+	if (wtype == WeaponType.Ranged || wtype == WeaponType.Throwing){
+		var wcontent_str = (wtype == WeaponType.Ranged)
+		? "AMMO: " + string(weaponinfo_ammo) + "/" + string(global.weapon_ammomax[weaponinfo_index])
+		: "QUANTITY: x" + string(weaponinfo_quantity);
+		var wcontent_col = c_white;
+		
+		draw_set_halign(fa_center);
+		scr_text_shadow((dwidth / 2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
+		
+		draw_set_halign(fa_right);
+		scr_text_shadow((dwidth / 2) - gapwidth, dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
+		
+		if (wtype == WeaponType.Ranged && weaponinfo_ammo <= 0){
+			wcontent_col = c_red;
+		}
+		
+		draw_set_halign(fa_left);
+		scr_text_shadow((dwidth / 2) + gapwidth, dheight - 76 + weaponinfo_yoff, wcontent_str, wcontent_col);
+	}else{
+		draw_set_halign(fa_right);
+		scr_text_shadow((dwidth / 2) - (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
+		
+		draw_set_halign(fa_left);
+		scr_text_shadow((dwidth / 2) + (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
+	}
+	
+	draw_set_alpha(1);
+}
+
 // Weapon Ammo
 var w = global.weapon_slot[global.weapon_slotcurrent];
 var drawammo = false;
@@ -298,17 +361,14 @@ if (instance_exists(obj_player)){
 		draw_set_alpha(weapon_standalone_alpha);
 		
 		if (global.weapon_slot[counter] != -1){
+			var col = c_white;
+			
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
-				var col = c_white;
 				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
 				
-				scr_text_shadow_transformed(xx, yy, "x" + string(quantity), col, weaponammo_scale, weaponammo_scale, 0);
+				scr_text_shadow(xx, yy, "x" + string(quantity), col);
 			}
 		}
-		
-		draw_set_halign(fa_right);
-		scr_text_shadow_transformed(xx + 16, yy - 36, string(counter + 1), c_gray, 1, 1, 0);
-		draw_set_alpha(1);
 		
 		counter ++;
 	}
@@ -316,6 +376,27 @@ if (instance_exists(obj_player)){
 	counter = 0;
 	
     if (w != -1){
+		/*if (global.weapon_type[w] == WeaponType.Ranged){
+			var noammoy = dheight - 220;
+			
+			if (global.weapon_slot_standalone == -1){
+				if (global.weapon_slotammo[global.weapon_slotcurrent] <= 0){
+					draw_set_font(fnt_cambria_2);
+					draw_set_halign(fa_center);
+					scr_text_shadow(dwidth / 2, noammoy, "NO AMMO", c_red);
+					draw_set_font(fnt_cambria_0);
+					scr_text_shadow(dwidth / 2, noammoy + 30, "[" + scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + "] TO THROW", c_red);
+					// ^^^ Could this suggest to the player that there is no way of retrieving ammo back?
+				}
+			}else{
+				if (global.weapon_slot_standalone_ammo <= 0){
+					draw_set_font(fnt_cambria_2);
+					draw_set_halign(fa_center);
+					scr_text_shadow(dwidth / 2, noammoy, "NO AMMO", c_red);
+				}
+			}
+		}*/
+		
 		if (instance_exists(global.weapon_object[w])){
 	        if (global.weapon_type[w] == WeaponType.Ranged){
 	            var xx = 131 + weaponammo_x;
@@ -323,7 +404,7 @@ if (instance_exists(obj_player)){
 	            var col = c_white;
 				
 	            var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
-	            var maxammo = global.weapon_ammomax[global.weapon_slot[global.weapon_slotcurrent]];
+	            var maxammo = global.weapon_ammomax[w];
 	            drawammo = true;
 				
 				if (global.weapon_slot_standalone != -1){
@@ -473,7 +554,7 @@ if (bosshealth_flash > 0.01){
 
 if (bosshealth_width_current > 0){
 	var xx = dwidth / 2;
-	var yy = dheight - 50;
+	var yy = dheight - 100;
 	var w = bosshealth_width_current;
 	var h = 6;
 	
@@ -537,15 +618,14 @@ if (checkpoint_text_time > 0){
 }
 
 if (checkpoint_text_alpha > 0){
-	var yy = dheight - 56;
+	var yy = 96;
 	
 	draw_set_alpha(checkpoint_text_alpha);
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_bottom);
 	
 	if (checkpoint_text_time > 0){
-		scr_text_shadow((dwidth / 2), yy + ((1 - checkpoint_text_alpha) * 30), "[Checkpoint Reached]", c_white);
+		scr_text_shadow((dwidth / 2), yy - ((1 - checkpoint_text_alpha) * 30), "[Checkpoint Reached]", c_white);
 	}else{
 		scr_text_shadow((dwidth / 2), yy, "[Checkpoint Reached]", c_white);
 	}
@@ -554,7 +634,6 @@ if (checkpoint_text_alpha > 0){
 	//checkpoint_text_line_width = approach(checkpoint_text_line_width, line_width_to, 5);
 	
 	//draw_rectangle((dwidth / 2) - (checkpoint_text_line_width / 2), yy - 3, (dwidth / 2) + (checkpoint_text_line_width / 2), yy - 2, false);
-	draw_set_valign(fa_top);
 	draw_set_alpha(1);
 }
 
@@ -748,19 +827,19 @@ if (pausedialogue_alpha > 0){
 	
 	switch(pausedialogue_type){
 		case 0:
-			scr_text_shadow(dwidth / 2, dheight / 2, pausedialogue_type_text, c_white);
+			scr_text_shadow(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, c_white);
 			vslot = 1;
 			break;
 	
 		case 1:
-			optyy += string_height(pausedialogue_type_text) + 20;
+			optyy += string_height(pausedialogue_type_text) + 10;
 			
-			draw_set_font(fnt_cambria_1);
+			draw_set_font(fnt_cambria_2);
 			scr_text_shadow(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, c_white);
 			
 			pausedialogue_option_selected = -1;
 			
-			draw_set_font(fnt_cambria_0);
+			draw_set_font(fnt_cambria_1);
 			
 			for(var counter = 0; counter < pausedialogue_option_max; counter ++){
 				var optrealy = optyy + (counter * 34);

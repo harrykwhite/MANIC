@@ -59,8 +59,6 @@ if (instance_exists(obj_player)){
 	}else{
 		cutscene_trainopening_light.x = x_to;
 		cutscene_trainopening_light.y = y_to;
-		
-		scr_modify_player_surrounding_light(cutscene_trainopening_light, x_to, y_to);
 	}
 	
 	if (global.cutscene_time[index] < 100){

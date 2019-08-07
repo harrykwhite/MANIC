@@ -8,6 +8,11 @@ damage = 2;
 strength = 1;
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
+prevpath = noone;
+
+cutscene_break_time = 0;
+
+compcounter_alpha = 0;
 
 hitbox = instance_create_layer(x, y, "Hitbox", obj_player_hitbox_0);
 hitbox.sprite_index = spr_dog_hitbox_0;

@@ -12,7 +12,7 @@ switch(room){
 			spawn_x = 446;
 			spawn_y = 188;
 		}else{
-			spawn_x = 1872;
+			spawn_x = 2472;
 			spawn_y = 428;
 		}
 		

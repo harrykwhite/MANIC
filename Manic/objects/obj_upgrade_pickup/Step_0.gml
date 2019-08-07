@@ -14,7 +14,7 @@ if (index == PlayerUpgrade.HeadLight){
 
 // Particles
 if (!global.game_pause){
-	if (random(15) < 1){
+	if (random(25) < 1){
 		part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
 	}
 }
@@ -25,7 +25,6 @@ if (instance_exists(obj_player)){
         instance_destroy();
 		
 		scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
-		scr_player_stamina_drain(6);
 		scr_effect_screenshake(1);
 		scr_upgrade_add(index);	
 		

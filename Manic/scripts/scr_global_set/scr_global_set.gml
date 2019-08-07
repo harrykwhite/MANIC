@@ -42,9 +42,11 @@ if (room == rm_ini){
 	global.level_collectable_found = ds_grid_create(1, collectsize);
 	
 	var turretsize = 0;
+	
 	for(var i = 0; i < levelcount; i ++){
 		turretsize += global.level_turret_number[i];
 	}
+	
 	global.level_turret_killed = ds_grid_create(1, turretsize);
 	
 	global.game_is_playthrough = true;
@@ -64,6 +66,7 @@ global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
 global.player_health_previous = global.player_health_max;
 global.player_is_respawning = false;
+//global.player_inside_inst = noone;
 
 part_system_clear(global.ps_bottom);
 part_system_clear(global.ps_front);

@@ -17,7 +17,7 @@ if (instance_exists(obj_player)){
 		obj_player.move_extSpd = 0;
 		
 		if (!audio_is_playing(snd_other_typing_0)){
-			audio_play_sound(snd_other_typing_0, 3, false);
+			scr_sound_play(snd_other_typing_0, false, 1, 1);
 		}
 		
 		if (global.cutscene_time[index] < 180){

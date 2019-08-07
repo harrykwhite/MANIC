@@ -26,7 +26,7 @@ if (!levelclear_called){
 		global.level_cleared[levelcur] = true;
 		levelclear_called = true;
 		
-		var level = scr_get_level_object();
+		var level = scr_level_get_object();
 		with(level){
 			global.game_combat_state = CombatState.Idle;
 			global.game_combat_state_time_real = 0;
@@ -78,6 +78,16 @@ if (checkpoint_create) && (instance_exists(obj_player)){
 	obj_controller_ui.checkpoint_text_time = 60 * 5;
 	
 	checkpoint_create = false;
+}
+
+// Path grid
+if (pathgrid_reset_time > 0){
+	pathgrid_reset_time --;
+}else{
+	mp_grid_destroy(pathgrid);
+	scr_pathmap_init();
+	
+	pathgrid_reset_time = pathgrid_reset_time_max;
 }
 
 // Managing corpse count
@@ -161,7 +171,7 @@ if (!global.game_pause){
 			weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
 		}else{
 			if (levelcur != Level.Prologue){
-				weapon = global.weapon_object[4];
+				weapon = global.weapon_object[PlayerWeapon.Knife];
 			}
 		}
 		

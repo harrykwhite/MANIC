@@ -22,7 +22,10 @@ if (instance_exists(target)){
 					run_y = random_range(arena_y, arena_y + arena_height);
 				}
 			}else{
-				state = 1;
+				if (!cutscene_prop){
+					state = 1;
+				}
+				
 				run_count = 0;
 			}
 		}
@@ -69,14 +72,6 @@ if (instance_exists(target)){
 	face_player = false;
 }
 
-// Off - screen movement.
-x = clamp(x, 22, room_width - 22);
-y = clamp(y, 22, room_height - 22);
-
-if (!onscreen(x, y)){
-	speed_multiplier = 0;
-}
-
 // Barrel
 var nbarrel = instance_nearest(x, y, obj_barrel_2);
 
@@ -105,21 +100,15 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-scr_pawn_find_path();
+if (!scr_pawn_find_path()){
+	move_speed_real = 0;
+	speed_final = 0;
+}
 
-// Facing
-if (!face_player){
-	if (move_x_to > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
+if (move_x_to > x){
+	image_xscale = scale;
 }else{
-	if (target.x > x){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
+	image_xscale = -scale;
 }
 
 // Animation

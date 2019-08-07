@@ -8,6 +8,7 @@ state_time_max = 0;
 type = -1;
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
+prevpath = noone;
 
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;

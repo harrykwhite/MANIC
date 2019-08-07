@@ -14,7 +14,12 @@
         "b410f082-7ede-4baf-aceb-15d6c8bbfe47",
         "7a02c770-7506-46ea-a5fc-28797a458290",
         "cf56ca88-0459-4a2d-a032-04d7f774aed6",
-        "93af3c0b-5cc8-462f-8ed1-16c50b180dfb"
+        "93af3c0b-5cc8-462f-8ed1-16c50b180dfb",
+        "da984c18-4ea6-42e7-bdb4-90ea10ee22b2",
+        "8bd73a23-8dfe-4f0c-8a68-d3783d06ba0e",
+        "7f2a3f82-dce6-4e95-ae7d-a0ec2ae888e8",
+        "df8ff81e-9f3e-4641-b4a1-9659963f9e18",
+        "1d394473-ec1c-4f56-8c39-9c3829d3b052"
     ],
     "filterType": "GMSprite",
     "folderName": "City Building",

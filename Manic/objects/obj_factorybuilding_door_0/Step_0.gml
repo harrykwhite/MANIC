@@ -1,0 +1,1 @@
+scr_door_update(spr_factorybuilding_door_open_0, spr_factorybuilding_door_open_0_interact, spr_factorybuilding_door_closed_0, spr_factorybuilding_door_closed_0_interact, spr_factorybuilding_door_break_0);

@@ -4,12 +4,13 @@ scale = random_range(1, 1.1);
 destroy = false;
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
+prevpath = noone;
 
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_maggot_hitbox_0;
 hitbox.owner = id;
 
-damage = 2;
+damage = 1;
 strength = 0.5;
 
 whiteflash_alpha = 0;
@@ -68,7 +69,7 @@ knockback_multiplier = 0.1;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 22;
+health_max = 18;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

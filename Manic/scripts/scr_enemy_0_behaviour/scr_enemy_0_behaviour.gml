@@ -253,14 +253,6 @@ if (instance_exists(target)){
 	face_target = false;
 }
 
-// Off - screen movement.
-x = clamp(x, 22, room_width - 22);
-y = clamp(y, 22, room_height - 22);
-
-if (!onscreen(x, y)){
-	speed_multiplier = 0;
-}
-
 // Barrel
 var nbarrel = instance_nearest(x, y, obj_barrel_2);
 
@@ -296,19 +288,18 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-scr_pawn_find_path();
+if (!scr_pawn_find_path()){
+	move_speed_real = 0;
+	speed_final = 0;
+}
 
 // Animation
 if (instance_exists(weapon) && weapon != -1){
+	scr_pawn_human_facing();
+	
 	var Idle0, Walk0;
 	var Idle1, Walk1;
 	var Idle2, Walk2;
-	
-	if (weapon.dir >= 270) || (weapon.dir <= 90){
-		image_xscale = scale;
-	}else{
-		image_xscale = -scale;
-	}
 	
 	switch(type){
 		

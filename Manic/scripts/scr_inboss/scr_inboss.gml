@@ -1,3 +1,7 @@
+if (global.boss_current != -1){
+	return true;
+}
+
 if (instance_exists(obj_enemy_0)){
 	var count = instance_number(obj_enemy_0);
 	var inst;
@@ -71,5 +75,4 @@ if (global.cutscene_current == 46){
 	return true;
 }
 
-global.boss_current = -1;
 return false;

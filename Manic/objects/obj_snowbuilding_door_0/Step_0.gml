@@ -1,0 +1,1 @@
+scr_door_update(spr_snowbuilding_door_open_0, spr_snowbuilding_door_open_0_interact, spr_snowbuilding_door_closed_0, spr_snowbuilding_door_closed_0_interact, spr_snowbuilding_door_break_0);

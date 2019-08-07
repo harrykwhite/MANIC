@@ -1,7 +1,7 @@
 // Knockback
 var kbs = knockback_speed * knockback_multiplier;
 
-if (kbs > 0.1) && (!place_meeting(x + lengthdir_x(kbs + 1, knockback_direction), y + lengthdir_y(kbs + 1, knockback_direction), obj_p_solid)){
+if (kbs > 0.1) && (!place_meeting(x + lengthdir_x(kbs + 3, knockback_direction), y + lengthdir_y(kbs + 3, knockback_direction), obj_p_solid)){
     x += lengthdir_x(kbs, knockback_direction);
     y += lengthdir_y(kbs, knockback_direction);
     
@@ -52,6 +52,12 @@ if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_ind
 	}
 }
 
+// Lock in room
+if (global.cutscene_current == -1){
+	x = clamp(x, 12, room_width - 12);
+	y = clamp(y, 12, room_height - 12);
+}
+
 // Death
 var doexplode = false;
 
@@ -70,13 +76,13 @@ if (health_current <= 0){
 		part_particles_create(global.ps_front, x + random_range(-eoffsetx, eoffsetx), y + random_range(-eoffsety, eoffsety), global.pt_blood_4, 1);
 	}
 	
-    scr_effect_screenshake(4);
+    scr_effect_screenshake(3);
 	scr_effect_redtint_flash(0.2 + (global.game_save_level / 20));
 	scr_effect_freeze(13);
-	scr_effect_zoom(-0.05);
+	scr_effect_zoom(-0.04);
     
     instance_destroy();
-	audio_play_sound(snd_other_kick_0, 3, false);
+	scr_sound_play(snd_other_kick_0, false, 0.8, 1.2);
 	
 	if (mylight != noone){
 		instance_destroy(mylight);
@@ -244,7 +250,7 @@ if (health_current <= 0){
 		scr_damage_custom(2, 1, 45, 45, 3, true, true, true, true);
 		scr_damage_custom(1, 1, 55, 55, 3, true, true, true, true);
 		scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
-		scr_effect_screenshake(5);
+		scr_effect_screenshake(4);
 		scr_effect_freeze(13);
 		scr_effect_zoom(-0.1);
 		scr_sound_play_distance(snd_weapon_explode_0, false, 600);
@@ -282,6 +288,7 @@ if (health_current <= 0){
 			instance_create(x - 7, y + 2, obj_health_pack_0);
 			instance_create(x + 9, y + 4, obj_health_pack_0);
 			scr_weapon_ammo_spawn(choose(6, 7), 5, 6, x, y + 5);
+			global.boss_current = -1;
 		}else if (type == Enemy0_Type.TrainBoss){
 			dropchance = 100;
 			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
@@ -290,8 +297,12 @@ if (health_current <= 0){
 			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
 			global.boss_current = -1;
 		}else{
-			if (chance(29)){
+			if (chance(30)){
 				scr_weapon_ammo_spawn(choose(2, 4), 5, 6, x, y + 5);
+			}
+			
+			if (chance(10)){
+				instance_create(x + random_range(-3, 3), y + 4 + random_range(-3, 3), obj_health_pack_0);
 			}
 		}
 		

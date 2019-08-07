@@ -12,6 +12,10 @@ if (global.game_pause){
 	}
 }
 
+if (random(7) < 1){
+	part_particles_create(global.ps_front, x, y - 16, global.pt_smoke_3, 1);
+}
+
 if (burn_sound == noone){
 	burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
 }

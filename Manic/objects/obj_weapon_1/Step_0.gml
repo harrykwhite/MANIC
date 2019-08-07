@@ -23,7 +23,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
 	    s.image_angle = mdir;
 	    s.depth = depth + 1;
 	    
-		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 38, obj_proj_2);
+		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 38, obj_proj_2, obj_player.x, obj_player.y);
         
         attack_time = 7;
         attack_can = false;
@@ -44,6 +44,9 @@ if (global.player_stamina_active){
 		    throw.dir = mdir;
 		    throw.image_angle = throw.dir;
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
+			throw.burn = burn;
+			throw.burn_time = burn_time;
+			throw.burn_time_max = burn_time_max;
 
 		    instance_destroy();
 		    global.weapon_slot[global.weapon_slotcurrent] = -1;

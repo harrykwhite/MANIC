@@ -1,6 +1,7 @@
 enum Options{
 	Screenshake,
 	ScreenFreeze,
+	QuickZoom,
 	MaxCorpses,
 	Flashing,
 	Fullscreen,
@@ -30,6 +31,7 @@ if (!ds_exists(global.game_option, ds_type_list)){
 
 global.game_option[| Options.Screenshake] = ini_read_real("Options", "Screenshake", 50);
 global.game_option[| Options.ScreenFreeze] = ini_read_real("Options", "ScreenFreeze", true);
+global.game_option[| Options.QuickZoom] = ini_read_real("Options", "QuickZoom", 100);
 global.game_option[| Options.MaxCorpses] = ini_read_real("Options", "MaxCorpses", 15);
 global.game_option[| Options.Flashing] = ini_read_real("Options", "Flashing", 100);
 
@@ -40,9 +42,9 @@ global.game_option[| Options.CameraScale] = ini_read_real("Options", "CameraScal
 global.game_option[| Options.UIScale] = ini_read_real("Options", "UIScale", 1);
 
 global.game_option[| Options.MasterVolume] = ini_read_real("Options", "MasterVolume", 100);
-global.game_option[| Options.SoundVolume] = ini_read_real("Options", "SoundVolume", 100);
-global.game_option[| Options.MusicVolume] = ini_read_real("Options", "MusicVolume", 100);
-global.game_option[| Options.AmbienceVolume] = ini_read_real("Options", "AmbienceVolume", 100);
+global.game_option[| Options.SoundVolume] = ini_read_real("Options", "SoundVolume", 50);
+global.game_option[| Options.MusicVolume] = ini_read_real("Options", "MusicVolume", 70);
+global.game_option[| Options.AmbienceVolume] = ini_read_real("Options", "AmbienceVolume", 40);
 
 global.game_option[| Options.Input_MoveRight] = ini_read_real("Options", "Input_MoveRight", ord("D"));
 global.game_option[| Options.Input_MoveLeft] = ini_read_real("Options", "Input_MoveLeft", ord("A"));

@@ -1,4 +1,4 @@
-var level = scr_get_level_object();
+var level = scr_level_get_object();
 interact = false;
 if (global.game_pause){
 	image_speed = 0;

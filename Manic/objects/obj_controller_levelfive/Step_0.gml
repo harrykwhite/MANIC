@@ -37,8 +37,13 @@ lighting_level[CombatState.Buildup] = 0.95;
 lighting_level[CombatState.Idle] = 0.9;
 
 var lighting_to = lighting_level[global.game_combat_state];
+
 if (global.game_combat_in_hordechallenge){
 	lighting_to = 1;
+}
+
+if (scr_level_is_peaceful(room)){
+	lighting_to = 0.925;
 }
 
 if (lighting < lighting_to){
@@ -49,7 +54,7 @@ if (lighting < lighting_to){
 
 global.ambientShadowIntensity = lighting;
 
-if (player_exists){
+if (player_exists) && (!scr_level_is_peaceful(room)){
 	var spawn_rate = spawn_rate_real;
 	if (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
@@ -75,12 +80,12 @@ if (player_exists){
 		}
 	
 		if (spawn){
-			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
+			if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * spawn_rate)){
 				var xpos = random_range(camx - 10, camx + camw + 10);
 				var ypos = random_range(camy - 10, camy + camh + 10);
 				var spawn_trial = 0;
 				
-				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80){
+				while(!scr_is_valid_enemyspawn(xpos, ypos)){
 					xpos = random_range(camx - 10, camx + camw + 10);
 					ypos = random_range(camy - 10, camy + camh + 10);
 					spawn_trial ++;

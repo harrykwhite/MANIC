@@ -1,6 +1,10 @@
 // Skill
 global.game_combat_playerskill = scr_player_determine_skill();
 
+// Inside
+//var inst = instance_place(x, y, obj_block_housing);
+//global.player_inside_inst = inst;
+
 // Equipment
 var weapon;
 
@@ -20,12 +24,6 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 
 while(!instance_exists(obj_player_arm)){
     instance_create(x, y, obj_player_arm);
-}
-
-// Confining the player to the room.
-if (global.cutscene_current == -1){
-	x = clamp(x, 0, room_width);
-	y = clamp(y, 0, room_height);
 }
 
 // Invincibility
@@ -137,7 +135,7 @@ if (global.player_health_current < 3){
 if (global.player_health_current <= 2){
 	var vol = 0.7;
 	if (!audio_is_playing(snd_other_heartbeat_0)){
-		heartbeat = audio_play_sound(snd_other_heartbeat_0, 3, true);
+		heartbeat = scr_sound_play(snd_other_heartbeat_0, false, 0.8, 1.2);
 	}
 	
 	if (global.player_health_current == 1){
@@ -166,7 +164,7 @@ if (global.player_health_current <= 0){
 		global.game_combat_in_hordechallenge_time = 0;
 		global.game_combat_state = CombatState.Idle;
 		
-		var level = scr_get_level_object();
+		var level = scr_level_get_object();
 		with(level){
 			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
 			audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);

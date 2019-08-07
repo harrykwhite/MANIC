@@ -34,7 +34,7 @@ if (instance_exists(obj_player)){
 							}
 						}
 						
-						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
+						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300) || (!onscreen(target.x, target.y)){
 							target = noone;
 							continue;
 						}
@@ -124,8 +124,8 @@ if (instance_exists(obj_player)){
 					bite_retreat_y = target.y + 6;
 				}
 			}else if (bite_retreat){
-				move_x_to = bite_retreat_x + lengthdir_x(80, bite_retreat_direction);
-				move_y_to = bite_retreat_y + lengthdir_y(80, bite_retreat_direction);
+				move_x_to = bite_retreat_x + lengthdir_x(30, bite_retreat_direction);
+				move_y_to = bite_retreat_y + lengthdir_y(30, bite_retreat_direction);
 				move_speed = 1.6;
 		
 				if (distance_to_point(move_x_to, move_y_to) < 24) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 80){
@@ -177,16 +177,6 @@ if (instance_exists(obj_player)){
 	move_speed = 0;
 }
 
-// Off - screen movement.
-if (global.cutscene_current == -1){
-	x = clamp(x, 22, room_width - 22);
-	y = clamp(y, 22, room_height - 22);
-
-	if (!onscreen(x, y)){
-		speed_multiplier = 0;
-	}
-}
-
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
@@ -196,7 +186,10 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-scr_pawn_find_path();
+if (!scr_pawn_find_path()){
+	move_speed_real = 0;
+	speed_final = 0;
+}
 
 // Facing
 if (!face_player){

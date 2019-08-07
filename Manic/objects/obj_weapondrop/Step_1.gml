@@ -1,7 +1,9 @@
-if (!ammodetermined){
+if (!dataset){
 	if (global.weapon_type[index] == WeaponType.Ranged){
 		ammo = global.weapon_ammomax[index];
 	}
+	
+	canburn = (index == PlayerWeapon.Stick);
 	
 	if (!place_meeting(x, y, obj_block_persistent)) && (!drop){
 		var pers = instance_create(x, y, obj_block_persistent);
@@ -15,5 +17,5 @@ if (!ammodetermined){
 		pers.activate = false;
 	}
 	
-	ammodetermined = true;
+	dataset = true;
 }

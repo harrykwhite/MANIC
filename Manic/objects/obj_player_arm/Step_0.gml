@@ -69,7 +69,6 @@ if (instance_exists(obj_player)) && (wcurrent != -1){
 		}
 		
 		if (instance_exists(global.weapon_object[wcurrent])){
-	        draw = true;
 			image_index = 0;
 			
 	        if (global.weapon_type[wcurrent] != WeaponType.Melee){

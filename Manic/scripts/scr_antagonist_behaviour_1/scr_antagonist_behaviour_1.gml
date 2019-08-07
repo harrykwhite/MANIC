@@ -86,8 +86,8 @@ if (instance_exists(target)) && (!walk_off){
 					}
 				}
 				
-				move_x_to = x + lengthdir_x(100, run_away_direction);
-				move_y_to = y + lengthdir_y(100, run_away_direction);
+				move_x_to = x + lengthdir_x(30, run_away_direction);
+				move_y_to = y + lengthdir_y(30, run_away_direction);
 				
 				if (distance_to_point(move_x_to, move_y_to) < 20){
 					run_away_time = 60;
@@ -179,16 +179,6 @@ if (instance_exists(target)) && (!walk_off){
 	face_player = false;
 }
 
-// Off - screen movement.
-if (!walk_off){
-	x = clamp(x, 22, room_width - 22);
-	y = clamp(y, 22, room_height - 22);
-
-	if (!onscreen(x, y)){
-		speed_multiplier = 0;
-	}
-}
-
 // Walk Off
 if (walk_off){
 	move_x_to = 522;
@@ -234,7 +224,10 @@ if (dash){
 		dash_time = random_range(80, 120);
 	}
 }else{
-	scr_pawn_find_path();
+	if (!scr_pawn_find_path()){
+		move_speed_real = 0;
+		speed_final = 0;
+	}
 }
 
 // Animation

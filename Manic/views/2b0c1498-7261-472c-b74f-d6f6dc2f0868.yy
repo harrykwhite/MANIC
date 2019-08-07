@@ -14,7 +14,8 @@
         "cd383ebc-cbb7-4ae9-a497-ade8101d8dab",
         "cd6186e4-8b40-4adb-abe9-125fa5bbbdfd",
         "b9de2871-cf3d-43ab-9469-615018e9b7f5",
-        "ce97d514-ec2d-40a2-98b9-e75992ffa0cd"
+        "ce97d514-ec2d-40a2-98b9-e75992ffa0cd",
+        "2c2b6083-56e8-4fbc-9da9-d65ecce2006e"
     ],
     "filterType": "GMObject",
     "folderName": "City Building",

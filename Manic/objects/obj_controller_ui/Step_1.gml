@@ -1,9 +1,12 @@
+// Weapon info
+weaponinfo = false;
+
 // Dialogue
 if (dialogue_time > 0){
 	if (dialogue_pause){
 		if (keyboard_check_pressed(obj_controller_all.key_interact)){
-			if (dialogue_yoff > 1){
-				dialogue_yoff = 0;
+			if (dialogue_yoff > 2){
+				//dialogue_yoff = 0;
 			}else{
 				dialogue_next = true;
 				dialogue_break = 1;

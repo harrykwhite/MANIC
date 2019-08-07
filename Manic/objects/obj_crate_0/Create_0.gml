@@ -1,7 +1,7 @@
 event_inherited();
 death = false;
 
-hit = 10;
+hit = 5;
 hit_time = 0;
 
 basex = x;

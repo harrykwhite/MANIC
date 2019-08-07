@@ -57,14 +57,6 @@ if (instance_exists(target)){
 	face_player = false;
 }
 
-// Off - screen movement.
-x = clamp(x, 22, room_width - 22);
-y = clamp(y, 22, room_height - 22);
-
-if (!onscreen(x, y)){
-	speed_multiplier = 0;
-}
-
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
@@ -74,7 +66,10 @@ if (move_speed_real < speed_final){
     move_speed_real -= 0.2;
 }
 
-scr_pawn_find_path();
+if (!scr_pawn_find_path()){
+	move_speed_real = 0;
+	speed_final = 0;
+}
 
 // Facing
 if (!face_player){

@@ -10,7 +10,8 @@
         "39586e89-fa6a-4729-a74f-2be211134de0",
         "1d20f18a-c815-4d2e-86aa-a9c9740b3884",
         "646904ac-20a0-4edc-aa02-3b16f5911c5d",
-        "1160e3d1-0763-4ff2-b82a-a2b97ebdbca1"
+        "1160e3d1-0763-4ff2-b82a-a2b97ebdbca1",
+        "6fed1f57-c410-4723-82b0-81d01dc0eba5"
     ],
     "filterType": "GMObject",
     "folderName": "Farm Building",

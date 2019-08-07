@@ -125,7 +125,7 @@ if (instance_exists(obj_player)){
 					obj_player.minecart_sprite = sprite_index;
 					obj_player.minecart_sprite_image = image_index;
 					obj_player.x = x;
-					obj_player.y = y;
+					obj_player.y = y ;
 					scr_player_stamina_drain(6);
 					if (instance_exists(gun)){
 						gun.interact_activate = true;

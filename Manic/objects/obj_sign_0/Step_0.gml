@@ -1,3 +1,7 @@
+if (global.game_pause){
+	return;
+}
+
 var player = obj_player;
 if (instance_exists(player)){
 	if (point_distance(x, y, player.x, player.y) < 37){
@@ -9,13 +13,14 @@ if (instance_exists(player)){
 	interact = false;
 }
 
-if (interact) && (obj_controller_ui.dialogue_time <= 0){
+if (interact) && (obj_controller_ui.dialogue_time <= 0) && (global.cutscene_current == -1){
 	sprite_index = spr_sign_0_interact;
 	scr_ui_control_indicate("Read");
 	
 	if (interact_break <= 0){
-		if (keyboard_check_pressed(obj_controller_all.key_interact)){
+		if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
 			interact_break = 15;
+			scr_player_stamina_drain(4);
 			
 			obj_controller_ui.dialogue = text;
 			obj_controller_ui.dialogue_time = 60 * 4;

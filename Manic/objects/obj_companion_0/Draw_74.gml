@@ -1,3 +1,33 @@
+var my_x = (x - camera_get_view_x(view_camera[0])) * gui_scale_x;
+var my_y = (y - camera_get_view_y(view_camera[0])) * gui_scale_y;
+
+// Companion counter
+var calpha_to = 0.3;
+
+if (instance_exists(obj_player)){
+	if (distance_to_object(obj_player) < 70){
+		calpha_to = 0.8;
+	}
+}
+
+if (cutscene_prop || in_cutscene){
+	calpha_to = 0;
+}
+
+if (compcounter_alpha > calpha_to){
+	compcounter_alpha -= min(0.02, compcounter_alpha - calpha_to);
+}else if (compcounter_alpha < calpha_to){
+	compcounter_alpha += min(0.02, calpha_to - compcounter_alpha);
+}
+
+draw_set_alpha(compcounter_alpha);
+
+gpu_set_fog(true, outlinecompanion, 0, 0);
+draw_sprite(spr_ui_comp_sign, 0, my_x, my_y - 60);
+gpu_set_fog(false, c_black, 0, 0);
+
+draw_set_alpha(1);
+
 // Health
 var hp = health_current;
 var scale = 0.9;
@@ -33,7 +63,8 @@ if (health_flash > 0.01){
 	health_flash = 0;
 }
 
-draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * gui_scale_y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7);
+draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), my_x, (y - camera_get_view_y(view_camera[0]) + (33 * scale)) * gui_scale_y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7);
+
 gpu_set_fog(true, c_white, 0, 0);
-draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + (33 * scale)) * gui_scale_y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7 * (health_flash * 0.5));
+draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, health_max), my_x, (y - camera_get_view_y(view_camera[0]) + (33 * scale)) * gui_scale_y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7 * (health_flash * 0.5));
 gpu_set_fog(false, c_white, 0, 0);

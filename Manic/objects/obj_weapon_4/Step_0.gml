@@ -25,7 +25,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
 		s.image_yscale = 0.8;
 		s.depth = depth + 1;
 
-		scr_weapon_melee_detect(false, x, y, image_angle, attack_damage, attack_strength, 30, obj_proj_3);
+		scr_weapon_melee_detect(false, x, y, image_angle, attack_damage, attack_strength, 30, obj_proj_3, obj_player.x, obj_player.y);
         
         attack_time = 13;
         attack_can = false;

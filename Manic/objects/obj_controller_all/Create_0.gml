@@ -13,6 +13,11 @@ key_interact = global.game_option[| Options.Input_Interact];
 key_attack = global.game_option[| Options.Input_Attack];
 key_throw = global.game_option[| Options.Input_Throw];
 
+camera_get_x1 = camera_get_view_x(view_camera[0]);
+camera_get_y1 = camera_get_view_y(view_camera[0]);
+camera_get_x2 = camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]);
+camera_get_y2 = camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]);
+
 app_surf_refresh_time = -1;
 app_surf_refresh_w = 0;
 app_surf_refresh_h = 0;

@@ -9,7 +9,8 @@
         "ad2a04df-5ec3-4891-8201-e6998162b502",
         "9c3134d1-90de-4c4a-b135-304f1871b4d0",
         "91ac2ef0-63fc-4d57-a7d4-b3588e58eae9",
-        "e0baa3a4-3722-4a0b-9db8-4d2eea666296"
+        "e0baa3a4-3722-4a0b-9db8-4d2eea666296",
+        "a72304e4-7c59-496b-9297-ae2498c62955"
     ],
     "filterType": "GMObject",
     "folderName": "Depth",

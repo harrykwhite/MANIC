@@ -6,14 +6,18 @@
 ///@param strength
 ///@param length
 ///@param object
-var enemyproj = argument[0];
-var xx = argument[1];
-var yy = argument[2];
-var dir = argument[3];
-var damage = argument[4];
-var strength = argument[5];
-var len = argument[6] + 16;
-var obj = argument[7];
+///@param sourcex
+///@param sourcey
+var enemyproj = argument0;
+var xx = argument1;
+var yy = argument2;
+var dir = argument3;
+var damage = argument4;
+var strength = argument5;
+var len = argument6 + 16;
+var obj = argument7;
+var sourcex = argument8;
+var sourcey = argument9;
 
 var width;
 
@@ -31,21 +35,18 @@ switch(obj){
 		break;
 }
 
-scr_env_objects();
-var slength = array_length_1d(envobject);
-
 var enemyline = ds_list_create();
 var playerline = ds_list_create();
 var envline = ds_list_create();
 
-var enemylinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, enemyline, obj_p_enemy_hitbox);
-var playerlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, playerline, obj_p_player_hitbox);
-var envlinelength = collision_line_width_list(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, envline, obj_p_solid);
+var enemylinelength = collision_line_width_list(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, enemyline, obj_p_enemy_hitbox);
+var playerlinelength = collision_line_width_list(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, playerline, obj_p_player_hitbox);
+var envlinelength = collision_line_width_list(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), width, envline, obj_p_environhit);
 
 var ctype = "default";
-var enemydist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy_hitbox, width);
-var playerdist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player_hitbox, width);
-var envdist = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_solid, width);
+var enemydist = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy_hitbox, width);
+var playerdist = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player_hitbox, width);
+var envdist = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_environhit, width);
 
 if (envdist < len){
 	len = envdist;
@@ -76,7 +77,7 @@ switch(ctype){
 				var inst = enemyline[| i].owner;
 				
 				if (inst.i_time <= 0){
-					len = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy);
+					len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy);
 					xEnd = xx + lengthdir_x(len, dir);
 					yEnd = yy + lengthdir_y(len, dir);
 					
@@ -152,7 +153,7 @@ switch(ctype){
 				}
 				
 				if (inst.i_time < 1){
-					len = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player);
+					len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player);
 					xEnd = xx + lengthdir_x(len, dir);
 					yEnd = yy + lengthdir_y(len, dir);
 				
@@ -198,63 +199,51 @@ switch(ctype){
 		var num = envlinelength;
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
-				var inst = envline[| i], xEnd, yEnd, isEnv;
-				len = collision_distance_object(xx, yy, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst) + 10;
+				var inst = envline[| i], xEnd, yEnd;
+				len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst) + 10;
 				xEnd = xx + lengthdir_x(len, dir);
 				yEnd = yy + lengthdir_y(len, dir);
-				isEnv = false;
 				
-				for(var s = 0; s < slength; s ++){
-					if (inst.object_index == envobject[s]){
-						if (inst.hit_time <= 0){
-							isEnv = true;
-							inst.flash = 0.8;
+				if (inst.hit_time <= 0){
+					inst.flash = 0.8;
+				
+					switch(obj){
+						case obj_proj_1:
+							inst.hit -= 5;
+							break;
 					
-							switch(obj){
-								case obj_proj_1:
-									inst.hit -= 5;
-									break;
-						
-								case obj_proj_2:
-									inst.hit -= 4;
-									break;
-							
-								case obj_proj_3:
-									inst.hit -= 3;
-									break;
-								
-								default:
-									show_debug_message("Proj environmental damage has not been applied");
-									break;
-							}
-							
-							inst.hit_time = 6;
-							inst.spd = 0.8;
-							inst.dir = dir;
-							
-							if (inst.object_index == obj_prisonbar_3){
-								scr_sound_play_distance_pitch(snd_object_metal_hit_0, false, 220, 0.8, 1.2);
-								scr_effect_object(xEnd + random_range(-13, 13), yEnd + random_range(-6, 6), obj_ef_blood, spr_ef_metal_0, 0, 1);
-							}else{
-								scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 220, 0.8, 1.2);
-								part_type_direction(global.pt_wood_1, (dir - 180) - 30, (dir - 180) + 30, 0, 0);
-								repeat(7) part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_wood_1, 2);
-							}
-							
-							stick_kill = true;
-						}
-
-						break;
+						case obj_proj_2:
+							inst.hit -= 4;
+							break;
+					
+						case obj_proj_3:
+							inst.hit -= 3;
+							break;
+					
+						default:
+							show_debug_message("Proj environmental damage has not been applied");
+							break;
 					}
-				}
-				
-				if (!isEnv){
-					break;
+					
+					inst.hit_time = 6;
+					inst.spd = 0.8;
+					inst.dir = dir;
+					
+					if (inst.object_index == obj_prisonbar_3){
+						scr_sound_play_distance_pitch(snd_object_metal_hit_0, false, 220, 0.8, 1.2);
+						scr_effect_object(xEnd + random_range(-13, 13), yEnd + random_range(-6, 6), obj_ef_blood, spr_ef_metal_0, 0, 1);
+					}else{
+						scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 220, 0.8, 1.2);
+						part_type_direction(global.pt_wood_1, (dir - 180) - 30, (dir - 180) + 30, 0, 0);
+						repeat(7) part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_wood_1, 2);
+					}
+					
+					stick_kill = true;
 				}
 			}
-		
-			break;
 		}
+		
+		break;
 }
 
 if (object_index == obj_weapon_1 || object_index == obj_pawnweapon_0) && (stick_kill){

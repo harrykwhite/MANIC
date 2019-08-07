@@ -17,7 +17,7 @@ object_weapon_pack[1] = false;
 object_weapon_quantity[1] = 1;
 
 object[2] = obj_ammo_crate;
-object_x[2] = 218;
+object_x[2] = 225;
 object_y[2] = 465;
 object_inst[2] = noone;
 object_weapon[2] = -1;

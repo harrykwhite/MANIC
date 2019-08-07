@@ -1,6 +1,6 @@
 ///scr_cutscene_2();
 var index = 2;
-var level = scr_get_level_object();
+var level = scr_level_get_object();
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;

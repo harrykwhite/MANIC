@@ -25,6 +25,8 @@ if (global.boss_current != -1){
 global.player_health_current = global.player_health_max;
 global.weapon_slotcurrent = 0;
 
+global.boss_current = -1;
+
 if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	var roomto = global.level_room[global.level_current];
 	

@@ -34,7 +34,7 @@ if (instance_exists(obj_player)){
 		case rm_level_1_00:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_townperson_0);
 			
-			if (inst != noone){
+			if (inst != noone && obj_player.y < 1686){
 				global.game_npc_townperson0_talked = true;
 				
 				line[0] = "Hello? Are you okay?";
@@ -136,19 +136,19 @@ if (instance_exists(obj_player)){
 			line[0] = "Have you seen what's happening? The robots?";
 			linefrom[0] = inst;
 			
-			line[1] = "I have, yes. A person from the town up north said that he saw a group of them approaching this farm?";
+			line[1] = "I have. A person from the town up north said that he saw a group of them approaching this farm?";
 			linefrom[1] = obj_player;
 			
-			line[2] = "Well, he'd be correct. I've been trying to fight them off, but they only seem to be increasing in numbers.";
+			line[2] = "That'd be correct. I've been trying to fight them off, but they only seem to be increasing in numbers.";
 			linefrom[2] = inst;
 			
-			line[3] = "I see. How about we make a team? You and I? This army isn't going to fight itself.";
+			line[3] = "How about we make a team? You and I? This army isn't going to fight itself.";
 			linefrom[3] = obj_player;
 			
-			line[4] = "I will gladly join you.";
+			line[4] = "Sure! I will gladly join you.";
 			linefrom[4] = inst;
 			
-			line[5] = "Alright, sounds great. The person I was speaking to earlier, he recounts seeing some kind of... burning figure?";
+			line[5] = "Alright, sounds great. The man I was speaking to earlier, he recounts seeing some kind of... burning figure?";
 			linefrom[5] = obj_player;
 			
 			line[6] = "I may know what he was talking about. I didn't see it all, but there was someone like that heading towards the south.";
@@ -481,7 +481,7 @@ if (instance_exists(obj_player)){
 			if (cutscene_dialogue_special == 1){
 				special = "farmerdepart";
 				
-				line[0] = "We may have underestimated you...";
+				line[0] = "I may have underestimated you...";
 				linefrom[0] = inst;
 				
 				line[1] = "Meet me at the city if you truly think you're worthy.";

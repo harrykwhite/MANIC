@@ -59,6 +59,12 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 scr_player_update();
 script_execute(state);
 
+// Confining the player to the room.
+if (global.cutscene_current == -1){
+	x = clamp(x, 12, room_width - 12);
+	y = clamp(y, 12, room_height - 12);
+}
+
 // Animation
 if (in_minecart){
 	img_speed = 0.03;

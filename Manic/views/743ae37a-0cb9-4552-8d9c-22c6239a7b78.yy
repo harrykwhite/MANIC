@@ -11,8 +11,7 @@
         "97d552e5-b87e-4a17-8fc5-ba343e89b014",
         "f39dfcb4-c5be-4900-b19c-1516c2a78a5b",
         "6ab7be42-4fb7-4022-8bcd-a9bcec154bb2",
-        "f1c6ff3e-6037-41e4-bfb1-b7eda9d45d76",
-        "61e3789a-3c21-4880-b180-b47a6310a647"
+        "f1c6ff3e-6037-41e4-bfb1-b7eda9d45d76"
     ],
     "filterType": "GMScript",
     "folderName": "Companions",

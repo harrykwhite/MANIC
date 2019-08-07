@@ -10,6 +10,10 @@ switch(rm){
 		return Level.RavagedTown;
 		break;
 	
+	case rm_level_1_01:
+		return Level.RavagedTown;
+		break;
+	
 	case rm_level_2_pre_00:
 		return Level.WesternFarmland;
 		break;
@@ -46,6 +50,10 @@ switch(rm){
 		return Level.UndergroundBunker;
 		break;
 	
+	case rm_level_4_pre_00:
+		return Level.WinterTown;
+		break;
+	
 	case rm_level_4_00:
 		return Level.WinterTown;
 		break;
@@ -75,6 +83,10 @@ switch(rm){
 		break;
 	
 	case rm_level_5_04:
+		return Level.HumanPrison;
+		break;
+	
+	case rm_level_5_post_00:
 		return Level.HumanPrison;
 		break;
 	

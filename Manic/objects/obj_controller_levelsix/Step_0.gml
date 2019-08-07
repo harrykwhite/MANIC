@@ -28,7 +28,7 @@ if (!global.game_pause){
 				var yy = random_range(camy, camy + camh);
 				var safe = 0;
 		
-				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (scr_ceiling_at(xx, yy)){
+				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (place_meeting(xx, yy, obj_interior_fade)){
 					xx = random_range(camx, camx + camw);
 					yy = random_range(camy, camy + camh);
 		
@@ -61,7 +61,14 @@ if (!global.game_pause){
 		}
 		
 		if (random(5) < 1){
-		    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), choose(global.pt_rain_1, global.pt_rain_2), 1);
+		    var dropx, dropy;
+			
+			do{
+				dropx = camx + random_range(0, camw);
+				dropy = camy + random_range(0, camh);
+			}until(!scr_ceiling_at(dropx, dropy));
+			
+		    part_particles_create(global.ps_bottom, dropx, dropy, choose(global.pt_rain_1, global.pt_rain_2), 1);
 		}
 		
 		if (room == rm_level_6_01){
@@ -148,7 +155,7 @@ if (global.game_combat_in_hordechallenge){
 	lighting_to = 1;
 }
 
-if (room == rm_level_6_pre_00){
+if (scr_level_is_peaceful(room)){
 	lighting_to = 0.95;
 }
 
@@ -160,7 +167,7 @@ if (lighting < lighting_to){
 
 global.ambientShadowIntensity = lighting;
 
-if (player_exists) && (room != rm_level_6_pre_00){
+if (player_exists) && (!scr_level_is_peaceful(room)){
 	var spawn_rate = spawn_rate_real;
 	if (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
 		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
@@ -186,12 +193,12 @@ if (player_exists) && (room != rm_level_6_pre_00){
 		}
 		
 		if (spawn){
-			if (scr_enemy_count(false) < spawn_max[global.game_combat_state]){
+			if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * spawn_rate)){
 				var xpos = random_range(camx - 10, camx + camw + 10);
 				var ypos = random_range(camy - 10, camy + camh + 10);
 				var spawn_trial = 0;
 				
-				while(collision_rectangle(xpos - 20, ypos - 20, xpos + 20, ypos + 30, obj_p_solid, false, false)) || (collision_line(xpos, ypos, player.x, player.y, obj_p_solid, false, true)) || (point_distance(xpos, ypos, player.x, player.y) < 80){
+				while(!scr_is_valid_enemyspawn(xpos, ypos)){
 					xpos = random_range(camx - 10, camx + camw + 10);
 					ypos = random_range(camy - 10, camy + camh + 10);
 					spawn_trial ++;

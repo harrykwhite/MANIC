@@ -91,6 +91,10 @@ if (drawshader){
 			if (random(5) < 1){
 				part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-18, 18), global.pt_fire_2, 1);
 			}
+			
+			if (random(12) < 1){
+				part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-18, 18), global.pt_smoke_3, 1);
+			}
 		}
 	}
 

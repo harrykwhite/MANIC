@@ -6,6 +6,9 @@ scale = random_range(0.675, 0.75);
 destroy = false;
 buzz = noone;
 
+damageother_time_max = 50;
+damageother_time = damageother_time_max;
+
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_fly_hitbox_0;
 hitbox.owner = id;
@@ -18,7 +21,6 @@ defense = 0;
 
 damage = 1;
 strength = 0.5;
-attack_ready_time = random_range(40, 60);
 
 burn = false;
 burn_x = x;

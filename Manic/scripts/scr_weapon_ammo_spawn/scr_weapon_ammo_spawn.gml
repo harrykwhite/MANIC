@@ -63,36 +63,34 @@ repeat(amount){
 				continue;
 			}
 			
-			if (global.weapon_ammotype[global.weapon_slot[i]]){
-				if (random(4) < 1){
-					switch(global.weapon_ammotype[global.weapon_slot[i]]){
-						case AmmoType.Bullets:
-							tobject = obj_ammo_0;
-							break;
+			if (random(slotcount) < 1){
+				switch(global.weapon_ammotype[global.weapon_slot[i]]){
+					case AmmoType.Bullets:
+						tobject = obj_ammo_0;
+						break;
 		
-						case AmmoType.Fuel:
-							tobject = obj_ammo_1;
-							break;
-		
-						case AmmoType.Explosives:
-							tobject = obj_ammo_2;
-							break;
+					case AmmoType.Fuel:
+						tobject = obj_ammo_1;
+						break;
+	
+					case AmmoType.Explosives:
+						tobject = obj_ammo_2;
+						break;
+			
+					case AmmoType.Arrows:
+						tobject = obj_ammo_3;
+						break;
 				
-						case AmmoType.Arrows:
-							tobject = obj_ammo_3;
-							break;
-				
-						case AmmoType.Darts:
-							tobject = obj_ammo_4;
-							break;
+					case AmmoType.Darts:
+						tobject = obj_ammo_4;
+						break;
 						
-						case AmmoType.Shells:
-							tobject = obj_ammo_5;
-							break;
-					}
-					
-					break;
+					case AmmoType.Shells:
+						tobject = obj_ammo_5;
+						break;
 				}
+				
+				break;
 			}
 		}
 	}

@@ -38,9 +38,11 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 					scr_ui_control_indicate(global.level_name[moveto_level] + "");
 				}
 				
-				if (!keyboard_check_pressed(obj_controller_all.key_interact)){
+				if (!keyboard_check_pressed(obj_controller_all.key_interact) || !global.player_stamina_active){
 					return;
 				}
+				
+				scr_player_stamina_drain(4);
 			}
 			
 			global.cutscene_current = index;

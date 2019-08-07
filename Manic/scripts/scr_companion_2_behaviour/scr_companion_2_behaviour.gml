@@ -44,7 +44,7 @@ if (instance_exists(obj_player)){
 								}
 							}
 						
-							if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
+							if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300) || (!onscreen(target.x, target.y)){
 								target = noone;
 								continue;
 							}
@@ -150,8 +150,8 @@ if (instance_exists(obj_player)){
 					runaway_time--;
 		
 					var dir = point_direction(target.x, target.y, x, y);
-					move_x_to = target.x + lengthdir_x(500, dir);
-					move_y_to = target.y + lengthdir_y(500, dir);
+					move_x_to = target.x + lengthdir_x(30, dir);
+					move_y_to = target.y + lengthdir_y(30, dir);
 					move_speed = 1.8;
 				}else{
 					move_x_to = target.x;
@@ -176,7 +176,7 @@ if (instance_exists(obj_player)){
 								    throw.dir = weapon.dir;
 								    throw.image_angle = throw.dir;
 								    throw.ammo = -1;
-									throw.ammodetermined = true;
+									throw.dataset = true;
 									
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, obj_pawnweapon_3);
@@ -293,16 +293,6 @@ if (instance_exists(obj_player)){
 	move_speed = 0;
 }
 
-// Off - screen movement.
-if (global.cutscene_current == -1){
-	x = clamp(x, 22, room_width - 22);
-	y = clamp(y, 22, room_height - 22);
-
-	if (!onscreen(x, y)){
-		speed_multiplier = 0;
-	}
-}
-
 // Dash
 if (dash){
 	image_speed = 0;
@@ -342,7 +332,10 @@ if (dash){
 		dash = false;
 	}
 }else{
-	scr_pawn_find_path();
+	if (!scr_pawn_find_path()){
+		move_speed_real = 0;
+		speed_final = 0;
+	}
 }
 
 // Animation

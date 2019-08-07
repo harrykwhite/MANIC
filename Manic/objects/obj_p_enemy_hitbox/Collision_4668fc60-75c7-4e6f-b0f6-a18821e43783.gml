@@ -25,7 +25,8 @@ with(owner){
 		}else{
 			scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 		}
-	
+		
+		burn = inst.burn && inst.canburn;
 		whiteflash_alpha = 1;
 		part_particles_create(global.ps_front, x, y + 4, global.pt_burst_2, 9);
 		

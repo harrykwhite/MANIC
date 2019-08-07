@@ -48,6 +48,8 @@ with(owner){
 		repeat(20)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
 	
 		whiteflash_alpha = 1;
+		burn = inst.burn && inst.canburn;
+		
 		part_particles_create(global.ps_front, x, y + 4, global.pt_burst_2, 9);
 	
 		instance_destroy(inst);
