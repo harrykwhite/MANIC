@@ -55,6 +55,10 @@ if (explode){
 	repeat(2){
         part_particles_create(global.ps_front, x + random_range(-explode_damage_size * explode_scale, explode_damage_size * explode_scale), y + random_range(-explode_damage_size * explode_scale, explode_damage_size * explode_scale), global.pt_smoke_2, 1);
     }
+	
+	repeat(7){
+		part_particles_create(global.ps_bottom, x + random_range(-explode_damage_size * explode_scale * 0.5, explode_damage_size * explode_scale * 0.5), y + random_range(-explode_damage_size * explode_scale * 0.25, explode_damage_size * explode_scale * 0.25), global.pt_ash_0_perm, 1);
+	}
     
 	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
 	

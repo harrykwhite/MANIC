@@ -58,26 +58,16 @@ if (!scr_pawn_find_path()){
 }
 
 // Animation
-if (instance_exists(weapon) && weapon != -1){
-	scr_pawn_human_facing();
-	
-	var Idle0, Walk0;
-	var Idle1, Walk1;
-	var Idle2, Walk2;
-	
-	Idle0 = spr_thedogkeeper_idle_0; Walk0 = spr_thedogkeeper_walk_0;
-	Idle1 = spr_thedogkeeper_idle_1; Walk1 = spr_thedogkeeper_walk_1;
-	Idle2 = spr_thedogkeeper_idle_1; Walk2 = spr_thedogkeeper_walk_1;
-	
-	if (speed_final <= 0.1){
-		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
-	}else{
-		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
-	}
+if (arm.image_angle <= 90 || arm.image_angle >= 270){
+	image_xscale = scale;
+}else{
+	image_xscale = -scale;
 }
 
 if (speed_final <= 0.1) || (!instance_exists(target)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
+	sprite_index = spr_thedogkeeper_idle_0;
 }else{
+	sprite_index = spr_thedogkeeper_walk_0;
 	image_speed = (speed_final * 0.165);
 }

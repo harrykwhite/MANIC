@@ -21,10 +21,10 @@ if (in_minecart){
 if (global.weapon_slot_standalone == -1){
 	
 	// Axis
-	var key_right = keyboard_check(obj_controller_all.key_right);
-	var key_left = keyboard_check(obj_controller_all.key_left);
-	var key_up = keyboard_check(obj_controller_all.key_up);
-	var key_down = keyboard_check(obj_controller_all.key_down);
+	var key_right = keyboard_check_direct(obj_controller_all.key_right);
+	var key_left = keyboard_check_direct(obj_controller_all.key_left);
+	var key_up = keyboard_check_direct(obj_controller_all.key_up);
+	var key_down = keyboard_check_direct(obj_controller_all.key_down);
 	var key_dash = keyboard_check_pressed(obj_controller_all.key_dash);
 	
 	xaxis = key_right - key_left;

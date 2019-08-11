@@ -1,4 +1,4 @@
-var alpha = wave(0, 0.2, 2.5, 0);
+var alpha = wave(0, 0.2, 2.5, 0) * image_alpha;
 if (index != PlayerWeapon.MountedMachineGun){
 	if (global.weapon_slotammo[global.weapon_slotcurrent] <= 0) && (global.weapon_type[index] == WeaponType.Ranged){
 	    gpu_set_fog(true, c_red, 0, 0);

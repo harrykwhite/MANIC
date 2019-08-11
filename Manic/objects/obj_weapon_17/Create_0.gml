@@ -1,5 +1,3 @@
-fade_in = true;
-fade_out = false;
 angle = 0;
 
 shoot_can = true;

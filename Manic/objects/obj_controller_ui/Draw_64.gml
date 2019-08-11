@@ -91,7 +91,8 @@ if (instance_exists(obj_player)){
         
 		// Drawin Slot Number
 		draw_set_halign(fa_right);
-		scr_text_shadow_transformed(xx - 8, yy - 8, string(counter + 1), c_gray, 1, 1, 0);
+		draw_set_font(fnt_cambria_0);
+		scr_text_shadow_transformed(xx - 14, yy - 28, string(counter + 1), c_gray, 1, 1, 0);
 		draw_set_alpha(1);
 		
 		gpu_set_fog(false, c_white, 0, 0);

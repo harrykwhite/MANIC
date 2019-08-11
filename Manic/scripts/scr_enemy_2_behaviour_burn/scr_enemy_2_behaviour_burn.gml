@@ -27,6 +27,9 @@ if (instance_exists(target)){
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
+move_x_to = clamp(move_x_to, 0, room_width);
+move_y_to = clamp(move_y_to, 0, room_height);
+
 if (move_speed_real < speed_final){
     move_speed_real += 0.2;
 }else if (move_speed_real > speed_final){

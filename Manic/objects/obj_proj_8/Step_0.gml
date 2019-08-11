@@ -29,22 +29,26 @@ if (explode){
         part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
     }
 	
-	repeat(2){
+	repeat(4){
         part_particles_create(global.ps_front, x + random_range(-42, 42), y + random_range(-42, 42), global.pt_smoke_2, 1);
     }
 	
-	repeat(2){
+	repeat(4){
 		part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_fire_0, 1);
 	}
 	
-	repeat(2){
+	repeat(3){
 		part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_fire_2, 1);
 	}
     
+	repeat(3){
+		part_particles_create(global.ps_front, x + random_range(-3, 3), y + random_range(-3, 3), global.pt_ash_0_perm, 1);
+	}
+	
 	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
 	
 	var fl = instance_create(x, y, obj_block_light);
-	fl.mylight[0] = noone; fl.size[0] = 100;
+	fl.mylight[0] = noone; fl.size[0] = 90;
 	fl.fadeSpeed = 0.015;
 	
     instance_destroy();

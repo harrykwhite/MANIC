@@ -40,7 +40,7 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
 		
         shoot_can = false;
         shoot_current ++;
-        shoot_bounceback = -2;
+        shoot_bounceback = -4;
         angle_offset = 4;
 		
         if (shoot_current < 2){

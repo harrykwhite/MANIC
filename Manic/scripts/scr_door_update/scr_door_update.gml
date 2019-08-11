@@ -28,12 +28,16 @@ if (instance_exists(player)){
 	interact = false;
 }
 
-if (interact && global.cutscene_current == -1 && !anim){
-	sprite_index = open ? openintsprite : closedintsprite;
-	scr_ui_control_indicate(open ? "Close Door" : "Open Door");
-		
-	if (interact_break <= 0){
-		if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
+if (interact && global.cutscene_current == -1 && !anim) || (auto_interact){
+	if (global.cutscene_current == -1){
+		sprite_index = open ? openintsprite : closedintsprite;
+		scr_ui_control_indicate(open ? "Close Door" : "Open Door");
+	}else{
+		sprite_index = open ? opensprite : closedsprite;
+	}
+	
+	if (interact_break <= 0 || auto_interact){
+		if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active) || (auto_interact){
 			var bleft = x + sprite_get_bbox_left(closedsprite);
 			var btop = y + sprite_get_bbox_top(closedsprite);
 			var bright = x + sprite_get_bbox_right(closedsprite);
@@ -51,6 +55,7 @@ if (interact && global.cutscene_current == -1 && !anim){
 			
 			interact_break = 5;
 			open = !open;
+			auto_interact = false;
 			anim = true;
 			
 			sprite_index = open ? opensprite : closedsprite;

@@ -4,7 +4,7 @@ if (start) && (parent == -1){
 	start = false;
 }
 
-if (parent != -1) && (onscreen(x, y)){
+if (parent != -1){
 	depth_offset = 32;
 	
 	if (!instance_exists(parent)){

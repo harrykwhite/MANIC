@@ -26,10 +26,18 @@ if (instance_exists(obj_player)){
 				if (instance_exists(inst_18E1EC84)){ instance_destroy(inst_18E1EC84); }
 				if (instance_exists(inst_1E60D0F5)){ instance_destroy(inst_1E60D0F5); }
 				if (instance_exists(inst_63C69FB8)){ instance_destroy(inst_63C69FB8); }
-			
-				if (instance_exists(obj_conveyerbelt_0)){ with(obj_conveyerbelt_0) stop = true; }
-				if (instance_exists(obj_conveyerbelt_1)){ with(obj_conveyerbelt_1) stop = true; }
-				if (instance_exists(obj_conveyerbelt_2)){ with(obj_conveyerbelt_2) stop = true; }
+				
+				var nearest_group = instance_nearest(obj_player.x, obj_player.y, obj_block_conveyerbelt_group);
+				var nearest_group_count = 0;
+				
+				if (nearest_group != noone){
+					nearest_group_count = ds_list_size(nearest_group.instances);
+				
+					for(var i = 0; i < nearest_group_count; i ++){
+						nearest_group.instances[| i].stop = true;
+					}
+				}
+				
 				scr_sound_play(snd_other_conveyerbelt_1, false, 1, 1);
 			}
 			
@@ -68,8 +76,8 @@ if (instance_exists(obj_player)){
 					var lookx = 882;
 					var looky = 618;
 					
-					obj_player.move_x_to = lookx;
-					obj_player.move_y_to = looky;
+					//obj_player.move_x_to = lookx;
+					//obj_player.move_y_to = looky;
 					obj_player.move_extSpd = 0;
 					
 					if (global.cutscene_time[index] < 170) && (!scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){

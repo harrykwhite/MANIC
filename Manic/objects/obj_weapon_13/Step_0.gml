@@ -38,7 +38,7 @@ if (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
 		
         shoot_can = false;
         shoot_time = 7;
-        shoot_bounceback = -3;
+        shoot_bounceback = -4;
         angle_offset = 6;
     }
 	

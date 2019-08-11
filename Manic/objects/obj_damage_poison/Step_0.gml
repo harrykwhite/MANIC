@@ -7,6 +7,7 @@ if (!spawned){
 		part_type_speed(global.pt_toxic_0, 0.75, 1.75, -0.025, 0);
 		part_particles_create(global.ps_front, x, y, global.pt_toxic_0, 1);
 	}
+	
 	spawned = true;
 }
 

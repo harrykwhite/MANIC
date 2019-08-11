@@ -1,3 +1,7 @@
+if (global.game_pause){
+	return;
+}
+
 // Flash
 flash -= 0.15;
 flash = clamp(flash, 0, 1);
@@ -32,5 +36,5 @@ if (spd > 0.375){
 // Object Death
 if (death){
 	scr_env_destroy(spr_ammo_crate_break);
-	scr_weapon_ammo_spawn(6, 8, 4);
+	scr_weapon_ammo_spawn(8, 8, 4);
 }

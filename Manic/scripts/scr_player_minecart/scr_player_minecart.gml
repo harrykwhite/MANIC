@@ -32,7 +32,7 @@ if (mdir == 90) || (mdir == 270){
 	minecart_sprite = spr_pawn_minecart_0;
 }
 
-if (keyboard_check(ord("D"))){
+if (keyboard_check_direct(obj_controller_all.key_right)){
 	if (mdir == 180) || (mdir == 270){
 		if (minecart_speed > -4){
 			minecart_speed -= acceleration;
@@ -42,7 +42,7 @@ if (keyboard_check(ord("D"))){
 			minecart_speed += acceleration;
 		}
 	}
-}else if (keyboard_check(ord("A"))){
+}else if (keyboard_check_direct(obj_controller_all.key_left)){
 	if (mdir == 180) || (mdir == 270){
 		if (minecart_speed < 4){
 			minecart_speed += acceleration;

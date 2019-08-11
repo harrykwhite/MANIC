@@ -117,7 +117,7 @@ if (global.cutscene_current == -1) && (instance_exists(obj_player)){
     }
 	
 	if (global.game_pause){
-		if (keyboard_check(vk_escape)){
+		if (keyboard_check_direct(vk_escape)){
 			if (pause_time < 1){
 				pause_time += 0.025;
 			}else{

@@ -19,7 +19,8 @@ if (instance_exists(obj_player)){
 	    if (instance_exists(obj_player_arm)){
 	        x = obj_player_arm.x + lengthdir_x(6 + shoot_bounceback, image_angle);
 	        y = obj_player_arm.y + lengthdir_y(6 + shoot_bounceback, image_angle);
-	    }  
+			image_alpha = obj_player_arm.image_alpha;
+		}
 		
 	    if (angle_offset > 0){
 	        angle_offset -= 0.5;
@@ -38,35 +39,5 @@ if (instance_exists(obj_player)){
 	        image_angle = mdir - angle_offset - start_offset;
 	    }
 	}
-
-    if (obj_player.state == scr_player_dash) || (global.cutscene_current != -1){
-        if (visible){
-            fade_out = true;
-        }
-        
-        shoot_can = false;
-        
-    }else if (!visible){
-        fade_in = true;
-    }
-    
-    // Fade Out / In
-    if (fade_out){
-        if (image_alpha > 0){
-            image_alpha -= 0.25;
-        }else{
-            visible = false;
-            fade_out = false;
-        }
-    }
-    
-    if (fade_in){
-        if (image_alpha < 1){
-            image_alpha += 0.25;
-        }else{
-            visible = true;
-            fade_in = false;
-        }
-    }
 }
 

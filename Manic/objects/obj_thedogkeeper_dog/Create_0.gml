@@ -51,7 +51,7 @@ headless_image = 0;
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
 
-defense = 3;
+defense = 1;
 
 bark_time = random(30);
 
@@ -71,7 +71,7 @@ knockback_multiplier = 1;
 
 cutscene_prop = false;
 
-health_max = 6;
+health_max = 10;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

@@ -32,6 +32,9 @@ if (instance_exists(obj_player)){
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
+move_x_to = clamp(move_x_to, 0, room_width);
+move_y_to = clamp(move_y_to, 0, room_height);
+
 if (move_speed_real < speed_final){
     move_speed_real += 0.2;
 }else if (move_speed_real > speed_final){
@@ -52,38 +55,38 @@ if (move_x_to > x){
 
 // Animation
 if (object_index != obj_companion_3){
-if (instance_exists(weapon) && weapon != -1){
+	if (instance_exists(weapon) && weapon != -1){
 	
-	var Idle0, Walk0;
-	var Idle1, Walk1;
-	var Idle2, Walk2;
+		var Idle0, Walk0;
+		var Idle1, Walk1;
+		var Idle2, Walk2;
 	
-	switch(object_index){
-		case obj_companion_0:
-			Idle0 = spr_companion_0_idle_0; Walk0 = spr_companion_0_walk_0;
-			Idle1 = spr_companion_0_idle_1; Walk1 = spr_companion_0_walk_1;
-			Idle2 = spr_companion_0_idle_2; Walk2 = spr_companion_0_walk_2;
-			break;
+		switch(object_index){
+			case obj_companion_0:
+				Idle0 = spr_companion_0_idle_0; Walk0 = spr_companion_0_walk_0;
+				Idle1 = spr_companion_0_idle_1; Walk1 = spr_companion_0_walk_1;
+				Idle2 = spr_companion_0_idle_2; Walk2 = spr_companion_0_walk_2;
+				break;
 		
-		case obj_companion_1:
-			Idle0 = spr_companion_1_idle_0; Walk0 = spr_companion_1_walk_0;
-			Idle1 = spr_companion_1_idle_1; Walk1 = spr_companion_1_walk_1;
-			Idle2 = spr_companion_1_idle_2; Walk2 = spr_companion_1_walk_2;
-			break;
+			case obj_companion_1:
+				Idle0 = spr_companion_1_idle_0; Walk0 = spr_companion_1_walk_0;
+				Idle1 = spr_companion_1_idle_1; Walk1 = spr_companion_1_walk_1;
+				Idle2 = spr_companion_1_idle_2; Walk2 = spr_companion_1_walk_2;
+				break;
 		
-		case obj_companion_2:
-			Idle0 = spr_companion_2_idle_0; Walk0 = spr_companion_2_walk_0;
-			Idle1 = spr_companion_2_idle_1; Walk1 = spr_companion_2_walk_1;
-			Idle2 = spr_companion_2_idle_2; Walk2 = spr_companion_2_walk_2;
-			break;
-	}
+			case obj_companion_2:
+				Idle0 = spr_companion_2_idle_0; Walk0 = spr_companion_2_walk_0;
+				Idle1 = spr_companion_2_idle_1; Walk1 = spr_companion_2_walk_1;
+				Idle2 = spr_companion_2_idle_2; Walk2 = spr_companion_2_walk_2;
+				break;
+		}
 	
-	if (speed_final <= 0.1){
-		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
-	}else{
-		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
+		if (speed_final <= 0.1){
+			scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
+		}else{
+			scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
+		}
 	}
-}
 }else{
 	if (speed_final > 0.1){
 		sprite_index = spr_companion_3_headless_walk_0;

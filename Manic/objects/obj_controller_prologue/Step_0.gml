@@ -82,6 +82,7 @@ if (!global.level_cleared[global.level_current]){
 		}
 		
 		var cratecount = instance_number(obj_crate_0);
+		
 		for(var i = 0; i < cratecount; i ++){
 			var thiscrate = instance_find(obj_crate_0, i);
 			
@@ -151,8 +152,8 @@ if (!global.level_cleared[global.level_current]){
 
 if (!global.game_pause) && (instance_exists(obj_player)){
 	deer_can_spawn = ((obj_controller_ui.tutourial_stage > 1) || (!obj_controller_ui.tutourial))
-					&& (instance_number(obj_enemy_5) < 1)
-					&& (point_distance(obj_player.x, obj_player.y, 530, 550) > 600)
+					&& (instance_number(obj_enemy_5) < 2)
+					&& (point_distance(obj_player.x, obj_player.y, 530, 550) > 400)
 					&& (!global.level_cleared[global.level_current]);
 
 	if (deer_can_spawn){
@@ -170,9 +171,10 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 					counter ++;
 				}else{
 					dospawn = false;
+					show_debug_message("Tried to spawn a deer but couldn't.");
 					break;
 				}
-			}until ((distance_to_object(obj_player) >= 250) && inroom(xx, yy) && !collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)) && (!place_meeting(xx, yy, obj_interior_fade))
+			}until ((distance_to_object(obj_player) >= 250) && inroom(xx, yy) && !collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)) && (!place_meeting(xx, yy, obj_interior_fade));
 			
 			if (dospawn){
 				instance_create(xx, yy, obj_enemy_5);

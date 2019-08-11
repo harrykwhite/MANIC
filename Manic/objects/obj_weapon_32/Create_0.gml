@@ -1,5 +1,3 @@
-fade_in = true;
-fade_out = false;
 angle_offset = 0;
 start_offset = 25;
 

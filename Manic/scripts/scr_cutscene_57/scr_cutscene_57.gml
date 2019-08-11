@@ -58,6 +58,14 @@ if (instance_exists(obj_player)){
 			xto = 652;
 			yto = 500;
 			
+			var nearest_door = instance_nearest(obj_player.x, obj_player.y, obj_farmbuilding_door_0);
+			
+			if (point_distance(obj_player.x, obj_player.y, nearest_door.x + (nearest_door.sprite_width / 2), nearest_door.y + (nearest_door.sprite_height / 2)) < 50){
+				if (!nearest_door.open){
+					nearest_door.auto_interact = true;
+				}
+			}
+			
 			obj_player.move_x_to = xto;
 			obj_player.move_y_to = yto;
 			obj_player.move_extSpd = 1.25;

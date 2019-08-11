@@ -1,4 +1,3 @@
-event_inherited();
 death = false;
 
 hit = 5;

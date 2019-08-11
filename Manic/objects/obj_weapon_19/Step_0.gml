@@ -37,7 +37,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (!global.game_
         
         shoot_can = false;
         shoot_time = 20;
-        shoot_bounceback = -3;
+        shoot_bounceback = -5;
         angle_offset = 15;
         flash_draw = true;
 		flash_time = 0;

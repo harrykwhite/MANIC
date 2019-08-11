@@ -1,3 +1,7 @@
+if (global.game_pause){
+	return;
+}
+
 // Flash
 flash -= 0.15;
 flash = clamp(flash, 0, 1);

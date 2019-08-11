@@ -37,7 +37,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
 		line_alpha = -0.7;
         shoot_can = false;
         shoot_time = 28;
-        shoot_bounceback = -3;
+        shoot_bounceback = -5;
         angle_offset = 16;
     }
 }

@@ -1,5 +1,4 @@
 if (time != -1){
-	
     if (time > 0){
         time--;
     }else{

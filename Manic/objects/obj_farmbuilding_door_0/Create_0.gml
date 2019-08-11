@@ -1,4 +1,5 @@
 open = false;
+auto_interact = false;
 anim = false;
 
 death = false;

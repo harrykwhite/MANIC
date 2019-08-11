@@ -3,16 +3,16 @@ var mult = scr_get_blood_mult();
 
 with(owner){
 	if (object_index == obj_enemy_0){
-		if (cutscene_prop){
-			return;
-		}
-	
 		if (type == Enemy0_Type.TrainBoss){
 			return;
 		}
 	}
 
 	if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
+		return;
+	}
+	
+	if (cutscene_prop){
 		return;
 	}
 

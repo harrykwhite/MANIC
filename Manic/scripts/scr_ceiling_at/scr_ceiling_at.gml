@@ -17,4 +17,5 @@ return place_meeting(xx, yy, obj_farmbuilding_3)
 || place_meeting(xx, yy, obj_bunkerbuilding_5)
 || place_meeting(xx, yy, obj_bunkerbuilding_6)
 || place_meeting(xx, yy, obj_prisonbuilding_6)
-|| place_meeting(xx, yy, obj_prisonbuilding_7);
+|| place_meeting(xx, yy, obj_prisonbuilding_7)
+|| place_meeting(xx, yy, obj_factorybuilding_3);

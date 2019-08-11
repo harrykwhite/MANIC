@@ -14,8 +14,8 @@ if (start){
 	start = false;
 }
 
-if (parent != -1) && (onscreen(x, y)){
-	depth_offset = 32;
+if (parent != -1){
+	depth_offset = 45;
 	
 	if (!instance_exists(parent)){
 		x = x + random_range(-3, 3);

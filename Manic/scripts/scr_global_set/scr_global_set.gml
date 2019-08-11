@@ -3,6 +3,7 @@ scr_weapon_list();
 scr_pawn_list();
 scr_cutscene_list();
 scr_collectable_list();
+scr_gamepad_refresh_active();
 
 global.game_pause = false;
 global.game_in_dialogue = false;

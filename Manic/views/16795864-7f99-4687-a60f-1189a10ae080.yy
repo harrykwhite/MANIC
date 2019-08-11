@@ -32,6 +32,7 @@
         "3a015e08-49e1-4b7a-ba6d-220b50b11c74",
         "86f73ec5-4c9d-4794-a7ee-f391292451c8",
         "7c52a8f6-b301-410b-bbb2-3e98135f7278",
+        "2bf9b3fe-e4c3-4fed-bc29-c9128a0fdf1b",
         "afd05359-93e2-44de-9502-2c368a78ed87",
         "994216db-bff1-4c7e-a82f-06cff651e273",
         "6274a77c-0b3f-4989-b8a8-8950ca1e50cc",
@@ -46,7 +47,9 @@
         "d5b1d26e-3eb7-4b18-87de-28368e15c84a",
         "6c50ded7-5409-49e8-8f96-89496c340eb5",
         "9e11af4f-061e-4435-a49e-9ab25024150c",
-        "6afc539e-80b9-4ba4-aa04-c89772d93d38"
+        "6afc539e-80b9-4ba4-aa04-c89772d93d38",
+        "77bd273f-0ccf-4e95-96bb-4ec168850413",
+        "96b77271-6c8f-4296-ba70-35f501474265"
     ],
     "filterType": "GMSprite",
     "folderName": "Interior",

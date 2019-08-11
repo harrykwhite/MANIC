@@ -25,7 +25,7 @@ global.level_kill_max[Level.Prologue] = 3;
 global.level_checkpoint_found[Level.Prologue] = false;
 
 global.level_name[Level.RavagedTown] = "Ravaged Town";
-global.level_room[Level.RavagedTown] = rm_level_1_01;
+global.level_room[Level.RavagedTown] = rm_level_1_00;
 global.level_preroom[Level.RavagedTown] = noone;
 global.level_collectable_current[Level.RavagedTown] = 0;
 global.level_collectable_number[Level.RavagedTown] = 6;
@@ -61,7 +61,7 @@ global.level_kill_max[Level.UndergroundBunker] = 150;
 global.level_checkpoint_found[Level.UndergroundBunker] = false;
 
 global.level_name[Level.WinterTown] = "Winter Town";
-global.level_room[Level.WinterTown] = rm_level_4_00;
+global.level_room[Level.WinterTown] = rm_level_4_02;
 global.level_preroom[Level.WinterTown] = rm_level_4_pre_00;
 global.level_collectable_current[Level.WinterTown] = 0;
 global.level_collectable_number[Level.WinterTown] = 4;

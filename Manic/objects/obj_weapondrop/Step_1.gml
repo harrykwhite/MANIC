@@ -4,6 +4,7 @@ if (!dataset){
 	}
 	
 	canburn = (index == PlayerWeapon.Stick);
+	specialweapon = (index == PlayerWeapon.Battleaxe);
 	
 	if (!place_meeting(x, y, obj_block_persistent)) && (!drop){
 		var pers = instance_create(x, y, obj_block_persistent);

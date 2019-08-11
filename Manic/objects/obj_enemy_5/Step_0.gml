@@ -40,5 +40,15 @@ headless = false;
 scr_pawn_status_handler();
 scr_enemy_5_behaviour();
 
+if (!onscreen(x, y, -36)){
+	if (offscreen_timer < 60 * 4){
+		offscreen_timer ++;
+	}else{
+		instance_destroy();
+	}
+}else{
+	offscreen_timer = 0;
+}
+
 scr_pawn_update();
 image_yscale = scale;

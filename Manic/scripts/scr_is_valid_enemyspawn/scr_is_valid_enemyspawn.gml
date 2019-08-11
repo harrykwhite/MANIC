@@ -4,13 +4,16 @@ var xx = argument0;
 var yy = argument1;
 
 var valid = true;
-var floorlayerexists = layer_exists("InteriorFloorWood");
-var onfloor;
+var woodlayerexists = layer_exists("InteriorFloorWood");
+var tilelayerexists = layer_exists("InteriorFloorTile");
+var onfloor = false;
 
-if (floorlayerexists){
+if (woodlayerexists){
 	onfloor = tilemap_get_at_pixel(layer_tilemap_get_id(layer_get_id("InteriorFloorWood")), xx, yy);
-}else{
-	onfloor = false;
+}
+
+if (tilelayerexists){
+	onfloor = tilemap_get_at_pixel(layer_tilemap_get_id(layer_get_id("InteriorFloorTile")), xx, yy);
 }
 
 if

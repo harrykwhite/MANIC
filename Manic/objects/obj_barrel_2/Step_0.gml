@@ -1,3 +1,7 @@
+if (global.game_pause){
+	return;
+}
+
 // Flash
 flash -= 0.15;
 flash = clamp(flash, 0, 1);
@@ -46,6 +50,10 @@ if (death){
 	repeat(11){
         part_particles_create(global.ps_front, x + random_range(-32, 32), y + random_range(-32, 32), global.pt_smoke_2, 1);
     }
+	
+	repeat(7){
+		part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_ash_0_perm, 1);
+	}
 	
 	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 21);
 	

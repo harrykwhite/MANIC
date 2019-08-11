@@ -69,6 +69,14 @@ rain_thunder_flash_amount[6] = 0.1;
 dog_can_spawn = global.game_firstdog_killed;
 enemy_has_panned = false;
 
+factory_explode = false;
+factory_explode_effects_created = false;
+factory_explode_alpha_max = 1;
+factory_explode_alpha = factory_explode_alpha_max;
+factory_explode_look_wait = -1;
+
+factory_level_lighting_offset = 0;
+
 if (global.game_firstenemy_killed){
 	enemy_has_panned = true;
 }

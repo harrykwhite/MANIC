@@ -16,6 +16,10 @@ scr_part_type_rain_0();
 scr_part_type_rain_1();
 scr_part_type_rain_2();
 
+scr_part_type_bunker_parts_0_perm();
+
+scr_part_type_ash_0_perm();
+
 scr_part_type_blood_0();
 scr_part_type_blood_1();
 scr_part_type_blood_1_perm();
@@ -54,6 +58,7 @@ scr_part_type_smoke_3();
 scr_part_type_smoke_4();
 scr_part_type_smoke_5();
 scr_part_type_smoke_6();
+scr_part_type_smoke_7();
 
 scr_part_type_stick_break_0();
 scr_part_type_stick_break_flash_0();

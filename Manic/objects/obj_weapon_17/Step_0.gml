@@ -35,7 +35,7 @@ if (use_current){
             
             shoot_can = false;
             shoot_time = 7;
-            shoot_bounceback = -4;
+            shoot_bounceback = -8;
         }
     }
 	

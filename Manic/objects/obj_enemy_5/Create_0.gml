@@ -6,6 +6,8 @@ destroy = false;
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
 prevpath = noone;
 
+offscreen_timer = 0;
+
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_deer_hitbox_0;
 hitbox.owner = id;

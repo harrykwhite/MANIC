@@ -15,7 +15,7 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
 		
 		if (mouse_check_button_pressed(mb_left) && (shoot_continue_time <= 0)){
 			shoot_continue_time = 3;
-			shoot_bounceback = -5;
+			shoot_bounceback = -10;
 			angle_offset = 20;
 			
 			scr_weapon_ammo_use(1);
