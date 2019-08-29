@@ -26,6 +26,12 @@ if (instance_exists(owner)){
 		var ypos = y + lengthdir_y(24 * owner.scale, dir) + lengthdir_y(2, up(dir));
 		var isEnemy = true;
 		
+		if (collision_line(owner.x, owner.y + 4, xpos, ypos, obj_p_solid, false, true)){
+			var dist = collision_distance_object(owner.x, owner.y + 4, xpos, ypos, obj_p_solid, 1);
+			xpos -= lengthdir_x(24 * owner.scale, dir) + lengthdir_x(dist, dir);
+			ypos -= lengthdir_y(24 * owner.scale, dir) + lengthdir_y(dist, dir);
+		}
+		
 		part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
         part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
 		part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);

@@ -11,10 +11,10 @@ switch(room){
 	case rm_level_4_pre_00:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 536;
-			spawn_y = 300;
+			spawn_y = 240;
 		}else if (global.game_level_opening_type == 1){
 			spawn_x = 844;
-			spawn_y = 692;
+			spawn_y = 1534;
 		}
 		break;
 	

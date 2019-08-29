@@ -19,8 +19,8 @@ if (instance_exists(target)){
 			scr_effect_screenshake(2);
 			light_brightness = 1.25;
 			
-			var xpos = x + lengthdir_x(29, shoot_dir);
-			var ypos = y + lengthdir_y(29, shoot_dir);
+			var xpos = x + lengthdir_x(32 * scale, shoot_dir);
+			var ypos = y + lengthdir_y(32 * scale, shoot_dir);
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
 			part_particles_create(global.ps_front, xpos + lengthdir_x(3, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(3, shoot_dir) + random_range(-3, 3), global.pt_smoke_4, 2);
 			
@@ -89,16 +89,20 @@ if (instance_exists(target)){
 	
 	// Enemy spawning
 	}else if (attack == 2){
-		while(instance_number(obj_p_enemy) < 7){
+		while(instance_number(obj_p_enemy) < 5){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
-			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Grenade);
+			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Katana);
 			
-			if (random(3) < 1){
+			if (random(4) < 1){
 				enemy.type = Enemy0_Type.Crazy;
 			}
 			
-			if (random(4) < 1){
+			if (random(5) < 1){
 				enemy.type = Enemy0_Type.Fly;
+			}
+			
+			if (random(5) < 1){
+				enemy.weapon_index = PawnWeapon.Grenade;
 			}
 			
 			if (enemy.weapon_index == PawnWeapon.Grenade){
@@ -110,7 +114,7 @@ if (instance_exists(target)){
 			}
 		}
 		
-		attack_time_max = 60 * 6;
+		attack_time_max = 60 * 8;
 	
 	// Shooting
 	}else if (attack == 3){
@@ -125,8 +129,8 @@ if (instance_exists(target)){
 		}else{
 			if (instance_number(obj_proj_8) < 4){
 				shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
-				xpos = x + lengthdir_x(23, shoot_dir);
-				ypos = y + lengthdir_y(23, shoot_dir);
+				xpos = x + lengthdir_x(27 * scale, shoot_dir);
+				ypos = y + lengthdir_y(27 * scale, shoot_dir);
 			
 				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_shoot_3, false, 0.8, 1.2);

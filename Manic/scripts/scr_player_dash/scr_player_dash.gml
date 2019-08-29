@@ -46,7 +46,7 @@ if (global.player_health_current <= 2){
 
 part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-12, 12), global.pt_smoke_1, 2);
 
-if (mouse_x > x){
+if (scr_input_get_mouse_x() > x){
     image_xscale = 1;
 }else{
     image_xscale = -1;

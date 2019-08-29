@@ -15,7 +15,12 @@ obj_controller_ui.bosshealth_value_current = health_current;
 obj_controller_ui.bosshealth_value_max = health_max;
 
 var ispaused = false;
+
 if (global.game_pause){
+	ispaused = true;
+}
+
+if (cutscene_prop){
 	ispaused = true;
 }
 
@@ -28,6 +33,8 @@ if (global.cutscene_current == 58){
 	health_flash = 0;
 	whiteflash_alpha = 0;
 	run_count = 0;
+	cutscene_prop = false;
+	in_cutscene = true;
 	
 	if (instance_exists(obj_player)){
 		if (obj_player.x > x){
@@ -41,6 +48,10 @@ if (global.cutscene_current == 58){
 	image_speed = 0.05;
 	
 	ispaused = true;
+}
+
+if (global.cutscene_current == -1){
+	in_cutscene = false;
 }
 
 if (ispaused){

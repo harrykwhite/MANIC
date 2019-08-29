@@ -38,10 +38,20 @@ switch(room){
 	case rm_level_7_02:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 170;
-			spawn_y = 752;
+			spawn_y = 1704;
 		}else{
 			spawn_x = room_width / 2;
 			spawn_y = 170;
+		}
+		break;
+	
+	case rm_level_7_post_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 446;
+			spawn_y = 1292;
+		}else{
+			spawn_x = 1382;
+			spawn_y = 150;
 		}
 		break;
 }

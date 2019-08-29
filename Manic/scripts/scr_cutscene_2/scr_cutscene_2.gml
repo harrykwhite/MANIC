@@ -23,39 +23,20 @@ if (instance_exists(obj_player)){
 		}
 	}
 	
-	/*switch(room){
-		case rm_level_1_00: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_2_00: obj_player.image_xscale = 1; break;
-		case rm_level_2_01: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_2_03: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_3_00: obj_player.image_xscale = 1; break;
-		case rm_level_3_01: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_3_02: obj_player.flashlight_direction = 360; obj_player.image_xscale = 1; break;
-		case rm_level_4_00: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_4_02: obj_player.flashlight_direction = 270; obj_player.image_xscale = -1; break;
-		case rm_level_5_00: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_5_01: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_5_02: obj_player.flashlight_direction = 180; obj_player.image_xscale = -1; break;
-		case rm_level_5_03: obj_player.flashlight_direction = 180; obj_player.image_xscale = -1; break;
-		case rm_level_5_04: obj_player.flashlight_direction = 180; obj_player.image_xscale = -1; break;
-		case rm_level_6_00: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_7_00: obj_player.flashlight_direction = 360; obj_player.image_xscale = 1; break;
-		case rm_level_7_01: obj_player.flashlight_direction = 360; obj_player.image_xscale = 1; break;
-		case rm_level_7_02: obj_player.flashlight_direction = 360; obj_player.image_xscale = -1; break;
-		case rm_level_8_00: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_8_01: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_8_02: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_9_00: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_9_01: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-		case rm_level_9_02: obj_player.flashlight_direction = 90; obj_player.image_xscale = -1; break;
-	}*/
-	
 	if (point_distance(obj_player.x, obj_player.y, level.spawn_x, level.spawn_y) < 60){
+		var wait = 40;
+		
+		if (room == rm_level_6_pre_00){
+			if (global.game_level_opening_type == 0){
+				wait += 40;
+			}
+		}
+		
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
 		obj_player.move_extSpd = 0;
 		
-		if (global.cutscene_time[index] < 40){
+		if (global.cutscene_time[index] < wait){
 			global.cutscene_time[index] ++;
 		}else{
 			global.cutscene_current = -1;

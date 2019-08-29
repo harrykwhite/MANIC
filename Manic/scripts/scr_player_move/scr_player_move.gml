@@ -21,25 +21,37 @@ if (in_minecart){
 if (global.weapon_slot_standalone == -1){
 	
 	// Axis
-	var key_right = keyboard_check_direct(obj_controller_all.key_right);
-	var key_left = keyboard_check_direct(obj_controller_all.key_left);
-	var key_up = keyboard_check_direct(obj_controller_all.key_up);
-	var key_down = keyboard_check_direct(obj_controller_all.key_down);
-	var key_dash = keyboard_check_pressed(obj_controller_all.key_dash);
+	var inp_check_right, inp_check_left, inp_check_up, inp_check_down, inp_check_dash;
+	var hor_mult = 1;
+	var ver_mult = 1;
 	
-	xaxis = key_right - key_left;
-	yaxis = key_down - key_up;
+	inp_check_right = scr_input_is_down(InputBinding.Right);
+	inp_check_left = scr_input_is_down(InputBinding.Left);
+	inp_check_up = scr_input_is_down(InputBinding.Up);
+	inp_check_down = scr_input_is_down(InputBinding.Down);
+	inp_check_dash = scr_input_is_pressed(InputBinding.Dash);
+	
+	if (global.game_input_type == InputType.Gamepad){
+		hor_mult = abs(gamepad_axis_value(global.game_input_gamepad_current, gp_axislh));
+		ver_mult = abs(gamepad_axis_value(global.game_input_gamepad_current, gp_axislv));
+	}
+	
+	xaxis = inp_check_right - inp_check_left;
+	yaxis = inp_check_down - inp_check_up;
+	
+	xaxis *= hor_mult;
+	yaxis *= ver_mult;
 	
 	if (!window_has_focus()){
 		xaxis = 0;
 		yaxis = 0;
 	}
 	
-	if (!key_right) && (!key_left){
+	if (!inp_check_right) && (!inp_check_left){
 		xaxis = 0;
 	}
 	
-	if (!key_down) && (!key_up){
+	if (!inp_check_down) && (!inp_check_up){
 		yaxis = 0;
 	}
 	
@@ -109,9 +121,27 @@ if (global.weapon_slot_standalone == -1){
 		}
 	}
 	
+	// Surrounding enemies
+	var slist = ds_list_create();
+	var surrounding_enemy_count = collision_circle_list(x, y, 120, obj_p_enemy, false, true, slist, false);
+	
+	ds_list_destroy(slist);
+	
 	// Speed
+	if (surrounding_enemy_count > 2){
+		spd_multiplier += 0.05;
+	}
+	
+	if (surrounding_enemy_count > 3){
+		spd_multiplier += 0.05;
+	}
+	
+	if (surrounding_enemy_count > 4){
+		spd_multiplier += 0.05;
+	}
+	
 	if (i_time > 0){
-		spd_multiplier += 0.125;
+		spd_multiplier += 0.2;
 	}
 	
 	if (upgrade_has[PlayerUpgrade.RunningBoots]){
@@ -125,11 +155,11 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	if (global.player_health_current <= 2){
-	    spd_multiplier += 0.1;
+	    spd_multiplier += 0.2;
 	}
 	
 	if (global.player_health_current <= 4){
-		spd_multiplier += 0.05;
+		spd_multiplier += 0.1;
 	}
 
 	if (!global.player_stamina_active){
@@ -226,7 +256,7 @@ if (global.weapon_slot_standalone == -1){
 		knockback_speed = 0;
 	}
 	
-	if (key_dash) && (dash_time <= 0) && (global.cutscene_current == -1) && (move_x_to == -1) && (move_y_to == -1){
+	if (inp_check_dash) && (dash_time <= 0) && (global.cutscene_current == -1) && (move_x_to == -1) && (move_y_to == -1){
 		dash_length = 55;
 		dash_speed = spd_max * 3.65;
 		dash_time = 18;
@@ -361,7 +391,7 @@ if (global.weapon_slot_standalone == -1){
 
 // Sprite Flip
 if (move_x_to == -1) && (move_y_to == -1) && (global.cutscene_current == -1){
-	if (mouse_x > x){
+	if (scr_input_get_mouse_x() > x){
 		image_xscale = 1;
 	}else{
 		image_xscale = -1;
@@ -371,6 +401,19 @@ if (move_x_to == -1) && (move_y_to == -1) && (global.cutscene_current == -1){
 		image_xscale = 1;
 	}else{
 		image_xscale = -1;
+	}
+	
+	// Open doors
+	var nearest_door = instance_nearest(x, y, obj_p_depth_door);
+	
+	if (nearest_door != noone){
+		if (room != rm_level_6_pre_00 || nearest_door.object_index != obj_prisonbuilding_door_0){
+			if (point_distance(x, y, nearest_door.x + (nearest_door.sprite_width / 2), nearest_door.y + (nearest_door.sprite_height / 2)) < 50){
+				if (!nearest_door.open){
+					nearest_door.auto_interact = true;
+				}
+			}
+		}
 	}
 }
 

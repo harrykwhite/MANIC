@@ -1,0 +1,1 @@
+return (global.game_input_type == InputType.Gamepad) && (global.game_input_gamepad_current != -1);

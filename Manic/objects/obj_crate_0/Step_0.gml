@@ -39,6 +39,20 @@ if (death){
 	
 	scr_weapon_ammo_spawn(2, 6, 5, x, y + 6);
 	
+	if (room == rm_prologue_00){
+		with(obj_controller_ui){
+			if (tutourial){
+				if (tutourial_stage == TutourialStage.CollectAmmo){
+					tutourial_stage_ammocollected_done = true;
+					
+					if (tutourial_stage_timer == -1){
+						tutourial_stage_timer = 60 * 2;
+					}
+				}
+			}
+		}
+	}
+	
 	if (random(3) < 1){
 		instance_create(x, y + 8, obj_health_pack_0);
 	}

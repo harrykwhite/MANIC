@@ -3,6 +3,8 @@ if (!dataset){
 		ammo = global.weapon_ammomax[index];
 	}
 	
+	quantity = round(quantity);
+	
 	canburn = (index == PlayerWeapon.Stick);
 	specialweapon = (index == PlayerWeapon.Battleaxe);
 	

@@ -6,6 +6,8 @@ var mousey = scr_world_to_screen_y(obj_controller_mouse.y);
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
+var iskeyboard = (global.game_input_type == InputType.Keyboard);
+
 // Red Tint
 redtint_alphato = 0;
 if (global.game_combat_state == CombatState.Buildup){
@@ -63,6 +65,7 @@ if (instance_exists(obj_player)){
 		// Drawing Slot
         var xx = 78;
         var yy = 78 + (yspace * counter);
+        var yy = 78 + (yspace * counter);
 		
 		var isred = false;
 		
@@ -92,8 +95,8 @@ if (instance_exists(obj_player)){
 		// Drawin Slot Number
 		draw_set_halign(fa_right);
 		draw_set_font(fnt_cambria_0);
-		scr_text_shadow_transformed(xx - 14, yy - 28, string(counter + 1), c_gray, 1, 1, 0);
 		draw_set_alpha(1);
+		scr_text_shadow_transformed(xx - 14, yy - 28, string(counter + 1), c_gray, 1, 1, 0);
 		
 		gpu_set_fog(false, c_white, 0, 0);
 		
@@ -177,20 +180,36 @@ if (tutourial) && (global.cutscene_current == -1){
 			if (tutourial_stage == TutourialStage.PickupMelee){
 				if (tutourial_stage_pickupmelee_equipped){
 					scr_tutourial_next_stage();
+					tutourial_stage_timer = -1;
+					return;
 				}
 				
 				if (!tutourial_stage_pickupmelee_cseen){
 					var cutsceneblock = inst_1A5669D2;
 				
-					instance_activate_object(cutsceneblock);
 					instance_destroy(cutsceneblock);
 				
 					global.cutscene_current = 40;
 					obj_controller_gameplay.cutscene_look_x = 1702;
 					obj_controller_gameplay.cutscene_look_y = 505;
-					obj_controller_gameplay.cutscene_look_time = 70;
+					obj_controller_gameplay.cutscene_look_time = 80;
 					obj_controller_gameplay.cutscene_look_prop = false;
 					obj_controller_gameplay.cutscene_look_object = noone;
+				}
+			}else if (tutourial_stage == TutourialStage.CollectAmmo){
+				if (tutourial_stage_ammocollected_done){
+					scr_tutourial_next_stage();
+					tutourial_stage_timer = -1;
+					return;
+				}
+				
+				if (instance_exists(obj_player)){
+					global.cutscene_current = 40;
+					obj_controller_gameplay.cutscene_look_x = 1762;
+					obj_controller_gameplay.cutscene_look_y = 728;
+					obj_controller_gameplay.cutscene_look_time = 80;
+					obj_controller_gameplay.cutscene_look_prop = false;
+					obj_controller_gameplay.cutscene_look_object = noone
 				}
 			}
 			
@@ -198,20 +217,68 @@ if (tutourial) && (global.cutscene_current == -1){
 		}
 	}
 	
-	var scalem = wave(1, 1.025, 3.5, 0);
 	tutourial_scale = approach(tutourial_scale, 1, 15);
 	
-	var tscale = tutourial_scale * scalem;
+	var tscale = tutourial_scale;
 	var tstage = min(tutourial_stage, tut_count - 1);
 	
 	draw_set_font(fnt_cambria_2);
-	draw_set_halign(fa_center);
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+	
+	var stwidth = string_width(tutourial_text[tstage]);
+	var toffset = -(stwidth / 2) - ((stwidth / 2) * (tscale - 1));
+	
 	draw_set_alpha(tutourial_alpha);
-	scr_text_shadow_transformed((dwidth / 2), (dheight - 160), tutourial_text[tstage], c_white, tscale, tscale, 0);
+	scr_text_shadow_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_white, tscale, tscale, 0);
+	
+	if (!iskeyboard){
+		var xwidth = string_width(tutourial_text[tstage]);
+		var xat = string_pos(scr_input_get_name(0), tutourial_text[tstage]) + (string_length(scr_input_get_name(0)) / 2);
+		var singlechar = xwidth / string_length(tutourial_text[tstage]);
+		var symb = noone;
+		
+		xat *= singlechar;
+		
+		switch(tstage){
+			case TutourialStage.Movement:
+				symb = scr_input_get_symbol_ind(InputBinding.Up);
+				break;
+			
+			case TutourialStage.Pickup:
+				symb = scr_input_get_symbol_ind(InputBinding.Interact);
+				break;
+			
+			case TutourialStage.Shoot:
+				symb = scr_input_get_symbol_ind(InputBinding.Attack);
+				break;
+			
+			case TutourialStage.Throw:
+				symb = scr_input_get_symbol_ind(InputBinding.Throw);
+				break;
+			
+			case TutourialStage.Switch:
+				symb = scr_input_get_symbol_ind(InputBinding.SwitchWeaponForward);
+				break;
+			
+			case TutourialStage.Dash:
+				symb = scr_input_get_symbol_ind(InputBinding.Dash);
+				break;
+		}
+		
+		if (xat != 0) && (symb != noone){
+			var ioff = xat + 16;
+			var ix = ((dwidth / 2) - (ioff / 2)) + ioff;
+			
+			draw_sprite_ext(global.game_input_gamepad_current_sprite, symb, ix + ((tscale - 1) * ioff), (dheight - 160), tscale, tscale, 0, c_white, tutourial_alpha);
+		}
+	}
 	
 	draw_set_alpha((tscale - 1) * 3 * tutourial_alpha);
-	scr_text_shadow_transformed((dwidth / 2), (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
+	scr_text_shadow_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
+	
 	draw_set_alpha(1);
+	draw_set_valign(fa_top);
 	
 	if (tutourial_fade){
 		if (tutourial_alpha > 0){
@@ -252,44 +319,6 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 	scr_text_shadow(textx, texty, text, c_white);
 	draw_set_valign(fa_top);
 }
-
-//// Score Display
-//var length = 7;
-//var shake = wave(-score_shake, score_shake, 0.2, 0);
-
-//draw_set_alpha(1);
-//draw_set_font(fnt_cambria_2);
-//draw_set_halign(fa_left);
-//scr_text_shadow_transformed(58 + shake, (dheight - 63) + shake, string(score_current) + "pts", c_white, (score_scale * 1.35), (score_scale * 1.35), 0);
-
-//// Score Text Display
-//if (score_text_time > 0){
-//	score_text_time--;
-	
-//	if (score_text_alpha < 1){
-//		score_text_alpha += 0.1;
-//	}
-	
-//	if (score_text_offset > 0){
-//		score_text_offset -= 0.25;
-//	}
-//}else{
-	
-//	if (score_text_alpha > 0){
-//		score_text_alpha -= 0.1;
-//	}
-	
-//	if (score_text_offset > -12){
-//		score_text_offset -= 0.25;
-//	}
-//}
-
-//if (score_text_alpha > 0){
-//	draw_set_alpha(score_text_alpha);
-//	draw_set_font(fnt_cambria_2);
-//	scr_text_shadow_transformed(59 + shake, ((dheight - 32) + shake) + score_text_offset, string(score_text), c_white, (score_scale * 0.65), (score_scale * 0.65), 0);
-//	draw_set_valign(fa_top);
-//}
 
 // Weapon Info
 if (weaponinfo){
@@ -365,8 +394,7 @@ if (instance_exists(obj_player)){
 			var col = c_white;
 			
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
-				var quantity = ceil(global.weapon_quantity[global.weapon_slot[counter]]);
-				
+				var quantity = global.weapon_slotquantity[counter];
 				scr_text_shadow(xx, yy, "x" + string(quantity), col);
 			}
 		}
@@ -652,12 +680,23 @@ if (control_indicate){
 }
 
 if (control_indicate_text != ""){
-	var buttonstr = scr_keycheck_string(obj_controller_all.key_interact);
+	var buttonstr = scr_input_get_name(InputBinding.Interact);
+	var buttonstr = scr_input_get_name(InputBinding.Interact);
+	var buttonsymb = scr_input_get_symbol_ind(InputBinding.Interact);
 	
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_right);
+	draw_set_valign(fa_middle);
 	draw_set_alpha(0.8);
-	scr_text_shadow(dwidth - control_indicate_x, dheight - 64, control_indicate_text + " [" + buttonstr + "]", c_white);
+	
+	if (iskeyboard){
+		scr_text_shadow(dwidth - control_indicate_x, dheight - 50, control_indicate_text + " [" + buttonstr + "]", c_white);
+	}else{
+		scr_text_shadow(dwidth - control_indicate_x - 16, dheight - 50, control_indicate_text, c_white);
+		draw_sprite(global.game_input_gamepad_current_sprite, real(buttonsymb), dwidth - control_indicate_x + 7, dheight - 51);
+	}
+	
+	draw_set_valign(fa_top);
 }
 
 control_indicate = false;
@@ -766,15 +805,20 @@ if (pause_text_alpha > 0){
 	draw_set_font(fnt_cambria_2);
 	
 	var selected_set = pause_has_selected;
-	pause_selected = -1;
+	
+	if (iskeyboard){
+		pause_selected = -1;
+	}
 	
 	repeat(pause_selectedmax){
 		var opty = yy + (counter * offset);
 		
 		if (!selected_set){
-			if (point_in_rectangle(mousex, mousey, xx - 80, opty - 16, xx + 80, opty + 16)){
-				pause_selected = counter;
-				selected_set = true;
+			if (iskeyboard){
+				if (point_in_rectangle(mousex, mousey, xx - 80, opty - 16, xx + 80, opty + 16)){
+					pause_selected = counter;
+					selected_set = true;
+				}
 			}
 		}
 		
@@ -838,7 +882,9 @@ if (pausedialogue_alpha > 0){
 			draw_set_font(fnt_cambria_2);
 			scr_text_shadow(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, c_white);
 			
-			pausedialogue_option_selected = -1;
+			if (iskeyboard){
+				pausedialogue_option_selected = -1;
+			}
 			
 			draw_set_font(fnt_cambria_1);
 			
@@ -847,9 +893,11 @@ if (pausedialogue_alpha > 0){
 				 vslot ++;
 				
 				if (!selected_set){
-					if (point_in_rectangle(mousex, mousey, optxx - 80, optrealy - 16, optxx + 80, optrealy + 16)){
-						pausedialogue_option_selected = counter;
-						selected_set = true;
+					if (iskeyboard){
+						if (point_in_rectangle(mousex, mousey, optxx - 80, optrealy - 16, optxx + 80, optrealy + 16)){
+							pausedialogue_option_selected = counter;
+							selected_set = true;
+						}
 					}
 				}
 				
@@ -897,11 +945,12 @@ if (screen_fade_opening > 0){
 if (global.level_current == Level.Prologue){
 	if (game_opening_intro){
 		var text = "MANIC";
+		
 		if (game_opening_intro_text_stage == 0){
 			text = "Geta presents";
 			draw_set_font(fnt_cambria_1);
 		}else{
-			draw_set_font(fnt_cambria_3);
+			draw_set_font(fnt_cambria_4);
 		}
 		
 		draw_set_alpha(game_opening_intro_alpha);
@@ -922,22 +971,36 @@ if (ending){
 	
 	draw_set_font(fnt_cambria_6);
 	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_set_alpha(ending_logo_text_alpha);
 	scr_text_shadow(dwidth / 2, dheight / 2, "MANIC", c_white);
 	
 	draw_set_font(fnt_cambria_3);
-	draw_set_halign(fa_center);
 	draw_set_alpha(ending_credits_text_alpha);
 	scr_text_shadow(dwidth / 2, (dheight / 2) - 165, "A GAME BY GETA", c_white);
 	
 	draw_set_font(fnt_cambria_2);
 	scr_text_shadow(dwidth / 2, (dheight / 2) - 100, "Programming, artwork and game design by Harry White", c_white);
 	scr_text_shadow(dwidth / 2, (dheight / 2) - 50, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2), "Art assistance for character design by Ulkenstride", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Zyro", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2), "Art assistance for character design by James Lynch", c_white);
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Sam Hollins", c_white);
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
 	
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 165, "Press [" + scr_mousecheck_string(global.game_option[| Options.Input_Attack]) + "] to continue", c_white);
+	var cont_text = "Press [" + scr_input_get_name(InputBinding.Attack) + "] to return to titlescreen"
+	
+	if (!iskeyboard){
+		cont_text = "Press " + scr_input_get_name(InputBinding.Interact) + "   to return to titlescreen";
+		
+		var xat = string_pos(scr_input_get_name(0), cont_text) + (string_length(scr_input_get_name(0)) / 2);
+		xat *= string_width(cont_text) / string_length(cont_text);
+		
+		draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.Interact),
+		(dwidth / 2) - (string_width(cont_text) / 2) + xat + 4, (dheight / 2) + 165);
+	}
+	
+	scr_text_shadow(dwidth / 2, (dheight / 2) + 165, cont_text, c_white);
+	
+	draw_set_valign(fa_top);
 }
 
 draw_set_alpha(1);

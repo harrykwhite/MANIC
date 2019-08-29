@@ -11,7 +11,7 @@ if (instance_exists(owner)){
 		
 		if (within(attack_time, 25, 27)){
 			if (!audio_is_playing(snd_weapon_reload_0)){
-				scr_sound_play_distance_pitch(snd_weapon_reload_0, false, 360, 1.2, 1.4);
+				scr_sound_play(snd_weapon_reload_0, false, 1.2, 1.4);
 			}
 		}
 		
@@ -25,6 +25,12 @@ if (instance_exists(owner)){
 	    var xpos = x + lengthdir_x(12 * owner.scale, dir) + lengthdir_x(3, up(dir));
 		var ypos = y + lengthdir_y(12 * owner.scale, dir) + lengthdir_y(3, up(dir));
 		var isEnemy = true;
+		
+		if (collision_line(owner.x, owner.y + 4, xpos, ypos, obj_p_solid, false, true)){
+			var dist = collision_distance_object(owner.x, owner.y + 4, xpos, ypos, obj_p_solid, 1);
+			xpos -= lengthdir_x(12 * owner.scale, dir) + lengthdir_x(dist, dir);
+			ypos -= lengthdir_y(12 * owner.scale, dir) + lengthdir_y(dist, dir);
+		}
 		
 		if (shoot_continue_time <= 0){
 			shoot_continue_time = 2;

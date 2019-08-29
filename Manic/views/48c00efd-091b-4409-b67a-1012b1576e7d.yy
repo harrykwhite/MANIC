@@ -8,7 +8,8 @@
         "d0b9defc-e144-4fee-a008-713cbe5ac886",
         "7f4a4922-9981-4cd9-bb9f-543eeb98af72",
         "17cc1069-532a-48e6-8ca9-391a0fcde3ca",
-        "7dddbf1a-4922-4c84-9706-2f9e03d496f7"
+        "7dddbf1a-4922-4c84-9706-2f9e03d496f7",
+        "947bac5d-73de-49c9-be68-a321ff6b85d4"
     ],
     "filterType": "GMObject",
     "folderName": "Prison Building",

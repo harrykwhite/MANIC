@@ -11,7 +11,7 @@ spawn_y = 480;
 spawn_pause_update = false;
 
 deer_can_spawn = false;
-deer_spawn_time = 60 * random_range(3, 5);
+deer_spawn_time = 60 * random_range(8, 12);
 
 // Other
 endscene_initiated = false;
@@ -38,35 +38,38 @@ global.weapon_slot[0] = -1;
 global.weapon_slotammo[0] = -1;
 global.weapon_slotscale[0] = 1;
 
-// Grass
+// Environmentals
+var xx, yy;
+
 var flr = layer_get_id("InteriorFloorWood");
 var lflr = layer_tilemap_get_id(flr);
 
 var fence_x1 = 266;
 var fence_y1 = 902;
 var fence_x2 = 644;
-var fence_y2 = 1052;
+var fence_y2 = 1394;
+
+var crange = 13;
 
 var oldx = 0;
 var oldy = 0;
 
-repeat(590){
-	var xx = random(room_width);
-	var yy = random(room_height);
-	
-	if (random(10) < 1){
-		xx = oldx + choose(-15, 15);
-		yy = oldy + choose(-15, 15);
-	}
-	
-	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true)
-	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
-	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_weapondrop, false, true) || collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
-	|| tilemap_get_at_pixel(lflr, xx, yy)
-	|| (xx >= fence_x1 && xx <= fence_x2 && yy >= fence_y1 && yy <= fence_y2)){
+repeat(850){
+	do{
 		xx = random(room_width);
 		yy = random(room_height);
-	}
+	
+		if (random(4) < 1){
+			xx = oldx + random_range(-20, 20);
+			yy = oldy + random_range(-20, 20);
+		}
+	}until (!collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_p_solid, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_grass_small_1, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_grass_bush_0, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_weapondrop, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_grass_bush_0, false, true)
+	&& !tilemap_get_at_pixel(lflr, xx, yy)
+	&& (xx < fence_x1 || xx > fence_x2 || yy < fence_y1 || yy > fence_y2));
 	
 	oldx = xx;
 	oldy = yy;
@@ -77,25 +80,26 @@ repeat(590){
 oldx = 0;
 oldy = 0;
 
-repeat(70){
-	var xx = random(room_width);
-	var yy = random(room_height);
-	
-	if (random(6) < 1){
-		xx = oldx + choose(-20, 20);
-		yy = oldy + choose(-20, 20);
-	}
-	
-	while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true)
-	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_small_1, false, true)
-	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_rock_small_0, false, true)
-	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_grass_bush_0, false, true)
-	|| collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_weapondrop, false, true)
-	|| tilemap_get_at_pixel(lflr, xx, yy)
-	|| (xx >= fence_x1 && xx <= fence_x2 && yy >= fence_y1 && yy <= fence_y2)){
+repeat(120){
+	do{
 		xx = random(room_width);
 		yy = random(room_height);
-	}
+	
+		if (random(8) < 1){
+			xx = oldx + random_range(-20, 20);
+			yy = oldy + random_range(-20, 20);
+		}
+	}until (!collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_p_solid, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_grass_small_1, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_rock_small_0, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_grass_bush_0, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_weapondrop, false, true)
+	&& !collision_rectangle(xx - crange, yy - crange, xx + crange, yy + crange, obj_grass_bush_0, false, true)
+	&& !tilemap_get_at_pixel(lflr, xx, yy)
+	&& (xx < fence_x1 || xx > fence_x2 || yy < fence_y1 || yy > fence_y2));
+	
+	oldx = xx;
+	oldy = yy;
 	
 	instance_create(xx, yy, obj_rock_small_0);
 }

@@ -41,6 +41,14 @@ if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	}
 }else{
 	room_goto(global.checkpoint_room);
+	
+	var slotcount = global.weapon_slotmax;
+	for(var i = 0; i < slotcount; i ++){
+		global.weapon_slot[i] = global.checkpoint_weapon_slot[i];
+		global.weapon_slotammo[i] = global.checkpoint_weapon_slotammo[i];
+		global.weapon_slotquantity[i] = global.checkpoint_weapon_slotquantity[i];
+	}
+	
 	global.checkpoint_goto = true;
 	global.game_level_opening_type = global.checkpoint_starttype;
 	global.level_kill_count[global.level_current] = global.checkpoint_killcount;

@@ -1,7 +1,27 @@
 // Option refresh
 if (option_refresh){
-	scr_option_init();
+	scr_options_init();
 	option_refresh = false;
+}
+
+// Camera size refresh
+if (camera_resize_time != -1){
+	if (camera_resize_time > 0){
+		camera_resize_time --;
+	}else{
+		camera_set_view_size(view_camera[0], camera_resize_w, camera_resize_h);		
+		camera_resize_time = -1;
+	}
+}
+
+// GUI surface refresh
+if (gui_resize_time != -1){
+	if (gui_resize_time > 0){
+		gui_resize_time --;
+	}else{
+		display_set_gui_size(gui_resize_w, gui_resize_h);		
+		gui_resize_time = -1;
+	}
 }
 
 // Application surface refresh

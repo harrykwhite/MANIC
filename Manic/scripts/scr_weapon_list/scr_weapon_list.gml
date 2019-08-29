@@ -187,7 +187,6 @@ global.weapon_heavy[9] = false;
 global.weapon_camerarange[9] = 10;
 global.weapon_mouse[9] = MouseType.SmallCircle;
 global.weapon_dualhanded[9] = false;
-global.weapon_quantity[9] = 1;
 global.weapon_damage[9] = WeaponLevel.VeryHigh;
 global.weapon_speed[9] = WeaponLevel.Low;
 
@@ -306,7 +305,6 @@ global.weapon_heavy[18] = false;
 global.weapon_camerarange[18] = 10;
 global.weapon_mouse[18] = MouseType.SmallCircle;
 global.weapon_dualhanded[18] = false;
-global.weapon_quantity[18] = 1;
 global.weapon_damage[18] = WeaponLevel.VeryHigh;
 global.weapon_speed[18] = WeaponLevel.Average;
 
@@ -359,7 +357,6 @@ global.weapon_heavy[22] = false;
 global.weapon_camerarange[22] = 12;
 global.weapon_mouse[22] = MouseType.SmallCircle;
 global.weapon_dualhanded[22] = false;
-global.weapon_quantity[22] = 1;
 global.weapon_damage[22] = WeaponLevel.VeryHigh;
 global.weapon_speed[22] = WeaponLevel.Low;
 
@@ -525,14 +522,17 @@ global.weapon_speed[34] = WeaponLevel.High;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
+global.weapon_slotquantity[0] = -1;
 global.weapon_slotscale[0] = 1;
 
 global.weapon_slot[1] = -1;
 global.weapon_slotammo[1] = -1;
+global.weapon_slotquantity[1] = -1;
 global.weapon_slotscale[1] = 1;
 
 global.weapon_slot[2] = -1;
 global.weapon_slotammo[2] = -1;
+global.weapon_slotquantity[2] = -1;
 global.weapon_slotscale[2] = 1;
 
 global.weapon_slot_standalone = -1;

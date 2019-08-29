@@ -54,7 +54,7 @@ headless = false;
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
 
-defense = 0;
+defense = 2;
 arm = -1;
 
 slowfire_time = 0;
@@ -77,7 +77,7 @@ knockback_multiplier = 0;
 cutscene_prop = true;
 in_cutscene = false;
 
-health_max = 100;
+health_max = 125;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

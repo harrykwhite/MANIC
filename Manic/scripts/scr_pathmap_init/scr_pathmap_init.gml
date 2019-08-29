@@ -1,5 +1,5 @@
-pathgrid_cell_width = 8;
-pathgrid_cell_height = 8;
+pathgrid_cell_width = 10;
+pathgrid_cell_height = 10;
 
 pathgrid_width_max = room_width div pathgrid_cell_width;
 pathgrid_height_max = room_height div pathgrid_cell_height;

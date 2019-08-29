@@ -144,9 +144,11 @@ if (!global.game_pause){
 			
 					if (dodraw) && (instance_exists(inst)){
 						obj_controller_ui.dialogue = text;
+						obj_controller_ui.dialogue_voice = (inst == obj_player ? snd_character_dialogue_protagonist : snd_character_dialogue_compfarmer);
 						obj_controller_ui.dialogue_time = 60 * 3;
 						obj_controller_ui.dialogue_pause = false;
-						obj_controller_ui.dialogue_yoff = obj_controller_ui.dialogue_yoff_max;
+						obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
+						obj_controller_ui.dialogue_char_count = 0;
 						obj_controller_ui.dialogue_x = inst.x;
 						obj_controller_ui.dialogue_y = inst.y - 24;
 						
@@ -208,6 +210,8 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 		
 		if (global.game_combat_in_hordechallenge){
 			spawn_rate += horde_spawn_rate;
+		}else{
+			global.game_combat_state_time_real ++;
 		}
 		
 		spawn_rate += global.game_combat_playerskill - 1;
@@ -218,10 +222,6 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 			spawn = true;
 			spawn_time = 60 * spawn_interval[global.game_combat_state];
 			spawn_time /= spawn_rate;
-		}
-		
-		if (!global.game_combat_in_hordechallenge){
-			global.game_combat_state_time_real ++;
 		}
 	
 		if (spawn){

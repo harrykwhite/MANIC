@@ -55,5 +55,6 @@ with(owner){
 		}
 	}
 
-	inst.destroy = true;
+	inst.deffect = true;
+	instance_destroy(inst);
 }

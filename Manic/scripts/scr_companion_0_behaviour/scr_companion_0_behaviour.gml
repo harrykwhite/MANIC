@@ -1,7 +1,8 @@
 var speed_multiplier = 1;
 var face_player = false;
+var point_away = false;
 var speed_final;
-var distTo = 0;
+var dist_to = 0;
 
 if (instance_exists(obj_player)){
 	var weapon_does_exist = false;
@@ -14,6 +15,8 @@ if (instance_exists(obj_player)){
 		if (!instance_exists(target)){
 			runaway_starttime = 0;
 			runaway_time = 0;
+			
+			point_away = true;
 			
 			if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150){
 				var enemyCount = array_length_1d(global.enemy);
@@ -269,15 +272,23 @@ if (instance_exists(obj_player)){
 		}
 	}
 	
-	distTo = distance_to_point(move_x_to, move_y_to);
+	dist_to = distance_to_point(move_x_to, move_y_to);
 	if (weapon_does_exist){
-		if (distTo > 3){
+		if (dist_to > 3){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 			
-			if (weapon.dir <= 90 || weapon.dir >= 270){
-				image_xscale = scale;
+			if (point_away && !weapon.attack){
+				if (weapon.dir <= 90 || weapon.dir >= 270){
+					weapon.dir -= 22;
+				}else{
+					weapon.dir += 22
+				}
 			}else{
-				image_xscale = -scale;
+				if (weapon.dir <= 90 || weapon.dir >= 270){
+					image_xscale = scale;
+				}else{
+					image_xscale = -scale;
+				}
 			}
 		}
 	}

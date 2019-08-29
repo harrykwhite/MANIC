@@ -6,23 +6,19 @@ obj_controller_camera.camera_screenshake_amount = 0;
 
 /*
 
-Main character:
-starts as a strong, "family-centered" character who is determined to help stop the issue and save others. Delves into madness
-and becomes obsessed with violence and revenge.
+Player: Starts as a strong, "family-centered" character  who is traumatised from the death of his family and is determined to help stop the issue, and in doing so becomes obsessed with violence and revenge. He lived as a farmer prior to the game and I would say is about 30 to 40 years of age.
 
-- Lived as a farmer
-- Small family, two children
-- Moved around a lot as a child and didn't have a strong family connection <- determined to not have that again
-- 
+Farmer companion: Friendly and genuine person who is interested in helping others but notices that his actions towards stopping the issue have become corrupt, abandoning the player's out of the realisation that their actions are centred around fighting rather than saving people. A bit older than the player, 40-50 years of age. Also lived alone as a farmer.
 
-Farmer:
-Self-concious and genuine person who is interested in helping others but notices that his actions have become wrong and
-especially the actions of the main character
+"The Scorched" boss character: Intelligent but psychopathic, confident in his ability to defeat the player. Leads a smaller faction of the robot army which overtook the town and farmland areas of levels one and two. Tall and thin, 20-30 years of age.
 
-- Also lived as a farmer like the player
-- Lived mostly isolated, introverted
-- A quiet but assistful and motivated person
+Grenadier companion: Confident in his own ability and therefore prefers to fight alone. Engaged in helping stop the issue but not as determined as the player character. 20 to 30 years of age.
 
+"The Dogkeeper" boss character: Selfish and unempathetic, doesn't care for the lives of others even those who are working alongside him. Large and bulky, 40 to 50 years of age.
+
+Prisoner companion: Nervous/anxious character, locked up in a robot prison alongside the rest of his towns people, is one of the only left to survive. Disturbed by the things he's seen. Very quick and sporadic, about 20 years old.
+
+Antagonist: A highly dominant figure who is the leader of the robot army. Confident and determined to win a fight. Initially doubts the player, but sees potential in him later on in the game. Believes in the philosophy that violence and revenge can draw a man into insanity, and proves this by luring the player into a death match at the end of the game, where the antagonist is killed and the player is left as the new leader of the army. Very tall and thing and about 50 years old, lived a similar life as the player and experienced traumatic events which lead him, like the player, into madness.
 
 */
 
@@ -161,7 +157,7 @@ if (instance_exists(obj_player)){
 			linefrom[8] = inst;
 			break;
 		
-		case rm_level_2_03:
+		case rm_level_2_04:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_thescorched);
 			
 			if (global.game_boss_thescorched_talked){
@@ -293,7 +289,7 @@ if (instance_exists(obj_player)){
 				with(obj_controller_gameplay){
 					cutscene_moveto_dir = 0;
 					cutscene_moveto_level = Level.WinterTown;
-					cutscene_moveto_room = rm_level_4_00;
+					cutscene_moveto_room = rm_level_4_pre_00;
 					cutscene_moveto_type = 0;
 					cutscene_moveto_instant = false;
 				}
@@ -679,7 +675,7 @@ if (instance_exists(obj_player)){
 						case "farmerdepart":
 							scr_companion_remove(obj_companion_0);
 							obj_controller_gameplay.cutscene_moveto_level = Level.TrainStation;
-							obj_controller_gameplay.cutscene_moveto_room = global.level_room[Level.TrainStation];
+							obj_controller_gameplay.cutscene_moveto_room = rm_level_6_00;
 							obj_controller_gameplay.cutscene_moveto_type = 0;
 							obj_controller_gameplay.cutscene_moveto_dir = 1;
 							obj_controller_gameplay.cutscene_moveto_instant = false;
@@ -688,7 +684,7 @@ if (instance_exists(obj_player)){
 						case "grenadierdepart":
 							scr_companion_remove(obj_companion_1);
 							obj_controller_gameplay.cutscene_moveto_level = Level.WinterTown;
-							obj_controller_gameplay.cutscene_moveto_room = global.level_room[Level.WinterTown];
+							obj_controller_gameplay.cutscene_moveto_room = rm_level_4_pre_00;
 							obj_controller_gameplay.cutscene_moveto_type = 0;
 							obj_controller_gameplay.cutscene_moveto_dir = 0;
 							obj_controller_gameplay.cutscene_moveto_instant = false;
@@ -713,14 +709,31 @@ if (instance_exists(obj_player)){
 			
 			// Set the new line of dialogue
 			obj_controller_ui.dialogue = line[cutscene_dialogue_line];
+			obj_controller_ui.dialogue_voice = snd_character_dialogue_generic;
 			obj_controller_ui.dialogue_time = 10;
 			obj_controller_ui.dialogue_pause = true;
-			obj_controller_ui.dialogue_yoff = obj_controller_ui.dialogue_yoff_max;
-		
-			// Set the dialogue position based on the speaking character
+			obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
+			obj_controller_ui.dialogue_char_count = 0;
+			
 			if (instexists){
+				// Set the dialogue position based on the speaking character
 				obj_controller_ui.dialogue_x = linefrom[cutscene_dialogue_line].x;
 				obj_controller_ui.dialogue_y = linefrom[cutscene_dialogue_line].y - 24;
+				
+				// Get the voice of the character speaking
+				var voice = snd_character_dialogue_generic;
+				
+				switch(linefrom[cutscene_dialogue_line].object_index){
+					case obj_player: voice = snd_character_dialogue_protagonist; break;
+					case obj_companion_0: voice = snd_character_dialogue_compfarmer; break;
+					case obj_companion_1: voice = snd_character_dialogue_compgrenadier; break;
+					case obj_companion_2: voice = snd_character_dialogue_compprisoner; break;
+					case obj_antagonist: voice = snd_character_dialogue_antagonist; break;
+					case obj_thescorched: voice = snd_character_dialogue_thescorched; break;
+					case obj_thedogkeeper: voice = snd_character_dialogue_thedogkeeper; break;
+				}
+				
+				obj_controller_ui.dialogue_voice = voice;
 			}
 			
 			global.game_in_dialogue = true;

@@ -126,7 +126,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 					if (obj_player.y > y){
 						interact = true;
 						scr_ui_control_indicate("Board Train")
-						if (keyboard_check_pressed(obj_controller_all.key_interact)){
+						if (scr_input_is_pressed(InputBinding.Interact)){
 							interact_break = 10;
 							scr_toggle_pause(true);
 							

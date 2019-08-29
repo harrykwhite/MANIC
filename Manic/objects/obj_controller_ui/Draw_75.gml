@@ -1,6 +1,8 @@
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
+var iskeyboard = (global.game_input_type == InputType.Keyboard);
+
 // Black Bars
 if (blackbar_draw) || (global.cutscene_current != -1){
     blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 5);
@@ -11,7 +13,6 @@ if (blackbar_draw) || (global.cutscene_current != -1){
 blackbar_sizereal = clamp(blackbar_sizereal, 0, blackbar_size);
 
 if (blackbar_sizereal > 2){
-	draw_set_alpha(1);
 	draw_set_colour(c_black);
 	draw_rectangle(-10, -10, dwidth + 10, blackbar_sizereal, false);
 	draw_rectangle(-10, dheight + 10, dwidth + 10, (dheight + 10) - (blackbar_sizereal + 10), false);
@@ -23,47 +24,66 @@ if (dialogue_time > 0){
 	var xx = (dialogue_x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 	var yy = (dialogue_y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 	
-	yy += dialogue_yoff;
-	
 	if (dialogue_break > 0){
 		dialogue_break --;
 	}else{
-		if (dialogue_yoff > 0.2){
-			dialogue_yoff = approach(dialogue_yoff, 0, 10);
-		}else{
-			if (!dialogue_pause){
-				dialogue_time --;
+		if (dialogue_char_count < dialogue_length){
+			if (string_char_at(dialogue, floor(dialogue_char_count)) == "."){
+				dialogue_char_count += dialogue_char_speed * 0.5;
+			}else{
+				dialogue_char_count += dialogue_char_speed;
+			}
+			
+			if (dialogue_voice != noone){
+				if (!audio_is_playing(dialogue_voice)){
+					audio_play_sound(dialogue_voice, 3, false);
+				}
 			}
 		}
 	}
-	
-	draw_set_alpha(1 - (dialogue_yoff / dialogue_yoff_max));
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
 	
 	draw_set_font(fnt_cambria_0);
 	draw_set_colour(c_white);
-	draw_text_ext(xx, yy, str, -1, 280);
+	draw_text_ext(xx, yy, string_copy(str, 0, dialogue_char_count), -1, 280);
 	
 	if (global.cutscene_current != -1){
 		draw_set_font(fnt_cambria_1);
 		draw_set_halign(fa_right);
-		if (dialogue_yoff <= 0){
-			scr_text_shadow(dwidth - 24, dheight - 48, "Continue [" + string(scr_keycheck_string(obj_controller_all.key_interact)) + "]", c_white);
+		draw_set_valign(fa_middle);
+		
+		if (dialogue_char_count >= dialogue_length){
+			scr_text_shadow(dwidth - 24, dheight - 64, iskeyboard ? "Continue [" + scr_input_get_name(InputBinding.Interact) + "]" : "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
+			
+			if (!iskeyboard){
+				draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.Interact), dwidth - 32, dheight - 64);
+			}
 		}
 		
-		var holdstr =  "Hold [" + string(scr_mousecheck_string(obj_controller_all.key_attack)) + "] to skip";
-		scr_text_shadow(dwidth - 24, dheight - 24, holdstr, c_white);
+		var holdstr = iskeyboard ? "Hold [" + scr_input_get_name(InputBinding.Attack) + "] to skip" : "Hold " + scr_input_get_name(InputBinding.Attack) + "  to skip";
+		scr_text_shadow(dwidth - 24, dheight - 34, holdstr, c_white);
+		
+		if (!iskeyboard){
+			var xat = string_pos(scr_input_get_name(0), holdstr) + (string_length(scr_input_get_name(0)) / 2);
+			var scale = string_width(holdstr) / string_length(holdstr);
+			
+			xat *= scale;
+			
+			draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.Attack), dwidth - 24 - string_width(holdstr) + xat + 7, dheight - 34);
+		}
 		
 		if (dialogue_skip > 0){
 			var barw = string_width(holdstr);
-			var barh = 5;
-			draw_healthbar(dwidth - 24 - barw, dheight - 20 - barh, dwidth - 24, dheight - 24, (dialogue_skip / dialogue_skip_max) * 100, c_black, c_white, c_white, 0, false, false);
+			var barh = 3;
+			draw_healthbar(dwidth - 24 - barw, dheight - 15 - barh, dwidth - 24, dheight - 15, (dialogue_skip / dialogue_skip_max) * 100, c_black, c_white, c_white, 0, false, false);
 		}
 	}
 	
 	draw_set_valign(fa_top);
+	
+	dialogue_time --;
 }else{
 	global.game_in_dialogue = false;
 	dialogue_skip = 0;

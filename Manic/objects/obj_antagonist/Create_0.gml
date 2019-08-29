@@ -15,8 +15,7 @@ hitbox.sprite_index = spr_human_hitbox_0;
 hitbox.owner = id;
 
 light_brightness = 0;
-//mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
-mylight = noone;
+mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 
 shoot_time = 0;
 shoot_delay = 0;
@@ -61,7 +60,7 @@ bleed = false;
 headless = false; 
 
 throw_weapon_time = 0;
-throw_weapon_time_max = 40;
+throw_weapon_time_max = 60;
 
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
@@ -83,7 +82,7 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_multiplier = 0;
 
-attack_time = 40;
+attack_time = 70;
 
 cutscene_prop = false;
 in_cutscene = false;
@@ -92,7 +91,7 @@ active = false;
 if (room == rm_level_6_pre_00){
 	health_max = 110;
 }else{
-	health_max = 85;
+	health_max = 75;
 }
 
 health_current = health_max;

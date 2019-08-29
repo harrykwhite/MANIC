@@ -63,7 +63,7 @@ if (!completed){
 		scr_ui_control_indicate("Interact");
 	
 		if (interact_break <= 0){
-			if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
+			if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 				var srate = scr_horde_get_spawnrate(scr_level_get_index(room));
 				scr_player_stamina_drain(4);
 				

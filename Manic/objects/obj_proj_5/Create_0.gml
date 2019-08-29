@@ -1,7 +1,7 @@
 burn = true;
 enemy = false;
 creator = obj_player;
-destroy = false;
+deffect = false;
 
 image_alpha = 0.8;
 

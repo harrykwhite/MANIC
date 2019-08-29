@@ -103,7 +103,7 @@ if (instance_exists(mylight)){
 
 if (instance_exists(flashlight)){
 	if (global.cutscene_current == -1) && (!global.game_pause){
-		flashlight_direction = point_direction(x, y, mouse_x, mouse_y);
+		flashlight_direction = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 	}
 	
 	flashlight.x = x + lengthdir_x(4, flashlight_direction);

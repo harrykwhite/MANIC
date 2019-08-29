@@ -25,7 +25,7 @@ if (instance_exists(obj_player)){
     }
     
     if (pickup){
-        if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
+        if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 			instance_destroy();
 			
 			scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);

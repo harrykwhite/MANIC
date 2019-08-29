@@ -1,0 +1,1 @@
+return instance_exists(obj_controller_mouse) ? obj_controller_mouse.y : mouse_y;

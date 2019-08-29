@@ -1,3 +1,5 @@
+var iskeyboard = (global.game_input_type == InputType.Keyboard);
+
 if (room != rm_title_0){
 	instance_destroy();
 }
@@ -108,6 +110,7 @@ if (fade){
 	}
 }else{
 	var omax = option_max;
+	
 	if (in_settings) && (!in_levelselect){
 		var omax = option_setting_max + 1;
 		if (in_settings_gameplay){
@@ -121,6 +124,134 @@ if (fade){
 		}
 	}else if (in_levelselect){
 		omax = option_levelselect_max + 1;
+	}
+	
+	if (!iskeyboard){
+		selected = max(0, selected);
+	}
+	
+	var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
+	var up_pressed = scr_input_is_pressed(InputBinding.Up, 0.275);
+	var right_pressed = scr_input_is_pressed(InputBinding.Right, 0.275);
+	var left_pressed = scr_input_is_pressed(InputBinding.Left, 0.275);
+	
+	if (!warning_prompt) && (!gamepad_device_search){
+		if (selected_break > 0){
+			selected_break --;
+		}else{
+			if (!iskeyboard){
+				if (down_pressed){
+					do{
+						if (selected < omax){
+							selected ++;
+						}else{
+							selected = 0;
+						}
+					}until((in_settings || in_levelselect) || (!option_locked[selected]));
+					
+					if (in_settings_controls){
+						if (selected == omax - 1){
+							selected ++;
+						}
+					}
+				
+					selected_break = selected_held_time >= selected_held_time_max ? 6 : 12;
+				}
+			
+				if (up_pressed){
+					do{
+						if (selected > 0){
+							selected --;
+						}else{
+							selected = omax;
+						}
+					}until((in_settings || in_levelselect) || (!option_locked[selected]));
+					
+					if (in_settings_controls){
+						if (selected == omax - 1){
+							selected --;
+						}
+					}
+					
+					selected_break = selected_held_time >= selected_held_time_max ? 6 : 12;
+				}
+			}
+		}
+	
+		if (down_pressed || up_pressed){
+			if (selected_held_time < selected_held_time_max){
+				selected_held_time ++;
+			}
+		}else{
+			selected_held_time = 0;
+		}
+	}else if (warning_prompt) && (!gamepad_device_search){
+		if (!iskeyboard){
+			warning_prompt_selected = max(warning_prompt_selected, 0);
+		}
+		
+		if (warning_prompt_selected_break > 0){
+			warning_prompt_selected_break --;
+		}else{
+			if (!iskeyboard){
+				if (up_pressed || down_pressed || right_pressed || left_pressed){
+					warning_prompt_selected = !warning_prompt_selected;
+					warning_prompt_selected_break = 12;
+				}
+			}
+		}
+		
+		if (warning_prompt_selected != -1){
+			if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+				if (warning_prompt_selected == 0){
+					scr_clear_save_data();
+				}
+			
+				warning_prompt = false;
+				return;
+			}
+		}
+	}else if (gamepad_device_search){
+		var button_matrix = scr_input_gamepad_any();
+		
+		if (button_matrix[# 0, 0] != -1){
+			global.game_input_type = InputType.Gamepad;
+			
+			global.game_input_gamepad_current = button_matrix[# 0, 0];
+			global.game_input_gamepad_current_sprite = scr_input_gamepad_get_sprite();
+			
+			gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
+			gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
+			
+			selected = 2;
+			press_break = 10;
+			selected_break = 10;
+			
+			option_setting_controls_value[0] = global.game_input_type;
+			
+			gamepad_device_search = false;
+			gamepad_device_search_time = 0;
+			
+			ds_grid_destroy(button_matrix);
+			
+			scr_options_refresh();
+			return;
+		}
+		
+		ds_grid_destroy(button_matrix);
+		
+		if (gamepad_device_search_time > 0){
+			gamepad_device_search_time --;
+		}else{
+			gamepad_device_search = false;
+			gamepad_device_search_time = 0;
+			
+			global.game_input_type = InputType.Keyboard;
+			option_setting_controls_value[0] = InputType.Keyboard;
+			scr_options_refresh();
+		}
+		
+		return;
 	}
 	
 	selected = clamp(selected, -1, omax);
@@ -138,84 +269,103 @@ if (fade){
 	}
 	
 	if (selected != -1){
-		if (!searching_for_input){
-			if (press_break > 0){
-				press_break --;
-			}else{
-				if (in_settings) && (selected != omax) && (selected != omax - 1){
-					if (in_settings_gameplay){
-						if (mouse_check_button_pressed(mb_left)){
-							if (option_setting_gameplay_value[selected] < option_setting_gameplay_value_max[selected]){
-								option_setting_gameplay_value[selected] += option_setting_gameplay_value_interval[selected];
-							}else{
-								option_setting_gameplay_value[selected] = option_setting_gameplay_value_min[selected];
-							}
-				
-							global.game_option[| option_setting_gameplay_edit[selected]] = option_setting_gameplay_value[selected];
-							scr_options_refresh();
-							press_break = 5;
-						}
-					}else if (in_settings_display){
-						if (mouse_check_button_pressed(mb_left)){
-							if (option_setting_display_value[selected] < option_setting_display_value_max[selected]){
-								option_setting_display_value[selected] += option_setting_display_value_interval[selected];
-							}else{
-								option_setting_display_value[selected] = option_setting_display_value_min[selected];
-							}
-				
-							global.game_option[| option_setting_display_edit[selected]] = option_setting_display_value[selected];
-							scr_options_refresh(true);
-							press_break = 5;
-						}
-					}else if (in_settings_audio){
-						if (mouse_check_button_pressed(mb_left)){
-							if (option_setting_audio_value[selected] < option_setting_audio_value_max[selected]){
-								option_setting_audio_value[selected] += option_setting_audio_value_interval[selected];
-							}else{
-								option_setting_audio_value[selected] = option_setting_audio_value_min[selected];
-							}
-				
-							global.game_option[| option_setting_audio_edit[selected]] = option_setting_audio_value[selected];
-							scr_options_refresh();
-							press_break = 5;
-						}
-					}
-				}
-			}
+		if (press_break > 0){
+			press_break --;
 		}else{
-			var key = keyboard_key;
-			var mouse = mouse_button;
+			if (in_settings) && (selected != omax) && (selected != omax - 1){
+				if (in_settings_gameplay){
+					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+						if (option_setting_gameplay_value[selected] < option_setting_gameplay_value_max[selected]){
+							option_setting_gameplay_value[selected] += option_setting_gameplay_value_interval[selected];
+						}else{
+							option_setting_gameplay_value[selected] = option_setting_gameplay_value_min[selected];
+						}
 			
-			if (searching_for_input_wait > 0){
-				searching_for_input_wait --;
-			}else if (in_settings_controls){
-				if (!searching_for_input_mouse){
-					if (key != 0){
-						option_setting_controls_value[selected] = key;
-						global.game_option[| option_setting_controls_edit[selected]] = option_setting_controls_value[selected];
+						global.game_option[| option_setting_gameplay_edit[selected]] = option_setting_gameplay_value[selected];
 						scr_options_refresh();
 						press_break = 5;
-						searching_for_input = false;
-						return;
 					}
-				}else{
-					if (mouse != 0){
-						option_setting_controls_value[selected] = mouse;
-						global.game_option[| option_setting_controls_edit[selected]] = option_setting_controls_value[selected];
+				}else if (in_settings_display){
+					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+						if (option_setting_display_value[selected] < option_setting_display_value_max[selected]){
+							option_setting_display_value[selected] += option_setting_display_value_interval[selected];
+						}else{
+							option_setting_display_value[selected] = option_setting_display_value_min[selected];
+						}
+			
+						global.game_option[| option_setting_display_edit[selected]] = option_setting_display_value[selected];
+						scr_options_refresh(true);
+						press_break = 5;
+					}
+				}else if (in_settings_audio){
+					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+						if (option_setting_audio_value[selected] < option_setting_audio_value_max[selected]){
+							option_setting_audio_value[selected] += option_setting_audio_value_interval[selected];
+						}else{
+							option_setting_audio_value[selected] = option_setting_audio_value_min[selected];
+						}
+		
+						global.game_option[| option_setting_audio_edit[selected]] = option_setting_audio_value[selected];
 						scr_options_refresh();
 						press_break = 5;
-						searching_for_input = false;
-						return;
+					}
+				}else if (in_settings_controls){
+					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+						if (option_setting_controls_value[selected] < option_setting_controls_value_max[selected]){
+							option_setting_controls_value[selected] += option_setting_controls_value_interval[selected];
+						}else{
+							option_setting_controls_value[selected] = option_setting_controls_value_min[selected];
+						}
+						
+						if (selected == 0){
+							if (option_setting_controls_value[0] == InputType.Gamepad){
+								gamepad_device_search = true;
+								gamepad_device_search_time = 60 * 3;
+								option_setting_controls_value[0] = InputType.Keyboard;
+							}
+							
+							global.game_input_type = InputType.Keyboard;
+						}else{
+							global.game_option[| option_setting_controls_edit[selected]] = option_setting_controls_value[selected];
+						}
+						
+						scr_options_refresh();
+						press_break = 5;
 					}
 				}
 			}
 		}
-	
-		if (mouse_check_button_pressed(mb_left)){
-			var isvalid = false;
 		
+		if (!iskeyboard && scr_input_is_pressed(InputBinding.Dash)){
+			var changed = false;
+			
+			if (in_settings_gameplay) || (in_settings_display) || (in_settings_audio) || (in_settings_controls){
+				in_settings_gameplay = false;
+				in_settings_display = false;
+				in_settings_audio = false;
+				in_settings_controls = false;
+				
+				changed = true;
+			}else if (in_settings){
+				in_settings = false;
+				changed = true;
+			}else if (in_levelselect){
+				in_levelselect = false;
+				changed = true;
+			}
+			
+			if (!changed){
+				selected = (iskeyboard ? -1 : 0);
+				scr_titlescreen_options_scale_reset();
+			}
+		}
+		
+		if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+			var isvalid = false;
+			
 			if (!in_settings) && (!in_levelselect){
 				isvalid = true;
+				
 				switch(selected){
 					case 0:
 						isvalid = false;
@@ -253,7 +403,7 @@ if (fade){
 						if (indicate_text_alpha <= 0) || (indicate_text != "Options have been reset"){
 							var otype = "";
 							var str;
-						
+							
 							if (in_settings_gameplay){
 								otype = "gameplay";
 								str = "Gameplay settings have been reset";
@@ -267,39 +417,21 @@ if (fade){
 								otype = "controls";
 								str = "Control settings have been reset";
 							}
-						
+							
 							scr_option_reset_defaults(otype);
-						
+							
 							indicate_text = str;
 							indicate_text_time = 135;
 							indicate_text_alpha = 1;
 						}
 					}else if (selected == omax){
-						if (in_settings_controls){
-							var optcount = array_length_1d(option_setting_controls_value);
-							for(var o = 0; o < optcount; o ++){
-								if (scr_input_value_already_set(option_setting_controls_value[o], o)){
-									option_setting_controls_value[o] = scr_input_get_default(option_setting_controls_edit[o]);
-									global.game_option[| option_setting_controls_edit[o]] = option_setting_controls_value[o];
-								}
-							}
-							
-							scr_options_refresh();
-						}
-						
 						in_settings_gameplay = false;
 						in_settings_display = false;
 						in_settings_audio = false;
 						in_settings_controls = false;
-						selected = -1;
+						selected = (iskeyboard ? -1 : 0);
 						
 						scr_titlescreen_options_scale_reset();
-					}else{
-						if (in_settings_controls) && (!searching_for_input){
-							searching_for_input = true;
-							searching_for_input_wait = 6;
-							searching_for_input_mouse = option_setting_controls_ismouse[selected];
-						}
 					}
 				}else{
 					if (!in_settings_gameplay) && (!in_settings_display) && (!in_settings_audio) && (!in_settings_controls){
@@ -324,27 +456,7 @@ if (fade){
 						
 							case 4:
 								if (indicate_text_alpha <= 0) || ((indicate_text != "No save data was found") && (indicate_text != "Save data has been reset")){
-									if (file_exists("save.ini")){
-										file_delete("save.ini");
-										indicate_text = "Save data has been reset";
-									}else{
-										indicate_text = "No save data was found";
-									}
-									
-									scr_save_game_reader();
-									option[0] = "New Game";
-									option_locked[1] = true;
-									
-									if (global.game_save_started){
-										option[0] = "Continue Game";
-									}
-									
-									if (global.game_boss_final_killed) || (devmode){
-										option_locked[1] = false;
-									}
-									
-									indicate_text_time = 135;
-									indicate_text_alpha = 1;
+									warning_prompt = true;
 								}
 								
 								isvalid = false;
@@ -352,7 +464,7 @@ if (fade){
 							
 							case 5:
 								in_settings = false;
-								selected = -1;
+								selected = (iskeyboard ? -1 : 0);
 								
 								scr_titlescreen_options_scale_reset();
 								break;
@@ -362,7 +474,7 @@ if (fade){
 			}else if (in_levelselect){
 				if (selected == omax){
 					in_levelselect = false;
-					selected = -1;
+					selected = (iskeyboard ? -1 : 0);
 					
 					scr_titlescreen_options_scale_reset();
 				}else{
@@ -381,7 +493,7 @@ if (fade){
 			}
 		
 			if (isvalid){
-				selected = -1;
+				selected = (iskeyboard ? -1 : 0);
 				scr_titlescreen_options_scale_reset();
 			}
 		}

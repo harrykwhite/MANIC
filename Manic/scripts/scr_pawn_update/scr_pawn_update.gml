@@ -59,7 +59,7 @@ if (global.cutscene_current == -1){
 }
 
 // Death
-var doexplode = false;
+var doexplode = false, pack;
 
 if (health_current <= 0){
 	var eoffsetx = 12;
@@ -211,7 +211,8 @@ if (health_current <= 0){
 			global.game_firstmaggot_killed = true;
 			
 			if (chance(30)){
-				instance_create(x + random_range(-4, 4), y + random_range(-4, 4), obj_health_pack_1);
+				pack = instance_create(x + random_range(-4, 4), y + random_range(-4, 4), obj_health_pack_1);
+				pack.is_dropped = true;
 			}
 		}else if (object_index == obj_enemy_5){
 			scr_level_increase_kill_count();
@@ -260,7 +261,9 @@ if (health_current <= 0){
 		scr_sound_play_distance(snd_weapon_explode_0, false, 600);
 		
 		if (object_index == obj_giantturret_flamethrower){
-			instance_create(x + random_range(-6, 6), y + random_range(3, 5), obj_health_pack_1);
+			pack = instance_create(x + random_range(-6, 6), y + random_range(3, 5), obj_health_pack_1);
+			pack.is_dropped = true;
+			
 			scr_weapon_ammo_spawn(choose(4, 6), 7, 5, x, y + 2);
 		}
 	}else{
@@ -289,15 +292,23 @@ if (health_current <= 0){
 	
 		if (type == Enemy0_Type.Mother) || (type == Enemy0_Type.Sniper){
 			dropchance = 100;
-			instance_create(x - 7, y + 2, obj_health_pack_0);
-			instance_create(x + 9, y + 4, obj_health_pack_0);
+			
+			pack = instance_create(x - 7, y + 2, obj_health_pack_0);
+			pack.is_dropped = true;
+			
+			pack = instance_create(x + 9, y + 4, obj_health_pack_0);
+			pack.is_dropped = true;
+			
 			scr_weapon_ammo_spawn(choose(6, 7), 5, 6, x, y + 5);
 			global.boss_current = -1;
 		}else if (type == Enemy0_Type.TrainBoss){
 			dropchance = 100;
 			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
 			audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
-			instance_create(x, y + 4, obj_health_pack_1);
+			
+			pack = instance_create(x, y + 4, obj_health_pack_1);
+			pack.is_dropped = true;
+			
 			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
 			global.boss_current = -1;
 		}else{
@@ -305,8 +316,9 @@ if (health_current <= 0){
 				scr_weapon_ammo_spawn(choose(2, 4), 5, 6, x, y + 5);
 			}
 			
-			if (chance(10)){
-				instance_create(x + random_range(-3, 3), y + 4 + random_range(-3, 3), obj_health_pack_0);
+			if (chance(30)){
+				pack = instance_create(x + random_range(-3, 3), y + 4 + random_range(-3, 3), obj_health_pack_2);
+				pack.is_dropped = true;
 			}
 		}
 		
@@ -347,7 +359,9 @@ if (health_current <= 0){
 		global.boss_current = -1;
 		
 		if (object_index != obj_antagonist){
-			instance_create(x, y + 4, obj_health_pack_1);
+			pack = instance_create(x, y + 4, obj_health_pack_1);
+			pack.is_dropped = true;
+			
 			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
 		}
 	}

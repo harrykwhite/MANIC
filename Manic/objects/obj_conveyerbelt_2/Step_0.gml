@@ -11,7 +11,7 @@ if (global.cutscene_current == -1) && (!deactivated) && (global.boss_current == 
 		scr_ui_control_indicate("Interact");
 		sprite_index = spr_conveyerbelt_2_interact;
 		
-		if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
+		if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 			scr_player_stamina_drain(4);
 			obj_controller_gameplay.cutscene_conveyerbelt_x = x + (sprite_width / 2);
 			obj_controller_gameplay.cutscene_conveyerbelt_y = y + 45;

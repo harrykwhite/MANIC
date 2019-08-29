@@ -43,10 +43,19 @@ if (instance_exists(target)){
 		
 	// Enemy spawning
 	}else if (attack == 1){
-		while(instance_number(obj_p_enemy) < 7){
+		while(instance_number(obj_p_enemy) < 4){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
-			enemy.weapon_index = choose(PawnWeapon.Axe, PawnWeapon.Crowbar);
-			enemy.type = Enemy0_Type.Normal;
+			enemy.weapon_index = choose(PawnWeapon.Sledgehammer, PawnWeapon.Katana, PawnWeapon.Axe, PawnWeapon.Machete);
+			
+			if (random(5) < 1){
+				enemy.weapon_index = PawnWeapon.Grenade;
+			}
+			
+			if (enemy.weapon_index == PawnWeapon.Grenade){
+				enemy.type = Enemy0_Type.Grenadier;
+			}else{
+				enemy.type = Enemy0_Type.Normal;
+			}
 			
 			repeat(9){
 				part_particles_create(global.ps_front, enemy.x + random_range(-7, 7), enemy.y + random_range(-18, 18), global.pt_spawn_0, 1);

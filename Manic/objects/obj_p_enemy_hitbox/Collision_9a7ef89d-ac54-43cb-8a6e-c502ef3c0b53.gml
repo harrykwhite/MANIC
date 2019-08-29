@@ -55,7 +55,8 @@ with(owner){
 
 	if (!inst.pierce){
 		if (object_index != obj_enemy_1){
-			inst.destroy = true;
+			inst.deffect = true;
+			instance_destroy(inst);
 		}
 	}
 }

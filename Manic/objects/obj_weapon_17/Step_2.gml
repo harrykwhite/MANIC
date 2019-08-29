@@ -1,7 +1,7 @@
 var mdir;
 
 if (instance_exists(obj_player)){
-	mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+	mdir = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 	
 	if (use_current){
 		
@@ -22,7 +22,7 @@ if (instance_exists(obj_player)){
 			shoot_bounceback = approach(shoot_bounceback, 0, 20);
 		
 	        // Direction
-	        if (mouse_x > x){
+	        if (scr_input_get_mouse_x() > x){
 	            image_yscale = 1;
 	        }else{
 	            image_yscale = -1;

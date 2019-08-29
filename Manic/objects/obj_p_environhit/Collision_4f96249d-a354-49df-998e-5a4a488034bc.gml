@@ -17,4 +17,5 @@ if (hit_time <= 0){
 	}
 }
 
-other.destroy = true;
+other.deffect = true;
+instance_destroy(other);

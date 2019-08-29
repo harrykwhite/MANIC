@@ -3,9 +3,11 @@ if (!global.game_pause) && (global.cutscene_current == -1) && (instance_exists(o
 	var xx = x + lengthdir_x(17, image_angle) + lengthdir_x(1, up(image_angle));
 	var yy = y + lengthdir_y(17, image_angle) + lengthdir_y(1, up(image_angle));
 	
-	draw_set_colour(c_maroon);
-	draw_set_alpha(clamp(line_alpha, 0, 1) * 0.6 * image_alpha);
-	draw_line_break(xx, yy, image_angle, obj_p_solid, 1, false, -6);
+	if (!collision_line(obj_player.x, obj_player.y + 4, xx, yy, obj_p_solid, false, true)){
+		draw_set_colour(c_maroon);
+		draw_set_alpha(clamp(line_alpha, 0, 1) * 0.6 * image_alpha);
+		draw_line_break(xx, yy, image_angle, obj_p_solid, 1, false, 0);
+	}
 }
 
 draw_self();

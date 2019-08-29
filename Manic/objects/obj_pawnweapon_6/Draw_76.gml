@@ -1,3 +1,3 @@
 if (instance_exists(owner)){
-	scr_render_me(owner.y + 8);
+	scr_render_me(owner.y + 3);
 }

@@ -1,3 +1,8 @@
+var iskeyboard = (global.game_input_type == InputType.Keyboard);
+
+var up_pressed = scr_input_is_pressed(InputBinding.Up, 0.275);
+var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
+
 scr_position_view();
 scr_ui_rank_display_setup();
 scr_ui_rank_display_update();
@@ -36,9 +41,9 @@ if (ending){
 			ending_back_time --;
 		}else{
 			if (ending_back_alpha < 1){
-				ending_back_alpha += 0.0025;
+				ending_back_alpha += 0.005;
 			}else{
-				if (mouse_check_button_pressed(global.game_option[| Options.Input_Attack])){
+				if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
 					ending_close = true;
 				}
 			}
@@ -110,7 +115,8 @@ if (screenblend_draw){
 
 if (!global.game_pause){
 	pause_selected = 0;
-
+	pause_selected_break = 0;
+	
 	// Title Text
 	/*if (global.cutscene_current == -1) &&
 	((room == rm_level_1_00) ||
@@ -167,29 +173,6 @@ if (!global.game_pause){
 				scr_toggle_pause(false);
 				
 				switch(pause_has_selected_index){
-					//case 1:
-					//	part_system_clear(global.ps_front);
-					//	part_system_clear(global.ps_bottom);
-						
-					//	scr_checkpoint_reset();
-					//	scr_weapon_list();
-						
-					//	var roomto = global.level_room[global.level_current];
-						
-					//	if (!global.level_cleared[global.level_current]){
-					//		global.level_kill_count[global.level_current] = 0;
-					//	}
-						
-					//	if (roomto == room){
-					//		room_restart();
-					//	}else{
-					//		room_goto(roomto);
-					//	}
-						
-					//	global.game_combat_state = CombatState.Idle;
-					//	global.weapon_slotcurrent = 0;
-					//	break;
-					
 					case 1:
 						if (global.game_is_playthrough) || (room == rm_prologue_00){
 							scr_save_game();
@@ -232,12 +215,45 @@ if (!global.game_pause){
 				pausedialogue_type_option_trainstart_type[0] = -1;
 			}
 		}else{
-			if (mouse_check_button_pressed(mb_left)){
+			if (pause_selected_break > 0){
+				pause_selected_break --;
+			}else if (!iskeyboard){
+				if (up_pressed){
+					if (pause_selected > 0){
+						pause_selected --;
+					}else{
+						pause_selected = pause_selectedmax - 1;
+					}
+					
+					pause_selected_break = pause_selected_held_time >= pause_selected_held_time_max ? 6 : 12;
+				}
+				
+				if (down_pressed){
+					if (pause_selected < pause_selectedmax - 1){
+						pause_selected ++;
+					}else{
+						pause_selected = 0;
+					}
+					
+					pause_selected_break = pause_selected_held_time >= pause_selected_held_time_max ? 6 : 12;
+				}
+			}
+			
+			if (up_pressed || down_pressed){
+				if (pause_selected_held_time < pause_selected_held_time_max){
+					pause_selected_held_time ++;
+				}
+			}else{
+				pause_selected_held_time = 0;
+			}
+			
+			if (!iskeyboard ? scr_input_is_pressed(InputBinding.Interact) : scr_input_is_pressed(InputBinding.Attack)){
 				if (pause_selected != -1){
 					switch(pause_selected){
 						case 0:
 							scr_toggle_pause(false);
-							pause_selected = 0;
+							pause_selected_break = 0;
+							pause_selected_held_time = 0;
 							break;
 			
 						default:
@@ -254,11 +270,43 @@ if (!global.game_pause){
 		if (pausedialogue_time < 10){
 			pausedialogue_time ++;
 		}else{
-			if (keyboard_check_pressed(obj_controller_all.key_interact)){
+			if (scr_input_is_pressed(InputBinding.Pause)){
 				pausedialogue = false;
 				scr_toggle_pause(false);
 			}else{
-				if (mouse_check_button_pressed(mb_left)){
+				if (pausedialogue_break > 0){
+					pausedialogue_break --;
+				}else if (!iskeyboard){
+					if (up_pressed){
+						if (pausedialogue_option_selected > 0){
+							pausedialogue_option_selected --;
+						}else{
+							pausedialogue_option_selected = pausedialogue_option_max - 1;
+						}
+					
+						pausedialogue_break = pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max ? 6 : 12;
+					}
+					
+					if (down_pressed){
+						if (pausedialogue_option_selected < pausedialogue_option_max - 1){
+							pausedialogue_option_selected ++;
+						}else{
+							pausedialogue_option_selected = 0;
+						}
+					
+						pausedialogue_break = pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max ? 6 : 12;
+					}
+				}
+				
+				if (up_pressed || down_pressed){
+					if (pausedialogue_option_selected_held_time < pausedialogue_option_selected_held_time_max){
+						pausedialogue_option_selected_held_time ++;
+					}
+				}else{
+					pausedialogue_option_selected_held_time = 0;
+				}
+				
+				if (!iskeyboard ? scr_input_is_pressed(InputBinding.Interact) : scr_input_is_pressed(InputBinding.Attack)){
 					if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected < pausedialogue_option_max){
 						if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
 							global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
@@ -280,39 +328,43 @@ if (!global.game_pause){
 						obj_controller_gameplay.cutscene_trainroom = pausedialogue_type_option_trainroom[pausedialogue_option_selected];
 					
 						pausedialogue = false;
+						pausedialogue_option_selected_held_time = 0;
 						scr_toggle_pause(false);
 					}else if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected == pausedialogue_option_max){
 						pausedialogue = false;
+						pausedialogue_option_selected_held_time = 0;
 						scr_toggle_pause(false);
 					}
 				}
 			}
-			
-			
 		}
 	}
 }
 
 // Game Opening Intro
 if (game_opening_intro){
-	if (game_opening_intro_alpha > 0){
-		game_opening_intro_alpha -= 0.005 * game_opening_intro_speed;
-		game_opening_intro_text_time -= game_opening_intro_speed;
+	if (game_opening_intro_startbreak > 0){
+		game_opening_intro_startbreak -= game_opening_intro_speed;
+	}else{
+		if (game_opening_intro_alpha > 0){
+			game_opening_intro_alpha -= 0.0025 * game_opening_intro_speed;
+			game_opening_intro_text_time -= game_opening_intro_speed;
 		
-		if (game_opening_intro_text_time <= 0){
-			game_opening_intro_text_alpha -= 0.0075 * game_opening_intro_speed;
+			if (game_opening_intro_text_time <= 0){
+				game_opening_intro_text_alpha -= 0.0025 * game_opening_intro_speed;
 			
-			if (game_opening_intro_text_stage == 0){
-				if (game_opening_intro_text_alpha <= 0){
-					game_opening_intro_text_time = 60 * 2.9;
-					game_opening_intro_text_stage = 1;
-					game_opening_intro_text_alpha = -0.15;
+				if (game_opening_intro_text_stage == 0){
+					if (game_opening_intro_text_alpha <= 0){
+						game_opening_intro_text_time = 60 * 9;
+						game_opening_intro_text_stage = 1;
+						game_opening_intro_text_alpha = -0.15;
+					}
 				}
+			}else{
+				game_opening_intro_text_alpha += 0.0025 * game_opening_intro_speed;
 			}
 		}else{
-			game_opening_intro_text_alpha += 0.01 * game_opening_intro_speed;
+			game_opening_intro = false;
 		}
-	}else{
-		game_opening_intro = false;
 	}
 }

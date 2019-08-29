@@ -11,7 +11,8 @@
         "5944a413-c436-4873-9623-9b921583087d",
         "6931ea34-5b89-4c6b-90b2-3e7b1bb1d765",
         "69cbf012-7bd8-458f-97eb-54ac81b3d7a3",
-        "a2106bf2-3d36-4b3e-ad66-cea600264c57"
+        "a2106bf2-3d36-4b3e-ad66-cea600264c57",
+        "9a6c55a0-d16d-426c-a019-c96815f26c6f"
     ],
     "filterType": "GMSound",
     "folderName": "Character",

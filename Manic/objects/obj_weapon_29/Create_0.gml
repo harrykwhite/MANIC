@@ -15,6 +15,8 @@ cart = noone;
 demount = false;
 
 ammo = -1;
+ammostart = -1;
+
 index = 29;
 throw_offset = 0;
 

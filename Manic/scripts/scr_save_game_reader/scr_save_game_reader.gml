@@ -48,15 +48,11 @@ for(var i = 0; i < weaponcount; i ++){
 	if (i == 0){
 		global.weapon_slot[i] = ini_read_real("Save", "WeaponSlot" + string(i), PlayerWeapon.Revolver);
 		global.weapon_slotammo[i] = ini_read_real("Save", "WeaponSlotAmmo" + string(i), global.weapon_ammomax[PlayerWeapon.Revolver]);
+		global.weapon_slotquantity[i] = ini_read_real("Save", "WeaponSlotQuantity" + string(i), -1);
 	}else{
 		global.weapon_slot[i] = ini_read_real("Save", "WeaponSlot" + string(i), -1);
-		global.weapon_slotammo[i] = ini_read_real("Save", "WeaponSlotAmmo" + string(i), 0);
-	}
-	
-	if (global.weapon_slot[i] != -1){
-		if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
-			global.weapon_quantity[global.weapon_slot[i]] = ini_read_real("Save", "WeaponSlotQuantity" + string(i), 0);
-		}
+		global.weapon_slotammo[i] = ini_read_real("Save", "WeaponSlotAmmo" + string(i), -1);
+		global.weapon_slotquantity[i] = ini_read_real("Save", "WeaponSlotQuantity" + string(i), -1);
 	}
 }
 

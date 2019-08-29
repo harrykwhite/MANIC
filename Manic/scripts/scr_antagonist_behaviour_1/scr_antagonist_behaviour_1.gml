@@ -7,6 +7,7 @@ target = obj_player;
 if (instance_exists(target)) && (!walk_off){
 	var dir_to_target = point_direction(x, y, target.x, target.y);
 	var nearest_bullet = instance_nearest(x, y, obj_proj_0);
+	var swing_interval = 65;
 	
 	if (weapon_exists){
 		weapon_exists = instance_exists(weapon);
@@ -24,12 +25,12 @@ if (instance_exists(target)) && (!walk_off){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
-			if (distance_to_object(target) < 27){
+			if (distance_to_object(target) < 40){
 				if (attack_time > 0){
 					attack_time --;
 				}else{
 					weapon.attack = true;
-					attack_time = 60;
+					attack_time = shoot_interval;
 				}
 			}
 		}
@@ -52,7 +53,7 @@ if (instance_exists(target)) && (!walk_off){
 				var len = random_range(135, 170);
 				run_x = target.x + lengthdir_x(len, dir);
 				run_y = target.y + lengthdir_y(len, dir);
-				run_time = 40;
+				run_time = 70;
 			}
 		}
 	}else if (state == 1){
@@ -161,6 +162,8 @@ if (instance_exists(target)) && (!walk_off){
 		
 		weapon_change_time = 0;
 		weapon_change_origin = weapon_index;
+		
+		attack_time = 70;
 		
 		state_time = 0;
 	}

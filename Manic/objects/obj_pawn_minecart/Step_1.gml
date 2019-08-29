@@ -9,16 +9,13 @@ if (instance_exists(obj_player)){
 		}else{
 			image_index = 0;
 		}
-
+		
 		if (minecart_speed > 0){
 			minecart_speed -= 0.005;
 		}else if (minecart_speed < 0){
 			minecart_speed += 0.005;
 		}
 		
-		var absmdir = abs(minecart_dir);
-		var mdir = absmdir - ((absmdir div 360) * 360);
-
 		var cartx = x - 8;
 		var carty = y - 2;
 		var cartw = 16;
@@ -31,7 +28,7 @@ if (instance_exists(obj_player)){
 			cartx = x - 2;
 			cartw = 4;
 		}
-
+		
 		if (xvel != 0 && yvel == 0){
 			carty = y + 13;
 			carth = 4;
@@ -59,23 +56,23 @@ if (instance_exists(obj_player)){
 		}else{
 			image_speed = 0;
 		}
-
-		absmdir = abs(minecart_dir);
-		mdir = absmdir - ((absmdir div 360) * 360);
-
-		if (mdir == 90) || (mdir == 270){
+		
+		var absmdir = abs(minecart_dir);
+		minecart_dir_clean = absmdir - ((absmdir div 360) * 360);
+		
+		if (minecart_dir_clean == 90) || (minecart_dir_clean == 270){
 			mysprite = spr_pawn_minecart_1;
 		}else{
 			mysprite = spr_pawn_minecart_0;
 		}
-
+		
 		x += xvel;
 		y += yvel;
 	}
 	
 	// Equip
 	var pickup_range = 10;
-	var pressed = keyboard_check_pressed(obj_controller_all.key_interact);
+	var pressed = scr_input_is_pressed(InputBinding.Interact);
 	var isme = obj_player.minecart == id;
 	
 	if (isme){

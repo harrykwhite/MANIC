@@ -29,6 +29,127 @@ if (room == rm_level_10_01){
 
 // Spawning
 lighting = 0.95;
-
 global.ambientShadowIntensity = lighting;
-scr_level_combatstate_control();
+
+// Final boss music
+if (!boss_music_active){
+	boss_music_active = (room == rm_level_10_01) && (global.boss_current != -1);
+}
+
+if (boss_music_active){
+	var boss_inst = noone;
+	
+	if (instance_exists(obj_giantturret)){
+		boss_inst = obj_giantturret.id;
+	}else if (instance_exists(obj_antagonist)){
+		boss_inst = obj_antagonist.id;
+	}
+	
+	if (boss_music_state == "opening"){
+		var intro_position;
+		
+		if (!boss_music_state_started){
+			if (!audio_is_playing(m_boss_final_intro_0)){
+				boss_music_opening_instance = audio_play_sound(m_boss_final_intro_0, 3, false);
+			}
+			
+			boss_music_state_started = true;
+		}
+		
+		intro_position = audio_sound_get_track_position(boss_music_opening_instance);
+		
+		if (intro_position >= 10.2){
+			boss_music_state = "stage 1";
+			boss_music_state_started = false;
+		}
+	}
+	
+	if (boss_music_state == "stage 1"){
+		if (!boss_music_state_started){
+			audio_stop_sound(m_boss_final_loop1_layer1_0);
+			audio_stop_sound(m_boss_final_loop1_layer2_0);
+			
+			boss_music_stage1_layer1_instance = audio_play_sound(m_boss_final_loop1_layer1_0, 3, true);
+			boss_music_stage1_layer2_instance = audio_play_sound(m_boss_final_loop1_layer2_0, 3, true);
+			
+			audio_sound_gain(boss_music_stage1_layer2_instance, 0, 0);
+			
+			boss_music_state_started = true;
+		}
+		
+		if (boss_inst != noone){
+			if (boss_inst.object_index == obj_giantturret){
+				audio_sound_gain(boss_music_stage1_layer2_instance, 1 - (boss_inst.health_current / boss_inst.health_max), 0);
+			}else{
+				boss_music_state = "stage 1 transition";
+				boss_music_state_started = false;
+			}
+		}
+	}
+	
+	if (boss_music_state == "stage 1 transition"){
+		var transition_position;
+		
+		if (!boss_music_state_started){
+			boss_music_transition_instance = audio_play_sound(m_boss_final_transition_0, 3, false);
+			
+			audio_sound_gain(boss_music_stage1_layer1_instance, 0, 5000);
+			audio_sound_gain(boss_music_stage1_layer2_instance, 0, 5000);
+			
+			boss_music_state_started = true;
+		}
+		
+		transition_position = audio_sound_get_track_position(boss_music_transition_instance);
+		
+		if (transition_position >= 4.35){
+			boss_music_state = "stage 2";
+			boss_music_state_started = false;
+		}
+	}
+	
+	if (boss_music_state == "stage 2"){
+		if (!boss_music_state_started){
+			audio_stop_sound(m_boss_final_loop2_layer1_0);
+			audio_stop_sound(m_boss_final_loop2_layer2_0);
+			
+			boss_music_stage2_layer1_instance = audio_play_sound(m_boss_final_loop2_layer1_0, 3, true);
+			boss_music_stage2_layer2_instance = audio_play_sound(m_boss_final_loop2_layer2_0, 3, true);
+			
+			audio_sound_gain(boss_music_stage2_layer2_instance, 0, 0);
+			
+			boss_music_state_started = true;
+		}
+		
+		if (boss_inst != noone){
+			if (boss_inst.object_index == obj_antagonist){
+				audio_sound_gain(boss_music_stage2_layer2_instance, 1 - (boss_inst.health_current / boss_inst.health_max), 0);
+			}
+		}else{
+			boss_music_state = "outro";
+			boss_music_state_started = false;
+		}
+	}
+	
+	if (boss_music_state == "outro"){
+		if (!boss_music_state_started){
+			boss_music_outro_instance = audio_play_sound(m_boss_final_outro_0, 3, false);
+			
+			audio_sound_gain(boss_music_stage2_layer1_instance, 0, 5000);
+			audio_sound_gain(boss_music_stage2_layer2_instance, 0, 5000);
+			
+			boss_music_state_started = true;
+		}
+		
+		boss_music_active = false;
+		
+		boss_music_state = "opening";
+		boss_music_state_started = false;
+		
+		boss_music_opening_instance = noone;
+		boss_music_stage1_layer1_instance = noone;
+		boss_music_stage1_layer2_instance = noone;
+		boss_music_stage2_layer1_instance = noone;
+		boss_music_stage2_layer2_instance = noone;
+		boss_music_outro_instance = noone;
+	}
+}

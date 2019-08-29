@@ -1,6 +1,6 @@
 var x_to, y_to;
 var xx, yy;
-var mdist = distance_to_point(mouse_x, mouse_y);
+var mdist = distance_to_point(scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (!global.game_pause){
 	// Zoom
@@ -43,7 +43,7 @@ if (!global.game_pause){
 				yy += lengthdir_y(30, obj_player.dash_direction);
 			}
 	
-			dir = point_direction(x, y, mouse_x, mouse_y);
+			dir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 			x_to = clamp(xx, 0, room_width);
 			y_to = clamp(yy, 0, room_height);
 	

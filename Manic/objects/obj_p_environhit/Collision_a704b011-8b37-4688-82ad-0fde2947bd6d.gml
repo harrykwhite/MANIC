@@ -21,4 +21,5 @@ if (object_index == obj_barrel_2) || (object_index == obj_barrel_3){
 	}
 }
 
-other.destroy = true;
+other.deffect = true;
+instance_destroy(other);

@@ -14,11 +14,4 @@ option_setting_audio_value[1] = global.game_option[| Options.SoundVolume];
 option_setting_audio_value[2] = global.game_option[| Options.MusicVolume];
 option_setting_audio_value[3] = global.game_option[| Options.AmbienceVolume];
 
-option_setting_controls_value[0] = global.game_option[| Options.Input_MoveRight];
-option_setting_controls_value[1] = global.game_option[| Options.Input_MoveLeft];
-option_setting_controls_value[2] = global.game_option[| Options.Input_MoveUp];
-option_setting_controls_value[3] = global.game_option[| Options.Input_MoveDown];
-option_setting_controls_value[4] = global.game_option[| Options.Input_Dash];
-option_setting_controls_value[5] = global.game_option[| Options.Input_Interact];
-option_setting_controls_value[6] = global.game_option[| Options.Input_Attack];
-option_setting_controls_value[7] = global.game_option[| Options.Input_Throw];
+option_setting_controls_value[0] = global.game_input_type;

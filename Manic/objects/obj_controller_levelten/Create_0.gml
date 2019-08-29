@@ -12,7 +12,7 @@ switch(room){
 	case rm_level_10_00:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 502;
-			spawn_y = 788;
+			spawn_y = 1528;
 		}else{
 			spawn_x = 502;
 			spawn_y = 188;
@@ -27,7 +27,18 @@ switch(room){
 
 // Other
 room_music_transition = false;
-weaponstart_set = false;
+
+boss_music_active = false;
+
+boss_music_state = "opening";
+boss_music_state_started = false;
+
+boss_music_opening_instance = noone;
+boss_music_stage1_layer1_instance = noone;
+boss_music_stage1_layer2_instance = noone;
+boss_music_stage2_layer1_instance = noone;
+boss_music_stage2_layer2_instance = noone;
+boss_music_outro_instance = noone;
 
 global.cutscene_current = 2;
 sprite_index = noone;

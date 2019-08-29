@@ -8,6 +8,7 @@ if (instance_exists(target)){
 	var dir_to_target = point_direction(x, y, target.x, target.y);
 	var phasetwo = health_current < health_max / 3;
 	var nearest_bullet = instance_nearest(x, y, obj_proj_0);
+	var swing_interval = 50;
 	
 	if (weapon_exists){
 		weapon_exists = instance_exists(weapon);
@@ -25,12 +26,12 @@ if (instance_exists(target)){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
-			if (distance_to_object(target) < 27){
+			if (distance_to_object(target) < 40){
 				if (attack_time > 0){
 					attack_time --;
 				}else{
 					weapon.attack = true;
-					attack_time = 40;
+					attack_time = swing_interval;
 				}
 			}
 		}
@@ -50,10 +51,10 @@ if (instance_exists(target)){
 				}
 			}else{
 				var dir = random(360);
-				var len = random_range(95, 130);
+				var len = random_range(135, 170);
 				run_x = target.x + lengthdir_x(len, dir);
 				run_y = target.y + lengthdir_y(len, dir);
-				run_time = 40;
+				run_time = 70;
 			}
 		}
 	}else if (state == 1){
@@ -112,7 +113,7 @@ if (instance_exists(target)){
 				weapon.attack = true;
 				
 				if (nearest_barrel_from_target != noone){
-					if (point_distance(target.x, target.y, nearest_barrel_from_target.x, nearest_barrel_from_target.y) < 70){
+					if (point_distance(target.x, target.y, nearest_barrel_from_target.x, nearest_barrel_from_target.y) < 50){
 						var dir = point_direction(x, y, nearest_barrel_from_target.x, nearest_barrel_from_target.y + 4);
 						
 						if ((image_xscale == scale) && ((dir < 90) || (dir > 270))) || ((image_xscale == -scale) && ((dir >= 90) || (dir <= 270))){
@@ -130,25 +131,32 @@ if (instance_exists(target)){
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
 			
+			if (weapon.dir <= 90 || weapon.dir >= 270){
+				weapon.dir += (throw_weapon_time / throw_weapon_time_max) * 75;
+			}else{
+				weapon.dir -= (throw_weapon_time / throw_weapon_time_max) * 75;
+			}
+			
 			if (throw_weapon_time < throw_weapon_time_max){
 				throw_weapon_time ++;
 			}else{
 				var drop = instance_create(x, y, obj_weapondrop);
 				drop.index = global.pawnweapon_playerindex[weapon_index];
-				drop.spd = 13;
+				drop.spd = 9;
 				drop.angle = weapon.dir;
 				drop.dir = dir_to_target + random_range(-3, 3);
 				drop.enemy = true;
-				drop.damage = 4;
+				drop.damage = 2;
 				
 				if (drop.index == PlayerWeapon.Revolver){
-					drop.ammo = irandom(4);
+					drop.ammo = irandom(6) + 3;
 					drop.dataset = true;
 				}
 				
 				throw_weapon_inst = drop;
 				
-				scr_effect_screenshake(1);
+				scr_effect_freeze(10);
+				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_swing_0, false, 0.9, 1.1);
 				
 				instance_destroy(weapon);
@@ -169,7 +177,7 @@ if (instance_exists(target)){
 					        weapon.owner = id;
 							weapon_change_time = 0;
 							
-							scr_sound_play_distance(snd_weapon_pickup_0, false, 240);
+							scr_sound_play_distance(snd_weapon_pickup_0, false, 140);
 							state_time_max = 0;
 						}
 					}
@@ -305,6 +313,8 @@ if (instance_exists(target)){
 		
 		weapon_change_time = 0;
 		weapon_change_origin = weapon_index;
+		
+		attack_time = 70;
 		
 		state_time = 0;
 	}

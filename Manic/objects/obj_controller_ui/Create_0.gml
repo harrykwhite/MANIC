@@ -30,8 +30,10 @@ weaponammo_scaleTo = 1;
 weaponammo_x = 0;
 
 dialogue = "";
-dialogue_yoff_max = 20;
-dialogue_yoff = dialogue_yoff_max;
+dialogue_voice = noone;
+dialogue_char_count = 0;
+dialogue_char_speed = 0.75;
+dialogue_length = 0;
 dialogue_time = 0;
 dialogue_pause = false;
 dialogue_next = false;
@@ -48,6 +50,7 @@ enum TutourialStage{
 	Throw,
 	PickupMelee,
 	Switch,
+	CollectAmmo,
 	Dash,
 }
 
@@ -59,14 +62,26 @@ tutourial_stage = 0;
 tutourial_stage_timer = -1;
 tutourial_stage_pickupmelee_cseen = false;
 tutourial_stage_pickupmelee_equipped = false;
+tutourial_stage_ammocollected_done = false;
 
-tutourial_text[TutourialStage.Movement] = "Use the [" + scr_keycheck_string(global.game_option[| Options.Input_MoveUp]) + scr_keycheck_string(global.game_option[| Options.Input_MoveLeft]) + scr_keycheck_string(global.game_option[| Options.Input_MoveDown]) + scr_keycheck_string(global.game_option[| Options.Input_MoveRight]) + "] keys to move";
-tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with [" + scr_keycheck_string(global.game_option[| Options.Input_Interact]) + "]";
-tutourial_text[TutourialStage.Shoot] = "Shoot with [" + scr_mousecheck_string(global.game_option[| Options.Input_Attack]) + "]";
-tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing [" + scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + "]";
+if (global.game_input_type == InputType.Keyboard){
+	tutourial_text[TutourialStage.Movement] = "Use the [" + scr_input_get_name(InputBinding.Up) + scr_input_get_name(InputBinding.Left) + scr_input_get_name(InputBinding.Down) + scr_input_get_name(InputBinding.Right) + "] keys to move";
+	tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with [" + scr_input_get_name(InputBinding.Interact) + "]";
+	tutourial_text[TutourialStage.Shoot] = "Shoot with [" + scr_input_get_name(InputBinding.Attack) + "]";
+	tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing [" + scr_input_get_name(InputBinding.Throw) + "]";
+	tutourial_text[TutourialStage.Switch] = "Switch between weapons by using the [" + scr_input_get_name(InputBinding.SwitchWeaponForward) + "] or the number keys";
+	tutourial_text[TutourialStage.Dash] = "Dash by pressing [" + scr_input_get_name(InputBinding.Dash) + "]";
+}else{
+	tutourial_text[TutourialStage.Movement] = "Move with " + scr_input_get_name(InputBinding.Up);
+	tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with " + scr_input_get_name(InputBinding.Interact);
+	tutourial_text[TutourialStage.Shoot] = "Shoot with " + scr_input_get_name(InputBinding.Attack);
+	tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing " + scr_input_get_name(InputBinding.Throw);
+	tutourial_text[TutourialStage.Switch] = "Switch between weapons by pressing " + scr_input_get_name(InputBinding.SwitchWeaponForward);
+	tutourial_text[TutourialStage.Dash] = "Dash by pressing " + scr_input_get_name(InputBinding.Dash);
+}
+
 tutourial_text[TutourialStage.PickupMelee] = "Pick up the melee weapon by the crates";
-tutourial_text[TutourialStage.Switch] = "Switch between weapons by using the [Mouse Scroll Wheel]";
-tutourial_text[TutourialStage.Dash] = "Dash by pressing [" + scr_keycheck_string(global.game_option[| Options.Input_Dash]) + "]";
+tutourial_text[TutourialStage.CollectAmmo] = "Break open the crates to retrieve ammo";
 
 if (global.level_current == Level.Prologue){
 	tutourial = true;
@@ -81,6 +96,9 @@ redtint_flash = 0;
 pause_text_update = false;
 pause_text_alpha = 0;
 pause_selected = -1;
+pause_selected_break = 0;
+pause_selected_held_time = 0;
+pause_selected_held_time_max = 40;
 pause_has_selected = false;
 pause_has_selected_index = -1;
 pause_has_selected_time = 0;
@@ -95,11 +113,12 @@ pause_selectoption_scale[2] = 1;
 pause_selectedmax = array_length_1d(pause_selectoption);
 
 game_opening_intro = true;
+game_opening_intro_startbreak = 30;
 game_opening_intro_speed = 1.2;
 game_opening_intro_alpha = 4.7;
 game_opening_intro_text_alpha = -0.25;
 game_opening_intro_text_stage = 0;
-game_opening_intro_text_time = 60 * 4;
+game_opening_intro_text_time = 60 * 9;
 
 if (global.level_current != Level.Prologue){
 	game_opening_intro = false;
@@ -243,8 +262,11 @@ pausedialogue = false;
 pausedialogue_alpha = 0;
 pausedialogue_type = 1;
 pausedialogue_time = 0;
+pausedialogue_break = 0;
 pausedialogue_option_exitscale = 1;
 pausedialogue_option_selected = -1;
+pausedialogue_option_selected_held_time = 0;
+pausedialogue_option_selected_held_time_max = 40;
 pausedialogue_option_max = 0;
 pausedialogue_type_text = "I haven't been given dialogue yet!";
 pausedialogue_type_option[0] = -1;

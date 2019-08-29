@@ -1,5 +1,10 @@
 explode = false;
 explode_anim = false;
+
+alpha_flicker = false;
+alpha_flicker_time_max = 5;
+alpha_flicker_time = alpha_flicker_time_max;
+
 bounce_time = 0;
 scale = 1;
 

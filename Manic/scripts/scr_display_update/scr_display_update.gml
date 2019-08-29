@@ -56,14 +56,15 @@ if (!fullscreen){
 	window_set_size(window_width, window_height);
 }
 
-display_set_gui_size(ideal_width / uiscale, ideal_height / uiscale);
-camera_set_view_size(view_camera[0], 720 / camscale, 405 / camscale);
-display_reset(0, false);
+obj_controller_all.gui_resize_w = ideal_width / uiscale;
+obj_controller_all.gui_resize_h = ideal_height / uiscale;
+obj_controller_all.gui_resize_time = 2;
 
-//if ((surface_get_width(application_surface) != window_width / camscale) || (surface_get_height(application_surface) != window_height / camscale)){
-//	obj_controller_all.app_surf_refresh_time = 0;
-//	obj_controller_all.app_surf_refresh_w = window_width / camscale;
-//	obj_controller_all.app_surf_refresh_h = window_height / camscale;
-//}
+obj_controller_all.camera_resize_w = 720 / camscale;
+obj_controller_all.camera_resize_h = 405 / camscale;
+obj_controller_all.camera_resize_time = 1;
+
+display_reset(0, false);
+surface_resize(application_surface, 720, 405);
 
 obj_controller_all.center_window_time = 2;

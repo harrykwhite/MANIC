@@ -1,3 +1,7 @@
+if (!instance_exists(obj_player)){
+	return;
+}
+
 if (demount) && (!global.game_pause){
 	scr_player_stamina_drain(6);
 	use_current = false;
@@ -12,11 +16,11 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	return;
 }
 
-var mdir = point_direction(x, y, mouse_x, mouse_y);
+var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 sprite_index = spr_weapon_29;
 
 if (use_current){
-    if (mouse_check_button(obj_controller_all.key_attack)){
+    if (scr_input_is_down(InputBinding.Attack)){
         if (shoot_can) && (global.weapon_slot_standalone_ammo > 0){
             scr_effect_screenshake(2);
 			scr_player_flash(6);
@@ -28,7 +32,7 @@ if (use_current){
 	        var ypos = y + lengthdir_y(12, mdir);
 			image_speed = 1;
 			
-	        var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
+	        var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
 			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
 		    part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
@@ -47,7 +51,7 @@ if (use_current){
         }
     }
 	
-	if (mouse_check_button_pressed(obj_controller_all.key_attack)){
+	if (scr_input_is_pressed(InputBinding.Attack)){
 		if (global.weapon_slot_standalone_ammo <= 0){
 			scr_sound_play(snd_weapon_click_0, false, 0.8, 1);
 		}
@@ -76,8 +80,14 @@ if (interact) && (!use_current){
 
 		if (ammo == -1){
 			ammo = global.weapon_ammomax[global.weapon_slot_standalone];
+			
+			if (ammostart != -1){
+				ammo = ammostart;
+			}
+			
 			global.weapon_slot_standalone_ammo = ammo;
 		}
+		
 		interact_activate = false;
 		interact = false;
 	}

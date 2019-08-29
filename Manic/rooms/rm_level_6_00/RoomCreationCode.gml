@@ -14,7 +14,7 @@ if (global.game_level_opening_type == 1){
 scr_room_spawn_companion();
 
 while(!instance_exists(obj_controller_mouse)){
-    instance_create(mouse_x, mouse_y, obj_controller_mouse);
+    instance_create(scr_input_get_mouse_x(), scr_input_get_mouse_y(), obj_controller_mouse);
 }
 
 instance_activate_all();

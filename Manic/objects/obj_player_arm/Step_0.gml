@@ -47,7 +47,7 @@ if (instance_exists(obj_player)){
 	    }
     
 	    // Weapon Position -------------------------------------------------------------------------------------------------
-	    var dir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+	    var dir = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 		var genericpos = true;
 		
 		if (global.cutscene_current != -1){

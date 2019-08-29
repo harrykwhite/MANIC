@@ -84,7 +84,7 @@ if (kill){
 	
 	if (index == PlayerWeapon.Stick){
 		scr_effect_screenshake(3);
-		scr_effect_freeze(13);
+		scr_effect_freeze(8);
 		scr_sound_play(snd_weapon_stick_break_0, false, 0.8, 1.2);
 		
 		var sticklen = 20, thislen = 1;
@@ -130,10 +130,11 @@ if (instance_exists(obj_player)){
 	}
     
     if (pickup){
-        if (keyboard_check_pressed(obj_controller_all.key_interact)) && (global.player_stamina_active){
+        if (scr_input_is_pressed(InputBinding.Interact)) && (global.player_stamina_active){
 			if (global.weapon_slot_standalone == -1){
 				var oldweapon = global.weapon_slot[global.weapon_slotcurrent];
 				var dropammo = global.weapon_slotammo[global.weapon_slotcurrent];
+				var dropquantity = global.weapon_slotquantity[global.weapon_slotcurrent];
 				var sound = snd_weapon_pickup_1;
 				
 				if (global.weapon_type[index] == WeaponType.Ranged){
@@ -160,8 +161,7 @@ if (instance_exists(obj_player)){
 						}
 						
 						if (global.weapon_type[index] == WeaponType.Throwing){
-							global.weapon_quantity[global.weapon_slot[i]] += quantity;
-							global.weapon_quantity[global.weapon_slot[i]] = max(global.weapon_quantity[global.weapon_slot[i]], 1);
+							global.weapon_slotquantity[i] += quantity;
 							instance_destroy();
 						}
 						
@@ -210,13 +210,10 @@ if (instance_exists(obj_player)){
 					var drop = instance_create(obj_player.x, obj_player.y, obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
 					drop.index = weapon_dropindex;
 					drop.ammo = dropammo;
+					drop.quantity = dropquantity;
 					drop.angle = angle + random_range(-30, 30);
 					drop.dataset = true;
 					drop.drop = true;
-					
-					if (global.weapon_type[index] != WeaponType.Throwing) && (global.weapon_type[oldweapon] == WeaponType.Throwing){
-						drop.quantity = global.weapon_quantity[oldweapon];
-					}
 				}
 				
 				// Shake effect
@@ -224,11 +221,12 @@ if (instance_exists(obj_player)){
 	            obj_controller_ui.weaponslot_weaponscale[newslotind] = 0;
 				
 				// Set the new weapon quantity
-				if (global.weapon_type[index] == WeaponType.Throwing){
-					global.weapon_quantity[index] = quantity;
+				if (quantity != -1){
+					global.weapon_slotquantity[newslotind] = quantity;
 				}
 				
-	            if (ammo != -1){ // Set the ammo of the new object, based on what it was originally.
+				// Set the new ammo amount
+	            if (ammo != -1){
 					global.weapon_slotammo[newslotind] = ammo;
 	            }
 				

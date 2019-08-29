@@ -38,12 +38,14 @@ if (instance_exists(target)){
 			}
 		}
 		
-		if (attack_time > 0){
-			attack_time --;
-		}else{
-			leash_bite = true;
-			attack_active_time = 55;
-			attack_time = random_range(50, 170);
+		if (!keeper.cutscene_prop && !keeper.in_cutscene){
+			if (attack_time > 0){
+				attack_time --;
+			}else{
+				leash_bite = true;
+				attack_active_time = 55;
+				attack_time = random_range(50, 170);
+			}
 		}
 		
 		leash_length_offset  = 0;

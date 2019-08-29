@@ -13,7 +13,7 @@ if (instance_exists(obj_player)){
     
     // Position
 	if (!global.game_pause){
-	    var mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+	    var mdir = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 	    shoot_bounceback = approach(shoot_bounceback, 0, 20);
     
 	    if (instance_exists(obj_player_arm)){

@@ -33,6 +33,12 @@ if (instance_exists(owner)){
 		var ypos = y + lengthdir_y(22 * owner.scale, dir);
 		var isEnemy = true;
 		
+		if (collision_line(owner.x, owner.y + 4, xpos, ypos, obj_p_solid, false, true)){
+			var dist = collision_distance_object(owner.x, owner.y + 4, xpos, ypos, obj_p_solid, 1);
+			xpos -= lengthdir_x(22 * owner.scale, dir) + lengthdir_x(dist, dir);
+			ypos -= lengthdir_y(22 * owner.scale, dir) + lengthdir_y(dist, dir);
+		}
+		
 		scr_effect_screenshake(2);
 		scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
 		owner.light_brightness = 1.25;

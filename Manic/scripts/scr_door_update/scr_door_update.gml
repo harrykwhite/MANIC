@@ -37,7 +37,7 @@ if (interact && global.cutscene_current == -1 && !anim) || (auto_interact){
 	}
 	
 	if (interact_break <= 0 || auto_interact){
-		if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active) || (auto_interact){
+		if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active) || (auto_interact){
 			var bleft = x + sprite_get_bbox_left(closedsprite);
 			var btop = y + sprite_get_bbox_top(closedsprite);
 			var bright = x + sprite_get_bbox_right(closedsprite);

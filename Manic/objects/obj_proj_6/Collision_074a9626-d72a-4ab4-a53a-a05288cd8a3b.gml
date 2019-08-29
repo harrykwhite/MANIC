@@ -1,3 +1,4 @@
 if (other.object_index != obj_p_environhit) && (object_get_parent(other.object_index) != obj_p_environhit){
-	destroy = true;
+	deffect = true;
+	instance_destroy();
 }

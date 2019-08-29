@@ -21,7 +21,7 @@ global.level_turret_number[Level.Prologue] = 0;
 global.level_entered[Level.Prologue] = false;
 global.level_cleared[Level.Prologue] = false;
 global.level_kill_count[Level.Prologue] = 0;
-global.level_kill_max[Level.Prologue] = 3;
+global.level_kill_max[Level.Prologue] = 5;
 global.level_checkpoint_found[Level.Prologue] = false;
 
 global.level_name[Level.RavagedTown] = "Ravaged Town";
@@ -45,7 +45,7 @@ global.level_turret_number[Level.WesternFarmland] = 0;
 global.level_entered[Level.WesternFarmland] = false;
 global.level_cleared[Level.WesternFarmland] = false;
 global.level_kill_count[Level.WesternFarmland] = 0;
-global.level_kill_max[Level.WesternFarmland] = 60;
+global.level_kill_max[Level.WesternFarmland] = 50;
 global.level_checkpoint_found[Level.WesternFarmland] = false;
 
 global.level_name[Level.UndergroundBunker] = "Underground Bunker";
@@ -57,11 +57,11 @@ global.level_turret_number[Level.UndergroundBunker] = 0;
 global.level_entered[Level.UndergroundBunker] = false;
 global.level_cleared[Level.UndergroundBunker] = false;
 global.level_kill_count[Level.UndergroundBunker] = 0;
-global.level_kill_max[Level.UndergroundBunker] = 150;
+global.level_kill_max[Level.UndergroundBunker] = 110;
 global.level_checkpoint_found[Level.UndergroundBunker] = false;
 
 global.level_name[Level.WinterTown] = "Winter Town";
-global.level_room[Level.WinterTown] = rm_level_4_02;
+global.level_room[Level.WinterTown] = rm_level_4_00;
 global.level_preroom[Level.WinterTown] = rm_level_4_pre_00;
 global.level_collectable_current[Level.WinterTown] = 0;
 global.level_collectable_number[Level.WinterTown] = 4;
@@ -69,7 +69,7 @@ global.level_turret_number[Level.WinterTown] = 0;
 global.level_entered[Level.WinterTown] = false;
 global.level_cleared[Level.WinterTown] = false;
 global.level_kill_count[Level.WinterTown] = 0;
-global.level_kill_max[Level.WinterTown] = 75;
+global.level_kill_max[Level.WinterTown] = 40;
 global.level_checkpoint_found[Level.WinterTown] = false;
 
 global.level_name[Level.HumanPrison] = "Human Prison";
@@ -81,19 +81,19 @@ global.level_turret_number[Level.HumanPrison] = 1;
 global.level_entered[Level.HumanPrison] = false;
 global.level_cleared[Level.HumanPrison] = false;
 global.level_kill_count[Level.HumanPrison] = 0;
-global.level_kill_max[Level.HumanPrison] = 165;
+global.level_kill_max[Level.HumanPrison] = 130;
 global.level_checkpoint_found[Level.HumanPrison] = false;
 
 global.level_name[Level.TrainStation] = "Train Station";
 global.level_room[Level.TrainStation] = rm_level_6_00;
-global.level_preroom[Level.TrainStation] = noone;
+global.level_preroom[Level.TrainStation] = rm_level_6_pre_00;
 global.level_collectable_current[Level.TrainStation] = 0;
 global.level_collectable_number[Level.TrainStation] = 3;
 global.level_turret_number[Level.TrainStation] = 1;
 global.level_entered[Level.TrainStation] = false;
 global.level_cleared[Level.TrainStation] = false;
 global.level_kill_count[Level.TrainStation] = 0;
-global.level_kill_max[Level.TrainStation] = 70;
+global.level_kill_max[Level.TrainStation] = 50;
 global.level_checkpoint_found[Level.TrainStation] = false;
 
 global.level_name[Level.TheCemetery] = "The Cemetery";
@@ -105,7 +105,7 @@ global.level_turret_number[Level.TheCemetery] = 3;
 global.level_entered[Level.TheCemetery] = false;
 global.level_cleared[Level.TheCemetery] = false;
 global.level_kill_count[Level.TheCemetery] = 0;
-global.level_kill_max[Level.TheCemetery] = 70;
+global.level_kill_max[Level.TheCemetery] = 50;
 global.level_checkpoint_found[Level.TheCemetery] = false;
 
 global.level_name[Level.DesolateVillage] = "Desolate Village";
@@ -117,7 +117,7 @@ global.level_turret_number[Level.DesolateVillage] = 1;
 global.level_entered[Level.DesolateVillage] = false;
 global.level_cleared[Level.DesolateVillage] = false;
 global.level_kill_count[Level.DesolateVillage] = 0;
-global.level_kill_max[Level.DesolateVillage] = 80;
+global.level_kill_max[Level.DesolateVillage] = 60;
 global.level_checkpoint_found[Level.DesolateVillage] = false;
 
 global.level_name[Level.IntoTheCity] = "Into the City";
@@ -129,7 +129,7 @@ global.level_turret_number[Level.IntoTheCity] = 3;
 global.level_entered[Level.IntoTheCity] = false;
 global.level_cleared[Level.IntoTheCity] = false;
 global.level_kill_count[Level.IntoTheCity] = 0;
-global.level_kill_max[Level.IntoTheCity] = 130;
+global.level_kill_max[Level.IntoTheCity] = 80;
 global.level_checkpoint_found[Level.IntoTheCity] = false;
 
 global.level_name[Level.CityHeadquarters] = "City Headquarters";

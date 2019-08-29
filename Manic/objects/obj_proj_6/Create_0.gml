@@ -6,4 +6,4 @@ creator = obj_player;
 owner = noone;
 owner_offset_x = 0;
 owner_offset_y = 0;
-destroy = false;
+deffect = false;

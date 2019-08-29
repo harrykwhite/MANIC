@@ -1,4 +1,5 @@
 var levelcur = global.level_current;
+var slotcount = global.weapon_slotmax;
 
 scr_position_view();
 scr_inboss();
@@ -49,26 +50,14 @@ if (levelcur != Level.Prologue){
 	}
 }
 
-// Recording level start data
-//if (!levelstart_record_set){
-//	var rslotcount = array_length_1d(global.weapon_slot);
-//	for(var i = 0; i < rslotcount; i ++){
-//		global.levelstart_weapon[i] = global.weapon_slot[i];
-//		global.levelstart_weaponammo[i] = global.weapon_slotammo[i];
-	
-//		global.levelstart_weaponquantity[i] = -1;
-//		if (global.weapon_slot[i] != -1){
-//			if (global.weapon_type[global.weapon_slot[i]] == WeaponType.Throwing){
-//				global.levelstart_weaponquantity[i] = global.weapon_quantity[global.weapon_slot[i]];
-//			}
-//		}
-//	}
-	
-//	global.levelstart_playerhealth = global.player_health_current;
-//}
-
 // Recording checkpoint data
 if (checkpoint_create) && (instance_exists(obj_player)){
+	for(var i = 0; i < slotcount; i ++){
+		global.checkpoint_weapon_slot[i] = global.weapon_slot[i];
+		global.checkpoint_weapon_slotammo[i] = global.weapon_slotammo[i];
+		global.checkpoint_weapon_slotquantity[i] = global.weapon_slotquantity[i];
+	}
+	
 	global.checkpoint_killcount = global.level_kill_count[levelcur];
 	global.checkpoint_levelcleared = global.level_cleared[levelcur];
 	global.checkpoint_starttype = global.game_level_opening_type;
@@ -112,12 +101,12 @@ if (global.cutscene_current != -1){
 
 // Game Pausing
 if (global.cutscene_current == -1) && (instance_exists(obj_player)){
-    if (keyboard_check_pressed(vk_escape)) && (!obj_controller_ui.pausedialogue){
+    if (scr_input_is_pressed(InputBinding.Pause)) && (!obj_controller_ui.pausedialogue){
         scr_toggle_pause(!global.game_pause);
     }
 	
 	if (global.game_pause){
-		if (keyboard_check_direct(vk_escape)){
+		if (scr_input_is_down(InputBinding.Pause)){
 			if (pause_time < 1){
 				pause_time += 0.025;
 			}else{
@@ -194,7 +183,6 @@ if (!global.game_pause){
 					
 					var switched = false;
 					
-					var slotcount = global.weapon_slotmax;
 					for(var i = 0; i < slotcount; i ++){
 						if (global.weapon_slotcurrent == i){
 							continue;
@@ -208,18 +196,18 @@ if (!global.game_pause){
 						}
 					}
 					
-					if (mouse_wheel_up()){
+					if (scr_input_is_pressed(InputBinding.SwitchWeaponBack)){
 						obj_controller_mouse.mouse_scale = 2;
 						scr_weapon_switch(false);
 						switched = true;
-					}else if (mouse_wheel_down()){
+					}else if (scr_input_is_pressed(InputBinding.SwitchWeaponForward)){
 						obj_controller_mouse.mouse_scale = 2;
 						scr_weapon_switch(true);
 						switched = true;
 					}
 					
 					if (switched){
-						weaponswitch_break = 10;
+						weaponswitch_break = 6;
 						
 						if (levelcur == Level.Prologue){
 							with(obj_controller_ui){

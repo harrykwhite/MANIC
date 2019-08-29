@@ -14,6 +14,10 @@ switch(rm){
 		return true;
 		break;
 	
+	case rm_level_2_04:
+		return true;
+		break;
+	
 	case rm_level_2_post_00:
 		return true;
 		break;
@@ -27,6 +31,10 @@ switch(rm){
 		break;
 	
 	case rm_level_6_pre_00:
+		return true;
+		break;
+	
+	case rm_level_7_post_00:
 		return true;
 		break;
 	

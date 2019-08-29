@@ -42,7 +42,7 @@ if (explode){
 	}
     
 	repeat(3){
-		part_particles_create(global.ps_front, x + random_range(-3, 3), y + random_range(-3, 3), global.pt_ash_0_perm, 1);
+		part_particles_create(global.ps_bottom, x + random_range(-3, 3), y + random_range(-3, 3), global.pt_ash_0_perm, 1);
 	}
 	
 	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);

@@ -1,7 +1,7 @@
 scr_save_game_reader();
 
 if (!ds_exists(global.game_option, ds_type_list)){
-	scr_option_init();
+	scr_options_init();
 }
 
 audio_play_sound(m_ambience_rain_0, 3, true);
@@ -195,53 +195,14 @@ option_setting_audio_scale[3] = 1;
 #endregion
 
 #region Options -> Settings -> Controls
-option_setting_controls[0] = "Move Right";
-option_setting_controls_edit[0] = Options.Input_MoveRight;
-option_setting_controls_value[0] = global.game_option[| Options.Input_MoveRight];
-option_setting_controls_ismouse[0] = false;
+option_setting_controls[0] = "Input Type";
+option_setting_controls_edit[0] = noone;
+option_setting_controls_value[0] = global.game_input_type;
+option_setting_controls_value_min[0] = 0;
+option_setting_controls_value_max[0] = 1;
+option_setting_controls_value_interval[0] = 1;
+option_setting_controls_unit[0] = "";
 option_setting_controls_scale[0] = 1;
-
-option_setting_controls[1] = "Move Left";
-option_setting_controls_edit[1] = Options.Input_MoveLeft;
-option_setting_controls_value[1] = global.game_option[| Options.Input_MoveLeft];
-option_setting_controls_ismouse[1] = false;
-option_setting_controls_scale[1] = 1;
-
-option_setting_controls[2] = "Move Up";
-option_setting_controls_edit[2] = Options.Input_MoveUp;
-option_setting_controls_value[2] = global.game_option[| Options.Input_MoveUp];
-option_setting_controls_ismouse[2] = false;
-option_setting_controls_scale[2] = 1;
-
-option_setting_controls[3] = "Move Down";
-option_setting_controls_edit[3] = Options.Input_MoveDown;
-option_setting_controls_value[3] = global.game_option[| Options.Input_MoveDown];
-option_setting_controls_ismouse[3] = false;
-option_setting_controls_scale[3] = 1;
-
-option_setting_controls[4] = "Dash";
-option_setting_controls_edit[4] = Options.Input_Dash;
-option_setting_controls_value[4] = global.game_option[| Options.Input_Dash];
-option_setting_controls_ismouse[4] = false;
-option_setting_controls_scale[4] = 1;
-
-option_setting_controls[5] = "Interact";
-option_setting_controls_edit[5] = Options.Input_Interact;
-option_setting_controls_value[5] = global.game_option[| Options.Input_Interact];
-option_setting_controls_ismouse[5] = false;
-option_setting_controls_scale[5] = 1;
-
-option_setting_controls[6] = "Attack";
-option_setting_controls_edit[6] = Options.Input_Attack;
-option_setting_controls_value[6] = global.game_option[| Options.Input_Attack];
-option_setting_controls_ismouse[6] = true;
-option_setting_controls_scale[6] = 1;
-
-option_setting_controls[7] = "Throw";
-option_setting_controls_edit[7] = Options.Input_Throw;
-option_setting_controls_value[7] = global.game_option[| Options.Input_Throw];
-option_setting_controls_ismouse[7] = true;
-option_setting_controls_scale[7] = 1;
 #endregion
 
 #region Options -> Level select
@@ -279,8 +240,18 @@ in_settings_display = false;
 in_settings_audio = false;
 in_settings_controls = false;
 
-searching_for_input = false;
-searching_for_input_wait = 0;
-searching_for_input_mouse = false;
+warning_prompt = false;
+warning_prompt_alpha = 0;
+warning_prompt_selected = -1;
+warning_prompt_selected_break = 0;
+warning_prompt_scale[0] = 1;
+warning_prompt_scale[1] = 1;
+
+gamepad_device_search = false;
+gamepad_device_search_time = 0;
+
 in_levelselect = false;
 selected = -1;
+selected_break = 0;
+selected_held_time = 0;
+selected_held_time_max = 40;

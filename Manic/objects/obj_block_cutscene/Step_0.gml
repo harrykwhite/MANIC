@@ -38,7 +38,7 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 					scr_ui_control_indicate(global.level_name[moveto_level] + "");
 				}
 				
-				if (!keyboard_check_pressed(obj_controller_all.key_interact) || !global.player_stamina_active){
+				if (!scr_input_is_pressed(InputBinding.Interact) || !global.player_stamina_active){
 					return;
 				}
 				

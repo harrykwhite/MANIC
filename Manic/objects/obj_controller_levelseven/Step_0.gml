@@ -85,7 +85,7 @@ if (global.game_combat_in_hordechallenge){
 }
 
 if (scr_level_is_peaceful(room)){
-	lighting_to = 0.9;
+	lighting_to = 0.875 + (mean(camx / room_width, 1 - (camy / room_height)) * 0.025);
 }
 
 if (lighting < lighting_to){
@@ -105,6 +105,8 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 		
 		if (global.game_combat_in_hordechallenge){
 			spawn_rate += horde_spawn_rate;
+		}else{
+			global.game_combat_state_time_real ++;
 		}
 		
 		spawn_rate += global.game_combat_playerskill - 1;
@@ -115,10 +117,6 @@ if (player_exists) && (!scr_level_is_peaceful(room)){
 			spawn = true;
 			spawn_time = 60 * spawn_interval[global.game_combat_state];
 			spawn_time /= spawn_rate;
-		}
-		
-		if (!global.game_combat_in_hordechallenge){
-			global.game_combat_state_time_real ++;
 		}
 		
 		if (spawn){

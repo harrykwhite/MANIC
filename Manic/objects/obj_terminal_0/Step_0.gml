@@ -17,7 +17,7 @@ if (interact) && (active) && (global.cutscene_current == -1){
 	sprite_index = spr_terminal_0_interact;
 	scr_ui_control_indicate("Interact");
 	
-	if (keyboard_check_pressed(obj_controller_all.key_interact) && global.player_stamina_active){
+	if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 		active = false;
 		scr_player_stamina_drain(4);
 		

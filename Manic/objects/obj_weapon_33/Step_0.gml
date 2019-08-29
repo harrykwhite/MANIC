@@ -1,14 +1,19 @@
+if (!instance_exists(obj_player)){
+	instance_destroy();
+	return;
+}
+
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	image_index = 0;
 	return;
 }
 
-var mdir = point_direction(x, y, mouse_x, mouse_y);
+var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 var xpos = x + lengthdir_x(34, mdir);
 var ypos = y + lengthdir_y(34, mdir);
 
-if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player_stamina_active) && (!global.game_pause){
+if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active) && (!global.game_pause){
     if (attack_can){
 		scr_camera_to_player();
         scr_effect_screenshake(1);
@@ -39,7 +44,7 @@ if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player
 }
 
 if (global.player_stamina_active){
-    if (mouse_check_button_pressed(obj_controller_all.key_throw)){
+    if (scr_input_is_pressed(InputBinding.Throw)){
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);
 			scr_player_stamina_drain(10);

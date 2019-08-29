@@ -5,6 +5,22 @@ var ammotype = argument0;
 var ammospeed = argument1;
 var ammomaxspeed = argument2;
 
+// Life
+if (life < life_max){
+	life ++;
+}else{
+	instance_destroy();
+}
+
+if (life > life_max * 0.85){
+	if (flicker_time > 0){
+		flicker_time --;
+	}else{
+		flicker = !flicker;
+		flicker_time = flicker_time_max;
+	}
+}
+
 // Finding Player
 var windex = global.weapon_slot[global.weapon_slotcurrent];
 var player = obj_player;
@@ -13,17 +29,15 @@ var playerexists = instance_exists(player);
 attract = false;
 
 if (playerexists){
-    if (windex != -1){
+    if (windex != -1) && (distance_to_object(player) < 30){
 		if (global.weapon_type[windex] == WeaponType.Ranged){
 	        if (instance_exists(global.weapon_object[windex])){
-	            if (distance_to_object(player) < 30) && (!collision_line(x, y, player.x, player.y, obj_p_solid, false, true)){
-	                if (global.weapon_slotammo[global.weapon_slotcurrent] < global.weapon_ammomax[windex]) || (ammotype == AmmoType.Fuel) || (ammotype == AmmoType.Explosives) || (ammotype == AmmoType.Arrows) || (ammotype == AmmoType.Darts) || (ammotype == AmmoType.Shells){
-	                    if (global.weapon_ammotype[windex] == ammotype){
-							attract = true;
-							enemy = false;
-						}
-	                }
-	            }
+				if (global.weapon_slotammo[global.weapon_slotcurrent] < global.weapon_ammomax[windex]) || (ammotype == AmmoType.Fuel) || (ammotype == AmmoType.Explosives) || (ammotype == AmmoType.Arrows) || (ammotype == AmmoType.Darts) || (ammotype == AmmoType.Shells){
+					if (global.weapon_ammotype[windex] == ammotype){
+						attract = true;
+						enemy = false;
+					}
+				}
 	        }
 		}
     }
@@ -41,7 +55,6 @@ if (playerexists) && (windex != -1){
             scr_effect_screenshake(1);
 			scr_sound_play(snd_weapon_ammo_pickup_0, false, 0.8, 1.2);
 		}
-        
     }else{
         spd -= ammospeed;
     }
@@ -53,10 +66,6 @@ if (playerexists) && (windex != -1){
 spd = clamp(spd, 0, ammomaxspeed);
 
 if (spd > 0){
-	if (!place_meeting(x + lengthdir_x(spd + 3, dir), y + lengthdir_y(spd + 3, dir), obj_p_solid)){
-		x += lengthdir_x(spd, dir);
-		y += lengthdir_y(spd, dir);
-	}else{
-		spd = 0;
-	}
+	x += lengthdir_x(spd, dir);
+	y += lengthdir_y(spd, dir);
 }

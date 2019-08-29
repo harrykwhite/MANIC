@@ -5,6 +5,8 @@ destroy = false;
 state = 0;
 active = false;
 
+scale = 1.25;
+
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_giantturret_hitbox_0;
 hitbox.owner = id;
@@ -27,8 +29,10 @@ flamethrower_time = 30;
 flamethrower_angle_sign = 1;
 
 for(var i = 0; i < 4; i ++){
-	var dir = (90 * i) + 45;
-	flamethrower[i] = instance_create(x + lengthdir_x(60, dir), y + lengthdir_y(60, dir), obj_giantturret_flamethrower);
+	var dir = (360 / 4) * i;
+	dir += 45;
+	
+	flamethrower[i] = instance_create(x + lengthdir_x(80 * scale, dir), y + lengthdir_y(80 * scale, dir), obj_giantturret_flamethrower);
 	flamethrower[i].turret = id;
 	flamethrower[i].shoot_dir = dir + 45;
 }
@@ -49,7 +53,7 @@ poison = false;
 bleed = false;
 headless = false;
 
-defense = 0;
+defense = 1;
 
 i_time = 0;
 i_blend_time = 0;
@@ -65,7 +69,7 @@ whiteflash_alphadec = 0.075;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 140;
+health_max = 120;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
@@ -73,5 +77,6 @@ health_scale = 1;
 target = obj_player;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
+
 image_xscale = scale;
 image_yscale = scale;

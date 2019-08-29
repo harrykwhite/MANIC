@@ -5,7 +5,7 @@ if (kill){
 	global.weapon_slot[global.weapon_slotcurrent] = -1;
 	
 	scr_effect_screenshake(3);
-	scr_effect_freeze(13);
+	scr_effect_freeze(8);
 	scr_sound_play(snd_weapon_stick_break_0, false, 0.8, 1.2);
 	
 	var sticklen = 20, thislen = 1;

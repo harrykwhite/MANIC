@@ -1,7 +1,7 @@
 var speed_multiplier = 1;
 var face_player = false;
 var speed_final;
-var distTo = 0;
+var dist_to = 0;
 
 if (instance_exists(obj_player)){
 	if (!in_cutscene){
@@ -169,7 +169,7 @@ if (instance_exists(obj_player)){
 		bark_time = random_range(400, 650);
 	}
 	
-	distTo = distance_to_point(move_x_to, move_y_to);
+	dist_to = distance_to_point(move_x_to, move_y_to);
 	
 	scr_companion_teleport();
 }else{
@@ -193,7 +193,7 @@ if (!scr_pawn_find_path()){
 
 // Facing
 if (!face_player){
-	if (distTo > 15){
+	if (dist_to > 15){
 		if (move_x_to > x){
 			image_xscale = scale;
 		}else{

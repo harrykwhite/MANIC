@@ -41,6 +41,13 @@
                     "mvc": "1.0",
                     "FrameId": "40786702-ab91-4cdb-813c-c0c0b62a835d",
                     "LayerId": "d4b66d3e-74f2-421e-b5b9-610393206188"
+                },
+                {
+                    "id": "5716ba69-cfe2-4b79-aae0-a6dcccc814dc",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "40786702-ab91-4cdb-813c-c0c0b62a835d",
+                    "LayerId": "3be6664d-5492-4c6d-841f-8cf38a1d79d8"
                 }
             ]
         },
@@ -70,6 +77,13 @@
                     "mvc": "1.0",
                     "FrameId": "cb3fa668-c6e2-4b51-ac7e-ec09ba806bce",
                     "LayerId": "d4b66d3e-74f2-421e-b5b9-610393206188"
+                },
+                {
+                    "id": "9ace8fb9-d555-4256-a9df-e619dd38c766",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "cb3fa668-c6e2-4b51-ac7e-ec09ba806bce",
+                    "LayerId": "3be6664d-5492-4c6d-841f-8cf38a1d79d8"
                 }
             ]
         }
@@ -85,7 +99,7 @@
             "SpriteId": "d8d12d97-4f0d-42c2-86be-fd761d2fa703",
             "blendMode": 0,
             "isLocked": false,
-            "name": "Layer 1",
+            "name": "default",
             "opacity": 100,
             "visible": true
         },
@@ -96,8 +110,19 @@
             "SpriteId": "d8d12d97-4f0d-42c2-86be-fd761d2fa703",
             "blendMode": 0,
             "isLocked": false,
-            "name": "Layer 2",
+            "name": "Light",
             "opacity": 100,
+            "visible": true
+        },
+        {
+            "id": "3be6664d-5492-4c6d-841f-8cf38a1d79d8",
+            "modelName": "GMImageLayer",
+            "mvc": "1.0",
+            "SpriteId": "d8d12d97-4f0d-42c2-86be-fd761d2fa703",
+            "blendMode": 0,
+            "isLocked": false,
+            "name": "Shadow",
+            "opacity": 20,
             "visible": true
         }
     ],

@@ -1,4 +1,4 @@
-if (global.game_pause){
+if (global.game_pause) || (global.cutscene_current != -1){
 	return;
 }
 

@@ -29,7 +29,7 @@ if (instance_exists(obj_enemy_0)){
 }
 
 if (instance_exists(obj_thescorched)){
-	if (!obj_thescorched.cutscene_prop){
+	if (!obj_thescorched.cutscene_prop && !obj_thescorched.in_cutscene){
 		global.boss_current = Boss.TheScorched;
 		return true;
 	}

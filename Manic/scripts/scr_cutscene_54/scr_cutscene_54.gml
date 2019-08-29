@@ -14,23 +14,26 @@ if (instance_exists(obj_player)){
 		}
 	}else if (cutscene_ending_stage == 1){
 		var inst = instance_nearest(obj_player.x, obj_player.y, obj_antagonist_mask);
+		
 		if (inst != noone){
 			var x_to = inst.x;
 			var y_to = inst.y;
 			
-			if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 20){
+			if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 25){
 				obj_player.move_x_to = x_to;
 				obj_player.move_y_to = y_to;
 				obj_player.move_extSpd = obj_player.spd_max * 0.75;
 				obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
 			}else{
-				if (global.cutscene_time[index] < 45){
+				if (global.cutscene_time[index] < 35){
 					global.cutscene_time[index] ++;
 				}else{
 					instance_destroy(inst);
 					scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
 					scr_effect_screenshake(1);
-					obj_player.surrounding_light_to = 0.05;
+					
+					global.cutscene_time[index] = 0;
+					obj_player.surrounding_light_to = 0.6;
 					obj_player.has_antagonist_mask = true;
 				}
 				
@@ -38,8 +41,8 @@ if (instance_exists(obj_player)){
 			}
 		}else{
 			stationary = true;
-		
-			if (global.cutscene_time[index] < 200){
+			
+			if (global.cutscene_time[index] < 210){
 				global.cutscene_time[index] ++;
 				
 				obj_player.move_x_to = obj_player.x;
@@ -49,11 +52,11 @@ if (instance_exists(obj_player)){
 					obj_player.image_xscale = 1;
 				}
 				
-				if (global.cutscene_time[index] > 90){
+				if (global.cutscene_time[index] > 70){
 					obj_player.image_xscale = -1;
 				}
 				
-				if (global.cutscene_time[index] > 180){
+				if (global.cutscene_time[index] > 140){
 					obj_player.image_xscale = 1;
 				}
 			}else{

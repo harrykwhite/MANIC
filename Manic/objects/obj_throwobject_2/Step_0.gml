@@ -7,6 +7,14 @@ if (global.game_pause) || (global.cutscene_current != -1){
 scr_motion_control(false);
 image_angle += spd * 3;
 
+// Flicker
+if (alpha_flicker_time > 0){
+	alpha_flicker_time --;
+}else{
+	alpha_flicker = !alpha_flicker;
+	alpha_flicker_time = alpha_flicker_time_max;
+}
+
 // Speed
 if (spd > 0){
     spd -= 0.3;
@@ -36,12 +44,22 @@ if (time < timemax){
 // Bouncing
 if (bounce_time <= 0) && (spd > 0){
 	for(var i = 0; i < 5; i ++){
-	    if (place_meeting(x + lengthdir_x(i, dir), y + lengthdir_y(i, dir), obj_p_solid)){
-	        dir = dir - 180;
-	        bounce_time = 15;
+	    var touched = false;
+		
+		if (place_meeting(x + lengthdir_x(i, dir), y, obj_p_solid)){
+	        dir = 180 - dir;
+			touched = true;
+	    }
+		
+		if (place_meeting(x, y + lengthdir_y(i, dir), obj_p_solid)){
+	        dir = -dir;
+			touched = true;
+	    }
+		
+		if (touched){
 	        spd *= 0.75;
 			break;
-	    }
+		}
 	}
 	
 }else{

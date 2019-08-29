@@ -3,4 +3,4 @@ spd = 0;
 enemy = false;
 pierce = true;
 creator = obj_player;
-destroy = false;
+deffect = false;

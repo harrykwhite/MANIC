@@ -1,19 +1,25 @@
+if (!instance_exists(obj_player)){
+	instance_destroy();
+	return;
+}
+
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	image_index = 0;
 	return;
 }
 
-var mdir = point_direction(x, y, mouse_x, mouse_y);
+var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 
-if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_continue_time > 0)) && (!global.game_pause){
+if ((scr_input_is_pressed(InputBinding.Attack)) || (shoot_continue_time > 0)) && (!global.game_pause){
     if ((shoot_can) && (ammo > 0)) || (shoot_continue_time > 0){
         var xpos = x + lengthdir_x(21, mdir) + lengthdir_x(3, up(mdir));
 	    var ypos = y + lengthdir_y(21, mdir) + lengthdir_y(3, up(mdir));
-		var dir = point_direction(xpos, ypos, mouse_x, mouse_y);
 		
-		if (mouse_check_button_pressed(mb_left) && (shoot_continue_time <= 0)){
+		var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+		
+		if (scr_input_is_pressed(InputBinding.Attack) && shoot_continue_time <= 0){
 			shoot_continue_time = 6;
 			shoot_bounceback = -13;
 			angle_offset = 20;
@@ -29,7 +35,7 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
 			part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, 4);
 		}
 		
-		scr_player_knockback_initiate(0.5, mdir);
+		scr_player_knockback_initiate(0.5, dir);
         scr_effect_screenshake(2);
         scr_mouse_control(MouseType.LargeCircle, 3, 12);
 		
@@ -53,10 +59,10 @@ if ((mouse_check_button_pressed(obj_controller_all.key_attack)) || (shoot_contin
 }
 
 // Throwing Weapon
-var mdir = point_direction(x, y, mouse_x, mouse_y);
+var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (global.player_stamina_active){
-    if (mouse_check_button_pressed(obj_controller_all.key_throw)){
+    if (scr_input_is_pressed(InputBinding.Throw)){
 		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);

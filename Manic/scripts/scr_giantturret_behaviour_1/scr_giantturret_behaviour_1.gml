@@ -19,8 +19,8 @@ if (instance_exists(target)){
 			scr_effect_screenshake(2);
 			light_brightness = 1.25;
 			
-			var xpos = x + lengthdir_x(29, shoot_dir);
-			var ypos = y + lengthdir_y(29, shoot_dir);
+			var xpos = x + lengthdir_x(32 * scale, shoot_dir);
+			var ypos = y + lengthdir_y(32 * scale, shoot_dir);
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
 			part_particles_create(global.ps_front, xpos + lengthdir_x(3, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(3, shoot_dir) + random_range(-3, 3), global.pt_smoke_4, 2);
 			

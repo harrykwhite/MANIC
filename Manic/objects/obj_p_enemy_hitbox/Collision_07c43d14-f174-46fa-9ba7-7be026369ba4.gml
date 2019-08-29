@@ -54,6 +54,7 @@ with(owner){
 	}
 
 	if (!inst.pierce){
-		inst.destroy = true;
+		inst.deffect = true;
+		instance_destroy(inst);
 	}
 }

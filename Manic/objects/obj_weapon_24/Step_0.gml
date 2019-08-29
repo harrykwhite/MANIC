@@ -1,12 +1,17 @@
+if (!instance_exists(obj_player)){
+	instance_destroy();
+	return;
+}
+
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	image_index = 0;
 	return;
 }
 
-var mdir = point_direction(x, y, mouse_x, mouse_y);
+var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
-if (mouse_check_button_pressed(obj_controller_all.key_attack)) && (global.player_stamina_active) && (!global.game_pause){
+if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active) && (!global.game_pause){
     var xpos = x + lengthdir_x(59, mdir);
     var ypos = y + lengthdir_y(59, mdir);
 	
@@ -46,10 +51,10 @@ if (attack_active){
 attack_offset = clamp(attack_offset, 0, 7.5);
 
 // Throwing Weapon
-var mdir = point_direction(x, y, mouse_x, mouse_y);
+var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (global.player_stamina_active){
-    if (mouse_check_button_pressed(obj_controller_all.key_throw)){
+    if (scr_input_is_pressed(InputBinding.Throw)){
 		
 		if (!collision_line(x, y, x + lengthdir_x(28, mdir), y + lengthdir_y(28, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);

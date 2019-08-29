@@ -13,7 +13,7 @@ if (!instance_exists(minecart)){
 	return;
 }
 
-if (mouse_x > x){
+if (scr_input_get_mouse_x() > x){
 	image_xscale = 1;
 }else{
 	image_xscale = -1;
@@ -32,7 +32,7 @@ if (mdir == 90) || (mdir == 270){
 	minecart_sprite = spr_pawn_minecart_0;
 }
 
-if (keyboard_check_direct(obj_controller_all.key_right)){
+if (scr_input_is_down(InputBinding.Right)){
 	if (mdir == 180) || (mdir == 270){
 		if (minecart_speed > -4){
 			minecart_speed -= acceleration;
@@ -42,7 +42,7 @@ if (keyboard_check_direct(obj_controller_all.key_right)){
 			minecart_speed += acceleration;
 		}
 	}
-}else if (keyboard_check_direct(obj_controller_all.key_left)){
+}else if (scr_input_is_down(InputBinding.Left)){
 	if (mdir == 180) || (mdir == 270){
 		if (minecart_speed < 4){
 			minecart_speed += acceleration;

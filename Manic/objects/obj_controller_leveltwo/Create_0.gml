@@ -60,6 +60,16 @@ switch(room){
 			spawn_y = 160;
 		}else{
 			spawn_x = 358;
+			spawn_y = 1515;
+		}
+		break;
+	
+	case rm_level_2_04:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 358;
+			spawn_y = 160;
+		}else{
+			spawn_x = 358;
 			spawn_y = 614;
 		}
 		break;

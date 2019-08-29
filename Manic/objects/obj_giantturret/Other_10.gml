@@ -5,8 +5,8 @@ var linealpha = shoot_buildup_time / 120;
 if (instance_exists(obj_player)){
 	shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
 	
-	var xx = x + lengthdir_x(19, shoot_dir);
-	var yy = y + lengthdir_y(19, shoot_dir);
+	var xx = x + lengthdir_x(19 * scale, shoot_dir);
+	var yy = y + lengthdir_y(19 * scale, shoot_dir);
 	
 	if (distance_to_object(obj_player) > 28){
 		if (shoot_buildup_time < 120){
@@ -29,7 +29,7 @@ if (instance_exists(obj_player)){
 			}
 		
 			draw_set_alpha(clamp(linealpha, 0, 1) * 0.6);
-			draw_line_break(xx, yy, shoot_dir, obj_p_solid, 1, false, -6);
+			draw_line_break(xx, yy, shoot_dir, obj_p_solid, 1, false, 0);
 			draw_set_alpha(1);
 		}
 	}

@@ -13,7 +13,7 @@ if (instance_exists(obj_player)){
     
     // Position
 	if (!global.game_pause){
-	    var mdir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+	    var mdir = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
     
 	    if (instance_exists(obj_player_arm)){
 	        x = obj_player_arm.x + lengthdir_x(14, image_angle);
@@ -38,7 +38,7 @@ if (instance_exists(obj_player)){
 	        image_angle = (mdir - throw_offset) - angle_offset - start_offset;
 	    }
         
-	    if (mouse_x > x){
+	    if (scr_input_get_mouse_x() > x){
 	        image_yscale = 1;
 	    }else{
 	        image_yscale = -1;
