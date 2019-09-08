@@ -1,6 +1,6 @@
-/// @desc Composite the shadow map from all the lights
-/// @arg lights The ds_list of lights, in order, to composite
-/// @returns True if it succeeded, otherwise false
+///@desc Composite the shadow map from all the lights
+///@arg lights The ds_list of lights, in order, to composite
+///@returns True if it succeeded, otherwise false
 
 var lights = argument0;
 var lightCount = ds_list_size(lights);

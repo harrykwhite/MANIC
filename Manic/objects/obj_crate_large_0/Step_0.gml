@@ -37,23 +37,19 @@ if (spd > 0.375){
 if (death){
 	scr_env_destroy(spr_crate_large_0_break);
 	
-	scr_weapon_ammo_spawn(4, 8, 5, x, y + 6);
+	scr_weapon_ammo_spawn(9, 8, 5, x, y + 6);
 	
-	if (random(3) < 1){
-		instance_create(x + random_range(-4, 4), y + 6 + random_range(-2, 2), obj_health_pack_0);
+	if (random(4) < 1){
+		instance_create(x + random_range(-3, 3), y + 8 + random_range(-3, 2), obj_health_pack_0);
 	}
 	
 	if (global.level_current >= Level.UndergroundBunker){
-		if (random(4) < 1){
-			var amount = choose(1, 2), weapon;
-			
-			repeat(amount){
-				weapon = instance_create(x + random_range(-8, 8), y + 4 + random_range(-4, 4), obj_weapondrop);
-				weapon.index = choose(PlayerWeapon.Grenade);
-				weapon.angle = random_range(20, 40);
-				weapon.pack = true;
-				weapon.quantity = random_range(2, 3);
-			}
+		if (random(7) < 1){
+			var weapon = instance_create(x, y + 6, obj_weapondrop);
+			weapon.index = (global.level_current >= Level.TrainStation) ? choose(PlayerWeapon.Grenade, PlayerWeapon.LandMine) : PlayerWeapon.Grenade;
+			weapon.angle = random_range(-10, 10);
+			weapon.pack = true;
+			weapon.quantity = random_range(2, 3);
 		}
 	}
 }

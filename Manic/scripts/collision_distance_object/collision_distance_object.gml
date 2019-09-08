@@ -1,9 +1,9 @@
-/// @param x1
-/// @param  y1
-/// @param  x2
-/// @param  y2
-/// @param  object
-/// @param width
+///@param x1
+///@param  y1
+///@param  x2
+///@param  y2
+///@param  object
+///@param width
 var x1 = argument[0];
 var y1 = argument[1];
 var x2 = argument[2];

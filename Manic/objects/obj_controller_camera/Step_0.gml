@@ -6,7 +6,7 @@ if (!global.game_pause){
 	// Zoom
 	camera_zoom = approach(camera_zoom, camera_zoom_to, 20);
 	
-	camera_zoom_to = 1 + (global.level_current / 150);
+	camera_zoom_to = 1;
 	
 	camera_zoom_add = approach(camera_zoom_add, 0, 15);
 	camera_zoom_to += camera_zoom_add;

@@ -1,5 +1,5 @@
-/// @param soundid
-/// @param  radius
+///@param soundid
+///@param  radius
 var snd = argument0;
 var radius = argument1;
 var vol = 0;

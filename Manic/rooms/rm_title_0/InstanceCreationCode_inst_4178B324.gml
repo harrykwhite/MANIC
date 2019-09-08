@@ -1,0 +1,1 @@
+light_radius_offset = 125;

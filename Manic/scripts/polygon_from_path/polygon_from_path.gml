@@ -1,8 +1,8 @@
-/// @desc Creates a polygon from a path resource
-/// @arg path The path to create a polygon from
-/// @arg originx The X origin
-/// @arg originy The Y origin
-/// @returns The polygon for the path
+///@desc Creates a polygon from a path resource
+///@arg path The path to create a polygon from
+///@arg originx The X origin
+///@arg originy The Y origin
+///@returns The polygon for the path
 
 var path = argument0;
 var originx = argument1;

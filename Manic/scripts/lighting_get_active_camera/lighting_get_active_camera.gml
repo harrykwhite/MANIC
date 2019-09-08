@@ -1,5 +1,5 @@
-/// @desc Gets the active camera
-/// @returns The active camera port [X, Y, Width, Height]
+///@desc Gets the active camera
+///@returns The active camera port [X, Y, Width, Height]
 
 if (global.worldCustomCamera == undefined){
 	// Get active view camera

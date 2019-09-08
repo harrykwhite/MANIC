@@ -1,6 +1,6 @@
-/// @desc Update the vertex buffer for the given light
-/// @arg light The light to update the vertex buffer of
-/// @returns The vertex buffer for the light
+///@desc Update the vertex buffer for the given light
+///@arg light The light to update the vertex buffer of
+///@returns The vertex buffer for the light
 
 var light = argument0;
 

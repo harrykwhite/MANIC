@@ -11,7 +11,7 @@ spawn_y = 480;
 spawn_pause_update = false;
 
 deer_can_spawn = false;
-deer_spawn_time = 60 * random_range(8, 12);
+deer_spawn_time = 60 * random_range(9, 12);
 
 // Other
 endscene_initiated = false;
@@ -54,7 +54,7 @@ var crange = 13;
 var oldx = 0;
 var oldy = 0;
 
-repeat(850){
+repeat(700){
 	do{
 		xx = random(room_width);
 		yy = random(room_height);
@@ -80,7 +80,7 @@ repeat(850){
 oldx = 0;
 oldy = 0;
 
-repeat(120){
+repeat(90){
 	do{
 		xx = random(room_width);
 		yy = random(room_height);

@@ -22,6 +22,9 @@ if (instance_exists(owner)){
 	    proj.image_angle = dir;
 	    proj.depth = depth + 1;
 		proj.creator = owner;
+		proj.owner_inst = owner;
+		proj.owner_offset_x = proj.x - proj.owner_inst.x;
+		proj.owner_offset_y = proj.y - proj.owner_inst.y;
 		
 		if (owner.pawn == PawnType.Companion){
 			isEnemy = false;

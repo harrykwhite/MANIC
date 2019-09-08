@@ -1,6 +1,6 @@
-/// @param sound
-/// @param  loop
-/// @param  radius
+///@param sound
+///@param  loop
+///@param  radius
 var snd = argument0;
 var loop = argument1;
 var radius = argument2;

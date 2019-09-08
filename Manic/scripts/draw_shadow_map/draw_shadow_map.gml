@@ -1,6 +1,6 @@
-/// @desc Draws the composited shadow map
-/// @arg x The X position at which to draw the shadow map
-/// @arg y The Y position at which to draw the shadow map
+///@desc Draws the composited shadow map
+///@arg x The X position at which to draw the shadow map
+///@arg y The Y position at which to draw the shadow map
 
 var X = argument0;
 var Y = argument1;

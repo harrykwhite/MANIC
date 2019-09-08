@@ -30,7 +30,7 @@ if (instance_exists(target)) && (!walk_off){
 					attack_time --;
 				}else{
 					weapon.attack = true;
-					attack_time = shoot_interval;
+					attack_time = swing_interval;
 				}
 			}
 		}
@@ -114,7 +114,7 @@ if (instance_exists(target)) && (!walk_off){
 	if (!dash) && (dash_time <= 0){
 		if (nearest_bullet != noone){
 			if (distance_to_object(nearest_bullet) < 30){
-				if (random(5) < 1){
+				if (random(30) < 1){
 					dash = true;
 					dash_direction = point_direction(x, y, nearest_bullet.x, nearest_bullet.y) + 90;
 					dash_time = 7;

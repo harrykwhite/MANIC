@@ -1,4 +1,4 @@
-/// @param  amount
+///@param  amount
 var amount = argument0;
 
 global.weapon_slotammo[global.weapon_slotcurrent] += amount;

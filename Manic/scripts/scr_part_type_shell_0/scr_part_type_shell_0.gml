@@ -1,5 +1,5 @@
-/// @description scr_part_type_shell_0();
-/// @function scr_part_type_shell_0
+///@description scr_part_type_shell_0();
+///@function scr_part_type_shell_0
 global.pt_shell_0 = part_type_create();
 var pt = global.pt_shell_0;
 

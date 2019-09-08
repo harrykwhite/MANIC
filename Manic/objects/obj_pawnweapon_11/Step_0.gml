@@ -40,8 +40,17 @@ if (instance_exists(owner)){
 			scr_effect_screenshake(2);
 			owner.light_brightness = 1.25;
 			
+	        owner.knockback_speed = -1;
+	        owner.knockback_direction = dir;
+			attack_time = attack_time_max;
+		}
+		
+		if (shoot_continue_time >= 0){
 			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
+			for(var l = 0; l < 24; l += 4){
+				part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+			}
+			
 			part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
 		    part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, 4);
 			
@@ -60,10 +69,6 @@ if (instance_exists(owner)){
 				shoot.enemy = isEnemy;
 				shoot.creator = owner;
 			}
-			
-	        owner.knockback_speed = -1;
-	        owner.knockback_direction = dir;
-			attack_time = attack_time_max;
 		}
     }
 }

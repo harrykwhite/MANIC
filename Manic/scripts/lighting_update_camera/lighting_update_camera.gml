@@ -1,8 +1,8 @@
-/// @desc Updates the custom camera to use with the lighting system (otherwise uses active view camera)
-/// @arg x The top left corner of the camera
-/// @arg y The top right corner of the camera
-/// @arg width The width of the camera
-/// @arg height The height of the camera
+///@desc Updates the custom camera to use with the lighting system (otherwise uses active view camera)
+///@arg x The top left corner of the camera
+///@arg y The top right corner of the camera
+///@arg width The width of the camera
+///@arg height The height of the camera
 
 // Inline this script
 gml_pragma("forceinline");

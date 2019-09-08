@@ -1,17 +1,24 @@
-/// @param sound
-/// @param  loop
-/// @param  radius
-/// @param min
-/// @param max
-var snd = argument0;
-var loop = argument1;
-var radius = argument2;
-var pmin = argument3;
-var pmax = argument4;
+///@param sound
+///@param  loop
+///@param  radius
+///@param min
+///@param max
+///@param playercenter
+var snd = argument[0];
+var loop = argument[1];
+var radius = argument[2];
+var pmin = argument[3];
+var pmax = argument[4];
+var playercenter = false;
+
+if (argument_count > 5){
+	playercenter = argument[5];
+}
+
 var centerx, centery, vol, dist;
 
-if (!instance_exists(obj_player)){
-	if (instance_exists(obj_player_death)){
+if (!instance_exists(obj_player)) || (!playercenter){
+	if (instance_exists(obj_player_death)) && (!playercenter){
 		centerx = obj_player_death.x;
 		centery = obj_player_death.y;
 	}else{

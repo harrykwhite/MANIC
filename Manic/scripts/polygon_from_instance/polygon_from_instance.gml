@@ -1,7 +1,7 @@
-/// @desc Creates a polygon from an instance
-/// @arg id The instance to create a polygon from
-/// @arg [rotation] The optional rotation of the instance
-/// @returns The polygon for the instance
+///@desc Creates a polygon from an instance
+///@arg id The instance to create a polygon from
+///@arg [rotation] The optional rotation of the instance
+///@returns The polygon for the instance
 
 var inst = argument[0];
 var rotation = argument_count > 1 ? argument[1] : image_angle;

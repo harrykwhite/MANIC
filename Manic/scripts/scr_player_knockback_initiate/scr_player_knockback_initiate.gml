@@ -1,5 +1,5 @@
-/// @param spd
-/// @param dir
+///@param spd
+///@param dir
 var spd = argument0;
 var dir = argument1;
 

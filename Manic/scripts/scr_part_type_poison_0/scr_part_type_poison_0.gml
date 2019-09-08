@@ -1,5 +1,5 @@
-/// @description scr_part_type_poison_0();
-/// @function scr_part_type_poison_0
+///@description scr_part_type_poison_0();
+///@function scr_part_type_poison_0
 global.pt_poison_0 = part_type_create();
 var pt = global.pt_poison_0;
 

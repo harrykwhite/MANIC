@@ -134,11 +134,19 @@ if (instance_exists(obj_player)){
 				}
 			}else{
 				move_x_to = target.x;
-				move_y_to = target.y;
+				move_y_to = target.y + 6;
 			
-				if (distance_to_object(target) > 58){
-					move_speed = 1.2;
+				if (distance_to_object(target) > 50){
+					if (move_away_time > 0){
+						move_away_time --;
+						
+						move_speed = 0;
+					}else{
+						move_speed = 1.2;
+					}
 				}else{
+					move_away_time = 30;
+					
 					if (bite_time > 0){
 						bite_time --;
 					}else{

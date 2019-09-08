@@ -11,6 +11,10 @@ if (dialogue_time > 0){
 				dialogue_char_count = dialogue_length;
 			}else{
 				dialogue_next = true;
+				
+				dialogue_voice_opened = false;
+				dialogue_voice_closed = true;
+				
 				dialogue_break = 1;
 			}
 		}

@@ -1,4 +1,4 @@
-/// @desc Free the lighting engine
+///@desc Free the lighting engine
 
 vertex_format_delete(global.lightVertexFormat);
 

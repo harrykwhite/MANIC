@@ -1,7 +1,7 @@
 ///@param refresh_display
 var refresh_display = false;
 
-if (argument_count > 0){
+if (argument_count == 1){
 	refresh_display = argument[0];
 }
 
@@ -46,8 +46,8 @@ with(obj_controller_all){
 
 if (room == rm_title_0){
 	if (!obj_titlescreen_main.fade){
-		audio_sound_gain(m_ambience_rain_0, 0.6 * obj_controller_all.real_ambience_volume, 50);
-	
+		audio_sound_gain(m_ambience_wind_0, 0.55 * obj_controller_all.real_ambience_volume, 1000);
+		
 		with(obj_titlescreen_main){
 			scr_titlescreen_options_reload();
 		}

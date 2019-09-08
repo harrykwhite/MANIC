@@ -13,7 +13,7 @@
         "362d82a1-dece-47bf-9260-f6283e7c2db0"
     ],
     "filterType": "GMObject",
-    "folderName": "Fence",
+    "folderName": "Fences",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

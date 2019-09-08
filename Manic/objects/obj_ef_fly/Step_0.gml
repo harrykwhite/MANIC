@@ -1,5 +1,6 @@
 if (global.game_pause){
 	image_speed = 0;
+	
 	if (audio_is_playing(buzz)){
 		audio_stop_sound(buzz);
 		buzz = noone;
@@ -18,21 +19,16 @@ if (fscale < 1){
 	fscale += 0.01;
 }
 
-if (instance_exists(obj_player)){
-	if (distance_to_object(obj_player) < 60){
-		if (buzz == noone){
-			buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
-		}
-		scr_sound_set_distance(buzz, 60);
-	}else{
-		if (audio_is_playing(buzz)){
-			audio_stop_sound(buzz);
-			buzz = noone;
-		}
+if (instance_exists(obj_player)) && (global.cutscene_current == -1){
+	if (buzz == noone){
+		buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
 	}
+	
+	scr_sound_set_distance(buzz, 40);
 }else{
 	if (buzz != noone){
 		audio_sound_gain(buzz, 0, 2000);
+		buzz = noone;
 	}
 }
 

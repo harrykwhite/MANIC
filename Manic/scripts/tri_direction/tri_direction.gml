@@ -1,8 +1,8 @@
-/// @desc Gets the direction of a triangle (clockwise || counter-clockwise)
-/// @arg a The first vertex in the triangle
-/// @arg b The second vertex in the triangle
-/// @arg c The third vertex in the triangle
-/// @returns The direction of the triangle as an eTriDirection enum field
+///@desc Gets the direction of a triangle (clockwise || counter-clockwise)
+///@arg a The first vertex in the triangle
+///@arg b The second vertex in the triangle
+///@arg c The third vertex in the triangle
+///@returns The direction of the triangle as an eTriDirection enum field
 
 var a = argument0;
 var b = argument1;

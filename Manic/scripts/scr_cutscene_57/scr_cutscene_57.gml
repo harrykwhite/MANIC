@@ -90,7 +90,7 @@ if (instance_exists(obj_player)){
 					var drop = instance_nearest(obj_player.x, obj_player.y, obj_weapondrop);
 					instance_destroy(drop);
 				
-					scr_sound_play(snd_weapon_pickup_0, false, 0.8, 1.2);
+					scr_sound_play(snd_weapon_pickup_gun, false, 0.8, 1.2);
 				
 					if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 						instance_destroy(global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]]);

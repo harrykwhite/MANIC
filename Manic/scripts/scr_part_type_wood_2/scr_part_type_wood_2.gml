@@ -1,5 +1,5 @@
-/// @description scr_part_type_wood_2();
-/// @function scr_part_type_wood_2
+///@description scr_part_type_wood_2();
+///@function scr_part_type_wood_2
 global.pt_wood_2 = part_type_create();
 var pt = global.pt_wood_2;
 

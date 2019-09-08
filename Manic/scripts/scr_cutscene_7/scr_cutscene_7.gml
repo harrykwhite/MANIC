@@ -64,7 +64,7 @@ if (instance_exists(obj_player)){
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;
 				}
-			}else if (room == rm_level_4_02){
+			}else if (room == rm_level_4_03){
 				var levelobj = scr_level_get_object();
 				
 				if (levelobj.terminal_deactivate_count < 2){
@@ -73,8 +73,8 @@ if (instance_exists(obj_player)){
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;
 				}else{
-					var lookx = 882;
-					var looky = 618;
+					var lookx = 872;
+					var looky = 430;
 					
 					//obj_player.move_x_to = lookx;
 					//obj_player.move_y_to = looky;

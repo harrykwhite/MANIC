@@ -1,7 +1,7 @@
-/// @function scr_effect_flash
-/// @param increase_speed
-/// @param  decrease_speed
-/// @param  colour
+///@function scr_effect_flash
+///@param increase_speed
+///@param  decrease_speed
+///@param  colour
 var increase = argument[0];
 var decrease = argument[1];
 var colour = argument[2];

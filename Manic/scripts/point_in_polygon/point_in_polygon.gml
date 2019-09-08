@@ -1,7 +1,7 @@
-/// @desc Returns whether the point is inside the polygon || not
-/// @arg polygon The polygon to check against
-/// @arg point The point to check if it's inside || outside the polygon
-/// @returns True if the point is inside the polygon, otherwise false
+///@desc Returns whether the point is inside the polygon || not
+///@arg polygon The polygon to check against
+///@arg point The point to check if it's inside || outside the polygon
+///@returns True if the point is inside the polygon, otherwise false
 
 //
 //	This script can be used with the vertex buffer to check if an instance is

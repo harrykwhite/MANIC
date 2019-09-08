@@ -151,7 +151,7 @@ if (instance_exists(obj_player)){
 			linefrom[6] = inst;
 			
 			line[7] = "Let's go there first, to see what's going on.";
-			linefrom[7] = inst;
+			linefrom[7] = obj_player;
 			
 			line[8] = "Great, take the lead.";
 			linefrom[8] = inst;
@@ -626,6 +626,9 @@ if (instance_exists(obj_player)){
 			}
 			
 			obj_controller_ui.dialogue_next = false;
+			obj_controller_ui.dialogue_voice_opened = false;
+			obj_controller_ui.dialogue_voice_closed = true;
+			
 			cutscene_dialogue_line ++;
 			
 			// End the dialogue sequence
@@ -709,7 +712,7 @@ if (instance_exists(obj_player)){
 			
 			// Set the new line of dialogue
 			obj_controller_ui.dialogue = line[cutscene_dialogue_line];
-			obj_controller_ui.dialogue_voice = snd_character_dialogue_generic;
+			obj_controller_ui.dialogue_voice = snd_character_dialogue_generic_in;
 			obj_controller_ui.dialogue_time = 10;
 			obj_controller_ui.dialogue_pause = true;
 			obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
@@ -721,16 +724,15 @@ if (instance_exists(obj_player)){
 				obj_controller_ui.dialogue_y = linefrom[cutscene_dialogue_line].y - 24;
 				
 				// Get the voice of the character speaking
-				var voice = snd_character_dialogue_generic;
+				var voice = snd_character_dialogue_generic_in;
 				
 				switch(linefrom[cutscene_dialogue_line].object_index){
-					case obj_player: voice = snd_character_dialogue_protagonist; break;
-					case obj_companion_0: voice = snd_character_dialogue_compfarmer; break;
-					case obj_companion_1: voice = snd_character_dialogue_compgrenadier; break;
-					case obj_companion_2: voice = snd_character_dialogue_compprisoner; break;
-					case obj_antagonist: voice = snd_character_dialogue_antagonist; break;
-					case obj_thescorched: voice = snd_character_dialogue_thescorched; break;
-					case obj_thedogkeeper: voice = snd_character_dialogue_thedogkeeper; break;
+					case obj_player: voice = snd_character_dialogue_protagonist_in; break;
+					case obj_companion_0: voice = snd_character_dialogue_compfarmer_in; break;
+					case obj_companion_1: voice = snd_character_dialogue_compgrenadier_in; break;
+					case obj_antagonist: voice = snd_character_dialogue_antagonist_in; break;
+					case obj_thescorched: voice = snd_character_dialogue_thescorched_in; break;
+					case obj_thedogkeeper: voice = snd_character_dialogue_thedogkeeper_in; break;
 				}
 				
 				obj_controller_ui.dialogue_voice = voice;

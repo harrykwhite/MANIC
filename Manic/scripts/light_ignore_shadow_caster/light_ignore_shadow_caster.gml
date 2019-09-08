@@ -1,6 +1,6 @@
-/// @desc Set one || more shadow casters that should be ignored by the provided light
-/// @arg light The light that should ignore the shadow casters
-/// @arg [shadow_caster,...] The shadow casters to ignore
+///@desc Set one || more shadow casters that should be ignored by the provided light
+///@arg light The light that should ignore the shadow casters
+///@arg [shadow_caster,...] The shadow casters to ignore
 
 // Validate argument array
 if (__LIGHTING_ERROR_CHECKS && argument_count <= 1){

@@ -1,6 +1,6 @@
-/// @desc Enumerate and apply all extension modules of a given light
-/// @arg light The light to enumerate extensions of
-/// @arg ext_script The script of the extension module to execute
+///@desc Enumerate and apply all extension modules of a given light
+///@arg light The light to enumerate extensions of
+///@arg ext_script The script of the extension module to execute
 
 var light = argument0;
 var ext_script = argument1;

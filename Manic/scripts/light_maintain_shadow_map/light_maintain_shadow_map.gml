@@ -1,6 +1,6 @@
-/// @desc Maintains the shadow map for the given light, creating, resizing and freeing it as necessary
-/// @arg light The light that owns the shadow map
-/// @returns True if the shadow map is valid, otherwise false
+///@desc Maintains the shadow map for the given light, creating, resizing and freeing it as necessary
+///@arg light The light that owns the shadow map
+///@returns True if the shadow map is valid, otherwise false
 
 var light = argument0;
 var shadowMap = light[| eLight.ShadowMap];

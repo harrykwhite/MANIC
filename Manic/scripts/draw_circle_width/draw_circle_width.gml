@@ -1,10 +1,10 @@
-/// @description draw_circle_width(x, y, radius, outline_width, level_of_detail)
-/// @function draw_circle_width
-/// @param x
-/// @param  y
-/// @param  radius
-/// @param  outline width
-/// @param  level of detail
+///@description draw_circle_width(x, y, radius, outline_width, level_of_detail)
+///@function draw_circle_width
+///@param x
+///@param  y
+///@param  radius
+///@param  outline width
+///@param  level of detail
 //@tehwave
 
 /*  ARGUMENT            DESCRIPTION

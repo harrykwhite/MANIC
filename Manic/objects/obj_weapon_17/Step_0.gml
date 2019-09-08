@@ -24,10 +24,14 @@ if (use_current){
 			image_speed = 1;
 			
 	        var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+			
 			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
+			for(var l = 0; l < 16; l += 4){
+				part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+			}
+			
 			part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
-        part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(2, 3));
+			part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(2, 3));
 			scr_mouse_control(MouseType.Crosshair, 2.5, 15);
 			
 		    var shoot = instance_create(xpos, ypos, obj_proj_0);
@@ -81,7 +85,7 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
         if (mount){
 			scr_player_stamina_drain(6);
 			if (!use_current){
-				scr_sound_play(snd_weapon_pickup_0, false, 0.8, 1.2);
+				scr_sound_play(snd_weapon_pickup_gun, false, 0.8, 1.2);
 				use_current = true;
 				global.weapon_slot_standalone = index;
 	            alarm[0] = 3;

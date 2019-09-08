@@ -1,11 +1,11 @@
-/// @desc Create a new point light
-/// @arg x The X position of the light
-/// @arg y The Y position of the light
-/// @arg shadow_length The length of shadows cast by the light
-/// @arg color The color of the light
-/// @arg range The range of the light in pixels
-/// @arg intensity The intensity of the light (must be positive)
-/// @returns The created light
+///@desc Create a new point light
+///@arg x The X position of the light
+///@arg y The Y position of the light
+///@arg shadow_length The length of shadows cast by the light
+///@arg color The color of the light
+///@arg range The range of the light in pixels
+///@arg intensity The intensity of the light (must be positive)
+///@returns The created light
 
 // Gather the arguments
 var lx = argument0;

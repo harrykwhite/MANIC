@@ -1,7 +1,7 @@
-/// @desc Gets the cross product of two vectors
-/// @arg v1 The first vector
-/// @arg v2 The second vector
-/// @returns The cross product of the two vectors
+///@desc Gets the cross product of two vectors
+///@arg v1 The first vector
+///@arg v2 The second vector
+///@returns The cross product of the two vectors
 
 var v1 = argument0;
 var v2 = argument1;

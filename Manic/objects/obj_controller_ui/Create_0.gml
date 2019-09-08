@@ -15,6 +15,8 @@ vignette_flash_colour = c_white;
 levelcleared_alpha = 0;
 levelcleared_time = 0;
 
+killcount_scale = 1;
+
 stats_y = 0;
 
 weaponinfo = false;
@@ -31,6 +33,8 @@ weaponammo_x = 0;
 
 dialogue = "";
 dialogue_voice = noone;
+dialogue_voice_opened = false;
+dialogue_voice_closed = true;
 dialogue_char_count = 0;
 dialogue_char_speed = 0.75;
 dialogue_length = 0;
@@ -114,11 +118,11 @@ pause_selectedmax = array_length_1d(pause_selectoption);
 
 game_opening_intro = true;
 game_opening_intro_startbreak = 30;
-game_opening_intro_speed = 1.2;
+game_opening_intro_speed = 1.5;
 game_opening_intro_alpha = 4.7;
 game_opening_intro_text_alpha = -0.25;
 game_opening_intro_text_stage = 0;
-game_opening_intro_text_time = 60 * 9;
+game_opening_intro_text_time = 60 * 8;
 
 if (global.level_current != Level.Prologue){
 	game_opening_intro = false;

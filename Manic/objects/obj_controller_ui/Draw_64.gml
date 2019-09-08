@@ -274,7 +274,7 @@ if (tutourial) && (global.cutscene_current == -1){
 		}
 	}
 	
-	draw_set_alpha((tscale - 1) * 3 * tutourial_alpha);
+	draw_set_alpha((tscale - 1) * 1.5 * tutourial_alpha);
 	scr_text_shadow_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
 	
 	draw_set_alpha(1);
@@ -299,24 +299,33 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 	var texty = dheight - 50;
 	
 	if (global.level_current == Level.Prologue){
-		text = "Hunt and kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " deer.";
-		
 		if (global.level_cleared[global.level_current]){
-			text = "All deers hunted. Return to the house."
+			text += "All deers hunted. Return to the house."
+		}else{
+			text += "Hunt and kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " deer.";
 		}
 	}else{
-		text = "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
-		
 		if (global.level_cleared[global.level_current]){
-			text = "Area cleared. Proceed to the next level."
+			text += "Area cleared. Proceed to the next level."
+		}else{
+			text += "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
 		}
 	}
 	
+	var redglow = wave(0.125, 0.225, 2, 0);
+	killcount_scale = approach(killcount_scale, 1, 20);
+	
 	draw_set_alpha(1);
-	draw_set_font(fnt_cambria_0);
+	
+	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_text_shadow(textx, texty, text, c_white);
+	
+	scr_text_shadow_transformed(textx, texty, text, c_white, killcount_scale, killcount_scale, 0);
+	
+	draw_set_alpha(redglow + ((killcount_scale - 1) * 2));
+	scr_text_shadow_transformed(textx, texty, text, c_maroon, killcount_scale, killcount_scale, 0);
+	
 	draw_set_valign(fa_top);
 }
 

@@ -14,7 +14,7 @@ if (talk){
 	}
 		
 	obj_controller_ui.dialogue = random(100) < 30 ? "Thank you..." : "...";
-	obj_controller_ui.dialogue_voice = snd_character_dialogue_generic;
+	obj_controller_ui.dialogue_voice = snd_character_dialogue_generic_in;
 	obj_controller_ui.dialogue_time = 60 * 4;
 	obj_controller_ui.dialogue_pause = false;
 	obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);

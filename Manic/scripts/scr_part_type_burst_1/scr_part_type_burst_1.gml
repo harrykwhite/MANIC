@@ -1,5 +1,5 @@
-/// @description scr_part_type_burst_1();
-/// @function scr_part_type_burst_1
+///@description scr_part_type_burst_1();
+///@function scr_part_type_burst_1
 global.pt_burst_1 = part_type_create();
 var pt = global.pt_burst_1;
 

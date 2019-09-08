@@ -1,5 +1,5 @@
-/// @param y
-/// @param skipcheck
+///@param y
+///@param skipcheck
 var inst = id;
 var yy = argument[0];
 var skipcheck = false;

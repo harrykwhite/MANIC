@@ -91,6 +91,14 @@ if (!global.game_pause){
 	}
 }
 
+if (player_exists) && (global.cutscene_current == -1){
+	if (abs(obj_player.len) > 0.1){
+		if (spawn_start_wait < spawn_start_wait_max){
+			spawn_start_wait ++;
+		}
+	}
+}
+
 if (!global.game_pause){
 	
 	// Music
@@ -101,7 +109,7 @@ if (!global.game_pause){
 	}
 	
 	// Train Arrival
-	if (global.cutscene_current == -1) && (room == rm_level_6_00){
+	if (global.cutscene_current == -1) && (room == rm_level_6_00) && (spawn_start_wait >= spawn_start_wait_max){
 		if (global.game_boss_trainhorde_killed) && (global.worldtrain_room == room){
 			trainboss_spawned = true;
 		}
@@ -167,152 +175,154 @@ if (lighting < lighting_to){
 
 global.ambientShadowIntensity = lighting;
 
-if (player_exists) && (!scr_level_is_peaceful(room)){
-	var spawn_rate = spawn_rate_real;
-	if (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
-		if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
-			spawn_rate ++;
-		}
+if (spawn_start_wait >= spawn_start_wait_max){
+	if (player_exists) && (!scr_level_is_peaceful(room)){
+		var spawn_rate = spawn_rate_real;
+		if (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
+			if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
+				spawn_rate ++;
+			}
 		
-		if (global.game_combat_in_hordechallenge){
-			spawn_rate += horde_spawn_rate;
-		}else{
-			global.game_combat_state_time_real ++;
-		}
+			if (global.game_combat_in_hordechallenge){
+				spawn_rate += horde_spawn_rate;
+			}else{
+				global.game_combat_state_time_real ++;
+			}
 		
-		spawn_rate += global.game_combat_playerskill - 1;
+			spawn_rate += global.game_combat_playerskill - 1;
 		
-		if (spawn_time > 0){
-			spawn_time -= spawn_rate;
-		}else{
-			spawn = true;
-			spawn_time = 60 * spawn_interval[global.game_combat_state];
-			spawn_time /= spawn_rate;
-		}
+			if (spawn_time > 0){
+				spawn_time -= spawn_rate;
+			}else{
+				spawn = true;
+				spawn_time = 60 * spawn_interval[global.game_combat_state];
+				spawn_time /= spawn_rate;
+			}
 		
-		if (spawn){
-			if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * spawn_rate)){
-				var xpos = random_range(camx - 10, camx + camw + 10);
-				var ypos = random_range(camy - 10, camy + camh + 10);
-				var spawn_trial = 0;
+			if (spawn){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * spawn_rate)){
+					var xpos = random_range(camx - 10, camx + camw + 10);
+					var ypos = random_range(camy - 10, camy + camh + 10);
+					var spawn_trial = 0;
 				
-				while(!scr_is_valid_enemyspawn(xpos, ypos)){
-					xpos = random_range(camx - 10, camx + camw + 10);
-					ypos = random_range(camy - 10, camy + camh + 10);
-					spawn_trial ++;
+					while(!scr_is_valid_enemyspawn(xpos, ypos)){
+						xpos = random_range(camx - 10, camx + camw + 10);
+						ypos = random_range(camy - 10, camy + camh + 10);
+						spawn_trial ++;
 				
-					if (spawn_trial > 1000){
-						spawn_trial = 0;
-						return;
-					}
-				}
-		
-				var weapon;
-				
-				if (chance(85)){
-					weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
-				}else{
-					weapon = choose(PawnWeapon.Grenade);
-				}				
-				
-				var enemy;
-				
-				if (chance(75)){
-					enemy = instance_create(xpos, ypos, obj_enemy_0);
-					
-					if (spawn_rate > 0.9){
-						if (global.boss_current == -1){
-							if (chance(3.5)){
-								enemy.type = Enemy0_Type.Mother;
-							}
-						
-							if (chance(3.5)){
-								enemy.type = Enemy0_Type.Sniper;
-							}
+						if (spawn_trial > 1000){
+							spawn_trial = 0;
+							return;
 						}
 					}
+		
+					var weapon;
 				
-					if (spawn_rate > 1.4){
-						if (global.boss_current == -1){
-							if (chance(4)){
-								enemy.type = Enemy0_Type.Mother;
-							}
+					if (chance(85)){
+						weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
+					}else{
+						weapon = choose(PawnWeapon.Grenade);
+					}				
+				
+					var enemy;
+				
+					if (chance(75)){
+						enemy = instance_create(xpos, ypos, obj_enemy_0);
+					
+						if (spawn_rate > 0.9){
+							if (global.boss_current == -1){
+								if (chance(3.5)){
+									enemy.type = Enemy0_Type.Mother;
+								}
 						
-							if (chance(5)){
-								enemy.type = Enemy0_Type.Sniper;
+								if (chance(3.5)){
+									enemy.type = Enemy0_Type.Sniper;
+								}
 							}
 						}
-					}
+				
+						if (spawn_rate > 1.4){
+							if (global.boss_current == -1){
+								if (chance(4)){
+									enemy.type = Enemy0_Type.Mother;
+								}
+						
+								if (chance(5)){
+									enemy.type = Enemy0_Type.Sniper;
+								}
+							}
+						}
 					
-					if (chance(8)){
-						enemy.type = Enemy0_Type.Crazy;
-					}
+						if (chance(8)){
+							enemy.type = Enemy0_Type.Crazy;
+						}
 				
-					if (chance(10)) && (healer_can_spawn){
-						enemy.type = Enemy0_Type.Healer;
-					}
+						if (chance(10)) && (healer_can_spawn){
+							enemy.type = Enemy0_Type.Healer;
+						}
 				
-					if (weapon == PawnWeapon.Grenade){
-						enemy.type = Enemy0_Type.Grenadier;
-					}
+						if (weapon == PawnWeapon.Grenade){
+							enemy.type = Enemy0_Type.Grenadier;
+						}
 				
-					if (enemy.type == Enemy0_Type.Sniper){
-						weapon = PawnWeapon.SniperRifle;
-					}
+						if (enemy.type == Enemy0_Type.Sniper){
+							weapon = PawnWeapon.SniperRifle;
+						}
 				
-					enemy.weapon_index = weapon;
-				}else{
-					enemy = instance_create(xpos, ypos, obj_enemy_2);
-				}
+						enemy.weapon_index = weapon;
+					}else{
+						enemy = instance_create(xpos, ypos, obj_enemy_2);
+					}
 
-				repeat(9){
-					part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
+					repeat(9){
+						part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
+					}
+				}
+			
+				spawn = false;
+			}
+		
+		}else if (global.game_pause){
+			if (audio_is_playing(spawn_music_main[CombatState.Idle])){
+				audio_pause_sound(spawn_music_main[CombatState.Idle]);
+			}
+		
+			if (audio_is_playing(spawn_music_main[CombatState.Buildup])){
+				audio_pause_sound(spawn_music_main[CombatState.Buildup]);
+			}
+		
+			if (audio_is_playing(spawn_music_main[CombatState.Climax])){
+				audio_pause_sound(spawn_music_main[CombatState.Climax]);
+			}
+		
+			if (global.boss_current != -1){
+				var bossmusic = global.boss_music[global.boss_current];
+			
+				if (bossmusic != noone){
+					if (audio_is_playing(bossmusic)){
+						audio_pause_sound(bossmusic);
+					}
 				}
 			}
-			
-			spawn = false;
-		}
 		
-	}else if (global.game_pause){
-		if (audio_is_playing(spawn_music_main[CombatState.Idle])){
-			audio_pause_sound(spawn_music_main[CombatState.Idle]);
-		}
-		
-		if (audio_is_playing(spawn_music_main[CombatState.Buildup])){
-			audio_pause_sound(spawn_music_main[CombatState.Buildup]);
-		}
-		
-		if (audio_is_playing(spawn_music_main[CombatState.Climax])){
-			audio_pause_sound(spawn_music_main[CombatState.Climax]);
-		}
-		
-		if (global.boss_current != -1){
-			var bossmusic = global.boss_music[global.boss_current];
-			
-			if (bossmusic != noone){
-				if (audio_is_playing(bossmusic)){
-					audio_pause_sound(bossmusic);
-				}
+			if (audio_is_playing(m_ambience_wind_0)){
+				audio_pause_sound(m_ambience_wind_0);
 			}
-		}
 		
-		if (audio_is_playing(m_ambience_wind_0)){
-			audio_pause_sound(m_ambience_wind_0);
+			spawn_pause_update = false;
 		}
-		
-		spawn_pause_update = false;
-	}
 	
-}else{
-	global.game_combat_state_time_real = 0;
-	train_time = 0;
-	spawn_rate_real = 0.75;
+	}else{
+		global.game_combat_state_time_real = 0;
+		train_time = 0;
+		spawn_rate_real = 0.75;
 	
-	global.game_combat_state = CombatState.Idle;
-	if (global.cutscene_current == -1){
-		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 1000);
-		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 1000);
-		audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 1000);
+		global.game_combat_state = CombatState.Idle;
+		if (global.cutscene_current == -1){
+			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 1000);
+			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 1000);
+			audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 1000);
+		}
 	}
 }
 

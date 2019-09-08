@@ -51,6 +51,7 @@ scr_part_type_bodypart_companion_3();
 scr_part_type_fog_0();
 scr_part_type_fog_1();
 
+scr_part_type_walk_smoke_0();
 scr_part_type_smoke_0();
 scr_part_type_smoke_1();
 scr_part_type_smoke_2();
@@ -87,6 +88,7 @@ scr_part_type_toxic_1();
 scr_part_type_fire_0();
 scr_part_type_fire_1();
 scr_part_type_fire_2();
+scr_part_type_fire_large_0();
 
 scr_part_type_poison_0();
 scr_part_type_poison_1();

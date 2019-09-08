@@ -25,7 +25,9 @@
         "2cc2ff23-795d-4d42-aaa6-8f7e523bfded",
         "54c771a5-3176-4fb0-89e8-d1de84539e5c",
         "053cdfa7-debb-4bc7-bfee-e50f21408a2e",
-        "da9f4560-9a5e-407a-b40d-8a617c95bbbc"
+        "da9f4560-9a5e-407a-b40d-8a617c95bbbc",
+        "09015d94-5b59-46c5-b852-b2d04ff00947",
+        "e5c29600-f27a-4e8d-b6c3-7ba89af0ac45"
     ],
     "filterType": "GMObject",
     "folderName": "Exterior",

@@ -280,7 +280,7 @@
             "blendMode": 0,
             "isLocked": false,
             "name": "Fire",
-            "opacity": 100,
+            "opacity": 80,
             "visible": true
         },
         {

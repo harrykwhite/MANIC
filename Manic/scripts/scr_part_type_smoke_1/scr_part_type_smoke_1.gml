@@ -1,5 +1,5 @@
-/// @description scr_part_type_smoke_1();
-/// @function scr_part_type_smoke_1
+///@description scr_part_type_smoke_1();
+///@function scr_part_type_smoke_1
 global.pt_smoke_1 = part_type_create();
 var pt = global.pt_smoke_1;
 

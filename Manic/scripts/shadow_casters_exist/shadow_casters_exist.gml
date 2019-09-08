@@ -1,4 +1,4 @@
-/// @desc Gets whether any shadow casters exist
+///@desc Gets whether any shadow casters exist
 
 // Inline this script
 gml_pragma("forceinline");

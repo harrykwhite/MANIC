@@ -9,7 +9,6 @@ spawn = false;
 
 // Spawn System
 scr_spawn_setup("city", 1.7);
-global.game_combat_state_time_real = 0;
 spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;
@@ -41,7 +40,17 @@ switch(room){
 			spawn_y = 862;
 		}else{
 			spawn_x = 374;
-			spawn_y = 124;
+			spawn_y = 144;
+		}
+		break;
+	
+	case rm_level_8_post_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 374;
+			spawn_y = 1352;
+		}else{
+			spawn_x = 366;
+			spawn_y = 144;
 		}
 		break;
 }

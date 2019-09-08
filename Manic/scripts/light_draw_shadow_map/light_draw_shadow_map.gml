@@ -1,7 +1,7 @@
-/// @desc Draws the light to the shadow map (not the screen)
-/// @arg light The light to draw
-/// @arg surface The surface to draw the light's shadow map to
-/// @arg update True to update the light, otherwise false
+///@desc Draws the light to the shadow map (not the screen)
+///@arg light The light to draw
+///@arg surface The surface to draw the light's shadow map to
+///@arg update True to update the light, otherwise false
 
 var light = argument0;
 var surface = argument1;

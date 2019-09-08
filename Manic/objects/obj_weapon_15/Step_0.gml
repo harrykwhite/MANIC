@@ -27,8 +27,11 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
         scr_weapon_ammo_use(1);
         image_speed = 1;
 		
-        part_type_direction(global.pt_smoke_4, dir - 17, dir + 17, 0, 0);
-        part_particles_create(global.ps_front, xpos + lengthdir_x(10, dir) + random_range(-3, 3), ypos + lengthdir_y(10, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+        part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
+		for(var l = 0; l < 20; l += 4){
+			part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+		}
+		
 		part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
         part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(1, 2));
 		scr_mouse_control(MouseType.SmallCrosshair, 2.5, 15);

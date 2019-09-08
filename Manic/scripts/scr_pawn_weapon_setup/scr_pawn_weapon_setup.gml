@@ -17,6 +17,11 @@ attack_time = floor(attack_time_max * 0.75);
 attack_range = 0;
 attack_offset = 0;
 
+flicker = false;
+flicker_draw = false;
+flicker_time = 0;
+flicker_time_max = 10;
+
 angle_offset = 0;
 angle_offset_current = 0;
 

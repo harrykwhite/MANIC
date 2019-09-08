@@ -1,6 +1,6 @@
-/// @desc Ensures the shadow map is valid, and creates it if necessary
-/// @arg shadowMap The shadow map from enum eShadowMap
-/// @returns True if the shadow map is valid, otherwise false
+///@desc Ensures the shadow map is valid, and creates it if necessary
+///@arg shadowMap The shadow map from enum eShadowMap
+///@returns True if the shadow map is valid, otherwise false
 
 var shadowMapType = argument0;
 

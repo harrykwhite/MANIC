@@ -1,4 +1,4 @@
-/// @param amount
+///@param amount
 var amount = argument0;
 amount *= (global.game_option[| Options.Flashing] / 100);
 

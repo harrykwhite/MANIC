@@ -1,5 +1,5 @@
 if (!instance_exists(obj_player)){
-    instance_create(888, 13, obj_player);
+    instance_create(604, -4, obj_player);
 }
 
 global.player_footstep_default = snd_character_footstep_grass;

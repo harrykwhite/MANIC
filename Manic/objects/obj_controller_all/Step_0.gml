@@ -3,37 +3,39 @@ var gcount = gamepad_get_device_count();
 var found = false;
 
 if (global.game_input_type == InputType.Gamepad){
-	for(var g = 0; g < gcount; g ++){
-		if (gamepad_is_connected(g)){
-			found = true;
+	if (window_has_focus()){
+		for(var g = 0; g < gcount; g ++){
+			if (gamepad_is_connected(g)){
+				found = true;
 			
-			if (global.game_input_gamepad_current == -1){
-				global.game_input_gamepad_current = g;
-				global.game_input_gamepad_current_sprite = scr_input_gamepad_get_sprite();
+				if (global.game_input_gamepad_current == -1){
+					global.game_input_gamepad_current = g;
+					global.game_input_gamepad_current_sprite = scr_input_gamepad_get_sprite();
 			
-				gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
-				gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
+					gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
+					gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
+				}
+			
+				break;
 			}
-			
-			break;
 		}
-	}
 	
-	if (!found){
-		if (gamepad_check_disconnected_time < 60){
-			gamepad_check_disconnected_time ++;
-		}else{
-			global.game_input_type = InputType.Keyboard;
+		if (!found){
+			if (gamepad_check_disconnected_time < 60){
+				gamepad_check_disconnected_time ++;
+			}else{
+				global.game_input_type = InputType.Keyboard;
 		
-			if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
-				obj_titlescreen_main.option_setting_controls_value[0] = InputType.Keyboard;
-			}
+				if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
+					obj_titlescreen_main.option_setting_controls_value[0] = InputType.Keyboard;
+				}
 			
-			scr_options_refresh();
+				scr_options_refresh();
+				gamepad_check_disconnected_time = 0;
+			}
+		}else{
 			gamepad_check_disconnected_time = 0;
 		}
-	}else{
-		gamepad_check_disconnected_time = 0;
 	}
 }
 

@@ -135,10 +135,16 @@ if (instance_exists(obj_player)){
 				var oldweapon = global.weapon_slot[global.weapon_slotcurrent];
 				var dropammo = global.weapon_slotammo[global.weapon_slotcurrent];
 				var dropquantity = global.weapon_slotquantity[global.weapon_slotcurrent];
-				var sound = snd_weapon_pickup_1;
+				var sound = snd_weapon_pickup_melee;
 				
-				if (global.weapon_type[index] == WeaponType.Ranged){
-					sound = snd_weapon_pickup_0;
+				switch(global.weapon_type[index]){
+					case WeaponType.Ranged:
+						sound = snd_weapon_pickup_gun;
+						break;
+					
+					case WeaponType.Throwing:
+						sound = snd_weapon_pickup_throwable;
+						break;
 				}
 				
 				scr_sound_play(sound, false, 0.8, 1.2);

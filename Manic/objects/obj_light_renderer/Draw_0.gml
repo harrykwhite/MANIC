@@ -1,4 +1,4 @@
-/// @desc Lighting
+///@desc Lighting
 
 // Update the shadow map
 var exists;

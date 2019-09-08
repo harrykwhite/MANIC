@@ -174,7 +174,7 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 					show_debug_message("Tried to spawn a deer but couldn't.");
 					break;
 				}
-			}until (inroom(xx, yy) && (point_distance(obj_player.x, obj_player.y, xx, yy) > 300) && !collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)) && (!place_meeting(xx, yy, obj_interior_fade));
+			}until (inroom(xx, yy) && (point_distance(obj_player.x, obj_player.y, xx, yy) > 250) && !collision_rectangle(xx - 30, yy - 20, xx + 30, yy + 20, obj_p_solid, false, true)) && (!place_meeting(xx, yy, obj_interior_fade));
 			
 			if (dospawn){
 				instance_create(xx, yy, obj_enemy_5);
@@ -184,7 +184,7 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 				}
 			}
 			
-			deer_spawn_time = 60 * random_range(15, 20);
+			deer_spawn_time = 60 * random_range(9, 12);
 		}
 	}
 }

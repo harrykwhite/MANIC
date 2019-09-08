@@ -11,7 +11,7 @@ if (iskeyboard && !gamepad_device_search){
 	selected = -1;
 }
 
-draw_set_font(fnt_cambria_5);
+draw_set_font(fnt_cambria_6);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 scr_text_shadow_transformed((display_get_gui_width() / 2), (display_get_gui_height() / 2) - 240, "MANIC", c_white, titlescale, titlescale, angle);

@@ -28,9 +28,9 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
 			throw.damage_enemy = true;
 			throw.damage_player = true;
 			throw.damage_companion = false;
-				
+			
 			if (global.weapon_slotquantity[global.weapon_slotcurrent] <= 0){
-				global.weapon_slotquantity[global.weapon_slotcurrent] = -1;
+				global.weapon_slot[global.weapon_slotcurrent] = -1;
 				instance_destroy();
 			}
         }

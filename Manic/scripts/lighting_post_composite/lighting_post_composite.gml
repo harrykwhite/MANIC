@@ -1,4 +1,4 @@
-///// @desc Executed after compositing the lighting map
+/////@desc Executed after compositing the lighting map
 
 ////
 ////	This is not guaranteed to be executed for every lighting_pre_composite!

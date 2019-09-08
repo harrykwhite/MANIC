@@ -21,8 +21,11 @@ if (instance_exists(target)){
 			
 			var xpos = x + lengthdir_x(32 * scale, shoot_dir);
 			var ypos = y + lengthdir_y(32 * scale, shoot_dir);
+			
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
-			part_particles_create(global.ps_front, xpos + lengthdir_x(3, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(3, shoot_dir) + random_range(-3, 3), global.pt_smoke_4, 2);
+			for(var l = 0; l < 16; l += 4){
+				part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, shoot_dir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, shoot_dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+			}
 			
 			var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.enemy = true;

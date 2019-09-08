@@ -21,7 +21,7 @@ global.level_turret_number[Level.Prologue] = 0;
 global.level_entered[Level.Prologue] = false;
 global.level_cleared[Level.Prologue] = false;
 global.level_kill_count[Level.Prologue] = 0;
-global.level_kill_max[Level.Prologue] = 5;
+global.level_kill_max[Level.Prologue] = 4;
 global.level_checkpoint_found[Level.Prologue] = false;
 
 global.level_name[Level.RavagedTown] = "Ravaged Town";
@@ -109,7 +109,7 @@ global.level_kill_max[Level.TheCemetery] = 50;
 global.level_checkpoint_found[Level.TheCemetery] = false;
 
 global.level_name[Level.DesolateVillage] = "Desolate Village";
-global.level_room[Level.DesolateVillage] = rm_level_8_00;
+global.level_room[Level.DesolateVillage] = rm_level_8_post_00;
 global.level_preroom[Level.DesolateVillage] = noone;
 global.level_collectable_current[Level.DesolateVillage] = 0;
 global.level_collectable_number[Level.DesolateVillage] = 2;

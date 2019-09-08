@@ -1,3 +1,3 @@
-/// @desc Free lighting
+///@desc Free lighting
 
 lighting_free();

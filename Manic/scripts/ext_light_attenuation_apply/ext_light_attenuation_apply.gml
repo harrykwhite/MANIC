@@ -1,5 +1,5 @@
-/// @desc Apply the light attenuation extension to the given light
-/// @arg light The light to apply the extension to
+///@desc Apply the light attenuation extension to the given light
+///@arg light The light to apply the extension to
 
 // Enable attenuation in the shader
 shader_set_uniform_i(global.u_AttenuationEnabled, true);

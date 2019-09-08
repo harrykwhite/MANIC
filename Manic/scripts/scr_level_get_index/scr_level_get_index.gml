@@ -70,6 +70,10 @@ switch(rm){
 		return Level.WinterTown;
 		break;
 	
+	case rm_level_4_03:
+		return Level.WinterTown;
+		break;
+	
 	case rm_level_5_00:
 		return Level.HumanPrison;
 		break;
@@ -135,6 +139,10 @@ switch(rm){
 		break;
 	
 	case rm_level_8_02:
+		return Level.DesolateVillage;
+		break;
+	
+	case rm_level_8_post_00:
 		return Level.DesolateVillage;
 		break;
 	

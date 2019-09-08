@@ -1,7 +1,7 @@
-/// @param sound
-/// @param  loop
-/// @param  min_pitch
-/// @param  max_pitch
+///@param sound
+///@param  loop
+///@param  min_pitch
+///@param  max_pitch
 var snd = argument0;
 var loop = argument1;
 var min_pitch = argument2;

@@ -28,7 +28,7 @@ if (instance_exists(obj_player)){
         if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 			instance_destroy();
 			
-			scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
+			scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
 			scr_player_stamina_drain(6);
 			scr_effect_screenshake(1);
 			global.level_collectable_current[global.level_current] ++;

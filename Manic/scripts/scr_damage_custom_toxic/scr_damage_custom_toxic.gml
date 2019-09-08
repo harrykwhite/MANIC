@@ -1,7 +1,7 @@
-/// @param  width
-/// @param  height
-/// @param  time
-/// @param damage_companion
+///@param  width
+///@param  height
+///@param  time
+///@param damage_companion
 var width = argument0;
 var height = argument1;
 var time = argument2;

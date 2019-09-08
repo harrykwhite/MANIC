@@ -13,7 +13,8 @@
         "52f8eb71-61b3-4cc1-9bb1-d51d5f78cb56",
         "661816da-1a3d-4aa8-a5f1-9a1b89c64603",
         "2c59332a-71c9-4398-aba4-eebdf38a712c",
-        "5b632e02-379e-4ffc-8b7f-87b0b6035b04"
+        "5b632e02-379e-4ffc-8b7f-87b0b6035b04",
+        "83004bab-9d1d-446f-8ac5-fa605af3b03b"
     ],
     "filterType": "GMScript",
     "folderName": "Draw Attributes",

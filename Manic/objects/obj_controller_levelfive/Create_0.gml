@@ -71,7 +71,6 @@ switch(room){
 
 scr_spawn_setup("underground", 1.4);
 spawn_pause_update = false;
-global.game_combat_state_time_real = 0;
 spawn_rate_real = 1;
 spawn_cleared = false;
 

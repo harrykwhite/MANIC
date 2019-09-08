@@ -61,11 +61,13 @@ headless = false;
 
 throw_weapon_time = 0;
 throw_weapon_time_max = 60;
+throw_weapon_direction = 0;
+throw_weapon_direction_set = false;
 
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
 
-defense = 0;
+defense = 1;
 arm = -1;
 
 move_speed = 0;
@@ -91,7 +93,7 @@ active = false;
 if (room == rm_level_6_pre_00){
 	health_max = 110;
 }else{
-	health_max = 75;
+	health_max = 85;
 }
 
 health_current = health_max;

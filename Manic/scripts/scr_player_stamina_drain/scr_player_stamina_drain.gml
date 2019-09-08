@@ -1,4 +1,4 @@
-/// @param time
+///@param time
 var amount = argument0;
 
 if (global.player_stamina_active){

@@ -3,4 +3,9 @@ if (global.game_pause){
 	return;
 }
 
+if (instance_exists(owner_inst)){
+	x = owner_inst.x + owner_offset_x;
+	y = owner_inst.y + owner_offset_y;
+}
+
 image_speed = 4;

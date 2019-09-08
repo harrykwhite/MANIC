@@ -4,9 +4,9 @@ if (!ds_exists(global.game_option, ds_type_list)){
 	scr_options_init();
 }
 
-audio_play_sound(m_ambience_rain_0, 3, true);
-audio_sound_gain(m_ambience_rain_0, 0, 0);
-audio_sound_gain(m_ambience_rain_0, 0.6 * obj_controller_all.real_ambience_volume, 4000);
+audio_play_sound(m_ambience_wind_0, 3, true);
+audio_sound_gain(m_ambience_wind_0, 0, 0);
+audio_sound_gain(m_ambience_wind_0, 0.55 * obj_controller_all.real_ambience_volume, 1000);
 
 sprite_index = noone;
 

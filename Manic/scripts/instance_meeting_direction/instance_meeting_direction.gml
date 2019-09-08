@@ -1,9 +1,9 @@
-/// @description instance_meeting_direction(x, y, dir, object);
-/// @function instance_meeting_direction
-/// @param x
-/// @param  y
-/// @param  dir
-/// @param  object
+///@description instance_meeting_direction(x, y, dir, object);
+///@function instance_meeting_direction
+///@param x
+///@param  y
+///@param  dir
+///@param  object
 
 /*
     DESCRIPTION:

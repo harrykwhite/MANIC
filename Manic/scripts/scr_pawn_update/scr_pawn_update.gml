@@ -354,15 +354,16 @@ if (health_current <= 0){
 			}
 		}
 	}else if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
-		audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
-		audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
-		global.boss_current = -1;
-		
 		if (object_index != obj_antagonist){
+			audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
+			audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
+			
 			pack = instance_create(x, y + 4, obj_health_pack_1);
 			pack.is_dropped = true;
 			
 			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
 		}
+		
+		global.boss_current = -1;
 	}
 }

@@ -129,12 +129,21 @@ if (instance_exists(target)){
 		move_speed = 0;
 		
 		if (weapon_exists){
-			weapon.dir = dir_to_target;
+			var tscale = throw_weapon_time / throw_weapon_time_max;
+			
+			if (!throw_weapon_direction_set){
+				throw_weapon_direction = dir_to_target;
+				throw_weapon_direction_set = true;
+			}
+			
+			weapon.dir = throw_weapon_direction;
+			weapon.flicker = true;
+			weapon.flicker_time_max = 10;
 			
 			if (weapon.dir <= 90 || weapon.dir >= 270){
-				weapon.dir += (throw_weapon_time / throw_weapon_time_max) * 75;
+				weapon.dir += tscale * 95;
 			}else{
-				weapon.dir -= (throw_weapon_time / throw_weapon_time_max) * 75;
+				weapon.dir -= tscale * 95;
 			}
 			
 			if (throw_weapon_time < throw_weapon_time_max){
@@ -155,7 +164,6 @@ if (instance_exists(target)){
 				
 				throw_weapon_inst = drop;
 				
-				scr_effect_freeze(10);
 				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_swing_0, false, 0.9, 1.1);
 				
@@ -163,9 +171,12 @@ if (instance_exists(target)){
 				weapon = -1;
 			}
 		}else{
+			state_time_max = throw_weapon_time_max + 120;
+			arm.image_angle = 270 + (sign(image_xscale) * 10);
+			
 			if (throw_weapon_time >= throw_weapon_time_max){
 				if (instance_exists(throw_weapon_inst)){
-					if (state_time_max > throw_weapon_time_max + 30){
+					if (state_time >= state_time_max){
 						move_x_to = throw_weapon_inst.x;
 						move_y_to = throw_weapon_inst.y;
 						move_speed = 2 + (0.5 * phasetwo);
@@ -177,8 +188,8 @@ if (instance_exists(target)){
 					        weapon.owner = id;
 							weapon_change_time = 0;
 							
-							scr_sound_play_distance(snd_weapon_pickup_0, false, 140);
-							state_time_max = 0;
+							scr_sound_play_distance(snd_weapon_pickup_gun, false, 140);
+							state_time = 0;
 						}
 					}
 				}
@@ -309,6 +320,8 @@ if (instance_exists(target)){
 		run_away_direction = 0;
 		
 		throw_weapon_time = 0;
+		throw_weapon_direction = 0;
+		throw_weapon_direction_set = false;
 		throw_weapon_inst = noone;
 		
 		weapon_change_time = 0;

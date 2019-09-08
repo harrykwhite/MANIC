@@ -26,6 +26,10 @@ switch(rm){
 		return true;
 		break;
 	
+	case rm_level_4_02:
+		return true;
+		break;
+	
 	case rm_level_5_post_00:
 		return true;
 		break;
@@ -35,6 +39,10 @@ switch(rm){
 		break;
 	
 	case rm_level_7_post_00:
+		return true;
+		break;
+	
+	case rm_level_8_post_00:
 		return true;
 		break;
 	

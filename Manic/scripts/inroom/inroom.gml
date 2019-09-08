@@ -1,5 +1,5 @@
-/// @param  x
-/// @param  y
+///@param  x
+///@param  y
 var xx = argument0;
 var yy = argument1;
 var r = false;

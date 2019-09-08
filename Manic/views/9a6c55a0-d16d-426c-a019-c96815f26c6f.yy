@@ -4,14 +4,13 @@
     "mvc": "1.1",
     "name": "9a6c55a0-d16d-426c-a019-c96815f26c6f",
     "children": [
-        "74405caa-66fb-4532-bdfb-def70099701d",
-        "349df9c1-27cb-4c55-bdd9-1246f716c663",
-        "88d6915f-1f61-4bce-9478-7c360bcfd46c",
-        "f3fc1f61-985a-464e-bbee-e85c14878cc7",
-        "560fea43-b993-46dd-b9f3-8b18c580a056",
-        "a0495115-d83d-4732-af4e-c12cbff0ee74",
-        "6556f4cc-52d7-44af-a816-d7ca9c50eb4b",
-        "ed53053d-0ec1-44f2-8777-1828c297db28"
+        "ea22b043-28a7-452f-ba95-927427313a09",
+        "13fec426-609b-4980-acae-eaf04419e528",
+        "a7dfeb5e-c081-49c7-89aa-fae25b735fe6",
+        "08b8d99d-9b8d-431a-a69c-0af996fd1c19",
+        "38ee3894-be55-479f-a2c1-9c7c7810cea9",
+        "8dceb6b0-5b7e-4e0c-85e9-685c0efe77c3",
+        "1b536833-33f3-4277-abf7-1368e8ccc28d"
     ],
     "filterType": "GMSound",
     "folderName": "Dialogue",

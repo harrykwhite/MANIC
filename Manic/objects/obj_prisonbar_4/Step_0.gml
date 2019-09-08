@@ -12,9 +12,6 @@ if (open){
 	
 	if (open_animation){
 		image_speed = 1;
-		if (image_index == image_number - 1){
-			open_animation = false;
-		}
 	}else{
 		image_speed = 0;
 		image_index = image_number - 1;

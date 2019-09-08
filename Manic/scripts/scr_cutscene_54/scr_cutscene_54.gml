@@ -29,7 +29,7 @@ if (instance_exists(obj_player)){
 					global.cutscene_time[index] ++;
 				}else{
 					instance_destroy(inst);
-					scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
+					scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
 					scr_effect_screenshake(1);
 					
 					global.cutscene_time[index] = 0;
@@ -42,7 +42,7 @@ if (instance_exists(obj_player)){
 		}else{
 			stationary = true;
 			
-			if (global.cutscene_time[index] < 210){
+			if (global.cutscene_time[index] < 300){
 				global.cutscene_time[index] ++;
 				
 				obj_player.move_x_to = obj_player.x;
@@ -52,11 +52,11 @@ if (instance_exists(obj_player)){
 					obj_player.image_xscale = 1;
 				}
 				
-				if (global.cutscene_time[index] > 70){
+				if (global.cutscene_time[index] > 100){
 					obj_player.image_xscale = -1;
 				}
 				
-				if (global.cutscene_time[index] > 140){
+				if (global.cutscene_time[index] > 200){
 					obj_player.image_xscale = 1;
 				}
 			}else{
@@ -67,14 +67,14 @@ if (instance_exists(obj_player)){
 	}else if (cutscene_ending_stage == 2){
 		stationary = true;
 		
-		if (global.cutscene_time[index] < 60){
+		if (global.cutscene_time[index] < 85){
 			global.cutscene_time[index] ++;
 		}else{
 			cutscene_ending_stage = 3;
 			global.cutscene_time[index] = 0;
 		}
 	}else if (cutscene_ending_stage == 3){
-		var x_to = 720;
+		var x_to = 864;
 		var y_to = 458;
 		var gate = inst_2F004B72;
 		
@@ -85,7 +85,7 @@ if (instance_exists(obj_player)){
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
-		obj_player.move_extSpd = obj_player.spd_max * 0.7;
+		obj_player.move_extSpd = obj_player.spd_max * 0.45;
 		
 		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 20){
 			cutscene_ending_stage = 4;
@@ -98,7 +98,7 @@ if (instance_exists(obj_player)){
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
 		obj_player.flashlight_direction = 360;
-		obj_player.move_extSpd = obj_player.spd_max * 0.7;
+		obj_player.move_extSpd = obj_player.spd_max * 0.45;
 		
 		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 500){
 			obj_controller_ui.ending = true;

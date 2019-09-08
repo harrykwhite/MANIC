@@ -27,8 +27,10 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
 		scr_camera_to_player();
 		image_speed = 1;
 		
-        part_type_direction(global.pt_smoke_4, dir - 17, dir + 17, 0, 0);
-		repeat(5) part_particles_create(global.ps_front, xpos + lengthdir_x(4, dir) + random_range(-5, 5), ypos + lengthdir_y(4, dir) + random_range(-5, 5), global.pt_smoke_4, 1);
+        part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
+		for(var l = 0; l < 20; l += 4){
+			part_particles_create(global.ps_front, xpos + lengthdir_x(-7 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-7 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+		}
 		
 	    var shoot = instance_create(xpos, ypos, obj_throwobject_1);
 	    shoot.spd = shoot_speed;

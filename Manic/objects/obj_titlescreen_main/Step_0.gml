@@ -11,46 +11,39 @@ var camw = camera_get_view_width(view_camera[0]);
 var camh = camera_get_view_height(view_camera[0]);
 
 // Dust
-if (random(5) < 1) part_particles_create(global.ps_front, camx + random(camw), camy + random(camh), global.pt_dust_0, 1);
-if (random(10) < 1) part_particles_create(global.ps_front, camx + random(camw), camy + random(camh), global.pt_dust_1, 1);
+if (random(6.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
+if (random(8.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
 
 // Tumbleweed
-if (random(170) < 1){
+if (random(200) < 1){
 	if (instance_number(obj_environment_tumbleweed) < 5){
-		var xx = camx + random(camw);
-		var yy = camy + random(camh);
+		var xx = random_range(camx, camx + camw);
+		var yy = random_range(camy, camy + camh);
 		var safe = 0;
-	
-		while(place_meeting(xx, yy, obj_p_solid)){
-			xx = camx + random(camw);
-			yy = camy + random(camh);
-			
-			if (safe < 100){
-				safe ++;
-			}else{
-				break;
+		
+		if (instance_exists(obj_player)){
+			while(point_distance(xx, yy, obj_player.x, obj_player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (place_meeting(xx, yy, obj_interior_fade)){
+				xx = random_range(camx, camx + camw);
+				yy = random_range(camy, camy + camh);
+				
+				if (safe < 100){
+					safe ++;
+				}else{
+					break;
+				}
 			}
 		}
-	
+		
 		if (safe < 100){
 			instance_create(xx, yy, obj_environment_tumbleweed);
 		}
 	}
 }
 
-// Rain
-repeat(2){
-    part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(-150, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) - 10, global.pt_rain_0, 1);
-}
-
-if (random(2) < 1){
-    part_particles_create(global.ps_bottom, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), choose(global.pt_rain_1, global.pt_rain_2), 1);
-}
-
 // Fog
-if (random(2.5) < 1){
+if (random(3) < 1){
 	if (part_particles_count(global.pt_fog_0) < 40){
-		part_particles_create(global.ps_front, camera_get_view_x(view_camera[0]) + random_range(0, camera_get_view_width(view_camera[0])), camera_get_view_y(view_camera[0]) + random_range(0, camera_get_view_height(view_camera[0])), global.pt_fog_0, 1);
+		part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_0, 1);
 	}
 }
 #endregion
@@ -306,7 +299,7 @@ if (fade){
 						}
 		
 						global.game_option[| option_setting_audio_edit[selected]] = option_setting_audio_value[selected];
-						scr_options_refresh();
+						scr_options_refresh(false);
 						press_break = 5;
 					}
 				}else if (in_settings_controls){
@@ -369,7 +362,7 @@ if (fade){
 				switch(selected){
 					case 0:
 						isvalid = false;
-						audio_sound_gain(m_ambience_rain_0, 0, 2000);
+						audio_sound_gain(m_ambience_wind_0, 0, 2000);
 						
 						global.game_is_playthrough = true;
 						fade = true;
@@ -394,6 +387,7 @@ if (fade){
 						break;
 				
 					case 3:
+						scr_options_refresh(false);
 						game_end();
 						break;
 				}
@@ -479,7 +473,7 @@ if (fade){
 					scr_titlescreen_options_scale_reset();
 				}else{
 					isvalid = false;
-					audio_sound_gain(m_ambience_rain_0, 0, 2000);
+					audio_sound_gain(m_ambience_wind_0, 0, 2000);
 					
 					global.game_is_playthrough = false;
 					global.game_save_seconds = 0;

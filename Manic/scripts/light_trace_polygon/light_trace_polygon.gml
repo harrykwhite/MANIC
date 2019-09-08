@@ -1,7 +1,7 @@
-/// @desc Trace a shadow for the given polygon from the provided light
-/// @arg shadow_caster The shadow caster that is being illuminated
-/// @arg light The light that illuminates the polygon
-/// @returns An array of vertices (at least 3) as a triangle list that is the shadow, || undefined if no shadow is cast
+///@desc Trace a shadow for the given polygon from the provided light
+///@arg shadow_caster The shadow caster that is being illuminated
+///@arg light The light that illuminates the polygon
+///@returns An array of vertices (at least 3) as a triangle list that is the shadow, || undefined if no shadow is cast
 
 var shadow_caster = argument0;
 var light = argument1;

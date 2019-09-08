@@ -1,4 +1,4 @@
-/// @desc Executed before compositing the lighting map
+///@desc Executed before compositing the lighting map
 
 // Reset counters
 global.worldRebuiltLights = 0;

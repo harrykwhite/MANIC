@@ -1,12 +1,12 @@
-/// @param  damage
-/// @param  strength
-/// @param  width
-/// @param  height
-/// @param  time
-/// @param  damage_enemy
-/// @param  damage_player
-/// @param  damage_companion
-/// @param  burn
+///@param  damage
+///@param  strength
+///@param  width
+///@param  height
+///@param  time
+///@param  damage_enemy
+///@param  damage_player
+///@param  damage_companion
+///@param  burn
 var damage = argument0;
 var strength = argument1;
 

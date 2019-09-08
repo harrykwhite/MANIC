@@ -1,7 +1,7 @@
-/// @desc Gets the static buffer for a light and shadow caster pair
-/// @arg light The light
-/// @arg shadow_caster The shadow caster
-/// @returns The stored buffer, || undefined
+///@desc Gets the static buffer for a light and shadow caster pair
+///@arg light The light
+///@arg shadow_caster The shadow caster
+///@returns The stored buffer, || undefined
 
 var light = argument0;
 var shadow_caster = argument1;

@@ -63,33 +63,40 @@ if (upgrade_has[PlayerUpgrade.Chestplate]){
 }
 
 // Burn
-if (burn){
-	if (burn_time == -1){
-		burn_time = 70;
-		burn_cycle_amount = 2;
-		burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
-	}
-	
-	scr_sound_set_distance(burn_sound, 110);
-	
-	if (burn_time > 0){
-		burn_time--;
-	}else{
-		if (burn_cycle_amount > 0){
-			burn_cycle_amount--;
+if (global.cutscene_current == -1){
+	if (burn){
+		if (burn_time == -1){
 			burn_time = 70;
-			
-			if (global.player_health_current > 1){
-				scr_player_damage(1, 0, 0, 5);
-				scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
-			}
-		}else{
-			scr_draw_burn_die(6, 18, x, y, 5);
-			burn_time = -1;
-			burn = false;
-			audio_stop_sound(burn_sound);
-			burn_sound = noone;
+			burn_cycle_amount = 2;
+			burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
 		}
+	
+		scr_sound_set_distance(burn_sound, 110);
+	
+		if (burn_time > 0){
+			burn_time--;
+		}else{
+			if (burn_cycle_amount > 0){
+				burn_cycle_amount--;
+				burn_time = 70;
+			
+				if (global.player_health_current > 1){
+					scr_player_damage(1, 0, 0, 5);
+					scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+				}
+			}else{
+				scr_draw_burn_die(6, 18, x, y, 5);
+				burn_time = -1;
+				burn = false;
+				audio_stop_sound(burn_sound);
+				burn_sound = noone;
+			}
+		}
+	}
+}else{
+	if (audio_is_playing(burn_sound)){
+		burn_sound = noone;
+		audio_sound_gain(snd_character_burn_0, 0, 1500);
 	}
 }
 
@@ -132,24 +139,31 @@ if (global.player_health_current < 3){
 }
 
 // Heartbeat
-if (global.player_health_current <= 2){
-	var vol = 0.7;
-	if (!audio_is_playing(snd_other_heartbeat_0)){
-		heartbeat = scr_sound_play(snd_other_heartbeat_0, false, 0.8, 1.2);
-	}
-	
-	if (global.player_health_current == 1){
-		vol = 1;
-	}
-	
-	audio_sound_gain(heartbeat, vol, 2000);
-}else{
-	if (audio_is_playing(snd_other_heartbeat_0)){
-		audio_sound_gain(snd_other_heartbeat_0, 0, 1000);
-		
-		if (audio_sound_get_gain(snd_other_heartbeat_0) <= 0){
-			audio_stop_sound(snd_other_heartbeat_0);
+if (global.cutscene_current == -1){
+	if (global.player_health_current <= 2){
+		var vol = 0.7;
+		if (!audio_is_playing(snd_other_heartbeat_0)){
+			heartbeat = scr_sound_play(snd_other_heartbeat_0, false, 0.8, 1.2);
 		}
+	
+		if (global.player_health_current == 1){
+			vol = 1;
+		}
+	
+		audio_sound_gain(heartbeat, vol, 2000);
+	}else{
+		if (audio_is_playing(snd_other_heartbeat_0)){
+			audio_sound_gain(snd_other_heartbeat_0, 0, 1000);
+		
+			if (audio_sound_get_gain(snd_other_heartbeat_0) <= 0){
+				audio_stop_sound(snd_other_heartbeat_0);
+			}
+		}
+	}
+}else{
+	if (audio_is_playing(heartbeat)){
+		heartbeat = noone;
+		audio_sound_gain(snd_other_heartbeat_0, 0, 1500);
 	}
 }
 

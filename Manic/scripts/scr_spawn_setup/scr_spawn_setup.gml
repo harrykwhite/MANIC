@@ -60,11 +60,14 @@ spawn_music_pause_position[CombatState.Climax] = 0;
 
 spawn_time = spawn_interval[global.game_combat_state];
 
+spawn_start_wait_max = 60 * 1.5;
+spawn_start_wait = 0;
+
 global.game_combat_in_hordechallenge = false;
 global.game_combat_in_hordechallenge_time = 0;
 
 if (global.game_combat_state == CombatState.Idle){
-	spawn_time = 60 * 8;
+	spawn_time = 60 * 5;
 }
 
 horde_spawn_rate = scr_horde_get_spawnrate(scr_level_get_index(room));

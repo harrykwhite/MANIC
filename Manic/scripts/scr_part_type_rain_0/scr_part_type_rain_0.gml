@@ -1,4 +1,4 @@
-/// @function scr_part_type_rain_0
+///@function scr_part_type_rain_0
 global.pt_rain_0 = part_type_create();
 var pt = global.pt_rain_0;
 

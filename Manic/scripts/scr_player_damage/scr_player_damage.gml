@@ -1,7 +1,7 @@
-/// @param damage
-/// @param  knockback_speed
-/// @param  knockback_direction
-/// @param  invincibility_time
+///@param damage
+///@param  knockback_speed
+///@param  knockback_direction
+///@param  invincibility_time
 var dmg = argument0;
 var kbs = argument1;
 var kbd = argument2;

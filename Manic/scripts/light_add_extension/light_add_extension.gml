@@ -1,6 +1,6 @@
-/// @desc Add an extension to the light
-/// @arg light The light to check
-/// @arg ext The extension module to add
+///@desc Add an extension to the light
+///@arg light The light to check
+///@arg ext The extension module to add
 
 var light = argument0;
 var ext = argument1;

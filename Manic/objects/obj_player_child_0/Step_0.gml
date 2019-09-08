@@ -29,7 +29,7 @@ if (instance_exists(obj_player)){
 					scr_player_stamina_drain(4);
 			
 					obj_controller_ui.dialogue = "Hi Dad!";
-					obj_controller_ui.dialogue_voice = snd_character_dialogue_generic;
+					obj_controller_ui.dialogue_voice = snd_character_dialogue_generic_in;
 					obj_controller_ui.dialogue_time = 60 * 2;
 					obj_controller_ui.dialogue_pause = false;
 					obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);

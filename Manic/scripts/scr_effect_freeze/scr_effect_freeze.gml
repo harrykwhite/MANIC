@@ -1,4 +1,4 @@
-/// @param freezefps
+///@param freezefps
 var freezefps = argument0;
 
 if (global.game_option[| Options.ScreenFreeze]){

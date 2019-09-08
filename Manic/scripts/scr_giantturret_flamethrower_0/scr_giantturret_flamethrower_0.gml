@@ -5,7 +5,9 @@ if (instance_exists(turret)){
 		var ypos = y + lengthdir_y(1, ang);
 		
 		part_type_direction(global.pt_smoke_4, ang - 6, ang + 6, 0, 0);
-        part_particles_create(global.ps_front, xpos + lengthdir_x(3, ang) + random_range(-3, 3), ypos + lengthdir_y(3, ang) + random_range(-3, 3), global.pt_smoke_4, 2);
+		for(var l = 0; l < 20; l += 4){
+			part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, ang) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, ang) + random_range(-3, 3), global.pt_smoke_4, 1);
+		}
 		
 		repeat(choose(3, 4)){
 			var flame = instance_create(xpos, ypos, obj_proj_5);

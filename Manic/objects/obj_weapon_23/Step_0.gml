@@ -13,8 +13,8 @@ var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y(
 
 if (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
     if (scr_input_is_down(InputBinding.Attack)) && (shoot_can){
-		var xpos = x + lengthdir_x(10, mdir) + lengthdir_x(2, up(mdir));
-        var ypos = y + lengthdir_y(10, mdir) + lengthdir_y(2, up(mdir));
+		var xpos = x + lengthdir_x(14, mdir) + lengthdir_x(2, up(mdir));
+        var ypos = y + lengthdir_y(14, mdir) + lengthdir_y(2, up(mdir));
 		
 		var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 		
@@ -28,7 +28,10 @@ if (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
         image_speed = 1;
 		
         part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
-        part_particles_create(global.ps_front, xpos + lengthdir_x(3, dir) + random_range(-3, 3), ypos + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_smoke_4, 2);
+		for(var l = 0; l < 16; l += 4){
+			part_particles_create(global.ps_front, xpos + lengthdir_x(-4 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-4 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+		}
+		
 		part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
         part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(1, 2));
 		scr_mouse_control(MouseType.Crosshair, 2, 15);

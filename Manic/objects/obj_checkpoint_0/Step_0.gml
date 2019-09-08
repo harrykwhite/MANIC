@@ -27,7 +27,7 @@ if (!found){
 		
 		if (interact_break <= 0){
 			if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
-				scr_sound_play(snd_weapon_pickup_2, false, 0.8, 1.2);
+				scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
 				scr_player_stamina_drain(4);
 				obj_controller_gameplay.checkpoint_create = true;
 				global.level_checkpoint_found[global.level_current] = true;

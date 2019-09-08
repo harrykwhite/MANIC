@@ -26,8 +26,8 @@ if (weapon != -1){
 	            }
 		    }
 			
-			var armx = arm.x + lengthdir_x(4, angle);
-			var army = (arm.y - 1) + lengthdir_y(4, angle);
+			var armx = arm.x + lengthdir_x(4 * scale, angle);
+			var army = (arm.y - scale) + lengthdir_y(4 * scale, angle);
 			
 			if (object_index == obj_thescorched) || (object_index == obj_thedogkeeper) || (object_index == obj_antagonist){
 				army --;

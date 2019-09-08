@@ -24,11 +24,14 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active)
 		
         attack_active = true;
 		
-		s = instance_create(xpos, ypos, obj_proj_3);
+		var s = instance_create(xpos, ypos, obj_proj_3);
 	    s.image_angle = mdir;
-	    s.image_xscale = 0.8;
+		s.image_xscale = 0.8;
 		s.image_yscale = 0.8;
-		s.depth = depth + 1;
+	    s.depth = depth + 1;
+		s.owner_inst = obj_player.id;
+		s.owner_offset_x = s.x - s.owner_inst.x;
+		s.owner_offset_y = s.y - s.owner_inst.y;
 
 		scr_weapon_melee_detect(false, x, y, image_angle, attack_damage, attack_strength, 30, obj_proj_3, obj_player.x, obj_player.y);
         

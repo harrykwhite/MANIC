@@ -28,4 +28,5 @@ if (!global.game_pause) && (global.cutscene_current == -1){
 	}
 }
 
+scr_pre_draw_attributes_pawn_weapon();
 draw_self();

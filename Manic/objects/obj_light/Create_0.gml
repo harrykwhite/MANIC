@@ -1,4 +1,4 @@
-/// @desc Creates a light using variables
+///@desc Creates a light using variables
 
 // Create a light from the instance variables
 switch(Light_Type){

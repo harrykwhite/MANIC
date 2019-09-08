@@ -36,13 +36,21 @@ if (!boss_music_active){
 	boss_music_active = (room == rm_level_10_01) && (global.boss_current != -1);
 }
 
-if (boss_music_active){
+if (boss_music_active) && (instance_exists(obj_player)){
 	var boss_inst = noone;
+	var boss_secondlayer_vol = -1;
 	
 	if (instance_exists(obj_giantturret)){
 		boss_inst = obj_giantturret.id;
 	}else if (instance_exists(obj_antagonist)){
 		boss_inst = obj_antagonist.id;
+	}
+	
+	if (boss_inst != noone){
+		boss_secondlayer_vol = 1 - (boss_inst.health_current / (boss_inst.health_max * 0.5));
+		boss_secondlayer_vol += 0.25;
+		
+		boss_secondlayer_vol = clamp(boss_secondlayer_vol, 0, 1);
 	}
 	
 	if (boss_music_state == "opening"){
@@ -58,7 +66,7 @@ if (boss_music_active){
 		
 		intro_position = audio_sound_get_track_position(boss_music_opening_instance);
 		
-		if (intro_position >= 10.2){
+		if (intro_position >= 9.4){
 			boss_music_state = "stage 1";
 			boss_music_state_started = false;
 		}
@@ -79,7 +87,7 @@ if (boss_music_active){
 		
 		if (boss_inst != noone){
 			if (boss_inst.object_index == obj_giantturret){
-				audio_sound_gain(boss_music_stage1_layer2_instance, 1 - (boss_inst.health_current / boss_inst.health_max), 0);
+				audio_sound_gain(boss_music_stage1_layer2_instance, boss_secondlayer_vol, 0);
 			}else{
 				boss_music_state = "stage 1 transition";
 				boss_music_state_started = false;
@@ -122,7 +130,7 @@ if (boss_music_active){
 		
 		if (boss_inst != noone){
 			if (boss_inst.object_index == obj_antagonist){
-				audio_sound_gain(boss_music_stage2_layer2_instance, 1 - (boss_inst.health_current / boss_inst.health_max), 0);
+				audio_sound_gain(boss_music_stage2_layer2_instance, boss_secondlayer_vol, 0);
 			}
 		}else{
 			boss_music_state = "outro";
@@ -134,8 +142,8 @@ if (boss_music_active){
 		if (!boss_music_state_started){
 			boss_music_outro_instance = audio_play_sound(m_boss_final_outro_0, 3, false);
 			
-			audio_sound_gain(boss_music_stage2_layer1_instance, 0, 5000);
-			audio_sound_gain(boss_music_stage2_layer2_instance, 0, 5000);
+			audio_sound_gain(boss_music_stage2_layer1_instance, 0, 3000);
+			audio_sound_gain(boss_music_stage2_layer2_instance, 0, 3000);
 			
 			boss_music_state_started = true;
 		}
@@ -151,5 +159,31 @@ if (boss_music_active){
 		boss_music_stage2_layer1_instance = noone;
 		boss_music_stage2_layer2_instance = noone;
 		boss_music_outro_instance = noone;
+	}
+}else{
+	var fadeout_speed = 2500;
+	
+	if (audio_is_playing(boss_music_opening_instance)){
+		audio_sound_gain(boss_music_opening_instance, 0, fadeout_speed);
+	}
+	
+	if (audio_is_playing(boss_music_stage1_layer1_instance)){
+		audio_sound_gain(boss_music_stage1_layer1_instance, 0, fadeout_speed);
+	}
+	
+	if (audio_is_playing(boss_music_stage1_layer2_instance)){
+		audio_sound_gain(boss_music_stage1_layer2_instance, 0, fadeout_speed);
+	}
+	
+	if (audio_is_playing(boss_music_stage2_layer1_instance)){
+		audio_sound_gain(boss_music_stage2_layer1_instance, 0, fadeout_speed);
+	}
+	
+	if (audio_is_playing(boss_music_stage2_layer2_instance)){
+		audio_sound_gain(boss_music_stage2_layer2_instance, 0, fadeout_speed);
+	}
+	
+	if (audio_is_playing(boss_music_outro_instance)){
+		audio_sound_gain(boss_music_outro_instance, 0, fadeout_speed);
 	}
 }

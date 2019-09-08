@@ -68,6 +68,8 @@ if (instance_exists(target)){
 		if (distance_to_point(target.x, target.y + 6) > 50){
 			if (move_away_time > 0){
 				move_away_time--;
+				
+				move_speed = 0;
 			}else{
 				move_speed = 1.4;
 				move_x_to = target.x;
@@ -76,6 +78,7 @@ if (instance_exists(target)){
 		}else{
 			move_speed = 0;
 			move_away_time = 30;
+			
 			if (bite_time > 0){
 				bite_time--;
 			}else{

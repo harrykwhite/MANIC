@@ -1,4 +1,4 @@
-/// @param amount
+///@param amount
 var amount = argument0;
 
 obj_controller_camera.camera_screenshake = true;

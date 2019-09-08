@@ -36,7 +36,7 @@ if (spd > 0.375){
 // Object Death
 if (death){
 	scr_env_destroy(spr_ammo_crate_break);
-	scr_weapon_ammo_spawn(8, 8, 4);
+	scr_weapon_ammo_spawn(16, 8, 4);
 	
 	if (room == rm_prologue_00){
 		with(obj_controller_ui){

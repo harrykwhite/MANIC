@@ -23,7 +23,7 @@ if (interact) && (obj_controller_ui.dialogue_time <= 0) && (global.cutscene_curr
 			scr_player_stamina_drain(4);
 			
 			obj_controller_ui.dialogue = text;
-			obj_controller_ui.dialogue_voice = noone;
+			obj_controller_ui.dialogue_voice = snd_character_dialogue_generic_in;
 			obj_controller_ui.dialogue_time = 60 * 4;
 			obj_controller_ui.dialogue_pause = false;
 			obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);

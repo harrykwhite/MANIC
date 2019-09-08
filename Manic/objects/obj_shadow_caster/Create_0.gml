@@ -1,4 +1,4 @@
-/// @desc Initialise shadow caster
+///@desc Initialise shadow caster
 
 //
 //	Inherit this event and assign a polygon and (optionally) shadow caster flags

@@ -1,7 +1,7 @@
-/// @param increase_speed
-/// @param  decrease_speed
-/// @param  colour
-/// @param  script
+///@param increase_speed
+///@param  decrease_speed
+///@param  colour
+///@param  script
 var increase = argument0;
 var decrease = argument1;
 var colour = argument2;

@@ -1,6 +1,6 @@
-/// @desc Gets the area of a polygon
-/// @arg polygon The polygon to get the area of
-/// @returns An array with 4 points
+///@desc Gets the area of a polygon
+///@arg polygon The polygon to get the area of
+///@returns An array with 4 points
 
 var polygon = argument0;
 

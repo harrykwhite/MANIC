@@ -1,5 +1,5 @@
-/// @desc Destroy the light
-/// @arg light The light to destroy
+///@desc Destroy the light
+///@arg light The light to destroy
 
 var light = argument0;
 

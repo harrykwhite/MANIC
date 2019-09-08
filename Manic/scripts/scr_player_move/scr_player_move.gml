@@ -199,19 +199,23 @@ if (global.weapon_slot_standalone == -1){
 	}
 	
 	// Player Sprite
-	if ((hspd != 0) || (vspd != 0)){
+	if (hspd != 0) || (vspd != 0){
 		if (footstep_time > 0){
 			footstep_time--;
 		}else{
 			footstep_time = 36 * (1 - img_speed);
-		
+			
 			// Play Footstep Sound
 			if (footstep_sound != -1){
-				scr_sound_play_distance_pitch(footstep_sound, false, 180, 0.8, 1.1);
+				scr_sound_play_distance_pitch(footstep_sound, false, 110, 0.8, 1.1, false);
 			}
 		}
+		
+		if (random(36) < 1){
+			part_particles_create(global.ps_front, x + random_range(-2, 2), y + 4 + random_range(-6, 16), global.pt_walk_smoke_0, 3);
+		}
 	}else{
-		footstep_time = 19;
+		footstep_time = 15;
 	}
 
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
@@ -404,13 +408,15 @@ if (move_x_to == -1) && (move_y_to == -1) && (global.cutscene_current == -1){
 	}
 	
 	// Open doors
-	var nearest_door = instance_nearest(x, y, obj_p_depth_door);
+	if (global.cutscene_current == 53 || global.cutscene_current == 57){
+		var nearest_door = instance_nearest(x, y, obj_p_depth_door);
 	
-	if (nearest_door != noone){
-		if (room != rm_level_6_pre_00 || nearest_door.object_index != obj_prisonbuilding_door_0){
-			if (point_distance(x, y, nearest_door.x + (nearest_door.sprite_width / 2), nearest_door.y + (nearest_door.sprite_height / 2)) < 50){
-				if (!nearest_door.open){
-					nearest_door.auto_interact = true;
+		if (nearest_door != noone){
+			if (room != rm_level_6_pre_00 || nearest_door.object_index != obj_prisonbuilding_door_0){
+				if (point_distance(x, y, nearest_door.x + (nearest_door.sprite_width / 2), nearest_door.y + (nearest_door.sprite_height / 2)) < 50){
+					if (!nearest_door.open){
+						nearest_door.auto_interact = true;
+					}
 				}
 			}
 		}

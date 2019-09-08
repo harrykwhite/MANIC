@@ -1,5 +1,5 @@
 var inst = other;
-var mult = inst.creator == obj_p_player ? scr_get_blood_mult() : 1;
+var mult = scr_get_blood_mult();
 
 with(owner){
 	if (object_index == obj_enemy_1){

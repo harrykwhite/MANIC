@@ -1,6 +1,6 @@
-/// @desc Gets the area of a path
-/// @arg path The path to get the area of
-/// @returns An array with 4 points
+///@desc Gets the area of a path
+///@arg path The path to get the area of
+///@returns An array with 4 points
 
 var path = argument0;
 

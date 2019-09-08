@@ -192,6 +192,7 @@ if (!global.game_pause){
 							scr_save_game();
 						}
 						
+						scr_options_refresh(false);
 						audio_stop_all();
 						game_end();
 						
@@ -347,21 +348,21 @@ if (game_opening_intro){
 		game_opening_intro_startbreak -= game_opening_intro_speed;
 	}else{
 		if (game_opening_intro_alpha > 0){
-			game_opening_intro_alpha -= 0.0025 * game_opening_intro_speed;
+			game_opening_intro_alpha -= 0.0035 * game_opening_intro_speed;
 			game_opening_intro_text_time -= game_opening_intro_speed;
 		
 			if (game_opening_intro_text_time <= 0){
-				game_opening_intro_text_alpha -= 0.0025 * game_opening_intro_speed;
+				game_opening_intro_text_alpha -= 0.0035 * game_opening_intro_speed;
 			
 				if (game_opening_intro_text_stage == 0){
 					if (game_opening_intro_text_alpha <= 0){
-						game_opening_intro_text_time = 60 * 9;
+						game_opening_intro_text_time = 60 * 8;
 						game_opening_intro_text_stage = 1;
 						game_opening_intro_text_alpha = -0.15;
 					}
 				}
 			}else{
-				game_opening_intro_text_alpha += 0.0025 * game_opening_intro_speed;
+				game_opening_intro_text_alpha += 0.0035 * game_opening_intro_speed;
 			}
 		}else{
 			game_opening_intro = false;

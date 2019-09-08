@@ -1,5 +1,5 @@
-/// @desc Mark the lighting system as "dirty", meaning it will be recomposited next time it is drawn
-/// @arg dirty True to set the lighting system as dirty, otherwise false
+///@desc Mark the lighting system as "dirty", meaning it will be recomposited next time it is drawn
+///@arg dirty True to set the lighting system as dirty, otherwise false
 
 //
 //	Marking the lighting system as dirty will force it to recomposite the shadow map

@@ -1,8 +1,8 @@
-/// @param from
-/// @param  to
-/// @param  duration
-/// @param  offset
-/// @param  activeOnPause
+///@param from
+///@param  to
+///@param  duration
+///@param  offset
+///@param  activeOnPause
 var from = argument[0];
 var to = argument[1];
 var duration = argument[2];

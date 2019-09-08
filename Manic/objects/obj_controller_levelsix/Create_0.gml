@@ -9,7 +9,6 @@ spawn = false;
 
 // Spawn System
 scr_spawn_setup("main", 1.5);
-global.game_combat_state_time_real = 0;
 spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;

@@ -64,6 +64,7 @@ move_speed_offset = 1.3;
 move_time = 0;
 move_x_to = x;
 move_y_to = y;
+move_away_time = 20 + random_range(-10, 10);
 
 i_time = 0;
 i_time_alpha = 0;

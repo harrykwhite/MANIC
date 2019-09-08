@@ -1,4 +1,4 @@
-/// @param  amount
+///@param  amount
 var amount = argument0;
 
 if (scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){

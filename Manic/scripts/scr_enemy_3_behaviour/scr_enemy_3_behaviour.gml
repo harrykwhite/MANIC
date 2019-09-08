@@ -19,10 +19,13 @@ if (instance_exists(target)){
 				flash_time = 6;
 				line_alpha = 0;
 				
-				var xpos = x + lengthdir_x(10, image_angle) + lengthdir_x(1, up(image_angle));
-				var ypos = y + lengthdir_y(10, image_angle) + lengthdir_y(1, up(image_angle));
+				var xpos = x + lengthdir_x(13, image_angle) + lengthdir_x(1, up(image_angle));
+				var ypos = y + lengthdir_y(13, image_angle) + lengthdir_y(1, up(image_angle));
+				
 				part_type_direction(global.pt_smoke_4, image_angle - 6, image_angle + 6, 0, 0);
-				part_particles_create(global.ps_front, xpos + lengthdir_x(3, image_angle) + random_range(-3, 3), ypos + lengthdir_y(3, image_angle) + random_range(-3, 3), global.pt_smoke_4, 2);
+				for(var l = 0; l < 16; l += 4){
+					part_particles_create(global.ps_front, xpos + lengthdir_x(-6 + l, image_angle) + random_range(-3, 3), ypos + lengthdir_y(-6 + l, image_angle) + random_range(-3, 3), global.pt_smoke_4, 1);
+				}
 				
 				var bullet = instance_create(x, y, obj_proj_0);
 				bullet.enemy = true;

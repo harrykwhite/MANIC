@@ -1,6 +1,6 @@
-/// @desc Create a polygon from a set of points
-/// @arg set The set of points, each point being a 1D array of type eVertex
-/// @returns Returns the polygon array
+///@desc Create a polygon from a set of points
+///@arg set The set of points, each point being a 1D array of type eVertex
+///@returns Returns the polygon array
 
 var set = argument0;
 
