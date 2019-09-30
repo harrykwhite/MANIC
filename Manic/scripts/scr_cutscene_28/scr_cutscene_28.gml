@@ -19,7 +19,7 @@ if (instance_exists(obj_player)){
 	}else{
 		obj_player.move_x_to = room_width + 100;
 		obj_player.move_y_to = y_to;
-		obj_player.move_extSpd = obj_player.spd_max;
+		obj_player.move_ext_spd = obj_player.spd_max;
 		obj_player.image_xscale = 1;
 	}
 }else{

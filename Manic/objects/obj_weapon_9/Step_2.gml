@@ -1,7 +1,7 @@
 if (!instance_exists(obj_player)) || (instance_number(object_index) > 1){
     instance_destroy();
 }else{
-    if (obj_player.image_xscale == 1){
+    if (sign(obj_player.image_xscale) == 1){
         image_yscale = 1;
     }else{
         image_yscale = -1;
@@ -32,7 +32,7 @@ if (instance_exists(obj_player)){
 		}
     
 	    // Direction
-	    if (image_yscale == 1){
+	    if (sign(image_yscale) == 1){
 	        image_angle = (mdir + throw_offset) + angle_offset + start_offset;
 	    }else{
 	        image_angle = (mdir - throw_offset) - angle_offset - start_offset;

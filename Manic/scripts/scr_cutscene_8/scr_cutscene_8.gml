@@ -14,7 +14,7 @@ if (instance_exists(obj_player)){
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 15){
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
-		obj_player.move_extSpd = 0;
+		obj_player.move_ext_spd = 0;
 		
 		if (!audio_is_playing(snd_other_typing_0)){
 			scr_sound_play(snd_other_typing_0, false, 1, 1);
@@ -35,7 +35,7 @@ if (instance_exists(obj_player)){
 		
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
-		obj_player.move_extSpd = obj_player.spd_max;
+		obj_player.move_ext_spd = obj_player.spd_max;
 	}
 	
 	dir = point_direction(obj_player.x, obj_player.y, x_to, y_to);

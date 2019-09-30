@@ -8,7 +8,7 @@ shoot_strength = 1.75;
 shoot_bounceback = 0;
 
 pickup = false;
-pickup_range = 10;
+pickup_range = 30;
 use_current = false;
 use_can_stop = false;
 

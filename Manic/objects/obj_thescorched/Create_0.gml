@@ -45,7 +45,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 bleed = false;
@@ -77,7 +76,7 @@ knockback_multiplier = 0;
 cutscene_prop = true;
 in_cutscene = false;
 
-health_max = 125;
+health_max = 95;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

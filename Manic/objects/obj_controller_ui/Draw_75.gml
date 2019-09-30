@@ -21,7 +21,6 @@ if (blackbar_sizereal > 2){
 // Dialogue
 var dialogue_voice_in = noone, dialogue_voice_loop = noone, dialogue_voice_out = noone;
 var dialogue_voice_do_close = true;
-var dialogue_voice_volume = 0.5;
 
 var dialogue_voice_list = ds_list_create();
 
@@ -34,7 +33,7 @@ dialogue_voice_out = dialogue_voice_list[| 2];
 ds_list_destroy(dialogue_voice_list);
 
 if (dialogue_time > 0){
-	var str = dialogue;//string_copy(dialogue, 0, floor(dialogue_count));
+	var str = dialogue;
 	var xx = (dialogue_x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 	var yy = (dialogue_y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 	
@@ -50,18 +49,16 @@ if (dialogue_time > 0){
 			
 			if (dialogue_voice != noone){
 				if (!dialogue_voice_opened){
-					var in = audio_play_sound(dialogue_voice_in, 3, false);
-					audio_sound_gain(in, dialogue_voice_volume, 0);
+					scr_sound_play(dialogue_voice_in, false, 0.95, 1.05);
 					
 					dialogue_voice_opened = true;
 					dialogue_voice_closed = false;
 				}else{
 					if (!audio_is_playing(dialogue_voice_in)) && (!audio_is_playing(dialogue_voice_loop)){
-						var vind = audio_play_sound(dialogue_voice_loop, 3, false);
-						audio_sound_gain(vind, dialogue_voice_volume, 0);
+						var vind = scr_sound_play(dialogue_voice_loop, false, 0.95, 1.05);
 						
 						if ((dialogue_char_count div 2) != (dialogue_char_count / 2)){
-							audio_sound_pitch(vind, 1.1);
+							audio_sound_pitch(vind, 1.2);
 						}
 					}
 				}
@@ -76,7 +73,7 @@ if (dialogue_time > 0){
 	
 	draw_set_font(fnt_cambria_0);
 	draw_set_colour(c_white);
-	draw_text_ext(xx, yy, string_copy(str, 0, dialogue_char_count), -1, 280);
+	draw_text_ext(xx, yy, string_copy(str, 0, dialogue_char_count), -1, 350);
 	
 	if (global.cutscene_current != -1){
 		draw_set_font(fnt_cambria_1);
@@ -105,7 +102,7 @@ if (dialogue_time > 0){
 		
 		if (dialogue_skip > 0){
 			var barw = string_width(holdstr);
-			var barh = 3;
+			var barh = 2;
 			draw_healthbar(dwidth - 24 - barw, dheight - 15 - barh, dwidth - 24, dheight - 15, (dialogue_skip / dialogue_skip_max) * 100, c_black, c_white, c_white, 0, false, false);
 		}
 	}
@@ -114,22 +111,20 @@ if (dialogue_time > 0){
 		dialogue_time --;
 	}
 	
+	if (dialogue_voice_do_close) && (dialogue_voice != noone){
+		if (!dialogue_voice_closed){
+			if (!audio_is_playing(dialogue_voice_out)){
+				scr_sound_play(dialogue_voice_out, false, 0.95, 1.05);
+				dialogue_voice_closed = true;
+			}
+		}
+	}
+	
 	draw_set_valign(fa_top);
 }else{
 	global.game_in_dialogue = false;
 	dialogue_skip = 0;
 	dialogue_pause = false;
-}
-
-if (dialogue_voice_do_close) && (dialogue_voice != noone){
-	if (!dialogue_voice_closed){
-		if (!audio_is_playing(dialogue_voice_out)){
-			var out = audio_play_sound(dialogue_voice_out, 3, false);
-			audio_sound_gain(out, dialogue_voice_volume, 0);
-			
-			dialogue_voice_closed = true;
-		}
-	}
 }
 
 // Level opening
@@ -172,7 +167,9 @@ if (area_next_fade){
 	}else{
 		area_next_fade = false;
 		area_next_alpha_speed = 0.02;
+		
 		scr_fade_object_list_reset();
+		
 		if (area_next_room != noone){
 			scr_level_cleanup(scr_level_get_index(area_next_room) != scr_level_get_index(room));
 			

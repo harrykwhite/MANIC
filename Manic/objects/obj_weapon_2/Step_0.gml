@@ -20,6 +20,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
 		
 		scr_player_knockback_initiate(0.5, dir);
 		scr_player_flash(4);
+		scr_player_flashlight_flash(1.175);
 		
 		scr_camera_to_player();
         scr_effect_screenshake(2);

@@ -1,4 +1,4 @@
-if (global.game_pause){
+if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	return;
 }
@@ -81,7 +81,7 @@ if (instance_exists(owner)){
 						
 						weapon = instance_create(x, y, obj_pawnweapon_2);
 						weapon.dir = 0;
-						weapon.owner = self;
+						weapon.owner = id;
 						weapon_index = 2;
 					}
 				}

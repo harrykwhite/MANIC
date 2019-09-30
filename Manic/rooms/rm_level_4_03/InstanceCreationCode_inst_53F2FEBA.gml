@@ -1,3 +1,3 @@
-index = Collectables.Note;
+index = Collectables.ToyCar;
 angle = 35;
-listnum = 15;
+listnum = 12;

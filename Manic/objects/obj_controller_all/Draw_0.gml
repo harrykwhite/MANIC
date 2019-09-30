@@ -10,7 +10,7 @@ ds_grid_sort(grid, 1, true);
 repeat(height){
 	var instance = grid[# 0, yy];
 	
-	if (instance != noone && instance != undefined){
+	if (instance != noone && instance != noone){
 		with(instance){
 			event_user(0);
 		}
@@ -20,4 +20,4 @@ repeat(height){
 }
 
 ds_depth_counter = 0;
-ds_grid_clear(grid, min(max(6000, room_height), 6000));
+ds_grid_clear(grid, min(max(7000, room_height), 7000));

@@ -43,7 +43,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i){
 	// Get the light's shadow map
 	var light = ds_list_find_value(lights, i);
 	
-	if (!ds_exists(light, ds_type_list)) || (light == undefined){
+	if (!ds_exists(light, ds_type_list)) || (light == noone){
 		continue;
 	}
 	
@@ -62,14 +62,14 @@ for(var i = 0, firstLight = true; i < lightCount; ++i){
 	// Conversion from pixels to texels for this light
 	var texelConvX, texelConvY;
 	// The surface to draw the light to
-	var shadowMap = undefined;
+	var shadowMap = noone;
 	
 	// Directional lights are infinite and have no source, so there's no optimization to be had here
 	// Area and line lights are tricky and they shouldn't be used excessively in any case
 	if (lightType != eLightType.Directional && lightType != eLightType.Area && lightType != eLightType.Line){
 		// Should this light be using a unique shadow map?
 		// Multiplied by two because we treat all lights as omnidirectional, so range is the radius of the light
-		if (lightRange == undefined){
+		if (lightRange == noone){
 			continue;
 		}
 		
@@ -93,7 +93,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i){
 	}
 	
 	// Use the global shadow map for this light?
-	if (shadowMap == undefined){
+	if (shadowMap == noone){
 		// If this is the first light using the global shadow map
 		if (firstUseOfGlobalShadowMap){
 			// Ensure that we have a valid global shadow map surface
@@ -149,7 +149,7 @@ for(var i = 0, firstLight = true; i < lightCount; ++i){
 	shader_set(__LIGHT_SHADER);
 	
 	// Pass the light intensity lookup texture to the shader
-	if (lightLutIntensity != undefined) texture_set_stage(global.u_LutIntensity, lightLutIntensity);
+	if (lightLutIntensity != noone) texture_set_stage(global.u_LutIntensity, lightLutIntensity);
 	
 	// Set the texel size
 	shader_set_uniform_f_array(global.u_TexelSize, [1.0 / surface_get_width(shadowMap), 1.0 / surface_get_height(shadowMap)]);

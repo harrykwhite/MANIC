@@ -1,2 +1,2 @@
-index = PlayerWeapon.Katana;
-angle = 40;
+index = PlayerWeapon.Pickaxe;
+angle = 110;

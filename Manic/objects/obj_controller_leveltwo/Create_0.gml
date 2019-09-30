@@ -113,6 +113,8 @@ postlevel_dialogue_exception = false;
 
 // Other
 room_music_transition = false;
+
 global.cutscene_current = 2;
+
 sprite_index = noone;
 depth = -5;

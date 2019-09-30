@@ -5,7 +5,7 @@ destroy = false;
 state = 0;
 active = false;
 
-scale = 1.25;
+scale = 1.15;
 
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_giantturret_hitbox_0;
@@ -47,7 +47,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 bleed = false;

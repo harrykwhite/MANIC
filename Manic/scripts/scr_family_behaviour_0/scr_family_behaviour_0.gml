@@ -5,15 +5,12 @@ if (instance_exists(obj_player)){
 	if (move_time > 0){
 		move_time --;
 	}else{
-		var dir = random(360);
-		var len = random_range(20, 30);
-		var xx = xstart + lengthdir_x(len, dir);
-		var yy = ystart + lengthdir_y(len, dir);
+		var xx, yy, dir, len;
 		var counter = 0;
 		
-		while(collision_line(x, y, xx, yy, obj_p_solid, false, true)){
+		do{
 			dir = random(360);
-			len = random_range(20, 30);
+			len = random_range(40, 50);
 			xx = xstart + lengthdir_x(len, dir);
 			yy = ystart + lengthdir_y(len, dir);
 			
@@ -23,7 +20,7 @@ if (instance_exists(obj_player)){
 				counter = 0;
 				break;
 			}
-		}
+		}until(!collision_line(x, y, xx, yy, obj_p_solid, false, true));
 		
 		move_x_to = xx;
 		move_y_to = yy;
@@ -65,7 +62,7 @@ if (!scr_pawn_find_path()){
 }
 
 // Facing
-if (point_distance(x, y, move_x_to, move_y_to) > 8){
+if (point_distance(x, y, move_x_to, move_y_to) > 7){
 	if (move_x_to > x){
 		image_xscale = scale;
 	}else{

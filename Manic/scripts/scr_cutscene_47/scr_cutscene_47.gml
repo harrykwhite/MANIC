@@ -28,7 +28,7 @@ if (cutscene_trainopening_inst != noone){
 			
 			obj_player.move_x_to = cutscene_trainopening_inst.x;
 			obj_player.move_y_to = cutscene_trainopening_inst.y + 90;
-			obj_player.move_extSpd = 0.8;
+			obj_player.move_ext_spd = 0.8;
 			
 			obj_player.flashlight_direction = 270;
 			global.worldtrain_room = room;
@@ -36,7 +36,7 @@ if (cutscene_trainopening_inst != noone){
 			if (point_distance(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to) < 40){
 				if (global.cutscene_time[index] < 115){
 					global.cutscene_time[index] ++;
-					obj_player.move_extSpd = 0;
+					obj_player.move_ext_spd = 0;
 					obj_player.move_x_to = -1;
 					obj_player.move_y_to = -1;
 				}else{

@@ -7,7 +7,7 @@ if (instance_exists(target)){
 	var offs = ((1 - (health_current / health_max)) * 1.5);
 	
 	if (move_time > 0){
-		move_time--;
+		move_time --;
 	}else{
 		move_x_to = obj_player.x + random_range(-50, 50);
 		move_y_to = obj_player.y + random_range(-50, 50);
@@ -20,13 +20,14 @@ if (instance_exists(target)){
 		}
 	}
 	
-	move_speed = 1.4 + offs;
+	move_speed = 1.3 + offs;
 	
 	if (distance_to_point(move_x_to, move_y_to) < 18){
 		move_speed = 0;
 	}
 	
 	move_dir = point_direction(x, y, move_x_to, move_y_to);
+	
 	if (instance_exists(weapon) && weapon != -1){
 		weapon.dir = point_direction(x, y, target.x, target.y + 6);
 		

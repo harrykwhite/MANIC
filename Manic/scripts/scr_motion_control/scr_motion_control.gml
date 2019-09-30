@@ -3,6 +3,10 @@
 var contact = false;
 var contactlist = 0;
 
+if (spd == 0){
+	return;
+}
+
 if (argument_count > 0){
 	contact = argument[0];
 	

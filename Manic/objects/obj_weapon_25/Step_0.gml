@@ -26,6 +26,7 @@ if ((scr_input_is_pressed(InputBinding.Attack)) || (shoot_continue_time > 0)) &&
 			
 			scr_weapon_ammo_use(1);
 			scr_player_flash(8);
+			scr_player_flashlight_flash(1.225);
 			scr_camera_to_player();
 			scr_sound_play(snd_weapon_shotgun_0, false, 0.8, 1.2);
 

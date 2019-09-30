@@ -19,7 +19,8 @@ if (scr_input_is_down(InputBinding.Attack)) && (!global.game_pause){
 		var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 		
 		scr_player_knockback_initiate(0.5, dir);
-		scr_player_flash(3);
+		scr_player_flash(4);
+		scr_player_flashlight_flash(1.175);
 		
 		scr_camera_to_player();
         scr_effect_screenshake(1);

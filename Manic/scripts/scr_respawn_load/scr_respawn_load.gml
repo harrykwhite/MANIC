@@ -30,10 +30,6 @@ global.boss_current = -1;
 if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	var roomto = global.level_room[global.level_current];
 	
-	if (!global.level_cleared[global.level_current]){
-		global.level_kill_count[global.level_current] = 0;
-	}
-	
 	if (roomto == room){
 		room_restart();
 	}else{
@@ -51,6 +47,4 @@ if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	
 	global.checkpoint_goto = true;
 	global.game_level_opening_type = global.checkpoint_starttype;
-	global.level_kill_count[global.level_current] = global.checkpoint_killcount;
-	global.level_cleared[global.level_current] = global.checkpoint_levelcleared;
 }

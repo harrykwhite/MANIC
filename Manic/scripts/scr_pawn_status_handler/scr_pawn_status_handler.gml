@@ -6,6 +6,12 @@ if (object_index == obj_enemy_3 || object_index == obj_giantturret || object_ind
 	hurt_sound = snd_object_metal_hit_0;
 }
 
+if (!is_fly){
+	if (cutscene_prop){
+		return;
+	}
+}
+
 if (burn){
 	if (!burn_start){
 		burn_x = x;

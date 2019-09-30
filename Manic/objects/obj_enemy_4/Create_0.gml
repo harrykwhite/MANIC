@@ -1,6 +1,8 @@
 pawn = PawnType.Enemy;
 blend = -1;
 scale = random_range(1, 1.1);
+scale_mult_x = 1;
+scale_mult_y = 1;
 destroy = false;
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
@@ -25,6 +27,7 @@ contact_attack_ready_time = 30;
 
 mucus_release_time = random_range(60 * 4, 60 * 8);
 mucus_is_releasing = false;
+mucus_is_releasing_startbreak = 0;
 
 burn = false;
 burn_x = x;
@@ -33,7 +36,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 poison_time = 0;
@@ -69,7 +71,7 @@ knockback_multiplier = 0.1;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 18;
+health_max = 15;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

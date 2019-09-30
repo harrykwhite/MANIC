@@ -1,7 +1,8 @@
 option_setting_gameplay_value[0] = global.game_option[| Options.Screenshake];
 option_setting_gameplay_value[1] = global.game_option[| Options.ScreenFreeze];
-option_setting_gameplay_value[2] = global.game_option[| Options.MaxCorpses];
-option_setting_gameplay_value[3] = global.game_option[| Options.Flashing];
+option_setting_gameplay_value[2] = global.game_option[| Options.QuickZoom];
+option_setting_gameplay_value[3] = global.game_option[| Options.MaxCorpses];
+option_setting_gameplay_value[4] = global.game_option[| Options.Flashing];
 
 option_setting_display_value[0] = global.game_option[| Options.Fullscreen];
 option_setting_display_value[1] = global.game_option[| Options.Resolution];

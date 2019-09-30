@@ -23,7 +23,8 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
         scr_mouse_control(MouseType.SmallCircle, 5, 7);
         scr_weapon_ammo_use(1);
         scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
-		scr_player_flash(5);
+		scr_player_flash(6);
+		scr_player_flashlight_flash(1.2);
 		scr_camera_to_player();
         image_speed = 1;
 		

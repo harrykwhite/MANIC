@@ -30,6 +30,7 @@ audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume,
 audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 15000);
 
 global.cutscene_current = 56;
+
 sprite_index = noone;
 depth = -5;
 

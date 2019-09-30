@@ -1,7 +1,7 @@
 ///@desc Trace a shadow for the given polygon from the provided light
 ///@arg shadow_caster The shadow caster that is being illuminated
 ///@arg light The light that illuminates the polygon
-///@returns An array of vertices (at least 3) as a triangle list that is the shadow, || undefined if no shadow is cast
+///@returns An array of vertices (at least 3) as a triangle list that is the shadow, || noone if no shadow is cast
 
 var shadow_caster = argument0;
 var light = argument1;
@@ -15,13 +15,13 @@ if (__LIGHTING_ERROR_CHECKS){
 	if (!is_array(polygon) || array_length_1d(polygon) <= 3){
 		// This array is not a polygon
 		show_debug_message("light_trace_polygon(polygon, light): argument `polygon` is not a polygon array, || has less than 3 vertices");
-		return undefined;
+		return noone;
 	}
 	
 	if (!ds_exists(light, ds_type_list) || ds_list_size(light) != eLight.Count){
 		// This array is not a light
 		show_debug_message("light_trace_polygon(polygon, light): argument `light` is not a light array");
-		return undefined;
+		return noone;
 	}
 }
 
@@ -45,14 +45,14 @@ var vertex_offset = ePolygon.Count;
 
 if (vertex_count < 3){
 	// We cannot form a valid shadow from this polygon
-	return undefined;
+	return noone;
 }
 
 // Get the vertex array
 var face_vertices = 6 * vertex_count;
 var shadow_index = 0;
 var shadow_array = global.lightVertexArrayMap[? face_vertices];
-if (shadow_array == undefined){
+if (shadow_array == noone){
 	// Initialise the array of this size
 	shadow_array = array_create(face_vertices);
 	global.lightVertexArrayMap[? face_vertices] = shadow_array;

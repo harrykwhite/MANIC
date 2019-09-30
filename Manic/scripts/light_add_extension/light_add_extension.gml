@@ -6,7 +6,7 @@ var light = argument0;
 var ext = argument1;
 
 var list = light[| eLight.ExtensionModules];
-if (list == undefined){
+if (list == noone){
 	list = ds_list_create();
 	light[| eLight.ExtensionModules] = list;
 }

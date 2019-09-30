@@ -11,7 +11,7 @@ if (arm == -1){
 if (weapon_has){
 	if (weapon == -1) || (!instance_exists(weapon)){
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
-		weapon.owner = self;
+		weapon.owner = id;
 	}
 }
 

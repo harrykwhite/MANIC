@@ -57,6 +57,13 @@ if (instance_exists(target)){
 	face_player = false;
 }
 
+// Cutscene
+if (cutscene_prop){
+	if (!in_cutscene){
+		speed_multiplier = 0;
+	}
+}
+
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 

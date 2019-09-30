@@ -19,6 +19,8 @@ stop_on_end = false;
 is_boss = false;
 leader = 0;
 component = 0;
+mylight = noone;
+hitbox = noone;
 
 for(var i = 0; i < 18; i ++){
 	boss_entity[i] = noone;

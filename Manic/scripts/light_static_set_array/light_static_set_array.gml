@@ -8,7 +8,7 @@ var shadow_caster = argument1;
 var arr = argument2;
 
 var static_storage = light[| eLight.StaticStorage];
-if (static_storage == undefined){
+if (static_storage == noone){
 	static_storage = ds_map_create();
 	light[| eLight.StaticStorage] = static_storage;
 }

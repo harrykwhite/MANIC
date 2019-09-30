@@ -1,0 +1,1 @@
+sprite_index = spr_farmbuilding_door_break_0;

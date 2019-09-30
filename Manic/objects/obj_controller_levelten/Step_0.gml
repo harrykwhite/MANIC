@@ -21,9 +21,9 @@ if (!global.game_pause){
 
 // Checkpoint
 if (room == rm_level_10_01){
-	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
+	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current, 0]){
 		obj_controller_gameplay.checkpoint_create = true;
-		global.level_checkpoint_found[global.level_current] = true;
+		global.level_checkpoint_found[global.level_current, 0] = true;
 	}
 }
 
@@ -66,7 +66,7 @@ if (boss_music_active) && (instance_exists(obj_player)){
 		
 		intro_position = audio_sound_get_track_position(boss_music_opening_instance);
 		
-		if (intro_position >= 9.4){
+		if (intro_position >= 9.55){
 			boss_music_state = "stage 1";
 			boss_music_state_started = false;
 		}
@@ -185,5 +185,17 @@ if (boss_music_active) && (instance_exists(obj_player)){
 	
 	if (audio_is_playing(boss_music_outro_instance)){
 		audio_sound_gain(boss_music_outro_instance, 0, fadeout_speed);
+	}
+}
+
+if (global.game_pause){
+	if (!spawn_pause_update){
+		audio_pause_all();
+		spawn_pause_update = true;
+	}
+}else{
+	if (spawn_pause_update){
+		audio_resume_all();
+		spawn_pause_update = false;
 	}
 }

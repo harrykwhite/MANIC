@@ -15,10 +15,10 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
         instance_create(x, y, weapon);
     }
 }else if (global.level_current != Level.Prologue){
-	global.weapon_slot[global.weapon_slotcurrent] = 4;
+	global.weapon_slot[global.weapon_slotcurrent] = global.weapon_default;
 	
-    if (!instance_exists(global.weapon_object[4])){
-        instance_create(x, y, global.weapon_object[4]);
+    if (!instance_exists(global.weapon_object[global.weapon_default])){
+        instance_create(x, y, global.weapon_object[global.weapon_default]);
     }
 }
 

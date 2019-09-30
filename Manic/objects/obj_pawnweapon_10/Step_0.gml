@@ -1,18 +1,6 @@
-if (global.game_pause){
+if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
-	
-	if (started){
-		if (audio_is_playing(shoot_onsound)){
-			audio_pause_sound(shoot_onsound);
-			shoot_onsound_paused = true;
-		}
-	}
 	return;
-}else{
-	if (shoot_onsound_paused){
-		audio_resume_sound(shoot_onsound);
-		shoot_onsound_paused = false;
-	}
 }
 
 // Attacking

@@ -41,6 +41,10 @@ enum PlayerWeapon{
 	HuntingRifle,
 	Sickle,
 	Battleaxe,
+	Bayonet,
+	Pickaxe,
+	ReinforcedGrenade,
+	HuntingMachete,
 }
 
 enum AmmoType{
@@ -392,7 +396,7 @@ global.weapon_sprite[25] = spr_weapon_25;
 global.weapon_centersprite[25] = spr_weapon_25_center;
 global.weapon_type[25] = WeaponType.Ranged;
 global.weapon_heavy[25] = true;
-global.weapon_ammomax[25] = 5;
+global.weapon_ammomax[25] = 4;
 global.weapon_ammotype[25] = AmmoType.Shells;
 global.weapon_camerarange[25] = 35;
 global.weapon_mouse[25] = MouseType.LargeCircle;
@@ -520,6 +524,54 @@ global.weapon_dualhanded[34] = false;
 global.weapon_damage[34] = WeaponLevel.High;
 global.weapon_speed[34] = WeaponLevel.High;
 
+global.weapon_name[35] = "Bayonet";
+global.weapon_object[35] = obj_weapon_35;
+global.weapon_sprite[35] = spr_weapon_35;
+global.weapon_centersprite[35] = spr_weapon_35_center;
+global.weapon_type[35] = WeaponType.Melee;
+global.weapon_heavy[35] = false;
+global.weapon_camerarange[35] = 12;
+global.weapon_mouse[35] = MouseType.Dot;
+global.weapon_dualhanded[35] = false;
+global.weapon_damage[35] = WeaponLevel.VeryLow;
+global.weapon_speed[35] = WeaponLevel.High;
+
+global.weapon_name[36] = "Pickaxe";
+global.weapon_object[36] = obj_weapon_36;
+global.weapon_sprite[36] = spr_weapon_36;
+global.weapon_centersprite[36] = spr_weapon_36_center;
+global.weapon_type[36] = WeaponType.Melee;
+global.weapon_heavy[36] = true;
+global.weapon_camerarange[36] = 18;
+global.weapon_mouse[36] = MouseType.SmallCircle;
+global.weapon_dualhanded[36] = false;
+global.weapon_damage[36] = WeaponLevel.High;
+global.weapon_speed[36] = WeaponLevel.VeryLow;
+
+global.weapon_name[37] = "Reinforced Grenade";
+global.weapon_object[37] = obj_weapon_37;
+global.weapon_sprite[37] = spr_weapon_37;
+global.weapon_centersprite[37] = spr_weapon_37;
+global.weapon_type[37] = WeaponType.Throwing;
+global.weapon_heavy[37] = false;
+global.weapon_camerarange[37] = 15;
+global.weapon_mouse[37] = MouseType.SmallCircle;
+global.weapon_dualhanded[37] = false;
+global.weapon_damage[37] = WeaponLevel.VeryHigh;
+global.weapon_speed[37] = WeaponLevel.Average;
+
+global.weapon_name[38] = "Hunting Machete";
+global.weapon_object[38] = obj_weapon_38;
+global.weapon_sprite[38] = spr_weapon_38;
+global.weapon_centersprite[38] = spr_weapon_38_center;
+global.weapon_type[38] = WeaponType.Melee;
+global.weapon_heavy[38] = false;
+global.weapon_camerarange[38] = 12;
+global.weapon_mouse[38] = MouseType.SmallCircle;
+global.weapon_dualhanded[38] = false;
+global.weapon_damage[38] = WeaponLevel.Low;
+global.weapon_speed[38] = WeaponLevel.High;
+
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
 global.weapon_slotquantity[0] = -1;
@@ -543,6 +595,8 @@ global.weapon_slotprevious = 1;
 
 global.weapon_slotmax = 2; // How many slots the player currently has
 global.weapon_potential_slotmax = 3; // How many slots the player can potentially have throughout the game
+
+global.weapon_default = PlayerWeapon.Knife;
 
 if (room == rm_ini){
 	var count = array_length_1d(global.weapon_name);

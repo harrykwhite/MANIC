@@ -2,7 +2,7 @@ if (object_index == obj_companion_0){
 	return;
 }
 
-if (global.player_health_current > 0) && (other.spd > 0.1){
+if (global.player_health_current > 0) && (other.owner.spd > 0.1){
 	if (object_index == obj_player){
 		scr_player_damage(global.player_health_max, 2, random(360), 6);
 	}else{

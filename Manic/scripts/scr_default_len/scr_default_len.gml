@@ -5,8 +5,7 @@ var xx = argument0, xxs = xx;
 var yy = argument1, yys = yy;
 var dir = argument2;
 
-while(onscreen(xx, yy)){
-	
+while(onscreen(xx, yy, 0)){
 	xx += lengthdir_x(2, dir);
 	yy += lengthdir_y(2, dir);
 }

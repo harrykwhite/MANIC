@@ -6,19 +6,7 @@ if (!instance_exists(obj_player)){
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	image_index = 0;
-	
-	if (started){
-		if (audio_is_playing(shoot_onsound)){
-			audio_pause_sound(shoot_onsound);
-			shoot_onsound_paused = true;
-		}
-	}
 	return;
-}else{
-	if (shoot_onsound_paused){
-		audio_resume_sound(shoot_onsound);
-		shoot_onsound_paused = false;
-	}
 }
 
 var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
@@ -32,6 +20,7 @@ if (scr_input_is_down(InputBinding.Attack)) && (!global.game_pause){
 		
 		scr_player_knockback_initiate(0.1, dir);
 		scr_player_flash(5);
+		scr_player_flashlight_flash(1.175);
 		
         scr_weapon_ammo_use(1);
 		image_speed = 1;

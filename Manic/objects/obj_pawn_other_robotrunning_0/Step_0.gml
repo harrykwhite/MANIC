@@ -3,7 +3,7 @@ if (global.game_pause){
 	return;
 }
 
-if (onscreen(x, y)){
+if (onscreen(x, y, 0)){
 	domove = true;
 }
 

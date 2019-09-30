@@ -76,7 +76,9 @@ spawn_cleared = false;
 
 // Other
 room_music_transition = false;
-global.cutscene_current = 2;
 sniper_can_spawn = global.game_firstsniper_killed;
+
+global.cutscene_current = 2;
+
 sprite_index = noone;
 depth = -5;

@@ -3,6 +3,7 @@ scr_weapon_list();
 scr_pawn_list();
 scr_cutscene_list();
 scr_collectable_list();
+scr_objective_list();
 
 global.game_pause = false;
 global.game_in_dialogue = false;
@@ -39,7 +40,8 @@ if (room == rm_ini){
 		collectsize += global.level_collectable_number[i];
 	}
 	
-	global.level_collectable_found = ds_grid_create(1, collectsize);
+	global.level_collectable_found = ds_grid_create(1, collectsize + 1);
+	ds_grid_clear(global.level_collectable_found, false);
 	
 	var turretsize = 0;
 	
@@ -65,10 +67,10 @@ global.player_respawn_y = 0;
 global.player_health_max = 12;
 global.player_health_current = global.player_health_max;
 global.player_health_previous = global.player_health_max;
+global.player_position_x = 0;
+global.player_position_y = 0;
 global.player_is_respawning = false;
-//global.player_inside_inst = noone;
+global.player_has_key_prison = false;
 
 part_system_clear(global.ps_bottom);
 part_system_clear(global.ps_front);
-
-randomize();

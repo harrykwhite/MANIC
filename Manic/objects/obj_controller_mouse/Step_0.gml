@@ -45,7 +45,7 @@ if (instance_exists(obj_player)) && (!global.game_pause){
 		}
 	}else{
 		if (global.level_current != Level.Prologue){
-			mouse = global.weapon_mouse[4];
+			mouse = global.weapon_mouse[global.weapon_default];
 		}else{
 			mouse = MouseType.Dot;
 		}

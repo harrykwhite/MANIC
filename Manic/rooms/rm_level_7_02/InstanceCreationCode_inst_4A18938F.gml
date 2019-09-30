@@ -1,2 +1,2 @@
-index = PlayerWeapon.Sickle;
+index = PlayerWeapon.Pickaxe;
 angle = 50;

@@ -39,12 +39,12 @@ light[| eLight.Flags] &= ~eLightFlags.Dirty;
 // Does this light cast shadows at all?
 if ((light_flags & eLightFlags.CastsShadows) == 0){
 	// No it doesn't
-	return undefined;
+	return noone;
 }
 
 // If it has a vertex buffer already, reuse it
 var vbuffer = light[| eLight.VertexBuffer];
-if (vbuffer == undefined){
+if (vbuffer == noone){
 	// Create a vertex buffer
 	vbuffer = vertex_create_buffer();
 	light[| eLight.VertexBuffer] = vbuffer;
@@ -75,23 +75,23 @@ else{
 }
 
 // If the light is dirty, destroy set of shadow casters out of range -- it is out of date
-if (dirty && out_of_range_map != undefined){
+if (dirty && out_of_range_map != noone){
 	ds_map_destroy(out_of_range_map);
-	out_of_range_map = undefined;
-	light[| eLight.ShadowCastersOutOfRange] = undefined;
+	out_of_range_map = noone;
+	light[| eLight.ShadowCastersOutOfRange] = noone;
 }
 
 // If the light is dirty || the camera is different, destroy set of culled shadow casters -- it is out of date
-if (culled_shadow_casters != undefined && (dirty || light_last_camera == undefined || !array_equals(light_last_camera, camera))){
+if (culled_shadow_casters != noone && (dirty || light_last_camera == noone || !array_equals(light_last_camera, camera))){
 	ds_map_destroy(culled_shadow_casters);
-	culled_shadow_casters = undefined;
-	light[| eLight.CulledShadowCasters] = undefined;
+	culled_shadow_casters = noone;
+	light[| eLight.CulledShadowCasters] = noone;
 }
 
 // Often used comparisons; can also save us a few lookups if initialized in the iteration
-var has_ignore_set = ignore_set != undefined;
-var has_out_of_range_map = out_of_range_map != undefined;
-var has_culled_shadow_casters = culled_shadow_casters != undefined;
+var has_ignore_set = ignore_set != noone;
+var has_out_of_range_map = out_of_range_map != noone;
+var has_culled_shadow_casters = culled_shadow_casters != noone;
 
 // Iterate over all shadow casters and trace shadows
 with(obj_shadow_caster){
@@ -127,7 +127,7 @@ with(obj_shadow_caster){
 		if (!rectangle_in_rectangle(cached_polygon_area[0], cached_polygon_area[1], cached_polygon_area[2], cached_polygon_area[3],
 								   light_x - light_range, light_y - light_range, light_x + light_range, light_y + light_range)){
 			// It is not within range of the light
-			if (out_of_range_map == undefined){
+			if (out_of_range_map == noone){
 				// Create the map
 				out_of_range_map = ds_map_create();
 				light[| eLight.ShadowCastersOutOfRange] = out_of_range_map;
@@ -165,7 +165,7 @@ with(obj_shadow_caster){
 		if (out){
 			// The shadow will not affect the global shadow map
 			// We can cull this shadow caster from this light
-			if (culled_shadow_casters == undefined){
+			if (culled_shadow_casters == noone){
 				// Create the map
 				culled_shadow_casters = ds_map_create();
 				light[| eLight.CulledShadowCasters] = culled_shadow_casters;
@@ -180,7 +180,7 @@ with(obj_shadow_caster){
 	}
 	
 	// The array of vertices that make up the shadow
-	var shadow = undefined;
+	var shadow = noone;
 	
 	// Is the shadow caster static, and if so do we need to rebuild its buffer?
 	if (shadow_caster_static){
@@ -197,7 +197,7 @@ with(obj_shadow_caster){
 		}
 	}
 	
-	if (shadow == undefined){
+	if (shadow == noone){
 		// Count this shadow caster as active
 		 ++global.worldActiveShadowCasters;
 		
@@ -205,7 +205,7 @@ with(obj_shadow_caster){
 		shadow = light_trace_polygon(id, light);
 		
 		// Did it cast a shadow?
-		if (shadow == undefined){
+		if (shadow == noone){
 			// No it didn't
 			continue;
 		}

@@ -50,7 +50,7 @@ if (instance_exists(owner)){
 					
 					weapon = instance_create(x, y, obj_pawnweapon_8);
 					weapon.dir = 0;
-					weapon.owner = self;
+					weapon.owner = id;
 					weapon.attack_time = 210;
 					weapon.line_alpha = -(4.96 * (210 / 340));
 					weapon_index = 8;

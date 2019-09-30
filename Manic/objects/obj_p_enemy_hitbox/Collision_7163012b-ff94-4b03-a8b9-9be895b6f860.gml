@@ -7,7 +7,7 @@ with(owner){
 			return;
 		}
 	}
-
+	
 	if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 		return;
 	}
@@ -17,6 +17,7 @@ with(owner){
 	}
 
 	var damage = 2;
+	
 	if (inst.minecart_speed > 2){
 		damage = 4;
 	}
@@ -26,6 +27,17 @@ with(owner){
 
 	if (i_time <= 0) && (health_current > 0) && (inst.minecart_speed > 2.5){
 		scr_pawn_damage(damage, 2 * knockback_multiplier, inst.minecart_dir, 30);
+		
+		if (object_index == obj_enemy_2){
+			if (bite_to){
+				bite_to = false;
+				bite_retreat = true;
+				bite_retreat_direction = point_direction(x, y, inst.x, inst.y) - 180;
+				bite_retreat_x = inst.x;
+				bite_retreat_y = inst.y;
+			}
+		}
+		
 		part_particles_create(global.ps_front, x, y, global.pt_blood_0, 3 * mult);
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10 * mult);
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3 * mult);

@@ -1,3 +1,3 @@
-index = Collectables.Knife;
+index = Collectables.TeddyBear;
 angle = 15;
-listnum = 40;
+listnum = 9;

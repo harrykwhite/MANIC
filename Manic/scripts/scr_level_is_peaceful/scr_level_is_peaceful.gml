@@ -22,11 +22,23 @@ switch(rm){
 		return true;
 		break;
 	
+	case rm_level_3_post_00:
+		return true;
+		break;
+	
 	case rm_level_4_pre_00:
 		return true;
 		break;
 	
 	case rm_level_4_02:
+		return true;
+		break;
+	
+	case rm_level_4_post_00:
+		return true;
+		break;
+	
+	case rm_level_4_post_01:
 		return true;
 		break;
 	

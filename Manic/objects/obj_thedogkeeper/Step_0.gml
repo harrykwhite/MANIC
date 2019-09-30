@@ -56,16 +56,7 @@ if (ispaused){
 	}
 	
 	image_speed = 0;
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
 	return;
-}else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
-	}
 }
 
 whiteflash_alpha -= whiteflash_alphadec;
@@ -99,24 +90,26 @@ if (dogs_alive < dog_count){
 	}
 }
 
-if (!dogs_downed){
-	scr_thedogkeeper_behaviour_0();
-}else{
-	if (!weapon_has){
-		weapon_has = true;
-		weapon_index = PawnWeapon.HeavyShotgun;
-		return;
+if (global.cutscene_current == -1) || (cutscene_prop){
+	if (!dogs_downed){
+		scr_thedogkeeper_behaviour_0();
+	}else{
+		if (!weapon_has){
+			weapon_has = true;
+			weapon_index = PawnWeapon.HeavyShotgun;
+			return;
+		}
+	
+		//if (health_current > (health_max / 4)) && (!mid_cutscene_played){
+		//	global.cutscene_current = 58;
+		//	cutscene_prop = true;
+		//	in_cutscene = true;
+		//	mid_cutscene_played = true;
+		//	return;
+		//}
+	
+		scr_thedogkeeper_behaviour_1();
 	}
-	
-	//if (health_current > (health_max / 4)) && (!mid_cutscene_played){
-	//	global.cutscene_current = 58;
-	//	cutscene_prop = true;
-	//	in_cutscene = true;
-	//	mid_cutscene_played = true;
-	//	return;
-	//}
-	
-	scr_thedogkeeper_behaviour_1();
 }
 
 scr_pawn_update();

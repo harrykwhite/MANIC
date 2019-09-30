@@ -30,6 +30,11 @@ if (component_spawn){
 		}
 	}
 	
+	mylight = instance_create_layer(x + (53 * sign(image_xscale)), y, "Lights", obj_pawn_other_train_light);
+	
+	hitbox = instance_create_layer(x, y, "Hitbox", obj_train_hitbox_0);
+	hitbox.owner = id;
+	
 	component_spawn = false;
 }
 

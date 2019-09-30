@@ -20,7 +20,7 @@ obj_controller_ui.playerhit_alpha = 0.75;
 
 if (global.player_health_current <= 0){
 	var d = instance_create(x, y - 16, obj_player_death);
-	d.spd = min(1.25, (kbs * 2));
+	d.spd = min(1.5, (kbs * 2.5));
 	d.dir = kbd;
 	d.move = true;
 	

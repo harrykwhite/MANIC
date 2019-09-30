@@ -109,6 +109,27 @@ if (health_current <= 0){
 				part_type_direction(global.pt_bodypart_enemy_5, knockback_direction - 35, knockback_direction + 35, 0, 0);
 				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_5, 1);
 			}
+			
+			if (global.game_objective_current == Objectives.KillDeer){
+				if (global.objective_counter[global.game_objective_current] == 0){
+					var cblock = instance_create(x, y, obj_block_cutscene);
+					cblock.index = 4;
+					cblock.destroy_on_activate = true;
+					cblock.image_xscale = 8;
+					cblock.image_yscale = 8;
+					cblock.x -= sprite_get_width(spr_block_cutscene) * 4;
+					cblock.y -= sprite_get_height(spr_block_cutscene) * 4;
+				}
+			}
+			
+			var flesh = instance_create(x, y + 6, obj_collectable_pickup);
+			flesh.spd = knockback_speed * 1.25;
+			flesh.dir = knockback_direction;
+			flesh.listnum = -1;
+			flesh.index = Collectables.DeerMeat;
+			flesh.angle = irandom_range(-5, 5);
+			flesh.x -= sprite_get_width(spr_collectable_0) / 2;
+			flesh.y -= sprite_get_height(spr_collectable_0) / 2;
 			break;
 		
 		case obj_thescorched:

@@ -49,7 +49,7 @@
             "SpriteId": "b8bea26a-2d52-4c80-885c-f5ae94ac9c3a",
             "blendMode": 0,
             "isLocked": false,
-            "name": "Layer 1",
+            "name": "default",
             "opacity": 100,
             "visible": true
         }

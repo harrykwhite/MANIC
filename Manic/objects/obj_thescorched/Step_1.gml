@@ -2,11 +2,11 @@ if (weapon_has){
 	if (weapon == -1){
 		weapon_index = PawnWeapon.Flamethrower;
 		weapon = instance_create(x, y, obj_pawnweapon_10);
-		weapon.owner = self;
+		weapon.owner = id;
 	}else if (!instance_exists(weapon)){
 		weapon_index = PawnWeapon.Flamethrower;
 		weapon = instance_create(x, y, obj_pawnweapon_10);
-		weapon.owner = self;
+		weapon.owner = id;
 	}
 	
 	if (arm == -1){

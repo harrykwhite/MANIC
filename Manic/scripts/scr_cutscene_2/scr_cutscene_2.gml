@@ -34,7 +34,7 @@ if (instance_exists(obj_player)){
 		
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
-		obj_player.move_extSpd = 0;
+		obj_player.move_ext_spd = 0;
 		
 		if (global.cutscene_time[index] < wait){
 			global.cutscene_time[index] ++;
@@ -47,7 +47,7 @@ if (instance_exists(obj_player)){
 	}else{
 		obj_player.move_x_to = level.spawn_x;
 		obj_player.move_y_to = level.spawn_y;
-		obj_player.move_extSpd = obj_player.spd_max;
+		obj_player.move_ext_spd = obj_player.spd_max;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to);
 	}
 }else{

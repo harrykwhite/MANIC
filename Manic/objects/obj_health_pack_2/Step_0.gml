@@ -45,11 +45,11 @@ if (place_meeting(x + 1, y + 1, obj_player)){
 // Motion
 var has_target = false;
 if (instance_exists(obj_player)){
-	if (distance_to_object(obj_player) < 30) && (global.player_health_current < global.player_health_max){
-		dir = point_direction(x, y, obj_player.x, obj_player.y);
+	if (point_distance(x, y, obj_player.x, obj_player.y + 6) < 30) && (global.player_health_current < global.player_health_max){
+		dir = point_direction(x, y, obj_player.x, obj_player.y + 6);
 		
-		if (spd < 2){
-			spd += 0.05;
+		if (spd < 3){
+			spd += 0.2;
 		}
 		
 		has_target = true;

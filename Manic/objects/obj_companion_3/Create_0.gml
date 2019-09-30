@@ -32,7 +32,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 poison_time = 0;
@@ -51,12 +50,15 @@ defense = 4;
 bark_time = random(30);
 target = noone;
 
-bite_time = (60 * 1.25) + random_range(-20, 5);
+bite_time_max = 60 * 0.5;
+bite_time = bite_time_max + random_range(-20, 5);
 bite_to = false;
+bite_to_time = 0;
 bite_retreat = false;
 bite_retreat_x = x;
 bite_retreat_y = y;
 bite_retreat_direction = 0;
+bite_retreat_time = 0;
 
 move_speed = 0;
 move_speed_real = 0;

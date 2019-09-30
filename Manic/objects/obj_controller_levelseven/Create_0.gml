@@ -44,6 +44,16 @@ switch(room){
 		}
 		break;
 	
+	case rm_level_7_03:
+		spawn_x = room_width / 2;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_y = 1024;
+		}else{
+			spawn_y = 192;
+		}
+		break;
+	
 	case rm_level_7_post_00:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 446;
@@ -57,8 +67,10 @@ switch(room){
 
 // Other
 room_music_transition = false;
-global.cutscene_current = 2;
 fly_can_spawn = global.game_firstflyhead_killed;
+
+global.cutscene_current = 2;
+
 sprite_index = noone;
 depth = -5;
 

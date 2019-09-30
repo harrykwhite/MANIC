@@ -26,18 +26,9 @@ if (type == Enemy0_Type.Grenadier) || (type == Enemy0_Type.Sniper) || (type == E
 }
 
 var ispaused = false;
+
 if (global.game_pause){
 	ispaused = true;
-}
-
-if (global.cutscene_current != -1){
-	if (!in_cutscene){
-		ispaused = true;
-	}
-}else{
-	if (cutscene_prop){
-		ispaused = true;
-	}
 }
 
 if (ispaused){
@@ -47,32 +38,7 @@ if (ispaused){
 	}
 	
 	image_speed = 0;
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
-	
-	// Train Boss Dialogue Cutscene Defaults
-	if (type == Enemy0_Type.TrainBoss) && (global.cutscene_current == 58){
-		if (weapon != -1){
-			if (instance_exists(weapon)) && (instance_exists(obj_player)){
-				weapon.dir = point_direction(x, y, obj_player.x, obj_player.y);
-				weapon.attack = false;
-				
-				if (obj_player.x > x){
-					image_xscale = scale;
-				}else{
-					image_xscale = -scale;
-				}
-			}
-		}
-	}
 	return;
-}else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
-	}
 }
 
 livetime ++;
@@ -92,17 +58,37 @@ if (cutscene_prop){
 	}
 }
 
-if (headless){
-	scr_enemy_0_behaviour_headless() 
-}else if (burn){
-	scr_enemy_0_behaviour_burn();
-}else{
-	if (type == Enemy0_Type.Crazy){
-		scr_enemy_0_behaviour_crazy();
-	}else if (type == Enemy0_Type.TrainBoss){
-		scr_enemy_0_behaviour_sniperboss();
+if (global.cutscene_current == -1) || (cutscene_prop){
+	if (headless){
+		scr_enemy_0_behaviour_headless() 
+	}else if (burn){
+		scr_enemy_0_behaviour_burn();
 	}else{
-		scr_enemy_0_behaviour();
+		if (type == Enemy0_Type.Crazy){
+			scr_enemy_0_behaviour_crazy();
+		}else if (type == Enemy0_Type.TrainBoss){
+			scr_enemy_0_behaviour_sniperboss();
+		}else{
+			scr_enemy_0_behaviour();
+		}
+	}
+}else{
+	image_speed = 0;
+	
+	// Train Boss Dialogue Cutscene Defaults
+	if (type == Enemy0_Type.TrainBoss) && (global.cutscene_current == 58){
+		if (weapon != -1){
+			if (instance_exists(weapon)) && (instance_exists(obj_player)){
+				weapon.dir = point_direction(x, y, obj_player.x, obj_player.y);
+				weapon.attack = false;
+				
+				if (obj_player.x > x){
+					image_xscale = scale;
+				}else{
+					image_xscale = -scale;
+				}
+			}
+		}
 	}
 }
 

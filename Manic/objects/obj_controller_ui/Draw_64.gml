@@ -44,28 +44,29 @@ if (global.weapon_slot_standalone != -1){
 	weapon_standalone_alpha = 0.2;
 }
 
-if (weaponslot_shake > 0.02){
-    weaponslot_shake *= 0.925;
-}else{
-    weaponslot_shake = 0;
-}
-
-var shake = weaponslot_shake;
-
 if (instance_exists(obj_player)){
     repeat(amount){
         
-        // Weapon Slot Scale
+        // Weapon Slot Scale and Shake
         if (weaponslot_weaponscale[counter] < 1.875){
             weaponslot_weaponscale[counter] += 0.25;
         }else{
             weaponslot_weaponscale[counter] = 1.875;
         }
 		
+		if (weaponslot_shake[counter] > 0.02){
+		    weaponslot_shake[counter] *= 0.925;
+		}else{
+		    weaponslot_shake[counter] = 0;
+		}
+		
 		// Drawing Slot
         var xx = 78;
         var yy = 78 + (yspace * counter);
-        var yy = 78 + (yspace * counter);
+		var slotsprite = spr_ui_weaponslot_0;
+		
+		xx += random_range(-weaponslot_shake[counter], weaponslot_shake[counter]);
+		yy += random_range(-weaponslot_shake[counter], weaponslot_shake[counter]);
 		
 		var isred = false;
 		
@@ -79,7 +80,7 @@ if (instance_exists(obj_player)){
 		}
 		
         if (global.weapon_slotcurrent == counter){
-			draw_sprite_ext(spr_ui_weaponslot_1, 0, xx + random_range(-shake, shake), yy + random_range(-shake, shake), 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
+			slotsprite = spr_ui_weaponslot_1;
 			
 			if (global.weapon_slotscale[counter] < 1.075){
 				global.weapon_slotscale[counter] += 0.025;
@@ -88,9 +89,9 @@ if (instance_exists(obj_player)){
 			if (global.weapon_slotscale[counter] > 1){
 				global.weapon_slotscale[counter] -= 0.025;
 			}
-			
-			draw_sprite_ext(spr_ui_weaponslot_0, 0, xx, yy, 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
         }
+		
+		draw_sprite_ext(slotsprite, 0, xx, yy, 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
         
 		// Drawin Slot Number
 		draw_set_halign(fa_right);
@@ -101,14 +102,14 @@ if (instance_exists(obj_player)){
 		gpu_set_fog(false, c_white, 0, 0);
 		
         // Drawing Weapon
-        if (global.weapon_slot[counter] != -1) && (global.weapon_slot[counter] != 4){
+        if (global.weapon_slot[counter] != -1) && (global.weapon_slot[counter] != global.weapon_default){
             var spr = global.weapon_centersprite[global.weapon_slot[counter]];
             
             gpu_set_fog(true, isred ? c_red : c_white, 0, 0);
             draw_sprite_ext(spr, 0, xx, yy, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
             gpu_set_fog(false, c_white, 0, 0);
         }else if (global.level_current != Level.Prologue){
-            var spr = spr_weapon_4_center;
+            var spr = global.weapon_centersprite[global.weapon_default];
 			
             gpu_set_fog(true, c_gray, 0, 0);
             draw_sprite_ext(spr, 0, xx, yy, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
@@ -217,7 +218,7 @@ if (tutourial) && (global.cutscene_current == -1){
 		}
 	}
 	
-	tutourial_scale = approach(tutourial_scale, 1, 15);
+	tutourial_scale = approach(tutourial_scale, 1, 10);
 	
 	var tscale = tutourial_scale;
 	var tstage = min(tutourial_stage, tut_count - 1);
@@ -292,28 +293,27 @@ if (tutourial) && (global.cutscene_current == -1){
 	}
 }
 
-// Kill Display
+// Objective Display
 if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
 	var text = "";
 	var textx = 40;
 	var texty = dheight - 50;
 	
-	if (global.level_current == Level.Prologue){
-		if (global.level_cleared[global.level_current]){
-			text += "All deers hunted. Return to the house."
+	if (global.game_objective_complete){
+		text = "Objective completed. ";
+		
+		if (global.level_current == Level.Prologue){
+			text += "Return to the house.";
 		}else{
-			text += "Hunt and kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " deer.";
+			text += "Proceed to the next area.";
 		}
 	}else{
-		if (global.level_cleared[global.level_current]){
-			text += "Area cleared. Proceed to the next level."
-		}else{
-			text += "Kill " + string(global.level_kill_max[global.level_current] - global.level_kill_count[global.level_current]) + " enemies to clear the level.";
-		}
+		text = global.objective_name[global.game_objective_current];
+		text = string_replace(text, "^", global.objective_counter_max[global.game_objective_current] - global.objective_counter[global.game_objective_current]);
 	}
 	
 	var redglow = wave(0.125, 0.225, 2, 0);
-	killcount_scale = approach(killcount_scale, 1, 20);
+	objective_scale = approach(objective_scale, 1, 15);
 	
 	draw_set_alpha(1);
 	
@@ -321,10 +321,10 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	
-	scr_text_shadow_transformed(textx, texty, text, c_white, killcount_scale, killcount_scale, 0);
+	scr_text_shadow_transformed(textx, texty, text, c_white, objective_scale, objective_scale, 0);
 	
-	draw_set_alpha(redglow + ((killcount_scale - 1) * 2));
-	scr_text_shadow_transformed(textx, texty, text, c_maroon, killcount_scale, killcount_scale, 0);
+	draw_set_alpha(redglow + ((objective_scale - 1) / 0.25));
+	scr_text_shadow_transformed(textx, texty, text, c_maroon, objective_scale, objective_scale, 0);
 	
 	draw_set_valign(fa_top);
 }
@@ -521,11 +521,7 @@ if (instance_exists(obj_player)){
 }
 
 // Collectables
-var str = "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]) + "\nTIME: " + string(scr_seconds_to_timer(global.game_save_seconds));
-
-if (global.level_collectable_number[global.level_current] <= 0){
-	str = string_replace(str, "COLLECTABLES: " + string(global.level_collectable_current[global.level_current]) + "/" + string(global.level_collectable_number[global.level_current]) + "\n", "");
-}
+var str = "TIME: " + string(scr_seconds_to_timer(global.game_save_seconds));
 
 if (!drawammo){
 	stats_y = approach(stats_y, 48, 30);
@@ -537,21 +533,6 @@ draw_set_alpha(1);
 draw_set_font(fnt_cambria_n1);
 draw_set_halign(fa_left);
 scr_text_shadow(136, stats_y, str, c_white);
-
-/* Time Passed
-var time_passed_text;
-var time_passed_minutes = (global.game_time_passed div 100) div 60;
-var time_passed_seconds = (global.game_time_passed div 100) - (60 * time_passed_minutes);
-
-if (time_passed_seconds < 10){
-	time_passed_text = string(time_passed_minutes) + ":0" + string(time_passed_seconds);
-}else{
-	time_passed_text = string(time_passed_minutes) + ":" + string(time_passed_seconds);
-}
-
-draw_set_halign(fa_center);
-draw_set_font(fnt_cambria_0);
-scr_text_shadow(dwidth / 2, (dheight / 2) + 28, time_passed_text, c_white);*/
 
 // Level Text
 if (leveltext_alpha > 0){
@@ -663,12 +644,12 @@ if (checkpoint_text_alpha > 0){
 	draw_set_halign(fa_center);
 	
 	if (checkpoint_text_time > 0){
-		scr_text_shadow((dwidth / 2), yy - ((1 - checkpoint_text_alpha) * 30), "[Checkpoint Reached]", c_white);
+		scr_text_shadow((dwidth / 2), yy - ((1 - checkpoint_text_alpha) * 30), "Checkpoint Reached", c_white);
 	}else{
-		scr_text_shadow((dwidth / 2), yy, "[Checkpoint Reached]", c_white);
+		scr_text_shadow((dwidth / 2), yy, "Checkpoint Reached", c_white);
 	}
 	
-	//var line_width_to = string_width("[Checkpoint Reached]") + 30;
+	//var line_width_to = string_width("Checkpoint Reached") + 30;
 	//checkpoint_text_line_width = approach(checkpoint_text_line_width, line_width_to, 5);
 	
 	//draw_rectangle((dwidth / 2) - (checkpoint_text_line_width / 2), yy - 3, (dwidth / 2) + (checkpoint_text_line_width / 2), yy - 2, false);
@@ -709,29 +690,6 @@ if (control_indicate_text != ""){
 }
 
 control_indicate = false;
-
-// Level Cleared
-if (levelcleared_time > 0){
-	if (levelcleared_alpha < 1){
-		levelcleared_alpha += 0.05;
-	}
-	levelcleared_time --;
-}else{
-	if (levelcleared_alpha > 0){
-		levelcleared_alpha -= 0.02;
-	}
-}
-
-if (levelcleared_alpha > 0){
-	var xx = dwidth / 2;
-	var yy = dheight / 2;
-	yy -= 250;
-	
-	draw_set_font(fnt_cambria_3);
-	draw_set_halign(fa_center);
-	draw_set_alpha(levelcleared_alpha);
-	scr_text_shadow(xx, yy, "LEVEL CLEARED", c_white);
-}
 
 // Level Results / Ranking
 if (rank_display_draw){
@@ -853,8 +811,9 @@ if (!pause_text_update){
 }
 
 // Pause Dialogue
+var optint = 48;
 var optxx = dwidth / 2;
-var optyy = (dheight / 2) - ((30 * pausedialogue_option_max) / 2);
+var optyy = (dheight / 2) - ((optint * pausedialogue_option_max) / 2);
 
 if (pausedialogue){
 	if (pausedialogue_alpha < 1){
@@ -875,31 +834,32 @@ if (pausedialogue_alpha > 0){
 	var selected_set = false;
 	
 	draw_set_alpha(pausedialogue_alpha);
-	draw_set_font(fnt_cambria_0);
+	draw_set_font(fnt_cambria_1);
+	draw_set_colour(c_white);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	
+	if (iskeyboard){
+		pausedialogue_option_selected = -1;
+	}
+	
 	switch(pausedialogue_type){
 		case 0:
-			scr_text_shadow(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, c_white);
-			vslot = 1;
+			draw_text_ext(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, -1, 430);
+			vslot ++;
 			break;
-	
+		
 		case 1:
 			optyy += string_height(pausedialogue_type_text) + 10;
 			
 			draw_set_font(fnt_cambria_2);
-			scr_text_shadow(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, c_white);
-			
-			if (iskeyboard){
-				pausedialogue_option_selected = -1;
-			}
+			scr_text_shadow(dwidth / 2, (dheight / 2) - 58, pausedialogue_type_text, c_white);
 			
 			draw_set_font(fnt_cambria_1);
 			
 			for(var counter = 0; counter < pausedialogue_option_max; counter ++){
-				var optrealy = optyy + (counter * 34);
-				 vslot ++;
+				var optrealy = optyy + (counter * optint);
+				vslot ++;
 				
 				if (!selected_set){
 					if (iskeyboard){
@@ -922,7 +882,7 @@ if (pausedialogue_alpha > 0){
 			break;
 	}
 	
-	var exity = optyy + (vslot * 42) + 14;
+	var exity = optyy + (vslot * optint);
 	if (!selected_set){
 		if (point_in_rectangle(mousex, mousey, optxx - 80, exity - 16, optxx + 80, exity + 16)){
 			pausedialogue_option_selected = counter;
@@ -932,10 +892,10 @@ if (pausedialogue_alpha > 0){
 	
 	if (pausedialogue_option_selected == counter){
 		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1.1, 40);
-		scr_text_shadow_transformed(optxx, exity, "Resume", make_colour_rgb(189, 23, 23), pausedialogue_option_exitscale * 1.05, pausedialogue_option_exitscale * 1.05, 0);
+		scr_text_shadow_transformed(optxx, exity, "Resume", make_colour_rgb(189, 23, 23), pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
 	}else{
 		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1, 40);
-		scr_text_shadow_transformed(optxx, exity, "Resume", c_white, pausedialogue_option_exitscale * 1.05, pausedialogue_option_exitscale * 1.05, 0);
+		scr_text_shadow_transformed(optxx, exity, "Resume", c_white, pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
 	}
 	
 	draw_set_valign(fa_top);

@@ -10,16 +10,7 @@ if (ispaused){
 	}
 	
 	image_speed = 0;
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
 	return;
-}else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
-	}
 }
 
 if (instance_exists(keeper)){
@@ -30,7 +21,12 @@ whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
-scr_thedogkeeper_dog_behaviour_0();
+
+if (global.cutscene_current == -1) || (cutscene_prop){
+	scr_thedogkeeper_dog_behaviour_0();
+}else{
+	image_speed = 0;
+}
 
 scr_pawn_update();
 image_yscale = scale;

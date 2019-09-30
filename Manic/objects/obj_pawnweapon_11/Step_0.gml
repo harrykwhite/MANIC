@@ -1,10 +1,11 @@
-if (global.game_pause){
+if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
 	return;
 }
 
-
 // Attacking
+flicker = false;
+
 if (instance_exists(owner)){
 	if (attack_time > 0){
 		attack_time --;
@@ -16,8 +17,16 @@ if (instance_exists(owner)){
 		}
 		
 		attack_ready = false;
-		if (attack_time < 27){
+		
+		if (attack_time < 49){
 			attack_ready = true;
+			
+			flicker = true;
+			flicker_time_max = 10;
+			
+			if (attack_time < 21){
+				flicker_time_max = 5;
+			}
 		}
 	}
 	
@@ -45,7 +54,7 @@ if (instance_exists(owner)){
 			attack_time = attack_time_max;
 		}
 		
-		if (shoot_continue_time >= 0){
+		if (shoot_continue_time > 0){
 			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
 			for(var l = 0; l < 24; l += 4){
 				part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
@@ -63,7 +72,7 @@ if (instance_exists(owner)){
 				shoot.damage = 1;
 				shoot.damage_change = -0.25;
 				shoot.strength = 1;
-			    shoot.dir = dir + random_range(-8, 8);
+			    shoot.dir = dir + random_range(-5, 5);
 				shoot.spd = 18;
 				shoot.image_angle = shoot.dir;
 				shoot.enemy = isEnemy;

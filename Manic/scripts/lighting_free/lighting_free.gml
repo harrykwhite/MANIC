@@ -18,11 +18,11 @@ if (ds_exists(global.worldLights, ds_type_list)){
 
 ds_map_destroy(global.lightVertexArrayMap);
 
-if (global.worldShadowMap != undefined && surface_exists(global.worldShadowMap)){
+if (global.worldShadowMap != noone && surface_exists(global.worldShadowMap)){
 	surface_free(global.worldShadowMap);
 }
 
-if (global.lightShadowMap != undefined && surface_exists(global.lightShadowMap)){
+if (global.lightShadowMap != noone && surface_exists(global.lightShadowMap)){
 	surface_free(global.lightShadowMap);
 }
 	

@@ -290,6 +290,7 @@ if (horde_dospawn){
 			part_particles_create(global.ps_front, xx + random_range(-7, 7), yy + random_range(-18, 18), global.pt_spawn_0, 1);
 		}
 	}
+	
 	horde_dospawn = false;
 }
 
@@ -317,15 +318,11 @@ if (is_boss) && (count == -1){
 }
 
 // Light
-/*if (count != 0) && (count != 5){
-	if (mylight == noone){
-		mylight = instance_create_layer(x, y - 4, "Lights", obj_pawn_other_train_light);
-	}else{
-		mylight.x = x;
-		mylight.y = y - 4;
-		mylight.light[| eLight.X] = x;
-		mylight.light[| eLight.Y] = y - 4;
-		mylight.light[| eLight.LutIntensity] = 1.05;
-		mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
-	}
-}*/
+if (instance_exists(mylight)){
+	mylight.x = x + (53 * sign(image_xscale));
+	mylight.y = y;
+	mylight.light[| eLight.X] = x + (53 * sign(image_xscale));
+	mylight.light[| eLight.Y] = y;
+	mylight.light[| eLight.LutIntensity] = 1.25;
+	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+}

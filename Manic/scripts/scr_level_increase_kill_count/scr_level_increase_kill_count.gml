@@ -1,5 +1,5 @@
-if (!global.game_combat_in_hordechallenge){
-	global.level_kill_count[global.level_current] ++;
-	
-	obj_controller_ui.killcount_scale = 1.15;
+if (global.game_objective_current == Objectives.KillEnemies){
+	if (!global.game_combat_in_hordechallenge){
+		scr_objective_update_counter();
+	}
 }

@@ -2,7 +2,7 @@ var inst = other;
 
 with(owner){
 	if (object_index == obj_enemy_1){
-		if (self.owner != obj_player) && (self.owner != noone){
+		if (id.owner != obj_player) && (id.owner != noone){
 			return;
 		}
 	}
@@ -17,6 +17,17 @@ with(owner){
 		
 		scr_effect_screenshake(4);
 		scr_effect_freeze(13);
+		
+		if (object_index == obj_enemy_2){
+			if (bite_to){
+				bite_to = false;
+				bite_retreat = true;
+				bite_retreat_direction = point_direction(x, y, inst.x, inst.y) - 180;
+				bite_retreat_x = inst.x;
+				bite_retreat_y = inst.y;
+			}
+		}
+		
 		if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 			scr_sound_play(snd_object_metal_hit_0, false, 0.8, 1.2);
 			scr_effect_object(inst.x, inst.y, obj_ef_blood, spr_ef_metal_0, 0, 1);

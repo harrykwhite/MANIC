@@ -70,18 +70,22 @@ if (state != sprev){
 	}
 }
 
-switch(state){
-	case 0:
-		scr_giantturret_behaviour_0();
-		break;
+if (global.cutscene_current == -1) || (cutscene_prop){
+	switch(state){
+		case 0:
+			scr_giantturret_behaviour_0();
+			break;
 	
-	case 1:
-		scr_giantturret_behaviour_1();
-		break;
+		case 1:
+			scr_giantturret_behaviour_1();
+			break;
 	
-	case 2:
-		scr_giantturret_behaviour_2();
-		break;
+		case 2:
+			scr_giantturret_behaviour_2();
+			break;
+	}
+}else{
+	image_speed = 0;
 }
 
 scr_pawn_update();

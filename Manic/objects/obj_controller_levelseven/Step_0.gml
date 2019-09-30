@@ -14,6 +14,19 @@ if (!global.game_pause){
 	if (random(2) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
 	if (random(4) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
 	
+	// Birds
+	if (random(380) < 1) && (instance_number(obj_bird_0) < 1){
+		var bird;
+		
+		if (random(2) < 1){
+			bird = instance_create(camx - 30, random_range(camy, camy + camh), obj_bird_0);
+			bird.dir = 360 + random_range(-5, 5);
+		}else{
+			bird = instance_create(camx + camw + 30, random_range(camy, camy + camh), obj_bird_0);
+			bird.dir = 180 + random_range(-5, 5);
+		}
+	}
+	
 	// Tumbleweed
 	if (random(180) < 1){
 		if (player_exists){
@@ -66,9 +79,9 @@ if (!global.game_pause){
 
 // Checkpoint
 if (room == rm_level_7_02){
-	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
+	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current, 0]){
 		obj_controller_gameplay.checkpoint_create = true;
-		global.level_checkpoint_found[global.level_current] = true;
+		global.level_checkpoint_found[global.level_current, 0] = true;
 	}
 }
 
@@ -107,9 +120,9 @@ if (player_exists) && (global.cutscene_current == -1){
 if (spawn_start_wait >= spawn_start_wait_max){
 	if (player_exists) && (!scr_level_is_peaceful(room)){
 		var spawn_rate = spawn_rate_real;
-		if (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
+		if (!global.game_pause) && ((global.boss_current == -1) || (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.SniperRobot)) && (global.cutscene_current == -1){
 			if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
-				spawn_rate ++;
+				spawn_rate += 0.5;
 			}
 		
 			if (global.game_combat_in_hordechallenge){
@@ -129,7 +142,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 		
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * spawn_rate)){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * (1 + (0.5 * (spawn_rate - 1))))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -218,41 +231,16 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 		
 		}else if (global.game_pause){
-			if (audio_is_playing(spawn_music_main[CombatState.Idle])){
-				audio_pause_sound(spawn_music_main[CombatState.Idle]);
-			}
-		
-			if (audio_is_playing(spawn_music_main[CombatState.Buildup])){
-				audio_pause_sound(spawn_music_main[CombatState.Buildup]);
-			}
-		
-			if (audio_is_playing(spawn_music_main[CombatState.Climax])){
-				audio_pause_sound(spawn_music_main[CombatState.Climax]);
-			}
-		
-			if (global.boss_current != -1){
-				var bossmusic = global.boss_music[global.boss_current];
-			
-				if (bossmusic != noone){
-					if (audio_is_playing(bossmusic)){
-						audio_pause_sound(bossmusic);
-					}
-				}
-			}
-		
-			if (audio_is_playing(m_ambience_rain_0)){
-				audio_pause_sound(m_ambience_rain_0);
-			}
-		
+			audio_pause_all();
 			spawn_pause_update = false;
 		}
 	
 	}else{
 		global.game_combat_state_time_real = 0;
 		spawn_rate_real = 1;
-	
+		
 		global.game_combat_state = CombatState.Idle;
-	
+		
 		if (global.cutscene_current == -1){
 			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 1000);
 			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 1000);

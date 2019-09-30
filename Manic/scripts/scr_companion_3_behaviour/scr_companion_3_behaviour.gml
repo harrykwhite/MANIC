@@ -34,7 +34,7 @@ if (instance_exists(obj_player)){
 							}
 						}
 						
-						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300) || (!onscreen(target.x, target.y)){
+						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300) || (!onscreen(target.x, target.y, 0)){
 							target = noone;
 							continue;
 						}
@@ -47,56 +47,21 @@ if (instance_exists(obj_player)){
 			if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
-				move_speed = 1.8;
+				move_speed = 1.6;
 				
 				if (dist_to_player > 100 + (60 * order)){
-					move_speed = 2.1;
+					move_speed = 1.9;
 				}
 				
 				if (dist_to_player > 140 + (60 * order)){
-					move_speed = 2.7;
+					move_speed = 2.2;
 				}
 				
 				if (dist_to_player > 180 + (60 * order)){
-					move_speed = 3.4;
+					move_speed = 2.5;
 				}
 				
 				face_player = true;
-			}else if (global.cutscene_current == -1){
-				if (distance_to_point(move_x_to, move_y_to) > 20){
-					move_speed = 1.3;
-					move_time = 35;
-				}else{
-					move_speed = 0;
-					if (move_time > 0){
-						move_time--;
-					}else{
-						var attempts = 0;
-						var dirto = point_direction(obj_player.x, obj_player.y, x, y);
-						var xx = obj_player.x + lengthdir_x(70 * order, dirto);
-						var yy = obj_player.y + lengthdir_y(70 * order, dirto);
-						
-						var dir = random(360);
-						var len = random_range(20, 45);
-						move_x_to = xx + lengthdir_x(len, dir);
-						move_y_to = yy + lengthdir_y(len, dir);
-						
-						while(distance_to_point(move_x_to, move_y_to) < 15) || (collision_line(x, y, move_x_to, move_y_to, obj_p_solid, false, true)){
-							dir = random(360);
-							len = random_range(20, 65);
-							move_x_to = xx + lengthdir_x(len, dir);
-							move_y_to = yy + lengthdir_y(len, dir);
-							
-							if (attempts < 200){
-								attempts ++;
-							}else{
-								break;
-							}
-						}
-						
-						move_time = random_range(30, 60) * 3;
-					}
-				}
 			}else{
 				move_speed = 0;
 				move_x_to = obj_player.x;
@@ -114,9 +79,12 @@ if (instance_exists(obj_player)){
 			if (bite_to){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
-				move_speed = 1.75;
 				
-				if (distance_to_point(move_x_to, move_y_to) < 3){
+				move_speed = 1.65;
+				bite_to_time ++;
+				bite_retreat_time = 0;
+				
+				if (distance_to_point(move_x_to, move_y_to) < 3) || (bite_to_time > 120){
 					bite_to = false;
 					bite_retreat = true;
 					bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to) - 180;
@@ -124,33 +92,35 @@ if (instance_exists(obj_player)){
 					bite_retreat_y = target.y + 6;
 				}
 			}else if (bite_retreat){
-				move_x_to = bite_retreat_x + lengthdir_x(30, bite_retreat_direction);
-				move_y_to = bite_retreat_y + lengthdir_y(30, bite_retreat_direction);
-				move_speed = 1.6;
-		
-				if (distance_to_point(move_x_to, move_y_to) < 24) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 80){
+				move_x_to = x + lengthdir_x(30, bite_retreat_direction);
+				move_y_to = y + lengthdir_y(30, bite_retreat_direction);
+				
+				move_speed = 1.55;
+				bite_retreat_time ++;
+				bite_to_time = 0;
+				
+				if (distance_to_point(move_x_to, move_y_to) < 16) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 100) || (bite_retreat_time > 120){
 					bite_to = false;
 					bite_retreat = false;
 				}
 			}else{
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
-			
-				if (distance_to_object(target) > 50){
+				
+				if (distance_to_object(target) > 70){
 					if (move_away_time > 0){
 						move_away_time --;
-						
 						move_speed = 0;
 					}else{
-						move_speed = 1.2;
+						move_speed = 1.4;
 					}
 				}else{
-					move_away_time = 30;
+					move_away_time = 20;
 					
 					if (bite_time > 0){
 						bite_time --;
 					}else{
-						bite_time = (60 * 0.3) + random_range(-20, 5);
+						bite_time = bite_time_max + random_range(-20, 5);
 						bite_to = true;
 						bite_retreat = false;
 					}
@@ -161,7 +131,7 @@ if (instance_exists(obj_player)){
 		}
 	}else{
 		if (distance_to_object(obj_player) > 37 + (60 * order)){
-			move_speed = 1;
+			move_speed = 1.4;
 		}else{
 			move_speed = 0;
 		}
@@ -178,6 +148,16 @@ if (instance_exists(obj_player)){
 	}
 	
 	dist_to = distance_to_point(move_x_to, move_y_to);
+	
+	if (!cutscene_prop){
+		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
+			if (distance_to_object(obj_player) > 67 + (60 * order)){
+				move_x_to = obj_player.x;
+				move_y_to = obj_player.y;
+				move_speed = 1.5;
+			}
+		}
+	}
 	
 	scr_companion_teleport();
 }else{

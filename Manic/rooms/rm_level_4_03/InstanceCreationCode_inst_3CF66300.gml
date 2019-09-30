@@ -1,4 +1,4 @@
-check_x1 = 1072;
-check_y1 = 130;
-check_x2 = 1296;
-check_y2 = 256;
+check_x1 = 1042;
+check_y1 = 66;
+check_x2 = 1332;
+check_y2 = 292;

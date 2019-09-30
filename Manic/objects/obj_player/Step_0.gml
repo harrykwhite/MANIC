@@ -36,17 +36,7 @@ if (global.game_pause){
 	if (audio_is_playing(heartbeat)){
 		audio_stop_sound(heartbeat);
 	}
-	
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
 	return;
-}else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
-	}
 }
 
 flashlight_alpha += 0.01;
@@ -84,6 +74,8 @@ if (sign(img_speed) == 1){
 	}
 }
 
+image_yscale = 1;
+
 image_index = floor(clamp(img_index, 0, image_number));
 image_speed = 0;
 
@@ -92,6 +84,10 @@ if (is_visible){
 		light_brightness += 0.05;
 	}else if (light_brightness > 1){
 		light_brightness -= 0.05;
+	}
+	
+	if (flash_time > 0){
+		flash_time --;
 	}
 }
 
@@ -102,6 +98,8 @@ if (instance_exists(mylight)){
 }
 
 if (instance_exists(flashlight)){
+	flashlight_brightness = approach(flashlight_brightness, 1, 20);
+	
 	if (global.cutscene_current == -1) && (!global.game_pause){
 		flashlight_direction = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 	}
@@ -111,7 +109,7 @@ if (instance_exists(flashlight)){
 	flashlight.light[| eLight.X] = x + lengthdir_x(4, flashlight_direction);
 	flashlight.light[| eLight.Y] = y + lengthdir_y(4, flashlight_direction);
 	flashlight.light[| eLight.LutIntensity] = 1.75;
-	flashlight.light[| eLight.Range] = max(360 * light_brightness * surrounding_light, 1);
+	flashlight.light[| eLight.Range] = max(360 * light_brightness * surrounding_light * (1 + ((global.game_option[| Options.Flashing] / 100) * (flashlight_brightness - 1))), 1);
 	flashlight.light[| eLight.Direction] = flashlight_direction;
 	flashlight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }

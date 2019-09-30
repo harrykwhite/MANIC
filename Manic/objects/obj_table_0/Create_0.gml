@@ -1,5 +1,3 @@
-event_inherited();
-
 fire = false;
 
 image_speed = 0;

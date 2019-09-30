@@ -13,3 +13,15 @@ if (!upgrades_set){
 	surrounding_light_to = surrounding_light;
 	upgrades_set = true;
 }
+
+if (!weapon_default_set){
+	var def = PlayerWeapon.Knife;
+	
+	if (global.level_current >= Level.WinterTown){
+		def = PlayerWeapon.Bayonet;
+	}
+	
+	global.weapon_default = def;
+	
+	weapon_default_set = true;
+}

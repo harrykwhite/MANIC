@@ -8,6 +8,6 @@ if (spawn) && (!stop){
 		time ++;
 	}else{
 		time = 0;
-		instance_create(x + 20, y + 7, obj_environment_enemy_mask_0);
+		instance_create(x + 20, y + 7, spawn_object);
 	}
 }

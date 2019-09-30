@@ -7,7 +7,8 @@
         "f76ff4c8-9143-4134-bf96-3f36d0d80227",
         "af3675b3-a002-4bf1-a209-636885d8cf51",
         "35275f3e-bf64-4763-baf6-1960f825008d",
-        "b67ae16c-fc0d-403a-99ee-7073cd46cd4d"
+        "b67ae16c-fc0d-403a-99ee-7073cd46cd4d",
+        "af72af28-4726-4b1c-ae48-7c9e06f6b46c"
     ],
     "filterType": "GMSprite",
     "folderName": "Enemy 5",

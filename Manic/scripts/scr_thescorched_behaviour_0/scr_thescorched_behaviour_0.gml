@@ -5,7 +5,7 @@ target = obj_player;
 
 if (instance_exists(target)){
 	if (state == 0){
-		move_speed = 2;
+		move_speed = 2.5;
 		
 		if (distance_to_point(run_x, run_y) > 20){
 			move_x_to = run_x;
@@ -32,11 +32,11 @@ if (instance_exists(target)){
 	}else if (state == 1){
 		move_speed = 0;
 		
-		if (release_count < 6){
+		if (release_count < 7){
 			if (release_time > 0){
 				release_time--;
 			}else{
-				var interval = 360 / 5;
+				var interval = 360 / 6;
 				scr_sound_play_distance_pitch(snd_weapon_flare_1, false, 300, 0.8, 1.2);
 				flash_time = 5;
 				

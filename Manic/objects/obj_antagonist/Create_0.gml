@@ -53,7 +53,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 bleed = false;

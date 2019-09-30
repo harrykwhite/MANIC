@@ -17,7 +17,7 @@ if (instance_exists(obj_player)){
 		}
 		
 		var cartx = x - 8;
-		var carty = y - 2;
+		var carty = y - 3;
 		var cartw = 16;
 		var carth = 35;
 		
@@ -25,13 +25,13 @@ if (instance_exists(obj_player)){
 		var yvel = lengthdir_y(minecart_speed, minecart_dir);
 		
 		if (yvel != 0 && xvel == 0){
-			cartx = x - 2;
-			cartw = 4;
+			cartx = x - 3;
+			cartw = 6;
 		}
 		
 		if (xvel != 0 && yvel == 0){
 			carty = y + 13;
-			carth = 4;
+			carth = 6;
 		}
 		
 		if (minecart_break > 0){

@@ -9,15 +9,14 @@ with(owner){
 		inst.damageother_time --;
 	}else{
 		if (i_time < 1) && (inst.owner == obj_player){
+			var dir = point_direction(inst.x, inst.y, x, y);
+			
 			if (object_index == obj_player){
+				scr_player_damage(inst.damage, inst.strength, dir, 50);
+				
 				if (!upgrade_has[PlayerUpgrade.GasMask]){
 					poison = true;
 				}
-			}
-	
-			var dir = point_direction(inst.x, inst.y, x, y);
-			if (object_index == obj_player){
-				scr_player_damage(inst.damage, inst.strength, dir, 50);
 			}else{
 				scr_pawn_damage(inst.damage, inst.strength, dir, 50);
 			}

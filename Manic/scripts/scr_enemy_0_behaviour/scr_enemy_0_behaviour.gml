@@ -1,6 +1,6 @@
 var speed_multiplier = 1;
 var speed_final = 0;
-var wait_negate = true, wait_stop_movement = false;
+var wait_stop_movement = false;
 var face_target = false;
 target = obj_player;
 
@@ -137,23 +137,33 @@ if (instance_exists(target)){
 		}
 	
 		if (type == Enemy0_Type.Grenadier){
-			var inst = instance_nearest(x, y, obj_throwobject_1);
-		
+			var inst = instance_nearest(x, y, obj_p_depth_throwobject);
+			var running = false;
+			
 			if (instance_exists(inst)) && (inst != noone){
 				var dir = point_direction(inst.x, inst.y, x, y);
-			
-				if (distance_to_object(inst) < 33){
 				
-					wait = 60;
+				if (distance_to_object(inst) < 43){
+					wait = 40;
+					
+					move_speed = 1.25;
 					move_x_to = x + lengthdir_x(20, dir);
 					move_y_to = y + lengthdir_y(20, dir);
 				
 					wait_stop_movement = false;
-					wait_negate = false;
+					running = true;
+				}
 				
-				}else{
+				if (!running){
 					wait_stop_movement = true;
-					wait_negate = true;
+					
+					if (point_distance(x, y, target.x, target.y + 6) > 90){
+						move_x_to = target.x;
+						move_y_to = target.y + 6;
+						move_speed = 0.75;
+					}else{
+						move_speed = 0;
+					}
 				}
 			}
 		}
@@ -195,7 +205,7 @@ if (instance_exists(target)){
 									weapon = instance_create(x, y, obj_pawnweapon_4);
 									weapon.owner = id;
 									weapon_index = PawnWeapon.Grenade;
-									time = 120;
+									time = 40;
 									attack_time = time * attack_time_offset;
 									return;
 								}else{

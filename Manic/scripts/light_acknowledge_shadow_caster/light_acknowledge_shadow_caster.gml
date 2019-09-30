@@ -23,7 +23,7 @@ if (__LIGHTING_ERROR_CHECKS && (!ds_exists(light, ds_type_list) || ds_list_size(
 }
 
 var map = light[| eLight.IgnoreSet];
-if (map == undefined){
+if (map == noone){
 	// No set; nothing to remove
 	return;
 }
@@ -36,7 +36,7 @@ for(var i = 1; i < argument_count; ++i){
 if (ds_map_size(map) == 0){
 	// Destroy the map
 	ds_map_destroy(map);
-	light[| eLight.IgnoreSet] = undefined;
+	light[| eLight.IgnoreSet] = noone;
 }
 
 // Mark the light as dirty

@@ -8,7 +8,7 @@ if (!ds_exists(global.worldLights, ds_type_list)){
 	return;
 }
 
-if (dirty || tick >= global.lightUpdateFrameDelay || global.worldShadowMap == undefined || !surface_exists(global.worldShadowMap)){
+if (dirty || tick >= global.lightUpdateFrameDelay || global.worldShadowMap == noone || !surface_exists(global.worldShadowMap)){
 	// Composite shadow map
 	exists = composite_shadow_map(global.worldLights);
 	dirty = false;

@@ -32,7 +32,7 @@ if (playerexists){
     if (windex != -1) && (distance_to_object(player) < 30){
 		if (global.weapon_type[windex] == WeaponType.Ranged){
 	        if (instance_exists(global.weapon_object[windex])){
-				if (global.weapon_slotammo[global.weapon_slotcurrent] < global.weapon_ammomax[windex]) || (ammotype == AmmoType.Fuel) || (ammotype == AmmoType.Explosives) || (ammotype == AmmoType.Arrows) || (ammotype == AmmoType.Darts) || (ammotype == AmmoType.Shells){
+				if (global.weapon_slotammo[global.weapon_slotcurrent] < global.weapon_ammomax[windex]) || (ammotype == AmmoType.Fuel) || (ammotype == AmmoType.Explosives) || (ammotype == AmmoType.Arrows) || (ammotype == AmmoType.Darts){
 					if (global.weapon_ammotype[windex] == ammotype){
 						attract = true;
 						enemy = false;

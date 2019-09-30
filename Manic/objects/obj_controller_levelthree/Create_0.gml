@@ -19,10 +19,10 @@ switch(room){
 	
 	case rm_level_3_01:
 		if (global.game_level_opening_type == 0){
-			spawn_x = 467;
-			spawn_y = 160;
+			spawn_x = 462;
+			spawn_y = 200;
 		}else{
-			spawn_x = 924;
+			spawn_x = 956;
 			spawn_y = 760;
 		}
 		break;
@@ -36,6 +36,16 @@ switch(room){
 			spawn_y = 640;
 		}
 		break;
+	
+	case rm_level_3_post_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 220;
+			spawn_y = 1338;
+		}else{
+			spawn_x = 1536;
+			spawn_y = 1396;
+		}
+		break;
 }
 
 // Spawn System
@@ -47,5 +57,6 @@ spawn_cleared = false;
 
 // Other
 global.cutscene_current = 2;
+
 sprite_index = noone;
 depth = -5;

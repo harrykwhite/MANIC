@@ -13,7 +13,7 @@ if (instance_exists(obj_player)){
 	obj_player.flashlight_direction = 90;
 	
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 40){
-		obj_player.move_extSpd = 0;
+		obj_player.move_ext_spd = 0;
 		obj_player.sprite_index = spr_player_idle_1;
 		obj_player.image_speed = 0;
 		obj_player.image_index = 0;
@@ -48,7 +48,7 @@ if (instance_exists(obj_player)){
 	}else{
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
-		obj_player.move_extSpd = obj_player.spd_max;
+		obj_player.move_ext_spd = obj_player.spd_max;
 	}
 }else{
 	x_to = cutscene_trainopening_inst.x;

@@ -18,7 +18,7 @@ if (__LIGHTING_ERROR_CHECKS && (!ds_exists(light, ds_type_list) || ds_list_size(
 }
 
 var map = light[| eLight.IgnoreSet];
-if (map == undefined){
+if (map == noone){
 	// Create the ignore map for the light
 	map = ds_map_create();
 	light[| eLight.IgnoreSet] = map;

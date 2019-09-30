@@ -5,7 +5,7 @@ if (global.game_pause){
 var player = obj_player;
 
 if (!completed){
-	if (instance_exists(player)) && (!global.game_combat_in_hordechallenge){
+	if (instance_exists(player)) && (!global.game_combat_in_hordechallenge) && (global.boss_current == -1){
 		if (point_distance(x, y, player.x, player.y) < 35){
 			interact = true;
 		}else{

@@ -1,14 +1,5 @@
 if (global.game_pause){
-	if (audio_is_playing(sound)){
-		audio_pause_sound(sound);
-		sound_paused = true;
-	}
 	return;
-}else{
-	if (sound_paused){
-		audio_resume_sound(sound);
-		sound_paused = false;
-	}
 }
 
 var centerx = camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2);

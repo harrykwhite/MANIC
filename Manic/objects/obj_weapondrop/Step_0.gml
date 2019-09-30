@@ -12,39 +12,39 @@ if (global.cutscene_current != -1){
 	}
 }
 
-if (index == PlayerWeapon.Grenade) || (index == PlayerWeapon.ToxicGrenade) || (index == PlayerWeapon.LandMine){
+if (index == PlayerWeapon.Grenade) || (index == PlayerWeapon.ToxicGrenade) || (index == PlayerWeapon.ReinforcedGrenade) || (index == PlayerWeapon.LandMine){
 	pack = true;
 }
 
-var hit = false;
-
+// Motion and Bouncing
 if (spd > 0){
-	x += lengthdir_x(spd, dir);
-	y += lengthdir_y(spd, dir);
+    spd -= 0.3;
 	
-	spd -= 0.35;
-	spd = max(0, spd);
+	scr_motion_control(false);
+	angle += (spd * 2);
 	
-	image_alpha = 0;
-	
-	if (!is_cutscene){
-		for(var i = 0; i < spd + 20; i ++){
-			if (collision_line(xprevious, yprevious, x + lengthdir_x(i, dir), y + lengthdir_y(i, dir), obj_p_solid, false, true)){
-				hit = true;
+	if (spd > 0){
+		if (bounce_time <= 0){
+			var touched = false;
+			
+			if (place_meeting(x + lengthdir_x(spd, dir), y, obj_p_solid)){
+				dir = 180 - dir;
+				touched = true;
 			}
+			
+			if (place_meeting(x, y + lengthdir_y(spd, dir), obj_p_solid)){
+			    dir = -dir;
+				touched = true;
+			}
+			
+			if (touched){
+			    spd *= 0.75;
+			}
+	
 		}
 	}
-}
-
-angle += (spd * 2);
-
-if (hit){
-	if (bounce_time <= 0) && (spd > 0){
-		scr_effect_screenshake(1);
-		dir = dir - 180;
-		spd *= 0.75;
-		bounce_time = 10;
-	}
+}else{
+    spd = 0;
 }
 
 if (bounce_time > 0){
@@ -115,7 +115,6 @@ if (instance_exists(obj_player)){
 	}else{
 	    if (point_distance(x, y, obj_player.x, obj_player.y) < pickup_range){
 	        pickup = true;
-			scr_ui_control_indicate("Pickup");
 	    }else{
 	        pickup = false;
 	    }
@@ -130,6 +129,8 @@ if (instance_exists(obj_player)){
 	}
     
     if (pickup){
+		scr_ui_control_indicate("Pickup");
+		
         if (scr_input_is_pressed(InputBinding.Interact)) && (global.player_stamina_active){
 			if (global.weapon_slot_standalone == -1){
 				var oldweapon = global.weapon_slot[global.weapon_slotcurrent];
@@ -171,7 +172,7 @@ if (instance_exists(obj_player)){
 							instance_destroy();
 						}
 						
-						obj_controller_ui.weaponslot_shake = 4;
+						obj_controller_ui.weaponslot_shake[i] = 4;
 			            obj_controller_ui.weaponslot_weaponscale[i] = 0;
 						return;
 					}
@@ -189,7 +190,7 @@ if (instance_exists(obj_player)){
 				var newslotind = -1;
 				
 				for(var i = 0; i < slotcount; i ++){
-					if (global.weapon_slot[i] == -1 || global.weapon_slot[i] == PlayerWeapon.Knife){
+					if (global.weapon_slot[i] == -1 || global.weapon_slot[i] == global.weapon_default){
 						global.weapon_slot[i] = index;
 						newslotind = i;
 						foundempty = true;
@@ -212,8 +213,8 @@ if (instance_exists(obj_player)){
 				}
 				
 				// Create the new weapon drop
-				if (weapon_dropindex != PlayerWeapon.Knife && weapon_dropindex != -1 && !foundempty){ // If it is not a knife or empty.
-					var drop = instance_create(obj_player.x, obj_player.y, obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
+				if (weapon_dropindex != global.weapon_default && weapon_dropindex != -1 && !foundempty){ // If it is not a default weapon or empty.
+					var drop = instance_create(x, y, obj_weapondrop); // Create a weapondrop object, with it being a drop of the old weapon.
 					drop.index = weapon_dropindex;
 					drop.ammo = dropammo;
 					drop.quantity = dropquantity;
@@ -223,7 +224,7 @@ if (instance_exists(obj_player)){
 				}
 				
 				// Shake effect
-				obj_controller_ui.weaponslot_shake = 4;
+				obj_controller_ui.weaponslot_shake[newslotind] = 4;
 	            obj_controller_ui.weaponslot_weaponscale[newslotind] = 0;
 				
 				// Set the new weapon quantity

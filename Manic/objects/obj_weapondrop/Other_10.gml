@@ -8,7 +8,7 @@ draw_sprite_ext(sprite, animation, x, y, scale, scale, angle, c_white, alpha * 0
 gpu_set_fog(false, c_black, 0, 0);
 
 // Outline
-var outline_alpha = 0.4;
+var outline_alpha = 0.6;
 var outline_colour = outlineweapondrop;
 
 if (pickup){

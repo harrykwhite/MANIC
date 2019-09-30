@@ -9,11 +9,11 @@ if (!active){
 	return;
 }
 
-if (instance_exists(obj_player)) && (global.cutscene_current == -1){	
+if (instance_exists(obj_player)) && (global.cutscene_current == -1) && (!global.game_combat_in_hordechallenge){	
 	if (place_meeting(x + 1, y + 1, obj_player)){
 		if (time >= 30){
-			if (special == "requireclear"){
-				if (!global.level_cleared[global.level_current]){
+			if (special == "objectivecomplete"){
+				if (!global.game_objective_complete){
 					return;
 				}
 			}
@@ -26,8 +26,10 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 			
 			if (interact){
 				interact_active = true;
+				
 				if (interact_special == "moveto"){
 					var boss = global.boss_current;
+					
 					if (boss != -1){
 						if (boss != Boss.MotherRobot) && (boss != Boss.SniperRobot){
 							interact_active = false;
@@ -35,7 +37,7 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 						}
 					}
 					
-					scr_ui_control_indicate(global.level_name[moveto_level] + "");
+					scr_ui_control_indicate(global.level_name[moveto_level]);
 				}
 				
 				if (!scr_input_is_pressed(InputBinding.Interact) || !global.player_stamina_active){

@@ -24,12 +24,15 @@ if (spd > 0.375){
 	
 	spd *= 0.9;
 }else{
-	if (point_distance(x, y, basex, basey) > 1){
+	if (point_distance(x, y, basex, basey) >= 1){
 		var dirto = point_direction(x, y, basex, basey);
 		if (!place_meeting(x + lengthdir_x(3, dirto), y + lengthdir_y(3, dirto), obj_p_pawn)){
 			x += lengthdir_x(abs(basex - x) * 0.1, dirto);
 			y += lengthdir_y(abs(basey - y) * 0.1, dirto);
 		}
+	}else{
+		x = basex;
+		y = basey;
 	}
 }
 

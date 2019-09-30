@@ -95,11 +95,7 @@ if (inrealboss) || (inhordechallenge){
 	if (bossmusic != noone){
 		var setToGain = false;
 		
-		if (paused){
-			audio_pause_sound(bossmusic);
-		}else if (audio_is_paused(bossmusic)){
-			audio_resume_sound(bossmusic);
-		}else{
+		if (!paused){
 			while (!audio_is_playing(bossmusic)){
 				audio_play_sound(bossmusic, 3, true);
 				audio_sound_gain(bossmusic, 0.02, 0);
@@ -299,28 +295,6 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 if (!paused){
 	if (!spawn_pause_update){
 		spawn_pause_update = true;
-		
-		// Play other music.
-		if (level != Level.CityHeadquarters) && (level != Level.Prologue){
-			audio_resume_sound(spawn_music_main[CombatState.Idle]);
-			audio_resume_sound(spawn_music_main[CombatState.Buildup]);
-			audio_resume_sound(spawn_music_main[CombatState.Climax]);
-		}
-		
-		if (level == Level.RavagedTown) || (level == Level.TheCemetery) || (room == rm_level_2_pre_00){
-			audio_resume_sound(m_ambience_rain_0);
-		}
-		
-		if (level == Level.Prologue) || (level == Level.WinterTown) || (level == Level.TrainStation) || (level == Level.DesolateVillage) || (room == rm_level_2_post_00){
-			audio_resume_sound(m_ambience_wind_0);
-		}
-		
-		if (level == Level.Prologue) || (room == rm_level_2_post_00){
-			audio_resume_sound(m_ambience_birds_0);
-		}
-		
-		if (bossmusic != noone){
-			audio_resume_sound(bossmusic);
-		}
+		audio_resume_all();
 	}
 }

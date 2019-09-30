@@ -4,10 +4,10 @@ if (global.game_pause){
 
 if (stop){
 	if (spd > 0){
-		spd -= 0.003;
+		spd -= 0.005;
 	}else{
 		spd = 0;
 	}
 }
 
-image_speed = spd;
+image_speed = -dcos(dir) * spd;

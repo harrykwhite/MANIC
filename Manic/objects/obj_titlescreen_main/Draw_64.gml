@@ -236,13 +236,13 @@ if (!in_settings) && (!in_levelselect){
             if (isres){
                 var resolutions = scr_resolution_options();
                 var value = ds_list_find_value(resolutions, value_cur);
-
-                if (value == undefined){
+				
+                if (value == 0) || (value == undefined){
                     adjust_str = ds_list_find_value(resolutions, ds_list_size(resolutions) - 1);
                 } else {
                     adjust_str = value;
                 }
-
+				
                 ds_list_destroy(resolutions);
             }
 

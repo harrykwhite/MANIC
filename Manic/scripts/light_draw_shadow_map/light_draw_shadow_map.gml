@@ -46,7 +46,7 @@ surface_set_target(shadowMap);
 draw_clear_alpha(c_black, 0);
 
 // If it doesn't cast any shadows, we won't have a vertex buffer
-if (vertexbuffer != undefined){
+if (vertexbuffer != noone){
 	// Draw the shadow triangles onto the light's shadow map
 	vertex_submit(vertexbuffer, pr_trianglelist, -1);
 }

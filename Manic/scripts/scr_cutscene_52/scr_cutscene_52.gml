@@ -34,14 +34,14 @@ if (instance_exists(obj_player)){
 		
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
-		obj_player.move_extSpd = obj_player.spd_max;
+		obj_player.move_ext_spd = obj_player.spd_max;
 	}else{
 		global.cutscene_camera_x[index] = obj_player.x;
 		global.cutscene_camera_y[index] = obj_player.y;
 		
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
-		obj_player.move_extSpd = 0;
+		obj_player.move_ext_spd = 0;
 	}
 
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 130) || (cutscene_moveto_instant){

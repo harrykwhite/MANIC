@@ -1,27 +1,30 @@
 var ispaused = false;
-var freezeanim = false;
+var stillsprite = spr_companion_2_idle_2;
+
 if (global.game_pause){
 	ispaused = true;
-	freezeanim = true;
 }
 
-if (global.cutscene_current != -1){
-	if (global.cutscene_current == 2) || (global.cutscene_current == 52){
-		if (cutscene_prop) || (in_cutscene){
-			ispaused = true;
-			
-			if (room == rm_level_5_01){
-				image_xscale = scale;
-				weapon.dir = 360;
-			}
-		}
-	}else if (cutscene_prop){
-		ispaused = true;
+if (ispaused){
+	if (abs(image_xscale) != scale) || (abs(image_yscale) != scale){
+		image_xscale = sign(image_xscale) * scale;
+		image_yscale = scale;
 	}
-}else{
-	if (cutscene_prop){
-		ispaused = true;
-		
+	
+	image_speed = 0;
+	return;
+}
+
+if (cutscene_prop){
+	image_speed = 0.05;
+	sprite_index = stillsprite;
+	
+	if (room == rm_level_5_01){
+		image_xscale = scale;
+		weapon.dir = 360;
+	}
+	
+	if (global.cutscene_current != -1){
 		if (instance_exists(obj_player)){
 			if (!collision_line(x, y, obj_player.x, obj_player.y, obj_p_solid, false, true)){
 				if (obj_player.x > x){
@@ -34,60 +37,45 @@ if (global.cutscene_current != -1){
 			}
 		}
 	}
-}
-
-if (ispaused){
-	if (abs(image_xscale) != scale) || (abs(image_yscale) != scale){
-		image_xscale = sign(image_xscale) * scale;
-		image_yscale = scale;
-	}
 	
-	if (freezeanim){
-		image_speed = 0;
-	}else{
-		image_speed = 0.05;
-		sprite_index = spr_companion_2_idle_0;
-	}
-	
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
 	return;
 }else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
+	in_cutscene = false;
+	
+	// Register companion
+	if (!registered){
+		global.game_companion_prisoner_found = true;
+		scr_companion_register(object_index);
+		registered = true;
+	}else{
+		global.player_companions[# 1, order] = health_current;
 	}
+	
+	order = scr_companion_get_order();
 }
-
-if (!registered){
-	global.game_companion_prisoner_found = true;
-	scr_companion_register(object_index);
-	registered = true;
-}
-
-order = scr_companion_get_order();
 
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 
-if (global.cutscene_current == -1){
+if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global.cutscene_current == 52)){
 	if (cutscene_break_time > 0){
 		cutscene_break_time --;
 	}
+	
+	if (headless){
+		scr_companion_headless(); 
+	}else if (burn){
+		scr_companion_burn();
+	}else{
+		scr_companion_2_behaviour();
+	}
 }else{
+	image_speed = 0.05;
+	sprite_index = stillsprite;
+	
 	cutscene_break_time = 20;
-}
-
-if (headless){
-	scr_companion_headless(); 
-}else if (burn){
-	scr_companion_burn();
-}else{
-	scr_companion_2_behaviour();
 }
 
 if (flash_time > 0){

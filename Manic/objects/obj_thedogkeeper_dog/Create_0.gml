@@ -20,7 +20,7 @@ leash_length_offset = 0;
 leash_bite = false;
 leash_bite_retreat = false;
 
-attack_time = random_range(30, 170);
+attack_time = random_range(30, 45);
 attack_active_time = 45;
 
 whiteflash_alpha = 0;
@@ -34,7 +34,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 poison_time = 0;

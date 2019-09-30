@@ -73,6 +73,10 @@ if (!audio_is_playing(m_ambience_wind_0)){
 
 audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
 
+if (room == rm_level_6_01) || (room == rm_level_6_02){
+	global.game_objective_complete = true;
+}
+
 train_time = 0;
 train_timemax = 10 * 60;
 

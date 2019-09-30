@@ -12,24 +12,27 @@ var obj = argument[3];
 var thickness = argument[4];
 var gui = argument[5];
 var off = 0;
-var xx_to = 0, yy_to = 0, dist = 0, jump = 2;
+var xx_to = x, yy_to = y;
+var jump = 3, xjump = lengthdir_x(jump, dir), yjump = lengthdir_y(jump, dir);
+var counter = 0;
 
 if (argument_count == 7){
 	off = argument[6];
 }
 
-while(!collision_line(xx, yy, xx + lengthdir_x(dist, dir), yy + lengthdir_y(dist, dir), obj, false, true)){
-	dist += jump;
+while(!collision_point(xx_to, yy_to, obj, false, true)){
+	xx_to += xjump;
+	yy_to += yjump;
 	
-	if (dist > 2000){
+	counter += jump;
+	
+	if (counter > 2000){
 		break;
 	}
 }
 
-dist += off;
-
-xx_to = xx + lengthdir_x(dist, dir);
-yy_to = yy + lengthdir_y(dist, dir);
+xx_to += lengthdir_x(off, dir);
+yy_to += lengthdir_y(off, dir);
 
 if (gui){
 	if (thickness == 0){

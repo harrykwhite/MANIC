@@ -28,10 +28,10 @@ global.upgrade_behind[1] = true;
 global.upgrade_equipped[1] = false;
 
 global.upgrade_name[2] = "Chestplate";
-global.upgrade_description[2] = "Maximum health is doubled";
-global.upgrade_sprite[2] = spr_player_upgrade_chestpiece_0;
-global.upgrade_sprite_corpse[2] = spr_player_upgrade_chestpiece_0_corpse;
-global.upgrade_sprite_pickup[2] = spr_player_upgrade_chestpiece_0_pickup;
+global.upgrade_description[2] = "Maximum health is doubled and provides\nstronger protection from greatswords";
+global.upgrade_sprite[2] = spr_player_upgrade_chestplate_0;
+global.upgrade_sprite_corpse[2] = spr_player_upgrade_chestplate_0_corpse;
+global.upgrade_sprite_pickup[2] = spr_player_upgrade_chestplate_0_pickup;
 global.upgrade_behind[2] = false;
 global.upgrade_equipped[2] = false;
 

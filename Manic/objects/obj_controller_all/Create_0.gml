@@ -1,5 +1,4 @@
 global.game_option = 0;
-
 camera_resize_w = 0;
 camera_resize_h = 0;
 camera_resize_time = -1;

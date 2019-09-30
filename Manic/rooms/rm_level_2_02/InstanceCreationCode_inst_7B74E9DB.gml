@@ -1,3 +1,4 @@
 index = Collectables.Note;
 angle = 40;
-listnum = 38;
+listnum = 4;
+note_text = "this rsaarsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyrsaaaaaaaaaaaaaaaaeallyaaaaaaaaaaaaaaeally needs to be filled in"

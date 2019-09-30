@@ -4,6 +4,12 @@ anim = false;
 
 death = false;
 
+locked = false;
+locked_img = 0;
+locked_img_sprite = spr_door_lock_0;
+locked_img_speed = 0;
+locked_img_alpha = 1;
+
 hit = 27;
 hit_time = 0;
 

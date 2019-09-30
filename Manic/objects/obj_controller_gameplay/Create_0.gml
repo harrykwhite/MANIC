@@ -1,10 +1,7 @@
-deactivate_time = 0;
 counter = 0;
 
 pause_time = 0;
 corpse_active_time = 30;
-
-levelclear_called = false;
 
 has_saved = false;
 

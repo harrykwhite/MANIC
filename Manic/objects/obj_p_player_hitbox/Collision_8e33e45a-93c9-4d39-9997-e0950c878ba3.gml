@@ -16,12 +16,12 @@ with(owner){
 	}
 
 	if (i_time < 1){
-		if (!upgrade_has[PlayerUpgrade.GasMask]){
-			poison = true;
-		}
-	
 		if (object_index == obj_player){
 			scr_player_damage(inst.damage, inst.strength, inst.dir, 40);
+			
+			if (!upgrade_has[PlayerUpgrade.GasMask]){
+				poison = true;
+			}
 		}else{
 			scr_pawn_damage(inst.damage, inst.strength, inst.dir, 40);
 		}

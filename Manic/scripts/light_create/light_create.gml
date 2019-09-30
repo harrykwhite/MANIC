@@ -35,15 +35,15 @@ arr[| eLight.Flags] = eLightFlags.Dirty | eLightFlags.CastsShadows;
 
 arr[| eLight.ShadowLength] = shadow_length;
 
-var lutIntensity = undefined;
+var lutIntensity = noone;
 switch(type){
 	case eLightType.Point: lutIntensity = spr_lut_light_intensity_linear; break;
 	case eLightType.Spot: lutIntensity = spr_lut_light_intensity_spot; break;
 	case eLightType.Area: lutIntensity = spr_lut_light_intensity_area; break;
 	case eLightType.Line: lutIntensity = spr_lut_light_intensity_line; break;
-	case eLightType.Directional: lutIntensity = undefined; break; /* Infinite light; no gradient */
+	case eLightType.Directional: lutIntensity = noone; break; /* Infinite light; no gradient */
 }
-arr[| eLight.LutIntensity] = lutIntensity == undefined ? undefined : sprite_get_texture(lutIntensity, 0);
+arr[| eLight.LutIntensity] = lutIntensity == noone ? noone : sprite_get_texture(lutIntensity, 0);
 
 //
 //	Default specializations
@@ -57,37 +57,37 @@ arr[| eLight.Width] = 0;
 //	Extension modules
 //
 
-arr[| eLight.ExtensionModules] = undefined;
+arr[| eLight.ExtensionModules] = noone;
 
 //
 //	Game-specific functionality
 //
 
-arr[| eLight.IgnoreSet] = undefined;
+arr[| eLight.IgnoreSet] = noone;
 
 //
 //	Internal
 //
 
 // We need to update the light to build the vertex buffer before we can show it
-arr[| eLight.VertexBuffer] = undefined;
+arr[| eLight.VertexBuffer] = noone;
 
 // Not all lights are suited to have their own shadow map surface
-arr[| eLight.ShadowMap] = undefined;
+arr[| eLight.ShadowMap] = noone;
 
 // Only create the data structures when they're needed
-arr[| eLight.StaticStorage] = undefined;
-arr[| eLight.ShadowCastersOutOfRange] = undefined;
-arr[| eLight.CulledShadowCasters] = undefined;
+arr[| eLight.StaticStorage] = noone;
+arr[| eLight.ShadowCastersOutOfRange] = noone;
+arr[| eLight.CulledShadowCasters] = noone;
 
 // Must be rendered first
-arr[| eLight.ActiveCamera] = undefined;
+arr[| eLight.ActiveCamera] = noone;
 
 //
 //	Add default extensions
 //
 
-if (global.lightDefaultExtensions != undefined){
+if (global.lightDefaultExtensions != noone){
 	var len = array_length_1d(global.lightDefaultExtensions);
 	for(var i = 0; i < len; ++i){
 		var ext = global.lightDefaultExtensions[i];

@@ -37,11 +37,14 @@ if (instance_exists(target)){
 	move_y_to = target.y + 6;
 	
 	if (!mucus_is_releasing){
-		if (mucus_release_time > 0){
-			mucus_release_time --;
-		}else{
-			mucus_release_time = random_range(60 * 4, 60 * 8);
-			mucus_is_releasing = true;
+		if (distance_to_object(target) < 260){
+			if (mucus_release_time > 0){
+				mucus_release_time --;
+			}else{
+				mucus_release_time = random_range(60 * 4, 60 * 8);
+				mucus_is_releasing = true;
+				mucus_is_releasing_startbreak = 20;
+			}
 		}
 	}else{
 		speed_multiplier = 0;
@@ -76,6 +79,13 @@ if (instance_exists(nbarrel)) && (barrel_pause_break <= 0){
 	}
 }
 
+// Cutscene
+if (cutscene_prop){
+	if (!in_cutscene){
+		speed_multiplier = 0;
+	}
+}
+
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
@@ -93,28 +103,29 @@ if (!scr_pawn_find_path()){
 // Facing
 if (!face_player){
 	if (move_x_to > x){
-		image_xscale = scale;
+		image_xscale = scale * scale_mult_x;
 	}else{
-		image_xscale = -scale;
+		image_xscale = -scale * scale_mult_x;
 	}
 }else{
 	if (target.x > x){
-		image_xscale = scale;
+		image_xscale = scale * scale_mult_x;
 	}else{
-		image_xscale = -scale;
+		image_xscale = -scale * scale_mult_x;
 	}
 }
 
 // Animation
+image_speed = 0.1;
+
 if (!mucus_is_releasing){
-	if (speed_final > 0.1){
-		sprite_index = spr_enemy_4_idle_0;
-		image_speed = 0.1;
-	}else{
-		sprite_index = spr_enemy_4_idle_0;
-		image_speed = 0.1;
-	}
+	sprite_index = spr_enemy_4_idle_0;
 }else{
-	sprite_index = spr_enemy_4_attack_0;
-	image_speed = 0.1;
+	if (mucus_is_releasing_startbreak > 0){
+		mucus_is_releasing_startbreak --;
+		sprite_index = spr_enemy_4_idle_0;
+	}else{
+		sprite_index = spr_enemy_4_attack_0;
+		image_speed = 0.05;
+	}
 }

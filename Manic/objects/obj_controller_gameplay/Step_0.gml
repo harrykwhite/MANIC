@@ -4,50 +4,11 @@ var slotcount = global.weapon_slotmax;
 scr_position_view();
 scr_inboss();
 
-// Level clear
-//if (keyboard_check_pressed(vk_left)){
-//	global.level_kill_count[levelcur] += 10;
-//}
-
-if (!levelclear_called){
-	if (levelcur != Level.Prologue){
-		if (global.level_cleared[levelcur]){
-			levelclear_called = true;
-			return;
-		}
-	}
-	
-	if (levelcur == Level.CityHeadquarters){
-		levelclear_called = true;
-		return;
-	}
-	
-	if (global.level_kill_count[levelcur] >= global.level_kill_max[levelcur]){
-		obj_controller_ui.levelcleared_time = 60 * 3.5;
-		global.level_cleared[levelcur] = true;
-		levelclear_called = true;
-		
-		var level = scr_level_get_object();
-		with(level){
-			global.game_combat_state = CombatState.Idle;
-			global.game_combat_state_time_real = 0;
-			
-			if (levelcur != Level.Prologue){
-				audio_play_sound(spawn_music_stinger[2], 3, false);
-				
-				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
-				audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
-				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
-				audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
-			}
-		}
-	}
-}
-
-if (levelcur != Level.Prologue){
-	if (global.level_cleared[levelcur]){
-		global.level_kill_count[levelcur] = global.level_kill_max[levelcur];
-	}
+// Level complete
+if (!global.level_complete[levelcur]){
+	global.level_complete[levelcur] = global.game_objective_complete;
+}else{
+	global.game_objective_complete = true;
 }
 
 // Recording checkpoint data
@@ -57,9 +18,7 @@ if (checkpoint_create) && (instance_exists(obj_player)){
 		global.checkpoint_weapon_slotammo[i] = global.weapon_slotammo[i];
 		global.checkpoint_weapon_slotquantity[i] = global.weapon_slotquantity[i];
 	}
-	
-	global.checkpoint_killcount = global.level_kill_count[levelcur];
-	global.checkpoint_levelcleared = global.level_cleared[levelcur];
+
 	global.checkpoint_starttype = global.game_level_opening_type;
 	global.checkpoint_room = room;
 	global.checkpoint_goto = false;
@@ -83,7 +42,7 @@ if (pathgrid_reset_time > 0){
 if (instance_number(obj_enemy_corpse) > global.game_option[| Options.MaxCorpses]){
 	var head = ds_queue_head(corpse_queue);
 	
-	if (head != undefined){
+	if (head != noone){
 		if (instance_exists(head)){
 			instance_destroy(head);
 			ds_queue_dequeue(corpse_queue);
@@ -97,29 +56,6 @@ scr_fade_object_control();
 // Cutscene Control
 if (global.cutscene_current != -1){
 	script_execute(global.cutscene_script[global.cutscene_current]);
-}
-
-// Game Pausing
-if (global.cutscene_current == -1) && (instance_exists(obj_player)){
-    if (scr_input_is_pressed(InputBinding.Pause)) && (!obj_controller_ui.pausedialogue){
-        scr_toggle_pause(!global.game_pause);
-    }
-	
-	if (global.game_pause){
-		if (scr_input_is_down(InputBinding.Pause)){
-			if (pause_time < 1){
-				pause_time += 0.025;
-			}else{
-				ds_grid_clear(global.player_companions, -1);
-				scr_fade_object_list_reset();
-				scr_global_set();
-				audio_stop_all();
-				room_goto(rm_title_0);
-			}
-		}else{
-			pause_time = 0;
-		}
-	}
 }
 
 // Value Controlling

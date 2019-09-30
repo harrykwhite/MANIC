@@ -259,9 +259,9 @@ global.lightVertexFormat = vertex_format_end();
 
 // Surface that is the composited shadow map
 // All lights in the game world are blended into this map
-global.worldShadowMap = undefined;
+global.worldShadowMap = noone;
 // Surface that is used to draw a light's shadow map to, if it doesn't have its own
-global.lightShadowMap = undefined;
+global.lightShadowMap = noone;
 
 // The array of lights that will be composited into the global shadow map
 global.worldLights = ds_list_create();
@@ -270,9 +270,9 @@ global.worldLights = ds_list_create();
 global.worldDirtyShadowCasters = ds_list_create();
 
 // The custom camera [X, Y, Width, Height] to use, if any
-// If undefined then it uses the active view camera
+// If noone then it uses the active view camera
 // Set this with lighting_update_camera
-global.worldCustomCamera = undefined;
+global.worldCustomCamera = noone;
 
 // Reused vertex arrays
 global.lightVertexArrayMap = ds_map_create();

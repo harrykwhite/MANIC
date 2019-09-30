@@ -15,7 +15,7 @@ if (instance_exists(obj_player)){
 				cutscene_prologue_opening_camspeed -= 0.025;
 			}
 			
-			if (global.cutscene_time[index] < 120){
+			if (global.cutscene_time[index] < 140){
 				global.cutscene_time[index] ++;
 			}else{
 				global.cutscene_current = -1;

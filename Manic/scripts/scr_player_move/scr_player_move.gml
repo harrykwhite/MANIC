@@ -207,12 +207,16 @@ if (global.weapon_slot_standalone == -1){
 			
 			// Play Footstep Sound
 			if (footstep_sound != -1){
-				scr_sound_play_distance_pitch(footstep_sound, false, 110, 0.8, 1.1, false);
+				scr_sound_play_distance_pitch(footstep_sound, false, 110, 0.8, 1.1);
 			}
 		}
 		
-		if (random(36) < 1){
-			part_particles_create(global.ps_front, x + random_range(-2, 2), y + 4 + random_range(-6, 16), global.pt_walk_smoke_0, 3);
+		if (walk_smoke_time > 0){
+			walk_smoke_time --;
+		}else{
+			part_particles_create(global.ps_front, x - image_xscale, y + 4 + random_range(-8, 8), global.pt_walk_smoke_0, 1);
+			
+			walk_smoke_time = walk_smoke_time_max;
 		}
 	}else{
 		footstep_time = 15;
@@ -289,7 +293,7 @@ if (global.weapon_slot_standalone == -1){
 	    dash_direction = point_direction(0, 0, xaxis, yaxis);
 		
 		if (xaxis == 0) && (yaxis == 0){
-			if (image_xscale == 1){
+			if (sign(image_xscale) == 1){
 				dash_direction = 360;
 			}else{
 				dash_direction = 180;
@@ -357,7 +361,7 @@ if (global.weapon_slot_standalone == -1){
 			sprite_index = idlesprite;
 			img_speed = 0.03;
 		}else{
-			var spd = move_extSpd;
+			var spd = move_ext_spd;
 			
 			if (spd == -1){
 				spd = spd_max;

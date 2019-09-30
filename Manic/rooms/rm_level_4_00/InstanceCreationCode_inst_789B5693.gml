@@ -1,4 +1,4 @@
-index = Collectables.Key;
+index = Collectables.Knife;
 angle = 40;
 parent = inst_3C77F7B;
-listnum = 14;
+listnum = 7;

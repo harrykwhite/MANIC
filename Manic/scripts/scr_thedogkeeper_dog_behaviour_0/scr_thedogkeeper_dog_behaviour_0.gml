@@ -15,9 +15,9 @@ if (instance_exists(target)){
 	
 	if (leash_bite){
 		var dirToTarget = point_direction(x, y, target.x, target.y);
-		speed_multiplier += 0.8;
-		move_x_to = target.x + lengthdir_x(30, dirToTarget);
-		move_y_to = target.y + lengthdir_y(30, dirToTarget);
+		speed_multiplier += 1.6;
+		move_x_to = target.x + lengthdir_x(38, dirToTarget);
+		move_y_to = target.y + lengthdir_y(38, dirToTarget);
 		
 		if (attack_active_time > 0){
 			attack_active_time --;
@@ -27,7 +27,7 @@ if (instance_exists(target)){
 		}
 	}else if (leash_bite_retreat){
 		leash_length_offset = -20;
-		speed_multiplier += 0.5;
+		speed_multiplier += 1.3;
 	}else{
 		if (distance_to_point(target.x, target.y + 6) < 200){
 			if (bark_time > 0){
@@ -43,18 +43,19 @@ if (instance_exists(target)){
 				attack_time --;
 			}else{
 				leash_bite = true;
-				attack_active_time = 55;
-				attack_time = random_range(50, 170);
+				attack_active_time = 75;
+				attack_time = random_range(30, 45);
 			}
 		}
 		
 		leash_length_offset  = 0;
 	}
 	
-	if (distance_to_point(move_x_to, move_y_to) > 22){
-		move_speed = 1.8;
+	if (distance_to_point(move_x_to, move_y_to) > 14){
+		move_speed = 1.5;
 	}else{
 		move_speed = 0;
+		
 		if (leash_bite){
 			leash_bite = false;
 			leash_bite_retreat = true;

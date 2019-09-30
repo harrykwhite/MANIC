@@ -1,10 +1,2 @@
-//if (interact){
-//	gpu_set_fog(true, outlinewhite, 0, 0);
-//	draw_sprite_ext(sprite_index, image_index, x - 1, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-//	draw_sprite_ext(sprite_index, image_index, x + 1, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-//	draw_sprite_ext(sprite_index, image_index, x, y - 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-//	draw_sprite_ext(sprite_index, image_index, x, y + 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-//	gpu_set_fog(false, c_black, 0, 0);
-//}
-
+scr_pre_draw_attributes_character_interact(x - (image_xscale > 0), y + 21);
 draw_self();

@@ -12,7 +12,7 @@ if (instance_exists(obj_player)){
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 24){
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
-		obj_player.move_extSpd = 0;
+		obj_player.move_ext_spd = 0;
 		
 		if (global.cutscene_time[index] < 120){
 			global.cutscene_time[index] ++;
@@ -43,7 +43,7 @@ if (instance_exists(obj_player)){
 			
 			if (room == rm_level_1_00){
 				var dropx = 625;
-				var dropy = 1727;
+				var dropy = 1740;
 				
 				if (global.cutscene_time[index] < 170){
 					global.cutscene_time[index] ++;
@@ -78,7 +78,7 @@ if (instance_exists(obj_player)){
 					
 					//obj_player.move_x_to = lookx;
 					//obj_player.move_y_to = looky;
-					obj_player.move_extSpd = 0;
+					obj_player.move_ext_spd = 0;
 					
 					if (global.cutscene_time[index] < 170) && (!scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){
 						var does_exist = false;
@@ -122,7 +122,7 @@ if (instance_exists(obj_player)){
 	}else{
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
-		obj_player.move_extSpd = obj_player.spd_max;
+		obj_player.move_ext_spd = obj_player.spd_max;
 	}
 
 	obj_player.flashlight_direction = 90;

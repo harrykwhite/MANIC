@@ -23,7 +23,8 @@ if (use_current){
     if (scr_input_is_down(InputBinding.Attack)){
         if (shoot_can) && (global.weapon_slot_standalone_ammo > 0){
             scr_effect_screenshake(2);
-			scr_player_flash(6);
+			scr_player_flash(5);
+			scr_player_flashlight_flash(1.185);
 			scr_sound_play(snd_weapon_shoot_2, false, 0.6, 0.9);
             scr_weapon_ammo_use(1);
 			scr_mouse_control(MouseType.Crosshair, 2.5, 15);
@@ -50,7 +51,7 @@ if (use_current){
 			shoot.image_angle = shoot.dir;
             
             shoot_can = false;
-            shoot_time = 7;
+            shoot_time = 5;
             shoot_bounceback = -8;
         }
     }

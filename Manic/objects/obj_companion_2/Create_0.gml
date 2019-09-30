@@ -25,6 +25,7 @@ registered = false;
 
 runaway_starttime = 0;
 runaway_time = 0;
+runaway_dir = 0;
 
 burn = false;
 burn_x = x;
@@ -33,7 +34,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 poison_time = 0;
@@ -55,6 +55,8 @@ weapon_index = PawnWeapon.Crowbar;
 weapon_destroyed = false;
 weapon_throw = false;
 weapon_original = -1;
+
+is_throwing = false;
 
 arm = -1;
 

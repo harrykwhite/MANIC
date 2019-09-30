@@ -54,6 +54,10 @@ switch(rm){
 		return Level.UndergroundBunker;
 		break;
 	
+	case rm_level_3_post_00:
+		return Level.UndergroundBunker;
+		break;
+	
 	case rm_level_4_pre_00:
 		return Level.WinterTown;
 		break;
@@ -71,6 +75,14 @@ switch(rm){
 		break;
 	
 	case rm_level_4_03:
+		return Level.WinterTown;
+		break;
+	
+	case rm_level_4_post_00:
+		return Level.WinterTown;
+		break;
+	
+	case rm_level_4_post_01:
 		return Level.WinterTown;
 		break;
 	
@@ -123,6 +135,10 @@ switch(rm){
 		break;
 	
 	case rm_level_7_02:
+		return Level.TheCemetery;
+		break;
+	
+	case rm_level_7_03:
 		return Level.TheCemetery;
 		break;
 	

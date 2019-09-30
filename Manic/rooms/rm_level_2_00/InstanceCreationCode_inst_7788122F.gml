@@ -1,3 +1,3 @@
-index = Collectables.Key;
+index = Collectables.Knife;
 angle = 10;
-listnum = 6;
+listnum = 0;

@@ -17,6 +17,26 @@ var player = obj_player;
 var centerx = x + (sprite_width / 2);
 var centery = y + (sprite_height / 2);
 
+// Locked
+if (locked){
+	var num = sprite_get_number(locked_img_sprite) - 1;
+	
+	if (locked_img < num){
+		locked_img += locked_img_speed;
+	}else{
+		if (locked_img_alpha > 0){
+			locked_img_alpha -= 0.05;
+		}else{
+			locked = false;
+			locked_img = 0;
+			locked_img_speed = 0;
+			locked_img_alpha = 0;
+		}
+	}
+	
+	locked_img = clamp(locked_img, 0, num);
+}
+
 // Interact
 if (instance_exists(player)){
 	if (point_distance(centerx, centery - 4, player.x, player.y) < 37){
@@ -29,48 +49,85 @@ if (instance_exists(player)){
 }
 
 if (interact && global.cutscene_current == -1 && !anim) || (auto_interact){
-	if (global.cutscene_current == -1){
+	if (global.cutscene_current == -1) && (!locked){
 		sprite_index = open ? openintsprite : closedintsprite;
 		scr_ui_control_indicate(open ? "Close Door" : "Open Door");
 	}else{
 		sprite_index = open ? opensprite : closedsprite;
+		
+		if (locked){
+			scr_ui_control_indicate("Unlock Door");
+		}
 	}
 	
 	if (interact_break <= 0 || auto_interact){
 		if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active) || (auto_interact){
-			var bleft = x + sprite_get_bbox_left(closedsprite);
-			var btop = y + sprite_get_bbox_top(closedsprite);
-			var bright = x + sprite_get_bbox_right(closedsprite);
-			var bbottom = y + sprite_get_bbox_bottom(closedsprite);
-			
-			if (collision_rectangle(bleft, btop, bright, bbottom, obj_p_pawn, false, true)){
-				return;
-			}
-			
-			scr_effect_screenshake(1);
-			scr_player_stamina_drain(4);
-			
-			scr_sound_play(snd_object_door_close_0, false, 0.8, 1.2);
-			scr_sound_play(snd_object_door_open_0, false, 0.8, 1.2);
+			var acted = false;
 			
 			interact_break = 5;
-			open = !open;
 			auto_interact = false;
-			anim = true;
 			
-			sprite_index = open ? opensprite : closedsprite;
-			image_speed = 1;
-			image_index = 0;
-			
-			if (object_index == obj_prisonbuilding_door_0 && room == rm_level_6_pre_00){
-				global.cutscene_current = 52;
-				with(obj_controller_gameplay){
-					cutscene_moveto_dir = 1;
-					cutscene_moveto_type = 1;
-					cutscene_moveto_room = rm_level_5_post_00;
-					cutscene_moveto_level = Level.HumanPrison;
-					cutscene_moveto_instant = true;
+			if (locked){
+				if (locked_img_speed == 0){
+					if (object_index == obj_prisonbuilding_door_0) && (global.player_has_key_prison){
+						locked_img_speed = 0.2;
+						acted = true;
+					
+						global.player_has_key_prison = false;
+					}
 				}
+			}else{
+				var bleft = x + sprite_get_bbox_left(closedsprite);
+				var btop = y + sprite_get_bbox_top(closedsprite);
+				var bright = x + sprite_get_bbox_right(closedsprite);
+				var bbottom = y + sprite_get_bbox_bottom(closedsprite);
+			
+				if (collision_rectangle(bleft, btop, bright, bbottom, obj_p_pawn, false, true)){
+					return;
+				}
+				
+				scr_sound_play(snd_object_door_close_0, false, 0.8, 1.2);
+				scr_sound_play(snd_object_door_open_0, false, 0.8, 1.2);
+				
+				open = !open;
+				anim = true;
+				
+				acted = true;
+			
+				sprite_index = open ? opensprite : closedsprite;
+				image_speed = 1;
+				image_index = 0;
+			
+				if (object_index == obj_prisonbuilding_door_0){
+					switch(room){
+						case rm_level_4_post_01:
+							global.cutscene_current = 52;
+							with(obj_controller_gameplay){
+								cutscene_moveto_dir = 1;
+								cutscene_moveto_type = 0;
+								cutscene_moveto_room = rm_level_5_00;
+								cutscene_moveto_level = Level.HumanPrison;
+								cutscene_moveto_instant = true;
+							}
+							break;
+					
+						case rm_level_6_pre_00:
+							global.cutscene_current = 52;
+							with(obj_controller_gameplay){
+								cutscene_moveto_dir = 1;
+								cutscene_moveto_type = 1;
+								cutscene_moveto_room = rm_level_5_post_00;
+								cutscene_moveto_level = Level.HumanPrison;
+								cutscene_moveto_instant = true;
+							}
+							break;
+					}
+				}
+			}
+			
+			if (acted){
+				scr_effect_screenshake(1);
+				scr_player_stamina_drain(4);
 			}
 		}
 	}else{

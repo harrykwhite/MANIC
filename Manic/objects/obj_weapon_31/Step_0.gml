@@ -15,7 +15,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (shoot_can) && (shoot_current 
     shoot_current = 0;
 }
 
-if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
+if (shoot_current != -1) && (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
     if (shoot_can){
         var xpos = x + lengthdir_x(26, mdir) + lengthdir_x(2, up(mdir));
         var ypos = y + lengthdir_y(26, mdir) + lengthdir_y(2, up(mdir));
@@ -24,7 +24,8 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
 		
 		scr_player_knockback_initiate(0.5, dir);
         scr_effect_screenshake(1);
-		scr_player_flash(4);
+		scr_player_flash(2);
+		scr_player_flashlight_flash(1.15);
 		scr_camera_to_player(3);
         scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
         scr_mouse_control(MouseType.SmallCrosshair, 2.5, 20);
@@ -52,7 +53,7 @@ if (shoot_current!= -1) && (!global.game_pause) && (global.weapon_slotammo[globa
         angle_offset = 4;
 		
         if (shoot_current < 2){
-            shoot_time = 3;
+            shoot_time = 5;
         }else{
             shoot_current = -1;
             shoot_time = 50;

@@ -13,12 +13,15 @@ hitbox.owner = id;
 damage = 1;
 strength = 1;
 
-bite_time = (60 * 1.25) + random_range(-20, 5);
+bite_time_max = 60 * 0.65;
+bite_time = bite_time_max + random_range(-10, 10);
 bite_to = false;
+bite_to_time = 0;
 bite_retreat = false;
 bite_retreat_x = x;
 bite_retreat_y = y;
 bite_retreat_direction = 0;
+bite_retreat_time = 0;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
@@ -35,7 +38,6 @@ burn_start = false;
 burn_time = -1;
 burn_cycle = 3;
 burn_sound = noone;
-burn_sound_paused = false;
 
 poison = false;
 poison_time = 0;
@@ -52,7 +54,7 @@ headless_image = 0;
 barrel_pause_time = random(40);
 barrel_pause_break = 0;
 
-defense = 0;
+defense = -1;
 
 bark_time = random(30);
 

@@ -68,7 +68,7 @@ if (instance_exists(target)){
 				
 						weapon = instance_create(x, y, obj_pawnweapon_8);
 						weapon.dir = 0;
-						weapon.owner = self;
+						weapon.owner = id;
 						weapon_index = 8;
 					}
 					
@@ -120,7 +120,7 @@ if (instance_exists(target)){
 		
 					weapon = instance_create(x, y, obj_pawnweapon_2);
 					weapon.dir = 0;
-					weapon.owner = self;
+					weapon.owner = id;
 					weapon_index = 2;
 				}
 			}

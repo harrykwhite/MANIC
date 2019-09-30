@@ -97,6 +97,16 @@ switch(ctype){
 					
 					with(inst){
 						scr_pawn_damage(max(damage - defense, 1), strength, dir, 4);
+						
+						if (object_index == obj_enemy_2){
+							if (bite_to){
+								bite_to = false;
+								bite_retreat = true;
+								bite_retreat_direction = point_direction(x, y, xx, yy) - 180;
+								bite_retreat_x = xx;
+								bite_retreat_y = yy;
+							}
+						}
 					}
 					
 					if (inst.object_index != obj_enemy_1) && (inst.object_index != obj_enemy_3) && (inst.object_index != obj_giantturret) && (inst.object_index != obj_giantturret_flamethrower){

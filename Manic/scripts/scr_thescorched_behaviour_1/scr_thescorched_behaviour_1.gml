@@ -5,7 +5,7 @@ target = obj_player;
 
 if (instance_exists(target)){
 	if (state == 0){
-		move_speed = min(2 / ((health_current / health_max) * 2), 2.75);
+		move_speed = min(2.5 / ((health_current / health_max) * 2), 3);
 		
 		if (instance_exists(weapon) && weapon != -1){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
@@ -33,7 +33,7 @@ if (instance_exists(target)){
 			move_x_to = run_x;
 			move_y_to = run_y;
 		}else{
-			if (run_count < 5){
+			if (run_count < 4){
 				run_count ++;
 				
 				run_x = random_range(arena_x, arena_x + arena_width);
@@ -60,11 +60,11 @@ if (instance_exists(target)){
 			face_player = true;
 		}
 		
-		if (release_count < 4){
+		if (release_count < 5){
 			if (release_time > 0){
 				release_time --;
 			}else{
-				var interval = 360 / 7;
+				var interval = 360 / 8;
 				scr_sound_play_distance_pitch(snd_weapon_flare_1, false, 300, 0.8, 1.2);
 				flash_time = 5;
 				
@@ -107,7 +107,7 @@ if (instance_exists(target)){
 			slowfire_time ++;
 			
 			if (distance_to_point(move_x_to, move_y_to) > 10){
-				move_speed = clamp(1 / ((health_current / health_max) * 4), 1, 2);
+				move_speed = clamp(1.5 / ((health_current / health_max) * 4), 1.5, 2.25);
 			}else{
 				move_x_to = x + random_range(-40, 40);
 				move_y_to = y + random_range(-40, 40);

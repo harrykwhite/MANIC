@@ -1079,7 +1079,7 @@
             "__type": "GMRBackgroundLayer_Model:#YoYoStudio.MVCFormat",
             "name": "Compatibility_Background_0_tileset_03",
             "id": "d4e0600f-2216-4a10-b26e-4170ed77d158",
-            "animationFPS": 15,
+            "animationFPS": 16,
             "animationSpeedType": "0",
             "colour": { "Value": 4294967295 },
             "depth": 2147483500,

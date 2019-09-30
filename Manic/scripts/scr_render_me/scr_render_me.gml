@@ -9,7 +9,10 @@ if (argument_count == 2){
 }
 
 if (!skipcheck){
-	if (!onscreen(x + (sprite_width / 2), y + (sprite_height / 2), -80)){
+	var xorigin = sprite_get_xoffset(sprite_index);
+	var yorigin = sprite_get_yoffset(sprite_index);
+	
+	if (!onscreen(x - xorigin + (sprite_width / 2), y - yorigin + (sprite_height / 2), -80)){
 		return;
 	}
 }

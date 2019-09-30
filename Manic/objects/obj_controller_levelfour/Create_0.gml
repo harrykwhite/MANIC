@@ -11,10 +11,10 @@ switch(room){
 	case rm_level_4_pre_00:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 536;
-			spawn_y = 240;
+			spawn_y = 352;
 		}else if (global.game_level_opening_type == 1){
 			spawn_x = 844;
-			spawn_y = 1534;
+			spawn_y = 1504;
 		}
 		break;
 	
@@ -28,40 +28,60 @@ switch(room){
 		spawn_x = 463;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_y = 142;
+			spawn_y = 192;
 			
 			if (global.worldtrain_room == room){
 				spawn_y = 250;
 			}
 		}else if (global.game_level_opening_type == 2){
-			spawn_y = 600;
+			spawn_y = 584;
 		}
 		break;
 	
 	case rm_level_4_01:
 		spawn_x = 486;
 		if (global.game_level_opening_type == 0){
-			spawn_y = 142;
+			spawn_y = 192;
 		}else if (global.game_level_opening_type == 1){
-			spawn_y = 700;
+			spawn_y = 640;
 		}
 		break;
 	
 	case rm_level_4_02:
 		spawn_x = 604;
 		if (global.game_level_opening_type == 0){
-			spawn_y = 142;
+			spawn_y = 192;
 		}else if (global.game_level_opening_type == 1){
-			spawn_y = 700;
+			spawn_y = 616;
 		}
 		break;
 	
 	case rm_level_4_03:
 		spawn_x = 888;
 		if (global.game_level_opening_type == 0){
-			spawn_y = 142;
+			spawn_y = 192;
 		}else if (global.game_level_opening_type == 1){
-			spawn_y = 694;
+			spawn_y = 624;
+		}
+		break;
+	
+	case rm_level_4_post_00:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 334;
+			spawn_y = 192;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 1376;
+			spawn_y = 624;
+		}
+		break;
+	
+	case rm_level_4_post_01:
+		if (global.game_level_opening_type == 0){
+			spawn_x = 455;
+			spawn_y = 192;
+		}else if (global.game_level_opening_type == 1){
+			spawn_x = 2222;
+			spawn_y = 540;
 		}
 		break;
 }

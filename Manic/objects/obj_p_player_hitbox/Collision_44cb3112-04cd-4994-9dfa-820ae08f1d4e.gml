@@ -16,6 +16,10 @@ with(owner){
 	
 		if (object_index == obj_player){
 			scr_player_damage(inst.damage, inst.strength, dir, 50);
+			
+			if (!upgrade_has[PlayerUpgrade.GasMask]){
+				poison = true;
+			}
 		}else{
 			scr_pawn_damage(inst.damage, inst.strength, dir, 50);
 		}
@@ -42,11 +46,7 @@ with(owner){
 		part_type_direction(global.pt_blood_5, dir - 30, dir + 30, 0, 0);
 		part_type_speed(global.pt_blood_5, 3, 5, -0.2, 0);
 		repeat(12)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
-	
-		if (!upgrade_has[PlayerUpgrade.GasMask]){
-			poison = true;
-		}
-	
+		
 		inst.contact_attack_ready_time = 50;
 	}
 	

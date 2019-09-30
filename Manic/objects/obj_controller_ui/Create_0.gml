@@ -12,10 +12,7 @@ vignette_flash_alpha = 0;
 vignette_flash_alpha_speed = 0;
 vignette_flash_colour = c_white;
 
-levelcleared_alpha = 0;
-levelcleared_time = 0;
-
-killcount_scale = 1;
+objective_scale = 1;
 
 stats_y = 0;
 
@@ -122,7 +119,7 @@ game_opening_intro_speed = 1.5;
 game_opening_intro_alpha = 4.7;
 game_opening_intro_text_alpha = -0.25;
 game_opening_intro_text_stage = 0;
-game_opening_intro_text_time = 60 * 8;
+game_opening_intro_text_time = 60 * 7;
 
 if (global.level_current != Level.Prologue){
 	game_opening_intro = false;
@@ -161,15 +158,22 @@ for(var i = 0; i < levelcount; i ++){
 				scr_player_upgrades_clear();
 				scr_set_kills_and_findings();
 			}else{
-				for(var i = 0; i < upgradecount; i ++){
-					if (global.game_save_upgrade_unlocked[i]){
-						scr_upgrade_add(i);
+				for(var u = 0; u < upgradecount; u ++){
+					if (global.game_save_upgrade_unlocked[u]){
+						scr_upgrade_add(u);
 					}
 				}
 			}
 			
 			global.game_combat_state = CombatState.Idle;
 			global.game_combat_state_time_real = 0;
+			
+			if (!global.level_complete[i]){
+				global.game_objective_set = false;
+			}else{
+				global.game_objective_set = true;
+				global.game_objective_complete = true;
+			}
 			
 			scr_checkpoint_reset();
 			scr_player_upgrade_update();
@@ -225,6 +229,7 @@ score_text_alpha = 0;
 leveltext_alpha = 0;
 leveltext_text = "";
 leveltext_time = 0;
+
 var levels = array_length_1d(global.level_name);
 for(var i = 1; i < levels; i ++){
 	if (room == global.level_room[i]){
@@ -233,8 +238,9 @@ for(var i = 1; i < levels; i ++){
 }
 
 var weaponalength = array_length_1d(global.weapon_slot);
-weaponslot_shake = 0;
+
 for (var i = 0; i < weaponalength; i ++){
+	weaponslot_shake[i] = 0;
     weaponslot_weaponscale[i] = 0;
 }
 

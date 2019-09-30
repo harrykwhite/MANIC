@@ -4,5 +4,3 @@ instance_destroy(obj_player_flashlight);
 if (instance_exists(hitbox)){
 	instance_destroy(hitbox);
 }
-
-show_debug_message("what/");

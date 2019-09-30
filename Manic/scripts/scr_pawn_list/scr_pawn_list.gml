@@ -7,9 +7,10 @@ global.enemy[4] = obj_enemy_4;
 global.enemy[5] = obj_enemy_5;
 global.enemy[6] = obj_thescorched;
 global.enemy[7] = obj_thedogkeeper;
-global.enemy[8] = obj_giantturret;
-global.enemy[9] = obj_giantturret_flamethrower;
-global.enemy[10] = obj_antagonist;
+global.enemy[8] = obj_thedogkeeper_dog;
+global.enemy[9] = obj_giantturret;
+global.enemy[10] = obj_giantturret_flamethrower;
+global.enemy[11] = obj_antagonist;
 
 // Companion Pawns
 global.companion[0] = obj_companion_0;

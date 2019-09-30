@@ -3,7 +3,7 @@ var mult = scr_get_blood_mult();
 
 with(owner){
 	if (object_index == obj_enemy_1){
-		if (self.owner != obj_player) && (self.owner != noone){
+		if (id.owner != obj_player) && (id.owner != noone){
 			return;
 		}
 	}
@@ -15,7 +15,17 @@ with(owner){
 	if (i_time <= 0) && (inst.bite_to){
 		var dir = point_direction(inst.x, inst.y, x, y);
 		scr_pawn_damage(max(inst.damage - defense, 1), inst.strength, dir, 2);
-	
+		
+		if (object_index == obj_enemy_2){
+			if (bite_to){
+				bite_to = false;
+				bite_retreat = true;
+				bite_retreat_direction = point_direction(x, y, inst.x, inst.y) - 180;
+				bite_retreat_x = inst.x;
+				bite_retreat_y = inst.y;
+			}
+		}
+		
 		if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
 			part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3 * mult);
 			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10 * mult);
@@ -36,16 +46,15 @@ with(owner){
 				var gore = instance_create(x, y, obj_ef_gore);
 				gore.dir = dir + random_range(-20, 20);
 			}
-		
-			with(inst){
-				bite_to = false;
-				bite_retreat = true;
-				bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to) - 180;
-				bite_retreat_x = target.x;
-				bite_retreat_y = target.y + 6;
-			}
 		}
-	
+		
+		inst.bite_to = false;
+		inst.bite_retreat = true;
+		inst.bite_retreat_direction = point_direction(inst.x, inst.y, x, y + 6) - 180;
+		inst.bite_retreat_x = x;
+		inst.bite_retreat_y = y + 6;
+		inst.bite_retreat_time = 0;
+		
 		if (object_index == obj_enemy_3) || (object_index == obj_giantturret) || (object_index == obj_giantturret_flamethrower){
 			scr_sound_play(snd_object_metal_hit_0, false, 0.8, 1.2);
 			scr_effect_object(inst.x, inst.y, obj_ef_blood, spr_ef_metal_0, 0, 1);

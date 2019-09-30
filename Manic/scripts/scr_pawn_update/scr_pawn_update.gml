@@ -66,20 +66,30 @@ if (health_current <= 0){
 	var eoffsety = 18;
 	var eamount = 25;
 	
+	var shake = 3;
+	var redtint = 0.2 + (global.game_save_level / 20);
+	var freeze = 12;
+	var zoom = -0.04;
+	
 	if (object_index == obj_enemy_1){
 		eoffsetx = 4;
 		eoffsety = 4;
 		eamount = 7;
+		
+		shake = 1;
+		redtint = 0.1 + (global.game_save_level / 50);
+		freeze = 15;
+		zoom = -0.01;
 	}
 	
 	repeat(eamount){
 		part_particles_create(global.ps_front, x + random_range(-eoffsetx, eoffsetx), y + random_range(-eoffsety, eoffsety), global.pt_blood_4, 1);
 	}
 	
-    scr_effect_screenshake(3);
-	scr_effect_redtint_flash(0.2 + (global.game_save_level / 20));
-	scr_effect_freeze(13);
-	scr_effect_zoom(-0.04);
+    scr_effect_screenshake(shake);
+	scr_effect_redtint_flash(redtint);
+	scr_effect_freeze(freeze);
+	scr_effect_zoom(zoom);
     
     instance_destroy();
 	scr_sound_play(snd_other_kick_0, false, 0.8, 1.2);
@@ -128,13 +138,7 @@ if (health_current <= 0){
 				global.game_boss_trainhorde_killed = true;
 				obj_pawn_other_train_1.is_boss = false;
 				
-				if (!scr_player_has_upgrade(PlayerUpgrade.Chestplate)){
-					var udrop = instance_create(x, y, obj_upgrade_pickup);
-					udrop.index = PlayerUpgrade.Chestplate;
-					udrop.angle = random_range(-10, 10);
-					
-					global.cutscene_current = 53;
-				}
+				scr_objective_change(Objectives.TravelToCemetery, -1, -1);
 			}
 		}else if (object_index == obj_enemy_2){
 			scr_level_increase_kill_count();
@@ -215,7 +219,7 @@ if (health_current <= 0){
 				pack.is_dropped = true;
 			}
 		}else if (object_index == obj_enemy_5){
-			scr_level_increase_kill_count();
+			
 		}else if (object_index == obj_antagonist){
 			global.cutscene_current = 54;
 			obj_controller_gameplay.cutscene_ending_stage = 0;
@@ -313,10 +317,10 @@ if (health_current <= 0){
 			global.boss_current = -1;
 		}else{
 			if (chance(30)){
-				scr_weapon_ammo_spawn(choose(2, 4), 5, 6, x, y + 5);
+				scr_weapon_ammo_spawn(3, 5, 6, x, y + 5);
 			}
 			
-			if (chance(30)){
+			if (chance(16)){
 				pack = instance_create(x + random_range(-3, 3), y + 4 + random_range(-3, 3), obj_health_pack_2);
 				pack.is_dropped = true;
 			}

@@ -1,4 +1,4 @@
-while(place_meeting(x, y - 6, obj_p_solid)){
+while(place_meeting(x, y - 4, obj_p_solid)){
 	y ++;
 }
 

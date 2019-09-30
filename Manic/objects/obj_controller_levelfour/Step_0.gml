@@ -67,10 +67,17 @@ if (!global.game_pause){
 }
 
 // Checkpoint
-if (room == rm_level_4_03){
-	if (global.cutscene_current == -1) && (!global.level_checkpoint_found[global.level_current]){
-		obj_controller_gameplay.checkpoint_create = true;
-		global.level_checkpoint_found[global.level_current] = true;
+if (global.cutscene_current == -1){
+	if (room == rm_level_4_02){
+		 if (!global.level_checkpoint_found[global.level_current, 0]){
+			obj_controller_gameplay.checkpoint_create = true;
+			global.level_checkpoint_found[global.level_current, 0] = true;
+		}
+	}else if (room == rm_level_4_03){
+		 if (!global.level_checkpoint_found[global.level_current, 1]){
+			obj_controller_gameplay.checkpoint_create = true;
+			global.level_checkpoint_found[global.level_current, 1] = true;
+		}
 	}
 }
 
@@ -109,9 +116,9 @@ if (player_exists) && (global.cutscene_current == -1){
 if (spawn_start_wait >= spawn_start_wait_max){
 	if (player_exists) && (!scr_level_is_peaceful(room)){
 		var spawn_rate = spawn_rate_real;
-		if (!global.game_pause) && (global.boss_current == -1) && (global.cutscene_current == -1) && ((!global.level_cleared[global.level_current]) || (global.game_combat_in_hordechallenge)){
+		if (!global.game_pause) && ((global.boss_current == -1) || (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.SniperRobot)) && (global.cutscene_current == -1){
 			if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
-				spawn_rate ++;
+				spawn_rate += 0.5;
 			}
 		
 			if (global.game_combat_in_hordechallenge){
@@ -131,7 +138,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 		
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * spawn_rate)){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * (1 + (0.5 * (spawn_rate - 1))))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -194,34 +201,8 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			
 				spawn = false;
 			}
-		
 		}else if (global.game_pause){
-			if (audio_is_playing(spawn_music_main[CombatState.Idle])){
-				audio_pause_sound(spawn_music_main[CombatState.Idle]);
-			}
-		
-			if (audio_is_playing(spawn_music_main[CombatState.Buildup])){
-				audio_pause_sound(spawn_music_main[CombatState.Buildup]);
-			}
-		
-			if (audio_is_playing(spawn_music_main[CombatState.Climax])){
-				audio_pause_sound(spawn_music_main[CombatState.Climax]);
-			}
-		
-			if (global.boss_current != -1){
-				var bossmusic = global.boss_music[global.boss_current];
-			
-				if (bossmusic != noone){
-					if (audio_is_playing(bossmusic)){
-						audio_pause_sound(bossmusic);
-					}
-				}
-			}
-		
-			if (audio_is_playing(m_ambience_wind_0)){
-				audio_pause_sound(m_ambience_wind_0);
-			}
-		
+			audio_pause_all();
 			spawn_pause_update = false;
 		}
 	

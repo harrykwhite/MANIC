@@ -1,5 +1,9 @@
 var wcurrent = global.weapon_slot[global.weapon_slotcurrent];
 
+if (global.game_pause){
+	return;
+}
+
 if (global.weapon_slot_standalone != -1){
 	wcurrent = global.weapon_slot_standalone;
 }
@@ -10,10 +14,6 @@ if (instance_exists(obj_player)){
 	if (obj_player.state == scr_player_dash){
         image_alpha = 0;
     }
-	
-	if (global.game_pause){
-		return;
-	}
 	
 	var iscutscene = (global.cutscene_current != -1);
 	
@@ -62,7 +62,7 @@ if (instance_exists(obj_player)){
 			|| (global.weapon_object[wcurrent].index == PlayerWeapon.Spear))
 			&& ((global.weapon_object[wcurrent].index != PlayerWeapon.MountedMachineGun)
 			&& (global.weapon_object[wcurrent].index != PlayerWeapon.MountedMachineGunCart)){
-				if (obj_player.image_xscale == 1){
+				if (sign(obj_player.image_xscale) == 1){
 					dir += global.weapon_object[wcurrent].start_offset;
 				}else{
 					dir -= global.weapon_object[wcurrent].start_offset;
@@ -83,7 +83,7 @@ if (instance_exists(obj_player)){
 					image_index = 1;
 				}
 			
-		        if (obj_player.image_xscale == 1){
+		        if (sign(obj_player.image_xscale) == 1){
 		            x = obj_player.x - 3;
 		            y = (obj_player.y - 4) + yoffset;
             

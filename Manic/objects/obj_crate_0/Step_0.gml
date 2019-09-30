@@ -24,12 +24,15 @@ if (spd > 0.375){
 	
 	spd *= 0.9;
 }else{
-	if (point_distance(x, y, basex, basey) > 1){
+	if (point_distance(x, y, basex, basey) >= 1){
 		var dirto = point_direction(x, y, basex, basey);
 		if (!place_meeting(x + lengthdir_x(3, dirto), y + lengthdir_y(3, dirto), obj_p_pawn)){
 			x += lengthdir_x(abs(basex - x) * 0.1, dirto);
 			y += lengthdir_y(abs(basey - y) * 0.1, dirto);
 		}
+	}else{
+		x = basex;
+		y = basey;
 	}
 }
 
@@ -37,7 +40,7 @@ if (spd > 0.375){
 if (death){
 	scr_env_destroy(spr_crate_0_break);
 	
-	scr_weapon_ammo_spawn(6, 6, 5, x, y + 6);
+	scr_weapon_ammo_spawn(4, 6, 5, x, y + 6);
 	
 	if (room == rm_prologue_00){
 		with(obj_controller_ui){
@@ -58,9 +61,18 @@ if (death){
 	}
 
 	if (global.level_current >= Level.UndergroundBunker){
-		if (random(7) < 1){
+		if (random(9) < 1){
 			var weapon = instance_create(x, y + 6, obj_weapondrop);
-			weapon.index = (global.level_current >= Level.TrainStation) ? choose(PlayerWeapon.Grenade, PlayerWeapon.LandMine) : PlayerWeapon.Grenade;
+			weapon.index = PlayerWeapon.Grenade;
+			
+			if (global.level_current >= Level.HumanPrison){
+				weapon.index = choose(PlayerWeapon.Grenade, PlayerWeapon.Grenade, PlayerWeapon.ReinforcedGrenade);
+			}
+			
+			if (global.level_current >= Level.TrainStation){
+				weapon.index = choose(PlayerWeapon.Grenade, PlayerWeapon.ReinforcedGrenade, PlayerWeapon.LandMine);
+			}
+			
 			weapon.angle = random_range(-10, 10);
 			weapon.pack = true;
 			weapon.quantity = random_range(2, 3);

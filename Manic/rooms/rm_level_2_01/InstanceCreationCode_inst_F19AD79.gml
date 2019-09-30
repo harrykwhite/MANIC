@@ -1,3 +1,3 @@
-index = Collectables.Knife;
-angle = 30;
-listnum = 9;
+index = Collectables.EnemyArm;
+angle = 20;
+listnum = 3;

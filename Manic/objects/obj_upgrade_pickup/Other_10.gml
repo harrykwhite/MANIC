@@ -8,7 +8,7 @@ draw_sprite_ext(sprite, 0, x, y, drawscale, drawscale, angle, c_white, 0.2);
 gpu_set_fog(false, c_black, 0, 0);
 
 // Outline
-var outline_alpha = 0.4;
+var outline_alpha = 0.6;
 var outline_colour = outlineupgrade;
 
 gpu_set_fog(true, outline_colour, 0, 0);

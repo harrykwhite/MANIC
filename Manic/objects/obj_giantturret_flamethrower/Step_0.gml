@@ -26,16 +26,7 @@ if (ispaused){
 	}
 	
 	image_speed = 0;
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
 	return;
-}else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
-	}
 }
 
 whiteflash_alpha -= whiteflash_alphadec;

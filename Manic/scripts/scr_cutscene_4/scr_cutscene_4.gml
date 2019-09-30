@@ -1,46 +1,53 @@
 ///scr_cutscene_4();
-var index = 4;
-var level = scr_level_get_object();
-
-global.cutscene_camera_x[index] = 967;
-global.cutscene_camera_y[index] = room_height;
+var index = 4, stationary = false;
 
 obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
-with(level){
+if (instance_exists(obj_player)){
+	var inst = instance_nearest(obj_player.x, obj_player.y, obj_collectable_pickup);
 	
-	if (!audio_is_playing(spawn_music_main[CombatState.Idle])){
-		audio_play_sound(spawn_music_main[CombatState.Idle], 3, true);
-	}
-}
-
-switch(global.cutscene_time[index]){
-	
-	case 0: 
+	if (inst != noone){
+		var dir_to = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
+		var x_to = inst.x + lengthdir_x(10, dir_to);
+		var y_to = inst.y + lengthdir_y(10, dir_to);
 		
-		// Make the player move to the portal.
-		if (instance_exists(obj_player)){
-			obj_player.move_x_to = obj_player.x;
-			obj_player.move_y_to = room_height + 40;
-			obj_player.move_extSpd = obj_player.spd_max;
-			
-			if (point_distance(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to) < 40){
-				global.cutscene_time[index] = 1;
-			}
-		}
-		
-		break;
-	
-	case 1:
-		
-		// Make the player fade out and be destroyed.
-		if (instance_exists(obj_player)){
-			instance_destroy(obj_player);
+		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 15){
+			obj_player.move_x_to = x_to;
+			obj_player.move_y_to = y_to;
+			obj_player.move_ext_spd = obj_player.spd_max;
+			obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
 		}else{
-			// Activate the results screen on obj_controller_ui.
-			obj_controller_ui.rank_display_draw = true;
+			if (global.cutscene_time[index] < 35){
+				global.cutscene_time[index] ++;
+			}else{
+				inst.pickup = true;
+				inst.pickup_do = true;
+				global.cutscene_time[index] = 0;
+			}
+			
+			stationary = true;
 		}
+	}else{
+		stationary = true;
 		
-		break;
+		if (global.cutscene_time[index] < 50){
+			global.cutscene_time[index] ++;
+		}else{
+			global.cutscene_current = -1;
+			global.cutscene_time[index] = 0;
+		}
+	}
+	
+	global.cutscene_camera_x[index] = obj_player.x;
+	global.cutscene_camera_y[index] = obj_player.y;
+	
+	if (stationary){
+		obj_player.move_x_to = -1;
+		obj_player.move_y_to = -1;
+		obj_player.move_ext_spd = 0;
+	}
+}else{
+	global.cutscene_current = -1;
+	global.cutscene_time[index] = 0;
 }

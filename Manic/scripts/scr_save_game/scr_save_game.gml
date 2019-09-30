@@ -15,6 +15,10 @@ ini_write_real("Save", "LevelAtPreRoom", global.game_save_level_atpreroom);
 ini_write_real("Save", "Started", global.game_save_started);
 ini_write_real("Save", "Seconds", global.game_save_seconds);
 
+ini_write_real("Save", "ObjectiveCurrent", global.game_objective_current);
+ini_write_real("Save", "ObjectiveSet", global.game_objective_set);
+ini_write_real("Save", "ObjectiveCounter", global.objective_counter[global.game_objective_current]);
+
 ini_write_real("Save", "WorldTrainRoom", global.worldtrain_room);
 ini_write_real("Save", "TheScorchedKilled", global.game_boss_thescorched_killed);
 ini_write_real("Save", "TheScorchedTalked", global.game_boss_thescorched_talked);
@@ -40,6 +44,11 @@ ini_write_real("Save", "CompanionFarmerLevel2PostTalked1", global.game_companion
 ini_write_real("Save", "CompanionGrenadierFound", global.game_companion_grenadier_found);
 ini_write_real("Save", "CompanionPrisonerFound", global.game_companion_prisoner_found);
 ini_write_real("Save", "CompanionDogFound", global.game_companion_dog_found);
+ini_write_real("Save", "ProductionRoomDestroyed0", global.game_productionengine_destroyed0);
+ini_write_real("Save", "ProductionRoomDestroyed1", global.game_productionengine_destroyed1);
+ini_write_real("Save", "ProductionRoomDestroyed2", global.game_productionengine_destroyed2);
+ini_write_real("Save", "ProductionRoomDestroyed3", global.game_productionengine_destroyed3);
+ini_write_real("Save", "ProductionRoomDestroyed4", global.game_productionengine_destroyed4);
 ini_write_real("Save", "Prisoner0Left", global.game_npc_prisoner0_left);
 ini_write_real("Save", "Prisoner1Left", global.game_npc_prisoner1_left);
 ini_write_real("Save", "Prisoner2Left", global.game_npc_prisoner2_left);
@@ -47,11 +56,18 @@ ini_write_real("Save", "Prisoner3Left", global.game_npc_prisoner3_left);
 ini_write_real("Save", "Prisoner4Left", global.game_npc_prisoner4_left);
 ini_write_real("Save", "Prisoner5Left", global.game_npc_prisoner5_left);
 ini_write_real("Save", "Prisoner6Left", global.game_npc_prisoner6_left);
+ini_write_real("Save", "Prisoner7Left", global.game_npc_prisoner7_left);
+ini_write_real("Save", "Prisoner8Left", global.game_npc_prisoner8_left);
 ini_write_real("Save", "HordeChallenge0Completed", global.game_hordechallenge0_completed);
 ini_write_real("Save", "HordeChallenge1Completed", global.game_hordechallenge1_completed);
 ini_write_real("Save", "HordeChallenge2Completed", global.game_hordechallenge2_completed);
 ini_write_real("Save", "TownPerson0Talked", global.game_npc_townperson0_talked);
 ini_write_real("Save", "TownPerson1Talked", global.game_npc_townperson1_talked);
+ini_write_real("Save", "TownPerson2Talked", global.game_npc_townperson2_talked);
+ini_write_real("Save", "TownPerson3Talked", global.game_npc_townperson3_talked);
+ini_write_real("Save", "TownPerson4Talked", global.game_npc_townperson4_talked);
+ini_write_real("Save", "TownPerson5Talked", global.game_npc_townperson5_talked);
+ini_write_real("Save", "TownPerson6Talked", global.game_npc_townperson6_talked);
 
 var weaponcount = global.weapon_potential_slotmax;
 for(var i = 0; i < weaponcount; i ++){
@@ -71,8 +87,7 @@ for(var i = 0; i < upgradecount; i ++){
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
 	ini_write_real("Save", "Level_Entered" + string(i), global.level_entered[i]);
-	ini_write_real("Save", "Level_KillCount" + string(i), global.level_kill_count[i]);
-	ini_write_real("Save", "Level_Cleared" + string(i), global.level_cleared[i]);
+	ini_write_real("Save", "Level_Complete" + string(i), global.level_complete[i]);
 }
 
 var collectcount = ds_grid_height(global.level_collectable_found);

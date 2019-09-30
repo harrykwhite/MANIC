@@ -1,4 +1,5 @@
 sprite_index = spr_player_idle_2_top;
+
 if (minecart_sprite != spr_pawn_minecart_0) && (minecart_sprite != spr_pawn_minecart_1){
 	minecart_sprite = spr_pawn_minecart_0;
 }

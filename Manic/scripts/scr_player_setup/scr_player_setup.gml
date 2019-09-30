@@ -19,6 +19,9 @@ idlewalk_time = 0;
 idlewalk_walktime = random_range(5, 10);
 idlewalk_dir = 0;
 
+walk_smoke_time_max = 36;
+walk_smoke_time = walk_smoke_time_max;
+
 offset = 0;
 offset_to = 0;
 offset_time = 0;
@@ -37,7 +40,7 @@ flashlight_alpha = 0;
 
 surrounding_light_to = 1;
 surrounding_light = 1;
-surrounding_light_upgradedec = 0.05;
+surrounding_light_upgradedec = 0.025;
 
 // White Flash
 whiteflash_alpha = 0;
@@ -46,7 +49,7 @@ whiteflash_alphadec = 0.075;
 // Externally Controlled Movement
 move_x_to = -1;
 move_y_to = -1;
-move_extSpd = -1;
+move_ext_spd = -1;
 
 // Dash
 dash_length = 0;
@@ -82,7 +85,6 @@ burn = false;
 burn_time = -1;
 burn_cycle_amount = 0;
 burn_sound = noone;
-burn_sound_paused = false;
 
 // Poison
 poison = false;
@@ -106,13 +108,14 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 // Upgrades
 upgrades_set = false;
 
-// Other
-is_visible = true;
+// Weapons
+weapon_default_set = false;
 
-heartbeat = noone;
+// Position
+global.player_position_x = x;
+global.player_position_y = y;
 
-has_antagonist_mask = false;
-
+// Minecart
 minecart = noone;
 minecart_dir = 0;
 minecart_touching = false;
@@ -121,3 +124,8 @@ minecart_speed = 0;
 minecart_sprite = noone;
 minecart_sprite_image = 0;
 in_minecart = false;
+
+// Other
+is_visible = true;
+heartbeat = noone;
+has_antagonist_mask = false;

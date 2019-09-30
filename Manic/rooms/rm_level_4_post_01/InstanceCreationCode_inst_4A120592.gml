@@ -1,0 +1,1 @@
+sprite_index = spr_snowbuilding_door_break_0;

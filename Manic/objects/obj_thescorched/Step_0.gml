@@ -20,10 +20,6 @@ if (global.game_pause){
 	ispaused = true;
 }
 
-if (cutscene_prop){
-	ispaused = true;
-}
-
 if (global.cutscene_current == 58){
 	knockback_speed = 0;
 	knockback_direction = 0;
@@ -61,16 +57,7 @@ if (ispaused){
 	}
 	
 	image_speed = 0;
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
 	return;
-}else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
-	}
 }
 
 burn = true;
@@ -80,18 +67,22 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 
-if (health_current <= health_max / 2){
-	if (!mid_cutscene_played){
-		global.cutscene_current = 58;
-		mid_cutscene_played = true;
-		return;
-	}
+if (global.cutscene_current == -1) || (cutscene_prop){
+	if (health_current <= health_max / 2){
+		if (!mid_cutscene_played){
+			global.cutscene_current = 58;
+			mid_cutscene_played = true;
+			return;
+		}
 	
-	scr_thescorched_behaviour_1();
-	weapon_has = true;
+		scr_thescorched_behaviour_1();
+		weapon_has = true;
+	}else{
+		scr_thescorched_behaviour_0();
+		weapon_has = false;
+	}
 }else{
-	scr_thescorched_behaviour_0();
-	weapon_has = false;
+	image_speed = 0;
 }
 
 scr_pawn_update();

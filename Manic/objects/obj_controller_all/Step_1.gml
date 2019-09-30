@@ -30,7 +30,6 @@ if (app_surf_refresh_time > 0){
 }else{
 	if (app_surf_refresh_time == 0){
 		surface_resize(application_surface, app_surf_refresh_w, app_surf_refresh_h);
-		show_debug_message("asdhaslk");
 		app_surf_refresh_time = -1;
 	}
 }

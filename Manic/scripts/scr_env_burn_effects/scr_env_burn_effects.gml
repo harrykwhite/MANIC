@@ -10,17 +10,7 @@ var yrange = argument3;
 var srange = argument4;
 
 if (global.game_pause){
-	if (audio_is_playing(burn_sound)){
-		audio_pause_sound(burn_sound);
-		burn_sound_paused = true;
-	}
-	
 	return;
-}else{
-	if (burn_sound_paused){
-		audio_resume_sound(burn_sound);
-		burn_sound_paused = false;
-	}
 }
 
 if (random(9) < 1){

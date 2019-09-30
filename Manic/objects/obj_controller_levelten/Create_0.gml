@@ -41,5 +41,7 @@ boss_music_stage2_layer2_instance = noone;
 boss_music_outro_instance = noone;
 
 global.cutscene_current = 2;
+global.game_objective_current = 0;
+
 sprite_index = noone;
 depth = -5;
