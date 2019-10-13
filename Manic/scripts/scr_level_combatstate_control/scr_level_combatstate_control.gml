@@ -290,11 +290,3 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 	global.game_combat_state_time_real = 0;
 	spawn_time = 60 * spawn_interval[global.game_combat_state];
 }
-
-// Restoring Music after Pause
-if (!paused){
-	if (!spawn_pause_update){
-		spawn_pause_update = true;
-		audio_resume_all();
-	}
-}

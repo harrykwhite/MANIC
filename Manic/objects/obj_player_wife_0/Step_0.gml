@@ -3,10 +3,16 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	exit;
 }
 
+var yy = y + 6;
+var box_x1 = x - (10 * sign(image_xscale));
+var box_y1 = yy - 30;
+var box_x2 = x + (75 * sign(image_xscale));
+var box_y2 = yy + 30;
+
 interact = false;
 
 if (instance_exists(obj_player)){
-	if (distance_to_object(obj_player) < 10){
+	if (collision_rectangle(box_x1, box_y1, box_x2, box_y2, obj_player, false, true)){
 		if (obj_controller_ui.dialogue_time <= 0){
 			interact = true;
 			scr_ui_control_indicate("Talk");

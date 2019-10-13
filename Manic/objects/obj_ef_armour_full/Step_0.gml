@@ -11,7 +11,7 @@ if (can_touch_player){
 			scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
 			scr_effect_screenshake(1);
 		
-			if (global.game_is_playthrough) || (room == rm_prologue_00){
+			if (global.game_is_playthrough){
 				scr_save_game();
 			}
 		

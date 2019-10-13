@@ -3,7 +3,7 @@ if (!global.game_save_started){
 }
 
 if (!global.game_objective_set){
-	global.game_objective_current = Objectives.TalkToResidents;
+	global.game_objective_current = Objectives.EscortResidents;
 	
 	global.objective_counter[global.game_objective_current] = 0;
 	global.objective_counter_max[global.game_objective_current] = 4;

@@ -109,9 +109,9 @@ if (instance_exists(obj_player)){
 					global.cutscene_time[index] = 300;
 				}
 			}
-		}else if (global.cutscene_time[index] < 340){
-			xto = 684;
-			yto = 604;
+		}else if (global.cutscene_time[index] < 360){
+			xto = 688;
+			yto = 620;
 			
 			global.cutscene_time[index] ++;
 			
@@ -121,16 +121,27 @@ if (instance_exists(obj_player)){
 			
 			global.cutscene_camera_x[index] = obj_player.x;
 			global.cutscene_camera_y[index] = obj_player.y;
-		}else if (global.cutscene_time[index] < 570){
+		}else if (global.cutscene_time[index] < 588){
 			xto = obj_player.x;
 			yto = 1076;
 			
 			if (!obj_controller_ui.area_next_fade){
 				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 420){
-					obj_controller_ui.area_next_fade = true;
-					obj_controller_ui.area_next_alpha = 0;
-					obj_controller_ui.area_next_alpha_speed = 0.005;
-					obj_controller_ui.area_next_room = rm_level_1_00;
+					with(obj_controller_ui){
+						area_next_fade = true;
+						area_next_alpha = 0;
+						area_next_alpha_speed = 0.005;
+					
+						if (global.game_is_playthrough){
+							area_next_room = rm_level_1_00;
+						}else{
+							if (Level.RavagedTown != global.level_current){
+								area_next_room = rm_title_0;
+							}else{
+								area_next_room = rm_level_1_00;
+							}
+						}
+					}
 				}
 			}
 			

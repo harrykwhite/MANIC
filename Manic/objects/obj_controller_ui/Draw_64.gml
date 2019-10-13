@@ -218,7 +218,7 @@ if (tutourial) && (global.cutscene_current == -1){
 		}
 	}
 	
-	tutourial_scale = approach(tutourial_scale, 1, 10);
+	tutourial_scale = approach(tutourial_scale, 1, 7);
 	
 	var tscale = tutourial_scale;
 	var tstage = min(tutourial_stage, tut_count - 1);
@@ -423,7 +423,7 @@ if (instance_exists(obj_player)){
 					draw_set_halign(fa_center);
 					scr_text_shadow(dwidth / 2, noammoy, "NO AMMO", c_red);
 					draw_set_font(fnt_cambria_0);
-					scr_text_shadow(dwidth / 2, noammoy + 30, "[" + scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + "] TO THROW", c_red);
+					scr_text_shadow(dwidth / 2, noammoy + 30, scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + " TO THROW", c_red);
 					// ^^^ Could this suggest to the player that there is no way of retrieving ammo back?
 				}
 			}else{
@@ -680,7 +680,7 @@ if (control_indicate_text != ""){
 	draw_set_alpha(0.8);
 	
 	if (iskeyboard){
-		scr_text_shadow(dwidth - control_indicate_x, dheight - 50, control_indicate_text + " [" + buttonstr + "]", c_white);
+		scr_text_shadow(dwidth - control_indicate_x, dheight - 50, control_indicate_text + " " + buttonstr, c_white);
 	}else{
 		scr_text_shadow(dwidth - control_indicate_x - 16, dheight - 50, control_indicate_text, c_white);
 		draw_sprite(global.game_input_gamepad_current_sprite, real(buttonsymb), dwidth - control_indicate_x + 7, dheight - 51);
@@ -690,6 +690,137 @@ if (control_indicate_text != ""){
 }
 
 control_indicate = false;
+
+// Minimap
+var mapx = (dwidth - minimap_x) - minimap_width;
+var mapy = minimap_y;
+
+var mapwidth = obj_controller_gameplay.map_width;
+var mapheight = obj_controller_gameplay.map_height;
+
+var maptilewidth = obj_controller_gameplay.map_tile_width;
+var maptileheight = obj_controller_gameplay.map_tile_height;
+
+var mapdrawoffx = (global.player_position_x - (camera_get_view_width(view_camera[0]) / 2)) div maptilewidth;
+var mapdrawoffy = (global.player_position_y - (camera_get_view_height(view_camera[0]) / 2)) div maptileheight;
+
+var mapdrawtilew = 3;
+var mapdrawtileh = 3;
+
+var maptilecol;
+
+maptilecol[0] = make_color_rgb(220, 220, 220);
+maptilecol[1] = make_colour_rgb(168, 132, 109);
+maptilecol[2] = make_colour_rgb(128, 128, 128);
+maptilecol[3] = make_colour_rgb(94, 94, 94);
+maptilecol[4] = make_colour_rgb(54, 54, 54);
+
+var map_objects, map_objects_sprite, map_objects_sprite_scale, map_objects_sprite_screenlock, map_objects_count;
+
+map_objects[0] = obj_collectable_pickup;
+map_objects_sprite[0] = spr_collectable_0;
+map_objects_sprite_scale[0] = 1;
+map_objects_sprite_screenlock[0] = false;
+
+map_objects[1] = obj_upgrade_pickup;
+map_objects_sprite[1] = spr_upgrade_0;
+map_objects_sprite_scale[1] = 1;
+map_objects_sprite_screenlock[1] = false;
+
+var compcount = array_length_1d(global.companion);
+map_objects_count = array_length_1d(map_objects);
+
+for(var o = 0; o < compcount; o ++){
+	map_objects[o + map_objects_count] = global.companion[o];
+	map_objects_sprite[o + map_objects_count] = global.companion_mapicon[o];
+	map_objects_sprite_scale[o + map_objects_count] = 2;
+	map_objects_sprite_screenlock[o + map_objects_count] = false;
+}
+
+map_objects[o + 1] = obj_player;
+map_objects_sprite[o + 1] = spr_player_head_0;
+map_objects_sprite_scale[o + 1] = 2;
+map_objects_sprite_screenlock[o + 1] = false;
+
+map_objects[o + 2] = obj_section_end_pointer;
+map_objects_sprite[o + 2] = spr_ui_arrow_small;
+map_objects_sprite_scale[o + 2] = 2;
+map_objects_sprite_screenlock[o + 2] = true;
+
+map_objects_count = array_length_1d(map_objects);
+
+mapdrawoffx = clamp(mapdrawoffx, 0, mapwidth - (minimap_width div mapdrawtilew));
+mapdrawoffy = clamp(mapdrawoffy, 0, mapheight - (minimap_height div mapdrawtileh));
+
+draw_set_alpha(1);
+draw_sprite(spr_ui_minimap_border_0, 0, mapx - 2, mapy - 2);
+
+for(var yy = 0; yy < minimap_height; yy += mapdrawtileh){
+	for(var xx = 0; xx < minimap_width; xx += mapdrawtilew){
+		var col;
+		var tilex = xx div mapdrawtilew; tilex += mapdrawoffx;
+		var tiley = yy div mapdrawtileh; tiley += mapdrawoffy;
+		
+		if (tilex < 0 || tiley < 0 || tilex >= mapwidth || tiley >= mapheight){
+			continue;
+		}
+		
+		var tile = obj_controller_gameplay.map[tilex, tiley];
+		
+		if (tile != -1) && (obj_controller_gameplay.map_found[tilex, tiley]){
+			col = maptilecol[tile];
+			
+			draw_set_colour(col);
+			draw_rectangle(mapx + xx, mapy + yy, mapx + xx + mapdrawtilew - 1, mapy + yy + mapdrawtileh - 1, false);
+		}
+	}
+}
+
+for(var o = 0; o < map_objects_count; o ++){
+	if (instance_exists(map_objects[o])){
+		var icount = instance_number(map_objects[o]);
+		
+		for(var i = 0; i < icount; i ++){
+			var inst = instance_find(map_objects[o], i), draw = false;
+			var tx = inst.x div maptilewidth;
+			var ty = inst.y div maptileheight;
+			
+			if (!obj_controller_gameplay.map_found[tx, ty]){
+				continue;
+			}
+			
+			var dx = mapx - (mapdrawoffx * mapdrawtilew) + ((inst.x / room_width) * mapwidth * mapdrawtilew);
+			var dy = mapy - (mapdrawoffy * mapdrawtileh) + ((inst.y / room_height) * mapheight * mapdrawtileh);
+			var dangle = 0;
+			
+			if (map_objects_sprite_screenlock[o]){
+				var margin = 30;
+				draw = true;
+				
+				dx = clamp(dx, mapx + margin, mapx + minimap_width - margin);
+				dy = clamp(dy, mapy + margin, mapy + minimap_height - margin);
+				
+				if (map_objects[o] == obj_section_end_pointer){
+					var loff = dsin(minimap_arrow_sine) * 5;
+					dangle = inst.image_angle;
+					
+					dx += lengthdir_x(loff - 10, dangle);
+					dy += lengthdir_y(loff - 10, dangle);
+				}
+			}else{
+				if (dx >= mapx && dy >= mapy && dx <= mapx + minimap_width && dy <= mapy + minimap_height){
+					draw = true;
+				}
+			}
+			
+			if (draw){
+				draw_sprite_ext(map_objects_sprite[o], 0, dx, dy, map_objects_sprite_scale[o] * sign(inst.image_xscale), map_objects_sprite_scale[o] * sign(inst.image_yscale), dangle, c_white, 1);
+			}
+		}
+	}
+}
+
+draw_sprite(spr_ui_minimap_border_overlay_0, 0, mapx - 2, mapy - 2);
 
 // Level Results / Ranking
 if (rank_display_draw){
@@ -955,7 +1086,7 @@ if (ending){
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Sam Hollins", c_white);
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
 	
-	var cont_text = "Press [" + scr_input_get_name(InputBinding.Attack) + "] to return to titlescreen"
+	var cont_text = "Press " + scr_input_get_name(InputBinding.Attack) + " to return to titlescreen"
 	
 	if (!iskeyboard){
 		cont_text = "Press " + scr_input_get_name(InputBinding.Interact) + "   to return to titlescreen";

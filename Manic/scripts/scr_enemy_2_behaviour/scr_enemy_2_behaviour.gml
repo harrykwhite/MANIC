@@ -99,25 +99,6 @@ if (instance_exists(target)){
 	face_player = false;
 }
 
-// Barrel
-var nbarrel = instance_nearest(x, y, obj_barrel_2);
-
-if (instance_exists(nbarrel)) && (barrel_pause_break <= 0){
-	if (distance_to_object(nbarrel) < 140){
-		if (barrel_pause_time > 0){
-			barrel_pause_time --;
-			speed_multiplier = max(speed_multiplier - 0.5, 0);
-		}else{
-			barrel_pause_time = random(40);
-			barrel_pause_break = random_range(60, 120);
-		}
-	}
-}else{
-	if (barrel_pause_break > 0){
-		barrel_pause_break--;
-	}
-}
-
 // Cutscene
 if (cutscene_prop){
 	if (!in_cutscene){

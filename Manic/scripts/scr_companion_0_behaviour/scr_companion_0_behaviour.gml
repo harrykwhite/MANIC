@@ -11,7 +11,15 @@ if (instance_exists(obj_player)){
 		weapon_does_exist = instance_exists(weapon);
 	}
 	
-	if (!in_cutscene){
+	if (global.cutscene_current != -1){
+		if (obj_player.move_x_to != -1) || (obj_player.move_y_to != -1){
+			if (obj_player.move_ext_spd > 0){
+				speed_multiplier *= obj_player.move_ext_spd / obj_player.spd_max;
+			}
+		}
+	}
+	
+	if (!in_cutscene) && (!depart) && (!depart_standaway) && (!bunker_engine_destroy){
 		if (!instance_exists(target)){
 			runaway_starttime = 0;
 			runaway_time = 0;
@@ -29,7 +37,7 @@ if (instance_exists(obj_player)){
 						target = instance_nearest(x, y, global.enemy[i]);
 						
 						if (target.object_index == obj_antagonist){
-							if (target.walk_off) || (target.near_dead){
+							if (target.walk_off){
 								target = noone;
 								continue;
 							}
@@ -37,7 +45,7 @@ if (instance_exists(obj_player)){
 						
 						if (target.object_index == obj_thedogkeeper_dog){
 							if (instance_exists(target)){
-								if (target.owner.cutscene_prop) || (target.owner.in_cutscene){
+								if (target.keeper.cutscene_prop) || (target.keeper.in_cutscene){
 									target = noone;
 									continue;
 								}
@@ -76,18 +84,18 @@ if (instance_exists(obj_player)){
 			if (dist_to_player > 70 + (60 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
-				move_speed = 1.5;
+				move_speed = 2.1;
 				
 				if (dist_to_player > 100 + (60 * order)){
-					move_speed = 1.8;
+					move_speed = 2.6;
 				}
 				
 				if (dist_to_player > 140 + (60 * order)){
-					move_speed = 2.1;
+					move_speed = 3.1;
 				}
 				
 				if (dist_to_player > 180 + (60 * order)){
-					move_speed = 2.4;
+					move_speed = 3.6;
 				}
 				
 				face_player = true;
@@ -111,7 +119,7 @@ if (instance_exists(obj_player)){
 				var dir = point_direction(target.x, target.y, x, y);
 				move_x_to = target.x + lengthdir_x(30, dir);
 				move_y_to = target.y + lengthdir_y(30, dir);
-				move_speed = 1.4;
+				move_speed = 1.9;
 			}else{
 				move_x_to = target.x;
 				move_y_to = target.y;
@@ -120,7 +128,7 @@ if (instance_exists(obj_player)){
 				tdist += 15 * order;
 				
 				if (distance_to_object(target) > tdist){
-					move_speed = 1.3;
+					move_speed = 1.9;
 				}else{
 					move_speed = 0;
 					move_x_to = target.x;
@@ -143,16 +151,6 @@ if (instance_exists(obj_player)){
 				runaway_starttime = -2;
 				runaway_time = 17;
 			}
-			
-			/*if (distance_to_object(obj_player) > 85){
-				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
-				move_speed = 1.5;
-				
-				if (distance_to_object(obj_player) > 130){
-					move_speed = 2.1;
-				}
-			}*/
 		}else{
 			move_speed = 0;
 		}
@@ -194,43 +192,63 @@ if (instance_exists(obj_player)){
 		face_player = false;
 		move_time = 1;
 		
-		if (depart){
-			move_x_to = x;
-			move_y_to = room_height;
+		if (!bunker_engine_destroy){
+			if (depart){
+				move_x_to = x;
+				move_y_to = room_height;
 			
-			if (distance_to_point(move_x_to, move_y_to) > 32 + (60 * order)){
-				move_speed = 1.5;
-			}else{
-				move_speed = 0;
-			}
-		}else if (depart_standaway){
-			var xx = obj_player.x + 10;
-			var yy = obj_player.y + 95;
+				if (distance_to_point(move_x_to, move_y_to) > 32 + (60 * order)){
+					move_speed = 1.9;
+				}else{
+					move_speed = 0;
+				}
+			}else if (depart_standaway){
+				var xx = obj_player.x + 10;
+				var yy = obj_player.y + 95;
 			
-			if (distance_to_point(xx, yy) > 20 + (60 * order)){
-				move_x_to = xx;
-				move_y_to = yy;
-				move_speed = 1.5;
+				if (distance_to_point(xx, yy) > 20 + (60 * order)){
+					move_x_to = xx;
+					move_y_to = yy;
+					move_speed = 1.9;
+				}else{
+					face_player = true;
+					move_speed = 0;
+					move_x_to = obj_player.x;
+					move_y_to = obj_player.y;
+				}
 			}else{
-				face_player = true;
-				move_speed = 0;
+				if (distance_to_object(obj_player) > 67 + (60 * order)){
+					move_speed = 1.9;
+				}else{
+					face_player = true;
+					move_speed = 0;
+				
+					if (weapon_does_exist){
+						weapon.dir = pdir;
+					}
+				}
+		
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 			}
 		}else{
-			if (distance_to_object(obj_player) > 67 + (60 * order)){
-				move_speed = 1.5;
-			}else{
-				face_player = true;
-				move_speed = 0;
-				
-				if (weapon_does_exist){
-					weapon.dir = pdir;
-				}
-			}
-		
+			var engine = instance_nearest(x, y, obj_conveyerbelt_4);
+			weapon.attack = false;
+			
 			move_x_to = obj_player.x;
 			move_y_to = obj_player.y;
+			move_speed = 0;
+			
+			if (engine != noone){
+				if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) < 300){
+					if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) > 70){
+						move_speed = 1.9;
+					}
+					
+					move_x_to = engine.x;
+					move_y_to = engine.y + 10;
+				}
+			}
 		}
 	}
 	
@@ -256,11 +274,11 @@ if (instance_exists(obj_player)){
 	}
 	
 	if (!cutscene_prop){
-		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
+		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || ((global.cutscene_current == 58) && (!depart) && (!depart_standaway) && (!bunker_engine_destroy)){
 			if (distance_to_object(obj_player) > 67 + (60 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
-				move_speed = 1.4;
+				move_speed = 1.9;
 			}
 		}
 	}

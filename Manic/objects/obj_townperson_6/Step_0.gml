@@ -17,7 +17,7 @@ if (instance_exists(obj_player)) && (!global.game_npc_townperson6_talked){
 		if (obj_controller_ui.dialogue_time <= 0){
 			interact = true;
 			scr_ui_control_indicate("Talk");
-	
+			
 			if (interact_break <= 0){
 				if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 					interact_break = 15;

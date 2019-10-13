@@ -3,7 +3,7 @@ target = obj_player;
 if (instance_exists(target)){
 	var dist = distance_to_object(target);
 	
-	if (((dist < 140) || (initiated)) && (dist < 340)) || (shoot_in_burst){
+	if (((dist < 200) || (initiated)) && (dist < 340)) || (shoot_in_burst){
 		dir_to = point_direction(x, y, target.x, target.y);
 		var dirdiff = angle_difference(dir, dir_to);
 		dir += min(abs(dirdiff), 10) * -sign(dirdiff);

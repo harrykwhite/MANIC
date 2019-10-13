@@ -1,1 +1,1 @@
-draw_self();
+scr_ceiling_draw_series();

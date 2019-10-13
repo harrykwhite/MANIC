@@ -55,7 +55,7 @@ var crange = 13;
 var oldx = 0;
 var oldy = 0;
 
-repeat(700){
+repeat(660){
 	do{
 		xx = random(room_width);
 		yy = random(room_height);
@@ -81,7 +81,7 @@ repeat(700){
 oldx = 0;
 oldy = 0;
 
-repeat(90){
+repeat(80){
 	do{
 		xx = random(room_width);
 		yy = random(room_height);

@@ -158,7 +158,7 @@ if (!global.game_pause){
 					if (dodraw) && (instance_exists(inst)){
 						obj_controller_ui.dialogue = text;
 						obj_controller_ui.dialogue_voice = (inst == obj_player ? snd_character_dialogue_protagonist_in : snd_character_dialogue_compfarmer_in);
-						obj_controller_ui.dialogue_time = 60 * 3;
+						obj_controller_ui.dialogue_time = 60 * 2.5;
 						obj_controller_ui.dialogue_pause = false;
 						obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
 						obj_controller_ui.dialogue_char_count = 0;
@@ -168,7 +168,7 @@ if (!global.game_pause){
 						if (postlevel_dialogue_index < 6){
 							postlevel_dialogue_inst = inst;
 							postlevel_dialogue_index ++;
-							postlevel_dialogue_time  = 60 * 3.5;
+							postlevel_dialogue_time = obj_controller_ui.dialogue_time;
 						}else{
 							postlevel_dialogue_exception = false;
 							global.game_companion_farmer_level2post_talked_0 = true;
@@ -246,15 +246,14 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			spawn_rate += global.game_combat_playerskill - 1;
 		
 			if (spawn_time > 0){
-				spawn_time -= spawn_rate;
+				spawn_time --;
 			}else{
 				spawn = true;
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
-				spawn_time /= spawn_rate;
 			}
 	
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * (1 + (0.5 * (spawn_rate - 1))))){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 1.5, 1))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -280,7 +279,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 				
 					var enemy;
 				
-					if (chance(75)){
+					if (chance(90)){
 						enemy = instance_create(xpos, ypos, obj_enemy_0);
 					
 						if (spawn_rate > 1.5){
@@ -312,9 +311,6 @@ if (spawn_start_wait >= spawn_start_wait_max){
 				spawn = false;
 			}
 		
-		}else if (global.game_pause){
-			audio_pause_all();
-			spawn_pause_update = false;
 		}
 	}else{
 		global.game_combat_state_time_real = 0;
@@ -330,3 +326,5 @@ if (spawn_start_wait >= spawn_start_wait_max){
 }
 
 scr_level_combatstate_control();
+
+scr_level_audio_pause_and_resume();

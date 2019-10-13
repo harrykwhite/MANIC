@@ -1,6 +1,8 @@
 start = true;
 parent = -1;
 depth_offset = 0;
+depth_fall = 0;
+
 image_xscale = choose(1, -1);
 image_angle = image_angle + random_range(-6, 6);
 image_speed = 0;

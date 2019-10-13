@@ -79,15 +79,14 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			spawn_rate += global.game_combat_playerskill - 1;
 		
 			if (spawn_time > 0){
-				spawn_time -= spawn_rate;
+				spawn_time --;
 			}else{
 				spawn = true;
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
-				spawn_time /= spawn_rate;
 			}
 	
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * (1 + (0.5 * (spawn_rate - 1))))){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 1.5, 1))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -117,7 +116,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 				
 					var enemy;
 				
-					if (chance(75)){
+					if (chance(80)){
 						enemy = instance_create(xpos, ypos, obj_enemy_0);
 					
 						if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
@@ -157,7 +156,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 								}
 							}
 				
-							if (chance(8)){
+							if (chance(5)){
 								enemy.type = Enemy0_Type.Crazy;
 							}
 				
@@ -182,12 +181,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			
 				spawn = false;
 			}
-		
-		}else if (global.game_pause){
-			audio_pause_all();
-			spawn_pause_update = false;
 		}
-	
 	}else{
 		global.game_combat_state_time_real = 0;
 		spawn_rate_real = 0.75;
@@ -202,3 +196,5 @@ if (spawn_start_wait >= spawn_start_wait_max){
 }
 
 scr_level_combatstate_control();
+
+scr_level_audio_pause_and_resume();

@@ -14,14 +14,4 @@ if (start){
 	start = false;
 }
 
-if (parent != -1){
-	depth_offset = 45;
-	
-	if (!instance_exists(parent)){
-		x = x + random_range(-3, 3);
-		y = y + random_range(-2, 2);
-		
-		depth_offset = 0;
-		parent = -1;
-	}
-}
+scr_object_table_place(45);

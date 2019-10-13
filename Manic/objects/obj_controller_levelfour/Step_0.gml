@@ -1,6 +1,10 @@
 var player = obj_player;
 var player_exists = instance_exists(player);
+
+var peaceful = scr_level_is_peaceful(room);
+
 scr_position_view();
+
 crazy_can_spawn = global.game_firstcrazy_killed;
 
 var camx = camera_get_view_x(view_camera[0]);
@@ -55,6 +59,77 @@ if (!global.game_pause){
 	if (random(2) < 1){
 	    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_snow_1, 1);
 	}
+	
+	// Pre Level Dialogue
+	if (room == rm_level_4_pre_00){
+		if (!global.game_companion_farmer_level4pre_talked_0) || (prelevel_dialogue_exception){
+			global.game_companion_farmer_level4pre_talked_0 = true;
+			prelevel_dialogue_exception = true;
+			
+			if (global.cutscene_current == -1){
+				if (prelevel_dialogue_time > 0){
+					prelevel_dialogue_time --;
+					
+					if (instance_exists(prelevel_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
+						obj_controller_ui.dialogue_x = prelevel_dialogue_inst.x;
+						obj_controller_ui.dialogue_y = prelevel_dialogue_inst.y - 24;
+					}
+				}else{
+					var text = "", inst = noone, dodraw = true;
+			
+					switch(prelevel_dialogue_index){
+						case 0:
+							text = "I feel it's time that we found out who the leader of the army is, so that we can prevent the group from making further advancements.";
+							inst = obj_player;
+							break;
+						
+						case 1:
+							text = "Perhaps some of the artifacts in the town down below might give us an indication as to who that leader is?";
+							inst = obj_companion_0;
+							break;
+						
+						case 2:
+							text = "As well as that, there may still be some people there who we can ask about it.";
+							inst = obj_companion_0;
+							break;
+						
+						case 3:
+							text = "I sure hope so. Let's keep going.";
+							inst = obj_player;
+							break;
+						
+						default:
+							dodraw = false;
+							obj_controller_ui.dialogue_x = prelevel_dialogue_inst.x;
+							obj_controller_ui.dialogue_y = prelevel_dialogue_inst.y - 24;
+							break;
+					}
+			
+					if (dodraw) && (instance_exists(inst)){
+						obj_controller_ui.dialogue = text;
+						obj_controller_ui.dialogue_voice = (inst == obj_player ? snd_character_dialogue_protagonist_in : snd_character_dialogue_compfarmer_in);
+						obj_controller_ui.dialogue_time = 60 * 5;
+						obj_controller_ui.dialogue_pause = false;
+						obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
+						obj_controller_ui.dialogue_char_count = 0;
+						obj_controller_ui.dialogue_x = inst.x;
+						obj_controller_ui.dialogue_y = inst.y - 24;
+						
+						if (prelevel_dialogue_index < 4){
+							prelevel_dialogue_inst = inst;
+							prelevel_dialogue_index ++;
+							prelevel_dialogue_time = obj_controller_ui.dialogue_time;
+						}else{
+							prelevel_dialogue_exception = false;
+							global.game_companion_farmer_level4pre_talked_0 = true;
+						}
+					}
+				}
+			}
+		}else{
+			global.game_companion_farmer_level4pre_talked_0 = true;
+		}
+	}
 }
 
 // Music
@@ -93,7 +168,7 @@ if (global.game_combat_in_hordechallenge){
 	lighting_to = 1;
 }
 
-if (scr_level_is_peaceful(room)){
+if (peaceful){
 	lighting_to = 0.925;
 }
 
@@ -130,15 +205,14 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			spawn_rate += global.game_combat_playerskill - 1;
 		
 			if (spawn_time > 0){
-				spawn_time -= spawn_rate;
+				spawn_time --;
 			}else{
 				spawn = true;
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
-				spawn_time /= spawn_rate;
 			}
 		
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * (1 + (0.5 * (spawn_rate - 1))))){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 1.5, 1))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -164,7 +238,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 				
 					var enemy;
 				
-					if (chance(75)){
+					if (chance(80)){
 						enemy = instance_create(xpos, ypos, obj_enemy_0);
 				
 						if (spawn_rate > 1.4){
@@ -176,7 +250,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 						}
 					
 						if (crazy_can_spawn){
-							if (chance(10)){
+							if (chance(5)){
 								enemy.type = Enemy0_Type.Crazy;
 							}
 						}
@@ -201,11 +275,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			
 				spawn = false;
 			}
-		}else if (global.game_pause){
-			audio_pause_all();
-			spawn_pause_update = false;
 		}
-	
 	}else{
 		global.game_combat_state_time_real = 0;
 		spawn_rate_real = 0.75;
@@ -220,3 +290,5 @@ if (spawn_start_wait >= spawn_start_wait_max){
 }
 
 scr_level_combatstate_control();
+
+scr_level_audio_pause_and_resume();

@@ -21,7 +21,7 @@ if (cutscene_prop){
 	
 	if (room == rm_level_5_01){
 		image_xscale = scale;
-		weapon.dir = 360;
+		weapon.dir = 325;
 	}
 	
 	if (global.cutscene_current != -1){
@@ -29,10 +29,10 @@ if (cutscene_prop){
 			if (!collision_line(x, y, obj_player.x, obj_player.y, obj_p_solid, false, true)){
 				if (obj_player.x > x){
 					image_xscale = scale;
-					weapon.dir = 360;
+					weapon.dir = 270 + 55;
 				}else{
 					image_xscale = -scale;
-					weapon.dir = 180;
+					weapon.dir = 270 - 55;
 				}
 			}
 		}
@@ -59,7 +59,7 @@ whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 
-if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global.cutscene_current == 52)){
+if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58)){
 	if (cutscene_break_time > 0){
 		cutscene_break_time --;
 	}
@@ -74,8 +74,10 @@ if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global
 }else{
 	image_speed = 0.05;
 	sprite_index = stillsprite;
-	
-	cutscene_break_time = 20;
+}
+
+if (global.cutscene_current == -1){
+	cutscene_break_time = 30;
 }
 
 if (flash_time > 0){

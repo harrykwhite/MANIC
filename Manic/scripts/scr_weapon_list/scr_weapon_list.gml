@@ -45,6 +45,7 @@ enum PlayerWeapon{
 	Pickaxe,
 	ReinforcedGrenade,
 	HuntingMachete,
+	Greatsword,
 }
 
 enum AmmoType{
@@ -571,6 +572,18 @@ global.weapon_mouse[38] = MouseType.SmallCircle;
 global.weapon_dualhanded[38] = false;
 global.weapon_damage[38] = WeaponLevel.Low;
 global.weapon_speed[38] = WeaponLevel.High;
+
+global.weapon_name[39] = "Greatsword";
+global.weapon_object[39] = obj_weapon_39;
+global.weapon_sprite[39] = spr_weapon_39;
+global.weapon_centersprite[39] = spr_weapon_39_center;
+global.weapon_type[39] = WeaponType.Melee;
+global.weapon_heavy[39] = false;
+global.weapon_camerarange[39] = 20;
+global.weapon_mouse[39] = MouseType.SmallCircle;
+global.weapon_dualhanded[39] = false;
+global.weapon_damage[39] = WeaponLevel.VeryHigh;
+global.weapon_speed[39] = WeaponLevel.VeryLow;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];

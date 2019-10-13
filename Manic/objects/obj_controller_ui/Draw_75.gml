@@ -5,9 +5,9 @@ var iskeyboard = (global.game_input_type == InputType.Keyboard);
 
 // Black Bars
 if (blackbar_draw) || (global.cutscene_current != -1){
-    blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 5);
+    blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 15);
 }else{
-	blackbar_sizereal = approach(blackbar_sizereal, 0, 5);
+	blackbar_sizereal = approach(blackbar_sizereal, 0, 15);
 }
 
 blackbar_sizereal = clamp(blackbar_sizereal, 0, blackbar_size);
@@ -75,20 +75,20 @@ if (dialogue_time > 0){
 	draw_set_colour(c_white);
 	draw_text_ext(xx, yy, string_copy(str, 0, dialogue_char_count), -1, 350);
 	
-	if (global.cutscene_current != -1){
+	if (global.cutscene_current != -1) && (dialogue_pause){
 		draw_set_font(fnt_cambria_1);
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		
 		if (dialogue_char_count >= dialogue_length){
-			scr_text_shadow(dwidth - 24, dheight - 64, iskeyboard ? "Continue [" + scr_input_get_name(InputBinding.Interact) + "]" : "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
+			scr_text_shadow(dwidth - 24, dheight - 64, iskeyboard ? "Continue " + scr_input_get_name(InputBinding.Interact) : "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
 			
 			if (!iskeyboard){
 				draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.Interact), dwidth - 32, dheight - 64);
 			}
 		}
 		
-		var holdstr = iskeyboard ? "Hold [" + scr_input_get_name(InputBinding.Attack) + "] to skip" : "Hold " + scr_input_get_name(InputBinding.Attack) + "  to skip";
+		var holdstr = iskeyboard ? "Hold " + scr_input_get_name(InputBinding.Attack) + " to skip" : "Hold " + scr_input_get_name(InputBinding.Attack) + "  to skip";
 		scr_text_shadow(dwidth - 24, dheight - 34, holdstr, c_white);
 		
 		if (!iskeyboard){

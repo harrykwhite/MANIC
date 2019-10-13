@@ -283,11 +283,11 @@ if (!in_settings) && (!in_levelselect){
 				
 				draw_set_halign(fa_left);
 				
-				scr_text_shadow(bx - 270, by, scr_input_binding_get_name(b), c_white);
+				scr_text_shadow(bx - 270, by, scr_input_get_name(b), c_white);
 				
 				draw_set_halign(fa_right);
 				
-				var bctext = "[" + scr_input_get_name(b) + "]";
+				var bctext = scr_input_get_name(b);
 				
 				if (iskeyboard){
 					scr_text_shadow(bx + 270, by, bctext, c_white);
@@ -411,16 +411,22 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 
 var fkey = scr_input_get_name(InputBinding.FullscreenToggle);
+var fkey_x = 18;
+var fkey_y = display_get_gui_height() - 24;
 
 if (global.game_input_type == InputType.Gamepad){
 	var bh = sprite_get_height(global.game_input_gamepad_current_sprite);
 	
 	draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.FullscreenToggle), 26, (display_get_gui_height() - 23) - (bh / 2) + 2);
 }else{
-	fkey = "[" + fkey + "]";
+	fkey = fkey;
 }
 
-scr_text_shadow(18, display_get_gui_height() - 24, fkey + (window_get_fullscreen() ? " Fullscreen" : " Windowed"), c_white);
+if (window_get_fullscreen()){
+	scr_text_shadow(fkey_x, fkey_y, fkey + " Windowed", c_white);
+}else{
+	scr_text_shadow(fkey_x, fkey_y, fkey + " Fullscreen", c_white);
+}
 
 // Copyright text
 draw_set_halign(fa_right);

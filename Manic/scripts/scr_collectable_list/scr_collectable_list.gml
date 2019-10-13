@@ -14,7 +14,6 @@ enum Collectables{
 	ChestplatePiece1,
 	ChestplatePiece2,
 	ChestplatePiece3,
-	PrisonKey,
 }
 
 global.collectable_name[0] = "Note";
@@ -61,6 +60,3 @@ global.collectable_sprite[13] = spr_collectable_chestplate_piece_2;
 
 global.collectable_name[14] = "Chestplate Piece";
 global.collectable_sprite[14] = spr_collectable_chestplate_piece_3;
-
-global.collectable_name[15] = "Prison Key";
-global.collectable_sprite[15] = spr_collectable_key_prison_0;

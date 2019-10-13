@@ -1,6 +1,6 @@
 enum Objectives{
 	KillEnemies,
-	TalkToResidents,
+	EscortResidents,
 	KillDeer,
 	WaitForTrain,
 	ReleasePrisoners,
@@ -10,6 +10,8 @@ enum Objectives{
 	CollectAllArtifacts,
 	CollectAllChestplatePieces,
 	LocateTheAnvil,
+	TalkToFarmer,
+	ExploreUndergroundBunker,
 }
 
 // Insert '^' to indicate counter positioning in text
@@ -18,10 +20,10 @@ global.objective_name[0] = "Clear the area of ^ enemies.";
 global.objective_counter[0] = 0;
 global.objective_counter_max[0] = 0;
 
-global.objective_name[1] = "Talk to ^ residents in the town.";
+global.objective_name[1] = "Talk to and escort ^ residents in the town.";
 global.objective_counter[1] = 0;
 global.objective_counter_max[1] = 4;
-
+audio_get_listener_count();
 global.objective_name[2] = "Hunt and gather ^ deer meat.";
 global.objective_counter[2] = 0;
 global.objective_counter_max[2] = 4;
@@ -57,6 +59,14 @@ global.objective_counter_max[9] = 0;
 global.objective_name[10] = "Locate the anvil room in the city.";
 global.objective_counter[10] = 0;
 global.objective_counter_max[10] = 0;
+
+global.objective_name[11] = "Talk to the farmer";
+global.objective_counter[11] = 0;
+global.objective_counter_max[11] = 0;
+
+global.objective_name[12] = "Explore the underground bunker";
+global.objective_counter[12] = 0;
+global.objective_counter_max[12] = 0;
 
 global.game_objective_current = 0;
 global.game_objective_set = false;

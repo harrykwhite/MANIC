@@ -1,5 +1,4 @@
 show_debug_overlay(true);
-audio_channel_num(200);
 randomize();
 
 scr_global_set();

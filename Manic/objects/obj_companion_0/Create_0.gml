@@ -93,6 +93,8 @@ dashbreak = 0;
 cutscene_prop = false;
 in_cutscene = false;
 
+bunker_engine_destroy = false;
+
 health_max = 6;
 health_current = health_max;
 health_alpha = 0;

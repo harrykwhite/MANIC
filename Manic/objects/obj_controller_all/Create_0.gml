@@ -25,7 +25,7 @@ camera_get_y1 = camera_get_view_y(view_camera[0]);
 camera_get_x2 = camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]);
 camera_get_y2 = camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]);
 
-ds_depth_grid_height = 1200;
+ds_depth_grid_height = 900;
 ds_depth_grid = ds_grid_create(2, ds_depth_grid_height);
 ds_depth_counter = 0;
 

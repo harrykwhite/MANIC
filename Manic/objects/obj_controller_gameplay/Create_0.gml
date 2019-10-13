@@ -36,8 +36,19 @@ cutscene_prologue_ending_camspeed = 0;
 cutscene_prologue_ending_camopening = true;
 cutscene_dialogue_line = -1;
 cutscene_dialogue_special = -1;
+cutscene_dialogue_bunker_engine_destroy = false;
 
 weaponswitch_break = 10;
+
+map_tile_width = 8;
+map_tile_height = 8;
+map_width = room_width div map_tile_width;
+map_height = room_height div map_tile_height;
+map_found_refresh_time_max = 10;
+map_found_refresh_time = map_found_refresh_time_max;
+scr_map_clear();
+scr_map_found_clear();
+scr_map_fill();
 
 global.player_is_respawning = false;
 

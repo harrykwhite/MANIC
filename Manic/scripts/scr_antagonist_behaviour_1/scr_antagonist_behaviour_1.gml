@@ -4,7 +4,7 @@ var face_player = true;
 var weapon_exists = weapon != -1;
 target = obj_player;
 
-if (instance_exists(target)) && (!walk_off){
+if (instance_exists(target)) && (!walk_off) && (!greatsword_attack){
 	var dir_to_target = point_direction(x, y, target.x, target.y);
 	var nearest_bullet = instance_nearest(x, y, obj_proj_0);
 	var swing_interval = 65;
@@ -136,15 +136,12 @@ if (instance_exists(target)) && (!walk_off){
 		
 		switch(state){
 			case 0:
-				weapon_index = PawnWeapon.Machete;
+			case 3:
+				weapon_index = PawnWeapon.Sledgehammer;
 				break;
 			
 			case 1:
 				weapon_index = PawnWeapon.Revolver;
-				break;
-			
-			case 3:
-				weapon_index = PawnWeapon.Sledgehammer;
 				break;
 		}
 		
@@ -167,7 +164,7 @@ if (instance_exists(target)) && (!walk_off){
 		
 		state_time = 0;
 	}
-}else{
+}else if (!greatsword_attack){
 	if (weapon_exists) && (instance_exists(weapon)){
 		weapon.attack = false;
 		
@@ -182,10 +179,68 @@ if (instance_exists(target)) && (!walk_off){
 	face_player = false;
 }
 
+// Greatsword Attack
+if (greatsword_attack){
+	
+	// Greatsword Weapon
+	var has_greatsword = false;
+	
+	if (weapon_exists) && (weapon_index == PawnWeapon.Greatsword){
+		has_greatsword = true;
+	}
+	
+	if (!has_greatsword){
+		if (weapon_exists){
+			instance_destroy(weapon);
+		}
+		
+		weapon_index = PawnWeapon.Greatsword;
+		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
+		weapon.owner = id;
+		
+		has_greatsword = true;
+	}
+	
+	// Greatsword Antag Movement
+	if (instance_exists(obj_player)) && (global.cutscene_current == -1){
+		var playerdist = point_distance(x, y, obj_player.x, obj_player.y);
+		var playerdir = point_direction(x, y, obj_player.x, obj_player.y);
+		
+		move_x_to = obj_player.x;
+		move_y_to = obj_player.y;
+	
+		if (playerdist > 36){
+			move_speed = 3;
+		}else{
+			if (playerdist < 24){
+				move_x_to = x + lengthdir_x(100, playerdir - 180);
+				move_y_to = y + lengthdir_y(100, playerdir - 180);
+				move_speed = 2.5;
+			}else{
+				move_speed = 0;
+			}
+		}
+		
+		weapon.attack = true;
+		weapon.dir = playerdir;
+	}else{
+		weapon.attack = false;
+		move_speed = 0;
+	}
+	
+	if (weapon.dir <= 90) || (weapon.dir >= 270){
+		image_xscale = scale;
+	}else{
+		image_xscale = -scale;
+	}
+	
+	speed_multiplier = 1;
+}
+
 // Walk Off
 if (walk_off){
-	move_x_to = 522;
-	move_y_to = -120;
+	move_x_to = x;
+	move_y_to = -150;
 	move_speed = 2.5;
 	
 	speed_multiplier = 1;

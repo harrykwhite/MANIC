@@ -83,7 +83,7 @@ if (ending){
 		}
 		
 		if (canreturn){
-			if (global.game_is_playthrough) || (room == rm_prologue_00){
+			if (global.game_is_playthrough){
 				scr_save_game();
 			}
 			
@@ -174,7 +174,7 @@ if (!global.game_pause){
 				
 				switch(pause_has_selected_index){
 					case 1:
-						if (global.game_is_playthrough) || (room == rm_prologue_00){
+						if (global.game_is_playthrough){
 							scr_save_game();
 						}
 						
@@ -188,7 +188,7 @@ if (!global.game_pause){
 						break;
 					
 					case 2:
-						if (global.game_is_playthrough) || (room == rm_prologue_00){
+						if (global.game_is_playthrough){
 							scr_save_game();
 						}
 						
@@ -368,4 +368,11 @@ if (game_opening_intro){
 			game_opening_intro = false;
 		}
 	}
+}
+
+// Minimap
+if (minimap_arrow_sine < 360){
+	minimap_arrow_sine += minimap_arrow_sine_speed;
+}else{
+	minimap_arrow_sine = 0;
 }

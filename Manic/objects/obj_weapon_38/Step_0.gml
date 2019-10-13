@@ -20,8 +20,8 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active)
 		
         scr_mouse_control(MouseType.SmallCircle, 2.5, 25);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
-        scr_player_knockback_initiate(0.5, mdir);
-        scr_player_stamina_drain(4);
+        scr_player_knockback_initiate(0.6, mdir);
+        scr_player_stamina_drain(6);
         angle_offset = -angle_offset;
 		
 	    var s = instance_create(xpos, ypos, obj_proj_3);
@@ -33,19 +33,18 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active)
 	    
 		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 35, obj_proj_3, obj_player.x, obj_player.y);
         
-        attack_time = 8;
+        attack_time = 10;
         attack_can = false;
     }
 }
 
 if (global.player_stamina_active){
     if (scr_input_is_pressed(InputBinding.Throw)){
-		
 		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);
 			scr_player_stamina_drain(10);
 			scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
-		
+			
 		    throw = instance_create(x, y, obj_weapondrop);
 		    throw.index = index;
 		    throw.spd = 9;

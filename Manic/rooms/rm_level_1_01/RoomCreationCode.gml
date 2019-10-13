@@ -1,4 +1,3 @@
-
 if (!instance_exists(obj_player)){
     instance_create(518, 30, obj_player);
 }

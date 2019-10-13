@@ -1,24 +1,39 @@
 ///@param binding
-var binding = argument0;
+///@param brackets
+var binding = argument[0];
+var brackets = true;
+
+var rstr = "";
+
+if (argument_count > 1){
+	brackets = argument[1];
+}
 
 switch(global.game_input_type){
 	case InputType.Keyboard:
 		switch(binding){
-			case InputBinding.Right: return "D";
-			case InputBinding.Left: return "A";
-			case InputBinding.Down: return "S";
-			case InputBinding.Up: return "W";
-			case InputBinding.Interact: return "E";
-			case InputBinding.Dash: return "SPACE";
-			case InputBinding.Attack: return "LEFT MOUSE";
-			case InputBinding.Throw: return "RIGHT MOUSE";
-			case InputBinding.Pause: return "ESCAPE";
-			case InputBinding.FullscreenToggle: return "F";
-			case InputBinding.SwitchWeaponForward: return "SCROLL";
-			case InputBinding.SwitchWeaponBack: return "SCROLL";
+			case InputBinding.Right: rstr = "D"; break;
+			case InputBinding.Left: rstr = "A"; break;
+			case InputBinding.Down: rstr = "S"; break;
+			case InputBinding.Up: rstr = "W"; break;
+			case InputBinding.Interact: rstr = "E"; break;
+			case InputBinding.Dash: rstr = "Space"; break;
+			case InputBinding.Attack: rstr = "Left Mouse Button"; break;
+			case InputBinding.Throw: rstr = "Right Mouse Button"; break;
+			case InputBinding.Pause: rstr = "Escape"; break;
+			case InputBinding.FullscreenToggle: rstr = "F"; break;
+			case InputBinding.SwitchWeaponForward: rstr = "Scroll Wheel"; break;
+			case InputBinding.SwitchWeaponBack: rstr = "Scroll Wheel"; break;
 		}
 		break;
 	
 	case InputType.Gamepad:
-		return "     ";
+		rstr = "     "; break;
 }
+
+if (brackets){
+	rstr = string_insert("[", rstr, 0);
+	rstr = string_insert("]", rstr, string_length(rstr) + 1);
+}
+
+return rstr;

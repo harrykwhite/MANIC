@@ -8,9 +8,12 @@ pickup = false;
 pickup_do = false;
 pickup_range = 10;
 depth_offset = 0;
+depth_fall = 0;
 sprite = -1;
 parent = -1;
 checked = false;
 note_text = "No text";
 
 image_alpha = 0;
+image_speed = 0;
+image_index = random(image_number - 1);

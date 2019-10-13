@@ -149,7 +149,7 @@ if (health_current <= 0){
 			doexplode = true;
 			
 			global.level_turret_killed[# 0, listnum] = true;
-			if (global.game_is_playthrough) || (room == rm_prologue_00){
+			if (global.game_is_playthrough){
 				scr_save_game();
 			}
 		}else if (object_index == obj_thescorched){

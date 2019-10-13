@@ -28,7 +28,7 @@ if (instance_exists(obj_player)){
 		scr_effect_screenshake(1);
 		scr_upgrade_add(index);	
 		
-		if (global.game_is_playthrough) || (room == rm_prologue_00){
+		if (global.game_is_playthrough){
 			scr_save_game();
 		}
 		

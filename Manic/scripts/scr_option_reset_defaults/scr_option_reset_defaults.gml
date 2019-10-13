@@ -22,7 +22,7 @@ switch(type){
 		global.game_option[| Options.MasterVolume] = 100;
 		global.game_option[| Options.SoundVolume] = 50;
 		global.game_option[| Options.MusicVolume] = 70;
-		global.game_option[| Options.AmbienceVolume] = 40;
+		global.game_option[| Options.AmbienceVolume] = 70;
 		break;
 }
 

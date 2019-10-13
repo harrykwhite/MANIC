@@ -43,6 +43,7 @@ if (global.cutscene_current == 58){
 		obj_player.move_y_to = -1;
 		obj_player.move_ext_spd = 0;
 		in_cutscene = false;
+		cutscene_prop = false;
 	}
 	
 	if (!cutscene_prop){
@@ -101,19 +102,31 @@ scr_pawn_status_handler();
 
 if (global.cutscene_current == -1) || (cutscene_prop){
 	if (room == rm_level_6_pre_00){
-		scr_antagonist_behaviour_1();
-	
+		var switched_to_greatsword = false;
+		
 		if (health_current <= 10){
 			health_current = 10;
-		
-			if (!near_dead){
-				audio_sound_gain(global.boss_music[global.boss_current], 0, 5000);
-				audio_play_sound(global.boss_stinger[global.boss_current], 3, false);
-				global.boss_current = -1;
 			
-				near_dead = true;
-				global.game_boss_firstantag_killed = true;
-				global.cutscene_current = 58;
+			if (!greatsword_attack){
+				greatsword_attack = true;
+				switched_to_greatsword = true;
+			}
+		}
+		
+		scr_antagonist_behaviour_1();
+		
+		if (switched_to_greatsword){
+			global.cutscene_current = 40;
+			cutscene_prop = false;
+			in_cutscene = false;
+			
+			with(obj_controller_gameplay){
+				cutscene_look_x = other.x;
+				cutscene_look_y = other.y;
+				cutscene_look_time = 70;
+				cutscene_look_boss = false;
+				cutscene_look_prop = true;
+				cutscene_look_object = other;
 			}
 		}
 	}else{

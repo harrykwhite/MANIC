@@ -1,5 +1,13 @@
 interact_active = false;
 
+if (special == "bunkerenginedestroy"){
+	if (global.level_current == Level.UndergroundBunker){
+		if (global.game_objective_current == Objectives.DestroyProductionEngines){
+			instance_destroy();
+		}
+	}
+}
+
 if (index == 52){
 	interact = true;
 	interact_special = "moveto";
@@ -48,6 +56,10 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1) && (!global.
 			}
 			
 			global.cutscene_current = index;
+			
+			if (special == "bunkerenginedestroy"){
+				obj_controller_gameplay.cutscene_dialogue_bunker_engine_destroy = true;
+			}
 			
 			if (special == "sicklelook"){
 				obj_controller_ui.tutourial_stage_pickupmelee_cseen = true;

@@ -1,3 +1,9 @@
+if (object_index == obj_p_depth_door) || (object_get_parent(object_index) == obj_p_depth_door){
+	if (!breakable){
+		return;
+	}
+}
+
 if (hit_time <= 0){
 	flash = 0.8;
 	

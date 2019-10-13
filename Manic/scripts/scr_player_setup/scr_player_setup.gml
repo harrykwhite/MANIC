@@ -14,11 +14,6 @@ yaxis = 0;
 len = 0;
 dir = 0;
 
-idlewalk = false;
-idlewalk_time = 0;
-idlewalk_walktime = random_range(5, 10);
-idlewalk_dir = 0;
-
 walk_smoke_time_max = 36;
 walk_smoke_time = walk_smoke_time_max;
 
@@ -129,3 +124,4 @@ in_minecart = false;
 is_visible = true;
 heartbeat = noone;
 has_antagonist_mask = false;
+near_dead = false;

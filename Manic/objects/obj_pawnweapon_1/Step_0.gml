@@ -13,8 +13,8 @@ if (instance_exists(owner)) && (global.cutscene_current == -1){
         scr_effect_screenshake(2);
         scr_sound_play_distance(snd_weapon_swing_0, false, 450);
         
-	    var xpos = x + lengthdir_x(27 * owner.scale, dir);
-	    var ypos = y + lengthdir_y(27 * owner.scale, dir);
+	    var xpos = x + lengthdir_x(35 * owner.scale, dir);
+	    var ypos = y + lengthdir_y(35 * owner.scale, dir);
 		var isEnemy = true;
 		
 	    proj = instance_create(xpos, ypos, obj_proj_2);

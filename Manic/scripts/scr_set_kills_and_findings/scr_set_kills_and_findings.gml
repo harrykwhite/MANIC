@@ -21,6 +21,7 @@ global.game_firstmaggot_killed = false;
 global.game_companion_farmer_found = false;
 global.game_companion_farmer_level2post_talked_0 = false;
 global.game_companion_farmer_level2post_talked_1 = false;
+global.game_companion_farmer_level4pre_talked_0 = false;
 global.game_companion_grenadier_found = false;
 global.game_companion_prisoner_found = false;
 global.game_companion_dog_found = false;
@@ -48,6 +49,7 @@ global.game_npc_townperson3_talked = false;
 global.game_npc_townperson4_talked = false;
 global.game_npc_townperson5_talked = false;
 global.game_npc_townperson6_talked = false;
+global.game_npc_player_wife_talked = false;
 
 if (ds_exists(global.level_collectable_found, ds_type_grid)){
 	ds_grid_clear(global.level_collectable_found, false);

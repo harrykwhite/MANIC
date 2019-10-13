@@ -20,7 +20,6 @@ mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 shoot_time = 0;
 shoot_delay = 0;
 
-near_dead = false;
 walk_off = false;
 
 run_x = x;
@@ -37,7 +36,7 @@ dash_direction = 0;
 
 weapon = -1;
 weapon_has = true;
-weapon_index = PawnWeapon.Machete;
+weapon_index = PawnWeapon.Sledgehammer;
 
 weapon_change_time = 0;
 weapon_change_time_max = 60 * 2;
@@ -45,6 +44,9 @@ weapon_change_origin = weapon_index;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
+
+greatsword_attack = false;
+greatsword_attack_killed = false;
 
 burn = false;
 burn_x = x;
@@ -90,7 +92,7 @@ in_cutscene = false;
 active = false;
 
 if (room == rm_level_6_pre_00){
-	health_max = 110;
+	health_max = 20//95;
 }else{
 	health_max = 85;
 }

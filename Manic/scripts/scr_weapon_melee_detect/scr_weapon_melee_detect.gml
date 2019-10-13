@@ -157,9 +157,27 @@ switch(ctype){
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
 				var inst = playerline[| i].owner;
+				var final_damage = damage;
 				
 				if (inst.object_index == obj_companion_0){
 					continue;
+				}
+				
+				if (inst.object_index == obj_player) && (object_index == global.pawnweapon_object[PawnWeapon.Greatsword]){
+					if (scr_player_has_upgrade(PlayerUpgrade.Chestplate)){
+						final_damage = round(final_damage * 0.25);
+					}
+					
+					obj_player.near_dead = true;
+					
+					if (room == rm_level_6_pre_00){
+						var antag = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
+						
+						if (antag != noone){
+							antag.greatsword_attack_killed = true;
+							global.cutscene_current = 58;
+						}
+					}
 				}
 				
 				if (inst.i_time < 1){
@@ -178,9 +196,9 @@ switch(ctype){
 					
 					with(inst){
 						if (inst.object_index == obj_player){
-							scr_player_damage(damage, strength, dir, 6);
+							scr_player_damage(final_damage, strength, dir, 6);
 						}else{
-							scr_pawn_damage(damage, strength, dir, 6);
+							scr_pawn_damage(final_damage, strength, dir, 6);
 						}
 						
 						repeat(5){
@@ -213,6 +231,12 @@ switch(ctype){
 				len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst) + 10;
 				xEnd = xx + lengthdir_x(len, dir);
 				yEnd = yy + lengthdir_y(len, dir);
+				
+				if (inst.object_index == obj_p_depth_door) || (object_get_parent(inst.object_index) == obj_p_depth_door){
+					if (!inst.breakable){
+						return;
+					}
+				}
 				
 				if (inst.hit_time <= 0){
 					inst.flash = 0.8;

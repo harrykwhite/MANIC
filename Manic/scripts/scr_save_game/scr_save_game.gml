@@ -41,6 +41,7 @@ ini_write_real("Save", "FirstMaggotKilled", global.game_firstmaggot_killed);
 ini_write_real("Save", "CompanionFarmerFound", global.game_companion_farmer_found);
 ini_write_real("Save", "CompanionFarmerLevel2PostTalked0", global.game_companion_farmer_level2post_talked_0);
 ini_write_real("Save", "CompanionFarmerLevel2PostTalked1", global.game_companion_farmer_level2post_talked_1);
+ini_write_real("Save", "CompanionFarmerLevel4PreTalked0", global.game_companion_farmer_level4pre_talked_0);
 ini_write_real("Save", "CompanionGrenadierFound", global.game_companion_grenadier_found);
 ini_write_real("Save", "CompanionPrisonerFound", global.game_companion_prisoner_found);
 ini_write_real("Save", "CompanionDogFound", global.game_companion_dog_found);
@@ -68,6 +69,7 @@ ini_write_real("Save", "TownPerson3Talked", global.game_npc_townperson3_talked);
 ini_write_real("Save", "TownPerson4Talked", global.game_npc_townperson4_talked);
 ini_write_real("Save", "TownPerson5Talked", global.game_npc_townperson5_talked);
 ini_write_real("Save", "TownPerson6Talked", global.game_npc_townperson6_talked);
+ini_write_real("Save", "PlayerWifeTalked", global.game_npc_player_wife_talked);
 
 var weaponcount = global.weapon_potential_slotmax;
 for(var i = 0; i < weaponcount; i ++){

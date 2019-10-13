@@ -1,5 +1,5 @@
 // Teleport to player
-if (cutscene_break_time <= 0) && (!global.game_pause){
+if (cutscene_break_time <= 0) && (!global.game_pause) && (global.cutscene_current == -1){
 	if (!onscreen(x, y + 4, -10)){
 		var counter = 0, doteleport = true;
 		
@@ -14,7 +14,7 @@ if (cutscene_break_time <= 0) && (!global.game_pause){
 				break;
 			}
 		}until (!place_meeting(xtp, ytp, obj_p_solid) && !collision_line(xtp, ytp, obj_player.x, obj_player.y, obj_p_solid, false, true));
-	
+		
 		if (doteleport){
 			x = xtp;
 			y = ytp;

@@ -10,7 +10,7 @@ ds_grid_sort(grid, 1, true);
 repeat(height){
 	var instance = grid[# 0, yy];
 	
-	if (instance != noone && instance != noone){
+	if (instance != noone && instance != undefined){
 		with(instance){
 			event_user(0);
 		}

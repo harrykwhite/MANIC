@@ -47,5 +47,11 @@ if (explode){
 	scr_effect_vignette_flash(c_white, 0.3, 0.025);
 	scr_effect_zoom(-0.075);
 	scr_sound_play_distance(snd_object_box_break_0, false, 300);
+	
+	with(obj_controller_gameplay){
+		scr_map_clear();
+		scr_map_fill();
+	}
+	
 	instance_destroy();
 }

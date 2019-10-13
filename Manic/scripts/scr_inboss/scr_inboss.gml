@@ -57,7 +57,7 @@ if (instance_exists(obj_giantturret)){
 }
 
 if (instance_exists(obj_antagonist)){
-	if (obj_antagonist.active) && (!obj_antagonist.near_dead) && (!obj_antagonist.walk_off){
+	if (obj_antagonist.active) && (!obj_antagonist.greatsword_attack_killed) && (!obj_antagonist.walk_off){
 		global.boss_current = Boss.Antagonist;
 		return true;
 	}

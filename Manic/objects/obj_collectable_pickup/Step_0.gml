@@ -1,19 +1,8 @@
-depth_offset = 0;
-if (parent != -1){
-	if (!instance_exists(parent)){
-		angle += random_range(-15, 15);
-		x = xstart + random_range(-3, 3);
-		y = ystart + random_range(-2, 2);
-		
-		parent = -1;
-	}else{
-		depth_offset = -28;
-	}
-}
-
 if (global.game_pause){
 	return;
 }
+
+scr_object_table_place(28);
 
 // Motion
 if (spd > 0.01){
@@ -41,7 +30,7 @@ if (instance_exists(obj_player)){
         pickup = false;
     }
     
-    if (pickup){
+    if (pickup) || (pickup_do){
         if (scr_input_is_pressed(InputBinding.Interact) && global.cutscene_current == -1) || (pickup_do){
 			instance_destroy();
 			
@@ -53,7 +42,7 @@ if (instance_exists(obj_player)){
 				global.level_collectable_current[global.level_current] ++;
 			
 				global.level_collectable_found[# 0, listnum] = true;
-				if (global.game_is_playthrough) || (room == rm_prologue_00){
+				if (global.game_is_playthrough){
 					scr_save_game();
 				}
 			}
@@ -64,10 +53,6 @@ if (instance_exists(obj_player)){
 				obj_controller_ui.pausedialogue_type_text = note_text;
 				obj_controller_ui.pausedialogue_option_selected = 0;
 				scr_toggle_pause(true);
-			}
-			
-			if (index == Collectables.PrisonKey){
-				global.player_has_key_prison = true;
 			}
 			
 			if (global.game_objective_current == Objectives.CollectAllArtifacts) || (global.game_objective_current == Objectives.CollectAllChestplatePieces) || (index == Collectables.DeerMeat){

@@ -34,15 +34,15 @@ switch(music){
 		break;
 }
 
-spawn_interval[CombatState.Idle] = 10 / srate;
-spawn_state_time[CombatState.Idle] = 30;
+spawn_interval[CombatState.Idle] = 12 / srate;
+spawn_state_time[CombatState.Idle] = 45;
 spawn_max[CombatState.Idle] = round(clamp(srate, 1, 2));
 spawn_music_stinger[CombatState.Idle] = m_combat_stinger_0;
 spawn_music_main[CombatState.Idle] = combat_0;
 spawn_music_pause_gain[CombatState.Idle] = 0;
 spawn_music_pause_position[CombatState.Idle] = 0;
 
-spawn_interval[CombatState.Buildup] = 6 / srate;
+spawn_interval[CombatState.Buildup] = 5 / srate;
 spawn_state_time[CombatState.Buildup] = 20;
 spawn_max[CombatState.Buildup] = round(clamp(3 * srate, 3, 5));
 spawn_music_stinger[CombatState.Buildup] = m_combat_stinger_1;

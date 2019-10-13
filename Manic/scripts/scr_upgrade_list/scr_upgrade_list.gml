@@ -8,7 +8,7 @@ enum PlayerUpgrade{
 	KneePads, // Collectable
 	IronGlove, // Collectable
 	HeadLight, // Collectable
-	ShoulderBand,
+	ShoulderBand, // Collectable
 }
 
 global.upgrade_name[0] = "Night Vision Goggles";
@@ -28,7 +28,7 @@ global.upgrade_behind[1] = true;
 global.upgrade_equipped[1] = false;
 
 global.upgrade_name[2] = "Chestplate";
-global.upgrade_description[2] = "Maximum health is doubled and provides\nstronger protection from greatswords";
+global.upgrade_description[2] = "Doubles maximum health and\nprovides protection against greatswords";
 global.upgrade_sprite[2] = spr_player_upgrade_chestplate_0;
 global.upgrade_sprite_corpse[2] = spr_player_upgrade_chestplate_0_corpse;
 global.upgrade_sprite_pickup[2] = spr_player_upgrade_chestplate_0_pickup;
@@ -84,7 +84,7 @@ global.upgrade_behind[8] = false;
 global.upgrade_equipped[8] = false;
 
 global.upgrade_name[9] = "Shoulder Band";
-global.upgrade_description[9] = "Grenade throwing speed is doubled";
+global.upgrade_description[9] = "Doubles grenade throwing speed";
 global.upgrade_sprite[9] = spr_player_upgrade_shoulderband_0;
 global.upgrade_sprite_corpse[9] = spr_player_upgrade_shoulderband_0_corpse;
 global.upgrade_sprite_pickup[9]= spr_player_upgrade_shoulderband_0_pickup;

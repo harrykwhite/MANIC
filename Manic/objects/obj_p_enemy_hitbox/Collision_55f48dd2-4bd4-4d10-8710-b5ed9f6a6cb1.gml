@@ -5,7 +5,7 @@ with(owner){
 		return;
 	}
 
-	if (inst.time > 2) && (inst.damage_enemy){
+	if (inst.spd <= 0.05) && (inst.damage_enemy){
 		inst.explode = true;
 		inst.spd = 0;
 	

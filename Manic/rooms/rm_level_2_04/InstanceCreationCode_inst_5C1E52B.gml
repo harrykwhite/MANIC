@@ -3,3 +3,5 @@ moveto_dir = 3;
 moveto_room = rm_level_2_post_00;
 moveto_level = Level.WesternFarmland;
 moveto_type = 0;
+
+scr_level_create_end_pointer(moveto_dir * 90);

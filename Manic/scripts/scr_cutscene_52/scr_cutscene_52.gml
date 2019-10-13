@@ -54,7 +54,7 @@ if (instance_exists(obj_player)){
 				area_next_alpha_speed = 0.02;
 			}
 			
-			if (global.game_is_playthrough) || (room == rm_prologue_00){
+			if (global.game_is_playthrough){
 				obj_controller_ui.area_next_room = cutscene_moveto_room;
 			}else{
 				if (cutscene_moveto_level != global.level_current){

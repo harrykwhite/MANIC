@@ -188,14 +188,4 @@ if (boss_music_active) && (instance_exists(obj_player)){
 	}
 }
 
-if (global.game_pause){
-	if (!spawn_pause_update){
-		audio_pause_all();
-		spawn_pause_update = true;
-	}
-}else{
-	if (spawn_pause_update){
-		audio_resume_all();
-		spawn_pause_update = false;
-	}
-}
+scr_level_audio_pause_and_resume();

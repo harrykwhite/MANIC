@@ -54,7 +54,7 @@ global.level_complete[Level.UndergroundBunker] = false;
 global.level_checkpoint_found[Level.UndergroundBunker, 0] = false;
 
 global.level_name[Level.WinterTown] = "Winter Town";
-global.level_room[Level.WinterTown] = rm_level_4_post_00;
+global.level_room[Level.WinterTown] = rm_level_4_00;
 global.level_preroom[Level.WinterTown] = rm_level_4_pre_00;
 global.level_collectable_current[Level.WinterTown] = 0;
 global.level_collectable_number[Level.WinterTown] = 7;
@@ -75,7 +75,7 @@ global.level_complete[Level.HumanPrison] = false;
 global.level_checkpoint_found[Level.HumanPrison, 0] = false;
 
 global.level_name[Level.TrainStation] = "Train Station";
-global.level_room[Level.TrainStation] = rm_level_6_00;
+global.level_room[Level.TrainStation] = rm_level_6_pre_00;
 global.level_preroom[Level.TrainStation] = rm_level_6_pre_00;
 global.level_collectable_current[Level.TrainStation] = 0;
 global.level_collectable_number[Level.TrainStation] = 0;

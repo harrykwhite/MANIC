@@ -11,10 +11,10 @@ switch(room){
 	case rm_level_4_pre_00:
 		if (global.game_level_opening_type == 0){
 			spawn_x = 536;
-			spawn_y = 352;
+			spawn_y = 322;
 		}else if (global.game_level_opening_type == 1){
 			spawn_x = 844;
-			spawn_y = 1504;
+			spawn_y = 2148;
 		}
 		break;
 	
@@ -107,6 +107,11 @@ dogkeeper_failed = false;
 terminal_deactivate_count = 0;
 
 crazy_can_spawn = global.game_firstcrazy_killed;
+
+prelevel_dialogue_time = 60 * 3.5;
+prelevel_dialogue_index = 0;
+prelevel_dialogue_inst = noone;
+prelevel_dialogue_exception = false;
 
 if (room == rm_level_4_00) && (global.game_level_opening_type == 1){
 	global.cutscene_current = 47;

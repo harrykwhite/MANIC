@@ -33,7 +33,7 @@ dialogue_voice = noone;
 dialogue_voice_opened = false;
 dialogue_voice_closed = true;
 dialogue_char_count = 0;
-dialogue_char_speed = 0.75;
+dialogue_char_speed = 1;
 dialogue_length = 0;
 dialogue_time = 0;
 dialogue_pause = false;
@@ -66,16 +66,16 @@ tutourial_stage_pickupmelee_equipped = false;
 tutourial_stage_ammocollected_done = false;
 
 if (global.game_input_type == InputType.Keyboard){
-	tutourial_text[TutourialStage.Movement] = "Use the [" + scr_input_get_name(InputBinding.Up) + scr_input_get_name(InputBinding.Left) + scr_input_get_name(InputBinding.Down) + scr_input_get_name(InputBinding.Right) + "] keys to move";
-	tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with [" + scr_input_get_name(InputBinding.Interact) + "]";
-	tutourial_text[TutourialStage.Shoot] = "Shoot with [" + scr_input_get_name(InputBinding.Attack) + "]";
-	tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing [" + scr_input_get_name(InputBinding.Throw) + "]";
-	tutourial_text[TutourialStage.Switch] = "Switch between weapons by using the [" + scr_input_get_name(InputBinding.SwitchWeaponForward) + "] or the number keys";
-	tutourial_text[TutourialStage.Dash] = "Dash by pressing [" + scr_input_get_name(InputBinding.Dash) + "]";
+	tutourial_text[TutourialStage.Movement] = "Use the [" + scr_input_get_name(InputBinding.Up, false) + scr_input_get_name(InputBinding.Left, false) + scr_input_get_name(InputBinding.Down, false) + scr_input_get_name(InputBinding.Right, false) + "] keys to move";
+	tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with " + scr_input_get_name(InputBinding.Interact);
+	tutourial_text[TutourialStage.Shoot] = "Shoot by pressing " + scr_input_get_name(InputBinding.Attack);
+	tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing " + scr_input_get_name(InputBinding.Throw);
+	tutourial_text[TutourialStage.Switch] = "Switch between weapons by using the " + scr_input_get_name(InputBinding.SwitchWeaponForward) + " or the number keys";
+	tutourial_text[TutourialStage.Dash] = "Dash by pressing " + scr_input_get_name(InputBinding.Dash);
 }else{
 	tutourial_text[TutourialStage.Movement] = "Move with " + scr_input_get_name(InputBinding.Up);
 	tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with " + scr_input_get_name(InputBinding.Interact);
-	tutourial_text[TutourialStage.Shoot] = "Shoot with " + scr_input_get_name(InputBinding.Attack);
+	tutourial_text[TutourialStage.Shoot] = "Shoot by pressing " + scr_input_get_name(InputBinding.Attack);
 	tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing " + scr_input_get_name(InputBinding.Throw);
 	tutourial_text[TutourialStage.Switch] = "Switch between weapons by pressing " + scr_input_get_name(InputBinding.SwitchWeaponForward);
 	tutourial_text[TutourialStage.Dash] = "Dash by pressing " + scr_input_get_name(InputBinding.Dash);
@@ -195,7 +195,8 @@ if (!global.game_boss_firstantag_killed){
 		scr_companion_register(obj_companion_0);
 	}
 	
-	if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation) && (room != rm_level_2_pre_00) && (room != rm_level_2_00){
+	if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation)
+	&& (room != rm_level_2_pre_00) && (room != rm_level_2_00) && (room != rm_level_2_01) && (room != rm_level_2_02){
 		scr_companion_register(obj_companion_0);
 		global.game_companion_farmer_found = true;
 	}
@@ -286,6 +287,13 @@ pausedialogue_type_option_cutscene[0] = -1;
 pausedialogue_type_option_traingoto[0] = -1;
 pausedialogue_type_option_trainroom[0] = -1;
 pausedialogue_type_option_trainstart_type[0] = -1;
+
+minimap_x = 30;
+minimap_y = 30;
+minimap_width = 220;
+minimap_height = 220;
+minimap_arrow_sine = 0;
+minimap_arrow_sine_speed = 5;
 
 sprite_index = noone;
 depth = -4;

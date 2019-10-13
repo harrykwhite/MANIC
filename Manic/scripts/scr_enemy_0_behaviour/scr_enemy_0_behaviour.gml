@@ -140,6 +140,8 @@ if (instance_exists(target)){
 			var inst = instance_nearest(x, y, obj_p_depth_throwobject);
 			var running = false;
 			
+			mindist = 120;
+			
 			if (instance_exists(inst)) && (inst != noone){
 				var dir = point_direction(inst.x, inst.y, x, y);
 				
@@ -198,7 +200,7 @@ if (instance_exists(target)){
 							if (global.player_health_current < 3){
 								time *= 2;
 							}
-				
+							
 							if (type == Enemy0_Type.Grenadier){
 								if (weapon.index != PawnWeapon.Grenade){
 									instance_destroy(weapon);
@@ -215,7 +217,7 @@ if (instance_exists(target)){
 									}
 								}
 							}
-						
+							
 							weapon.dir = point_direction(x, y, target.x, target.y);
 							weapon.attack = true;
 							attack_time = time * attack_time_offset;
@@ -249,6 +251,7 @@ if (instance_exists(target)){
 		if (wait_stop_movement){
 			if (wait > 0){
 				speed_multiplier = 0;
+				wait --;
 			}
 		}
 	}
@@ -261,25 +264,6 @@ if (instance_exists(target)){
 	
 	move_speed = 0;
 	face_target = false;
-}
-
-// Barrel
-var nbarrel = instance_nearest(x, y, obj_barrel_2);
-
-if (instance_exists(nbarrel)) && (barrel_pause_break <= 0){
-	if (distance_to_object(nbarrel) < 140){
-		if (barrel_pause_time > 0){
-			barrel_pause_time --;
-			speed_multiplier = max(speed_multiplier - 0.5, 0);
-		}else{
-			barrel_pause_time = random(40);
-			barrel_pause_break = random_range(60, 120);
-		}
-	}
-}else{
-	if (barrel_pause_break > 0){
-		barrel_pause_break--;
-	}
 }
 
 // Cutscene

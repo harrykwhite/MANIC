@@ -63,7 +63,7 @@ headless = false;
 
 scr_pawn_status_handler();
 
-if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global.cutscene_current == 52) || depart || depart_standaway){
+if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58) || (global.cutscene_current == 1) || depart || depart_standaway || bunker_engine_destroy){
 	if (cutscene_break_time > 0){
 		cutscene_break_time --;
 	}
@@ -72,8 +72,10 @@ if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global
 }else{
 	image_speed = 0.05;
 	sprite_index = stillsprite;
-	
-	cutscene_break_time = 20;
+}
+
+if (global.cutscene_current == -1){
+	cutscene_break_time = 30;
 }
 
 if (flash_time > 0){

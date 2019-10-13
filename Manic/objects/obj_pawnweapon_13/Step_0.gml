@@ -13,8 +13,8 @@ if (instance_exists(owner)){
         scr_effect_screenshake(1);
         scr_sound_play_distance(snd_weapon_swing_0, false, 450);
         
-	    var xpos = x + lengthdir_x(37 * owner.scale, dir);
-		var ypos = y + lengthdir_y(37 * owner.scale, dir);
+	    var xpos = x + lengthdir_x(42 * owner.scale, dir);
+		var ypos = y + lengthdir_y(42 * owner.scale, dir);
 		var isEnemy = true;
 		
 	    proj = instance_create(xpos, ypos, obj_proj_2);

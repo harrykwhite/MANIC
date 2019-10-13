@@ -1,33 +1,6 @@
 var my_x = (x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 var my_y = (y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 
-// Companion counter
-var calpha_to = 0.3;
-
-if (instance_exists(obj_player)){
-	if (distance_to_object(obj_player) < 70){
-		calpha_to = 0.8;
-	}
-}
-
-if (cutscene_prop || in_cutscene){
-	calpha_to = 0;
-}
-
-if (compcounter_alpha > calpha_to){
-	compcounter_alpha -= min(0.02, compcounter_alpha - calpha_to);
-}else if (compcounter_alpha < calpha_to){
-	compcounter_alpha += min(0.02, calpha_to - compcounter_alpha);
-}
-
-draw_set_alpha(compcounter_alpha);
-
-gpu_set_fog(true, outlinecompanion, 0, 0);
-draw_sprite(spr_ui_comp_sign, 0, my_x, my_y - 30);
-gpu_set_fog(false, c_black, 0, 0);
-
-draw_set_alpha(1);
-
 // Health
 var hp = health_current;
 var scale = 0.9;

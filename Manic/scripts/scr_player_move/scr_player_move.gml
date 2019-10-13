@@ -86,41 +86,6 @@ if (global.weapon_slot_standalone == -1){
 		dir += offset;
 	}
 	
-	// Idle Walk
-	if (global.game_save_level >= Level.TrainStation){
-		if (xaxis == 0 && yaxis == 0 && global.cutscene_current == -1){
-			if (random(100) < 0.5){
-				idlewalk = true;
-				idlewalk_time = 0;
-			}
-		}
-	}
-	
-	if (idlewalk){
-		if (xaxis != 0 || yaxis != 0){
-			idlewalk = false;
-			idlewalk_walktime = random_range(5, 10);
-		}
-		
-		if (idlewalk_time > 0){
-			idlewalk_time --;
-		}else{
-			idlewalk_dir = random(360);
-			idlewalk_time = random_range(60 * 3, 60 * 4);
-			idlewalk_walktime = random_range(5, 10);
-		}
-		
-		if (idlewalk_walktime > 0){
-			xaxis = dcos(idlewalk_dir);
-			yaxis = dsin(idlewalk_dir);
-			dir = idlewalk_dir;
-			
-			idlewalk_walktime --;
-		}else{
-			idlewalk_walktime = 0;
-		}
-	}
-	
 	// Surrounding enemies
 	var slist = ds_list_create();
 	var surrounding_enemy_count = collision_circle_list(x, y, 120, obj_p_enemy, false, true, slist, false);

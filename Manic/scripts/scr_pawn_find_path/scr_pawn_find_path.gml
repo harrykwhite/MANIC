@@ -13,10 +13,10 @@ var width = room_width div cw;
 var height = room_height div ch;
 
 var thisx = (x div cw);
-var thisy = ((y + 2) div ch);
+var thisy = ((y + 6) div ch);
 
 var thisxaxis = sign((x / cw) - thisx);
-var thisyaxis = sign(((y + 2) / ch) - thisy);
+var thisyaxis = sign(((y + 6) / ch) - thisy);
 
 while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, thisx, thisy) == -1){
 	thisx += thisxaxis;
@@ -87,7 +87,7 @@ if (mp_grid_path(obj_controller_gameplay.pathgrid, mypath, thisx, thisy, gx, gy,
 					move_to_door_dir = dir_p;
 				}
 				
-				if (real_dist_p < 45){
+				if (real_dist_p < 35){
 					if (object_index == obj_enemy_0){
 						if (instance_exists(weapon)){
 							weapon.attack = true;

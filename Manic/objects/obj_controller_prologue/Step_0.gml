@@ -45,9 +45,6 @@ if (!global.game_pause){
 		audio_sound_gain(m_ambience_birds_0, 0, 0);
 		audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 15000);
 	}
-}else{
-	spawn_pause_update = false;
-	audio_pause_all();
 }
 
 // Spawning
@@ -158,7 +155,7 @@ if (!global.game_objective_complete){
 
 if (!global.game_pause) && (instance_exists(obj_player)){
 	deer_can_spawn = ((obj_controller_ui.tutourial_stage > 1) || (!obj_controller_ui.tutourial))
-					&& (instance_number(obj_enemy_5) < 3)
+					&& (scr_enemy_count(false) < 2)
 					&& (point_distance(obj_player.x, obj_player.y, 530, 550) > 400)
 					&& (!global.game_objective_complete);
 
@@ -197,3 +194,5 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 
 global.ambientShadowIntensity = lighting;
 scr_level_combatstate_control();
+
+scr_level_audio_pause_and_resume();

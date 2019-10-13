@@ -4,6 +4,12 @@ var speed_final;
 var dist_to = 0;
 
 if (instance_exists(obj_player)){
+	if (global.cutscene_current != -1){
+		if (obj_player.move_x_to != -1) || (obj_player.move_y_to != -1){
+			speed_multiplier *= obj_player.move_ext_spd / obj_player.spd_max;
+		}
+	}
+	
 	if (!in_cutscene){
 		if (!instance_exists(target) || (target == noone)){
 			if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150){
@@ -17,7 +23,7 @@ if (instance_exists(obj_player)){
 						target = instance_nearest(x, y, global.enemy[i]);
 					
 						if (target.object_index == obj_antagonist){
-							if (target.walk_off) || (target.near_dead){
+							if (target.walk_off){
 								target = noone;
 								continue;
 							}
@@ -47,18 +53,18 @@ if (instance_exists(obj_player)){
 			if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
-				move_speed = 1.6;
+				move_speed = 2.1;
 				
 				if (dist_to_player > 100 + (60 * order)){
-					move_speed = 1.9;
+					move_speed = 2.6;
 				}
 				
 				if (dist_to_player > 140 + (60 * order)){
-					move_speed = 2.2;
+					move_speed = 3.1;
 				}
 				
 				if (dist_to_player > 180 + (60 * order)){
-					move_speed = 2.5;
+					move_speed = 3.6;
 				}
 				
 				face_player = true;
@@ -80,7 +86,7 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
 				
-				move_speed = 1.65;
+				move_speed = 2.1;
 				bite_to_time ++;
 				bite_retreat_time = 0;
 				
@@ -95,7 +101,7 @@ if (instance_exists(obj_player)){
 				move_x_to = x + lengthdir_x(30, bite_retreat_direction);
 				move_y_to = y + lengthdir_y(30, bite_retreat_direction);
 				
-				move_speed = 1.55;
+				move_speed = 2.3;
 				bite_retreat_time ++;
 				bite_to_time = 0;
 				
@@ -112,7 +118,7 @@ if (instance_exists(obj_player)){
 						move_away_time --;
 						move_speed = 0;
 					}else{
-						move_speed = 1.4;
+						move_speed = 1.9;
 					}
 				}else{
 					move_away_time = 20;
@@ -131,7 +137,7 @@ if (instance_exists(obj_player)){
 		}
 	}else{
 		if (distance_to_object(obj_player) > 37 + (60 * order)){
-			move_speed = 1.4;
+			move_speed = 1.9;
 		}else{
 			move_speed = 0;
 		}
@@ -154,7 +160,7 @@ if (instance_exists(obj_player)){
 			if (distance_to_object(obj_player) > 67 + (60 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
-				move_speed = 1.5;
+				move_speed = 1.9;
 			}
 		}
 	}

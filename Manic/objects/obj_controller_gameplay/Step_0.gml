@@ -4,6 +4,14 @@ var slotcount = global.weapon_slotmax;
 scr_position_view();
 scr_inboss();
 
+// Map found refresh
+if (map_found_refresh_time > 0){
+	map_found_refresh_time --;
+}else{
+	scr_map_found_fill();
+	map_found_refresh_time = map_found_refresh_time_max;
+}
+
 // Level complete
 if (!global.level_complete[levelcur]){
 	global.level_complete[levelcur] = global.game_objective_complete;

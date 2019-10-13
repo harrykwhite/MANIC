@@ -168,7 +168,7 @@ if (global.cutscene_current == -1){
 }
 
 // Death
-if (global.player_health_current <= 0){
+if (global.player_health_current <= 0) && (!near_dead){
     scr_effect_blackbar();
     scr_effect_flash_script(0.0045, 1, c_black, scr_trigger_0);
 	audio_play_sound(m_combat_stinger_3, 3, false);

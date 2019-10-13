@@ -25,11 +25,11 @@ if (global.game_input_type == InputType.Gamepad){
 				gamepad_check_disconnected_time ++;
 			}else{
 				global.game_input_type = InputType.Keyboard;
-		
+				
 				if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
 					obj_titlescreen_main.option_setting_controls_value[0] = InputType.Keyboard;
 				}
-			
+				
 				scr_options_refresh();
 				gamepad_check_disconnected_time = 0;
 			}
