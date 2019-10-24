@@ -8,7 +8,7 @@ if (attack_time > 0){
     attack_time--;
 }
 
-if (instance_exists(owner)){
+if (instance_exists(owner)) && (!global.game_pause){
     if (attack){
 		if (throw_offset < 40){
 			throw_offset ++;
@@ -52,4 +52,3 @@ if (instance_exists(owner)){
 	    }
 	}
 }
-

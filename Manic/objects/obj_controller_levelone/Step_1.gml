@@ -1,7 +1,13 @@
+// Companion spawning
+scr_room_spawn_companion();
+companions_spawned = true;
+
+// Save
 if (!global.game_save_started){
 	global.game_save_started = true;
 }
 
+// Objectives
 if (!global.game_objective_set){
 	global.game_objective_current = Objectives.EscortResidents;
 	

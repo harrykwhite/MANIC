@@ -93,10 +93,10 @@ if (instance_exists(obj_player)){
 							line[6] = "I understand. From here I can escort you over to the west where it is safe.";
 							linefrom[6] = obj_player;
 							
-							line[7] = "Hopefully there you'll be able to find a place to stay at.";
+							line[7] = "Hopefully there you'll be able to find a place to stay.";
 							linefrom[7] = obj_player;
 							
-							line[8] = "Okay, thanks...";
+							line[8] = "Okay, thank you...";
 							linefrom[8] = inst;
 							break;
 						
@@ -124,7 +124,7 @@ if (instance_exists(obj_player)){
 							line[6] = "The area seems to be deserted, though.";
 							linefrom[6] = inst;
 							
-							line[7] = "He may have escaped to the south or west. Those would most likely be the best options, as I doubt those areas have been taken over yet. If I were you, I'd look there first.";
+							line[7] = "He may have escaped to the south or west. Those would be the best options, as I doubt those areas have been taken over yet. If I were you, I'd look there first.";
 							linefrom[7] = obj_player;
 							
 							line[8] = "Hopefully they've found somewhere to stay in the meantime. Somewhere safe.";
@@ -180,7 +180,7 @@ if (instance_exists(obj_player)){
 							line[2] = "What can you tell me about the group?";
 							linefrom[2] = obj_player;
 							
-							line[3] = "The group... I saw them... their faces...";
+							line[3] = "The group? I saw them... their faces...";
 							linefrom[3] = inst;
 							
 							line[4] = "It's as if they just planted a mask onto a person's face...";
@@ -316,19 +316,23 @@ if (instance_exists(obj_player)){
 				return;
 			}
 			
+			global.game_companion_farmer_level2post_talked_0 = true;
 			global.game_companion_farmer_level2post_talked_1 = true;
 			
-			line[0] = "This looks to be one of their bases. I imagine that there'd be several around the country.";
-			linefrom[0] = obj_player;
+			line[0] = "Up here! From memory, this bunker was originally used as a place for soldiers to retreat to during the war.";
+			linefrom[0] = inst;
 			
-			line[1] = "Let's try and shut this base down, so that no more of these masked enemies can be produced, at least in this area.";
+			line[1] = "However it's most likely already been taken over by the group, possibly transforming it into a base.";
 			linefrom[1] = inst;
 			
-			line[2] = "If we're lucky, there may even be some people inside who have information reguarding the group's origins?";
-			linefrom[2] = inst;
+			line[2] = "Let's go and shut it down, so that no more of these masked enemies can be produced. At least in this area.";
+			linefrom[2] = obj_player;
 			
-			line[3] = "Yes, that would be extremely helpful. Let's go.";
+			line[3] = "If we're fortunate, there may even be some people inside who have information reguarding where the group came from.";
 			linefrom[3] = obj_player;
+			
+			line[4] = "Alright, let's go.";
+			linefrom[4] = obj_player;
 			break;
 		
 		case rm_level_3_01:
@@ -370,10 +374,10 @@ if (instance_exists(obj_player)){
 				line[0] = "Alright, this looks to be the end of the base.";
 				linefrom[0] = obj_player;
 				
-				line[1] = "Thanks for everything. You can leave down here.";
+				line[1] = "You can leave down here.";
 				linefrom[1] = obj_player;
 				
-				line[2] = "Yeah! We appreciate the help.";
+				line[2] = "Thank you. We appreciate the help!";
 				linefrom[2] = obj_companion_0;
 				
 				line[3] = "No problem.";
@@ -449,10 +453,10 @@ if (instance_exists(obj_player)){
 				line[4] = "I killed one of the other leaders. It seems you'll be next.";
 				linefrom[4] = obj_player;
 				
-				line[5] = "Oh, him? He was just a coward. We didn't need that uselses imbecile.";
+				line[5] = "Oh, him? He was just a tool. We didn't need that useless imbecile.";
 				linefrom[5] = inst;
 				
-				line[6] = "You have no idea what's coming for you. I appreciate the enthusiasm though.";
+				line[6] = "You have no idea what's coming for you. I appreciate the enthusiasm, though.";
 				linefrom[6] = inst;
 				
 				line[7] = "Let it proceed.";
@@ -470,7 +474,7 @@ if (instance_exists(obj_player)){
 				line[0] = "Hello? Are you okay?";
 				linefrom[0] = obj_player;
 				
-				line[1] = "I'm not...";
+				line[1] = "I-I'm not...";
 				linefrom[1] = inst;
 				
 				line[2] = "How long have you been here?";
@@ -479,13 +483,13 @@ if (instance_exists(obj_player)){
 				line[3] = "Several hours, maybe even a day... I can't tell anymore.";
 				linefrom[3] = inst;
 				
-				line[4] = "Is it alright if you explain to us what you saw?";
+				line[4] = "Could you explain to us what you saw?";
 				linefrom[4] = obj_player;
 				
 				line[5] = "Yes... uh... a large horde of them rushed down from the north, presumably from that bunker up there.";
 				linefrom[5] = inst;
 				
-				line[6] = "At the front of the horde I saw a tall man, much taller than the others, with a mask directing each of the followers to different areas.";
+				line[6] = "At the front of the horde I saw a tall man with a mask, much taller than the others, directing each of the followers to different areas.";
 				linefrom[6] = inst;
 				
 				line[7] = "In particular I remember seeing a much larger follower, wearing a longer mask and holding back a set of dogs.";
@@ -500,7 +504,7 @@ if (instance_exists(obj_player)){
 				line[10] = "You should be able to help yourself. Just make your way down to the south, I imagine it'd be safer there.";
 				linefrom[10] = obj_player;
 				
-				line[11] = "Okay...";
+				line[11] = "Okay.";
 				linefrom[11] = inst;
 			}
 			break;
@@ -572,7 +576,7 @@ if (instance_exists(obj_player)){
 							line[0] = "Hello?";
 							linefrom[0] = inst;
 							
-							line[1] = "Hi! What are you able to tell me about the town raid?";
+							line[1] = "Hi. What are you able to tell me about the town raid?";
 							linefrom[1] = obj_player;
 							
 							line[2] = "Well... around midnight I was awoken by the sound of gunshots from up north.";
@@ -581,7 +585,7 @@ if (instance_exists(obj_player)){
 							line[3] = "Going outside, I saw hordes of zombie-looking people raiding the upper towns, shooting many of the civilians.";
 							linefrom[3] = inst;
 							
-							line[4] = "In shock, I sprinted down south and hid behind one of the trees, watching as they raided the entire area.";
+							line[4] = "In shock I sprinted down south and hid behind one of the trees, watching as they raided the entire area.";
 							linefrom[4] = inst;
 							
 							line[5] = "Once they suspected it had all been emptied and had left, I ran back into this house to stay safe.";
@@ -698,7 +702,7 @@ if (instance_exists(obj_player)){
 				line[3] = "J-just to let you know, I really appreciate what you two are doing...";
 				linefrom[3] = inst;
 				
-				line[4] = "I guess I'll see you around...?";
+				line[4] = "I guess I'll see you around?";
 				linefrom[4] = inst;
 			}else{
 				global.cutscene_current = 52;
@@ -746,7 +750,7 @@ if (instance_exists(obj_player)){
 				line[0] = "It appears you underestimated me.";
 				linefrom[0] = inst;
 				
-				line[1] = "You can find fragments of an ultimate armour set scattered throughout the areas below our base.";
+				line[1] = "You can find fragments of an ultimate armour set scattered throughout the areas below our city base.";
 				linefrom[1] = inst;
 				
 				line[2] = "Wearing the armour will provide you greater protection against this greatsword.";
@@ -770,7 +774,7 @@ if (instance_exists(obj_player)){
 				line[8] = "This isn't about winning a fight, it's about saving others. This mission isn't about us.";
 				linefrom[8] = obj_companion_0;
 				
-				line[9] = "I can't keep doing this... I... I'm not going to help you any longer.";
+				line[9] = "I can't keep doing this... I-I'm not going to help you any longer.";
 				linefrom[9] = obj_companion_0;
 				
 				line[10] = "I'm sorry...";
@@ -798,13 +802,13 @@ if (instance_exists(obj_player)){
 					return;
 				}
 				
-				line[0] = "So, you're finally here?";
+				line[0] = "Ah. I've been waiting for this.";
 				linefrom[0] = inst;
 				
-				line[1] = "Are you the leader of this whole invasion?";
+				line[1] = "You're the leader of the group, aren't you?";
 				linefrom[1] = obj_player;
 				
-				line[2] = "Do you think you've got the strength to defeat me?";
+				line[2] = "Do you really think you've got the strength to defeat me?";
 				linefrom[2] = obj_player;
 				
 				line[3] = "Oh, for sure.";
@@ -1022,8 +1026,9 @@ if (instance_exists(obj_player)){
 					}
 					
 					if (special == "bunkerenginedestroy"){
-						scr_objective_change(Objectives.DestroyProductionEngines, 1, 5);
+						scr_objective_change(Objectives.DestroyProductionEngines, 0, 5);
 						inst.bunker_engine_destroy = false;
+						cutscene_dialogue_bunker_engine_destroy = false;
 					}
 					
 					global.cutscene_current = -1;

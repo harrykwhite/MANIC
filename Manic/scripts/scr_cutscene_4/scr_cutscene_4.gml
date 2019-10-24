@@ -7,7 +7,7 @@ obj_controller_camera.camera_screenshake_amount = 0;
 if (instance_exists(obj_player)){
 	var inst = instance_nearest(obj_player.x, obj_player.y, obj_collectable_pickup);
 	
-	if (inst != noone){
+	if (inst != noone) && (!cutscene_deermeat_collected){
 		var dist = point_distance(obj_player.x, obj_player.y, inst.x, inst.y);
 		
 		if (dist < 200){
@@ -25,10 +25,11 @@ if (instance_exists(obj_player)){
 				obj_player.move_y_to = -1;
 				obj_player.move_ext_spd = 0;
 				
-				if (global.cutscene_time[index] < 35){
+				if (global.cutscene_time[index] < 55){
 					global.cutscene_time[index] ++;
 				}else{
 					inst.pickup_do = true;
+					cutscene_deermeat_collected = true;
 					
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;

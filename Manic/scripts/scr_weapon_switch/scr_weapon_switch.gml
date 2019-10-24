@@ -32,16 +32,20 @@ if (global.weapon_slot_standalone == -1){
 	}else{
 		global.weapon_slotcurrent = to;
 	}
-
+	
 	// New Weapon Setup
 	var new_weaponslot = global.weapon_slot[global.weapon_slotcurrent]; // Get the new weapon that has just been switched to.
-
+	
 	if (new_weaponslot != -1){
 	    if (!instance_exists(global.weapon_object[new_weaponslot])){
-	        instance_create(obj_player.x, obj_player.y, global.weapon_object[new_weaponslot]); // Create the new weapon object.
-	    }
+	        var wep = instance_create(obj_player.x, obj_player.y, global.weapon_object[new_weaponslot]); // Create the new weapon object.
+			wep.image_angle = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+			
+			with(wep){
+				event_perform(ev_step_end, 0);
+			}
+		}
 	}
-	
 }else{
 	old_weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
 }

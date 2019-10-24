@@ -159,7 +159,7 @@ switch(ctype){
 				var inst = playerline[| i].owner;
 				var final_damage = damage;
 				
-				if (inst.object_index == obj_companion_0){
+				if (inst.object_index == obj_companion_0) || (inst.object_index == obj_companion_1) || (inst.object_index == obj_companion_2) || (inst.object_index == obj_companion_3){
 					continue;
 				}
 				
@@ -174,13 +174,18 @@ switch(ctype){
 						var antag = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
 						
 						if (antag != noone){
-							antag.greatsword_attack_killed = true;
-							global.cutscene_current = 58;
+							if (!antag.greatsword_attack_killed){
+								antag.greatsword_attack_killed = true;
+								global.cutscene_current = 58;
+								
+								audio_sound_gain(global.boss_music[Boss.Antagonist], 0, 5000);
+								audio_play_sound(global.boss_stinger[Boss.Antagonist], 3, false);
+							}
 						}
 					}
 				}
 				
-				if (inst.i_time < 1){
+				if (inst.i_time <= 0){
 					len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_player);
 					xEnd = xx + lengthdir_x(len, dir);
 					yEnd = yy + lengthdir_y(len, dir);

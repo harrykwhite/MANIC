@@ -26,7 +26,7 @@ if (instance_exists(target)){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
-			if (distance_to_object(target) < 40){
+			if (distance_to_object(target) < 80){
 				if (attack_time > 0){
 					attack_time --;
 				}else{
@@ -141,9 +141,9 @@ if (instance_exists(target)){
 			weapon.flicker_time_max = 10;
 			
 			if (weapon.dir <= 90 || weapon.dir >= 270){
-				weapon.dir += tscale * 95;
+				weapon.dir += tscale * 85;
 			}else{
-				weapon.dir -= tscale * 95;
+				weapon.dir -= tscale * 85;
 			}
 			
 			if (throw_weapon_time < throw_weapon_time_max){
@@ -208,7 +208,7 @@ if (instance_exists(target)){
 			if (isranged){
 				weapon.attack = true;
 			}else{
-				if (distance_to_object(target) < 27){
+				if (distance_to_object(target) < 80){
 					if (attack_time > 0){
 						attack_time --;
 					}else{
@@ -296,7 +296,7 @@ if (instance_exists(target)){
 				if (maxstate == 3){
 					weapon_index = weapon_change_origin;
 				}else{
-					weapon_index = PawnWeapon.Sledgehammer;
+					weapon_index = PawnWeapon.Greatsword;
 				}
 				break;
 			
@@ -305,7 +305,7 @@ if (instance_exists(target)){
 				break;
 			
 			case 3:
-				weapon_index = PawnWeapon.Sledgehammer;
+				weapon_index = PawnWeapon.Greatsword;
 				break;
 		}
 		

@@ -25,7 +25,7 @@ if (instance_exists(target)) && (!walk_off) && (!greatsword_attack){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
-			if (distance_to_object(target) < 40){
+			if (distance_to_object(target) < 80){
 				if (attack_time > 0){
 					attack_time --;
 				}else{
@@ -67,15 +67,15 @@ if (instance_exists(target)) && (!walk_off) && (!greatsword_attack){
 			
 			run_away_time ++;
 			
+			if (weapon_exists){
+				weapon.dir = point_direction(x, y, target.x, target.y);
+			}
+			
 			if (distance_to_object(target) > 120){
 				run_away_direction = 0;
 				
 				move_speed = 0;
 				face_player = true;
-				
-				if (weapon_exists){
-					weapon.dir = point_direction(x, y, target.x, target.y);
-				}
 			}else{
 				if (!dash){
 					if (dash_time > 0){
@@ -202,27 +202,41 @@ if (greatsword_attack){
 	}
 	
 	// Greatsword Antag Movement
-	if (instance_exists(obj_player)) && (global.cutscene_current == -1){
-		var playerdist = point_distance(x, y, obj_player.x, obj_player.y);
-		var playerdir = point_direction(x, y, obj_player.x, obj_player.y);
-		
-		move_x_to = obj_player.x;
-		move_y_to = obj_player.y;
+	var playerdist = point_distance(x, y, obj_player.x, obj_player.y);
+	var playerdir = point_direction(x, y, obj_player.x, obj_player.y);
 	
-		if (playerdist > 36){
-			move_speed = 3;
+	if (instance_exists(obj_player)){
+		if (global.cutscene_current == -1){
+			move_x_to = obj_player.x;
+			move_y_to = obj_player.y;
+	
+			if (playerdist > 56){
+				move_speed = 3;
+			}else{
+				if (playerdist < 24){
+					move_x_to = x + lengthdir_x(100, playerdir - 180);
+					move_y_to = y + lengthdir_y(100, playerdir - 180);
+					move_speed = 2.6;
+				}else{
+					move_speed = 0;
+				}
+			}
+		
+			weapon.attack = true;
+			weapon.dir = playerdir;
 		}else{
-			if (playerdist < 24){
-				move_x_to = x + lengthdir_x(100, playerdir - 180);
-				move_y_to = y + lengthdir_y(100, playerdir - 180);
-				move_speed = 2.5;
+			weapon.attack = false;
+			
+			if (playerdist < 120){
+				move_x_to = x + lengthdir_x(200, playerdir - 180);
+				move_y_to = y + lengthdir_y(200, playerdir - 180);
+				move_speed = 2.6;
 			}else{
 				move_speed = 0;
 			}
+			
+			weapon.dir = playerdir;
 		}
-		
-		weapon.attack = true;
-		weapon.dir = playerdir;
 	}else{
 		weapon.attack = false;
 		move_speed = 0;

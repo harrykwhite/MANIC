@@ -59,7 +59,7 @@ if (instance_exists(owner)){
 		proj.dir = dir;
 		proj.image_angle = dir;
 		proj.spd = 15;
-		proj.damage = scr_pawn_weapon_damage(-1);
+		proj.damage = scr_pawn_weapon_damage(0);
 		proj.strength = 2.25;
 		proj.enemy = isEnemy;
 		proj.creator = owner;

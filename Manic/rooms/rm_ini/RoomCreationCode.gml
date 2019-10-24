@@ -1,4 +1,3 @@
-show_debug_overlay(true);
 randomize();
 
 scr_global_set();

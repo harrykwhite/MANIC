@@ -1,0 +1,174 @@
+background_01 = -1;
+background_02 = -1;
+
+sound_break_0 = 0;
+lighting = 1;
+
+spawn = false;
+
+if (!instance_exists(obj_player)){
+	instance_create(0, 0, obj_player);
+}
+
+global.player_footstep_default = snd_character_footstep_grass;
+
+switch(room){
+	case rm_level_2_pre_00:
+		obj_player.x = 446;
+		obj_player.y = -6;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 446;
+			spawn_y = 188;
+		}else{
+			obj_player.x = room_width + 6;
+			obj_player.y = 428;
+			
+			spawn_x = 2472;
+			spawn_y = 428;
+		}
+		
+		if (!audio_is_playing(m_ambience_rain_0)){
+			audio_play_sound(m_ambience_rain_0, 3, true);
+			audio_sound_gain(m_ambience_rain_0, 0, 0);
+		}
+		
+		audio_sound_gain(m_ambience_rain_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
+		break;
+	
+	case rm_level_2_00:
+		obj_player.x = 0;
+		obj_player.y = 298;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 188;
+			spawn_y = 298;
+		}else{
+			obj_player.x = 566;
+			obj_player.y = room_height + 4;
+			
+			spawn_x = 566;
+			spawn_y = 936;
+		}
+		break;
+	
+	case rm_level_2_01:
+		obj_player.x = 368;
+		obj_player.y = 0;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 368;
+			spawn_y = 160;
+		}else{
+			obj_player.x = 344;
+			obj_player.y = room_height + 4;
+			
+			spawn_x = 344;
+			spawn_y = 819;
+		}
+		break;
+	
+	case rm_level_2_02:
+		obj_player.x = 548;
+		obj_player.y = -4;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 548;
+			spawn_y = 195;
+		}else{
+			obj_player.x = 548;
+			obj_player.y = room_height + 4;
+			
+			spawn_x = 548;
+			spawn_y = 775;
+		}
+		break;
+	
+	case rm_level_2_03:
+		obj_player.x = 358;
+		obj_player.y = -4;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 358;
+			spawn_y = 160;
+		}else{
+			obj_player.x = 358;
+			obj_player.y = room_height + 4;
+			
+			spawn_x = 358;
+			spawn_y = 1515;
+		}
+		break;
+	
+	case rm_level_2_04:
+		obj_player.x = 358;
+		obj_player.y = -4;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 358;
+			spawn_y = 160;
+		}else{
+			obj_player.x = 358;
+			obj_player.y = room_height + 4;
+			
+			spawn_x = 358;
+			spawn_y = 614;
+		}
+		break;
+	
+	case rm_level_2_post_00:
+		obj_player.x = 368;
+		obj_player.y = -4;
+		
+		if (global.game_level_opening_type == 0){
+			spawn_x = 368;
+			spawn_y = 160;
+		}else{
+			obj_player.x = 2106;
+			obj_player.y = 638;
+			
+			spawn_x = 2106;
+			spawn_y = 790;
+		}
+		
+		if (!audio_is_playing(m_ambience_birds_0)){
+			audio_play_sound(m_ambience_birds_0, 3, true);
+			audio_sound_gain(m_ambience_birds_0, 0, 0);
+		}
+		
+		audio_sound_gain(m_ambience_birds_0, 0.6 * obj_controller_all.real_ambience_volume, 6000);
+		
+		if (!audio_is_playing(m_ambience_wind_0)){
+			audio_play_sound(m_ambience_wind_0, 3, true);
+			audio_sound_gain(m_ambience_wind_0, 0, 0);
+		}
+		
+		audio_sound_gain(m_ambience_wind_0, 0.75 * obj_controller_all.real_ambience_volume, 6000);
+		break;
+}
+
+scr_room_spawn_companion();
+
+// Spawn System
+scr_spawn_setup("main", 1.1);
+spawn_pause_update = false;
+
+spawn_rate_real = 1;
+spawn_cleared = false;
+
+postlevel_dialogue_time = 60 * 3;
+postlevel_dialogue_index = 0;
+postlevel_dialogue_inst = noone;
+postlevel_dialogue_exception = false;
+
+// Other
+companions_spawned = false;
+room_music_transition = false;
+
+obj_controller_camera.x = obj_player.x;
+obj_controller_camera.y = obj_player.y;
+
+global.cutscene_current = 2;
+
+sprite_index = noone;
+depth = -5;

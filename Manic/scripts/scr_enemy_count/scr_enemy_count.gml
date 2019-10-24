@@ -13,6 +13,4 @@ for(var i = 0; i < length; i ++){
 	count += instance_number(global.enemy[i]);
 }
 
-show_debug_message(count);
-
 return count;

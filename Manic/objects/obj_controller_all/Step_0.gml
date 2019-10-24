@@ -1,3 +1,30 @@
+if (room_pers_clear){
+	if (room_pers_clear_original == noone){
+		room_pers_clear_original = room;
+	}
+	
+	room_pers_clear_at = clamp(room_pers_clear_at, room_pers_clear_min, room_pers_clear_max);
+	
+	if (room != room_pers_clear_original){
+		room_persistent = false;
+		show_debug_message("Persistence reset: " + room_get_name(room));
+	}
+	
+	if (room_pers_clear_at < room_pers_clear_max){
+		room_goto(room_pers_clear_at);
+		room_pers_clear_at ++;
+	}else{
+		audio_stop_all();
+		
+		room_goto(room_pers_clear_original);
+		room_pers_clear_original = noone;
+		room_pers_clear = false;
+		room_pers_clear_at = 0;
+	}
+	
+	return;
+}
+
 // Gamepad
 var gcount = gamepad_get_device_count();
 var found = false;

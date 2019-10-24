@@ -36,10 +36,6 @@ sniperboss_attack_counter = 0;
 
 sniper_shotcancel = 0;
 
-companion_attack_time = 0;
-companion_attack_time_max = 90;
-companion_attack_break = 0;
-
 burn = false;
 burn_x = x;
 burn_y = y;

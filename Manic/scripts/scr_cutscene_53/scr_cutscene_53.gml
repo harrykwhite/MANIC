@@ -25,7 +25,7 @@ if (instance_exists(obj_player)){
 				obj_player.move_y_to = -1;
 				obj_player.move_ext_spd = 0;
 			
-				if (global.cutscene_time[index] < 35){
+				if (global.cutscene_time[index] < 55){
 					global.cutscene_time[index] ++;
 				}else{
 					inst.pickup = true;

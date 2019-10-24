@@ -1,0 +1,1 @@
+text = "Exit further to the right.";

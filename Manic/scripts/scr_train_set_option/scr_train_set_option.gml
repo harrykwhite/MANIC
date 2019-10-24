@@ -1,4 +1,4 @@
-///@param num
+/*///@param num
 ///@param displayname
 ///@param levelto
 ///@param roomto
@@ -30,4 +30,4 @@ switch(roomto){
 		break;
 }
 
-obj_controller_ui.pausedialogue_type_option_trainstart_type[num] = type;
+obj_controller_ui.pausedialogue_type_option_trainstart_type[num] = type;*/

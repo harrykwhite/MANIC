@@ -1,6 +1,6 @@
 var px = global.player_position_x div map_tile_width;
 var py = global.player_position_y div map_tile_height;
-var pradius = 20;
+var pradius = 16;
 
 for(var yy = -pradius; yy < pradius; yy ++){
 	for(var xx = -pradius; xx < pradius; xx ++){

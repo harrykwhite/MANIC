@@ -22,6 +22,10 @@ if (instance_exists(obj_player)){
 			global.cutscene_time[index] ++;
 		}else{
 			instance_destroy(obj_player);
+			
+			if (!instance_exists(cutscene_trainopening_light)){
+				cutscene_trainopening_light = instance_create(x_to, y_to, obj_player_light);
+			}
 		}
 		
 		/*switch(cutscene_moveto_level){
@@ -54,12 +58,8 @@ if (instance_exists(obj_player)){
 	x_to = cutscene_trainopening_inst.x;
 	y_to = cutscene_trainopening_inst.y + 12;
 	
-	if (!instance_exists(cutscene_trainopening_light)){
-		cutscene_trainopening_light = instance_create(x_to, y_to, obj_player_light);
-	}else{
-		cutscene_trainopening_light.x = x_to;
-		cutscene_trainopening_light.y = y_to;
-	}
+	cutscene_trainopening_light.x = x_to;
+	cutscene_trainopening_light.y = y_to;
 	
 	if (global.cutscene_time[index] < 100){
 		global.cutscene_time[index] ++;

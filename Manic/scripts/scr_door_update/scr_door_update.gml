@@ -97,7 +97,7 @@ if (interact && global.cutscene_current == -1 && !anim && !locked) || (auto_inte
 						}
 						break;
 					
-					case rm_level_6_pre_00:
+					/*case rm_level_6_pre_00:
 						global.cutscene_current = 52;
 						with(obj_controller_gameplay){
 							cutscene_moveto_dir = 1;
@@ -106,7 +106,7 @@ if (interact && global.cutscene_current == -1 && !anim && !locked) || (auto_inte
 							cutscene_moveto_level = Level.HumanPrison;
 							cutscene_moveto_instant = true;
 						break;
-					}
+					}*/
 				}
 			}
 		}

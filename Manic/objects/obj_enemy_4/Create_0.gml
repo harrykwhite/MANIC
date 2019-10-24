@@ -19,10 +19,6 @@ whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
 mylight = noone;
 
-companion_attack_time = 0;
-companion_attack_time_max = 90;
-companion_attack_break = 0;
-
 contact_attack_ready_time = 30;
 
 mucus_release_time = random_range(60 * 4, 60 * 8);

@@ -4,21 +4,21 @@ if (light_brightness < 1){
 	light_brightness -= 0.005;
 }
 
-if (instance_exists(mylight)){
-	mylight.x = x;
-	mylight.y = y;
-	mylight.light[| eLight.X] = x;
-	mylight.light[| eLight.Y] = y;
-	mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) + light_brightness, 1.15);
-	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+if (!instance_exists(mylight)){
+	mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 }
+
+mylight.x = x;
+mylight.y = y;
+mylight.light[| eLight.X] = x;
+mylight.light[| eLight.Y] = y;
+mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) + light_brightness, 1.15);
+mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 if (global.cutscene_current == 58){
 	in_cutscene = true;
 	
-	if (!walk_off){
-		active = false;
-		
+	/*if (!walk_off){
 		if (distance_to_object(obj_player) > 90){
 			var dirto = point_direction(x, y, obj_player.x, obj_player.y);
 			obj_player.move_x_to = x + lengthdir_x(30, dirto);
@@ -34,9 +34,7 @@ if (global.cutscene_current == 58){
 			obj_player.move_y_to = obj_player.y;
 			obj_player.move_ext_spd = 0;
 		}
-	}else{
-		active = true;
-	}
+	}*/
 }else if (global.cutscene_current == -1){
 	if (in_cutscene){
 		obj_player.move_x_to = -1;

@@ -1,4 +1,5 @@
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
+var ispaused = global.game_pause;
 
 var up_pressed = scr_input_is_pressed(InputBinding.Up, 0.275);
 var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
@@ -6,6 +7,27 @@ var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
 scr_position_view();
 scr_ui_rank_display_setup();
 scr_ui_rank_display_update();
+
+// Tutourial sickle respawn
+if (tutourial_sickle_respawn_time != -1){
+	if (tutourial_sickle_respawn_time > 0){
+		tutourial_sickle_respawn_time --;
+	}else{
+		global.cutscene_current = 40;
+		
+		var sickle = instance_create(1698, 498, obj_weapondrop);
+		sickle.index = PlayerWeapon.Sickle;
+		sickle.angle = 35;
+		
+		obj_controller_gameplay.cutscene_look_x = 1702;
+		obj_controller_gameplay.cutscene_look_y = 505;
+		obj_controller_gameplay.cutscene_look_time = 80;
+		obj_controller_gameplay.cutscene_look_prop = false;
+		obj_controller_gameplay.cutscene_look_object = noone;
+		
+		tutourial_sickle_respawn_time = -1;
+	}
+}
 
 // Level opening
 if (level_opening){
@@ -89,6 +111,7 @@ if (ending){
 			
 			ds_grid_clear(global.player_companions, -1);
 			scr_fade_object_list_reset();
+			scr_level_persistent_reset_level(global.level_current);
 			scr_global_set();
 			audio_stop_all();
 			room_goto(rm_title_0);
@@ -113,9 +136,77 @@ if (screenblend_draw){
     }
 }
 
-if (!global.game_pause){
+if (!ispaused){
 	pause_selected = 0;
 	pause_selected_break = 0;
+	
+	// Minimap
+	if (minimap_arrow_sine < 360){
+		minimap_arrow_sine += minimap_arrow_sine_speed;
+	}else{
+		minimap_arrow_sine = 0;
+	}
+	
+	// Dialogue
+	var dialogue_voice_in = noone, dialogue_voice_loop = noone, dialogue_voice_out = noone;
+	var dialogue_voice_do_close = true;
+	
+	var dialogue_voice_list = ds_list_create();
+	
+	scr_dialogue_get_voice_from_in(dialogue_voice, dialogue_voice_list);
+	
+	dialogue_voice_in = dialogue_voice_list[| 0];
+	dialogue_voice_loop = dialogue_voice_list[| 1];
+	dialogue_voice_out = dialogue_voice_list[| 2];
+	
+	ds_list_destroy(dialogue_voice_list);
+	
+	if (!ispaused){
+		if (dialogue_break > 0){
+			dialogue_break --;
+		}else{
+			if (dialogue_char_count < dialogue_length){
+				if (string_char_at(dialogue, floor(dialogue_char_count)) == "."){
+					dialogue_char_count += dialogue_char_speed * 0.5;
+				}else{
+					dialogue_char_count += dialogue_char_speed;
+				}
+				
+				if (dialogue_voice != noone){
+					if (!dialogue_voice_opened){
+						scr_sound_play(dialogue_voice_in, false, 0.95, 1.05);
+						
+						dialogue_voice_opened = true;
+						dialogue_voice_closed = false;
+					}else{
+						if (!audio_is_playing(dialogue_voice_in)) && (!audio_is_playing(dialogue_voice_loop)){
+							var vind = scr_sound_play(dialogue_voice_loop, false, 0.95, 1.05);
+							
+							if ((dialogue_char_count div 2) != (dialogue_char_count / 2)){
+								audio_sound_pitch(vind, 1.2);
+							}
+						}
+					}
+					
+					dialogue_voice_do_close = false;
+				}
+			}
+		}
+	
+		if (!dialogue_pause){
+			dialogue_time --;
+		}
+	
+		if (dialogue_voice_do_close) && (dialogue_voice != noone){
+			if (!dialogue_voice_closed){
+				if (!audio_is_playing(dialogue_voice_out)){
+					audio_stop_sound(dialogue_voice_loop);
+					scr_sound_play(dialogue_voice_out, false, 0.95, 1.05);
+					dialogue_voice_closed = true;
+				}
+			}
+		}
+	}
 	
 	// Title Text
 	/*if (global.cutscene_current == -1) &&
@@ -180,6 +271,7 @@ if (!global.game_pause){
 						
 						ds_grid_clear(global.player_companions, -1);
 						scr_fade_object_list_reset();
+						scr_level_persistent_reset_level(global.level_current);
 						scr_global_set();
 						audio_stop_all();
 						room_goto(rm_title_0);
@@ -211,9 +303,6 @@ if (!global.game_pause){
 				pausedialogue_type_option[0] = -1;
 				pausedialogue_type_option_special[0] = -1;
 				pausedialogue_type_option_cutscene[0] = -1;
-				pausedialogue_type_option_traingoto[0] = -1;
-				pausedialogue_type_option_trainroom[0] = -1;
-				pausedialogue_type_option_trainstart_type[0] = -1;
 			}
 		}else{
 			if (pause_selected_break > 0){
@@ -313,21 +402,29 @@ if (!global.game_pause){
 							global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
 						}
 				
-						if (pausedialogue_type_option_traingoto[pausedialogue_option_selected] != -1){
-							obj_controller_gameplay.cutscene_traingoto = pausedialogue_type_option_traingoto[pausedialogue_option_selected];
-						}
-				
 						switch(pausedialogue_type_option_special[pausedialogue_option_selected]){
 							case 0:
 								global.game_combat_in_hordechallenge = true;
 								global.game_combat_in_hordechallenge_time = 60 * 30;
+								break;
+							
+							case 1:
+								obj_controller_gameplay.cutscene_traingoto = Level.TrainStation;
 								
+								switch(room){
+									case rm_level_6_00:
+										obj_controller_gameplay.cutscene_trainstart_type = 0;
+										obj_controller_gameplay.cutscene_trainroom = rm_level_6_01;
+										break;
+									
+									case rm_level_6_01:
+										obj_controller_gameplay.cutscene_trainstart_type = 1;
+										obj_controller_gameplay.cutscene_trainroom = rm_level_6_00;
+										break;
+								}
 								break;
 						}
 			
-						obj_controller_gameplay.cutscene_trainstart_type = pausedialogue_type_option_trainstart_type[pausedialogue_option_selected];
-						obj_controller_gameplay.cutscene_trainroom = pausedialogue_type_option_trainroom[pausedialogue_option_selected];
-					
 						pausedialogue = false;
 						pausedialogue_option_selected_held_time = 0;
 						scr_toggle_pause(false);
@@ -368,11 +465,4 @@ if (game_opening_intro){
 			game_opening_intro = false;
 		}
 	}
-}
-
-// Minimap
-if (minimap_arrow_sine < 360){
-	minimap_arrow_sine += minimap_arrow_sine_speed;
-}else{
-	minimap_arrow_sine = 0;
 }

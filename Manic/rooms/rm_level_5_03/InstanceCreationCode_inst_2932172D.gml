@@ -1,0 +1,1 @@
+text = "Deactivated defense turrets contained in room above. Only to be used when necessary.";

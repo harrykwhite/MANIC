@@ -1,0 +1,1 @@
+text = "Train station up north from the exit on the left.";

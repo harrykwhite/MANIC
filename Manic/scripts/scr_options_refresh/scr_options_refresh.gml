@@ -7,6 +7,14 @@ if (argument_count == 1){
 
 ini_open(working_directory + "config.ini");
 
+if (refresh_display){
+	if (window_get_fullscreen() != global.game_option[| Options.Fullscreen]){
+		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
+	}
+	
+	scr_display_update();
+}
+
 global.game_option[| Options.Screenshake] = clamp(global.game_option[| Options.Screenshake], 0, 100);
 global.game_option[| Options.QuickZoom] = clamp(global.game_option[| Options.QuickZoom], 0, 100);
 global.game_option[| Options.Flashing] = clamp(global.game_option[| Options.Flashing], 0, 100);
@@ -31,14 +39,6 @@ ini_write_real("Options", "AmbienceVolume", global.game_option[| Options.Ambienc
 ini_write_real("Options", "InputType", global.game_input_type);
 
 ini_close();
-
-if (refresh_display){
-	if (window_get_fullscreen() != global.game_option[| Options.Fullscreen]){
-		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
-	}
-	
-	scr_display_update();
-}
 
 with(obj_controller_all){
 	scr_update_real_volumes();

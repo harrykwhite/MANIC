@@ -19,4 +19,6 @@ vol = clamp(vol, 0, 1);
 var sound = audio_play_sound(snd, 3, loop);
 audio_sound_gain(sound, vol, 0);
 
+show_debug_message(audio_get_name(snd));
+
 return sound;

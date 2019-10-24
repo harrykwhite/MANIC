@@ -96,5 +96,7 @@ if (instance_exists(mylight)){
 	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 }
 
+health_current = max(health_current, 1);
+
 scr_pawn_update();
 image_yscale = scale;

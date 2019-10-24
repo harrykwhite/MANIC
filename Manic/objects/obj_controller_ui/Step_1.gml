@@ -1,6 +1,11 @@
 // Weapon info
 weaponinfo = false;
 
+// Pause
+if (global.game_pause){
+	return;
+}
+
 // Dialogue
 if (dialogue_time > 0){
 	if (dialogue_pause){

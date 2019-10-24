@@ -19,15 +19,25 @@ if (fscale < 1){
 	fscale += 0.01;
 }
 
+var bfade = true;
+var bdist = 40;
+
 if (instance_exists(obj_player)) && (global.cutscene_current == -1){
-	if (buzz == noone){
-		buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
+	if (distance_to_object(obj_player) <= bdist){
+		if (buzz == noone){
+			buzz = scr_sound_play(snd_other_fly_0, true, 1, 1);
+		}
+		
+		scr_sound_set_distance(buzz, bdist);
+		bfade = false;
 	}
+}
+
+if (bfade) && (buzz != noone){
+	audio_sound_gain(buzz, 0, 2000);
 	
-	scr_sound_set_distance(buzz, 40);
-}else{
-	if (buzz != noone){
-		audio_sound_gain(buzz, 0, 2000);
+	if (audio_sound_get_gain(buzz) <= 0){
+		audio_stop_sound(buzz);
 		buzz = noone;
 	}
 }

@@ -63,7 +63,6 @@ if (!global.game_pause){
 	// Pre Level Dialogue
 	if (room == rm_level_4_pre_00){
 		if (!global.game_companion_farmer_level4pre_talked_0) || (prelevel_dialogue_exception){
-			global.game_companion_farmer_level4pre_talked_0 = true;
 			prelevel_dialogue_exception = true;
 			
 			if (global.cutscene_current == -1){

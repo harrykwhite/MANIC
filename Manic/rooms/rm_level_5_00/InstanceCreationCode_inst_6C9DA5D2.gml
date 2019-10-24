@@ -1,0 +1,1 @@
+text = "Food trays delivered at 7am and 7pm.\nDrink trays at 7am, 12pm and 7pm.";

@@ -1,0 +1,1 @@
+text = "Dispose of retrieved storage barrels in room above.";

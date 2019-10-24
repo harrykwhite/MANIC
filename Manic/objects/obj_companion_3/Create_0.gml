@@ -74,10 +74,6 @@ i_time_flicker = false;
 i_time_flicker_time = 0;
 i_blend_time = 0;
 
-heal_time_max = 60 * 1.1;
-heal_time = heal_time_max;
-heal_can = false;
-
 knockback_speed = 0;
 knockback_direction = 0;
 knockback_multiplier = 1;

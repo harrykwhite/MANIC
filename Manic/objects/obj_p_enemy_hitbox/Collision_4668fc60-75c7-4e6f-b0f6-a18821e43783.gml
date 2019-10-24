@@ -1,4 +1,5 @@
 var inst = other;
+var destroy = false;
 
 with(owner){
 	if (object_index == obj_enemy_1){
@@ -57,14 +58,22 @@ with(owner){
 		
 			if (object_index != obj_enemy_1){
 				with(inst){
-					instance_destroy();
+					destroy = true;
 					part_type_direction(global.pt_blood_5, image_angle - 20, image_angle + 20, 0, 0);
 					part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
 					repeat(8)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
 				}
 			}
 		}else{
-			instance_destroy(inst);
+			destroy = true;
 		}
 	}
+}
+
+if (destroy){
+	if (room == rm_prologue_00) && (inst.index == PlayerWeapon.Sickle){
+		obj_controller_ui.tutourial_sickle_respawn_time = 70;
+	}
+	
+	instance_destroy(inst);
 }

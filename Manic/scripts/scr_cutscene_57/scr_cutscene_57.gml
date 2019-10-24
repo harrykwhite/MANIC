@@ -110,8 +110,8 @@ if (instance_exists(obj_player)){
 				}
 			}
 		}else if (global.cutscene_time[index] < 360){
-			xto = 688;
-			yto = 620;
+			xto = 702;
+			yto = 624;
 			
 			global.cutscene_time[index] ++;
 			

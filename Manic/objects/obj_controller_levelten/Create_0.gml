@@ -1,47 +1,30 @@
-// Variables
-background_01 = -1;
-background_02 = -1;
+// Weapon drops
+if (room == rm_level_10_00){
+	var weapons = ds_list_create();
+	var drop;
+	drop[0] = inst_99560B2;
+	drop[1] = inst_598D9F40;
+	drop[2] = inst_2FE8F0B3;
+	drop[3] = inst_6A66A1A1;
+	drop[4] = inst_5D159B67;
+	drop[5] = inst_CD20CD9;
 
-sound_break_0 = 0;
-lighting = 1;
-
-// Spawn
-spawn_pause_update = false;
-
-switch(room){
-	case rm_level_10_00:
-		if (global.game_level_opening_type == 0){
-			spawn_x = 502;
-			spawn_y = 1528;
-		}else{
-			spawn_x = 502;
-			spawn_y = 188;
-		}
-		break;
+	for(var i = 0; i < 6; i ++){
+		var dropindex = choose(PlayerWeapon.Grenade, PlayerWeapon.Katana, PlayerWeapon.Spear, PlayerWeapon.MachineGun, PlayerWeapon.GrenadeLauncher, PlayerWeapon.MP5, PlayerWeapon.Sledgehammer);
 	
-	case rm_level_10_01:
-		spawn_x = 502;
-		spawn_y = 932;
-		break;
+		while(ds_list_find_index(weapons, dropindex) != -1){
+			dropindex = choose(PlayerWeapon.Grenade, PlayerWeapon.Katana, PlayerWeapon.Spear, PlayerWeapon.MachineGun, PlayerWeapon.GrenadeLauncher, PlayerWeapon.MP5, PlayerWeapon.Sledgehammer);
+		}
+	
+		if (dropindex == PlayerWeapon.Grenade){
+			drop[i].pack = true;
+			drop[i].quantity = random_range(7, 9);
+		}
+	
+		drop[i].index = dropindex;
+		drop[i].angle = random_range(-30, 30);
+		ds_list_add(weapons, dropindex);
+	}
+
+	ds_list_destroy(weapons);
 }
-
-// Other
-room_music_transition = false;
-
-boss_music_active = false;
-
-boss_music_state = "opening";
-boss_music_state_started = false;
-
-boss_music_opening_instance = noone;
-boss_music_stage1_layer1_instance = noone;
-boss_music_stage1_layer2_instance = noone;
-boss_music_stage2_layer1_instance = noone;
-boss_music_stage2_layer2_instance = noone;
-boss_music_outro_instance = noone;
-
-global.cutscene_current = 2;
-global.game_objective_current = 0;
-
-sprite_index = noone;
-depth = -5;

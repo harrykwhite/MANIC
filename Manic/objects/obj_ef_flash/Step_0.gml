@@ -5,7 +5,7 @@ if (!fade){
         alpha = 1;
         fade = true;
         
-        if (script!= -1){
+        if (script != -1){
             script_execute(script);
         }
     }
@@ -17,4 +17,3 @@ if (!fade){
         instance_destroy();
     }
 }
-

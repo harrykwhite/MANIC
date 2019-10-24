@@ -8,6 +8,10 @@ if (global.cutscene_current == 55) && (in_cutscene){
 	active = true;
 }
 
+if (!instance_exists(mylight)){
+	mylight = instance_create_layer(x, y, "Lights", obj_giantturret_light);
+}
+
 mylight.x = x;
 mylight.y = y;
 mylight.light[| eLight.X] = x;

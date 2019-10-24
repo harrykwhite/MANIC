@@ -1,4 +1,4 @@
-if (object_index == obj_companion_0){
+if (object_index == obj_companion_0) || (object_index == obj_companion_1) || (object_index == obj_companion_2) || (object_index == obj_companion_3){
 	return;
 }
 

@@ -1,6 +1,6 @@
 index = -1;
 special = "";
-destroy_on_activate = true;
+destroy_on_activate = false;
 deactivate_on_activate = false;
 reactivate_on_death = false;
 active = true;

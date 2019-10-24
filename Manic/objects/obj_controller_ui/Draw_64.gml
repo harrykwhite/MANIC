@@ -7,6 +7,7 @@ var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
+var iscutscene = (global.cutscene_current != -1);
 
 // Red Tint
 redtint_alphato = 0;
@@ -169,7 +170,7 @@ if (screenblend_alpha > 0){
 }
 
 // Tutourial Display
-if (tutourial) && (global.cutscene_current == -1){
+if (tutourial) && (!iscutscene){
 	var tut_count = array_length_1d(tutourial_text);
 	
 	if (tutourial_stage_timer != -1){
@@ -218,10 +219,15 @@ if (tutourial) && (global.cutscene_current == -1){
 		}
 	}
 	
-	tutourial_scale = approach(tutourial_scale, 1, 7);
+	if (global.cutscene_current == -1){
+		tutourial_scale = approach(tutourial_scale, 1, 7);
+		tutourial_scale_draw = tutourial_scale;
+		
+		tutourial_stage_draw = tutourial_stage;
+	}
 	
-	var tscale = tutourial_scale;
-	var tstage = min(tutourial_stage, tut_count - 1);
+	var tscale = tutourial_scale_draw;
+	var tstage = min(tutourial_stage_draw, tut_count - 1);
 	
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_left);
@@ -521,7 +527,7 @@ if (instance_exists(obj_player)){
 }
 
 // Collectables
-var str = "TIME: " + string(scr_seconds_to_timer(global.game_save_seconds));
+var str = string(scr_seconds_to_timer(global.game_save_seconds));
 
 if (!drawammo){
 	stats_y = approach(stats_y, 48, 30);
@@ -556,9 +562,9 @@ if (leveltext_alpha > 0){
 bosshealth_width_to = 500 / global.game_option[| Options.UIScale];
 
 if (!global.game_pause){
-	if (global.boss_current != -1) && (global.boss_current != Boss.SniperRobot) && (global.boss_current != Boss.MotherRobot) && (global.cutscene_current == -1) && (blackbar_sizereal <= 40){
+	if (global.boss_current != -1) && (global.boss_current != Boss.SniperRobot) && (global.boss_current != Boss.MotherRobot) && (!iscutscene) && (blackbar_sizereal <= 40){
 		bosshealth_width_current = approach(bosshealth_width_current, bosshealth_width_to, 5);
-	}else if (global.cutscene_current == -1){
+	}else if (!iscutscene){
 		bosshealth_width_current = approach(bosshealth_width_current, -10, 5);
 	}
 }
@@ -701,11 +707,11 @@ var mapheight = obj_controller_gameplay.map_height;
 var maptilewidth = obj_controller_gameplay.map_tile_width;
 var maptileheight = obj_controller_gameplay.map_tile_height;
 
-var mapdrawoffx = (global.player_position_x - (camera_get_view_width(view_camera[0]) / 2)) div maptilewidth;
-var mapdrawoffy = (global.player_position_y - (camera_get_view_height(view_camera[0]) / 2)) div maptileheight;
-
 var mapdrawtilew = 3;
 var mapdrawtileh = 3;
+
+var mapdrawoffx = global.player_position_x / maptilewidth; mapdrawoffx -= (minimap_width / 2) / mapdrawtilew;
+var mapdrawoffy = global.player_position_y / maptileheight; mapdrawoffy -= (minimap_height / 2) / mapdrawtileh;
 
 var maptilecol;
 
@@ -742,10 +748,12 @@ map_objects_sprite[o + 1] = spr_player_head_0;
 map_objects_sprite_scale[o + 1] = 2;
 map_objects_sprite_screenlock[o + 1] = false;
 
-map_objects[o + 2] = obj_section_end_pointer;
-map_objects_sprite[o + 2] = spr_ui_arrow_small;
-map_objects_sprite_scale[o + 2] = 2;
-map_objects_sprite_screenlock[o + 2] = true;
+if (global.game_objective_complete){
+	map_objects[o + 2] = obj_section_end_pointer;
+	map_objects_sprite[o + 2] = spr_ui_arrow_small;
+	map_objects_sprite_scale[o + 2] = 2;
+	map_objects_sprite_screenlock[o + 2] = true;
+}
 
 map_objects_count = array_length_1d(map_objects);
 
@@ -785,7 +793,11 @@ for(var o = 0; o < map_objects_count; o ++){
 			var tx = inst.x div maptilewidth;
 			var ty = inst.y div maptileheight;
 			
-			if (!obj_controller_gameplay.map_found[tx, ty]){
+			if (tx < 0 || ty < 0 || tx >= mapwidth || ty >= mapheight){
+				continue;
+			}
+			
+			if (!obj_controller_gameplay.map_found[tx, ty]) && (!map_objects_sprite_screenlock[o]){
 				continue;
 			}
 			
@@ -794,7 +806,7 @@ for(var o = 0; o < map_objects_count; o ++){
 			var dangle = 0;
 			
 			if (map_objects_sprite_screenlock[o]){
-				var margin = 30;
+				var margin = 10;
 				draw = true;
 				
 				dx = clamp(dx, mapx + margin, mapx + minimap_width - margin);
@@ -936,7 +948,7 @@ if (pause_text_alpha > 0){
 }
 
 if (!pause_text_update){
-	if (global.game_pause) || (global.cutscene_current != -1){
+	if (global.game_pause) || (iscutscene){
 		pause_text_update = true;
 	}
 }
@@ -976,15 +988,15 @@ if (pausedialogue_alpha > 0){
 	
 	switch(pausedialogue_type){
 		case 0:
-			draw_text_ext(dwidth / 2, (dheight / 2) - 40, pausedialogue_type_text, -1, 430);
-			vslot ++;
+			draw_text_ext(dwidth / 2, optyy, pausedialogue_type_text, -1, 660);
+			optyy += string_height(pausedialogue_type_text) + 20;
 			break;
 		
 		case 1:
-			optyy += string_height(pausedialogue_type_text) + 10;
-			
 			draw_set_font(fnt_cambria_2);
-			scr_text_shadow(dwidth / 2, (dheight / 2) - 58, pausedialogue_type_text, c_white);
+			scr_text_shadow(dwidth / 2, optyy, pausedialogue_type_text, c_white);
+			
+			optyy += string_height(pausedialogue_type_text) + 20;
 			
 			draw_set_font(fnt_cambria_1);
 			

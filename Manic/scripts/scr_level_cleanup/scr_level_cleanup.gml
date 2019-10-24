@@ -101,4 +101,5 @@ if (global.cutscene_current != -1){
 }
 
 scr_fade_object_list_reset();
+
 global.boss_current = -1;

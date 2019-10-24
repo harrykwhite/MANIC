@@ -36,7 +36,7 @@ dash_direction = 0;
 
 weapon = -1;
 weapon_has = true;
-weapon_index = PawnWeapon.Sledgehammer;
+weapon_index = (room == rm_level_10_01 ? PawnWeapon.Greatsword : PawnWeapon.Sledgehammer);
 
 weapon_change_time = 0;
 weapon_change_time_max = 60 * 2;
@@ -91,11 +91,7 @@ cutscene_prop = false;
 in_cutscene = false;
 active = false;
 
-if (room == rm_level_6_pre_00){
-	health_max = 20//95;
-}else{
-	health_max = 85;
-}
+health_max = 85;
 
 health_current = health_max;
 health_alpha = 0;

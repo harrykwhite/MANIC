@@ -33,6 +33,15 @@ if (destroy){
 		instance_destroy(mylight);
 	}
 	
+	if (room == rm_level_6_pre_00){
+		cutscene_prop = true;
+		in_cutscene = false;
+		
+		if (global.game_boss_firstantag_killed){
+			instance_destroy();
+		}
+	}
+	
 	x = xstart;
 	y = ystart;
 	event_perform(ev_create, 0);

@@ -106,35 +106,6 @@ if (instance_exists(target)){
 		if (global.player_health_current < 4){
 			speed_multiplier -= 0.2;
 		}
-		
-		if (companion_attack_break > 240){
-			var csize = array_length_1d(global.companion);
-			for(var i = 0; i < csize; i ++){
-				if (global.companion[i] == obj_companion_0){
-					continue;
-				}
-				
-				if (instance_exists(global.companion[i])){
-					var nearest = instance_nearest(x, y, global.companion[i]);
-					if (distance_to_object(nearest) < 50){
-						target = nearest;
-						move_x_to = target.x;
-						move_y_to = target.y + 6;
-						
-						if (companion_attack_time < companion_attack_time_max){
-							companion_attack_time ++;
-						}else{
-							companion_attack_time = 0;
-							companion_attack_break = 0;
-						}
-						
-						break;
-					}
-				}
-			}
-		}else{
-			companion_attack_break ++;
-		}
 	
 		if (type == Enemy0_Type.Grenadier){
 			var inst = instance_nearest(x, y, obj_p_depth_throwobject);

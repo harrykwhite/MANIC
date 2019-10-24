@@ -11,3 +11,5 @@ var pmax = argument4;
 
 var sound = scr_sound_play_distance(snd, loop, radius);
 audio_sound_pitch(sound, random_range(pmin, pmax));
+
+return sound;

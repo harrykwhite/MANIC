@@ -57,7 +57,7 @@ global.level_name[Level.WinterTown] = "Winter Town";
 global.level_room[Level.WinterTown] = rm_level_4_00;
 global.level_preroom[Level.WinterTown] = rm_level_4_pre_00;
 global.level_collectable_current[Level.WinterTown] = 0;
-global.level_collectable_number[Level.WinterTown] = 7;
+global.level_collectable_number[Level.WinterTown] = 6;
 global.level_turret_number[Level.WinterTown] = 0;
 global.level_entered[Level.WinterTown] = false;
 global.level_complete[Level.WinterTown] = false;
@@ -75,7 +75,7 @@ global.level_complete[Level.HumanPrison] = false;
 global.level_checkpoint_found[Level.HumanPrison, 0] = false;
 
 global.level_name[Level.TrainStation] = "Train Station";
-global.level_room[Level.TrainStation] = rm_level_6_pre_00;
+global.level_room[Level.TrainStation] = rm_level_6_00;
 global.level_preroom[Level.TrainStation] = rm_level_6_pre_00;
 global.level_collectable_current[Level.TrainStation] = 0;
 global.level_collectable_number[Level.TrainStation] = 0;
@@ -104,7 +104,7 @@ global.level_entered[Level.DesolateVillage] = false;
 global.level_complete[Level.DesolateVillage] = false;
 global.level_checkpoint_found[Level.DesolateVillage, 0] = false;
 
-global.level_name[Level.IntoTheCity] = "Into the City";
+global.level_name[Level.IntoTheCity] = "Into The City";
 global.level_room[Level.IntoTheCity] = rm_level_9_00;
 global.level_preroom[Level.IntoTheCity] = noone;
 global.level_collectable_current[Level.IntoTheCity] = 0;

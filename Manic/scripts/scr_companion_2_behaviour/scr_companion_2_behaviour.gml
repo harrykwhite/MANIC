@@ -27,6 +27,7 @@ if (instance_exists(obj_player)){
 				
 				if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150){
 					var enemyCount = array_length_1d(global.enemy);
+					
 					for(var i = 0; i < enemyCount; i ++){
 						if (i == 1){
 							continue;
@@ -48,40 +49,15 @@ if (instance_exists(obj_player)){
 								
 									if (dog != noone){
 										target = dog;
-										break;
+										continue;
 									}
 								}
 							}
 						
-							if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300) || (!onscreen(target.x, target.y, 0)){
+							if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
 								target = noone;
 								continue;
 							}
-						}
-					}
-				
-					if (health_current < 5){
-						speed_multiplier = 0;
-				
-						if (heal_time > 0){
-							heal_time--;
-						}else{
-							whiteflash_alpha = 0.7;
-							health_scale = 1.5;
-							health_current += 2;
-							scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
-					
-							repeat(5){
-								part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);
-							}
-					
-							part_type_direction(global.pt_heal_0, 0, 360, 0, 0);
-					
-							repeat(14){
-								part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-13, 13), global.pt_heal_0, 1);
-							}
-					
-							heal_time = heal_time_max;
 						}
 					}
 				}
@@ -92,19 +68,19 @@ if (instance_exists(obj_player)){
 					move_x_to = obj_player.x;
 					move_y_to = obj_player.y;
 					move_speed = 2.1;
-				
+					
 					if (dist_to_player > 100 + (60 * order)){
 						move_speed = 2.6;
 					}
-				
+					
 					if (dist_to_player > 140 + (60 * order)){
 						move_speed = 3.1;
 					}
-				
+					
 					if (dist_to_player > 180 + (60 * order)){
 						move_speed = 3.6;
 					}
-				
+					
 					face_player = true;
 				}else{
 					move_speed = 0;

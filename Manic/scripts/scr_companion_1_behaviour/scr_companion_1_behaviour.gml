@@ -24,6 +24,7 @@ if (instance_exists(obj_player)){
 			
 			if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150) && (attack_time <= 0){
 				var enemyCount = array_length_1d(global.enemy);
+				
 				for(var i = 0; i < enemyCount; i ++){
 					if (i == 1){
 						continue;
@@ -45,7 +46,7 @@ if (instance_exists(obj_player)){
 								
 								if (dog != noone){
 									target = dog;
-									break;
+									continue;
 								}
 							}
 						}
@@ -144,39 +145,6 @@ if (instance_exists(obj_player)){
 			}else if (runaway_starttime != -2){
 				runaway_starttime = -2;
 				runaway_time = 17;
-			}
-		}
-		
-		if (health_current == health_max){
-			heal_can = false;
-		}
-		
-		if (health_current < health_max - 1){
-			heal_can = true;
-		}
-		
-		if (heal_can){
-			speed_multiplier = 0;
-			
-			if (heal_time > 0){
-				heal_time--;
-			}else{
-				whiteflash_alpha = 0.7;
-				health_scale = 1.5;
-				health_current ++;
-				scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
-				
-				repeat(5){
-					part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);
-				}
-				
-				part_type_direction(global.pt_heal_0, 0, 360, 0, 0);
-				
-				repeat(14){
-					part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-13, 13), global.pt_heal_0, 1);
-				}
-				
-				heal_time = heal_time_max;
 			}
 		}
 	}else{

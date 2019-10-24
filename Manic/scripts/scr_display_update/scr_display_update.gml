@@ -46,6 +46,21 @@ var camscale = global.game_option[| Options.CameraScale];
 var winscale = global.game_option[| Options.WindowScale];
 var uiscale = global.game_option[| Options.UIScale];
 
+if (camscale < 1){
+	camscale = 1;
+	global.game_option[| Options.CameraScale] = 1;
+}
+
+if (winscale < 1){
+	winscale = 3;
+	global.game_option[| Options.WindowScale] = 3;
+}
+
+if (uiscale < 1){
+	uiscale = 1;
+	global.game_option[| Options.UIScale] = 1;
+}
+
 if (!fullscreen){
 	window_width /= 3;
 	window_height /= 3;

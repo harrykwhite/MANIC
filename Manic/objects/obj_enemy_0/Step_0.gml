@@ -10,18 +10,20 @@ if (type == Enemy0_Type.TrainBoss){
 }
 
 if (type == Enemy0_Type.Grenadier) || (type == Enemy0_Type.Sniper) || (type == Enemy0_Type.TrainBoss){
-	if (instance_exists(mylight)) && (mylight != noone){
-		mylight.x = x;
-		mylight.y = y - (9 * scale);
-		mylight.light[| eLight.X] = x;
-		mylight.light[| eLight.Y] = y - (9 * scale);
-		mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-		mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
-		
-		if (type == Enemy0_Type.TrainBoss){
-			mylight.y -= scale;
-			mylight.light[| eLight.Y] -= scale;
-		}
+	if (!instance_exists(mylight)) || (mylight == noone){
+		mylight = instance_create_layer(x, y - 9, "Lights", obj_enemy_0_light);
+	}
+	
+	mylight.x = x;
+	mylight.y = y - (9 * scale);
+	mylight.light[| eLight.X] = x;
+	mylight.light[| eLight.Y] = y - (9 * scale);
+	mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+	
+	if (type == Enemy0_Type.TrainBoss){
+		mylight.y -= scale;
+		mylight.light[| eLight.Y] -= scale;
 	}
 }
 

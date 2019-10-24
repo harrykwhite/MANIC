@@ -4,31 +4,6 @@ var face_player = false;
 target = obj_player;
 
 if (instance_exists(target)){
-	if (companion_attack_break > 240){
-		var csize = array_length_1d(global.companion);
-		for(var i = 0; i < csize; i ++){
-			if (global.companion[i] == obj_companion_0){
-				continue;
-			}
-			
-			if (instance_exists(global.companion[i])){
-				var nearest = instance_nearest(x, y, global.companion[i]);
-				if (distance_to_object(nearest) < 50){
-					target = nearest;
-					
-					if (companion_attack_time < companion_attack_time_max){
-						companion_attack_time ++;
-					}else{
-						companion_attack_time = 0;
-						companion_attack_break = 0;
-					}
-				}
-			}
-		}
-	}else{
-		companion_attack_break ++;
-	}
-	
 	if (bite_to){
 		var dirTo;
 		move_x_to = target.x;

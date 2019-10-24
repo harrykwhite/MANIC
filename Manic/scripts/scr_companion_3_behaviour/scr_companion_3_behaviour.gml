@@ -14,6 +14,7 @@ if (instance_exists(obj_player)){
 		if (!instance_exists(target) || (target == noone)){
 			if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150){
 				var enemyCount = array_length_1d(global.enemy);
+				
 				for(var i = 0; i < enemyCount; i ++){
 					if (i == 1){
 						continue;
@@ -35,12 +36,12 @@ if (instance_exists(obj_player)){
 							
 								if (dog != noone){
 									target = dog;
-									break;
+									continue;
 								}
 							}
 						}
 						
-						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300) || (!onscreen(target.x, target.y, 0)){
+						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
 							target = noone;
 							continue;
 						}

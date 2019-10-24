@@ -283,7 +283,7 @@ if (!in_settings) && (!in_levelselect){
 				
 				draw_set_halign(fa_left);
 				
-				scr_text_shadow(bx - 270, by, scr_input_get_name(b), c_white);
+				scr_text_shadow(bx - 270, by, scr_input_get_name_action(b), c_white);
 				
 				draw_set_halign(fa_right);
 				

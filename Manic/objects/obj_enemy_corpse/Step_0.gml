@@ -2,6 +2,8 @@ if (global.game_pause){
 	return;
 }
 
+scr_object_table_place(60);
+
 // Blood
 if (spd > 0.1){
 	if (random(3) < 1){

@@ -99,6 +99,7 @@ if (fade){
 	if (fade_alpha < 1){
 		fade_alpha += fade_speed;
 	}else{
+		scr_level_persistent_set(scr_level_get_index(fade_goto));
 		room_goto(fade_goto);
 	}
 }else{

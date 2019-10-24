@@ -265,7 +265,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 						if (weapon == PawnWeapon.Grenade){
 							enemy.type = Enemy0_Type.Grenadier;
 						}
-				
+						
 						if (enemy.type == Enemy0_Type.Sniper){
 							weapon = PawnWeapon.SniperRifle;
 						}

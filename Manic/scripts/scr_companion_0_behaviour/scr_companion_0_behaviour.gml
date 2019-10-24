@@ -28,6 +28,7 @@ if (instance_exists(obj_player)){
 			
 			if (global.cutscene_current == -1) && (distance_to_object(obj_player) < 150){
 				var enemyCount = array_length_1d(global.enemy);
+				
 				for(var i = 0; i < enemyCount; i ++){
 					if (i == 1){
 						continue;
@@ -66,12 +67,12 @@ if (instance_exists(obj_player)){
 								
 								if (dog != noone){
 									target = dog;
-									break;
+									continue;
 								}
 							}
 						}
 						
-						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300) || (!onscreen(target.x, target.y, 0)){
+						if (target.cutscene_prop) || (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (distance_to_object(target) > 300){
 							target = noone;
 							continue;
 						}
@@ -114,7 +115,7 @@ if (instance_exists(obj_player)){
 			}
 			
 			if (runaway_time > 0){
-				runaway_time--;
+				runaway_time --;
 				
 				var dir = point_direction(target.x, target.y, x, y);
 				move_x_to = target.x + lengthdir_x(30, dir);
@@ -153,39 +154,6 @@ if (instance_exists(obj_player)){
 			}
 		}else{
 			move_speed = 0;
-		}
-		
-		if (health_current == health_max){
-			heal_can = false;
-		}
-		
-		if (health_current < health_max - 1){
-			heal_can = true;
-		}
-		
-		if (heal_can){
-			speed_multiplier = 0;
-			
-			if (heal_time > 0){
-				heal_time--;
-			}else{
-				whiteflash_alpha = 0.7;
-				health_scale = 1.5;
-				health_current ++;
-				scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
-				
-				repeat(5){
-					part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);
-				}
-				
-				part_type_direction(global.pt_heal_0, 0, 360, 0, 0);
-				
-				repeat(14){
-					part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-13, 13), global.pt_heal_0, 1);
-				}
-				
-				heal_time = heal_time_max;
-			}
 		}
 	}else{
 		var pdir = point_direction(x, y, obj_player.x, obj_player.y);
@@ -240,13 +208,12 @@ if (instance_exists(obj_player)){
 			move_speed = 0;
 			
 			if (engine != noone){
-				if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) < 300){
-					if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) > 70){
+				if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) < 600){
+					if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) > 20){
 						move_speed = 1.9;
+						move_x_to = engine.x;
+						move_y_to = engine.y + 14;
 					}
-					
-					move_x_to = engine.x;
-					move_y_to = engine.y + 10;
 				}
 			}
 		}
@@ -274,7 +241,7 @@ if (instance_exists(obj_player)){
 	}
 	
 	if (!cutscene_prop){
-		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || ((global.cutscene_current == 58) && (!depart) && (!depart_standaway) && (!bunker_engine_destroy)){
+		if (global.cutscene_current == 2) || ((global.cutscene_current == 58 || global.cutscene_current == 52) && (!depart) && (!depart_standaway) && (!bunker_engine_destroy)){
 			if (distance_to_object(obj_player) > 67 + (60 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;

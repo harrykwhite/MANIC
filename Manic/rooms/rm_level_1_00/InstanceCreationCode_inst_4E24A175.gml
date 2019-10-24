@@ -1,2 +1,2 @@
 innerspace = 19;
-global.fade_object_group[8, 1] = id;
+fade_group_x = 8; fade_group_y = 1;

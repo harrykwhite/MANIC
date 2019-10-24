@@ -35,5 +35,11 @@ part = 0;
 
 option_refresh = false;
 
+room_pers_clear = false;
+room_pers_clear_at = 0;
+room_pers_clear_min = 0;
+room_pers_clear_max = 0;
+room_pers_clear_original = noone;
+
 debug = false;
 sprite_index = noone;

@@ -9,5 +9,5 @@
 #macro outlinecompanion make_colour_rgb(203, 163, 55)
 #macro outlinehealth make_colour_rgb(164, 130, 217)
 #macro outlineexplosive make_colour_rgb(198, 55, 16)
-#macro devmode true
+#macro devmode false
 #macro hordespawnrate 2

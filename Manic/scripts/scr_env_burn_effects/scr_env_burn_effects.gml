@@ -21,8 +21,12 @@ if (random(10) < 1){
 	part_particles_create(global.ps_front, x + xoff + random_range(-xrange, xrange), y + yoff - 7 + random_range(-yrange, yrange), global.pt_fire_large_0, 1);
 }
 
-if (burn_sound == noone){
-	burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
+if (point_distance(x, y, global.player_position_x, global.player_position_y) <= srange){
+	if (burn_sound == noone){
+		burn_sound = scr_sound_play(snd_character_burn_0, true, 1, 1);
+	}
+	
+	scr_sound_set_distance(burn_sound, srange);
+}else{
+	audio_stop_sound(burn_sound);
 }
-
-scr_sound_set_distance(burn_sound, srange);

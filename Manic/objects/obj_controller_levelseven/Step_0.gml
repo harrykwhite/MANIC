@@ -252,3 +252,5 @@ if (!global.game_pause){
 }
 
 scr_level_combatstate_control();
+
+scr_level_audio_pause_and_resume();

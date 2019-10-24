@@ -11,8 +11,12 @@ switch(shadowMapType){
 }
 
 var camera = lighting_get_active_camera();
-var vw = camera[eLightingCamera.Width]
+var vw = camera[eLightingCamera.Width];
 var vh = camera[eLightingCamera.Height];
+
+if (vw == infinity) || (vh == infinity){
+	return surface_exists(shadowMap);
+}
 
 if (shadowMap == noone || !surface_exists(shadowMap) || surface_get_width(shadowMap) != vw || surface_get_height(shadowMap) != vh){
 	if (shadowMap != noone && surface_exists(shadowMap)){

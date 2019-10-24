@@ -15,6 +15,7 @@ if (instance_exists(obj_player)){
 		obj_player.sprite_index = spr_player_idle_1;
 		obj_player.image_speed = 0;
 		obj_player.image_index = 0;
+		
 		if (global.cutscene_time[index] < 40){
 			global.cutscene_time[index] ++;
 		}else{
