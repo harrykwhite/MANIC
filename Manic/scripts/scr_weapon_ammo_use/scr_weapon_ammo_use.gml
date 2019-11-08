@@ -2,7 +2,7 @@
 var amount = argument0;
 
 if (scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){
-	if (chance(30)){
+	if (chance(40)){
 		return;
 	}
 }

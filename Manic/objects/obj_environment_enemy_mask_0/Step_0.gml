@@ -2,15 +2,22 @@ if (global.game_pause){
 	return;
 }
 
-if (!place_meeting(x + (3 * sign(dcos(dir))), y + 8 + (3 * sign(dsin(dir))), obj_p_solid)){
-	instance_destroy();
-}
-
 if (place_meeting(x, y + 8, obj_conveyerbelt_0)){
 	var inst = instance_place(x, y + 8, obj_conveyerbelt_0);
 	spd = inst.spd;
 	dir = inst.dir;
+	parent = inst;
+}else{
+	parent = instance_place(x, y + 8, obj_table_1);
+	
+	if (spd > 0.01){
+		spd *= 0.6;
+	}else{
+		spd = 0;
+	}
 }
+
+scr_object_table_place(32, 1.45);
 
 if (spd > 0){
 	x += lengthdir_x(spd, dir);

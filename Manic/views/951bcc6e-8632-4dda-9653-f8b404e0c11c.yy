@@ -12,7 +12,8 @@
         "e4a65466-336a-4b0c-b920-860741f9179d",
         "10b5feff-3108-440b-ad36-43b9a9f13f24",
         "c09ff1bc-3ff0-4b33-b8e2-33fb3a0bee75",
-        "090ec2db-51a0-4991-a0fa-c3d5b0ea72d8"
+        "090ec2db-51a0-4991-a0fa-c3d5b0ea72d8",
+        "f22dd354-0417-4ed9-8f77-befbfbf482cf"
     ],
     "filterType": "GMScript",
     "folderName": "Weapons",

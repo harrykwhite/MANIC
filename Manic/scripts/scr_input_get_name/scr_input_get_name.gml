@@ -28,7 +28,65 @@ switch(global.game_input_type){
 		break;
 	
 	case InputType.Gamepad:
-		rstr = "     "; break;
+		var gtype = global.game_input_gamepad_current_type;
+		
+		switch(gtype){
+			case GamepadType.Xbox:
+				switch(binding){
+					case InputBinding.Right:
+					case InputBinding.Left:
+					case InputBinding.Down:
+					case InputBinding.Up: rstr = "Left Joystick"; break;
+					
+					case InputBinding.Interact: rstr = "A"; break;
+					case InputBinding.Dash: rstr = "X"; break;
+					case InputBinding.Attack: rstr = "Right Trigger"; break;
+					case InputBinding.Throw: rstr = "Left Trigger"; break;
+					case InputBinding.Pause: rstr = "Back"; break;
+					case InputBinding.FullscreenToggle: rstr = "Start"; break;
+					case InputBinding.SwitchWeaponForward: rstr = "Right Bumper"; break;
+					case InputBinding.SwitchWeaponBack: rstr = "Left Bumper"; break;
+				}
+				break;
+			
+			case GamepadType.Playstation:
+				switch(binding){
+					case InputBinding.Right:
+					case InputBinding.Left:
+					case InputBinding.Down:
+					case InputBinding.Up: rstr = "Left Joystick"; break;
+					
+					case InputBinding.Interact: rstr = "Cross"; break;
+					case InputBinding.Dash: rstr = "Square"; break;
+					case InputBinding.Attack: rstr = "Right Trigger"; break;
+					case InputBinding.Throw: rstr = "Left Trigger"; break;
+					case InputBinding.Pause: rstr = "Back"; break;
+					case InputBinding.FullscreenToggle: rstr = "Start"; break;
+					case InputBinding.SwitchWeaponForward: rstr = "Right Bumper"; break;
+					case InputBinding.SwitchWeaponBack: rstr = "Left Bumper"; break;
+				}
+				break;
+			
+			case GamepadType.Switch:
+				switch(binding){
+					case InputBinding.Right:
+					case InputBinding.Left:
+					case InputBinding.Down:
+					case InputBinding.Up: rstr = "Left Joystick"; break;
+					
+					case InputBinding.Interact: rstr = "B"; break;
+					case InputBinding.Dash: rstr = "Y"; break;
+					case InputBinding.Attack: rstr = "ZR"; break;
+					case InputBinding.Throw: rstr = "ZL"; break;
+					case InputBinding.Pause: rstr = "Capture"; break;
+					case InputBinding.FullscreenToggle: rstr = "Home"; break;
+					case InputBinding.SwitchWeaponForward: rstr = "R"; break;
+					case InputBinding.SwitchWeaponBack: rstr = "L"; break;
+				}
+				break;
+		}
+		
+		break;
 }
 
 if (brackets){

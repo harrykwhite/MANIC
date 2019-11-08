@@ -13,6 +13,9 @@ sprite = -1;
 parent = -1;
 checked = false;
 note_text = "No text";
+deer_flesh_cblock = noone;
+deer_flesh_cblock_xoff = 0;
+deer_flesh_cblock_yoff = 0;
 
 image_alpha = 0;
 image_speed = 0;

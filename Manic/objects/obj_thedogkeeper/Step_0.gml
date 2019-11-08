@@ -4,6 +4,10 @@ if (light_brightness < 1){
 	light_brightness -= 0.05;
 }
 
+if (!instance_exists(mylight)){
+	mylight = instance_create_layer(x, y, "Lights", obj_thedogkeeper_light);
+}
+
 mylight.x = x;
 mylight.y = y;
 mylight.light[| eLight.X] = x;

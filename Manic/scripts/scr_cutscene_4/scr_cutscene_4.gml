@@ -33,6 +33,21 @@ if (instance_exists(obj_player)){
 					
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;
+					
+					var coll;
+					var coll_count = instance_number(obj_collectable_pickup);
+					
+					for(var c = 0; c < coll_count; c ++){
+						coll = instance_find(obj_collectable_pickup, c);
+						
+						if (instance_exists(coll.deer_flesh_cblock)){
+							instance_destroy(coll.deer_flesh_cblock);
+							
+							coll.deer_flesh_cblock = noone;
+							coll.deer_flesh_cblock_xoff = 0;
+							coll.deer_flesh_cblock_yoff = 0;
+						}
+					}
 				}
 			
 				stationary = true;

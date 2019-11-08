@@ -14,6 +14,9 @@ enum Collectables{
 	ChestplatePiece1,
 	ChestplatePiece2,
 	ChestplatePiece3,
+	LeggingsPiece0,
+	LeggingsPiece1,
+	LeggingsPiece2,
 }
 
 global.collectable_name[0] = "Note";
@@ -60,3 +63,12 @@ global.collectable_sprite[13] = spr_collectable_chestplate_piece_2;
 
 global.collectable_name[14] = "Chestplate Piece";
 global.collectable_sprite[14] = spr_collectable_chestplate_piece_3;
+
+global.collectable_name[15] = "Leggings Piece";
+global.collectable_sprite[15] = spr_collectable_leggings_piece_0;
+
+global.collectable_name[16] = "Leggings Piece";
+global.collectable_sprite[16] = spr_collectable_leggings_piece_1;
+
+global.collectable_name[17] = "Leggings Piece";
+global.collectable_sprite[17] = spr_collectable_leggings_piece_2;

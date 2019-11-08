@@ -1,2 +1,2 @@
-index = PlayerUpgrade.KneePads;
+index = PlayerUpgrade.DashBoots;
 angle = 10;

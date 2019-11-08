@@ -50,6 +50,10 @@ global.game_npc_townperson4_talked = false;
 global.game_npc_townperson5_talked = false;
 global.game_npc_townperson6_talked = false;
 global.game_npc_player_wife_talked = false;
+global.game_conveyerbelt_shutdown0 = false;
+global.game_conveyerbelt_shutdown1 = false;
+global.game_conveyerbelt_shutdown2 = false;
+global.game_conveyerbelt_shutdown3 = false;
 
 if (ds_exists(global.level_collectable_found, ds_type_grid)){
 	ds_grid_clear(global.level_collectable_found, false);

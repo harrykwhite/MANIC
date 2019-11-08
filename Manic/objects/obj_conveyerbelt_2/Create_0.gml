@@ -5,4 +5,6 @@ timemaxoriginal = noone;
 spawn = false;
 stop = false;
 deactivated = false;
+index = 0;
+checked = false;
 image_speed = 0;

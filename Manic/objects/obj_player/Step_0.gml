@@ -1,3 +1,7 @@
+if (!scr_player_has_upgrade(PlayerUpgrade.IronGlove)){
+	scr_upgrade_add(PlayerUpgrade.IronGlove);
+}
+
 // Lights
 if (!instance_exists(obj_player_light) && surrounding_light >= 0.1){
 	mylight = instance_create_layer(x, y, "Lights", obj_player_light);
@@ -50,10 +54,14 @@ scr_player_update();
 script_execute(state);
 
 // Confining the player to the room.
-if (global.cutscene_current == -1){
-	x = clamp(x, 12, room_width - 12);
-	y = clamp(y, 12, room_height - 12);
+var confine_range = 12;
+
+if (global.cutscene_current != -1){
+	confine_range = -240;
 }
+
+x = clamp(x, confine_range, room_width - confine_range);
+y = clamp(y, confine_range, room_height - confine_range);
 
 // Animation
 if (in_minecart){

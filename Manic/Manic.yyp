@@ -175,6 +175,14 @@
             }
         },
         {
+            "Key": "035e4a18-2a74-4c83-b8cd-7bc51eb82cd7",
+            "Value": {
+                "id": "250b5d6c-08fe-49bf-9daa-7af1f671bba3",
+                "resourcePath": "scripts\\scr_trigger_3\\scr_trigger_3.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "036114a4-db80-4e37-bd35-9c733fdd44d0",
             "Value": {
                 "id": "7f35388b-78cc-4dcc-ba8f-f9e1e5c1360e",
@@ -498,7 +506,7 @@
             "Key": "0897ff0b-bd7c-4402-99a2-ddf7245ce77f",
             "Value": {
                 "id": "45d6c149-aefa-4ad4-a043-465368445a0f",
-                "resourcePath": "sprites\\spr_player_upgrade_gasmask_0_corpse\\spr_player_upgrade_gasmask_0_corpse.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_steelmask_0_corpse\\spr_player_upgrade_steelmask_0_corpse.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -2042,7 +2050,7 @@
             "Key": "22556bfe-9cf1-42c0-8361-7501cd5e541e",
             "Value": {
                 "id": "1d410f74-34a6-46c1-b3a7-ac68bb9a09f8",
-                "resourcePath": "sprites\\spr_player_upgrade_kneepads_0_walk\\spr_player_upgrade_kneepads_0_walk.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_leggings_0_walk\\spr_player_upgrade_leggings_0_walk.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -2339,6 +2347,14 @@
             "Value": {
                 "id": "9d077077-7cf7-4acc-892b-11b6a78ca841",
                 "resourcePath": "sprites\\spr_anvil_0\\spr_anvil_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "27b2884a-d241-49c1-b0d9-ed11785b420b",
+            "Value": {
+                "id": "78b8c6fb-e3df-4c40-813c-2cb14b40ddbe",
+                "resourcePath": "sprites\\spr_collectable_leggings_piece_0\\spr_collectable_leggings_piece_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -2930,7 +2946,7 @@
             "Key": "306e5f31-79af-464f-a69f-0e60a43e6be8",
             "Value": {
                 "id": "27504224-8412-4db0-8033-266104934595",
-                "resourcePath": "sprites\\spr_player_upgrade_kneepads_0\\spr_player_upgrade_kneepads_0.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_leggings_0\\spr_player_upgrade_leggings_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -4170,7 +4186,7 @@
             "Key": "443f8bb5-8d68-4e9a-b2ca-25c4a79b9683",
             "Value": {
                 "id": "1bcf9b89-14c2-46f4-a943-e2b207e1aa08",
-                "resourcePath": "sprites\\spr_companion_1_head_0\\spr_companion_1_head_0.yy",
+                "resourcePath": "sprites\\spr_companion_1_head_0_minimap\\spr_companion_1_head_0_minimap.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -4292,6 +4308,14 @@
                 "id": "25831951-3407-4d67-b8ce-38ae89cd4c6e",
                 "resourcePath": "scripts\\scr_part_type_fog_0\\scr_part_type_fog_0.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "463106f0-e677-46e2-80ed-fd5f75ed75ea",
+            "Value": {
+                "id": "2cae4a38-8c9b-4354-ab09-ced02f13ca72",
+                "resourcePath": "sounds\\snd_weapon_shoot_6\\snd_weapon_shoot_6.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -4474,7 +4498,7 @@
             "Key": "49508934-9cac-4ade-94b4-d3c1e1df5df5",
             "Value": {
                 "id": "8a7a16a2-701a-40f6-a57e-edc314e44f01",
-                "resourcePath": "sprites\\spr_companion_3_head_0\\spr_companion_3_head_0.yy",
+                "resourcePath": "sprites\\spr_companion_3_head_0_minimap\\spr_companion_3_head_0_minimap.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -5490,7 +5514,7 @@
             "Key": "5b760083-5bd3-4e4c-99f8-f2ce12e2199a",
             "Value": {
                 "id": "1ed848d3-2981-476f-827d-0da7299fd301",
-                "resourcePath": "sprites\\spr_player_upgrade_kneepads_0_corpse\\spr_player_upgrade_kneepads_0_corpse.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_leggings_0_corpse\\spr_player_upgrade_leggings_0_corpse.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -5514,7 +5538,7 @@
             "Key": "5bb84446-5aa0-4097-b9e6-13e9db875cd2",
             "Value": {
                 "id": "746bb1b6-8306-4a8f-802b-1186fa1fd83c",
-                "resourcePath": "sprites\\spr_player_upgrade_kneepads_0_pickup\\spr_player_upgrade_kneepads_0_pickup.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_leggings_0_pickup\\spr_player_upgrade_leggings_0_pickup.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -5866,7 +5890,7 @@
             "Key": "62ee0027-b220-40be-8e62-43d9700d80fc",
             "Value": {
                 "id": "0c21b491-6ec7-4839-9e33-c8dfd339e769",
-                "resourcePath": "sprites\\spr_player_upgrade_runningboots_0_walk\\spr_player_upgrade_runningboots_0_walk.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_dashboots_0_walk\\spr_player_upgrade_dashboots_0_walk.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -7055,6 +7079,14 @@
             }
         },
         {
+            "Key": "74e9f0a5-b9d9-4ea3-994e-15089ed5f925",
+            "Value": {
+                "id": "cb723ea3-7f8e-4348-968e-f7b0852afff9",
+                "resourcePath": "scripts\\scr_part_type_powerhit_0\\scr_part_type_powerhit_0.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "74fad68e-e4f2-4048-95b6-3add69b91fd1",
             "Value": {
                 "id": "77ee065a-cb24-41be-b617-eb9d58a7cfe4",
@@ -7258,7 +7290,7 @@
             "Key": "78c746f0-0a0f-482d-9bf8-3a2fa342183c",
             "Value": {
                 "id": "bd223ae1-eca7-4e60-a57d-9997762049a8",
-                "resourcePath": "sprites\\spr_player_upgrade_runningboots_0_pickup\\spr_player_upgrade_runningboots_0_pickup.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_dashboots_0_pickup\\spr_player_upgrade_dashboots_0_pickup.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -7874,7 +7906,7 @@
             "Key": "83e2b6b6-054c-4f70-b16e-78eb405db762",
             "Value": {
                 "id": "6ac1fa62-5546-4b28-8355-378365d163da",
-                "resourcePath": "sprites\\spr_companion_2_head_0\\spr_companion_2_head_0.yy",
+                "resourcePath": "sprites\\spr_companion_2_head_0_minimap\\spr_companion_2_head_0_minimap.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -8799,6 +8831,14 @@
             }
         },
         {
+            "Key": "904cd4f1-fefa-4efa-9983-93c4017b3263",
+            "Value": {
+                "id": "d6decf3d-4f87-44ce-bd3b-b2bcaeb2f426",
+                "resourcePath": "sprites\\spr_collectable_leggings_piece_2\\spr_collectable_leggings_piece_2.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "9071e710-0573-4949-a79b-5735c04f5fc2",
             "Value": {
                 "id": "28986e3b-d8f1-4186-8a11-25cce9695fd6",
@@ -8890,7 +8930,7 @@
             "Key": "916844c4-0e25-4ff5-83b5-4785b99e02ef",
             "Value": {
                 "id": "5540dcaf-1636-432b-979b-24686f38da07",
-                "resourcePath": "sprites\\spr_player_upgrade_runningboots_0\\spr_player_upgrade_runningboots_0.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_dashboots_0\\spr_player_upgrade_dashboots_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -8946,7 +8986,7 @@
             "Key": "91d6e6e6-16af-4618-aff2-587c33634c07",
             "Value": {
                 "id": "9537a7d6-b7fd-4410-ba84-f297cb60aa0b",
-                "resourcePath": "sprites\\spr_companion_0_head_0\\spr_companion_0_head_0.yy",
+                "resourcePath": "sprites\\spr_companion_0_head_0_minimap\\spr_companion_0_head_0_minimap.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -10527,6 +10567,14 @@
             }
         },
         {
+            "Key": "aed21044-5d7f-471d-8f1a-96f3635c54d7",
+            "Value": {
+                "id": "22463903-d6fa-401c-b3b6-f523add2c7b8",
+                "resourcePath": "scripts\\scr_conveyerbelt_shutdown_group\\scr_conveyerbelt_shutdown_group.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "aee8a913-cfc5-45bb-8d66-afaade8c28ba",
             "Value": {
                 "id": "aae37904-ca26-4909-a0f9-ce1e06484aa2",
@@ -11050,7 +11098,7 @@
             "Key": "b6c200b0-a186-44a5-beb3-a9d50e6d64b2",
             "Value": {
                 "id": "331204a2-bc82-4261-a630-f9e268b20f72",
-                "resourcePath": "sprites\\spr_player_head_0\\spr_player_head_0.yy",
+                "resourcePath": "sprites\\spr_player_head_0_minimap\\spr_player_head_0_minimap.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -11447,14 +11495,6 @@
             }
         },
         {
-            "Key": "bf25bb54-87a3-4d46-9076-0ba9af0f8ed4",
-            "Value": {
-                "id": "5d9be77a-0a0c-4f2b-b658-3070f6324ef8",
-                "resourcePath": "scripts\\scr_input_get_symbol_ind\\scr_input_get_symbol_ind.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "bf7c962e-634c-4baa-b3d0-823b0452b5aa",
             "Value": {
                 "id": "75c91466-36b5-4a6a-ac55-661b0d3a55f3",
@@ -11554,7 +11594,7 @@
             "Key": "c23283d5-fd0c-4362-8fca-c162a07bfa1f",
             "Value": {
                 "id": "394f84a4-8e86-421f-91a5-d8a4c8d6e67f",
-                "resourcePath": "scripts\\scr_input_gamepad_get_sprite\\scr_input_gamepad_get_sprite.yy",
+                "resourcePath": "scripts\\scr_input_gamepad_get_type\\scr_input_gamepad_get_type.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -11611,6 +11651,14 @@
             "Value": {
                 "id": "6c637d79-2863-4318-8195-33526e8273fd",
                 "resourcePath": "sprites\\spr_maggot_hitbox_0\\spr_maggot_hitbox_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "c3df4cad-d946-4b74-a16f-1566c40baf60",
+            "Value": {
+                "id": "86c9d470-2df4-423b-8700-75dd8084d992",
+                "resourcePath": "sprites\\spr_collectable_leggings_piece_1\\spr_collectable_leggings_piece_1.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -12034,7 +12082,7 @@
             "Key": "cb97a947-b229-42cc-98b0-e0bd2a4b7e9e",
             "Value": {
                 "id": "4aa9342d-e328-41a3-821d-5b2f3ad84bef",
-                "resourcePath": "sprites\\spr_player_upgrade_runningboots_0_corpse\\spr_player_upgrade_runningboots_0_corpse.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_dashboots_0_corpse\\spr_player_upgrade_dashboots_0_corpse.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -12299,6 +12347,14 @@
             "Value": {
                 "id": "b5121b42-8233-4a69-a568-d3eb4855b0a5",
                 "resourcePath": "sprites\\spr_table_1_break\\spr_table_1_break.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "d1a19497-e012-4fbe-8e4f-c60a33f56727",
+            "Value": {
+                "id": "b18bb9db-12f2-4a67-90f1-b77133fb46e4",
+                "resourcePath": "sprites\\spr_player_upgrade_armour_full\\spr_player_upgrade_armour_full.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -13402,7 +13458,7 @@
             "Key": "e6a445d1-8783-4932-9fba-a37002caf9fb",
             "Value": {
                 "id": "78729536-0b08-4671-99c1-7642b866a2c3",
-                "resourcePath": "sprites\\spr_player_upgrade_gasmask_0_pickup\\spr_player_upgrade_gasmask_0_pickup.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_steelmask_0_pickup\\spr_player_upgrade_steelmask_0_pickup.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -13730,7 +13786,7 @@
             "Key": "ec2c5f32-3327-4cf1-9682-63e7933d1d88",
             "Value": {
                 "id": "13b90b8f-2337-400c-b7b2-ee0d2895c9e0",
-                "resourcePath": "sprites\\spr_player_upgrade_gasmask_0\\spr_player_upgrade_gasmask_0.yy",
+                "resourcePath": "sprites\\spr_player_upgrade_steelmask_0\\spr_player_upgrade_steelmask_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -14083,6 +14139,14 @@
             "Value": {
                 "id": "7489d5d6-d39d-462c-89d4-22145b8c9cb5",
                 "resourcePath": "scripts\\scr_thedogkeeper_dog_behaviour_0\\scr_thedogkeeper_dog_behaviour_0.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "f22dd354-0417-4ed9-8f77-befbfbf482cf",
+            "Value": {
+                "id": "bc8efd4b-0946-4ac3-8a8a-936854961b27",
+                "resourcePath": "scripts\\scr_weapon_shoot_tutourial_update\\scr_weapon_shoot_tutourial_update.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -15117,6 +15181,7 @@
         "10b5feff-3108-440b-ad36-43b9a9f13f24",
         "c09ff1bc-3ff0-4b33-b8e2-33fb3a0bee75",
         "090ec2db-51a0-4991-a0fa-c3d5b0ea72d8",
+        "f22dd354-0417-4ed9-8f77-befbfbf482cf",
         "48918b96-2eaa-49c9-bafb-f91eef15aaa1",
         "b4d270e3-98f6-4f3b-9db8-ed095f587386",
         "4f44dc7b-5b0c-440d-a6a8-8725b80abed8",
@@ -15156,6 +15221,7 @@
         "b3182ff8-b26f-4588-a7cb-dc2b0e2eeafe",
         "d389d1b5-a539-4b9f-bf6f-fe84bdffaa3d",
         "38e69cb4-c161-4a1d-925b-aa56d8e07ba4",
+        "74e9f0a5-b9d9-4ea3-994e-15089ed5f925",
         "43ad50a2-23d9-41d7-ad21-717c93603987",
         "df8d5a74-5853-4d1d-8bbf-175fb3d0424f",
         "19f6aaab-40cc-455d-b3b8-bb179a576637",
@@ -15294,7 +15360,6 @@
         "fb9e4f4b-78e5-495d-b14f-cfb9c75bcb35",
         "55f95e8b-7cc9-4b31-a102-4951ee0a1148",
         "a4e34bf0-4b4c-409c-853f-bffe9f3056fd",
-        "bf25bb54-87a3-4d46-9076-0ba9af0f8ed4",
         "e7c8e667-e83e-4446-9d28-7594bbd2aae7",
         "e841bdfb-3739-40a6-8800-5439fcd6ef54",
         "c23283d5-fd0c-4362-8fca-c162a07bfa1f",
@@ -15366,6 +15431,7 @@
         "1ee798be-4d5e-4b5e-9d53-74d12ed4a107",
         "ba0e7c1a-7c41-4047-9ce6-89a911dc490b",
         "ff0a644b-a2cf-4580-abd0-1692c07ffed5",
+        "035e4a18-2a74-4c83-b8cd-7bc51eb82cd7",
         "d1540663-dcbd-4f87-b8fc-0f117184bc53",
         "04a2e819-8985-4d15-a60b-b6a362ae4fa2",
         "8b55b162-56be-4003-8bd5-a205e1d41a38",
@@ -15414,7 +15480,8 @@
         "7d966658-f22f-42ee-aeeb-8aa56a206779",
         "43516910-fdf0-4e33-8de6-36f732999d09",
         "d2efb7d6-6367-468d-bec1-308bc017c9c1",
-        "b2730189-d521-4392-96fe-a8f112e92cd0"
+        "b2730189-d521-4392-96fe-a8f112e92cd0",
+        "aed21044-5d7f-471d-8f1a-96f3635c54d7"
     ],
     "tutorial": ""
 }

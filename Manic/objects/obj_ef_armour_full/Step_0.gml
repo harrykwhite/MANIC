@@ -7,18 +7,15 @@ if (can_touch_player){
 			image_alpha -= 0.05;
 		}else{
 			scr_upgrade_add(PlayerUpgrade.Chestplate);
-		
+			scr_upgrade_add(PlayerUpgrade.Leggings);
+			
 			scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
 			scr_effect_screenshake(1);
-		
-			if (global.game_is_playthrough){
-				scr_save_game();
-			}
-		
+			
 			global.player_health_max = 12;
 			global.player_health_current = global.player_health_max;
-		
-			scr_header_display_text(global.upgrade_name[PlayerUpgrade.Chestplate], global.upgrade_description[PlayerUpgrade.Chestplate], 60 * 7);
+			
+			scr_header_display_text(global.upgrade_name[PlayerUpgrade.Chestplate] + " and " + global.upgrade_name[PlayerUpgrade.Leggings], global.upgrade_description[PlayerUpgrade.Chestplate], 60 * 7);
 			instance_destroy();
 		}
 	}

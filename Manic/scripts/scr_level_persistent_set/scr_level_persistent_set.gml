@@ -12,10 +12,6 @@ for(var r = 0; r < room_count; r ++){
 	
 	var valid = string_pos(str, room_get_name(r)) != 0;
 	
-	if (valid){
-		show_debug_message(room_get_name(r));
-	}
-	
 	if (r == room){
 		room_persistent = valid;
 	}else{

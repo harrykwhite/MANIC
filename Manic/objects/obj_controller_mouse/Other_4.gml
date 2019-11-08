@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 mouse = MouseType.Dot;
 mouse_scale = 1;
 mouse_scaleTo = 1;

@@ -1,4 +1,6 @@
 global.game_option = 0;
+global.pers_runthrough = false;
+
 camera_resize_w = 0;
 camera_resize_h = 0;
 camera_resize_time = -1;
@@ -6,6 +8,8 @@ camera_resize_time = -1;
 gui_resize_w = 0;
 gui_resize_h = 0;
 gui_resize_time = -1;
+
+show_ui = true;
 
 app_surf_refresh_time = -1;
 app_surf_refresh_w = 0;
@@ -18,7 +22,7 @@ scr_options_init();
 scr_options_refresh(true);
 scr_update_real_volumes();
 
-gamepad_check_disconnected_time = 0;
+gamepad_check_disconnected_time = -60;
 
 camera_get_x1 = camera_get_view_x(view_camera[0]);
 camera_get_y1 = camera_get_view_y(view_camera[0]);

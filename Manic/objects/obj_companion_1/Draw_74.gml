@@ -1,3 +1,7 @@
+if (!obj_controller_all.show_ui){
+	return;
+}
+
 var my_x = (x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 var my_y = (y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 

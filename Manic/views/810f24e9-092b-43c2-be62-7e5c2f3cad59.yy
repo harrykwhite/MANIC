@@ -36,7 +36,8 @@
         "63b03d4b-a8a9-477f-a439-b70f32d7ec29",
         "49d5e703-12af-4e44-9849-849a75b0e260",
         "89dc27a2-2fea-4d84-a243-d1e5f038f4ea",
-        "8431dd3a-0000-4595-acfc-490c5897c89c"
+        "8431dd3a-0000-4595-acfc-490c5897c89c",
+        "d1a19497-e012-4fbe-8e4f-c60a33f56727"
     ],
     "filterType": "GMSprite",
     "folderName": "Upgrades",

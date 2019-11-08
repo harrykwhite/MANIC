@@ -4,7 +4,7 @@ var face_player = true;
 target = obj_player;
 
 if (instance_exists(target)){
-	var offs = ((1 - (health_current / health_max)) * 1.5);
+	var offs = ((1 - (health_current / health_max)) * 2);
 	
 	if (move_time > 0){
 		move_time --;
@@ -12,7 +12,7 @@ if (instance_exists(target)){
 		move_x_to = obj_player.x + random_range(-50, 50);
 		move_y_to = obj_player.y + random_range(-50, 50);
 		weapon.attack = true;
-		move_time = (weapon.attack_time_max / 4) * max(0.4, health_current / health_max);
+		move_time = (weapon.attack_time_max / 4) * max(0.3, (health_current / health_max) * 0.8);
 		
 		while(distance_to_point(move_x_to, move_y_to) < 20){
 			move_x_to = obj_player.x + random_range(-50, 50);

@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 // Variables
 background_01 = -1;
 background_02 = -1;
@@ -129,20 +134,11 @@ switch(room){
 		break;
 }
 
-scr_room_spawn_companion();
-
 // Spawn System
 scr_spawn_setup("windy", 1.3);
 spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;
-
-if (!audio_is_playing(m_ambience_wind_0)){
-	audio_play_sound(m_ambience_wind_0, 3, true);
-	audio_sound_gain(m_ambience_wind_0, 0, 0);
-}
-
-audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
 
 // Other
 companions_spawned = false;

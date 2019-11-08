@@ -27,18 +27,16 @@ if (!global.game_pause){
 		}
 		
 		// Ambience
-		if (room == rm_level_2_post_00){
-			if (!audio_is_playing(m_ambience_birds_0)){
-				audio_play_sound(m_ambience_birds_0, 3, true);
-				audio_sound_gain(m_ambience_birds_0, 0, 0);
-				audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 6000);
-			}
-			
-			if (!audio_is_playing(m_ambience_wind_0)){
-				audio_play_sound(m_ambience_wind_0, 3, true);
-				audio_sound_gain(m_ambience_wind_0, 0, 0);
-				audio_sound_gain(m_ambience_wind_0, 0.75 * obj_controller_all.real_ambience_volume, 6000);
-			}
+		if (!audio_is_playing(m_ambience_birds_0)) || (audio_sound_get_gain(m_ambience_birds_0) < 0.01){
+			if (!audio_is_playing(m_ambience_birds_0)) audio_play_sound(m_ambience_birds_0, 3, true);
+			audio_sound_gain(m_ambience_birds_0, 0.01, 0);
+			audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 6000);
+		}
+		
+		if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
+			if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
+			audio_sound_gain(m_ambience_wind_0, 0.01, 0);
+			audio_sound_gain(m_ambience_wind_0, 0.75 * obj_controller_all.real_ambience_volume, 6000);
 		}
 	}else{
 		// Rain
@@ -57,9 +55,9 @@ if (!global.game_pause){
 		    part_particles_create(global.ps_bottom, dropx, dropy, choose(global.pt_rain_1, global.pt_rain_2), 1);
 		}
 		
-		if (!audio_is_playing(m_ambience_rain_0)){
+		if (!audio_is_playing(m_ambience_rain_0)) || (audio_sound_get_gain(m_ambience_rain_0) < 0.01){
 			audio_play_sound(m_ambience_rain_0, 3, true);
-			audio_sound_gain(m_ambience_rain_0, 0, 0);
+			audio_sound_gain(m_ambience_rain_0, 0.01, 0);
 			audio_sound_gain(m_ambience_rain_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
 		}
 	}
@@ -70,14 +68,16 @@ if (!global.game_pause){
 	// Tumbleweed
 	if (random(200) < 1){
 		if (instance_number(obj_environment_tumbleweed) < 5){
-			var xx = random_range(camx, camx + camw);
-			var yy = random_range(camy, camy + camh);
-			var safe = 0;
-			
-			if (player_exists){
-				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (place_meeting(xx, yy, obj_interior_fade)){
-					xx = random_range(camx, camx + camw);
-					yy = random_range(camy, camy + camh);
+				var xx = camx + random(camw);
+				var yy = camy + random(camh);
+				var safe = 0;
+				
+				var groundlayer = layer_get_id("InteriorFloorWood");
+				var groundmap = layer_tilemap_get_id(groundlayer);
+		
+				while(point_distance(xx, yy, global.player_position_x, global.player_position_y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (tilemap_get_at_pixel(groundmap, xx, yy)){
+					xx = camx + random(camw);
+					yy = camy + random(camh);
 		
 					if (safe < 100){
 						safe ++;
@@ -85,12 +85,11 @@ if (!global.game_pause){
 						break;
 					}
 				}
-			}
 			
-			if (safe < 100){
-				instance_create(xx, yy, obj_environment_tumbleweed);
+				if (safe < 100){
+					instance_create(xx, yy, obj_environment_tumbleweed);
+				}
 			}
-		}
 	}
 
 	// Fog
@@ -163,6 +162,8 @@ if (!global.game_pause){
 						obj_controller_ui.dialogue_char_count = 0;
 						obj_controller_ui.dialogue_x = inst.x;
 						obj_controller_ui.dialogue_y = inst.y - 24;
+						obj_controller_ui.dialogue_voice_opened = false;
+						obj_controller_ui.dialogue_voice_closed = true;
 						
 						if (postlevel_dialogue_index < 6){
 							postlevel_dialogue_inst = inst;

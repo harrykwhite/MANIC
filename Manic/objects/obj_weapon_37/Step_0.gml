@@ -40,12 +40,14 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
     }
     
     if (scr_input_is_down(InputBinding.Attack)) || (scr_input_is_down(InputBinding.Throw)){
+		var tmult = 1;
+		
+		if (scr_player_has_upgrade(PlayerUpgrade.ShoulderBand)){
+			tmult = 2;
+		}
+		
         if (throw_time < throw_time_max){
-			if (scr_player_has_upgrade(PlayerUpgrade.ShoulderBand)){
-				throw_time += 2;
-			}else{
-				throw_time ++;
-			}
+			throw_time += tmult;
         }
         
         if (throw_alpha < 1){

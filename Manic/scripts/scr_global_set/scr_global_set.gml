@@ -70,6 +70,8 @@ global.player_health_previous = global.player_health_max;
 global.player_position_x = 0;
 global.player_position_y = 0;
 global.player_is_respawning = false;
+global.player_melee_attack_counter = 0;
+global.player_melee_attack_counter_max = 3;
 
 part_system_clear(global.ps_bottom);
 part_system_clear(global.ps_front);

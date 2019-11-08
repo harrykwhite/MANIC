@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 // Variables
 background_01 = -1;
 background_02 = -1;
@@ -40,8 +45,6 @@ switch(room){
 		spawn_y = 942;
 		break;
 }
-
-scr_room_spawn_companion();
 
 // Other
 room_music_transition = false;

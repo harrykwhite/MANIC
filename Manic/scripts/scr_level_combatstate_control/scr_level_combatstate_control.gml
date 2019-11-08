@@ -148,9 +148,9 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 					audio_stop_sound(spawn_music_main[CombatState.Idle]);
 					audio_play_sound(spawn_music_main[CombatState.Idle], 3, true);
 					audio_sound_gain(spawn_music_main[CombatState.Idle], 0.01 * obj_controller_all.real_music_volume, 0);
-					audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 5000);
+					audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 3000);
 				}else{
-					audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 5000);
+					audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 3000);
 				}
 				
 				// Buildup Music

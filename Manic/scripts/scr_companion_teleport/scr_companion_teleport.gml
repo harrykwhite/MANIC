@@ -1,13 +1,13 @@
 // Teleport to player
 if (cutscene_break_time <= 0) && (!global.game_pause) && (global.cutscene_current == -1){
-	if (!onscreen(x, y + 4, -10)){
+	if (!onscreen(x, y + 4, 5)){
 		var counter = 0, doteleport = true;
 		
 		do{
-			var xtp = obj_player.x + random_range(-100, 100);
-			var ytp = obj_player.y + random_range(-100, 100);
+			var xtp = obj_player.x + random_range(-200, 200);
+			var ytp = obj_player.y + random_range(-200, 200);
 			
-			if (counter < 100){
+			if (counter < 200){
 				counter ++;
 			}else{
 				doteleport = false;

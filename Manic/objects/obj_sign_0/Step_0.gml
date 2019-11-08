@@ -31,6 +31,8 @@ if (interact) && (obj_controller_ui.dialogue_time <= 0) && (global.cutscene_curr
 			obj_controller_ui.dialogue_char_count = 0;
 			obj_controller_ui.dialogue_x = x;
 			obj_controller_ui.dialogue_y = y - 24;
+			obj_controller_ui.dialogue_voice_opened = false;
+			obj_controller_ui.dialogue_voice_closed = true;
 		}
 	}else{
 		interact_break --;

@@ -36,13 +36,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active)
         attack_time = 8;
         attack_can = false;
 		
-		if (global.level_current == Level.Prologue){
-			with(obj_controller_ui){
-				if (tutourial) && (tutourial_stage == TutourialStage.Shoot) && (tutourial_stage_timer == -1){
-					tutourial_stage_timer = 60 * 2;
-				}
-			}
-		}
+		scr_weapon_shoot_tutourial_update();
     }
 }
 

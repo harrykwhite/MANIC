@@ -14,4 +14,4 @@ enum InputBinding{
 }
 
 global.game_input_gamepad_current = -1;
-global.game_input_gamepad_current_sprite = spr_ui_gamepad_buttons_xbox_0;
+global.game_input_gamepad_current_type = GamepadType.Xbox;

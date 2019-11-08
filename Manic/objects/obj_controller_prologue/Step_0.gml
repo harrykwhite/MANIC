@@ -34,15 +34,15 @@ if (!global.game_pause){
 
 // Ambience
 if (!global.game_pause){
-	if (!audio_is_playing(m_ambience_wind_0)){
-		audio_play_sound(m_ambience_wind_0, 3, true);
-		audio_sound_gain(m_ambience_wind_0, 0, 0);
+	if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
+		if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
+		audio_sound_gain(m_ambience_wind_0, 0.01, 0);
 		audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 15000);
 	}
 	
-	if (!audio_is_playing(m_ambience_birds_0)){
-		audio_play_sound(m_ambience_birds_0, 3, true);
-		audio_sound_gain(m_ambience_birds_0, 0, 0);
+	if (!audio_is_playing(m_ambience_birds_0)) || (audio_sound_get_gain(m_ambience_birds_0) < 0.01){
+		if (!audio_is_playing(m_ambience_birds_0)) audio_play_sound(m_ambience_birds_0, 3, true);
+		audio_sound_gain(m_ambience_birds_0, 0.01, 0);
 		audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 15000);
 	}
 }
@@ -133,7 +133,7 @@ if (!global.game_objective_complete){
 		knifedrop.index = PlayerWeapon.Knife;
 		knifedrop.angle = 110;
 		
-		var robotprop = instance_create_layer(446, 754, "EndingObjects", obj_pawn_other_robotrunning_0);
+		var robotprop = instance_create_layer(446, 722, "EndingObjects", obj_pawn_other_robotrunning_0);
 		robotprop.dir = 180;
 		robotprop.dir_to = robotprop.dir;
 		
@@ -141,11 +141,11 @@ if (!global.game_objective_complete){
 		robotprop.dir = 360;
 		robotprop.dir_to = robotprop.dir;
 		
-		robotprop = instance_create_layer(532, 550, "EndingObjects", obj_pawn_other_robotrunning_0);
+		robotprop = instance_create_layer(512, 550, "EndingObjects", obj_pawn_other_robotrunning_0);
 		robotprop.dir = 360;
 		robotprop.dir_to = robotprop.dir;
 		
-		robotprop = instance_create_layer(756, 516, "EndingObjects", obj_pawn_other_robotrunning_0);
+		robotprop = instance_create_layer(756, 552, "EndingObjects", obj_pawn_other_robotrunning_0);
 		robotprop.dir = 270;
 		robotprop.dir_to = robotprop.dir
 		

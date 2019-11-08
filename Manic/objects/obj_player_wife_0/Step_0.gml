@@ -29,6 +29,8 @@ if (instance_exists(obj_player)){
 					obj_controller_ui.dialogue_pause = false;
 					obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
 					obj_controller_ui.dialogue_char_count = 0;
+					obj_controller_ui.dialogue_voice_opened = false;
+					obj_controller_ui.dialogue_voice_closed = true;
 				}
 			}else{
 				interact_break --;

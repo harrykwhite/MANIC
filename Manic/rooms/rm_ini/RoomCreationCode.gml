@@ -10,6 +10,12 @@ enum InputType{
 	Gamepad,
 }
 
+enum GamepadType{
+	Xbox,
+	Playstation,
+	Switch,
+}
+
 enum Grade{
     EMinus,
     E,

@@ -17,6 +17,24 @@ if (global.cutscene_current == -1) && (!deactivated) && (global.boss_current == 
 			obj_controller_gameplay.cutscene_conveyerbelt_y = y + 45;
 			global.cutscene_current = 7;
 			deactivated = true;
+			
+			switch(index){
+				case 0:
+					global.game_conveyerbelt_shutdown0 = true;
+					break;
+				
+				case 1:
+					global.game_conveyerbelt_shutdown1 = true;
+					break;
+				
+				case 2:
+					global.game_conveyerbelt_shutdown2 = true;
+					break;
+				
+				case 3:
+					global.game_conveyerbelt_shutdown3 = true;
+					break;
+			}
 		}
 	}
 }

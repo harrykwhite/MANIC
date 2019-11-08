@@ -69,17 +69,17 @@ if (!fullscreen){
 	window_height *= winscale;
 	
 	window_set_size(window_width, window_height);
+}else{
+	window_set_size(dwidth, dheight);
 }
 
 obj_controller_all.gui_resize_w = ideal_width / uiscale;
 obj_controller_all.gui_resize_h = ideal_height / uiscale;
 obj_controller_all.gui_resize_time = 2;
 
-obj_controller_all.camera_resize_w = 720 / camscale;
-obj_controller_all.camera_resize_h = 405 / camscale;
+obj_controller_all.camera_resize_w = basewidth / camscale;
+obj_controller_all.camera_resize_h = baseheight / camscale;
 obj_controller_all.camera_resize_time = 1;
 
 display_reset(0, false);
-surface_resize(application_surface, 720, 405);
-
-obj_controller_all.center_window_time = 2;
+surface_resize(application_surface, basewidth, baseheight);

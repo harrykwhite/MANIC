@@ -43,14 +43,20 @@ if (instance_exists(obj_player)){
 	    }else{
 	        image_yscale = -1;
 	    }
-    
+		
+		var amult = 1;
+		
+		if (scr_player_has_upgrade(PlayerUpgrade.ShoulderBand)){
+			amult = 2;
+		}
+		
 	    if (throw_time > 0){
 	        if (throw_offset < 60){
-	            throw_offset += 4;
+	            throw_offset += 4 * amult;
 	        }
 	    }else{
 	        if (throw_offset > 0){
-	            throw_offset -= 5;
+	            throw_offset -= 5 * amult;
 	        }else{
 	            throw_offset = 0;
 	        }

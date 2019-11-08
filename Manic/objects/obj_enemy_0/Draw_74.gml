@@ -1,3 +1,7 @@
+if (!obj_controller_all.show_ui){
+	return;
+}
+
 // Health
 var hp = health_current;
 var scale = 0.9;

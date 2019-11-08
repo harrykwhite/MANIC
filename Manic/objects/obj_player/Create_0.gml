@@ -1,3 +1,7 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+}
+
 state = scr_player_move;
 scr_player_setup();
 

@@ -109,10 +109,6 @@ if (global.weapon_slot_standalone == -1){
 		spd_multiplier += 0.2;
 	}
 	
-	if (upgrade_has[PlayerUpgrade.RunningBoots]){
-		spd_multiplier += 0.2;
-	}
-	
 	if (has_weapon){
 		if (global.weapon_heavy[global.weapon_slot[global.weapon_slotcurrent]]){
 		    spd_multiplier -= 0.1;
@@ -234,7 +230,7 @@ if (global.weapon_slot_standalone == -1){
 		dash_speed = spd_max * 3.65;
 		dash_time = 18;
 		
-		if (upgrade_has[PlayerUpgrade.KneePads]){
+		if (upgrade_has[PlayerUpgrade.DashBoots]){
 			dash_speed *= 1.35;
 			
 			if (dash_count < 1){

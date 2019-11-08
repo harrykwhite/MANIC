@@ -43,25 +43,42 @@ if (instance_exists(obj_player)){
 			}else{
 				if (!instance_exists(obj_ef_armour_piece)) && (!instance_exists(obj_ef_armour_full)){
 					var piece;
-			
+					
+					// Chestplate
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_0;
 					piece.x_to = anvil.x - 30;
-					piece.y_to = anvil.y - 30;
+					piece.y_to = anvil.y - 50;
 			
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_1;
 					piece.x_to = anvil.x - 15;
-					piece.y_to = anvil.y - 30;
+					piece.y_to = anvil.y - 50;
 			
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_2;
 					piece.x_to = anvil.x + 15;
-					piece.y_to = anvil.y - 30;
+					piece.y_to = anvil.y - 50;
 			
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_3;
 					piece.x_to = anvil.x + 30;
+					piece.y_to = anvil.y - 50;
+					
+					// Leggings
+					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
+					piece.sprite_index = spr_collectable_leggings_piece_0;
+					piece.x_to = anvil.x - 22;
+					piece.y_to = anvil.y - 30;
+					
+					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
+					piece.sprite_index = spr_collectable_leggings_piece_1;
+					piece.x_to = anvil.x;
+					piece.y_to = anvil.y - 30;
+					
+					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
+					piece.sprite_index = spr_collectable_leggings_piece_2;
+					piece.x_to = anvil.x + 22;
 					piece.y_to = anvil.y - 30;
 				}
 			}

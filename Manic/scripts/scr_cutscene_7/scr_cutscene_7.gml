@@ -22,22 +22,7 @@ if (instance_exists(obj_player)){
 		}else{
 			if (audio_is_playing(snd_other_typing_0)){
 				audio_stop_sound(snd_other_typing_0);
-				
-				if (instance_exists(inst_18E1EC84)){ instance_destroy(inst_18E1EC84); }
-				if (instance_exists(inst_1E60D0F5)){ instance_destroy(inst_1E60D0F5); }
-				if (instance_exists(inst_63C69FB8)){ instance_destroy(inst_63C69FB8); }
-				
-				var nearest_group = instance_nearest(obj_player.x, obj_player.y, obj_block_conveyerbelt_group);
-				var nearest_group_count = 0;
-				
-				if (nearest_group != noone){
-					nearest_group_count = ds_list_size(nearest_group.instances);
-				
-					for(var i = 0; i < nearest_group_count; i ++){
-						nearest_group.instances[| i].stop = true;
-					}
-				}
-				
+				scr_conveyerbelt_shutdown_group();
 				scr_sound_play(snd_other_conveyerbelt_1, false, 1, 1);
 			}
 			

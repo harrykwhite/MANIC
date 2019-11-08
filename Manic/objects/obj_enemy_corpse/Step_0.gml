@@ -2,7 +2,7 @@ if (global.game_pause){
 	return;
 }
 
-scr_object_table_place(60);
+scr_object_table_place(47, 2.5);
 
 // Blood
 if (spd > 0.1){

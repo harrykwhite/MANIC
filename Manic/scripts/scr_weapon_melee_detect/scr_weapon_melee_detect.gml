@@ -81,18 +81,23 @@ switch(ctype){
 					xEnd = xx + lengthdir_x(len, dir);
 					yEnd = yy + lengthdir_y(len, dir);
 					
-					scr_effect_screenshake(2);
-					
-					if (string_char_at(object_get_name(object_index), 5) != "p"){
-						scr_mouse_cross();
-					}else{
-						mult = 1;
-					}
-					
 					if (inst.object_index == obj_enemy_1){
 						if (inst.owner != obj_player) && (inst.owner != noone){
 							continue;
 						}
+					}
+					
+					scr_effect_screenshake(2);
+					
+					if (string_char_at(object_get_name(object_index), 5) != "p"){
+						scr_mouse_cross();
+						
+						if (scr_player_has_upgrade(PlayerUpgrade.IronGlove)){
+							global.player_melee_attack_counter ++;
+							global.player_melee_attack_counter = clamp(global.player_melee_attack_counter, 0, global.player_melee_attack_counter_max);
+						}
+					}else{
+						mult = 1;
 					}
 					
 					with(inst){
@@ -233,7 +238,7 @@ switch(ctype){
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
 				var inst = envline[| i], xEnd, yEnd;
-				len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst) + 10;
+				len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst) + 4;
 				xEnd = xx + lengthdir_x(len, dir);
 				yEnd = yy + lengthdir_y(len, dir);
 				

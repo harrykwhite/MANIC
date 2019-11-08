@@ -1,3 +1,7 @@
+if (!obj_controller_all.show_ui){
+	return;
+}
+
 if (global.game_input_type == InputType.Gamepad){
 	if (!instance_exists(obj_player) || global.game_pause){
 		return;

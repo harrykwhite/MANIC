@@ -1,6 +1,6 @@
 scale = random_range(0.95, 1.05);
 facing = 1;
-spd = 1.7;
+spd = 2;
 domove = false;
 dir = 0;
 dir_to = 0;

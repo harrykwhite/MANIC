@@ -43,8 +43,8 @@ if (instance_exists(obj_player)){
 		obj_player.move_y_to = -1;
 		obj_player.move_ext_spd = 0;
 	}
-
-	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 130) || (cutscene_moveto_instant){
+	
+	if ((point_distance(obj_player.x, obj_player.y, x_to, y_to) < 130) || (cutscene_moveto_instant)) && (!obj_controller_ui.teaserend){
 		if (!obj_controller_ui.area_next_fade){
 			obj_controller_ui.area_next_fade = true;
 			

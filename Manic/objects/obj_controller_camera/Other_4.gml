@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 camera_radius = 0;
 
 camera_screenshake = false;
@@ -18,4 +23,4 @@ spd = 0;
 len = 0;
 
 sprite_index = noone;
-camera_set_view_size(view_camera[0], ceil(720 / global.game_option[| Options.CameraScale]), ceil(405 / global.game_option[| Options.CameraScale]));
+camera_set_view_size(view_camera[0], ceil(basewidth / global.game_option[| Options.CameraScale]), ceil(baseheight / global.game_option[| Options.CameraScale]));

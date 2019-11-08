@@ -1,6 +1,6 @@
 mouse_scale = approach(mouse_scale, mouse_scaleTo, mouse_scaleSpeed);
 
-if (global.cutscene_current != -1){
+if (global.cutscene_current != -1) && (!obj_controller_ui.teaserend){
 	if (mouse_alpha > 0){
 		mouse_alpha -= 0.1;
 	}
@@ -10,7 +10,7 @@ if (global.cutscene_current != -1){
 	}
 }
 
-mouse_alpha = clamp(mouse_alpha, 0, 1);
+mouse_alpha = clamp(mouse_alpha,  0, 1);
 
 if (mouse_cross > 0.01){
 	mouse_cross *= 0.9;
@@ -18,7 +18,7 @@ if (mouse_cross > 0.01){
 	mouse_cross = 0;
 }
 
-if (instance_exists(obj_player)) && (!global.game_pause){
+if (instance_exists(obj_player)) && (!global.game_pause) && (!obj_controller_ui.teaserend){
 	// Mouse Type
 	var index = global.weapon_slot[global.weapon_slotcurrent];
 	

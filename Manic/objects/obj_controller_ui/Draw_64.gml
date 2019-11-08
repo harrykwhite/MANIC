@@ -1,3 +1,7 @@
+if (!obj_controller_all.show_ui){
+	return;
+}
+
 // Variables
 var counter = 0;
 var mousex = scr_world_to_screen_x(obj_controller_mouse.x);
@@ -188,9 +192,9 @@ if (tutourial) && (!iscutscene){
 				
 				if (!tutourial_stage_pickupmelee_cseen){
 					var cutsceneblock = inst_1A5669D2;
-				
+					
 					instance_destroy(cutsceneblock);
-				
+					
 					global.cutscene_current = 40;
 					obj_controller_gameplay.cutscene_look_x = 1702;
 					obj_controller_gameplay.cutscene_look_y = 505;
@@ -238,48 +242,6 @@ if (tutourial) && (!iscutscene){
 	
 	draw_set_alpha(tutourial_alpha);
 	scr_text_shadow_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_white, tscale, tscale, 0);
-	
-	if (!iskeyboard){
-		var xwidth = string_width(tutourial_text[tstage]);
-		var xat = string_pos(scr_input_get_name(0), tutourial_text[tstage]) + (string_length(scr_input_get_name(0)) / 2);
-		var singlechar = xwidth / string_length(tutourial_text[tstage]);
-		var symb = noone;
-		
-		xat *= singlechar;
-		
-		switch(tstage){
-			case TutourialStage.Movement:
-				symb = scr_input_get_symbol_ind(InputBinding.Up);
-				break;
-			
-			case TutourialStage.Pickup:
-				symb = scr_input_get_symbol_ind(InputBinding.Interact);
-				break;
-			
-			case TutourialStage.Shoot:
-				symb = scr_input_get_symbol_ind(InputBinding.Attack);
-				break;
-			
-			case TutourialStage.Throw:
-				symb = scr_input_get_symbol_ind(InputBinding.Throw);
-				break;
-			
-			case TutourialStage.Switch:
-				symb = scr_input_get_symbol_ind(InputBinding.SwitchWeaponForward);
-				break;
-			
-			case TutourialStage.Dash:
-				symb = scr_input_get_symbol_ind(InputBinding.Dash);
-				break;
-		}
-		
-		if (xat != 0) && (symb != noone){
-			var ioff = xat + 16;
-			var ix = ((dwidth / 2) - (ioff / 2)) + ioff;
-			
-			draw_sprite_ext(global.game_input_gamepad_current_sprite, symb, ix + ((tscale - 1) * ioff), (dheight - 160), tscale, tscale, 0, c_white, tutourial_alpha);
-		}
-	}
 	
 	draw_set_alpha((tscale - 1) * 1.5 * tutourial_alpha);
 	scr_text_shadow_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
@@ -678,19 +640,13 @@ if (control_indicate){
 if (control_indicate_text != ""){
 	var buttonstr = scr_input_get_name(InputBinding.Interact);
 	var buttonstr = scr_input_get_name(InputBinding.Interact);
-	var buttonsymb = scr_input_get_symbol_ind(InputBinding.Interact);
 	
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
 	draw_set_alpha(0.8);
 	
-	if (iskeyboard){
-		scr_text_shadow(dwidth - control_indicate_x, dheight - 50, control_indicate_text + " " + buttonstr, c_white);
-	}else{
-		scr_text_shadow(dwidth - control_indicate_x - 16, dheight - 50, control_indicate_text, c_white);
-		draw_sprite(global.game_input_gamepad_current_sprite, real(buttonsymb), dwidth - control_indicate_x + 7, dheight - 51);
-	}
+	scr_text_shadow(dwidth - control_indicate_x, dheight - 50, control_indicate_text + " " + buttonstr, c_white);
 	
 	draw_set_valign(fa_top);
 }
@@ -721,16 +677,14 @@ maptilecol[2] = make_colour_rgb(128, 128, 128);
 maptilecol[3] = make_colour_rgb(94, 94, 94);
 maptilecol[4] = make_colour_rgb(54, 54, 54);
 
-var map_objects, map_objects_sprite, map_objects_sprite_scale, map_objects_sprite_screenlock, map_objects_count;
+var map_objects, map_objects_sprite, map_objects_sprite_screenlock, map_objects_count;
 
 map_objects[0] = obj_collectable_pickup;
 map_objects_sprite[0] = spr_collectable_0;
-map_objects_sprite_scale[0] = 1;
 map_objects_sprite_screenlock[0] = false;
 
 map_objects[1] = obj_upgrade_pickup;
 map_objects_sprite[1] = spr_upgrade_0;
-map_objects_sprite_scale[1] = 1;
 map_objects_sprite_screenlock[1] = false;
 
 var compcount = array_length_1d(global.companion);
@@ -739,19 +693,16 @@ map_objects_count = array_length_1d(map_objects);
 for(var o = 0; o < compcount; o ++){
 	map_objects[o + map_objects_count] = global.companion[o];
 	map_objects_sprite[o + map_objects_count] = global.companion_mapicon[o];
-	map_objects_sprite_scale[o + map_objects_count] = 2;
 	map_objects_sprite_screenlock[o + map_objects_count] = false;
 }
 
 map_objects[o + 1] = obj_player;
-map_objects_sprite[o + 1] = spr_player_head_0;
-map_objects_sprite_scale[o + 1] = 2;
+map_objects_sprite[o + 1] = spr_player_head_0_minimap;
 map_objects_sprite_screenlock[o + 1] = false;
 
 if (global.game_objective_complete){
 	map_objects[o + 2] = obj_section_end_pointer;
 	map_objects_sprite[o + 2] = spr_ui_arrow_small;
-	map_objects_sprite_scale[o + 2] = 2;
 	map_objects_sprite_screenlock[o + 2] = true;
 }
 
@@ -826,7 +777,11 @@ for(var o = 0; o < map_objects_count; o ++){
 			}
 			
 			if (draw){
-				draw_sprite_ext(map_objects_sprite[o], 0, dx, dy, map_objects_sprite_scale[o] * sign(inst.image_xscale), map_objects_sprite_scale[o] * sign(inst.image_yscale), dangle, c_white, 1);
+				if (dangle == 0){
+					draw_sprite(map_objects_sprite[o], 0, dx, dy);
+				}else{
+					draw_sprite_ext(map_objects_sprite[o], 0, dx, dy, 1, 1, dangle, c_white, 1);
+				}
 			}
 		}
 	}
@@ -989,7 +944,7 @@ if (pausedialogue_alpha > 0){
 	switch(pausedialogue_type){
 		case 0:
 			draw_text_ext(dwidth / 2, optyy, pausedialogue_type_text, -1, 660);
-			optyy += string_height(pausedialogue_type_text) + 20;
+			optyy += string_height(pausedialogue_type_text) + 54;
 			break;
 		
 		case 1:
@@ -1075,6 +1030,51 @@ if (global.level_current == Level.Prologue){
 	}
 }
 
+// Teaser Ending
+if (iskeyboard){
+	teaserend_button_selected = -1;
+}
+
+if (teaserend){
+	draw_set_alpha(teaserend_alpha * 0.2);
+	draw_set_colour(c_black);
+	draw_rectangle(0, 0, dwidth, dheight, false);
+	
+	draw_set_font(fnt_cambria_6);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_set_alpha(teaserend_text_alpha);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 214, "MANIC", c_white);
+	
+	draw_set_font(fnt_cambria_1);
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 179, "A GAME BY GETA", c_white);
+	
+	draw_set_font(fnt_cambria_1);
+	
+	for(var b = 0; b < teaserend_button_selected_max; b ++){
+		var bx = dwidth / 2;
+		var by = (dheight / 2) - 65 + (48 * b);
+		var bcol = c_white;
+		
+		if (iskeyboard){
+			if (point_in_rectangle(mousex, mousey, bx - 80, by - 16, bx + 80, by + 16)){
+				teaserend_button_selected = b;
+			}
+		}
+		
+		if (teaserend_button_selected == b){
+			teaserend_button_scale[b] = approach(teaserend_button_scale[b], 1.1, 40);
+			bcol = make_colour_rgb(189, 23, 23);
+		}else{
+			teaserend_button_scale[b] = approach(teaserend_button_scale[b], 1, 40);
+		}
+		
+		scr_text_shadow_transformed(bx, by, teaserend_button[b], bcol, teaserend_button_scale[b], teaserend_button_scale[b], 0);
+	}
+	
+	scr_text_shadow(dwidth / 2, (dheight / 2) - 65 + (48 * (teaserend_button_selected_max + 1)), "Thanks for playing!", c_white);
+}
+
 // Game Ending
 if (ending){
 	draw_set_alpha(ending_back_alpha);
@@ -1099,16 +1099,6 @@ if (ending){
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
 	
 	var cont_text = "Press " + scr_input_get_name(InputBinding.Attack) + " to return to titlescreen"
-	
-	if (!iskeyboard){
-		cont_text = "Press " + scr_input_get_name(InputBinding.Interact) + "   to return to titlescreen";
-		
-		var xat = string_pos(scr_input_get_name(0), cont_text) + (string_length(scr_input_get_name(0)) / 2);
-		xat *= string_width(cont_text) / string_length(cont_text);
-		
-		draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.Interact),
-		(dwidth / 2) - (string_width(cont_text) / 2) + xat + 4, (dheight / 2) + 165);
-	}
 	
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 165, cont_text, c_white);
 	

@@ -1,3 +1,7 @@
+if (!obj_controller_all.show_ui){
+	return;
+}
+
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
@@ -38,23 +42,10 @@ if (dialogue_time > 0){
 		
 		if (dialogue_char_count >= dialogue_length){
 			scr_text_shadow(dwidth - 24, dheight - 64, iskeyboard ? "Continue " + scr_input_get_name(InputBinding.Interact) : "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
-			
-			if (!iskeyboard){
-				draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.Interact), dwidth - 32, dheight - 64);
-			}
 		}
 		
 		var holdstr = iskeyboard ? "Hold " + scr_input_get_name(InputBinding.Attack) + " to skip" : "Hold " + scr_input_get_name(InputBinding.Attack) + "  to skip";
 		scr_text_shadow(dwidth - 24, dheight - 34, holdstr, c_white);
-		
-		if (!iskeyboard){
-			var xat = string_pos(scr_input_get_name(0), holdstr) + (string_length(scr_input_get_name(0)) / 2);
-			var scale = string_width(holdstr) / string_length(holdstr);
-			
-			xat *= scale;
-			
-			draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.Attack), dwidth - 24 - string_width(holdstr) + xat + 7, dheight - 34);
-		}
 		
 		if (dialogue_skip > 0){
 			var barw = string_width(holdstr);
@@ -65,7 +56,10 @@ if (dialogue_time > 0){
 	
 	draw_set_valign(fa_top);
 }else{
-	global.game_in_dialogue = false;
+	if (global.game_in_dialogue){
+		global.game_in_dialogue = false;
+	}
+	
 	dialogue_skip = 0;
 	dialogue_pause = false;
 }
@@ -77,6 +71,7 @@ if (level_opening){
 	draw_rectangle(0, 0, dwidth, dheight, false);
 	
 	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
 	draw_set_font(fnt_cambria_3);
 	
 	var line_width_to = string_width(string(global.level_name[global.level_current])) + 30;

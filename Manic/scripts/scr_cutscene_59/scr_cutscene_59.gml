@@ -21,7 +21,7 @@ if (instance_exists(obj_player)){
 			if (global.cutscene_time[index] < 35){
 				global.cutscene_time[index] ++;
 			}else{
-				scr_sound_play(snd_weapon_pickup_gun, false, 0.8, 1.2);
+				scr_sound_play(snd_weapon_pickup_melee, false, 0.8, 1.2);
 				scr_header_display_text(global.weapon_name[PlayerWeapon.Bayonet], "New backup weapon obtained", 60 * 7);
 				
 				global.weapon_default = PlayerWeapon.Bayonet;

@@ -149,9 +149,6 @@ if (health_current <= 0){
 			doexplode = true;
 			
 			global.level_turret_killed[# 0, listnum] = true;
-			if (global.game_is_playthrough){
-				scr_save_game();
-			}
 		}else if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
 			
@@ -170,12 +167,12 @@ if (health_current <= 0){
 		}else if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
 			
-			if (!scr_player_has_upgrade(PlayerUpgrade.RunningBoots)){
+			/*if (!scr_player_has_upgrade(PlayerUpgrade.DashBoots)){
 				var udrop = instance_create(x, y, obj_upgrade_pickup);
-				udrop.index = PlayerUpgrade.RunningBoots;
+				udrop.index = PlayerUpgrade.DashBoots;
 				udrop.angle = random_range(-10, 10);
 				global.cutscene_current = 53;
-			}
+			}*/
 			
 			with(obj_block_cutscene){
 				if (index == 46){

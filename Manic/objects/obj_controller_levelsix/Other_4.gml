@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 // Variables
 background_01 = -1;
 background_02 = -1;
@@ -115,13 +120,6 @@ room_music_transition = false;
 
 sprite_index = noone;
 depth = -5;
-
-if (!audio_is_playing(m_ambience_wind_0)){
-	audio_play_sound(m_ambience_wind_0, 3, true);
-	audio_sound_gain(m_ambience_wind_0, 0, 0);
-}
-
-audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
 
 if (room == rm_level_6_01) || (room == rm_level_6_02){
 	global.game_objective_complete = true;

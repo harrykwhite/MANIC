@@ -35,8 +35,11 @@ if (!global.game_pause){
 				var xx = camx + random(camw);
 				var yy = camy + random(camh);
 				var safe = 0;
+				
+				var groundlayer = layer_get_id("InteriorFloorWood");
+				var groundmap = layer_tilemap_get_id(groundlayer);
 		
-				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (place_meeting(xx, yy, obj_interior_fade)){
+				while(point_distance(xx, yy, global.player_position_x, global.player_position_y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (tilemap_get_at_pixel(groundmap, xx, yy)){
 					xx = camx + random(camw);
 					yy = camy + random(camh);
 		
@@ -231,9 +234,9 @@ if (!global.game_pause){
 		scr_effect_flash(rain_thunder_flash_amount[index], 0.03, c_white, true);
 	}
 	
-	if (!audio_is_playing(m_ambience_rain_0)){
-		audio_play_sound(m_ambience_rain_0, 3, true);
-		audio_sound_gain(m_ambience_rain_0, 0, 0);
+	if (!audio_is_playing(m_ambience_rain_0)) || (audio_sound_get_gain(m_ambience_rain_0) < 0.01){
+		if (!audio_is_playing(m_ambience_rain_0)) audio_play_sound(m_ambience_rain_0, 3, true);
+		audio_sound_gain(m_ambience_rain_0, 0.01, 0);
 		audio_sound_gain(m_ambience_rain_0, 1 * obj_controller_all.real_ambience_volume, 8000);
 	}
 }

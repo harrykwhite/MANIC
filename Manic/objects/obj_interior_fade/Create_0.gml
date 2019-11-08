@@ -1,4 +1,4 @@
-innerspace = 19;
+innerspace = 22;
 update_time_max = 10;
 group_set = false;
 fade_group_x = -1;

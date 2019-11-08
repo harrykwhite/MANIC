@@ -31,6 +31,8 @@ if (instance_exists(obj_player)) && (instance_exists(obj_townperson_6)){
 					obj_controller_ui.dialogue_char_count = 0;
 					obj_controller_ui.dialogue_x = obj_townperson_6.x;
 					obj_controller_ui.dialogue_y = obj_townperson_6.y - 24;
+					obj_controller_ui.dialogue_voice_opened = false;
+					obj_controller_ui.dialogue_voice_closed = true;
 				}
 				
 				global.cutscene_camera_x[index] = obj_player.x;

@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 background_01 = -1;
 background_02 = -1;
 
@@ -27,13 +32,6 @@ switch(room){
 			spawn_x = 2472;
 			spawn_y = 428;
 		}
-		
-		if (!audio_is_playing(m_ambience_rain_0)){
-			audio_play_sound(m_ambience_rain_0, 3, true);
-			audio_sound_gain(m_ambience_rain_0, 0, 0);
-		}
-		
-		audio_sound_gain(m_ambience_rain_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
 		break;
 	
 	case rm_level_2_00:
@@ -130,24 +128,8 @@ switch(room){
 			spawn_x = 2106;
 			spawn_y = 790;
 		}
-		
-		if (!audio_is_playing(m_ambience_birds_0)){
-			audio_play_sound(m_ambience_birds_0, 3, true);
-			audio_sound_gain(m_ambience_birds_0, 0, 0);
-		}
-		
-		audio_sound_gain(m_ambience_birds_0, 0.6 * obj_controller_all.real_ambience_volume, 6000);
-		
-		if (!audio_is_playing(m_ambience_wind_0)){
-			audio_play_sound(m_ambience_wind_0, 3, true);
-			audio_sound_gain(m_ambience_wind_0, 0, 0);
-		}
-		
-		audio_sound_gain(m_ambience_wind_0, 0.75 * obj_controller_all.real_ambience_volume, 6000);
 		break;
 }
-
-scr_room_spawn_companion();
 
 // Spawn System
 scr_spawn_setup("main", 1.1);

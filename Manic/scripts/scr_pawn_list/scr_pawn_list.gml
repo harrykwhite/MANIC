@@ -14,16 +14,16 @@ global.enemy[11] = obj_antagonist;
 
 // Companion Pawns
 global.companion[0] = obj_companion_0;
-global.companion_mapicon[0] = spr_companion_0_head_0;
+global.companion_mapicon[0] = spr_companion_0_head_0_minimap;
 
 global.companion[1] = obj_companion_1;
-global.companion_mapicon[1] = spr_companion_1_head_0;
+global.companion_mapicon[1] = spr_companion_1_head_0_minimap;
 
 global.companion[2] = obj_companion_2;
-global.companion_mapicon[2] = spr_companion_2_head_0;
+global.companion_mapicon[2] = spr_companion_2_head_0_minimap;
 
 global.companion[3] = obj_companion_3;
-global.companion_mapicon[3] = spr_companion_3_head_0;
+global.companion_mapicon[3] = spr_companion_3_head_0_minimap;
 
 // Boss Pawns
 enum Boss{

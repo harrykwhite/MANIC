@@ -22,7 +22,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
         scr_effect_screenshake(2);
         scr_mouse_control(MouseType.SmallCircle, 5, 7);
         scr_weapon_ammo_use(1);
-        scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
+        scr_sound_play(snd_weapon_shoot_2, false, 0.8, 1.2);
 		scr_player_flash(6);
 		scr_player_flashlight_flash(1.2);
 		scr_camera_to_player();
@@ -49,13 +49,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
         angle_offset = 10;
 		line_alpha = -4.2;
 		
-		if (global.level_current == Level.Prologue){
-			with(obj_controller_ui){
-				if (tutourial) && (tutourial_stage == TutourialStage.Shoot) && (tutourial_stage_timer == -1){
-					tutourial_stage_timer = 60 * 2;
-				}
-			}
-		}
+		scr_weapon_shoot_tutourial_update();
     }else{
 		scr_sound_play(snd_weapon_click_0, false, 0.8, 1);
 	}

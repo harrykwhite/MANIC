@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 // Variables
 background_01 = -1;
 background_02 = -1;
@@ -110,8 +115,6 @@ switch(room){
 		}
 		break;
 }
-
-scr_room_spawn_companion();
 
 // Spawn System
 scr_spawn_setup("underground", 1.4);

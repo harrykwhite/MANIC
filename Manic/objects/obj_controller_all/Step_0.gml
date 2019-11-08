@@ -1,4 +1,11 @@
+// Room persistent
+if (window_get_fullscreen()){
+	window_set_size(display_get_width(), display_get_height());
+}
+
 if (room_pers_clear){
+	global.pers_runthrough = true;
+	
 	if (room_pers_clear_original == noone){
 		room_pers_clear_original = room;
 	}
@@ -14,15 +21,23 @@ if (room_pers_clear){
 		room_goto(room_pers_clear_at);
 		room_pers_clear_at ++;
 	}else{
-		audio_stop_all();
-		
 		room_goto(room_pers_clear_original);
+		
+		global.pers_runthrough = false;
+		
 		room_pers_clear_original = noone;
 		room_pers_clear = false;
 		room_pers_clear_at = 0;
 	}
 	
 	return;
+}else{
+	global.pers_runthrough = false;
+}
+
+// Show ui
+if (keyboard_check_pressed(vk_f1)){
+	show_ui = !show_ui;
 }
 
 // Gamepad
@@ -37,7 +52,7 @@ if (global.game_input_type == InputType.Gamepad){
 			
 				if (global.game_input_gamepad_current == -1){
 					global.game_input_gamepad_current = g;
-					global.game_input_gamepad_current_sprite = scr_input_gamepad_get_sprite();
+					global.game_input_gamepad_current_type = scr_input_gamepad_get_type();
 			
 					gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
 					gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
@@ -88,7 +103,7 @@ if (keyboard_check_pressed(vk_tab)){
 }
 
 // Fullscreen
-surface_resize(application_surface, 720, 405);
+surface_resize(application_surface, basewidth, baseheight);
 
 if (full <= 0){
 	if (scr_input_is_pressed(InputBinding.FullscreenToggle) || full_autoswitch){

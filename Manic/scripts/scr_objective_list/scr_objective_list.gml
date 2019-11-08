@@ -12,6 +12,7 @@ enum Objectives{
 	LocateTheAnvil,
 	TalkToFarmer,
 	ExploreUndergroundBunker,
+	CollectAllLeggingsPieces,
 }
 
 // Insert '^' to indicate counter positioning in text
@@ -67,6 +68,10 @@ global.objective_counter_max[11] = 0;
 global.objective_name[12] = "Explore the underground bunker";
 global.objective_counter[12] = 0;
 global.objective_counter_max[12] = 0;
+
+global.objective_name[13] = "Collect ^ pieces of the leggings throughout the map.";
+global.objective_counter[13] = 0;
+global.objective_counter_max[13] = 0;
 
 global.game_objective_current = 0;
 global.game_objective_set = false;

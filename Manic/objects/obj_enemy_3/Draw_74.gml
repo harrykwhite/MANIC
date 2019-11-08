@@ -1,3 +1,7 @@
+if (!obj_controller_all.show_ui){
+	return;
+}
+
 // Health
 var hp = health_current;
 health_scale = approach(health_scale, 1, 40);

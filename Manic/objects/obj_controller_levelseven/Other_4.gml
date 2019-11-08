@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 // Variables
 background_01 = -1;
 background_02 = -1;
@@ -99,8 +104,6 @@ switch(room){
 		break;
 }
 
-scr_room_spawn_companion();
-
 // Other
 companions_spawned = false;
 room_music_transition = false;
@@ -110,10 +113,3 @@ global.cutscene_current = 2;
 
 sprite_index = noone;
 depth = -5;
-
-if (!audio_is_playing(m_ambience_rain_0)){
-	audio_play_sound(m_ambience_rain_0, 3, true);
-	audio_sound_gain(m_ambience_rain_0, 0, 0);
-}
-
-audio_sound_gain(m_ambience_rain_0, 1 * obj_controller_all.real_ambience_volume, 7000);

@@ -8,6 +8,83 @@ scr_position_view();
 scr_ui_rank_display_setup();
 scr_ui_rank_display_update();
 
+// Teaser end
+if (teaserend){
+	if (teaserend_alpha < 1){
+		teaserend_alpha += 0.02;
+	}else{
+		if (teaserend_text_alpha < 1){
+			teaserend_text_alpha += 0.02;
+		}
+	}
+	
+	if (!iskeyboard){
+		if (up_pressed){
+			if (teaserend_button_selected > 0){
+				teaserend_button_selected --;
+			}else{
+				teaserend_button_selected = teaserend_button_selected_max - 1;
+			}
+		
+			teaserend_button_selected_break = teaserend_button_selected_held_time >= teaserend_button_selected_held_time_max ? 6 : 12;
+		}
+	
+		if (down_pressed){
+			if (teaserend_button_selected < teaserend_button_selected_max - 1){
+				teaserend_button_selected ++;
+			}else{
+				teaserend_button_selected = 0;
+			}
+		
+			teaserend_button_selected_break = teaserend_button_selected_held_time >= teaserend_button_selected_held_time_max ? 6 : 12;
+		}
+				
+		if (up_pressed || down_pressed){
+			if (teaserend_button_selected_held_time < teaserend_button_selected_held_time_max){
+				teaserend_button_selected_held_time ++;
+			}
+		}else{
+			teaserend_button_selected_held_time = 0;
+		}
+	}
+	
+	if (!teaserend_button_has_selected){
+		if (!iskeyboard ? scr_input_is_pressed(InputBinding.Interact) : scr_input_is_pressed(InputBinding.Attack)){
+			if (teaserend_button_selected != -1){
+				switch(teaserend_button_selected){
+					case 0:
+						url_open("");
+						teaserend_button_has_selected = true;
+						break;
+				
+					case 1:
+						url_open("https://discord.gg/CqykxNh");
+						teaserend_button_has_selected = true;
+						break;
+				
+					case 2:
+						url_open("https://twitter.com/GetaGamesTeam");
+						teaserend_button_has_selected = true;
+						break;
+				
+					case 3:
+						scr_effect_flash_script(0.02, 1, c_black, scr_trigger_3);
+						teaserend_button_has_selected = true;
+						break;
+				}
+			}
+		}
+	}
+}else{
+	if (teaserend_alpha > 0){
+		teaserend_alpha -= 0.05;
+	}
+	
+	if (teaserend_text_alpha > 0){
+		teaserend_text_alpha -= 0.05;
+	}
+}
+
 // Tutourial sickle respawn
 if (tutourial_sickle_respawn_time != -1){
 	if (tutourial_sickle_respawn_time > 0){
@@ -105,10 +182,6 @@ if (ending){
 		}
 		
 		if (canreturn){
-			if (global.game_is_playthrough){
-				scr_save_game();
-			}
-			
 			ds_grid_clear(global.player_companions, -1);
 			scr_fade_object_list_reset();
 			scr_level_persistent_reset_level(global.level_current);
@@ -161,49 +234,55 @@ if (!ispaused){
 	
 	ds_list_destroy(dialogue_voice_list);
 	
-	if (!ispaused){
-		if (dialogue_break > 0){
-			dialogue_break --;
-		}else{
-			if (dialogue_char_count < dialogue_length){
-				if (string_char_at(dialogue, floor(dialogue_char_count)) == "."){
-					dialogue_char_count += dialogue_char_speed * 0.5;
+	if (dialogue_break > 0){
+		dialogue_break --;
+	}else{
+		if (dialogue_char_count < dialogue_length){
+			if (string_char_at(dialogue, floor(dialogue_char_count)) == "."){
+				dialogue_char_count += dialogue_char_speed * 0.5;
+			}else{
+				dialogue_char_count += dialogue_char_speed;
+			}
+			
+			if (dialogue_voice != noone){
+				if (!dialogue_voice_opened){
+					scr_sound_play(dialogue_voice_in, false, 0.95, 1.05);
+					
+					dialogue_voice_opened = true;
+					dialogue_voice_closed = false;
 				}else{
-					dialogue_char_count += dialogue_char_speed;
-				}
-				
-				if (dialogue_voice != noone){
-					if (!dialogue_voice_opened){
-						scr_sound_play(dialogue_voice_in, false, 0.95, 1.05);
+					if (!audio_is_playing(dialogue_voice_in)) && (!audio_is_playing(dialogue_voice_loop)){
+						var vind = scr_sound_play(dialogue_voice_loop, false, 0.95, 1.05);
 						
-						dialogue_voice_opened = true;
-						dialogue_voice_closed = false;
-					}else{
-						if (!audio_is_playing(dialogue_voice_in)) && (!audio_is_playing(dialogue_voice_loop)){
-							var vind = scr_sound_play(dialogue_voice_loop, false, 0.95, 1.05);
-							
-							if ((dialogue_char_count div 2) != (dialogue_char_count / 2)){
-								audio_sound_pitch(vind, 1.2);
-							}
+						if ((dialogue_char_count div 2) != (dialogue_char_count / 2)){
+							audio_sound_pitch(vind, 1.2);
 						}
 					}
-					
-					dialogue_voice_do_close = false;
 				}
+				
+				dialogue_voice_do_close = false;
 			}
 		}
+	}
 	
-		if (!dialogue_pause){
-			dialogue_time --;
+	if (!dialogue_pause) && (dialogue_time > 0){
+		dialogue_time --;
+	}
+	
+	if (dialogue_time <= 0){
+		dialogue_voice_do_close = true;
+		
+		if (audio_is_playing(dialogue_voice_loop)){
+			audio_stop_sound(dialogue_voice_loop);
 		}
+	}
 	
-		if (dialogue_voice_do_close) && (dialogue_voice != noone){
-			if (!dialogue_voice_closed){
-				if (!audio_is_playing(dialogue_voice_out)){
-					audio_stop_sound(dialogue_voice_loop);
-					scr_sound_play(dialogue_voice_out, false, 0.95, 1.05);
-					dialogue_voice_closed = true;
-				}
+	if (dialogue_voice_do_close) && (dialogue_voice != noone){
+		if (!dialogue_voice_closed){
+			if (!audio_is_playing(dialogue_voice_out)){
+				audio_stop_sound(dialogue_voice_loop);
+				scr_sound_play(dialogue_voice_out, false, 0.95, 1.05);
+				dialogue_voice_closed = true;
 			}
 		}
 	}
@@ -265,10 +344,6 @@ if (!ispaused){
 				
 				switch(pause_has_selected_index){
 					case 1:
-						if (global.game_is_playthrough){
-							scr_save_game();
-						}
-						
 						ds_grid_clear(global.player_companions, -1);
 						scr_fade_object_list_reset();
 						scr_level_persistent_reset_level(global.level_current);
@@ -280,10 +355,6 @@ if (!ispaused){
 						break;
 					
 					case 2:
-						if (global.game_is_playthrough){
-							scr_save_game();
-						}
-						
 						scr_options_refresh(false);
 						audio_stop_all();
 						game_end();

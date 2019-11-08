@@ -7,6 +7,7 @@ global.game_save_seconds = ini_read_real("Save", "Seconds", 0);
 global.game_objective_current = ini_read_real("Save", "ObjectiveCurrent", 0);
 global.game_objective_set = ini_read_real("Save", "ObjectiveSet", false);
 global.objective_counter[global.game_objective_current] = ini_read_real("Save", "ObjectiveCounter", 0);
+global.objective_counter_max[global.game_objective_current] = ini_read_real("Save", "ObjectiveCounterMax", 0);
 
 global.worldtrain_room = ini_read_real("Save", "WorldTrainRoom", rm_level_6_00);
 
@@ -60,6 +61,10 @@ global.game_npc_townperson4_talked = ini_read_real("Save", "TownPerson4Talked", 
 global.game_npc_townperson5_talked = ini_read_real("Save", "TownPerson5Talked", false);
 global.game_npc_townperson6_talked = ini_read_real("Save", "TownPerson6Talked", false);
 global.game_npc_player_wife_talked = ini_read_real("Save", "PlayerWifeTalked", false);
+global.game_conveyerbelt_shutdown0 = ini_read_real("Save", "ConveyerBeltShutdown0", false);
+global.game_conveyerbelt_shutdown1 = ini_read_real("Save", "ConveyerBeltShutdown1", false);
+global.game_conveyerbelt_shutdown2 = ini_read_real("Save", "ConveyerBeltShutdown2", false);
+global.game_conveyerbelt_shutdown3 = ini_read_real("Save", "ConveyerBeltShutdown3", false);
 
 var weaponcount = global.weapon_potential_slotmax;
 for(var i = 0; i < weaponcount; i ++){
@@ -81,8 +86,9 @@ for(var i = 0; i < upgradecount; i ++){
 
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
-	global.level_entered[i] = ini_read_real("Save", "Level_Entered" + string(i), false);
-	global.level_complete[i] = ini_read_real("Save", "Level_Complete" + string(i), false);
+	global.level_entered[i] = ini_read_real("Save", "LevelEntered" + string(i), false);
+	global.level_complete[i] = ini_read_real("Save", "LevelComplete" + string(i), false);
+	global.level_collectable_current[i] = ini_read_real("Save", "LevelCollectableCurrent" + string(i), false);
 }
 
 var collectcount = ds_grid_height(global.level_collectable_found);
@@ -99,7 +105,7 @@ if (ds_exists(global.player_companions, ds_type_grid)){
 	var companioncount = ds_grid_height(global.player_companions);
 	for(var i = 0; i < companioncount; i ++){
 		global.player_companions[# 0, i] = ini_read_real("Save", "Companion" + string(i), -1);
-		global.player_companions[# 1, i] = ini_read_real("Save", "Companion" + string(i) + "_Health", -1);
+		global.player_companions[# 1, i] = ini_read_real("Save", "Companion" + string(i) + "Health", -1);
 	}
 }
 

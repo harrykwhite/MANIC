@@ -22,13 +22,16 @@ if (!global.game_pause){
 	if (random(200) < 1){
 		if (player_exists){
 			if (instance_number(obj_environment_tumbleweed) < 5){
-				var xx = random_range(camx, camx + camw);
-				var yy = random_range(camy, camy + camh);
+				var xx = camx + random(camw);
+				var yy = camy + random(camh);
 				var safe = 0;
+				
+				var groundlayer = layer_get_id("InteriorFloorWood");
+				var groundmap = layer_tilemap_get_id(groundlayer);
 		
-				while(point_distance(xx, yy, player.x, player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (place_meeting(xx, yy, obj_interior_fade)){
-					xx = random_range(camx, camx + camw);
-					yy = random_range(camy, camy + camh);
+				while(point_distance(xx, yy, global.player_position_x, global.player_position_y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (tilemap_get_at_pixel(groundmap, xx, yy)){
+					xx = camx + random(camw);
+					yy = camy + random(camh);
 		
 					if (safe < 100){
 						safe ++;
@@ -65,7 +68,7 @@ if (!global.game_pause){
 		if (!global.game_companion_farmer_level4pre_talked_0) || (prelevel_dialogue_exception){
 			prelevel_dialogue_exception = true;
 			
-			if (global.cutscene_current == -1){
+			if (global.cutscene_current != 58){
 				if (prelevel_dialogue_time > 0){
 					prelevel_dialogue_time --;
 					
@@ -83,7 +86,7 @@ if (!global.game_pause){
 							break;
 						
 						case 1:
-							text = "Perhaps some of the artifacts in the town down below might give us an indication as to who that leader is?";
+							text = "Perhaps some of the artifacts in the town down below might give us an indication as to who that is?";
 							inst = obj_companion_0;
 							break;
 						
@@ -113,6 +116,8 @@ if (!global.game_pause){
 						obj_controller_ui.dialogue_char_count = 0;
 						obj_controller_ui.dialogue_x = inst.x;
 						obj_controller_ui.dialogue_y = inst.y - 24;
+						obj_controller_ui.dialogue_voice_opened = false;
+						obj_controller_ui.dialogue_voice_closed = true;
 						
 						if (prelevel_dialogue_index < 4){
 							prelevel_dialogue_inst = inst;
@@ -133,10 +138,10 @@ if (!global.game_pause){
 
 // Music
 if (!global.game_pause){
-	if (!audio_is_playing(m_ambience_wind_0)){
-		audio_play_sound(m_ambience_wind_0, 3, true);
-		audio_sound_gain(m_ambience_wind_0, 0, 0);
-		audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 4000);
+	if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
+		if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
+		audio_sound_gain(m_ambience_wind_0, 0.01, 0);
+		audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
 	}
 }
 

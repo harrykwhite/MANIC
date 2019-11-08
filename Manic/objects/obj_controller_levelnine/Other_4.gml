@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 // Variables
 background_01 = -1;
 background_02 = -1;
@@ -42,7 +47,7 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 920;
-			spawn_y = 1196;
+			spawn_y = 1016;
 		}else{
 			obj_player.x = 278;
 			obj_player.y = -6;
@@ -68,15 +73,6 @@ switch(room){
 		}
 		break;
 }
-
-scr_room_spawn_companion();
-
-if (!audio_is_playing(m_ambience_wind_0)){
-	audio_play_sound(m_ambience_wind_0, 3, true);
-	audio_sound_gain(m_ambience_wind_0, 0, 0);
-}
-
-audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
 
 // Other
 companions_spawned = false;

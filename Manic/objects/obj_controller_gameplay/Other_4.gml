@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 counter = 0;
 
 pause_time = 0;
@@ -42,6 +47,8 @@ cutscene_deermeat_collected = false;
 weaponswitch_break = 10;
 
 global.player_is_respawning = false;
+
+global.game_objective_complete = false;
 
 sprite_index = noone;
 scr_pathmap_init();

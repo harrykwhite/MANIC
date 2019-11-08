@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 // Setup
 global.level_current = scr_level_get_index(room);
 
@@ -156,11 +161,23 @@ for(var i = 0; i < levelcount; i ++){
 		if (!global.level_entered[i]){
 			var upgradecount = array_length_1d(global.upgrade_name);
 			
+			global.game_objective_set = false;
+			global.game_objective_complete = false;
+			
 			if (!global.game_is_playthrough) || (room == rm_prologue_00){
 				scr_companions_clear();
 				scr_player_upgrades_clear();
 				scr_set_kills_and_findings();
+				
+				if (global.level_complete[i]){
+					global.game_objective_set = true;
+					global.game_objective_complete = true;
+				}
 			}else{
+				scr_save_game();
+				
+				global.level_complete[i] = false;
+				
 				for(var u = 0; u < upgradecount; u ++){
 					if (global.game_save_upgrade_unlocked[u]){
 						scr_upgrade_add(u);
@@ -171,17 +188,10 @@ for(var i = 0; i < levelcount; i ++){
 			global.game_combat_state = CombatState.Idle;
 			global.game_combat_state_time_real = 0;
 			
-			if (!global.level_complete[i]){
-				global.game_objective_set = false;
-			}else{
-				global.game_objective_set = true;
-				global.game_objective_complete = true;
-			}
-			
 			scr_checkpoint_reset();
 			scr_player_upgrade_update();
 			
-			if (global.level_current != Level.Prologue){
+			if (i != Level.Prologue) && (!isteaser){
 				level_opening = true;
 				level_opening_active = true;
 				level_opening_time = 60 * 4.65;
@@ -294,6 +304,21 @@ minimap_width = 219;
 minimap_height = 123;
 minimap_arrow_sine = 0;
 minimap_arrow_sine_speed = 5;
+teaserend = false;
+teaserend_alpha = 0;
+teaserend_text_alpha = 0;
+teaserend_button[0] = "Wishlist the game on Steam!";
+teaserend_button_scale[0] = 1;
+teaserend_button[1] = "Join the official Discord group!";
+teaserend_button_scale[1] = 1;
+teaserend_button[2] = "Follow us on Twitter!";
+teaserend_button_scale[2] = 1;
+teaserend_button[3] = "Return to titlescreen!";
+teaserend_button_scale[3] = 1;
+teaserend_button_selected = -1;
+teaserend_button_selected_held_time = 0;
+teaserend_button_selected_held_time_max = 40;
+teaserend_button_selected_max = array_length_1d(teaserend_button);
 
 sprite_index = noone;
 depth = -4;

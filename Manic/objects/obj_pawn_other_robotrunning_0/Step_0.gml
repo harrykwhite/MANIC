@@ -3,7 +3,7 @@ if (global.game_pause){
 	return;
 }
 
-if (onscreen(x, y, 0)){
+if (onscreen(x, y, -40)){
 	domove = true;
 }
 
@@ -22,8 +22,9 @@ if (domove){
 		facing = -1;
 	}
 	
-	image_speed = 0.24;
+	image_speed = 0.325;
 	sprite_index = spr_enemy_0_walk_1;
+	
 	x += lengthdir_x(spd, dir);
 	y += lengthdir_y(spd, dir);
 }else{

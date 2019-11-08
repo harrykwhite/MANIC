@@ -8,8 +8,16 @@ var kbd = argument2;
 var it = argument3;
 
 if (object_get_parent(object_index) == obj_p_enemy){
-	if (scr_player_has_upgrade(PlayerUpgrade.IronGlove)){
-		kbs *= 1.75;
+	if (scr_player_has_upgrade(PlayerUpgrade.IronGlove)) && (kbs != 0){
+		if (global.player_melee_attack_counter >= global.player_melee_attack_counter_max){
+			kbs *= 3;
+			global.player_melee_attack_counter = 0;
+			
+			repeat(7){
+				part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_powerhit_0, 1);
+				part_type_direction(global.pt_powerhit_0, kbd - 20, kbd + 20, 0, 0.1);
+			}
+		}
 	}
 }
 
@@ -101,6 +109,8 @@ if (health_current <= 0){
 			break;
 		
 		case obj_enemy_5:
+			var cblock = noone;
+			
 			corpse = instance_create(x, y, obj_enemy_corpse);
 			corpse.sprite_index = spr_enemy_5_corpse_0;
 			
@@ -112,7 +122,7 @@ if (health_current <= 0){
 			
 			if (global.game_objective_current == Objectives.KillDeer){
 				if (global.objective_counter[global.game_objective_current] == 0){
-					var cblock = instance_create(x, y, obj_block_cutscene);
+					cblock = instance_create(x, y, obj_block_cutscene);
 					cblock.index = 4;
 					cblock.destroy_on_activate = true;
 					cblock.image_xscale = 8;
@@ -130,6 +140,12 @@ if (health_current <= 0){
 			flesh.angle = irandom_range(-5, 5);
 			flesh.x -= sprite_get_width(spr_collectable_0) / 2;
 			flesh.y -= sprite_get_height(spr_collectable_0) / 2;
+			
+			if (cblock != noone){
+				flesh.deer_flesh_cblock = cblock;
+				flesh.deer_flesh_cblock_xoff = flesh.x - cblock.x;
+				flesh.deer_flesh_cblock_yoff = flesh.y - cblock.y;
+			}
 			break;
 		
 		case obj_thescorched:

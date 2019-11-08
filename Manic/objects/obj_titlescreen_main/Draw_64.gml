@@ -5,6 +5,13 @@ var angle = wave(-1, 1, 6, 0);
 var mousex = scr_world_to_screen_x(obj_controller_mouse.x);
 var mousey = scr_world_to_screen_y(obj_controller_mouse.y);
 
+var logox = display_get_gui_width() / 2;
+var logoy = (display_get_gui_height() / 2) - 240;
+
+if (in_settings_controls){
+	logoy -= 40;
+}
+
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
 
 if (iskeyboard && !gamepad_device_search){
@@ -12,10 +19,17 @@ if (iskeyboard && !gamepad_device_search){
 }
 
 draw_set_font(fnt_cambria_6);
+
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-scr_text_shadow_transformed((display_get_gui_width() / 2), (display_get_gui_height() / 2) - 240, "MANIC", c_white, titlescale, titlescale, angle);
+
+scr_text_shadow_transformed(logox, logoy, "MANIC", c_white, titlescale, titlescale, angle);
+
 draw_set_font(fnt_cambria_2);
+
+if (isteaser){
+	scr_text_shadow_transformed(logox + lengthdir_x(38, angle - 90), logoy + lengthdir_y(38, angle - 90), "Teaser", c_white, titlescale / 1.3, titlescale / 1.3, angle);
+}
 
 if (indicate_text_alpha > 0){
     if (indicate_text_time > 0){
@@ -275,11 +289,11 @@ if (!in_settings) && (!in_levelselect){
 		if (in_settings_controls){
 			var bcount = InputBinding.SwitchWeaponForward + 1;
 			
-			draw_set_font(fnt_cambria_1);
+			draw_set_font(fnt_cambria_n1);
 			
 			for(var b = 0; b < bcount; b ++){
 				var bx = display_get_gui_width() / 2;
-				var by = ((display_get_gui_height() / 2) - (42 * bcount * 0.5)) + (42 * b);
+				var by = ((display_get_gui_height() / 2) - (36 * bcount * 0.5)) + (36 * b) + 30;
 				
 				draw_set_halign(fa_left);
 				
@@ -289,11 +303,7 @@ if (!in_settings) && (!in_levelselect){
 				
 				var bctext = scr_input_get_name(b);
 				
-				if (iskeyboard){
-					scr_text_shadow(bx + 270, by, bctext, c_white);
-				}else{
-					draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(b), bx + 270, by);
-				}
+				scr_text_shadow(bx + 270, by, bctext, c_white);
 			}
 		}
 		
@@ -414,14 +424,6 @@ var fkey = scr_input_get_name(InputBinding.FullscreenToggle);
 var fkey_x = 18;
 var fkey_y = display_get_gui_height() - 24;
 
-if (global.game_input_type == InputType.Gamepad){
-	var bh = sprite_get_height(global.game_input_gamepad_current_sprite);
-	
-	draw_sprite(global.game_input_gamepad_current_sprite, scr_input_get_symbol_ind(InputBinding.FullscreenToggle), 26, (display_get_gui_height() - 23) - (bh / 2) + 2);
-}else{
-	fkey = fkey;
-}
-
 if (window_get_fullscreen()){
 	scr_text_shadow(fkey_x, fkey_y, fkey + " Windowed", c_white);
 }else{
@@ -430,7 +432,7 @@ if (window_get_fullscreen()){
 
 // Copyright text
 draw_set_halign(fa_right);
-scr_text_shadow(display_get_gui_width() - 20, display_get_gui_height() - 24, gameversion + "\nCopyright 2019 Geta Games", c_white);
+scr_text_shadow(display_get_gui_width() - 20, display_get_gui_height() - 24, (isteaser ? "Playable Teaser" : gameversion) + "\nCopyright 2019 Geta Games", c_white);
 draw_set_valign(fa_top);
 draw_set_alpha(1);
 

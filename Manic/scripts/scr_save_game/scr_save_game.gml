@@ -18,6 +18,7 @@ ini_write_real("Save", "Seconds", global.game_save_seconds);
 ini_write_real("Save", "ObjectiveCurrent", global.game_objective_current);
 ini_write_real("Save", "ObjectiveSet", global.game_objective_set);
 ini_write_real("Save", "ObjectiveCounter", global.objective_counter[global.game_objective_current]);
+ini_write_real("Save", "ObjectiveCounterMax", global.objective_counter_max[global.game_objective_current]);
 
 ini_write_real("Save", "WorldTrainRoom", global.worldtrain_room);
 ini_write_real("Save", "TheScorchedKilled", global.game_boss_thescorched_killed);
@@ -70,6 +71,10 @@ ini_write_real("Save", "TownPerson4Talked", global.game_npc_townperson4_talked);
 ini_write_real("Save", "TownPerson5Talked", global.game_npc_townperson5_talked);
 ini_write_real("Save", "TownPerson6Talked", global.game_npc_townperson6_talked);
 ini_write_real("Save", "PlayerWifeTalked", global.game_npc_player_wife_talked);
+ini_write_real("Save", "ConveyerBeltShutdown0", global.game_conveyerbelt_shutdown0);
+ini_write_real("Save", "ConveyerBeltShutdown1", global.game_conveyerbelt_shutdown1);
+ini_write_real("Save", "ConveyerBeltShutdown2", global.game_conveyerbelt_shutdown2);
+ini_write_real("Save", "ConveyerBeltShutdown3", global.game_conveyerbelt_shutdown3);
 
 var weaponcount = global.weapon_potential_slotmax;
 for(var i = 0; i < weaponcount; i ++){
@@ -88,8 +93,9 @@ for(var i = 0; i < upgradecount; i ++){
 
 var levelcount = array_length_1d(global.level_name);
 for(var i = 0; i < levelcount; i ++){
-	ini_write_real("Save", "Level_Entered" + string(i), global.level_entered[i]);
-	ini_write_real("Save", "Level_Complete" + string(i), global.level_complete[i]);
+	ini_write_real("Save", "LevelEntered" + string(i), global.level_entered[i]);
+	ini_write_real("Save", "LevelComplete" + string(i), global.level_complete[i]);
+	ini_write_real("Save", "LevelCollectableCurrent" + string(i), global.level_collectable_current[i]);
 }
 
 var collectcount = ds_grid_height(global.level_collectable_found);
@@ -106,7 +112,7 @@ if (ds_exists(global.player_companions, ds_type_grid)){
 	var companioncount = ds_grid_height(global.player_companions);
 	for(var i = 0; i < companioncount; i ++){
 		ini_write_real("Save", "Companion" + string(i), real(global.player_companions[# 0, i]));
-		ini_write_real("Save", "Companion" + string(i) + "_Health", global.player_companions[# 1, i]);
+		ini_write_real("Save", "Companion" + string(i) + "Health", global.player_companions[# 1, i]);
 	}
 }
 

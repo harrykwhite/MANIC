@@ -1,3 +1,8 @@
+if (global.pers_runthrough){
+	instance_deactivate_object(object_index);
+	return;
+}
+
 background_01 = -1;
 background_02 = -1;
 
@@ -77,8 +82,6 @@ switch(room){
 		}
 		break;
 }
-
-scr_room_spawn_companion();
 
 // Spawn System
 room_music_transition = false;

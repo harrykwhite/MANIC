@@ -1,1 +1,1 @@
-scr_object_table_place(36);
+scr_object_table_place(36, 1.325);

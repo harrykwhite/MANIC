@@ -2,7 +2,7 @@ if (global.game_pause){
 	return;
 }
 
-scr_object_table_place(28);
+scr_object_table_place(28, 1.2);
 
 // Motion
 if (spd > 0.01){
@@ -42,9 +42,6 @@ if (instance_exists(obj_player)){
 				global.level_collectable_current[global.level_current] ++;
 			
 				global.level_collectable_found[# 0, listnum] = true;
-				if (global.game_is_playthrough){
-					scr_save_game();
-				}
 			}
 			
 			if (index == Collectables.Note){
@@ -55,7 +52,7 @@ if (instance_exists(obj_player)){
 				scr_toggle_pause(true);
 			}
 			
-			if (global.game_objective_current == Objectives.CollectAllArtifacts) || (global.game_objective_current == Objectives.CollectAllChestplatePieces) || (index == Collectables.DeerMeat){
+			if (global.game_objective_current == Objectives.CollectAllArtifacts) || (global.game_objective_current == Objectives.CollectAllChestplatePieces) || (index == Collectables.DeerMeat) || (global.game_objective_current == Objectives.CollectAllLeggingsPieces){
 				scr_objective_update_counter();
 			}
 			

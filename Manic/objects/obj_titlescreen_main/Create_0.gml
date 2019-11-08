@@ -4,7 +4,10 @@ if (!ds_exists(global.game_option, ds_type_list)){
 	scr_options_init();
 }
 
-audio_play_sound(m_ambience_wind_0, 3, true);
+if (!audio_is_playing(m_ambience_wind_0)){
+	audio_play_sound(m_ambience_wind_0, 3, true);
+}
+
 audio_sound_gain(m_ambience_wind_0, 0, 0);
 audio_sound_gain(m_ambience_wind_0, 0.55 * obj_controller_all.real_ambience_volume, 1000);
 
@@ -19,28 +22,42 @@ fade_opening = true;
 press_break = 0;
 
 #region Options
-option[0] = "New Game";
-option_locked[0] = false;
-option_scale[0] = 1;
+if (!isteaser){
+	option[0] = "New Game";
+	option_locked[0] = false;
+	option_scale[0] = 1;
 
-option[1] = "Level Select";
-option_locked[1] = true;
-option_scale[1] = 1;
+	option[1] = "Level Select";
+	option_locked[1] = true;
+	option_scale[1] = 1;
 
-option[2] = "Settings";
-option_locked[2] = false;
-option_scale[2] = 1;
+	option[2] = "Settings";
+	option_locked[2] = false;
+	option_scale[2] = 1;
 
-option[3] = "Exit Game";
-option_locked[3] = false;
-option_scale[3] = 1;
+	option[3] = "Exit Game";
+	option_locked[3] = false;
+	option_scale[3] = 1;
 
-if (global.game_save_started){
-	option[0] = "Continue Game";
-}
+	if (global.game_save_started){
+		option[0] = "Continue Game";
+	}
 
-if (global.game_boss_final_killed) || (devmode){
+	if (global.game_boss_final_killed) || (devmode){
+		option_locked[1] = false;
+	}
+}else{
+	option[0] = "Start Game";
+	option_locked[0] = false;
+	option_scale[0] = 1;
+
+	option[1] = "Settings";
 	option_locked[1] = false;
+	option_scale[1] = 1;
+
+	option[2] = "Exit Game";
+	option_locked[2] = false;
+	option_scale[2] = 1;
 }
 
 #endregion
