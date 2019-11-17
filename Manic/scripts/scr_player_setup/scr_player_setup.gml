@@ -93,10 +93,6 @@ i_time_alpha = 0;
 i_time_flicker = false;
 i_time_flicker_time = 0;
 
-// Colliders
-var feet = instance_create(x, y, obj_feetbox_0);
-feet.owner = id;
-
 // Fly
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 
@@ -119,6 +115,12 @@ minecart_speed = 0;
 minecart_sprite = noone;
 minecart_sprite_image = 0;
 in_minecart = false;
+
+// Push away
+push_speed = 0;
+push_speed_build = 0.25;
+push_speed_max = 3;
+push_direction = 0;
 
 // Other
 is_visible = true;

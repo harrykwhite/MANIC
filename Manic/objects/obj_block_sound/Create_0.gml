@@ -1,6 +1,5 @@
 sound = noone;
 index = noone;
-radius = 0;
+radius = 300;
 fade = 4500;
-isambient = false;
-ismusic = false;
+played = false;

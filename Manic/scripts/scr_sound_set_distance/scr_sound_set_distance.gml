@@ -2,8 +2,8 @@
 ///@param  radius
 var snd = argument0;
 var radius = argument1;
-var vol = 0;
 
+var vol = 0;
 var dist = point_distance(x, y, global.player_position_x, global.player_position_y);
 
 if (dist < radius){

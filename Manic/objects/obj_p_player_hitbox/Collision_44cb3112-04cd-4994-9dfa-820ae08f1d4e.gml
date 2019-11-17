@@ -1,3 +1,9 @@
+return;
+
+if (global.cutscene_current != -1) || (global.game_pause){
+	return;
+}
+
 var inst = other;
 
 with(owner){
@@ -17,9 +23,7 @@ with(owner){
 		if (object_index == obj_player){
 			scr_player_damage(inst.damage, inst.strength, dir, 50);
 			
-			if (!upgrade_has[PlayerUpgrade.GasMask]){
-				poison = true;
-			}
+			poison = true;
 		}else{
 			scr_pawn_damage(inst.damage, inst.strength, dir, 50);
 		}

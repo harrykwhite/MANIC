@@ -2,7 +2,7 @@ if (global.game_pause){
 	return;
 }
 
-scr_object_table_place(28, 1.2);
+scr_object_table_place(29, 1.215);
 
 // Motion
 if (spd > 0.01){
@@ -24,7 +24,7 @@ if (instance_exists(obj_player)){
         pickup = true;
 		
 		if (global.cutscene_current == -1){
-			scr_ui_control_indicate(index == Collectables.DeerMeat ? "Deer Meat" : "Collectable");
+			scr_ui_control_indicate(index == Collectables.DeerMeat ? "Deer Meat" : "Artifact");
 		}
     }else{
         pickup = false;
@@ -48,6 +48,7 @@ if (instance_exists(obj_player)){
 				obj_controller_ui.pausedialogue = true;
 				obj_controller_ui.pausedialogue_type = 0;
 				obj_controller_ui.pausedialogue_type_text = note_text;
+				obj_controller_ui.pausedialogue_option_max = 1;
 				obj_controller_ui.pausedialogue_option_selected = 0;
 				scr_toggle_pause(true);
 			}

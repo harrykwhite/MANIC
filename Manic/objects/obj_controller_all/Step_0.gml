@@ -1,3 +1,23 @@
+// Lighting
+if (!global.game_pause){
+	global.game_lighting = clamp(global.game_lighting, 0, 1);
+	
+	var lto = global.game_lighting;
+	
+	if (global.ambientShadowIntensity != lto){
+		global.ambientShadowIntensity += min(0.005, abs(lto - global.ambientShadowIntensity)) * sign(lto - global.ambientShadowIntensity);
+	}
+}
+
+// Cutscene previous
+if (cutscene_previous != -1) && (global.cutscene_current == -1){
+	if (instance_exists(obj_player)){
+		obj_player.i_time = 30;
+	}
+}
+
+cutscene_previous = global.cutscene_current;
+
 // Room persistent
 if (window_get_fullscreen()){
 	window_set_size(display_get_width(), display_get_height());
@@ -5,6 +25,7 @@ if (window_get_fullscreen()){
 
 if (room_pers_clear){
 	global.pers_runthrough = true;
+	global.pers_runthrough_pre = false;
 	
 	if (room_pers_clear_original == noone){
 		room_pers_clear_original = room;
@@ -23,7 +44,7 @@ if (room_pers_clear){
 	}else{
 		room_goto(room_pers_clear_original);
 		
-		global.pers_runthrough = false;
+		room_pers_runthrough_turnoff = true;
 		
 		room_pers_clear_original = noone;
 		room_pers_clear = false;
@@ -33,12 +54,15 @@ if (room_pers_clear){
 	return;
 }else{
 	global.pers_runthrough = false;
+	global.pers_runthrough_pre = false;
 }
 
-// Show ui
-if (keyboard_check_pressed(vk_f1)){
-	show_ui = !show_ui;
-}
+/* Show ui
+if (devmode){
+	if (keyboard_check_pressed(vk_f1)){
+		show_ui = !show_ui;
+	}
+}*/
 
 // Gamepad
 var gcount = gamepad_get_device_count();
@@ -61,22 +85,52 @@ if (global.game_input_type == InputType.Gamepad){
 				break;
 			}
 		}
-	
+		
+		// Disconnect
 		if (!found){
-			if (gamepad_check_disconnected_time < 60){
+			if (gamepad_check_disconnected_time < 20){
 				gamepad_check_disconnected_time ++;
 			}else{
 				global.game_input_type = InputType.Keyboard;
 				
 				if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
 					obj_titlescreen_main.option_setting_controls_value[0] = InputType.Keyboard;
+					obj_titlescreen_main.selected = -1;
 				}
+				
+				scr_tutourial_names_set();
 				
 				scr_options_refresh();
 				gamepad_check_disconnected_time = 0;
 			}
 		}else{
 			gamepad_check_disconnected_time = 0;
+		}
+		
+		// Input disconnect
+		var mpressed = mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right);
+		var kpressed = keyboard_check_pressed(vk_anykey);
+		
+		if (mpressed) || (kpressed){
+			if (gamepad_input_check_disconnected_time < 30){
+				gamepad_input_check_disconnected_time += 6;
+			}else{
+				global.game_input_type = InputType.Keyboard;
+				
+				if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
+					obj_titlescreen_main.option_setting_controls_value[0] = InputType.Keyboard;
+					obj_titlescreen_main.selected = -1;
+				}
+				
+				scr_tutourial_names_set();
+				
+				scr_options_refresh();
+				gamepad_input_check_disconnected_time = 0;
+			}
+		}else{
+			if (gamepad_input_check_disconnected_time > 0){
+				gamepad_input_check_disconnected_time -= 0.5;
+			}
 		}
 	}
 }

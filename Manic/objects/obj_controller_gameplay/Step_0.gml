@@ -4,14 +4,6 @@ var slotcount = global.weapon_slotmax;
 scr_position_view();
 scr_inboss();
 
-// Map found refresh
-if (map_found_refresh_time > 0){
-	map_found_refresh_time --;
-}else{
-	scr_map_found_fill();
-	map_found_refresh_time = map_found_refresh_time_max;
-}
-
 // Level complete
 if (!global.level_complete[levelcur]){
 	global.level_complete[levelcur] = global.game_objective_complete;
@@ -21,12 +13,6 @@ if (!global.level_complete[levelcur]){
 
 // Recording checkpoint data
 if (checkpoint_create) && (instance_exists(obj_player)){
-	for(var i = 0; i < slotcount; i ++){
-		global.checkpoint_weapon_slot[i] = global.weapon_slot[i];
-		global.checkpoint_weapon_slotammo[i] = global.weapon_slotammo[i];
-		global.checkpoint_weapon_slotquantity[i] = global.weapon_slotquantity[i];
-	}
-
 	global.checkpoint_starttype = global.game_level_opening_type;
 	global.checkpoint_room = room;
 	global.checkpoint_goto = false;

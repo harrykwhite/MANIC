@@ -15,19 +15,6 @@ if (!global.game_pause){
 	if (random(5) < 1) part_particles_create(global.ps_front, camx + random(camw), camy + random(camh), global.pt_dust_0, 1);
 	if (random(10) < 1) part_particles_create(global.ps_front, camx + random(camw), camy + random(camh), global.pt_dust_1, 1);
 	
-	// Birds
-	if (random(180) < 1) && (instance_number(obj_bird_0) < 1){
-		var bird;
-		
-		if (random(2) < 1){
-			bird = instance_create(camx - 30, random_range(camy, camy + camh), obj_bird_0);
-			bird.dir = 360 + random_range(-5, 5);
-		}else{
-			bird = instance_create(camx + camw + 30, random_range(camy, camy + camh), obj_bird_0);
-			bird.dir = 180 + random_range(-5, 5);
-		}
-	}
-	
 	// Tumbleweed
 	if (random(170) < 1){
 		if (player_exists){
@@ -87,23 +74,17 @@ lighting_level[CombatState.Climax] = 1;
 lighting_level[CombatState.Buildup] = 0.94;
 lighting_level[CombatState.Idle] = 0.875;
 
-var lighting_to = lighting_level[global.game_combat_state];
+var lighting = lighting_level[global.game_combat_state];
 
 if (global.game_combat_in_hordechallenge){
-	lighting_to = 1;
+	lighting = 1;
 }
 
 if (scr_level_is_peaceful(room)){
-	lighting_to = 0.875 + (room == rm_level_1_01 ? factory_level_lighting_offset : 0);
+	lighting = 0.875 + (room == rm_level_1_01 ? factory_level_lighting_offset : 0);
 }
 
-if (lighting < lighting_to){
-	lighting += 0.004;
-}else if (lighting > lighting_to){
-	lighting -= 0.004;
-}
-
-global.ambientShadowIntensity = lighting;
+global.game_lighting = lighting + scr_brightness_offset();
 
 if (player_exists) && (global.cutscene_current == -1){
 	if (abs(obj_player.len) > 0.1){
@@ -128,16 +109,18 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 		
 			spawn_rate += global.game_combat_playerskill - 1;
-		
-			if (spawn_time > 0){
-				spawn_time --;
-			}else{
-				spawn = true;
-				spawn_time = 60 * spawn_interval[global.game_combat_state];
+			
+			if (global.game_combat_state_time_real < (60 * spawn_state_time[global.game_combat_state])){
+				if (spawn_time > 0){
+					spawn_time -= spawn_rate;
+				}else{
+					spawn = true;
+					spawn_time = 60 * (global.game_combat_in_hordechallenge ? global.game_combat_in_hordechallenge_spawnbreak : spawn_interval[global.game_combat_state]);
+				}
 			}
 		
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 1.5, 1))){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 2, 1))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -184,11 +167,15 @@ if (spawn_start_wait >= spawn_start_wait_max){
 								}
 							}
 						}
-					
+						
+						if (global.game_combat_in_hordechallenge){
+							enemy.type = Enemy0_Type.Normal;
+						}
+						
 						if (weapon == PawnWeapon.Grenade){
 							enemy.type = Enemy0_Type.Grenadier;
 						}
-					
+						
 						if (enemy.type == Enemy0_Type.Sniper){
 							weapon = PawnWeapon.SniperRifle;
 						}

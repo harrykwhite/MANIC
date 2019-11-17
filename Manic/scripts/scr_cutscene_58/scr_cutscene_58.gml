@@ -392,9 +392,6 @@ if (instance_exists(obj_player)){
 				line[6] = "Those are definitely good intentions.";
 				linefrom[6] = inst;
 				
-				inst.cutscene_prop = (cutscene_dialogue_line >= 7);
-				inst.in_cutscene = false;
-				
 				line[7] = "Well, best of luck.";
 				linefrom[7] = inst;
 			}else{
@@ -687,7 +684,6 @@ if (instance_exists(obj_player)){
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_2);
 			
 			if (instance_exists(inst)){
-				inst.in_cutscene = true;
 				special = "prisonerdepart";
 				
 				line[0] = "Here's the exit, you can leave now.";
@@ -851,10 +847,10 @@ if (instance_exists(obj_player)){
 				line[0] = "They told me that there was a farmer with you.";
 				linefrom[0] = inst;
 				
-				line[1] = "I suppose not... oh well...";
+				line[1] = "It appears not...";
 				linefrom[1] = inst;
 				
-				line[2] = "I guess you'll have to die alone.";
+				line[2] = "You'll just have to die alone, then.";
 				linefrom[2] = inst;
 			}
 			break;
@@ -894,7 +890,7 @@ if (instance_exists(obj_player)){
 		}
 	}
 	
-	if (global.cutscene_time[index] < 25){
+	if (global.cutscene_time[index] < 0){
 		global.cutscene_time[index] ++;
 	}else{
 		if (obj_controller_ui.dialogue_next) || (cutscene_dialogue_line == -1) || (skip){
@@ -969,6 +965,13 @@ if (instance_exists(obj_player)){
 					
 					switch(special){
 						case "farmerdepart":
+							obj_companion_0.cutscene_prop = false;
+							
+							obj_companion_0.depart_standaway = false;
+							obj_companion_0.depart = true;
+							
+							obj_antagonist.walk_off = true;
+							
 							scr_companion_remove(obj_companion_0);
 							obj_controller_gameplay.cutscene_moveto_level = Level.TrainStation;
 							obj_controller_gameplay.cutscene_moveto_room = rm_level_6_00;
@@ -978,6 +981,10 @@ if (instance_exists(obj_player)){
 							break;
 						
 						case "grenadierdepart":
+							obj_companion_1.cutscene_prop = true;
+							obj_companion_1.in_cutscene = false;
+							obj_companion_1.depart = true;
+							
 							scr_companion_remove(obj_companion_1);
 							obj_controller_gameplay.cutscene_moveto_level = Level.WinterTown;
 							obj_controller_gameplay.cutscene_moveto_room = rm_level_4_pre_00;
@@ -987,6 +994,10 @@ if (instance_exists(obj_player)){
 							break;
 						
 						case "prisonerdepart":
+							obj_companion_2.cutscene_prop = true;
+							obj_companion_2.in_cutscene = false;
+							obj_companion_2.depart = true;
+							
 							scr_companion_remove(obj_companion_2);
 							obj_controller_gameplay.cutscene_moveto_level = Level.TrainStation;
 							obj_controller_gameplay.cutscene_moveto_room = rm_level_6_pre_00;

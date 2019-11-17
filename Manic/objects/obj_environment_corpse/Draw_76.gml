@@ -1,1 +1,1 @@
-scr_render_me(y - 26 + depth_offset);
+scr_render_me(y - 24 + depth_offset);

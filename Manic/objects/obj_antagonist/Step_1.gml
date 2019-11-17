@@ -17,33 +17,3 @@ if (weapon_has){
 		arm.owner = id;
 	}
 }
-
-if (destroy){
-	if (weapon != -1){
-		instance_destroy(weapon);
-		weapon = -1;
-	}
-	
-	if (arm != -1){
-		instance_destroy(arm);
-		arm = -1;
-	}
-	
-	if (instance_exists(mylight)){
-		instance_destroy(mylight);
-	}
-	
-	if (room == rm_level_6_pre_00){
-		cutscene_prop = true;
-		in_cutscene = false;
-		
-		if (global.game_boss_firstantag_killed){
-			instance_destroy();
-		}
-	}
-	
-	x = xstart;
-	y = ystart;
-	event_perform(ev_create, 0);
-	destroy = false;
-}

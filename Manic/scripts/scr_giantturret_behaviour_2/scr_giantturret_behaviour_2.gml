@@ -92,7 +92,7 @@ if (instance_exists(target)){
 	
 	// Enemy spawning
 	}else if (attack == 2){
-		while(instance_number(obj_p_enemy) < 5){
+		while(instance_number(obj_p_enemy) < 9){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Katana);
 			

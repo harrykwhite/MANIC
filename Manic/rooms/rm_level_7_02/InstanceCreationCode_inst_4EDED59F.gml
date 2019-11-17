@@ -1,1 +1,1 @@
-listnum = 10;
+listnum = 9;

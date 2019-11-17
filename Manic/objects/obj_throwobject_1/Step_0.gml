@@ -12,7 +12,7 @@ if (alpha_flicker_time > 0){
 	alpha_flicker_time --;
 }else{
 	alpha_flicker = !alpha_flicker;
-	alpha_flicker_time = alpha_flicker_time_max;
+	alpha_flicker_time = alpha_flicker ? alpha_flicker_on_time_max : alpha_flicker_on_time_max + alpha_flicker_time_max;
 }
 
 // Speed
@@ -57,13 +57,14 @@ if (bounce_time <= 0) && (spd > 0){
 	    }
 		
 		if (touched){
-	        spd *= 0.75;
+	        spd *= 0.85;
+			bounce_time = 2;
 			break;
 		}
 	}
 	
 }else{
-    bounce_time--;
+    bounce_time --;
 }
 
 // Explode
@@ -91,7 +92,6 @@ if (explode){
 	
     instance_destroy();
     scr_damage_custom(damage, 1, (explode_damage_size * explode_scale), (explode_damage_size * explode_scale), 3, damage_enemy, damage_player, damage_companion, true);
-	scr_damage_custom(round(damage / 1.5), 1, (explode_damage_size * explode_scale) + 15, (explode_damage_size * explode_scale) + 15, 3, damage_enemy, damage_player, damage_companion, true);
     scr_effect_screenshake(4);
 	scr_effect_freeze(13);
 	scr_effect_zoom(-0.1);

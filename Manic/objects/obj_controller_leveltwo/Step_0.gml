@@ -13,30 +13,17 @@ if (!global.game_pause){
 	if (room != rm_level_2_pre_00){
 		if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
 		
-		// Birds
-		if (random(120) < 1) && (instance_number(obj_bird_0) < 1){
-			var bird;
-		
-			if (random(2) < 1){
-				bird = instance_create(camx - 30, random_range(camy, camy + camh), obj_bird_0);
-				bird.dir = 360 + random_range(-5, 5);
-			}else{
-				bird = instance_create(camx + camw + 30, random_range(camy, camy + camh), obj_bird_0);
-				bird.dir = 180 + random_range(-5, 5);
-			}
-		}
-		
 		// Ambience
 		if (!audio_is_playing(m_ambience_birds_0)) || (audio_sound_get_gain(m_ambience_birds_0) < 0.01){
 			if (!audio_is_playing(m_ambience_birds_0)) audio_play_sound(m_ambience_birds_0, 3, true);
 			audio_sound_gain(m_ambience_birds_0, 0.01, 0);
-			audio_sound_gain(m_ambience_birds_0, 1 * obj_controller_all.real_ambience_volume, 6000);
+			audio_sound_gain(m_ambience_birds_0, 0.8 * obj_controller_all.real_ambience_volume, 6000);
 		}
 		
 		if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
 			if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
 			audio_sound_gain(m_ambience_wind_0, 0.01, 0);
-			audio_sound_gain(m_ambience_wind_0, 0.75 * obj_controller_all.real_ambience_volume, 6000);
+			audio_sound_gain(m_ambience_wind_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
 		}
 	}else{
 		// Rain
@@ -175,6 +162,9 @@ if (!global.game_pause){
 						}
 					}
 				}
+			}else{
+				postlevel_dialogue_exception = false;
+				global.game_companion_farmer_level2post_talked_0 = true;
 			}
 		}else{
 			global.game_companion_farmer_level2post_talked_0 = true;
@@ -203,23 +193,17 @@ lighting_level[CombatState.Climax] = 1;
 lighting_level[CombatState.Buildup] = 0.925;
 lighting_level[CombatState.Idle] = 0.85;
 
-var lighting_to = lighting_level[global.game_combat_state];
+var lighting = lighting_level[global.game_combat_state];
 
 if (global.game_combat_in_hordechallenge){
-	lighting_to = 1;
+	lighting = 1;
 }
 
 if (scr_level_is_peaceful(room)){
-	lighting_to = 0.875;
+	lighting = 0.875;
 }
 
-if (lighting < lighting_to){
-	lighting += 0.004;
-}else if (lighting > lighting_to){
-	lighting -= 0.004;
-}
-
-global.ambientShadowIntensity = lighting;
+global.game_lighting = lighting + scr_brightness_offset();
 
 if (player_exists) && (global.cutscene_current == -1){
 	if (abs(obj_player.len) > 0.1){
@@ -244,16 +228,18 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 		
 			spawn_rate += global.game_combat_playerskill - 1;
-		
-			if (spawn_time > 0){
-				spawn_time --;
-			}else{
-				spawn = true;
-				spawn_time = 60 * spawn_interval[global.game_combat_state];
+			
+			if (global.game_combat_state_time_real < (60 * spawn_state_time[global.game_combat_state])){
+				if (spawn_time > 0){
+					spawn_time -= spawn_rate;
+				}else{
+					spawn = true;
+					spawn_time = 60 * (global.game_combat_in_hordechallenge ? global.game_combat_in_hordechallenge_spawnbreak : spawn_interval[global.game_combat_state]);
+				}
 			}
-	
+			
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 1.5, 1))){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 2, 1))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -288,6 +274,10 @@ if (spawn_start_wait >= spawn_start_wait_max){
 									enemy.type = Enemy0_Type.Mother;
 								}
 							}
+						}
+						
+						if (global.game_combat_in_hordechallenge){
+							enemy.type = Enemy0_Type.Normal;
 						}
 				
 						if (weapon == PawnWeapon.Grenade){

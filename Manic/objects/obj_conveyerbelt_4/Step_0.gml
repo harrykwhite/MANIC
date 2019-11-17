@@ -94,14 +94,17 @@ if (death){
 		brk.sprite_index = spr_conveyerbelt_4_break;
 		
 		instance_destroy();
+		
+		return;
 	}
 	
 	// Save
-	var belts = ds_list_create(), beltcount = 0;
+	var belts = ds_list_create(), beltcount = 0, beltshutdownsound = true;
 	
 	switch(id){
 		case inst_3EBC3DA6:
 			global.game_productionengine_destroyed0 = true;
+			beltshutdownsound = false;
 			break;
 		
 		case inst_13B89224:
@@ -112,22 +115,41 @@ if (death){
 				inst_65B5D1CE.stop = true;
 			}
 			
+			if (instance_exists(inst_588810D1)){
+				instance_destroy(inst_588810D1);
+			}
 			break;
 		
 		case inst_6C8F37DD:
 			global.game_productionengine_destroyed2 = true;
 			beltcount = collision_rectangle_list(1304, 718, 1460, 846, obj_conveyerbelt_0, false, true, belts, false);
+			
+			if (instance_exists(inst_413A3BF0)){
+				instance_destroy(inst_413A3BF0);
+			}
 			break;
 		
 		case inst_441089D2:
 			global.game_productionengine_destroyed3 = true;
 			beltcount = collision_rectangle_list(1322, 436, 1460, 484, obj_conveyerbelt_0, false, true, belts, false);
+			
+			if (instance_exists(inst_6E43FE90)){
+				instance_destroy(inst_6E43FE90);
+			}
 			break;
 		
 		case inst_3B48AB62:
 			global.game_productionengine_destroyed4 = true;
 			beltcount = collision_rectangle_list(1276, 24, 1450, 160, obj_conveyerbelt_0, false, true, belts, false);
+			
+			if (instance_exists(inst_19AF309C)){
+				instance_destroy(inst_19AF309C);
+			}
 			break;
+	}
+	
+	if (beltshutdownsound){
+		scr_sound_play_distance(snd_other_conveyerbelt_1, false, 200);
 	}
 	
 	if (beltcount > 0){
@@ -144,4 +166,6 @@ if (death){
 			scr_objective_update_counter();
 		}
 	}
+	
+	instance_destroy();
 }

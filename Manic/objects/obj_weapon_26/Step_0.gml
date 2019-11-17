@@ -16,7 +16,7 @@ if (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 
         var xpos = x + lengthdir_x(23, mdir);
         var ypos = y + lengthdir_y(23, mdir);
 		
-		var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+		var dir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 		
 		scr_player_knockback_initiate(0.4, dir);
         scr_effect_screenshake(2);

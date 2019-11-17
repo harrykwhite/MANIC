@@ -4,6 +4,8 @@ companions_spawned = true;
 
 // Objectives
 if (!global.game_objective_set){
+	global.game_objective_complete = false;
+	
 	if (room == rm_level_6_01) || (room == rm_level_6_02) || (global.game_boss_trainhorde_killed){
 		global.game_objective_complete = true;
 	}else{
@@ -13,6 +15,5 @@ if (!global.game_objective_set){
 	global.objective_counter[global.game_objective_current] = 0;
 	global.objective_counter_max[global.game_objective_current] = 0;
 	
-	global.game_objective_complete = false;
 	global.game_objective_set = true;
 }

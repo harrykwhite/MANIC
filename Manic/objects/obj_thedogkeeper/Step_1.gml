@@ -14,26 +14,3 @@ if (weapon_has){
 		weapon.owner = id;
 	}
 }
-
-if (destroy){
-	levelobj.dogkeeper = noone;
-	levelobj.dogkeeper_failed = true;
-	
-	for(var i = 0; i < 3; i ++){
-		if (instance_exists(dog[i])){
-			instance_destroy(dog[i]);
-		}
-	}
-	
-	if (weapon != -1){
-		instance_destroy(weapon);
-		weapon = -1;
-	}
-	
-	if (arm != -1){
-		instance_destroy(arm);
-		arm = -1;
-	}
-	
-	instance_destroy();
-}

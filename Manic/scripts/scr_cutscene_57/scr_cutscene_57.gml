@@ -35,7 +35,7 @@ if (instance_exists(obj_player)){
 		
 		if (global.cutscene_time[index] < 130){
 			xto = 686;
-			yto = 626;
+			yto = 640;
 			
 			global.cutscene_camera_x[index] = obj_controller_camera.x;
 			global.cutscene_camera_y[index] = obj_controller_camera.y;

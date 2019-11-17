@@ -135,7 +135,7 @@ switch(room){
 }
 
 // Spawn System
-scr_spawn_setup("windy", 1.3);
+scr_spawn_setup("windy");
 spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;

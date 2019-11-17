@@ -33,7 +33,7 @@ if (weapon != -1){
 				army --;
 			}
 			
-			draw_sprite_ext(spr_enemy_0_arm_0, 1, armx, army, scale, arm.image_yscale, angle, c_white, image_alpha * alpha_mult);
+			draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, arm.image_yscale, angle, c_white, image_alpha * alpha_mult);
 			
 			if (drawshader){
 				shader_set(sh_pawntint);
@@ -99,6 +99,7 @@ if (weapon != -1){
 					shader_set_uniform_f(shader_red, r);
 					shader_set_uniform_f(shader_green, g);
 					shader_set_uniform_f(shader_blue, b);
+					
 					draw_sprite_ext(arm.sprite_index, 1, armx, army, scale, image_xscale, angle, c_white, image_alpha * alpha_mult);
 				}
 				

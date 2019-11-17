@@ -15,17 +15,21 @@ if (instance_exists(obj_player)){
 			var x_to = inst.x + lengthdir_x(10, dir_to);
 			var y_to = inst.y + lengthdir_y(10, dir_to);
 		
-			if (dist > 18){
+			if (dist > 18) && (global.cutscene_time[index] < 75){
 				obj_player.move_x_to = x_to;
 				obj_player.move_y_to = y_to;
 				obj_player.move_ext_spd = obj_player.spd_max;
 				obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
+				
+				global.cutscene_time[index] ++;
 			}else{
+				global.cutscene_time[index] = max(35, global.cutscene_time[index]);
+				
 				obj_player.move_x_to = -1;
 				obj_player.move_y_to = -1;
 				obj_player.move_ext_spd = 0;
-			
-				if (global.cutscene_time[index] < 55){
+				
+				if (global.cutscene_time[index] < 35 + 55){
 					global.cutscene_time[index] ++;
 				}else{
 					inst.pickup = true;

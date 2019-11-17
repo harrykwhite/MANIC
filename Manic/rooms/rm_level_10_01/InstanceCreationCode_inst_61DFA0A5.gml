@@ -1,2 +1,2 @@
-index = PlayerWeapon.Wrench;
+index = PlayerWeapon.Pickaxe;
 angle = 5;

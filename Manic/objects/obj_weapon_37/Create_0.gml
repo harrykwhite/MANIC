@@ -4,7 +4,7 @@ start_offset = 35;
 throw_time = 0;
 throw_time_max = 30;
 throw_alpha = 0;
-throw_damage = 10;
+throw_damage = 12;
 throw_offset = 0;
 
 index = 37;

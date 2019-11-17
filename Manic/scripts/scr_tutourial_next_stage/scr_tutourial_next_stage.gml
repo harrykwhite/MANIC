@@ -27,5 +27,7 @@ with(obj_controller_ui){
 		}
 		
 		ds_list_destroy(templist);
+	}else if (tutourial_stage == TutourialStage.ThrowPurpose){
+		tutourial_stage_timer = 60 * 4;
 	}
 }

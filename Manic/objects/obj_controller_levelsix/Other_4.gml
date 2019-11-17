@@ -19,7 +19,7 @@ if (!instance_exists(obj_player)){
 global.player_footstep_default = snd_character_footstep_grass;
 
 // Spawn System
-scr_spawn_setup("main", 1.5);
+scr_spawn_setup("main");
 spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;

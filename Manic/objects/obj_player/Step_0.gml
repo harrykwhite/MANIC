@@ -1,7 +1,3 @@
-if (!scr_player_has_upgrade(PlayerUpgrade.IronGlove)){
-	scr_upgrade_add(PlayerUpgrade.IronGlove);
-}
-
 // Lights
 if (!instance_exists(obj_player_light) && surrounding_light >= 0.1){
 	mylight = instance_create_layer(x, y, "Lights", obj_player_light);

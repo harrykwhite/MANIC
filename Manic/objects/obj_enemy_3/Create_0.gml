@@ -1,7 +1,6 @@
 pawn = PawnType.Enemy;
 blend = -1;
 scale = random_range(1, 1.1);
-destroy = false;
 initiated = false;
 
 hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
@@ -58,9 +57,6 @@ health_flash = 0;
 setup = false;
 
 target = obj_player;
-
-var feet = instance_create(x, y, obj_feetbox_0);
-feet.owner = id;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;

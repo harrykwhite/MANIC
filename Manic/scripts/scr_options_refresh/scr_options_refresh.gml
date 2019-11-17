@@ -24,6 +24,8 @@ ini_write_real("Options", "ScreenFreeze", global.game_option[| Options.ScreenFre
 ini_write_real("Options", "QuickZoom", global.game_option[| Options.QuickZoom]);
 ini_write_real("Options", "MaxCorpses", global.game_option[| Options.MaxCorpses]);
 ini_write_real("Options", "Flashing", global.game_option[| Options.Flashing]);
+ini_write_real("Options", "Brightness", global.game_option[| Options.Brightness]);
+ini_write_real("Options", "ShowMinimap", global.game_option[| Options.ShowMinimap]);
 
 //ini_write_real("Options", "Fullscreen", global.game_option[| Options.Fullscreen]);
 ini_write_real("Options", "Resolution", global.game_option[| Options.Resolution]);
@@ -52,6 +54,8 @@ if (room == rm_title_0){
 			scr_titlescreen_options_reload();
 		}
 	}
+	
+	global.game_lighting = 0.85 + scr_brightness_offset();
 }
 
 obj_controller_all.option_refresh = true;

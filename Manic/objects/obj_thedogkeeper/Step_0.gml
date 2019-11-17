@@ -66,6 +66,8 @@ if (ispaused){
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
+headless = false;
+
 scr_pawn_status_handler();
 
 if (dogs_alive < dog_count){

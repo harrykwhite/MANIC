@@ -20,7 +20,7 @@ if (shoot_current != -1) && (!global.game_pause) && (global.weapon_slotammo[glob
         var xpos = x + lengthdir_x(26, mdir) + lengthdir_x(2, up(mdir));
         var ypos = y + lengthdir_y(26, mdir) + lengthdir_y(2, up(mdir));
 		
-		var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+		var dir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 		
 		scr_player_knockback_initiate(0.5, dir);
         scr_effect_screenshake(1);
@@ -59,6 +59,8 @@ if (shoot_current != -1) && (!global.game_pause) && (global.weapon_slotammo[glob
             shoot_time = 50;
         }
     }
+}else{
+	shoot_current = -1;
 }
 
 if (scr_input_is_pressed(InputBinding.Attack)){

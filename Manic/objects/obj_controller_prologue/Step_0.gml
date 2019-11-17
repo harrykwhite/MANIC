@@ -17,19 +17,6 @@ if (!global.game_pause){
 			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_0, 1);
 		}
 	}
-	
-	// Birds
-	if (random(120) < 1) && (instance_number(obj_bird_0) < 1){
-		var bird;
-		
-		if (random(2) < 1){
-			bird = instance_create(camx - 30, random_range(camy, camy + camh), obj_bird_0);
-			bird.dir = 360 + random_range(-5, 5);
-		}else{
-			bird = instance_create(camx + camw + 30, random_range(camy, camy + camh), obj_bird_0);
-			bird.dir = 180 + random_range(-5, 5);
-		}
-	}
 }
 
 // Ambience
@@ -48,18 +35,12 @@ if (!global.game_pause){
 }
 
 // Spawning
+var lighting;
+
 if (!global.game_objective_complete){
 	lighting = 0.75;
 }else{
-	var to = 0.95;
-	
-	if (!global.game_pause){
-		if (lighting < to){
-			lighting += 0.0005;
-		}else if (lighting > to){
-			lighting -= 0.0005;
-		}
-	}
+	lighting = 0.95;
 	
 	if (!endscene_initiated){
 		var child0 = inst_3992F7F2;
@@ -161,7 +142,7 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 
 	if (deer_can_spawn){
 		if (deer_spawn_time > 0){
-			deer_spawn_time --;
+			deer_spawn_time -= spawn_rate;
 		}else{
 			var counter = 0;
 			var dospawn = true;
@@ -192,7 +173,8 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 	}
 }
 
-global.ambientShadowIntensity = lighting;
+global.game_lighting = lighting + scr_brightness_offset();
+
 scr_level_combatstate_control();
 
 scr_level_audio_pause_and_resume();

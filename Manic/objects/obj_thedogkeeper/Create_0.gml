@@ -1,7 +1,6 @@
 pawn = PawnType.Enemy;
 blend = -1;
 scale = 1.1;
-destroy = false;
 state = 0;
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
@@ -48,6 +47,9 @@ poison_time = 0;
 poison_start = false;
 
 bleed = false;
+bleed_time = 0;
+bleed_cycle = 3;
+
 headless = false;
 
 barrel_pause_time = random(40);
@@ -98,12 +100,14 @@ health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 
+push_speed = 0;
+push_speed_build = 0.25;
+push_speed_max = 3;
+push_direction = 0;
+
 target = obj_player;
 
 mid_cutscene_played = false;
-
-var feet = instance_create(x, y, obj_feetbox_0);
-feet.owner = id;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;

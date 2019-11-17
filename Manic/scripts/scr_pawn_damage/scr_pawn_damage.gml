@@ -2,18 +2,23 @@
 ///@param knockback_speed
 ///@param knockback_direction
 ///@param invincibility_time
-var dmg = round(argument0);
-var kbs = argument1;
-var kbd = argument2;
-var it = argument3;
+///@param glove_check
+var dmg = round(argument[0]);
+var kbs = argument[1];
+var kbd = argument[2];
+var it = argument[3];
+var glove_check = false;
 
-if (object_get_parent(object_index) == obj_p_enemy){
+if (argument_count > 4){
+	glove_check = argument[4];
+}
+
+if (object_get_parent(object_index) == obj_p_enemy) && (glove_check){
 	if (scr_player_has_upgrade(PlayerUpgrade.IronGlove)) && (kbs != 0){
-		if (global.player_melee_attack_counter >= global.player_melee_attack_counter_max){
-			kbs *= 3;
-			global.player_melee_attack_counter = 0;
+		if (chance(30)){
+			kbs = max(kbs * 3, 3);
 			
-			repeat(7){
+			repeat(6){
 				part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_powerhit_0, 1);
 				part_type_direction(global.pt_powerhit_0, kbd - 20, kbd + 20, 0, 0.1);
 			}
@@ -120,9 +125,10 @@ if (health_current <= 0){
 				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_5, 1);
 			}
 			
-			if (global.game_objective_current == Objectives.KillDeer){
+			if (global.game_objective_current == Objectives.KillDeer) && (!global.game_objective_complete){
 				if (global.objective_counter[global.game_objective_current] == 0){
 					cblock = instance_create(x, y, obj_block_cutscene);
+					cblock.special = "deerpickup";
 					cblock.index = 4;
 					cblock.destroy_on_activate = true;
 					cblock.image_xscale = 8;
@@ -275,7 +281,7 @@ if (health_current <= 0){
 	}
 	
 	if (corpse != noone){
-		corpse.spd = max(knockback_speed * 2, 1.35) + random_range(-0.5, 1);
+		corpse.spd = max(knockback_speed * 1.5, 1.35) + random_range(-0.5, 1);
 		corpse.dir = knockback_direction;
 		corpse.move = true;
 		corpse.image_xscale = image_xscale;

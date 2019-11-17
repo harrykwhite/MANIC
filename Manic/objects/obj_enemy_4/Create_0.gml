@@ -3,7 +3,6 @@ blend = -1;
 scale = random_range(1, 1.1);
 scale_mult_x = 1;
 scale_mult_y = 1;
-destroy = false;
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
 prevpath = noone;
@@ -39,6 +38,7 @@ poison_start = false;
 
 bleed = false;
 bleed_time = 0;
+bleed_cycle = 3;
 
 headless = false; 
 headless_x = x;
@@ -75,9 +75,6 @@ health_flash = 0;
 
 target = obj_player;
 flies_created = false;
-
-var feet = instance_create(x, y, obj_feetbox_0);
-feet.owner = id;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone; fly[3] = noone;
 image_xscale = scale;

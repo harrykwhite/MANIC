@@ -25,7 +25,7 @@ if (locked){
 		locked_img += locked_img_speed;
 	}else{
 		if (locked_img_alpha > 0){
-			locked_img_alpha -= 0.05;
+			locked_img_alpha -= 0.075;
 		}else{
 			locked = false;
 			locked_img = 0;
@@ -49,7 +49,7 @@ if (locked){
 	}
 }
 
-if (interact && global.cutscene_current == -1 && !anim && !locked) || (auto_interact){
+if ((interact) && (global.cutscene_current == -1) && (!anim) && (!locked) && (id != inst_1CAF8CCE)) || (auto_interact){
 	if (global.cutscene_current == -1) && (!locked){
 		sprite_index = open ? openintsprite : closedintsprite;
 		scr_ui_control_indicate(open ? "Close Door" : "Open Door");
@@ -96,17 +96,6 @@ if (interact && global.cutscene_current == -1 && !anim && !locked) || (auto_inte
 							cutscene_moveto_instant = true;
 						}
 						break;
-					
-					/*case rm_level_6_pre_00:
-						global.cutscene_current = 52;
-						with(obj_controller_gameplay){
-							cutscene_moveto_dir = 1;
-							cutscene_moveto_type = 1;
-							cutscene_moveto_room = rm_level_5_post_00;
-							cutscene_moveto_level = Level.HumanPrison;
-							cutscene_moveto_instant = true;
-						break;
-					}*/
 				}
 			}
 		}

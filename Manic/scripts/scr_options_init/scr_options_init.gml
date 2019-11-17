@@ -4,6 +4,8 @@ enum Options{
 	QuickZoom,
 	MaxCorpses,
 	Flashing,
+	Brightness,
+	ShowMinimap,
 	
 	Fullscreen,
 	Resolution,
@@ -28,6 +30,8 @@ global.game_option[| Options.ScreenFreeze] = ini_read_real("Options", "ScreenFre
 global.game_option[| Options.QuickZoom] = ini_read_real("Options", "QuickZoom", 100);
 global.game_option[| Options.MaxCorpses] = ini_read_real("Options", "MaxCorpses", 15);
 global.game_option[| Options.Flashing] = ini_read_real("Options", "Flashing", 100);
+global.game_option[| Options.Brightness] = ini_read_real("Options", "Brightness", 50);
+global.game_option[| Options.ShowMinimap] = ini_read_real("Options", "ShowMinimap", true);
 
 //global.game_option[| Options.Fullscreen] = ini_read_real("Options", "Fullscreen", false);
 global.game_option[| Options.Resolution] = ini_read_real("Options", "Resolution", -1);

@@ -1,5 +1,19 @@
 interact_active = false;
 
+if (special == "deerpickup"){
+	var destroy = true;
+	
+	if (global.game_objective_current == Objectives.KillDeer){
+		if (global.objective_counter[global.game_objective_current] == 0){
+			destroy = false;
+		}
+	}
+	
+	if (destroy){
+		instance_destroy();
+	}
+}
+
 if (special == "bunkerenginedestroy"){
 	if (global.level_current == Level.UndergroundBunker){
 		if (global.game_objective_current == Objectives.DestroyProductionEngines){

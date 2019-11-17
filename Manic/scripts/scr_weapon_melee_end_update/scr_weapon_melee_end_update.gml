@@ -6,7 +6,7 @@ if (global.game_pause){
 }
 
 if (instance_exists(obj_player)){
-	var mdir = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+	var mdir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 	var angle = mdir + (0.3 * angle_offset_current);
 	
 	angle_offset_current = approach(angle_offset_current, angle_offset, 40);

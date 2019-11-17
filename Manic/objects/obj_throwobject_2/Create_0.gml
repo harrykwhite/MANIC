@@ -1,5 +1,6 @@
 alpha_flicker = false;
-alpha_flicker_time_max = 5;
+alpha_flicker_on_time_max = 3;
+alpha_flicker_time_max = 6;
 alpha_flicker_time = alpha_flicker_time_max;
 
 explode = false;

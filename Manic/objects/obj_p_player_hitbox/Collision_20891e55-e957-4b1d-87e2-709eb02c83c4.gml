@@ -1,3 +1,7 @@
+if (global.cutscene_current != -1) || (global.game_pause){
+	return;
+}
+
 var inst = other;
 
 with(owner){
@@ -19,9 +23,10 @@ with(owner){
 		}
 	}
 
-	inst.owner = id;
-	inst.owner_offset_x = clamp(x - inst.x, -7, 7);
-	inst.owner_offset_y = clamp(y - inst.y, -7, 7);
+	/*inst.owner = id;
+	inst.owner_offset_x = x - inst.x;
+	inst.owner_offset_y = y - inst.y;
+	inst.death_timer = 240;*/
 
 	if (i_time < 1){
 		if (object_index == obj_player){

@@ -85,7 +85,7 @@ switch(room){
 
 // Spawn System
 room_music_transition = false;
-scr_spawn_setup("underground", 1.2);
+scr_spawn_setup("underground");
 spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;

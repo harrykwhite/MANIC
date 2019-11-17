@@ -28,23 +28,10 @@ if (instance_exists(owner)) && (!global.game_pause){
 	        throw.image_angle = image_angle;
 			throw.throw_offset = throw_offset;
 			throw.damage_enemy = true;
-			throw.damage_player = dCompanion;
+			throw.damage_player = true;
 			throw.damage_companion = dCompanion;
 			throw.creator = owner;
-			
-			if (owner.pawn == PawnType.Companion){
-				if (owner.target != noone) && (instance_exists(owner.target)){
-					throw.dir = point_direction(x, y, owner.target.x, owner.target.y);
-				}else{
-					throw.dir = dir - (sign(owner.image_xscale) * throw_offset);
-				}
-			}else{
-				if (instance_exists(obj_player)){
-					throw.dir = point_direction(x, y, obj_player.x, obj_player.y);
-				}else{
-					throw.dir = dir - (sign(owner.image_xscale) * throw_offset);
-				}
-			}
+			throw.dir = owner.arm.image_angle;
 			
 			owner.weapon = instance_create(x, y, obj_pawnweapon_3);
 	        owner.weapon.owner = owner;

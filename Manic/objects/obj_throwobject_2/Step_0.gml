@@ -12,7 +12,7 @@ if (alpha_flicker_time > 0){
 	alpha_flicker_time --;
 }else{
 	alpha_flicker = !alpha_flicker;
-	alpha_flicker_time = alpha_flicker_time_max;
+	alpha_flicker_time = alpha_flicker ? alpha_flicker_on_time_max : alpha_flicker_on_time_max + alpha_flicker_time_max;
 }
 
 // Speed

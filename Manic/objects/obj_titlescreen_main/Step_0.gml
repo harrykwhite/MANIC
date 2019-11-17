@@ -348,7 +348,7 @@ if (fade){
 				changed = true;
 			}
 			
-			if (!changed){
+			if (changed){
 				selected = (iskeyboard ? -1 : 0);
 				scr_titlescreen_options_scale_reset();
 			}

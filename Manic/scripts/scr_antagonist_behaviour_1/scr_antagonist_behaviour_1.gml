@@ -202,27 +202,21 @@ if (greatsword_attack){
 	}
 	
 	// Greatsword Antag Movement
-	var playerdist = point_distance(x, y, obj_player.x, obj_player.y);
-	var playerdir = point_direction(x, y, obj_player.x, obj_player.y);
-	
 	if (instance_exists(obj_player)){
+		var playerdist = point_distance(x, y, obj_player.x, obj_player.y);
+		var playerdir = point_direction(x, y, obj_player.x, obj_player.y);
+		
 		if (global.cutscene_current == -1){
 			move_x_to = obj_player.x;
 			move_y_to = obj_player.y;
 	
-			if (playerdist > 56){
+			if (playerdist > 32){
 				move_speed = 3;
 			}else{
-				if (playerdist < 24){
-					move_x_to = x + lengthdir_x(100, playerdir - 180);
-					move_y_to = y + lengthdir_y(100, playerdir - 180);
-					move_speed = 2.6;
-				}else{
-					move_speed = 0;
-				}
+				weapon.attack = true;
+				move_speed = 0;
 			}
-		
-			weapon.attack = true;
+			
 			weapon.dir = playerdir;
 		}else{
 			weapon.attack = false;
@@ -254,8 +248,8 @@ if (greatsword_attack){
 // Walk Off
 if (walk_off){
 	move_x_to = x;
-	move_y_to = -150;
-	move_speed = 2.5;
+	move_y_to = -300;
+	move_speed = 3;
 	
 	speed_multiplier = 1;
 	face_player = false;
@@ -264,7 +258,7 @@ if (walk_off){
 		weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 	}
 	
-	if (point_distance(x, y, move_x_to, move_y_to) < 15){
+	if (point_distance(x, y, move_x_to, move_y_to) < 30){
 		instance_destroy();
 	}
 }
@@ -296,9 +290,13 @@ if (dash){
 		dash_time = random_range(80, 120);
 	}
 }else{
-	if (!scr_pawn_find_path()){
-		move_speed_real = 0;
-		speed_final = 0;
+	if (walk_off){
+		mp_potential_step_object(move_x_to, move_y_to, move_speed_real, obj_p_solid);
+	}else{
+		if (!scr_pawn_find_path()){
+			move_speed_real = 0;
+			speed_final = 0;
+		}
 	}
 }
 

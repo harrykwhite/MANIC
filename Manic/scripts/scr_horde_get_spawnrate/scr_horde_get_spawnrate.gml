@@ -4,11 +4,11 @@ var srate = hordespawnrate;
 
 switch(level){
 	case Level.TrainStation:
-		srate += 1;
+		srate += 0.5;
 		break;
 	
 	case Level.DesolateVillage:
-		srate += 2;
+		srate += 1;
 		break;
 }
 

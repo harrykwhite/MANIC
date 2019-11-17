@@ -6,7 +6,7 @@ global.game_combat_playerskill = scr_player_determine_skill();
 //global.player_inside_inst = inst;
 
 // Equipment
-var weapon, mdir = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+var weapon, mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (global.weapon_slot[global.weapon_slotcurrent] != -1){
     weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
@@ -25,6 +25,7 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
     if (!instance_exists(global.weapon_object[global.weapon_default])){
         var wep = instance_create(x, y, global.weapon_object[global.weapon_default]);
 		wep.image_angle = mdir;
+		
 		with(wep){
 			event_perform(ev_step_end, 0);
 		}
@@ -88,7 +89,7 @@ if (global.cutscene_current == -1){
 		}else{
 			if (burn_cycle_amount > 0){
 				burn_cycle_amount--;
-				burn_time = 70;
+				burn_time = 60;
 			
 				if (global.player_health_current > 1){
 					scr_player_damage(1, 0, 0, 5);
@@ -117,14 +118,17 @@ if (poison){
 	}else{
 		if (poison_time == -1){
 			poison_time = 140;
-			poison_cycle_amount = 4;
+			poison_cycle_amount = 6;
 		}
 		
 		if (poison_cycle_amount > 0){
 			poison_time = 120;
 			poison_cycle_amount --;
-			scr_player_damage(1, 0, 0, 5);
-			scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+			
+			if (global.player_health_current > 1){
+				scr_player_damage(1, 0, 0, 5);
+				scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
+			}
 		}else{
 			scr_draw_poison_die(6, 18, x, y, 5);
 			poison_time = -1;
@@ -177,12 +181,19 @@ if (global.cutscene_current == -1){
 	}
 }
 
+// Push away
+if (state == scr_player_move){
+	scr_push_away_handler();
+}
+
 // Death
 if (global.player_health_current <= 0) && (!near_dead){
     scr_effect_blackbar();
     scr_effect_flash_script(0.0045, 1, c_black, scr_trigger_0);
 	audio_play_sound(m_combat_stinger_3, 3, false);
     
+	scr_cutscene_block_restart_all();
+	
 	if (global.game_combat_in_hordechallenge){
 		global.game_combat_in_hordechallenge = false;
 		global.game_combat_in_hordechallenge_time = 0;
@@ -191,11 +202,11 @@ if (global.player_health_current <= 0) && (!near_dead){
 		var level = scr_level_get_object();
 		with(level){
 			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
-			audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
+			audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 2000);
 			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
 			audio_sound_gain(spawn_music_main[CombatState.Climax], 0, 2000);
 		
-			audio_sound_gain(global.boss_music[0], 0, 5000);
+			audio_sound_gain(global.boss_music[0], 0, 2000);
 			audio_play_sound(global.boss_stinger[0], 3, false);
 		}
 	}
@@ -203,5 +214,6 @@ if (global.player_health_current <= 0) && (!near_dead){
 	global.player_is_respawning = true;
 	global.cutscene_current = -1;
 	global.game_score_deaths -= 1000;
+	
     instance_destroy();
 }

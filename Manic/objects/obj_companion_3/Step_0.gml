@@ -99,4 +99,9 @@ mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 health_current = max(health_current, 1);
 
 scr_pawn_update();
+
+if (room == rm_level_10_01){
+	y = max(y, 774);
+}
+
 image_yscale = scale;

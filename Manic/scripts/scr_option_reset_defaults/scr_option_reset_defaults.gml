@@ -8,6 +8,8 @@ switch(type){
 		global.game_option[| Options.QuickZoom] = 100;
 		global.game_option[| Options.MaxCorpses] = 15;
 		global.game_option[| Options.Flashing] = 100;
+		global.game_option[| Options.Brightness] = 50;
+		global.game_option[| Options.ShowMinimap] = true;
 		break;
 	
 	case "display":

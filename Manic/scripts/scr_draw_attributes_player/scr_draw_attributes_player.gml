@@ -40,7 +40,7 @@ if (ucount > 0) || (has_antagonist_mask){
 						if (is_idle){
 							draw_sprite_ext(global.upgrade_sprite[i], 0, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 						}else{
-							draw_sprite_ext(walksprite, image_index, x, y + uoffset, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
+							draw_sprite_ext(walksprite, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha * i_time_alpha);
 						}
 					}
 				}else{

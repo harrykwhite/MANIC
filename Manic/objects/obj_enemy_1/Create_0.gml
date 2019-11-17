@@ -3,7 +3,6 @@ blend = -1;
 flash_time = 0;
 light_brightness = 0;
 scale = random_range(0.675, 0.75);
-destroy = false;
 buzz = noone;
 
 damageother_time_max = 50;
@@ -33,6 +32,7 @@ burn_sound = noone;
 poison = false;
 bleed = false;
 bleed_time = 0;
+bleed_cycle = 3;
 headless = false;
 
 move_x_to = x;

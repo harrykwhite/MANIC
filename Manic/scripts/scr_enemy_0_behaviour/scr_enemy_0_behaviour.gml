@@ -34,7 +34,7 @@ switch(type){
 }
 
 if (instance_exists(target)){
-	var mindist = 27;
+	var mindist = 36;
 	var weapon_exists = instance_exists(weapon) && weapon != -1;
 	
 	if (sporadic){
@@ -96,49 +96,19 @@ if (instance_exists(target)){
 				mindist = 115;
 				
 				if ((cutscene_prop) && (in_cutscene)){
-					mindist = 30;
+					mindist = 36;
 				}
 			}else{
 				speed_multiplier += 0.2;
 			}
 		}
-	
+		
 		if (global.player_health_current < 4){
 			speed_multiplier -= 0.2;
 		}
-	
+		
 		if (type == Enemy0_Type.Grenadier){
-			var inst = instance_nearest(x, y, obj_p_depth_throwobject);
-			var running = false;
-			
 			mindist = 120;
-			
-			if (instance_exists(inst)) && (inst != noone){
-				var dir = point_direction(inst.x, inst.y, x, y);
-				
-				if (distance_to_object(inst) < 43){
-					wait = 40;
-					
-					move_speed = 1.25;
-					move_x_to = x + lengthdir_x(20, dir);
-					move_y_to = y + lengthdir_y(20, dir);
-				
-					wait_stop_movement = false;
-					running = true;
-				}
-				
-				if (!running){
-					wait_stop_movement = true;
-					
-					if (point_distance(x, y, target.x, target.y + 6) > 90){
-						move_x_to = target.x;
-						move_y_to = target.y + 6;
-						move_speed = 0.75;
-					}else{
-						move_speed = 0;
-					}
-				}
-			}
 		}
 		
 		if (!sporadic){
@@ -150,7 +120,7 @@ if (instance_exists(target)){
 		}else{
 			move_speed = 1.25;
 		}
-	
+		
 		if (weapon_exists){
 			weapon.dir = point_direction(x, y, target.x, target.y + 6);
 			

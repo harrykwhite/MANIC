@@ -5,8 +5,6 @@ if (!obj_controller_all.show_ui){
 var dwidth = display_get_gui_width();
 var dheight = display_get_gui_height();
 
-var iskeyboard = (global.game_input_type == InputType.Keyboard);
-
 // Black Bars
 if (blackbar_draw) || (global.cutscene_current != -1){
     blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 15);
@@ -25,15 +23,24 @@ if (blackbar_sizereal > 2){
 // Dialogue
 if (dialogue_time > 0){
 	var str = dialogue;
+	var strw = 425;
 	var xx = (dialogue_x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 	var yy = (dialogue_y - camera_get_view_y(view_camera[0])) * gui_scale_y;
+	
+	if (xx - (strw / 2) <= 0){
+		strw -= abs((xx - (strw / 2)));
+	}
+	
+	if (xx + (strw / 2) >= dwidth){
+		strw -= abs(dwidth - (xx + (strw / 2)));
+	}
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
 	
-	draw_set_font(fnt_cambria_0);
+	draw_set_font(fnt_cambria_1);
 	draw_set_colour(c_white);
-	draw_text_ext(xx, yy, string_copy(str, 0, dialogue_char_count), -1, 350);
+	draw_text_ext(xx, yy, string_copy(str, 0, dialogue_char_count), -1, strw);
 	
 	if (global.cutscene_current != -1) && (dialogue_pause){
 		draw_set_font(fnt_cambria_1);
@@ -41,10 +48,10 @@ if (dialogue_time > 0){
 		draw_set_valign(fa_middle);
 		
 		if (dialogue_char_count >= dialogue_length){
-			scr_text_shadow(dwidth - 24, dheight - 64, iskeyboard ? "Continue " + scr_input_get_name(InputBinding.Interact) : "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
+			scr_text_shadow(dwidth - 24, dheight - 64, "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
 		}
 		
-		var holdstr = iskeyboard ? "Hold " + scr_input_get_name(InputBinding.Attack) + " to skip" : "Hold " + scr_input_get_name(InputBinding.Attack) + "  to skip";
+		var holdstr = "Hold " + scr_input_get_name(InputBinding.Attack) + " to skip";
 		scr_text_shadow(dwidth - 24, dheight - 34, holdstr, c_white);
 		
 		if (dialogue_skip > 0){

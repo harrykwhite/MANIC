@@ -1,3 +1,7 @@
+if (start_run){
+	return;
+}
+
 if (global.pers_runthrough){
 	instance_deactivate_object(object_index);
 	return;
@@ -54,6 +58,7 @@ enum TutourialStage{
 	Pickup,
 	Shoot,
 	Throw,
+	ThrowPurpose,
 	PickupMelee,
 	Switch,
 	CollectAmmo,
@@ -73,24 +78,7 @@ tutourial_stage_pickupmelee_equipped = false;
 tutourial_stage_ammocollected_done = false;
 tutourial_sickle_respawn_time = -1;
 
-if (global.game_input_type == InputType.Keyboard){
-	tutourial_text[TutourialStage.Movement] = "Use the [" + scr_input_get_name(InputBinding.Up, false) + scr_input_get_name(InputBinding.Left, false) + scr_input_get_name(InputBinding.Down, false) + scr_input_get_name(InputBinding.Right, false) + "] keys to move";
-	tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with " + scr_input_get_name(InputBinding.Interact);
-	tutourial_text[TutourialStage.Shoot] = "Shoot by pressing " + scr_input_get_name(InputBinding.Attack);
-	tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing " + scr_input_get_name(InputBinding.Throw);
-	tutourial_text[TutourialStage.Switch] = "Switch between weapons by using the " + scr_input_get_name(InputBinding.SwitchWeaponForward) + " or the number keys";
-	tutourial_text[TutourialStage.Dash] = "Dash by pressing " + scr_input_get_name(InputBinding.Dash);
-}else{
-	tutourial_text[TutourialStage.Movement] = "Move with " + scr_input_get_name(InputBinding.Up);
-	tutourial_text[TutourialStage.Pickup] = "Pick up the rifle in the shed with " + scr_input_get_name(InputBinding.Interact);
-	tutourial_text[TutourialStage.Shoot] = "Shoot by pressing " + scr_input_get_name(InputBinding.Attack);
-	tutourial_text[TutourialStage.Throw] = "Throw your weapon by pressing " + scr_input_get_name(InputBinding.Throw);
-	tutourial_text[TutourialStage.Switch] = "Switch between weapons by pressing " + scr_input_get_name(InputBinding.SwitchWeaponForward);
-	tutourial_text[TutourialStage.Dash] = "Dash by pressing " + scr_input_get_name(InputBinding.Dash);
-}
-
-tutourial_text[TutourialStage.PickupMelee] = "Pick up the melee weapon by the crates";
-tutourial_text[TutourialStage.CollectAmmo] = "Break open the crates to retrieve ammo";
+scr_tutourial_names_set();
 
 if (global.level_current == Level.Prologue){
 	tutourial = true;
@@ -113,8 +101,6 @@ pause_has_selected_index = -1;
 pause_has_selected_time = 0;
 pause_selectoption[0] = "Resume";
 pause_selectoption_scale[0] = 1;
-//pause_selectoption[1] = "Restart Level";
-//pause_selectoption_scale[1] = 1;
 pause_selectoption[1] = "Exit to Titlescreen";
 pause_selectoption_scale[1] = 1;
 pause_selectoption[2] = "Exit to Desktop";
@@ -156,65 +142,71 @@ if (room == rm_prologue_00){
 	global.level_entered[0] = false;
 }
 
-for(var i = 0; i < levelcount; i ++){
-	if (room == global.level_room[i]){
-		if (!global.level_entered[i]){
-			var upgradecount = array_length_1d(global.upgrade_name);
+if (!global.pers_runthrough_pre){
+	for(var i = 0; i < levelcount; i ++){
+		if (room == global.level_room[i]){
+			if (!global.level_entered[i]){
+				var upgradecount = array_length_1d(global.upgrade_name);
 			
-			global.game_objective_set = false;
-			global.game_objective_complete = false;
+				global.game_objective_set = false;
+				global.game_objective_complete = false;
 			
-			if (!global.game_is_playthrough) || (room == rm_prologue_00){
-				scr_companions_clear();
-				scr_player_upgrades_clear();
-				scr_set_kills_and_findings();
+				if (!global.game_is_playthrough) || (room == rm_prologue_00){
+					scr_companions_clear();
+					scr_player_upgrades_clear();
+					scr_set_kills_and_findings();
 				
-				if (global.level_complete[i]){
-					global.game_objective_set = true;
-					global.game_objective_complete = true;
-				}
-			}else{
-				scr_save_game();
+					if (global.level_complete[i]){
+						global.game_objective_set = true;
+						global.game_objective_complete = true;
+					}
+				}else{
+					scr_save_game();
 				
-				global.level_complete[i] = false;
+					global.level_complete[i] = false;
 				
-				for(var u = 0; u < upgradecount; u ++){
-					if (global.game_save_upgrade_unlocked[u]){
-						scr_upgrade_add(u);
+					for(var u = 0; u < upgradecount; u ++){
+						if (global.game_save_upgrade_unlocked[u]){
+							scr_upgrade_add(u);
+						}
 					}
 				}
+			
+				global.game_combat_state = CombatState.Idle;
+				global.game_combat_state_time_real = 0;
+			
+				scr_checkpoint_reset();
+				scr_player_upgrade_update();
+			
+				if (i != Level.Prologue) && (!isteaser){
+					level_opening = true;
+					level_opening_active = true;
+					level_opening_time = 60 * 4.65;
+				}
+			
+				global.level_entered[i] = true;
+				break;
 			}
-			
-			global.game_combat_state = CombatState.Idle;
-			global.game_combat_state_time_real = 0;
-			
-			scr_checkpoint_reset();
-			scr_player_upgrade_update();
-			
-			if (i != Level.Prologue) && (!isteaser){
-				level_opening = true;
-				level_opening_active = true;
-				level_opening_time = 60 * 4.65;
+		}else if (room == global.level_preroom[i]){
+			if (!global.level_entered[i]){
+				scr_save_game();
 			}
-			
-			global.level_entered[i] = true;
-			break;
 		}
 	}
-}
-
-if (!global.game_boss_firstantag_killed){
-	if (room == rm_level_6_pre_00){
-		scr_companion_register(obj_companion_0);
-	}
 	
-	if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation)
-	&& (room != rm_level_2_pre_00) && (room != rm_level_2_00) && (room != rm_level_2_01) && (room != rm_level_2_02){
-		scr_companion_register(obj_companion_0);
-		global.game_companion_farmer_found = true;
+	if (!global.game_boss_firstantag_killed){
+		if (room == rm_level_6_pre_00) && (global.game_is_playthrough){
+			scr_companion_register(obj_companion_0);
+		}
+		
+		if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation)
+		&& (room != rm_level_2_pre_00) && (room != rm_level_2_00) && (room != rm_level_2_01) && (room != rm_level_2_02){
+			scr_companion_register(obj_companion_0);
+			global.game_companion_farmer_found = true;
+		}
+	}else{
+		scr_companion_remove(obj_companion_0);
 	}
-}else{
-	scr_companion_remove(obj_companion_0);
 }
 
 screen_fade_opening = 1.15;
@@ -240,20 +232,9 @@ score_text_offset = 0;
 score_text_time = 0;
 score_text_alpha = 0;
 
-leveltext_alpha = 0;
-leveltext_text = "";
-leveltext_time = 0;
-
-var levels = array_length_1d(global.level_name);
-for(var i = 1; i < levels; i ++){
-	if (room == global.level_room[i]){
-		leveltext_time = 60 * 3.5;
-	}
-}
-
 var weaponalength = array_length_1d(global.weapon_slot);
 
-for (var i = 0; i < weaponalength; i ++){
+for(var i = 0; i < weaponalength; i ++){
 	weaponslot_shake[i] = 0;
     weaponslot_weaponscale[i] = 0;
 }
@@ -300,8 +281,8 @@ pausedialogue_type_option_cutscene[0] = -1;
 
 minimap_x = 30;
 minimap_y = 30;
-minimap_width = 219;
-minimap_height = 123;
+minimap_width = 220;
+minimap_height = 124;
 minimap_arrow_sine = 0;
 minimap_arrow_sine_speed = 5;
 teaserend = false;
@@ -316,9 +297,13 @@ teaserend_button_scale[2] = 1;
 teaserend_button[3] = "Return to titlescreen!";
 teaserend_button_scale[3] = 1;
 teaserend_button_selected = -1;
+teaserend_button_selected_break = 0;
 teaserend_button_selected_held_time = 0;
 teaserend_button_selected_held_time_max = 40;
 teaserend_button_selected_max = array_length_1d(teaserend_button);
+teaserend_button_has_selected = false;
 
 sprite_index = noone;
 depth = -4;
+
+start_run = true;

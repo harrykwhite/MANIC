@@ -44,10 +44,15 @@ if (instance_exists(obj_player)){
 }
 
 if (talking){
-	obj_controller_ui.dialogue_x = x;
-	obj_controller_ui.dialogue_y = y - 18;
+	if (global.cutscene_current == -1){
+		obj_controller_ui.dialogue_x = x;
+		obj_controller_ui.dialogue_y = y - 18;
 	
-	if (obj_controller_ui.dialogue_time <= 0){
+		if (obj_controller_ui.dialogue_time <= 0){
+			talking = false;
+		}
+	}else{
+		obj_controller_ui.dialogue_time = 0;
 		talking = false;
 	}
 }

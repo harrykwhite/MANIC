@@ -20,7 +20,7 @@ if (instance_exists(owner)){
 			ypos -= lengthdir_y(14 * owner.scale, dir) + lengthdir_y(dist, dir);
 		}
 		
-		scr_sound_play(snd_weapon_shoot_0, false, 0.8, 1.2);
+		scr_sound_play(snd_weapon_shoot_1, false, 0.8, 1.2);
 		scr_effect_screenshake(2);
 		angle_offset = 8;
 		
@@ -47,6 +47,8 @@ if (instance_exists(owner)){
 		
 	    owner.knockback_speed = -1;
 	    owner.knockback_direction = dir;
+		
+		attack = false;
 		attack_time = attack_time_max;
     }
 }

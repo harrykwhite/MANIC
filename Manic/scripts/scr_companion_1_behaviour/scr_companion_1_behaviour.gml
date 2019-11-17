@@ -159,18 +159,10 @@ if (instance_exists(obj_player)){
 		if (dist_to > 5){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
 			
-			if (point_away && !weapon.attack){
-				if (weapon.dir <= 90 || weapon.dir >= 270){
-					weapon.dir -= 22
-				}else{
-					weapon.dir += 22
-				}
+			if (weapon.dir <= 90 || weapon.dir >= 270){
+				image_xscale = scale;
 			}else{
-				if (weapon.dir <= 90 || weapon.dir >= 270){
-					image_xscale = scale;
-				}else{
-					image_xscale = -scale;
-				}
+				image_xscale = -scale;
 			}
 		}
 	}

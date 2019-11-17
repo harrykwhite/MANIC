@@ -37,9 +37,12 @@ if (global.cutscene_current == 58){
 	}*/
 }else if (global.cutscene_current == -1){
 	if (in_cutscene){
-		obj_player.move_x_to = -1;
-		obj_player.move_y_to = -1;
-		obj_player.move_ext_spd = 0;
+		if (instance_exists(obj_player)){
+			obj_player.move_x_to = -1;
+			obj_player.move_y_to = -1;
+			obj_player.move_ext_spd = 0;
+		}
+		
 		in_cutscene = false;
 		cutscene_prop = false;
 	}
@@ -96,6 +99,8 @@ if (ispaused){
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
+headless = false;
+
 scr_pawn_status_handler();
 
 if (global.cutscene_current == -1) || (cutscene_prop){
@@ -133,5 +138,6 @@ if (global.cutscene_current == -1) || (cutscene_prop){
 }else{
 	image_speed = 0;
 }
+
 scr_pawn_update();
 image_yscale = scale;

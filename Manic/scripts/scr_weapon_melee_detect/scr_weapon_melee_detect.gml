@@ -19,6 +19,10 @@ var obj = argument7;
 var sourcex = argument8;
 var sourcey = argument9;
 
+if (global.cutscene_current != -1) || (global.game_pause){
+	return;
+}
+
 var width;
 
 switch(obj){
@@ -75,6 +79,7 @@ switch(ctype){
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
 				var inst = enemyline[| i].owner;
+				var glove = false;
 				
 				if (inst.i_time <= 0){
 					len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), obj_p_enemy);
@@ -91,17 +96,13 @@ switch(ctype){
 					
 					if (string_char_at(object_get_name(object_index), 5) != "p"){
 						scr_mouse_cross();
-						
-						if (scr_player_has_upgrade(PlayerUpgrade.IronGlove)){
-							global.player_melee_attack_counter ++;
-							global.player_melee_attack_counter = clamp(global.player_melee_attack_counter, 0, global.player_melee_attack_counter_max);
-						}
+						glove = true;
 					}else{
 						mult = 1;
 					}
 					
 					with(inst){
-						scr_pawn_damage(max(damage - defense, 1), strength, dir, 4);
+						scr_pawn_damage(max(damage - defense, 1), strength, dir, 4, glove);
 						
 						if (object_index == obj_enemy_2){
 							if (bite_to){
@@ -171,20 +172,23 @@ switch(ctype){
 				if (inst.object_index == obj_player) && (object_index == global.pawnweapon_object[PawnWeapon.Greatsword]){
 					if (scr_player_has_upgrade(PlayerUpgrade.Chestplate)){
 						final_damage = round(final_damage * 0.25);
-					}
-					
-					obj_player.near_dead = true;
-					
-					if (room == rm_level_6_pre_00){
-						var antag = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
-						
-						if (antag != noone){
-							if (!antag.greatsword_attack_killed){
-								antag.greatsword_attack_killed = true;
-								global.cutscene_current = 58;
-								
-								audio_sound_gain(global.boss_music[Boss.Antagonist], 0, 5000);
-								audio_play_sound(global.boss_stinger[Boss.Antagonist], 3, false);
+					}else{
+						if (room == rm_level_6_pre_00){
+							var antag = instance_nearest(obj_player.x, obj_player.y, obj_antagonist);
+							
+							if (antag != noone){
+								if (!antag.greatsword_attack_killed){
+									antag.greatsword_attack_killed = true;
+									
+									obj_player.near_dead = true;
+									
+									global.game_boss_firstantag_killed = true;
+									global.cutscene_current = 58;
+									global.boss_current = -1;
+									
+									audio_sound_gain(global.boss_music[Boss.Antagonist], 0, 5000);
+									audio_play_sound(global.boss_stinger[Boss.Antagonist], 3, false);
+								}
 							}
 						}
 					}

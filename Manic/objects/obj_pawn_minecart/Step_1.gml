@@ -1,3 +1,7 @@
+if (global.cutscene_current != -1) || (global.game_pause){
+	return;
+}
+
 var mysprite = spr_pawn_minecart_0;
 visible = true;
 
@@ -84,6 +88,8 @@ if (instance_exists(obj_player)){
 		if (obj_player.in_minecart){
 			if (isme){
 				visible = false;
+				
+				scr_ui_control_indicate("Demount Minecart");
 
 				if (pressed) || (global.cutscene_current != -1){
 					sprite_index = obj_player.minecart_sprite;

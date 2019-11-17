@@ -9,7 +9,7 @@ if (instance_exists(obj_player)){
 	global.cutscene_camera_x[index] = cutscene_conveyerbelt_x;
 	global.cutscene_camera_y[index] = cutscene_conveyerbelt_y;
 	
-	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 24){
+	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 32){
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
 		obj_player.move_ext_spd = 0;

@@ -112,6 +112,10 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 				level.trainboss_leader.type = Enemy0_Type.TrainBoss;
 				level.trainboss_leader.weapon_index = PawnWeapon.SniperRifle;
 				
+				repeat(9){
+					part_particles_create(global.ps_front, x + random_range(-7, 7), y + 30 + random_range(-18, 18), global.pt_spawn_0, 1);
+				}
+				
 				global.cutscene_current = 58;
 			}
 		}
@@ -131,7 +135,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 							
 							obj_controller_ui.pausedialogue = true;
 							obj_controller_ui.pausedialogue_type = 1;
-							obj_controller_ui.pausedialogue_type_text = "Travel to " + (room == rm_level_6_00 ? "the cemetery" : "the train station") + "?";
+							obj_controller_ui.pausedialogue_type_text = "Travel to " + (room == rm_level_6_00 ? "The Cemetery" : "the Train Station") + "?";
 							obj_controller_ui.pausedialogue_type_option[0] = "Enter the train";
 							obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
 							obj_controller_ui.pausedialogue_type_option_special[0] = 1;
@@ -245,7 +249,7 @@ if (horde_dospawn){
 			}
 		}
 		
-		repeat(2){
+		repeat(9){
 			part_particles_create(global.ps_front, xx + random_range(-7, 7), yy + random_range(-18, 18), global.pt_spawn_0, 1);
 		}
 	}

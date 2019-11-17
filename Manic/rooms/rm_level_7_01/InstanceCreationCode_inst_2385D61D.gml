@@ -1,2 +1,2 @@
-listnum = 8;
+listnum = 7;
 image_angle = 180;

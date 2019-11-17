@@ -55,6 +55,7 @@ if (instance_exists(owner)){
 	    owner.knockback_speed = -1;
 	    owner.knockback_direction = dir;
 		
+		attack = false;
 		attack_time = 4;
 		angle_offset = 1;
     }else if (!attack){

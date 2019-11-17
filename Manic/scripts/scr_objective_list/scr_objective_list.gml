@@ -5,7 +5,7 @@ enum Objectives{
 	WaitForTrain,
 	ReleasePrisoners,
 	DefeatEnemyTrain,
-	TravelToCemetery,
+	BoardTrain,
 	DestroyProductionEngines,
 	CollectAllArtifacts,
 	CollectAllChestplatePieces,
@@ -41,7 +41,7 @@ global.objective_name[5] = "Defeat the enemy train.";
 global.objective_counter[5] = 0;
 global.objective_counter_max[5] = 0;
 
-global.objective_name[6] = "Travel to the cemetery.";
+global.objective_name[6] = "Board the train.";
 global.objective_counter[6] = 0;
 global.objective_counter_max[6] = 0;
 
@@ -53,7 +53,7 @@ global.objective_name[8] = "Collect ^ artifacts throughout the map.";
 global.objective_counter[8] = 0;
 global.objective_counter_max[8] = 0;
 
-global.objective_name[9] = "Collect ^ pieces of the chestplate throughout the map.";
+global.objective_name[9] = "Collect ^ pieces of the chestplate in the map.";
 global.objective_counter[9] = 0;
 global.objective_counter_max[9] = 0;
 
@@ -69,7 +69,7 @@ global.objective_name[12] = "Explore the underground bunker";
 global.objective_counter[12] = 0;
 global.objective_counter_max[12] = 0;
 
-global.objective_name[13] = "Collect ^ pieces of the leggings throughout the map.";
+global.objective_name[13] = "Collect ^ pieces of the leggings in the map.";
 global.objective_counter[13] = 0;
 global.objective_counter_max[13] = 0;
 

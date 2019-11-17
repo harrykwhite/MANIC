@@ -1,1 +1,1 @@
-global.ambientShadowIntensity = 0.85;
+global.game_lighting = 0.85 + scr_brightness_offset();

@@ -58,7 +58,7 @@ if (global.weapon_slot_standalone == -1){
 	dir = point_direction(0, 0, xaxis, yaxis);
 	image_angle = 0;
 	
-	// Offset
+	/* Offset
 	var spread = 0;
 	
 	if (global.game_save_level >= Level.HumanPrison){
@@ -84,7 +84,7 @@ if (global.weapon_slot_standalone == -1){
 		}
 		
 		dir += offset;
-	}
+	}*/
 	
 	// Surrounding enemies
 	var slist = ds_list_create();
@@ -236,11 +236,11 @@ if (global.weapon_slot_standalone == -1){
 			if (dash_count < 1){
 				dash_count ++;
 				dash_time = 2;
-				dash_time_short = 15;
+				dash_time_short = 13;
 				scr_sound_play(snd_character_dash_0, false, 0.9, 1);
 			}else{
 				dash_count = 0;
-				dash_time = 24;
+				dash_time = 21;
 				scr_sound_play(snd_character_dash_0, false, 1.15, 1.25);
 			}
 		}else{

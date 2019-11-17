@@ -33,7 +33,7 @@ if (instance_exists(obj_player)){
 					scr_effect_screenshake(1);
 					
 					global.cutscene_time[index] = 0;
-					obj_player.surrounding_light_to = 0.6;
+					obj_player.surrounding_light_to -= obj_player.surrounding_light_upgradedec;
 					obj_player.has_antagonist_mask = true;
 				}
 				
@@ -59,6 +59,8 @@ if (instance_exists(obj_player)){
 				if (global.cutscene_time[index] > 200){
 					obj_player.image_xscale = 1;
 				}
+				
+				obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, obj_player.x + (100 * obj_player.image_xscale), obj_player.y);
 			}else{
 				cutscene_ending_stage = 2;
 				global.cutscene_time[index] = 0;
@@ -85,24 +87,26 @@ if (instance_exists(obj_player)){
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
 		obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, x_to, y_to);
-		obj_player.move_ext_spd = obj_player.spd_max * 0.45;
+		obj_player.move_ext_spd = obj_player.spd_max * 0.75;
 		
 		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 20){
 			cutscene_ending_stage = 4;
 			global.cutscene_time[index] = 0;
 		}
 	}else if (cutscene_ending_stage == 4){
-		var x_to = room_width + 400;
+		var x_to = room_width + 200;
 		var y_to = 454;
 		
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
 		obj_player.flashlight_direction = 360;
-		obj_player.move_ext_spd = obj_player.spd_max * 0.45;
+		obj_player.move_ext_spd = obj_player.spd_max * 0.75;
 		
 		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 500){
 			obj_controller_ui.ending = true;
-		}else if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 14){
+		}
+		
+		if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 34){
 			stationary = true;
 		}
 	}

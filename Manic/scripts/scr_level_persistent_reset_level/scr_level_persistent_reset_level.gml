@@ -18,7 +18,7 @@ for(var r = 0; r < room_count; r ++){
 			found = true;
 		}
 		
-		obj_controller_all.room_pers_clear_max = r + 1;
+		obj_controller_all.room_pers_clear_max = r;
 	}else{
 		if (found){
 			obj_controller_all.room_pers_clear_max = r;
@@ -30,3 +30,5 @@ for(var r = 0; r < room_count; r ++){
 if (obj_controller_all.room_pers_clear){
 	obj_controller_all.room_pers_clear_at = obj_controller_all.room_pers_clear_min;
 }
+
+global.pers_runthrough_pre = true;

@@ -1,1 +1,1 @@
-text = "To do: implementation of reinforcements onto cell doors.";
+text = "In development: implementation of reinforcements onto cell doors.";

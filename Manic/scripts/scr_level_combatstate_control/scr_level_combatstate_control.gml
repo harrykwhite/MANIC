@@ -9,7 +9,7 @@ if (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.Sni
 	inrealboss = false;
 }
 
-if (inhordechallenge){
+if (inhordechallenge) && (!paused){
 	if (global.game_combat_in_hordechallenge_time > 0){
 		global.game_combat_in_hordechallenge_time --;
 	}else{
@@ -233,7 +233,7 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 			break;
 	
 		case CombatState.Climax:
-			if (global.game_combat_state_time_real >= (60 * spawn_state_time[global.game_combat_state])){
+			if (global.game_combat_state_time_real >= (60 * spawn_state_time[global.game_combat_state])) && (scr_enemy_nearby_count(260, false) <= 0){
 				global.game_combat_state_time_real = 0;
 				spawn_rate_real += 0.5;
 				spawn_rate_real = clamp(spawn_rate_real, 0, 3);

@@ -1,3 +1,8 @@
+// Push
+if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) &&  (object_index != obj_enemy_4) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
+	scr_push_away_handler();
+}
+
 // Knockback
 var kbs = knockback_speed * knockback_multiplier;
 
@@ -138,7 +143,7 @@ if (health_current <= 0){
 				global.game_boss_trainhorde_killed = true;
 				obj_pawn_other_train_1.is_boss = false;
 				
-				scr_objective_change(Objectives.TravelToCemetery, -1, -1);
+				scr_objective_change(Objectives.BoardTrain, -1, -1);
 			}
 		}else if (object_index == obj_enemy_2){
 			scr_level_increase_kill_count();
@@ -167,12 +172,12 @@ if (health_current <= 0){
 		}else if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
 			
-			/*if (!scr_player_has_upgrade(PlayerUpgrade.DashBoots)){
+			if (!scr_player_has_upgrade(PlayerUpgrade.ExplosiveVest)){
 				var udrop = instance_create(x, y, obj_upgrade_pickup);
-				udrop.index = PlayerUpgrade.DashBoots;
+				udrop.index = PlayerUpgrade.ExplosiveVest;
 				udrop.angle = random_range(-10, 10);
 				global.cutscene_current = 53;
-			}*/
+			}
 			
 			with(obj_block_cutscene){
 				if (index == 46){
@@ -254,7 +259,6 @@ if (health_current <= 0){
 		fl.fadeSpeed = 0.015;
 	
 		scr_damage_custom(2, 1, 45, 45, 3, true, true, true, true);
-		scr_damage_custom(1, 1, 55, 55, 3, true, true, true, true);
 		scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
 		scr_effect_screenshake(4);
 		scr_effect_freeze(13);

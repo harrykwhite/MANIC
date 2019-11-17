@@ -19,12 +19,13 @@ if (use_current){
 			scr_player_flashlight_flash(1.185);
 			scr_sound_play(snd_weapon_shoot_6, false, 0.6, 0.9);
             scr_weapon_ammo_use(1);
+			ammo = global.weapon_slot_standalone_ammo;
 			
-            var xpos = x + lengthdir_x(12, mdir);
-	        var ypos = y + lengthdir_y(12, mdir);
+            var xpos = x + lengthdir_x(21, mdir) + lengthdir_y(1, up(mdir));
+	        var ypos = y + lengthdir_y(21, mdir) + lengthdir_y(1, up(mdir));
 			image_speed = 1;
 			
-	        var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+	        var dir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 			
 			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
 			for(var l = 0; l < 16; l += 4){
@@ -83,6 +84,17 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
 	var mount = scr_input_is_pressed(InputBinding.Interact);
 	
     if (pickup){
+		if (!use_current){
+			with(obj_controller_ui){
+				if (other.index != weaponinfo_index_prev){
+					weaponinfo = true;
+					weaponinfo_index = other.index;
+					weaponinfo_ammo = (other.ammo != -1 ? other.ammo : global.weapon_ammomax[other.index]);
+					weaponinfo_quantity = -1;
+				}
+			}
+		}
+		
         if (mount){
 			scr_player_stamina_drain(6);
 			if (!use_current){
@@ -92,14 +104,14 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
 	            alarm[0] = 3;
 				
 				if (ammo == -1){
-					ammo = global.weapon_ammomax[global.weapon_slot_standalone];
-					global.weapon_slot_standalone_ammo = ammo;
+					ammo = global.weapon_ammomax[index];
 				}
+				
+				global.weapon_slot_standalone_ammo = ammo;
 			}else{
 				use_current = false;
 				global.weapon_slot_standalone = -1;
 			}
         }
-		
     }
 }

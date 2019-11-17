@@ -131,18 +131,20 @@ if (!global.game_pause){
 				train_time = 0;
 			}
 			
-			if (trainboss_time < trainboss_timemax){
-				trainboss_time ++;
-			}else{
-				trainboss_spawned = true;
-				trainboss_trainhead = instance_create_layer(-247, 224, "Trains", obj_pawn_other_train_1);
-				trainboss_trainhead.component_spawn = true;
-				trainboss_trainhead.is_boss = true;
-				trainboss_trainhead.spd = 6;
+			if (!global.game_combat_in_hordechallenge){
+				if (trainboss_time < trainboss_timemax){
+					trainboss_time ++;
+				}else{
+					trainboss_spawned = true;
+					trainboss_trainhead = instance_create_layer(-247, 224, "Trains", obj_pawn_other_train_1);
+					trainboss_trainhead.component_spawn = true;
+					trainboss_trainhead.is_boss = true;
+					trainboss_trainhead.spd = 6;
 				
-				scr_objective_change(Objectives.DefeatEnemyTrain, -1, -1);
+					scr_objective_change(Objectives.DefeatEnemyTrain, -1, -1);
 				
-				global.worldtrain_room = room;
+					global.worldtrain_room = room;
+				}
 			}
 		}
 	}
@@ -162,23 +164,17 @@ lighting_level[CombatState.Climax] = 1;
 lighting_level[CombatState.Buildup] = 0.935;
 lighting_level[CombatState.Idle] = 0.875;
 
-var lighting_to = lighting_level[global.game_combat_state];
+var lighting = lighting_level[global.game_combat_state];
 
 if (global.game_combat_in_hordechallenge){
-	lighting_to = 1;
+	lighting = 1;
 }
 
 if (scr_level_is_peaceful(room)){
-	lighting_to = 0.95;
+	lighting = 0.95;
 }
 
-if (lighting < lighting_to){
-	lighting += 0.004;
-}else if (lighting > lighting_to){
-	lighting -= 0.004;
-}
-
-global.ambientShadowIntensity = lighting;
+global.game_lighting = lighting + scr_brightness_offset();
 
 if (spawn_start_wait >= spawn_start_wait_max){
 	if (player_exists) && (!scr_level_is_peaceful(room)){
@@ -195,16 +191,18 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 		
 			spawn_rate += global.game_combat_playerskill - 1;
-		
-			if (spawn_time > 0){
-				spawn_time --;
-			}else{
-				spawn = true;
-				spawn_time = 60 * spawn_interval[global.game_combat_state];
+			
+			if (global.game_combat_state_time_real < (60 * spawn_state_time[global.game_combat_state])){
+				if (spawn_time > 0){
+					spawn_time -= spawn_rate;
+				}else{
+					spawn = true;
+					spawn_time = 60 * (global.game_combat_in_hordechallenge ? global.game_combat_in_hordechallenge_spawnbreak : spawn_interval[global.game_combat_state]);
+				}
 			}
-		
+			
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 1.5, 1))){
+				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 2, 1))){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
@@ -264,7 +262,11 @@ if (spawn_start_wait >= spawn_start_wait_max){
 						if (chance(5)) && (healer_can_spawn){
 							enemy.type = Enemy0_Type.Healer;
 						}
-				
+						
+						if (global.game_combat_in_hordechallenge){
+							enemy.type = Enemy0_Type.Normal;
+						}
+						
 						if (weapon == PawnWeapon.Grenade){
 							enemy.type = Enemy0_Type.Grenadier;
 						}

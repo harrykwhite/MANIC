@@ -16,7 +16,7 @@ if (burn){
 	if (!burn_start){
 		burn_x = x;
 		burn_y = y;
-		burn_time = 45;
+		burn_time = 65;
 		burn_cycle = 4;
 		burn_start = true;
 		move_x_to = x;
@@ -71,26 +71,33 @@ if (burn){
 // Poison control
 if (poison){
 	if (!poison_start){
-		poison_time = 50;
+		poison_time = 90;
 		poison_start = true;
 	}
 
 	if (poison_time > 0){
 		poison_time--;
 	}else{
-		poison_time = 50;
-		scr_pawn_damage(2, 0, 0, 5);
+		poison_time = 80;
+		scr_pawn_damage(1, 0, 0, 5);
 		scr_sound_play(hurt_sound, false, 0.8, 1.2);
 	}
 }
 
 // Bleed
 if (bleed){
-	if (bleed_time < 30){
-		bleed_time ++;
+	if (bleed_cycle > 0){
+		if (bleed_time < 30){
+			bleed_time ++;
+		}else{
+			scr_pawn_damage(1, 0, 0, 5);
+			scr_sound_play(hurt_sound, false, 0.8, 1.2);
+			bleed_time = 0;
+			bleed_cycle --;
+		}
 	}else{
-		scr_pawn_damage(1, 0, 0, 5);
-		scr_sound_play(hurt_sound, false, 0.8, 1.2);
+		bleed = false;
+		bleed_cycle = 3;
 		bleed_time = 0;
 	}
 }

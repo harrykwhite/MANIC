@@ -1,27 +1,3 @@
-if (destroy){
-	if (!cutscene_prop){
-		instance_destroy();
-		if (type == Enemy0_Type.TrainBoss){
-			with(obj_controller_levelsix){
-				train_time = 0;
-				train_timemax = 10 * 60;
-
-				trainboss_trainhead = noone;
-				trainboss_leader = noone;
-				trainboss_time = 0;
-				trainboss_timemax = 60 * 25;
-				trainboss_spawned = false;
-			}
-			
-			if (instance_exists(obj_pawn_other_train_1)){
-				instance_destroy(obj_pawn_other_train_1);
-			}
-		}
-	}
-	
-	destroy = false;
-}
-
 if (!weapon_destroyed){
     if (weapon == -1){
         weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
@@ -49,10 +25,10 @@ if (!typedet){
 		case Enemy0_Type.Mother:
 			scale = 1.2;
 			defense = 2;
-			health_max = 9;
+			health_max = 8;
 			health_current = health_max;
-			attack_time_offset = 0.6;
-			knockback_multiplier = 0.4;
+			attack_time_offset = 0.4;
+			knockback_multiplier = 0.6;
 			break;
 		
 		case Enemy0_Type.Grenadier:
@@ -64,9 +40,9 @@ if (!typedet){
 		case Enemy0_Type.Sniper:
 			scale = 1.1;
 			defense = 2;
-			health_max = 8;
+			health_max = 7;
 			health_current = health_max;
-			knockback_multiplier = 0.6;
+			knockback_multiplier = 0.7;
 			sprite_index = spr_enemy_0_light_idle_0;
 			break;
 		
@@ -102,7 +78,7 @@ if (!typedet){
 		case Enemy0_Type.TrainBoss:
 			scale = 1.1;
 			defense = 0;
-			health_max = 45;
+			health_max = 60;
 			health_current = health_max;
 			sprite_index = spr_enemy_0_sniperboss_idle_0;
 			break;

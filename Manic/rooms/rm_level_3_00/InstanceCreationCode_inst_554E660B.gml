@@ -1,1 +1,1 @@
-depth_offset = 50;
+depth_offset = 25;

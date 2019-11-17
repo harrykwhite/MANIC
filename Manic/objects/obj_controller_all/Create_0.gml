@@ -1,5 +1,8 @@
 global.game_option = 0;
 global.pers_runthrough = false;
+global.pers_runthrough_pre = false;
+
+gamepad_input_check_disconnected_time = 0;
 
 camera_resize_w = 0;
 camera_resize_h = 0;
@@ -44,6 +47,9 @@ room_pers_clear_at = 0;
 room_pers_clear_min = 0;
 room_pers_clear_max = 0;
 room_pers_clear_original = noone;
+room_pers_runthrough_turnoff = false;
+
+cutscene_previous = -1;
 
 debug = false;
 sprite_index = noone;

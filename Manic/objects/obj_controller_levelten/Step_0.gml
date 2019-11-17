@@ -28,8 +28,8 @@ if (room == rm_level_10_01){
 }
 
 // Spawning
-lighting = 0.95;
-global.ambientShadowIntensity = lighting;
+var lighting = 0.95;
+global.game_lighting = lighting + scr_brightness_offset();
 
 // Final boss music
 if (!boss_music_active){
@@ -59,6 +59,7 @@ if (boss_music_active) && (instance_exists(obj_player)){
 		if (!boss_music_state_started){
 			if (!audio_is_playing(m_boss_final_intro_0)){
 				boss_music_opening_instance = audio_play_sound(m_boss_final_intro_0, 3, false);
+				audio_sound_gain(boss_music_opening_instance, 1 * obj_controller_all.real_music_volume, 0);
 			}
 			
 			boss_music_state_started = true;
@@ -80,6 +81,7 @@ if (boss_music_active) && (instance_exists(obj_player)){
 			boss_music_stage1_layer1_instance = audio_play_sound(m_boss_final_loop1_layer1_0, 3, true);
 			boss_music_stage1_layer2_instance = audio_play_sound(m_boss_final_loop1_layer2_0, 3, true);
 			
+			audio_sound_gain(boss_music_stage1_layer1_instance, 1 * obj_controller_all.real_music_volume, 0);
 			audio_sound_gain(boss_music_stage1_layer2_instance, 0, 0);
 			
 			boss_music_state_started = true;
@@ -87,7 +89,7 @@ if (boss_music_active) && (instance_exists(obj_player)){
 		
 		if (boss_inst != noone){
 			if (boss_inst.object_index == obj_giantturret){
-				audio_sound_gain(boss_music_stage1_layer2_instance, boss_secondlayer_vol, 0);
+				audio_sound_gain(boss_music_stage1_layer2_instance, boss_secondlayer_vol * obj_controller_all.real_music_volume, 0);
 			}else{
 				boss_music_state = "stage 1 transition";
 				boss_music_state_started = false;
@@ -100,6 +102,8 @@ if (boss_music_active) && (instance_exists(obj_player)){
 		
 		if (!boss_music_state_started){
 			boss_music_transition_instance = audio_play_sound(m_boss_final_transition_0, 3, false);
+			
+			audio_sound_gain(boss_music_transition_instance, 1 * obj_controller_all.real_music_volume, 0);
 			
 			audio_sound_gain(boss_music_stage1_layer1_instance, 0, 5000);
 			audio_sound_gain(boss_music_stage1_layer2_instance, 0, 5000);
@@ -123,6 +127,7 @@ if (boss_music_active) && (instance_exists(obj_player)){
 			boss_music_stage2_layer1_instance = audio_play_sound(m_boss_final_loop2_layer1_0, 3, true);
 			boss_music_stage2_layer2_instance = audio_play_sound(m_boss_final_loop2_layer2_0, 3, true);
 			
+			audio_sound_gain(boss_music_stage2_layer1_instance, 1 * obj_controller_all.real_music_volume, 0);
 			audio_sound_gain(boss_music_stage2_layer2_instance, 0, 0);
 			
 			boss_music_state_started = true;
@@ -130,7 +135,7 @@ if (boss_music_active) && (instance_exists(obj_player)){
 		
 		if (boss_inst != noone){
 			if (boss_inst.object_index == obj_antagonist){
-				audio_sound_gain(boss_music_stage2_layer2_instance, boss_secondlayer_vol, 0);
+				audio_sound_gain(boss_music_stage2_layer2_instance, boss_secondlayer_vol * obj_controller_all.real_music_volume, 0);
 			}
 		}else{
 			boss_music_state = "outro";
@@ -141,6 +146,8 @@ if (boss_music_active) && (instance_exists(obj_player)){
 	if (boss_music_state == "outro"){
 		if (!boss_music_state_started){
 			boss_music_outro_instance = audio_play_sound(m_boss_final_outro_0, 3, false);
+			
+			audio_sound_gain(boss_music_outro_instance, 1 * obj_controller_all.real_music_volume, 0);
 			
 			audio_sound_gain(boss_music_stage2_layer1_instance, 0, 3000);
 			audio_sound_gain(boss_music_stage2_layer2_instance, 0, 3000);

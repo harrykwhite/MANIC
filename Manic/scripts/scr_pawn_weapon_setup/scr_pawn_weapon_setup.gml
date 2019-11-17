@@ -3,8 +3,6 @@
 attack_time_max = argument0;
 type = argument1;
 
-destroy = false;
-
 attack = false;
 
 dir = 0;

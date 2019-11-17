@@ -1,7 +1,6 @@
 pawn = PawnType.Enemy;
 blend = -1;
 scale = 1;
-destroy = false;
 state = 0;
 active = false;
 
@@ -68,7 +67,7 @@ whiteflash_alphadec = 0.075;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 10//140;
+health_max = 140;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

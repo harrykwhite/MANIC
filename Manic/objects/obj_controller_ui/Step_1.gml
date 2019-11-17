@@ -13,7 +13,7 @@ if (dialogue_time > 0){
 		
 		if (scr_input_is_pressed(InputBinding.Interact)){
 			if (dialogue_char_count < dialogue_length){
-				dialogue_char_count = dialogue_length;
+				dialogue_char_count = dialogue_length; 
 			}else{
 				dialogue_next = true;
 				

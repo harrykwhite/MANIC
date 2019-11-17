@@ -17,18 +17,19 @@ if (instance_exists(obj_player)){
 			if (global.cutscene_time[index] > 105){
 				with(obj_ef_armour_piece){
 					x_to = anvil.x;
+					y_to = anvil.y - 40;
 				}
 			
 				if (!instance_exists(obj_ef_armour_full)){
 					var list = ds_list_create();
-					var count = collision_point_list(anvil.x, anvil.y - 30, obj_ef_armour_piece, false, true, list, false);
+					var count = collision_point_list(anvil.x, anvil.y - 40, obj_ef_armour_piece, false, true, list, false);
 			
 					if (count >= 4){
 						with(obj_ef_armour_piece){
 							instance_destroy();
 						}
 				
-						var full = instance_create(anvil.x, anvil.y - 30, obj_ef_armour_full);
+						var full = instance_create(anvil.x, anvil.y - 40, obj_ef_armour_full);
 						full.flash = 6;
 					}
 			
@@ -48,38 +49,38 @@ if (instance_exists(obj_player)){
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_0;
 					piece.x_to = anvil.x - 30;
-					piece.y_to = anvil.y - 50;
+					piece.y_to = anvil.y - 45;
 			
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_1;
 					piece.x_to = anvil.x - 15;
-					piece.y_to = anvil.y - 50;
+					piece.y_to = anvil.y - 45;
 			
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_2;
 					piece.x_to = anvil.x + 15;
-					piece.y_to = anvil.y - 50;
+					piece.y_to = anvil.y - 45;
 			
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_chestplate_piece_3;
 					piece.x_to = anvil.x + 30;
-					piece.y_to = anvil.y - 50;
+					piece.y_to = anvil.y - 45;
 					
 					// Leggings
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_leggings_piece_0;
 					piece.x_to = anvil.x - 22;
-					piece.y_to = anvil.y - 30;
+					piece.y_to = anvil.y - 35;
 					
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_leggings_piece_1;
 					piece.x_to = anvil.x;
-					piece.y_to = anvil.y - 30;
+					piece.y_to = anvil.y - 35;
 					
 					piece = instance_create(obj_player.x, obj_player.y, obj_ef_armour_piece);
 					piece.sprite_index = spr_collectable_leggings_piece_2;
 					piece.x_to = anvil.x + 22;
-					piece.y_to = anvil.y - 30;
+					piece.y_to = anvil.y - 35;
 				}
 			}
 		}else{

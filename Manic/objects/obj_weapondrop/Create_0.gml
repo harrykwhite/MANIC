@@ -7,7 +7,7 @@ scale = 1;
 ammo = -1; dataset = false;
 time = 0;
 pickup = false;
-pickup_range = 24;
+pickup_range = 34;
 enemy = false;
 bounce_time = 0;
 sprite = -1;

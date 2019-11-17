@@ -1,5 +1,8 @@
+var changed = false;
+
 global.game_combat_state = CombatState.Idle;
 global.weapon_slot_standalone = -1;
+
 scr_weapon_list();
 
 if (global.level_current == Level.Prologue){
@@ -30,21 +33,42 @@ global.boss_current = -1;
 if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	var roomto = global.level_room[global.level_current];
 	
+	if (room == global.level_preroom[global.level_current]){
+		roomto = global.level_preroom[global.level_current];
+	}
+	
+	global.game_level_opening_type = 0;
+	
+	changed = true;
+	
 	if (roomto == room){
 		room_restart();
 	}else{
 		room_goto(roomto);
 	}
 }else{
+	changed = true;
 	room_goto(global.checkpoint_room);
 	
+	/*global.weapon_slot[0] = PlayerWeapon.Revolver;
+	global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
+	global.weapon_slotquantity[0] = -1;
+	
 	var slotcount = global.weapon_slotmax;
-	for(var i = 0; i < slotcount; i ++){
-		global.weapon_slot[i] = global.checkpoint_weapon_slot[i];
-		global.weapon_slotammo[i] = global.checkpoint_weapon_slotammo[i];
-		global.weapon_slotquantity[i] = global.checkpoint_weapon_slotquantity[i];
-	}
+	for(var i = 1; i < slotcount; i ++){
+		global.weapon_slot[i] = -1;
+		global.weapon_slotammo[i] = -1;
+		global.weapon_slotquantity[i] = -1;
+	}*/
 	
 	global.checkpoint_goto = true;
 	global.game_level_opening_type = global.checkpoint_starttype;
+}
+
+if (changed){
+	with(obj_p_enemy){
+		if (!cutscene_prop){
+			instance_destroy();
+		}
+	}
 }

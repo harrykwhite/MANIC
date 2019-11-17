@@ -141,9 +141,9 @@ if (instance_exists(target)){
 			weapon.flicker_time_max = 10;
 			
 			if (weapon.dir <= 90 || weapon.dir >= 270){
-				weapon.dir += tscale * 85;
+				weapon.dir += tscale * 50;
 			}else{
-				weapon.dir -= tscale * 85;
+				weapon.dir -= tscale * 50;
 			}
 			
 			if (throw_weapon_time < throw_weapon_time_max){
@@ -163,6 +163,7 @@ if (instance_exists(target)){
 				}
 				
 				throw_weapon_inst = drop;
+				throw_weapon_direction_set = false;
 				
 				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_swing_0, false, 0.9, 1.1);

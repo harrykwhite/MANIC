@@ -17,7 +17,7 @@ if (instance_exists(obj_player)) && (instance_exists(obj_townperson_6)){
 		if (door != noone){
 			if (door.locked){
 				if (door.locked_img_speed == 0){
-					door.locked_img_speed = 0.1;
+					door.locked_img_speed = 0.175;
 				}
 			}else{
 				if (!door.open){

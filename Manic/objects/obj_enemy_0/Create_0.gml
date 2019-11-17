@@ -4,7 +4,6 @@ flash_time = 0;
 wait = 0;
 light_brightness = 0;
 scale = random_range(0.975, 1.025);
-destroy = false;
 sporadic = false;
 sporadic_timemax = random_range(45, 150);
 sporadic_time = sporadic_timemax;
@@ -50,6 +49,7 @@ poison_start = false;
 
 bleed = false;
 bleed_time = 0;
+bleed_cycle = 3;
 
 headless = false; 
 headless_x = x;
@@ -108,13 +108,15 @@ health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
 
+push_speed = 0;
+push_speed_build = 0.25;
+push_speed_max = 3;
+push_direction = 0;
+
 target = obj_player;
 
 in_cutscene = false;
 cutscene_prop = false;
-
-var feet = instance_create(x, y, obj_feetbox_0);
-feet.owner = id;
 
 livetime = 0;
 

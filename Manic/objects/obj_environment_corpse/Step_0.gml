@@ -14,4 +14,4 @@ if (start){
 	start = false;
 }
 
-scr_object_table_place(47, 2.5);
+scr_object_table_place(25, 1.35);

@@ -56,43 +56,43 @@ if (newlevel){
 }
 
 if (audio_is_playing(m_ambience_rain_0)){
-	audio_sound_gain(m_ambience_rain_0, 0, 2000);
+	audio_stop_sound(m_ambience_rain_0);
 }
 
 if (audio_is_playing(m_ambience_wind_0)){
-	audio_sound_gain(m_ambience_wind_0, 0, 2000);
+	audio_stop_sound(m_ambience_wind_0);
 }
 
 if (audio_is_playing(m_ambience_birds_0)){
-	audio_sound_gain(m_ambience_birds_0, 0, 2000);
+	audio_stop_sound(m_ambience_birds_0);
 }
 
 if (audio_is_playing(snd_character_burn_0)){
-	audio_sound_gain(snd_character_burn_0, 0, 1000);
+	audio_stop_sound(snd_character_burn_0);
 }
 
 if (audio_is_playing(snd_other_heartbeat_0)){
-	audio_sound_gain(snd_other_heartbeat_0, 0, 1000);
+	audio_stop_sound(snd_other_heartbeat_0);
 }
 
 if (audio_is_playing(snd_other_conveyerbelt_0)){
-	audio_sound_gain(snd_other_conveyerbelt_0, 0, 1000);
+	audio_stop_sound(snd_other_conveyerbelt_0);
 }
 
 if (audio_is_playing(snd_other_conveyerbelt_1)){
-	audio_sound_gain(snd_other_conveyerbelt_1, 0, 1000);
+	audio_stop_sound(snd_other_conveyerbelt_1);
 }
 
 if (audio_is_playing(snd_other_typing_0)){
-	audio_sound_gain(snd_other_typing_0, 0, 1000);
+	audio_stop_sound(snd_other_typing_0);
 }
 
 if (audio_is_playing(snd_weapon_flamethrower_active_0)){
-	audio_sound_gain(snd_weapon_flamethrower_active_0, 0, 1000);
+	audio_stop_sound(snd_weapon_flamethrower_active_0);
 }
 
 if (audio_is_playing(snd_other_fly_0)){
-	audio_sound_gain(snd_other_fly_0, 0, 1000);
+	audio_stop_sound(snd_other_fly_0);
 }
 
 if (global.cutscene_current != -1){

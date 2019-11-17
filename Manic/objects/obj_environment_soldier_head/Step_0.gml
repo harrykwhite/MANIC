@@ -4,4 +4,4 @@ if (start) && (parent == -1){
 	start = false;
 }
 
-scr_object_table_place(32, 1.3);
+scr_object_table_place(25, 1.185);

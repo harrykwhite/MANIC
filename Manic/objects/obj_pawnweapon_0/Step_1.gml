@@ -1,3 +1,3 @@
-if (!instance_exists(owner)) || (destroy) || (owner.weapon != id){
+if (!instance_exists(owner)) || (owner.weapon != id){
     instance_destroy();
 }

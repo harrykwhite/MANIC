@@ -57,11 +57,11 @@ if (!global.game_pause){
 		camera_set_view_pos(view_camera[0],
 		-(camera_get_view_width(view_camera[0]) / 2) + x,
 		-(camera_get_view_height(view_camera[0]) / 2) + y);
-	
+		
 		camera_set_view_pos(view_camera[0],
 		clamp(camera_get_view_x(view_camera[0]), 0, room_width - camera_get_view_width(view_camera[0])),
 		clamp(camera_get_view_y(view_camera[0]), 0, room_height - camera_get_view_height(view_camera[0])));
-	
+		
 		if (camera_screenshake){
 			camera_set_view_pos(view_camera[0],
 			camera_get_view_x(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.25, 0),
@@ -75,11 +75,14 @@ if (!global.game_pause){
 		        return;
 		    }
 		}
-	
+		
 		if (camera_move_to_player_time > 0){
 			camera_move_to_player_time--;
 		}else{
 			camera_move_to_player = false;
 		}
 	}
+}else{
+	camera_screenshake = false;
+	camera_screenshake_amount = 0;
 }

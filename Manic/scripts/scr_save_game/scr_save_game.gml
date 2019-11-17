@@ -20,6 +20,8 @@ ini_write_real("Save", "ObjectiveSet", global.game_objective_set);
 ini_write_real("Save", "ObjectiveCounter", global.objective_counter[global.game_objective_current]);
 ini_write_real("Save", "ObjectiveCounterMax", global.objective_counter_max[global.game_objective_current]);
 
+ini_write_real("Save", "PlayerHealth", global.player_health_current);
+
 ini_write_real("Save", "WorldTrainRoom", global.worldtrain_room);
 ini_write_real("Save", "TheScorchedKilled", global.game_boss_thescorched_killed);
 ini_write_real("Save", "TheScorchedTalked", global.game_boss_thescorched_talked);
@@ -77,6 +79,9 @@ ini_write_real("Save", "ConveyerBeltShutdown2", global.game_conveyerbelt_shutdow
 ini_write_real("Save", "ConveyerBeltShutdown3", global.game_conveyerbelt_shutdown3);
 
 var weaponcount = global.weapon_potential_slotmax;
+
+ini_write_real("Save", "WeaponDefault", global.weapon_default);
+
 for(var i = 0; i < weaponcount; i ++){
 	ini_write_real("Save", "WeaponSlot" + string(i), global.weapon_slot[i]);
 	ini_write_real("Save", "WeaponSlotAmmo" + string(i), global.weapon_slotammo[i]);

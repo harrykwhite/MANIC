@@ -14,7 +14,7 @@ if (global.cutscene_current == -1) && (!deactivated) && (global.boss_current == 
 		if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 			scr_player_stamina_drain(4);
 			obj_controller_gameplay.cutscene_conveyerbelt_x = x + (sprite_width / 2);
-			obj_controller_gameplay.cutscene_conveyerbelt_y = y + 45;
+			obj_controller_gameplay.cutscene_conveyerbelt_y = y + 48;
 			global.cutscene_current = 7;
 			deactivated = true;
 			

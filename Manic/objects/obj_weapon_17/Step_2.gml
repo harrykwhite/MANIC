@@ -1,7 +1,7 @@
 var mdir;
 
 if (instance_exists(obj_player)){
-	mdir = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+	mdir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 	
 	if (use_current){
 		

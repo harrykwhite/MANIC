@@ -11,15 +11,18 @@ if (file_exists("save.ini")){
 }
 
 scr_save_game_reader();
-option[0] = "New Game";
-option_locked[1] = true;
 
-if (global.game_save_started){
-	option[0] = "Continue Game";
-}
+if (!isteaser){
+	option[0] = "New Game";
+	option_locked[1] = true;
 
-if (global.game_boss_final_killed) || (devmode){
-	option_locked[1] = false;
+	if (global.game_save_started){
+		option[0] = "Continue Game";
+	}
+
+	if (global.game_boss_final_killed) || (devmode){
+		option_locked[1] = false;
+	}
 }
 
 indicate_text_time = 135;

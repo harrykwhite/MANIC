@@ -124,6 +124,24 @@ option_setting_gameplay_value_max[4] = 100;
 option_setting_gameplay_value_interval[4] = 10;
 option_setting_gameplay_unit[4] = "%";
 option_setting_gameplay_scale[4] = 1;
+
+option_setting_gameplay[5] = "Brightness";
+option_setting_gameplay_edit[5] = Options.Brightness;
+option_setting_gameplay_value[5] = global.game_option[| Options.Brightness];
+option_setting_gameplay_value_min[5] = 0;
+option_setting_gameplay_value_max[5] = 100;
+option_setting_gameplay_value_interval[5] = 10;
+option_setting_gameplay_unit[5] = "%";
+option_setting_gameplay_scale[5] = 1;
+
+option_setting_gameplay[6] = "Show Minimap";
+option_setting_gameplay_edit[6] = Options.ShowMinimap;
+option_setting_gameplay_value[6] = global.game_option[| Options.ShowMinimap];
+option_setting_gameplay_value_min[6] = 0;
+option_setting_gameplay_value_max[6] = 1;
+option_setting_gameplay_value_interval[6] = 1;
+option_setting_gameplay_unit[6] = "[BOOL]";
+option_setting_gameplay_scale[6] = 1;
 #endregion
 
 #region Options -> Settings -> Display

@@ -132,7 +132,7 @@ switch(room){
 }
 
 // Spawn System
-scr_spawn_setup("main", 1.1);
+scr_spawn_setup("main");
 spawn_pause_update = false;
 
 spawn_rate_real = 1;

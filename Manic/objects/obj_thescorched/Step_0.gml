@@ -65,6 +65,7 @@ if (ispaused){
 }
 
 burn = true;
+headless = false;
 
 whiteflash_alpha -= whiteflash_alphadec;
 whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
@@ -78,7 +79,7 @@ if (global.cutscene_current == -1) || (cutscene_prop){
 			mid_cutscene_played = true;
 			return;
 		}
-	
+		
 		scr_thescorched_behaviour_1();
 		weapon_has = true;
 	}else{

@@ -9,6 +9,8 @@ global.game_objective_set = ini_read_real("Save", "ObjectiveSet", false);
 global.objective_counter[global.game_objective_current] = ini_read_real("Save", "ObjectiveCounter", 0);
 global.objective_counter_max[global.game_objective_current] = ini_read_real("Save", "ObjectiveCounterMax", 0);
 
+global.player_health_current = ini_read_real("Save", "PlayerHealth", 6);
+
 global.worldtrain_room = ini_read_real("Save", "WorldTrainRoom", rm_level_6_00);
 
 global.game_boss_thescorched_killed = ini_read_real("Save", "TheScorchedKilled", false);
@@ -67,6 +69,9 @@ global.game_conveyerbelt_shutdown2 = ini_read_real("Save", "ConveyerBeltShutdown
 global.game_conveyerbelt_shutdown3 = ini_read_real("Save", "ConveyerBeltShutdown3", false);
 
 var weaponcount = global.weapon_potential_slotmax;
+
+global.weapon_default = ini_read_real("Save", "WeaponDefault", PlayerWeapon.Revolver);
+
 for(var i = 0; i < weaponcount; i ++){
 	if (i == 0){
 		global.weapon_slot[i] = ini_read_real("Save", "WeaponSlot" + string(i), PlayerWeapon.Revolver);

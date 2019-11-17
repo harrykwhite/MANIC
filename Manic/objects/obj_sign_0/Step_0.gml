@@ -42,10 +42,15 @@ if (interact) && (obj_controller_ui.dialogue_time <= 0) && (global.cutscene_curr
 }
 
 if (talking){
-	obj_controller_ui.dialogue_x = x;
-	obj_controller_ui.dialogue_y = y - 24;
+	if (global.cutscene_current == -1){
+		obj_controller_ui.dialogue_x = x;
+		obj_controller_ui.dialogue_y = y - 24;
 	
-	if (obj_controller_ui.dialogue_time <= 0){
+		if (obj_controller_ui.dialogue_time <= 0){
+			talking = false;
+		}
+	}else{
+		obj_controller_ui.dialogue_time = 0;
 		talking = false;
 	}
 }

@@ -117,7 +117,7 @@ switch(room){
 }
 
 // Spawn System
-scr_spawn_setup("underground", 1.4);
+scr_spawn_setup("underground");
 spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;

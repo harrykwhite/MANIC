@@ -1,7 +1,9 @@
 ///@param music{"main","windy","underground","city"}
-///@param spawnrate
 var music = argument0;
-var srate = argument1;
+
+var lvl = scr_level_get_index(room);
+var srate = 1 + (0.05 * (lvl - 1));
+
 var combat_0, combat_1, combat_2, stinger_2;
 
 switch(music){
@@ -50,9 +52,9 @@ spawn_music_main[CombatState.Buildup] = combat_1;
 spawn_music_pause_gain[CombatState.Buildup] = 0;
 spawn_music_pause_position[CombatState.Buildup] = 0;
 
-spawn_interval[CombatState.Climax] = 3 / srate;
+spawn_interval[CombatState.Climax] = 2.5 / srate;
 spawn_state_time[CombatState.Climax] = 15;
-spawn_max[CombatState.Climax] = round(clamp(5 * srate, 5, 8));
+spawn_max[CombatState.Climax] = round(clamp(6 * srate, 6, 8));
 spawn_music_stinger[CombatState.Climax] = stinger_2;
 spawn_music_main[CombatState.Climax] = combat_2;
 spawn_music_pause_gain[CombatState.Climax] = 0;
@@ -65,6 +67,7 @@ spawn_start_wait = 0;
 
 global.game_combat_in_hordechallenge = false;
 global.game_combat_in_hordechallenge_time = 0;
+global.game_combat_in_hordechallenge_spawnbreak = 1.5;
 
 if (global.game_combat_state == CombatState.Idle){
 	spawn_time = 60 * 5;

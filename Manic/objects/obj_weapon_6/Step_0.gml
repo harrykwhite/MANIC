@@ -17,7 +17,7 @@ if ((scr_input_is_pressed(InputBinding.Attack)) || (shoot_continue_time > 0)) &&
         var xpos = x + lengthdir_x(19, mdir) + lengthdir_x(3, up(mdir));
 	    var ypos = y + lengthdir_y(19, mdir) + lengthdir_y(3, up(mdir));
 		
-		var dir = point_direction(xpos, ypos, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+		var dir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 		
 		if (scr_input_is_pressed(InputBinding.Attack) && shoot_continue_time <= 0){
 			shoot_continue_time = 3;

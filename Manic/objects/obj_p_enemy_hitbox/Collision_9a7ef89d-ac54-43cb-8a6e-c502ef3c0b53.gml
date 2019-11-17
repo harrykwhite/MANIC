@@ -1,3 +1,7 @@
+if (global.cutscene_current != -1) || (global.game_pause){
+	return;
+}
+
 var inst = other;
 var mult = inst.creator == obj_p_player ? scr_get_blood_mult() : 1;
 

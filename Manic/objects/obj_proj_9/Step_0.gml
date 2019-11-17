@@ -8,9 +8,13 @@ if (global.game_pause) || (global.cutscene_current != -1){
 image_speed = 0.2;
 image_angle = dir;
 
-dir += random(2);
+if (grav_spd < grav_spd_max){
+	grav_spd += grav_spd_build;
+}
 
-if (random(9) < 1){
+y += grav_spd;
+
+if (random(12) < 1){
 	part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_poison_0, 1);
 }
 

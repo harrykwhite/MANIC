@@ -181,6 +181,7 @@ if (tutourial) && (!iscutscene){
 		if (tutourial_stage_timer > 0){
 			tutourial_stage_timer --;
 		}else{
+			tutourial_stage_timer = -1;
 			scr_tutourial_next_stage();
 			
 			if (tutourial_stage == TutourialStage.PickupMelee){
@@ -218,8 +219,6 @@ if (tutourial) && (!iscutscene){
 					obj_controller_gameplay.cutscene_look_object = noone
 				}
 			}
-			
-			tutourial_stage_timer = -1;
 		}
 	}
 	
@@ -502,24 +501,6 @@ draw_set_font(fnt_cambria_n1);
 draw_set_halign(fa_left);
 scr_text_shadow(136, stats_y, str, c_white);
 
-// Level Text
-if (leveltext_alpha > 0){
-	draw_set_font(fnt_cambria_2);
-
-	var xx = dwidth / 2;
-	var yy = 160;
-	var width = string_width(leveltext_text) + 30;
-	var height = 1;
-	var offset = 25;
-
-	draw_set_colour(c_white);
-	draw_set_alpha(leveltext_alpha);
-	draw_rectangle((dwidth - xx) - (width / 2), yy, (dwidth - xx) + (width / 2), yy + height, false);
-
-	draw_set_halign(fa_center);
-	scr_text_shadow(xx, yy - (offset), string(leveltext_text), c_white);
-}
-
 // Boss Health
 bosshealth_width_to = 500 / global.game_option[| Options.UIScale];
 
@@ -556,19 +537,6 @@ if (bosshealth_width_current > 0){
 bosshealth_value_previous = bosshealth_value_current;
 
 // Header Display
-if (header_display_time > 0){
-	header_display_time --;
-	if (header_display_alpha < 1){
-		header_display_alpha += 0.05;
-	}
-}else{
-	if (header_display_alpha > 0){
-		header_display_alpha -= 0.05;
-	}else{
-		header_display_line_width = 0;
-	}
-}
-
 if (header_display_alpha > 0){
 	draw_set_font(fnt_cambria_1);
 	var subtwidth = string_width(header_display_subtext);
@@ -581,12 +549,12 @@ if (header_display_alpha > 0){
 	
 	draw_set_alpha(header_display_alpha * (header_display_line_width / line_width_to));
 	draw_set_halign(fa_center);
-	scr_text_shadow(dwidth / 2, 228 + ((1 - (header_display_line_width / line_width_to)) * 30), header_display_text, c_white);
+	scr_text_shadow(dwidth / 2, 218 + ((1 - (header_display_line_width / line_width_to)) * 30), header_display_text, c_white);
 	
-	draw_rectangle((dwidth / 2) - (header_display_line_width / 2), 264, (dwidth / 2) + (header_display_line_width / 2), 265, false);
+	draw_rectangle((dwidth / 2) - (header_display_line_width / 2), 254, (dwidth / 2) + (header_display_line_width / 2), 255, false);
 	
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow(dwidth / 2, 269, header_display_subtext, c_white);
+	scr_text_shadow(dwidth / 2, 259, header_display_subtext, c_white);
 	
 	draw_set_alpha(1);
 }
@@ -654,140 +622,186 @@ if (control_indicate_text != ""){
 control_indicate = false;
 
 // Minimap
-var mapx = (dwidth - minimap_x) - minimap_width;
-var mapy = minimap_y;
+if (global.game_option[| Options.ShowMinimap]){
+	var mapx = (dwidth - minimap_x) - minimap_width;
+	var mapy = minimap_y;
 
-var mapwidth = obj_controller_gameplay.map_width;
-var mapheight = obj_controller_gameplay.map_height;
+	var mapwidth = obj_controller_gameplay.map_width;
+	var mapheight = obj_controller_gameplay.map_height;
 
-var maptilewidth = obj_controller_gameplay.map_tile_width;
-var maptileheight = obj_controller_gameplay.map_tile_height;
+	var maptilewidth = obj_controller_gameplay.map_tile_width;
+	var maptileheight = obj_controller_gameplay.map_tile_height;
 
-var mapdrawtilew = 3;
-var mapdrawtileh = 3;
+	var mapdrawtilew = 4;
+	var mapdrawtileh = 4;
 
-var mapdrawoffx = global.player_position_x / maptilewidth; mapdrawoffx -= (minimap_width / 2) / mapdrawtilew;
-var mapdrawoffy = global.player_position_y / maptileheight; mapdrawoffy -= (minimap_height / 2) / mapdrawtileh;
+	var mapdrawoffx = global.player_position_x / maptilewidth; mapdrawoffx -= (minimap_width / 2) / mapdrawtilew;
+	var mapdrawoffy = global.player_position_y / maptileheight; mapdrawoffy -= (minimap_height / 2) / mapdrawtileh;
 
-var maptilecol;
+	var maptilesprite;
 
-maptilecol[0] = make_color_rgb(220, 220, 220);
-maptilecol[1] = make_colour_rgb(168, 132, 109);
-maptilecol[2] = make_colour_rgb(128, 128, 128);
-maptilecol[3] = make_colour_rgb(94, 94, 94);
-maptilecol[4] = make_colour_rgb(54, 54, 54);
+	maptilesprite[0] = spr_ui_minimap_tile_0;
+	maptilesprite[1] = spr_ui_minimap_tile_1;
+	maptilesprite[2] = spr_ui_minimap_tile_2;
+	maptilesprite[3] = spr_ui_minimap_tile_3;
+	maptilesprite[4] = spr_ui_minimap_tile_4;
 
-var map_objects, map_objects_sprite, map_objects_sprite_screenlock, map_objects_count;
+	var map_objects, map_objects_sprite, map_objects_sprite_screenlock, map_objects_count;
 
-map_objects[0] = obj_collectable_pickup;
-map_objects_sprite[0] = spr_collectable_0;
-map_objects_sprite_screenlock[0] = false;
+	map_objects[0] = obj_collectable_pickup;
+	map_objects_sprite[0] = spr_collectable_0;
+	map_objects_sprite_screenlock[0] = false;
 
-map_objects[1] = obj_upgrade_pickup;
-map_objects_sprite[1] = spr_upgrade_0;
-map_objects_sprite_screenlock[1] = false;
+	map_objects[1] = obj_upgrade_pickup;
+	map_objects_sprite[1] = spr_upgrade_0;
+	map_objects_sprite_screenlock[1] = false;
 
-var compcount = array_length_1d(global.companion);
-map_objects_count = array_length_1d(map_objects);
+	var compcount = array_length_1d(global.companion);
+	map_objects_count = array_length_1d(map_objects);
 
-for(var o = 0; o < compcount; o ++){
-	map_objects[o + map_objects_count] = global.companion[o];
-	map_objects_sprite[o + map_objects_count] = global.companion_mapicon[o];
-	map_objects_sprite_screenlock[o + map_objects_count] = false;
-}
+	for(var o = 0; o < compcount; o ++){
+		map_objects[o + map_objects_count] = global.companion[o];
+		map_objects_sprite[o + map_objects_count] = global.companion_mapicon[o];
+		map_objects_sprite_screenlock[o + map_objects_count] = false;
+	}
 
-map_objects[o + 1] = obj_player;
-map_objects_sprite[o + 1] = spr_player_head_0_minimap;
-map_objects_sprite_screenlock[o + 1] = false;
+	map_objects[o + 1] = obj_player;
+	map_objects_sprite[o + 1] = spr_player_head_0_minimap;
+	map_objects_sprite_screenlock[o + 1] = false;
 
-if (global.game_objective_complete){
-	map_objects[o + 2] = obj_section_end_pointer;
-	map_objects_sprite[o + 2] = spr_ui_arrow_small;
-	map_objects_sprite_screenlock[o + 2] = true;
-}
+	map_objects[o + 2] = obj_pawn_other_prisoner_0;
+	map_objects_sprite[o + 2] = spr_prisoner_head_0_minimap;
+	map_objects_sprite_screenlock[o + 2] = false;
+	
+	map_objects[o + 3] = obj_townperson_0;
+	map_objects_sprite[o + 3] = spr_townperson_0_head_0_minimap;
+	map_objects_sprite_screenlock[o + 3] = false;
+	
+	map_objects[o + 4] = obj_townperson_1;
+	map_objects_sprite[o + 4] = spr_townperson_1_head_0_minimap;
+	map_objects_sprite_screenlock[o + 4] = false;
+	
+	map_objects[o + 5] = obj_townperson_2;
+	map_objects_sprite[o + 5] = spr_townperson_2_head_0_minimap;
+	map_objects_sprite_screenlock[o + 5] = false;
+	
+	map_objects[o + 6] = obj_townperson_3;
+	map_objects_sprite[o + 6] = spr_townperson_3_head_0_minimap;
+	map_objects_sprite_screenlock[o + 6] = false;
+	
+	map_objects[o + 7] = obj_townperson_4;
+	map_objects_sprite[o + 7] = spr_townperson_4_head_0_minimap;
+	map_objects_sprite_screenlock[o + 7] = false;
+	
+	map_objects[o + 8] = obj_townperson_5;
+	map_objects_sprite[o + 8] = spr_townperson_5_head_0_minimap;
+	map_objects_sprite_screenlock[o + 8] = false;
+	
+	map_objects[o + 9] = obj_townperson_6;
+	map_objects_sprite[o + 9] = spr_townperson_6_head_0_minimap;
+	map_objects_sprite_screenlock[o + 9] = false;
+	
+	map_objects[o + 10] = obj_townchild_0;
+	map_objects_sprite[o + 10] = spr_townchild_0_head_0_minimap;
+	map_objects_sprite_screenlock[o + 10] = false;
+	
+	map_objects[o + 11] = obj_player_wife_0;
+	map_objects_sprite[o + 11] = spr_player_wife_head_0_minimap;
+	map_objects_sprite_screenlock[o + 11] = false;
+	
+	map_objects[o + 12] = obj_player_child_0;
+	map_objects_sprite[o + 12] = spr_player_child_0_head_0_minimap;
+	map_objects_sprite_screenlock[o + 12] = false;
+	
+	if (global.game_objective_complete){
+		map_objects[o + 13] = obj_section_end_pointer;
+		map_objects_sprite[o + 13] = spr_ui_arrow;
+		map_objects_sprite_screenlock[o + 13] = true;
+	}
 
-map_objects_count = array_length_1d(map_objects);
+	map_objects_count = array_length_1d(map_objects);
 
-mapdrawoffx = clamp(mapdrawoffx, 0, mapwidth - (minimap_width div mapdrawtilew));
-mapdrawoffy = clamp(mapdrawoffy, 0, mapheight - (minimap_height div mapdrawtileh));
+	mapdrawoffx = clamp(mapdrawoffx, 0, mapwidth - (minimap_width div mapdrawtilew));
+	mapdrawoffy = clamp(mapdrawoffy, 0, mapheight - (minimap_height div mapdrawtileh));
 
-draw_set_alpha(1);
-draw_sprite(spr_ui_minimap_border_0, 0, mapx - 2, mapy - 2);
+	draw_set_alpha(1);
+	draw_sprite(spr_ui_minimap_border_0, 0, mapx - 2, mapy - 2);
 
-for(var yy = 0; yy < minimap_height; yy += mapdrawtileh){
-	for(var xx = 0; xx < minimap_width; xx += mapdrawtilew){
-		var col;
-		var tilex = xx div mapdrawtilew; tilex += mapdrawoffx;
-		var tiley = yy div mapdrawtileh; tiley += mapdrawoffy;
+	for(var yy = 0; yy < minimap_height; yy += mapdrawtileh){
+		for(var xx = 0; xx < minimap_width; xx += mapdrawtilew){
+			var col;
+			var tilex = xx div mapdrawtilew; tilex += mapdrawoffx;
+			var tiley = yy div mapdrawtileh; tiley += mapdrawoffy;
 		
-		if (tilex < 0 || tiley < 0 || tilex >= mapwidth || tiley >= mapheight){
-			continue;
-		}
+			if (tilex < 0 || tiley < 0 || tilex >= mapwidth || tiley >= mapheight){
+				continue;
+			}
 		
-		var tile = obj_controller_gameplay.map[tilex, tiley];
+			var tile = obj_controller_gameplay.map[tilex, tiley];
 		
-		if (tile != -1) && (obj_controller_gameplay.map_found[tilex, tiley]){
-			col = maptilecol[tile];
-			
-			draw_set_colour(col);
-			draw_rectangle(mapx + xx, mapy + yy, mapx + xx + mapdrawtilew - 1, mapy + yy + mapdrawtileh - 1, false);
+			if (tile != -1){
+				draw_sprite(maptilesprite[tile], 0, mapx + xx, mapy + yy);
+			}
 		}
 	}
-}
 
-for(var o = 0; o < map_objects_count; o ++){
-	if (instance_exists(map_objects[o])){
-		var icount = instance_number(map_objects[o]);
+	for(var o = 0; o < map_objects_count; o ++){
+		if (instance_exists(map_objects[o])){
+			var icount = instance_number(map_objects[o]);
 		
-		for(var i = 0; i < icount; i ++){
-			var inst = instance_find(map_objects[o], i), draw = false;
-			var tx = inst.x div maptilewidth;
-			var ty = inst.y div maptileheight;
+			for(var i = 0; i < icount; i ++){
+				var inst = instance_find(map_objects[o], i), draw = false;
+				var spr = map_objects_sprite[o];
+				var tx = inst.x div maptilewidth;
+				var ty = inst.y div maptileheight;
 			
-			if (tx < 0 || ty < 0 || tx >= mapwidth || ty >= mapheight){
-				continue;
-			}
-			
-			if (!obj_controller_gameplay.map_found[tx, ty]) && (!map_objects_sprite_screenlock[o]){
-				continue;
-			}
-			
-			var dx = mapx - (mapdrawoffx * mapdrawtilew) + ((inst.x / room_width) * mapwidth * mapdrawtilew);
-			var dy = mapy - (mapdrawoffy * mapdrawtileh) + ((inst.y / room_height) * mapheight * mapdrawtileh);
-			var dangle = 0;
-			
-			if (map_objects_sprite_screenlock[o]){
-				var margin = 10;
-				draw = true;
-				
-				dx = clamp(dx, mapx + margin, mapx + minimap_width - margin);
-				dy = clamp(dy, mapy + margin, mapy + minimap_height - margin);
-				
-				if (map_objects[o] == obj_section_end_pointer){
-					var loff = dsin(minimap_arrow_sine) * 5;
-					dangle = inst.image_angle;
-					
-					dx += lengthdir_x(loff - 10, dangle);
-					dy += lengthdir_y(loff - 10, dangle);
+				if (tx < 0 || ty < 0 || tx >= mapwidth || ty >= mapheight){
+					continue;
 				}
-			}else{
-				if (dx >= mapx && dy >= mapy && dx <= mapx + minimap_width && dy <= mapy + minimap_height){
+				
+				if (map_objects[o] == obj_townchild_0){
+					if (inst.type == 1){
+						spr = spr_player_child_1_head_0_minimap;
+					}
+				}
+			
+				var dx = mapx - (mapdrawoffx * mapdrawtilew) + ((inst.x / room_width) * mapwidth * mapdrawtilew);
+				var dy = mapy - (mapdrawoffy * mapdrawtileh) + ((inst.y / room_height) * mapheight * mapdrawtileh);
+				var dangle = 0;
+			
+				if (map_objects_sprite_screenlock[o]){
+					var margin = 10;
 					draw = true;
-				}
-			}
-			
-			if (draw){
-				if (dangle == 0){
-					draw_sprite(map_objects_sprite[o], 0, dx, dy);
+				
+					dx = clamp(dx, mapx + margin, mapx + minimap_width - margin);
+					dy = clamp(dy, mapy + margin, mapy + minimap_height - margin);
+				
+					if (map_objects[o] == obj_section_end_pointer){
+						var loff = dsin(minimap_arrow_sine) * 5;
+						dangle = inst.image_angle;
+					
+						dx += lengthdir_x(loff - 10, dangle);
+						dy += lengthdir_y(loff - 10, dangle);
+					}
 				}else{
-					draw_sprite_ext(map_objects_sprite[o], 0, dx, dy, 1, 1, dangle, c_white, 1);
+					if (dx >= mapx && dy >= mapy && dx <= mapx + minimap_width && dy <= mapy + minimap_height){
+						draw = true;
+					}
+				}
+			
+				if (draw){
+					if (dangle == 0){
+						draw_sprite(spr, 0, dx, dy);
+					}else{
+						draw_sprite_ext(spr, 0, dx, dy, 1, 1, dangle, c_white, 1);
+					}
 				}
 			}
 		}
 	}
-}
 
-draw_sprite(spr_ui_minimap_border_overlay_0, 0, mapx - 2, mapy - 2);
+	draw_sprite(spr_ui_minimap_border_overlay_0, 0, mapx - 2, mapy - 2);
+}
 
 // Level Results / Ranking
 if (rank_display_draw){
