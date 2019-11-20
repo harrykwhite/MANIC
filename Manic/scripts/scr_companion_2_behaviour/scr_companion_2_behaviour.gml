@@ -67,18 +67,18 @@ if (instance_exists(obj_player)){
 				if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
 					move_x_to = obj_player.x;
 					move_y_to = obj_player.y;
-					move_speed = 2.1;
+					move_speed = 1.9;
 					
 					if (dist_to_player > 100 + (60 * order)){
-						move_speed = 2.6;
+						move_speed = 2.3;
 					}
 					
 					if (dist_to_player > 140 + (60 * order)){
-						move_speed = 3.1;
+						move_speed = 2.6;
 					}
 					
 					if (dist_to_player > 180 + (60 * order)){
-						move_speed = 3.6;
+						move_speed = 2.9;
 					}
 					
 					face_player = true;
@@ -101,13 +101,13 @@ if (instance_exists(obj_player)){
 					
 					move_x_to = target.x + lengthdir_x(30, runaway_dir);
 					move_y_to = target.y + lengthdir_y(30, runaway_dir);
-					move_speed = 1.9;
+					move_speed = 1.7;
 				}else{
 					move_x_to = target.x;
 					move_y_to = target.y;
 				
 					if (distance_to_object(target) > 40 + (15 * order)){
-						move_speed = 1.9;
+						move_speed = 1.7;
 					}else{
 						move_speed = 0;
 						
@@ -134,6 +134,7 @@ if (instance_exists(obj_player)){
 									weapon.owner = id;
 									weapon_index = PawnWeapon.Knife;
 									attack_time = attack_time_max;
+									is_throwing = false;
 								}else{
 									weapon.attack = true;
 									attack_time = attack_time_max;

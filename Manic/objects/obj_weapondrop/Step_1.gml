@@ -6,7 +6,7 @@ if (!dataset){
 	quantity = round(quantity);
 	
 	canburn = (index == PlayerWeapon.Stick);
-	specialweapon = (index == PlayerWeapon.Battleaxe) || (index == PlayerWeapon.Wrench);
+	specialweapon = (index == PlayerWeapon.Battleaxe || index == PlayerWeapon.Wrench);
 	
 	if (!place_meeting(x, y, obj_block_persistent)) && (!drop){
 		var pers = instance_create(x, y, obj_block_persistent);

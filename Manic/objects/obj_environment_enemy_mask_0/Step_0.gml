@@ -8,7 +8,7 @@ if (place_meeting(x, y + 8, obj_conveyerbelt_0)){
 	dir = inst.dir;
 	parent = inst;
 }else{
-	parent = instance_place(x, y + 8, obj_table_1);
+	parent = instance_place(x, y + 8, parent_backup);
 	
 	if (spd > 0.01){
 		spd *= 0.6;

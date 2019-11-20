@@ -39,9 +39,11 @@ if (ammo == 0) && (global.weapon_type[index] == WeaponType.Ranged){
 
 // Special weapon effects
 if (specialweapon){
-	if (!place_meeting(x, y, obj_environment_cover_0)){
-		if (random(13) < 1){
-			part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
+	if (!global.game_pause){
+		if (!place_meeting(x, y, obj_environment_cover_0)){
+			if (random(13) < 1){
+				part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
+			}
 		}
 	}
 	

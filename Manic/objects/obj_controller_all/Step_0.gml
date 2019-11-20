@@ -3,6 +3,11 @@ if (!global.game_pause){
 	global.game_lighting = clamp(global.game_lighting, 0, 1);
 	
 	var lto = global.game_lighting;
+	var ljump = 0.005;
+	
+	if (room == rm_prologue_00) && (global.game_objective_complete){
+		ljump *= 0.25;
+	}
 	
 	if (global.ambientShadowIntensity != lto){
 		global.ambientShadowIntensity += min(0.005, abs(lto - global.ambientShadowIntensity)) * sign(lto - global.ambientShadowIntensity);

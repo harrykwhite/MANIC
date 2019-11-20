@@ -136,6 +136,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 							obj_controller_ui.pausedialogue = true;
 							obj_controller_ui.pausedialogue_type = 1;
 							obj_controller_ui.pausedialogue_type_text = "Travel to " + (room == rm_level_6_00 ? "The Cemetery" : "the Train Station") + "?";
+							obj_controller_ui.pausedialogue_option_exittext = "Resume";
 							obj_controller_ui.pausedialogue_type_option[0] = "Enter the train";
 							obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
 							obj_controller_ui.pausedialogue_type_option_special[0] = 1;

@@ -1,1 +1,1 @@
-parent = inst_6E48CB74;
+parent_backup = obj_conveyerbelt_3;

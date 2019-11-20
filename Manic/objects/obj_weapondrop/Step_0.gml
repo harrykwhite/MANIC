@@ -83,13 +83,13 @@ if (kill){
 	instance_destroy();
 	
 	if (index == PlayerWeapon.Stick){
-		scr_sound_play_distance(snd_weapon_stick_break_0, false, 300);
+		scr_sound_play_distance(snd_weapon_stick_break_0, false, 200);
 		
-		var sticklen = 20, thislen = 1;
+		var sticklen = 20, thislen = 4;
 		repeat(sticklen){
 			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_0, 1);
 			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_flash_0, 1);
-			thislen += 2;
+			thislen += 4;
 		}
 	}
 }

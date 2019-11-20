@@ -16,7 +16,7 @@ if (instance_exists(obj_player)){
 	
 	if (instance_exists(obj_townperson_6)){
 		obj_townperson_6.x = obj_player.x + 8;
-		obj_townperson_6.y = 360;
+		obj_townperson_6.y = 356;
 		obj_townperson_6.image_xscale = -obj_townperson_6.scale;
 	}
 }

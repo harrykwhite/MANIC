@@ -753,13 +753,13 @@ if (global.game_option[| Options.ShowMinimap]){
 				var inst = instance_find(map_objects[o], i), draw = false;
 				var spr = map_objects_sprite[o];
 				var tx = inst.x div maptilewidth;
-				var ty = inst.y div maptileheight;
+				var ty = (inst.y + 6) div maptileheight;
 			
 				if (tx < 0 || ty < 0 || tx >= mapwidth || ty >= mapheight){
 					continue;
 				}
 				
-				if (map_objects[o] == obj_townchild_0){
+				if (map_objects[o] == obj_player_child_0){
 					if (inst.type == 1){
 						spr = spr_player_child_1_head_0_minimap;
 					}
@@ -995,6 +995,7 @@ if (pausedialogue_alpha > 0){
 	}
 	
 	var exity = optyy + (vslot * optint);
+	
 	if (!selected_set){
 		if (point_in_rectangle(mousex, mousey, optxx - 80, exity - 16, optxx + 80, exity + 16)){
 			pausedialogue_option_selected = counter;
@@ -1004,10 +1005,10 @@ if (pausedialogue_alpha > 0){
 	
 	if (pausedialogue_option_selected == counter){
 		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1.1, 40);
-		scr_text_shadow_transformed(optxx, exity, "Resume", make_colour_rgb(189, 23, 23), pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
+		scr_text_shadow_transformed(optxx, exity, pausedialogue_option_exittext, make_colour_rgb(189, 23, 23), pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
 	}else{
 		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1, 40);
-		scr_text_shadow_transformed(optxx, exity, "Resume", c_white, pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
+		scr_text_shadow_transformed(optxx, exity, pausedialogue_option_exittext, c_white, pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
 	}
 	
 	draw_set_valign(fa_top);

@@ -15,7 +15,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (shoot_can) && (shoot_current 
     shoot_current = 0;
 }
 
-if (shoot_current != -1) && (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
+if (shoot_current != -1) && (!global.game_pause) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0) && (global.player_stamina_active){
     if (shoot_can){
         var xpos = x + lengthdir_x(26, mdir) + lengthdir_x(2, up(mdir));
         var ypos = y + lengthdir_y(26, mdir) + lengthdir_y(2, up(mdir));

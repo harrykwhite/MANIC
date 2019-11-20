@@ -4,3 +4,4 @@ colour = c_white;
 script = -1;
 fade = false;
 alpha = 0;
+flash_option = false;

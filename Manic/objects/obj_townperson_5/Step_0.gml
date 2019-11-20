@@ -12,7 +12,7 @@ var box_y2 = yy + 30;
 
 interact = false;
 
-if (instance_exists(obj_player)) && (!global.game_npc_townperson5_talked){
+if (instance_exists(obj_player)) && (!global.game_npc_townperson5_talked) && (global.cutscene_current == -1){
 	if (collision_rectangle(box_x1, box_y1, box_x2, box_y2, obj_player, false, true)){
 		if (obj_controller_ui.dialogue_time <= 0){
 			interact = true;
@@ -24,7 +24,6 @@ if (instance_exists(obj_player)) && (!global.game_npc_townperson5_talked){
 					talking = true;
 					
 					scr_player_stamina_drain(4);
-					scr_objective_update_counter();
 					global.cutscene_current = 58;
 				}
 			}else{

@@ -471,6 +471,18 @@ if (!ispaused){
 										break;
 								}
 								break;
+							
+							case 2:
+								scr_effect_flash_script(0.01, 1, c_black, scr_trigger_1);
+								
+								global.cutscene_current = 0;
+								global.cutscene_camera_x[0] = obj_controller_camera.x;
+								global.cutscene_camera_y[0] = obj_controller_camera.y;
+								
+								if (instance_exists(obj_townperson_6)){
+									obj_townperson_6.talked_second = true;
+								}
+								break;
 						}
 			
 						pausedialogue = false;

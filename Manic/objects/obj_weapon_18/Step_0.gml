@@ -22,7 +22,7 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
 			global.weapon_slotquantity[global.weapon_slotcurrent] --;
 			
 	        throw = instance_create(x, y, obj_throwobject_0);
-	        throw.spd = 6;
+	        throw.spd = 7;
 	        throw.damage = damage;
 	        throw.dir = mdir;
 			throw.damage_enemy = true;

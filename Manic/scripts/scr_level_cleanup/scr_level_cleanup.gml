@@ -56,15 +56,15 @@ if (newlevel){
 }
 
 if (audio_is_playing(m_ambience_rain_0)){
-	audio_stop_sound(m_ambience_rain_0);
+	audio_sound_gain(m_ambience_rain_0, 0, 3000);
 }
 
 if (audio_is_playing(m_ambience_wind_0)){
-	audio_stop_sound(m_ambience_wind_0);
+	audio_sound_gain(m_ambience_wind_0, 0, 3000);
 }
 
 if (audio_is_playing(m_ambience_birds_0)){
-	audio_stop_sound(m_ambience_birds_0);
+	audio_sound_gain(m_ambience_birds_0, 0, 3000);
 }
 
 if (audio_is_playing(snd_character_burn_0)){

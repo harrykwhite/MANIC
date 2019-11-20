@@ -13,7 +13,7 @@ sprite_index = spr_weapon_17;
 
 if (use_current){
     if (scr_input_is_down(InputBinding.Attack)){
-        if (shoot_can) && (global.weapon_slot_standalone_ammo > 0){
+        if (shoot_can) && (global.weapon_slot_standalone_ammo > 0) && (global.player_stamina_active){
             scr_effect_screenshake(2);
 			scr_player_flash(5);
 			scr_player_flashlight_flash(1.185);
@@ -50,7 +50,7 @@ if (use_current){
     }
 	
 	if (scr_input_is_pressed(InputBinding.Attack)){
-		if (global.weapon_slot_standalone_ammo <= 0){
+		if (global.weapon_slot_standalone_ammo <= 0) || (!global.player_stamina_active){
 			scr_sound_play(snd_weapon_click_0, false, 0.8, 1);
 		}
 	}

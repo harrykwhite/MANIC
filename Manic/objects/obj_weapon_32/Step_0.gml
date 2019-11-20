@@ -12,7 +12,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
-    if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
+    if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0) && (global.player_stamina_active){
         var xpos = x + lengthdir_x(25, mdir) + lengthdir_x(1, up(mdir));
         var ypos = y + lengthdir_y(25, mdir) + lengthdir_y(1, up(mdir));
 		

@@ -12463,6 +12463,14 @@
             }
         },
         {
+            "Key": "d15632a0-15c1-4d2a-9119-51aa49a6d756",
+            "Value": {
+                "id": "f6654d61-866f-4e24-8c59-13865eefa238",
+                "resourcePath": "sprites\\spr_conveyerbelt_1_break\\spr_conveyerbelt_1_break.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "d15c48d2-fc40-4c11-aaec-7df280a1019e",
             "Value": {
                 "id": "b5121b42-8233-4a69-a568-d3eb4855b0a5",

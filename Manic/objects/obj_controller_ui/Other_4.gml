@@ -274,6 +274,7 @@ pausedialogue_option_selected_held_time = 0;
 pausedialogue_option_selected_held_time_max = 40;
 pausedialogue_option_max = 0;
 pausedialogue_type_text = "I haven't been given dialogue yet!";
+pausedialogue_option_exittext = "Resume";
 pausedialogue_type_option[0] = -1;
 pausedialogue_type_option_scale[0] = 1;
 pausedialogue_type_option_special[0] = -1;

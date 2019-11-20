@@ -48,8 +48,9 @@ if (instance_exists(obj_player)){
 				obj_controller_ui.pausedialogue = true;
 				obj_controller_ui.pausedialogue_type = 0;
 				obj_controller_ui.pausedialogue_type_text = note_text;
-				obj_controller_ui.pausedialogue_option_max = 1;
+				obj_controller_ui.pausedialogue_option_max = 0;
 				obj_controller_ui.pausedialogue_option_selected = 0;
+				obj_controller_ui.pausedialogue_option_exittext = "Resume";
 				scr_toggle_pause(true);
 			}
 			

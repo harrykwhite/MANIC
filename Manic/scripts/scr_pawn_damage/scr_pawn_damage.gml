@@ -4,7 +4,7 @@
 ///@param invincibility_time
 ///@param glove_check
 var dmg = round(argument[0]);
-var kbs = argument[1];
+var kbs = argument[1] * 1.5;
 var kbd = argument[2];
 var it = argument[3];
 var glove_check = false;

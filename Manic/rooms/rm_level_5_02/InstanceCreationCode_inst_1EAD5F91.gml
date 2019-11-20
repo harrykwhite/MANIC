@@ -1,1 +1,1 @@
-text = "Heavy machine gun experimentation room below.";
+text = "Mounted machine gun experimentation room below.";

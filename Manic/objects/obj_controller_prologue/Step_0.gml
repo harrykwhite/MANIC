@@ -142,7 +142,7 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 
 	if (deer_can_spawn){
 		if (deer_spawn_time > 0){
-			deer_spawn_time -= spawn_rate;
+			deer_spawn_time --;
 		}else{
 			var counter = 0;
 			var dospawn = true;

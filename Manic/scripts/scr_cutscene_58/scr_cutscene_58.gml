@@ -603,7 +603,7 @@ if (instance_exists(obj_player)){
 							line[10] = "We can do that, sure!";
 							linefrom[10] = obj_companion_0;
 							
-							line[11] = "Alright, follow me.";
+							line[11] = "Alright, let me know when you're ready to go.";
 							linefrom[11] = inst;
 							break;
 					}
@@ -1012,8 +1012,8 @@ if (instance_exists(obj_player)){
 							obj_controller_gameplay.area_next_room = rm_title_0;
 						}
 					}
-				}else if (special == "prisonenter") || (special == "townpersonescort"){
-					scr_effect_flash_script(0.01, 1, c_black, special == "townpersonescort" ? scr_trigger_2 : scr_trigger_1);
+				}else if (special == "townpersonescort"){
+					scr_effect_flash_script(0.01, 1, c_black, scr_trigger_2);
 					global.cutscene_current = 0;
 					
 					global.cutscene_camera_x[0] = global.cutscene_camera_x[index];

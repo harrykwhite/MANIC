@@ -66,9 +66,25 @@ if (global.player_is_respawning) && (global.checkpoint_room == noone){
 }
 
 if (changed){
-	with(obj_p_enemy){
-		if (!cutscene_prop){
+	with(obj_enemy_0){
+		if (type != Enemy0_Type.TrainBoss){
 			instance_destroy();
 		}
+	}
+	
+	with(obj_enemy_1){
+		instance_destroy();
+	}
+	
+	with(obj_enemy_2){
+		instance_destroy();
+	}
+	
+	with(obj_enemy_4){
+		instance_destroy();
+	}
+	
+	with(obj_enemy_5){
+		instance_destroy();
 	}
 }
