@@ -7,7 +7,7 @@ if (mucus_is_releasing) && (mucus_is_releasing_startbreak <= 0){
 			
 			repeat(amount){
 				var mucus = instance_create(xx + random_range(-4, 4), yy + random_range(-4, 4), obj_proj_9);
-				mucus.spd = 3 + random_range(-0.5, 0.5);
+				mucus.spd = 4 + random_range(-0.5, 0.5);
 				mucus.dir = point_direction(x, y, target.x, target.y) + random_range(-12, 12);
 				mucus.damage = 1;
 				mucus.strength = 0.4;

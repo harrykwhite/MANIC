@@ -20,29 +20,32 @@ if (instance_exists(obj_player)){
 			minecart_speed += 0.005;
 		}
 		
-		var cartx = x - 8;
-		var carty = y - 3;
-		var cartw = 16;
+		var cartx = x - 10;
+		var carty = y - 2;
+		var cartw = 20;
 		var carth = 35;
 		
 		var xvel = lengthdir_x(minecart_speed, minecart_dir);
 		var yvel = lengthdir_y(minecart_speed, minecart_dir);
 		
+		var xveloff = xvel + sign(xvel);
+		var yveloff = yvel + sign(yvel);
+		
 		if (yvel != 0 && xvel == 0){
-			cartx = x - 3;
-			cartw = 6;
+			cartx = x - 4;
+			cartw = 8;
 		}
 		
 		if (xvel != 0 && yvel == 0){
-			carty = y + 13;
-			carth = 6;
+			carty = y + 15;
+			carth = 8;
 		}
 		
 		if (minecart_break > 0){
 			minecart_break --;
 			minecart_touching = false;
 		}else{
-			if (collision_rectangle(cartx + xvel, carty + yvel, cartx + cartw + xvel, carty + carth + yvel, obj_block_direction, false, true)){
+			if (collision_rectangle(cartx + xveloff, carty + yveloff, cartx + cartw + xveloff, carty + carth + yveloff, obj_block_direction, false, true)){
 				if (!minecart_touching){
 					minecart_dir -= 90 * sign(minecart_speed);
 					minecart_touching = true;
@@ -137,6 +140,6 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}
+	
+	sprite_index = mysprite;
 }
-
-sprite_index = mysprite;

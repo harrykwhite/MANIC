@@ -59,8 +59,8 @@ if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_ind
 
 // Lock in room
 if (global.cutscene_current == -1){
-	x = clamp(x, 12, room_width - 12);
-	y = clamp(y, 12, room_height - 12);
+	x = clamp(x, 6, room_width - 6);
+	y = clamp(y, 6, room_height - 6);
 }
 
 // Death

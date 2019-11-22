@@ -130,7 +130,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 					if (obj_player.y > y){
 						interact = true;
 						scr_ui_control_indicate("Board Train");
-						if (scr_input_is_pressed(InputBinding.Interact)){
+						if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 							interact_break = 10;
 							
 							obj_controller_ui.pausedialogue = true;
@@ -142,6 +142,8 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 							obj_controller_ui.pausedialogue_type_option_special[0] = 1;
 							obj_controller_ui.pausedialogue_type_option_cutscene[0] = 51;
 							obj_controller_ui.pausedialogue_option_max = 1;
+							
+							scr_player_stamina_drain(4);
 							scr_toggle_pause(true);
 						}
 					}

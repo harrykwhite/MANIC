@@ -78,6 +78,7 @@ if (!typedet){
 		case Enemy0_Type.TrainBoss:
 			scale = 1.1;
 			defense = 0;
+			knockback_multiplier = 0;
 			health_max = 60;
 			health_current = health_max;
 			sprite_index = spr_enemy_0_sniperboss_idle_0;

@@ -76,6 +76,7 @@ if (!completed){
 				obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
 				obj_controller_ui.pausedialogue_type_option_special[0] = 0;
 				obj_controller_ui.pausedialogue_option_max = 1;
+				
 				scr_toggle_pause(true);
 			}
 		}else{

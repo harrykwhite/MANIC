@@ -31,7 +31,7 @@ if (instance_exists(obj_player)){
     }
     
     if (pickup) || (pickup_do){
-        if (scr_input_is_pressed(InputBinding.Interact) && global.cutscene_current == -1) || (pickup_do){
+        if (scr_input_is_pressed(InputBinding.Interact) && global.cutscene_current == -1 && global.player_stamina_active) || (pickup_do){
 			instance_destroy();
 			
 			scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);

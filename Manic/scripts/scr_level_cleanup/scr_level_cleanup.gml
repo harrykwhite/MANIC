@@ -103,3 +103,5 @@ if (global.cutscene_current != -1){
 scr_fade_object_list_reset();
 
 global.boss_current = -1;
+global.game_combat_in_hordechallenge = false;
+global.game_combat_in_hordechallenge_time = 0;

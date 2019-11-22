@@ -68,9 +68,7 @@ with(owner){
 	}
 
 	if (!inst.pierce){
-		if (object_index != obj_enemy_1){
-			inst.deffect = true;
-			instance_destroy(inst);
-		}
+		inst.deffect = true;
+		instance_destroy(inst);
 	}
 }

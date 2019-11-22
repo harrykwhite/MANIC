@@ -76,4 +76,7 @@ with(owner){
 			scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 		}
 	}
+	
+	inst.deffect = true;
+	instance_destroy(inst);
 }

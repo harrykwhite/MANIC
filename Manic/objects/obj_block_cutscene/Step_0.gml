@@ -31,7 +31,7 @@ if (!active){
 	return;
 }
 
-if (instance_exists(obj_player)) && (global.cutscene_current == -1) && (!global.game_combat_in_hordechallenge){	
+if (instance_exists(obj_player)) && (global.cutscene_current == -1){	
 	if (place_meeting(x + 1, y + 1, obj_player)){
 		if (time >= 30){
 			if (special == "objectivecomplete"){

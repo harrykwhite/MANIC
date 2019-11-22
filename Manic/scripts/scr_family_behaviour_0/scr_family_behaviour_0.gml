@@ -44,8 +44,8 @@ if (instance_exists(obj_player)){
 }
 
 // Off - screen movement.
-x = clamp(x, 12, room_width - 12);
-y = clamp(y, 12, room_height - 12);
+x = clamp(x, 6, room_width - 6);
+y = clamp(y, 6, room_height - 6);
 
 // Moving
 speed_final = move_speed * speed_multiplier * move_speed_offset;

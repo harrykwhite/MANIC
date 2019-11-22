@@ -4,11 +4,14 @@ if (instance_exists(obj_player)){
 		var enemycount = instance_number(obj_p_enemy);
 		
 		gpu_set_fog(true, c_red, 0, 0);
+		
 		for(var i = 0; i < enemycount; i ++){
 			var inst = instance_find(obj_p_enemy, i);
-			var alpha = 0.15;
+			var instdist = point_distance(inst.x, inst.y, obj_player.x, obj_player.y);
+			var alpha = 0.1;
 			
-			alpha *= (point_distance(inst.x, inst.y, obj_player.x, obj_player.y) / 400);
+			alpha *= (instdist / 300);
+			alpha *= clamp(100 / instdist, 0, 1);
 			
 			//var xx = (inst.x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 			//var yy = (inst.y - camera_get_view_y(view_camera[0])) * gui_scale_y;

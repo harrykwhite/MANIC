@@ -59,8 +59,6 @@ with(owner){
 		repeat(20)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
 	}
 
-	if (!inst.pierce){
-		inst.deffect = true;
-		instance_destroy(inst);
-	}
+	inst.deffect = true;
+	instance_destroy(inst);
 }

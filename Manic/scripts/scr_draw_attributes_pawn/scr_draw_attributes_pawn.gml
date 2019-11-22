@@ -43,6 +43,14 @@ if (drawshader){
 		r = 255 * 0.5;
 		g = 0;
 		b = 0;
+		
+		if (bleed){
+			a *= 1.5;
+			r *= 1.25;
+			
+			a = clamp(a, 0, 1);
+			r = clamp(r, 0, 255);
+		}
 	}
 
 	var wradius = 6;

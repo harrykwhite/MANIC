@@ -1,2 +1,2 @@
 index = PlayerWeapon.Katana;
-angle = 35;
+angle = 30;
