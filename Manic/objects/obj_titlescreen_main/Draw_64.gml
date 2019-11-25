@@ -432,16 +432,9 @@ if (window_get_fullscreen()){
 
 // Copyright text
 draw_set_halign(fa_right);
-scr_text_shadow(display_get_gui_width() - 20, display_get_gui_height() - 24, (isteaser ? "Playable Teaser" : gameversion) + "\nCopyright 2019 Geta Games", c_white);
+scr_text_shadow(display_get_gui_width() - 20, display_get_gui_height() - 24, (isteaser ? "Playable Teaser" : gameversion) + "\n(c)2019 Geta Games", c_white);
 draw_set_valign(fa_top);
 draw_set_alpha(1);
-
-// Gamepad Device Search
-if (gamepad_device_search){
-	draw_set_halign(fa_center);
-	draw_set_font(fnt_cambria_2);
-	scr_text_shadow(display_get_gui_width() / 2, display_get_gui_height() - 40, "Searching for gamepad input... " + string(gamepad_device_search_time div 60), c_white);
-}
 
 // Warning prompt
 if (warning_prompt){

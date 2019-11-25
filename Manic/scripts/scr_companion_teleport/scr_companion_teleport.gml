@@ -1,11 +1,17 @@
 // Teleport to player
-if (cutscene_break_time <= 0) && (!global.game_pause) && (global.cutscene_current == -1){
-	if (!onscreen(x, y + 4, 5)){
+if (cutscene_break_time <= 0) && (!global.game_pause) && ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58)){
+	if (room == rm_level_10_01){
+		if (finalboss_ymin_meeting){
+			return;
+		}
+	}
+	
+	if (!onscreen(x, y + 4, -30)){
 		var counter = 0, doteleport = true;
 		
 		do{
-			var xtp = obj_player.x + random_range(-200, 200);
-			var ytp = obj_player.y + random_range(-200, 200);
+			var xtp = obj_player.x + random_range(-100, 100);
+			var ytp = obj_player.y + random_range(-100, 100);
 			
 			if (counter < 200){
 				counter ++;

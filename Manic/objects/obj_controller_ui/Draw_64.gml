@@ -102,7 +102,7 @@ if (instance_exists(obj_player)){
 		draw_set_halign(fa_right);
 		draw_set_font(fnt_cambria_0);
 		draw_set_alpha(1);
-		scr_text_shadow_transformed(xx - 14, yy - 28, string(counter + 1), c_gray, 1, 1, 0);
+		scr_text_shadow(xx - 14, yy - 28, string(counter + 1), c_gray);
 		
 		gpu_set_fog(false, c_white, 0, 0);
 		
@@ -280,6 +280,7 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 	}
 	
 	var redglow = wave(0.125, 0.225, 2, 0);
+	var redglowalpha;
 	objective_scale = approach(objective_scale, 1, 15);
 	
 	draw_set_alpha(1);
@@ -288,15 +289,28 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	
-	scr_text_shadow_transformed(textx, texty, text, c_white, objective_scale, objective_scale, 0);
+	if (objective_scale > 1.01){
+		scr_text_shadow_transformed(textx, texty, text, c_white, objective_scale, objective_scale, 0);
+	}else{
+		scr_text_shadow(textx, texty, text, c_white);
+	}
 	
-	draw_set_alpha(redglow + ((objective_scale - 1) / 0.25));
-	scr_text_shadow_transformed(textx, texty, text, c_maroon, objective_scale, objective_scale, 0);
+	redglowalpha = redglow + ((objective_scale - 1) / 0.25);
 	
-	draw_set_valign(fa_top);
+	if (redglowalpha > 0){
+		draw_set_alpha(redglowalpha);
+	
+		if (objective_scale > 1.01){
+			scr_text_shadow_transformed(textx, texty, text, c_maroon, objective_scale, objective_scale, 0);
+		}else{
+			scr_text_shadow(textx, texty, text, c_maroon);
+		}
+	
+		draw_set_valign(fa_top);
+	}
 }
 
-// Weapon Info
+/* Weapon Info
 if (weaponinfo){
 	weaponinfo_yoff = approach(weaponinfo_yoff, weaponinfo_yoff_max, 20);
 }else{
@@ -308,14 +322,14 @@ if (weaponinfo_yoff > 0.02){
 	var wdamage = global.weapon_damage[weaponinfo_index];
 	var wspeed = global.weapon_speed[weaponinfo_index];
 	var wtype = global.weapon_type[weaponinfo_index];
-	var gapwidth = 100;
+	var gapwidth = 80;
 	
 	draw_set_alpha(weaponinfo_yoff / weaponinfo_yoff_max);
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
 	scr_text_shadow(dwidth / 2, dheight - 110 + weaponinfo_yoff, wname, c_white);
 	
-	draw_set_font(fnt_cambria_0);
+	draw_set_font(fnt_cambria_n1);
 	
 	if (wtype == WeaponType.Ranged || wtype == WeaponType.Throwing){
 		var wcontent_str = (wtype == WeaponType.Ranged)
@@ -344,9 +358,11 @@ if (weaponinfo_yoff > 0.02){
 	}
 	
 	draw_set_alpha(1);
-}
+}*/
 
 // Weapon Ammo
+draw_set_valign(fa_top);
+
 var w = global.weapon_slot[global.weapon_slotcurrent];
 var drawammo = false;
 
@@ -632,8 +648,8 @@ if (global.game_option[| Options.ShowMinimap]){
 	var maptilewidth = obj_controller_gameplay.map_tile_width;
 	var maptileheight = obj_controller_gameplay.map_tile_height;
 
-	var mapdrawtilew = 4;
-	var mapdrawtileh = 4;
+	var mapdrawtilew = 5;
+	var mapdrawtileh = 5;
 
 	var mapdrawoffx = global.player_position_x / maptilewidth; mapdrawoffx -= (minimap_width / 2) / mapdrawtilew;
 	var mapdrawoffy = global.player_position_y / maptileheight; mapdrawoffy -= (minimap_height / 2) / mapdrawtileh;
@@ -644,7 +660,6 @@ if (global.game_option[| Options.ShowMinimap]){
 	maptilesprite[1] = spr_ui_minimap_tile_1;
 	maptilesprite[2] = spr_ui_minimap_tile_2;
 	maptilesprite[3] = spr_ui_minimap_tile_3;
-	maptilesprite[4] = spr_ui_minimap_tile_4;
 
 	var map_objects, map_objects_sprite, map_objects_sprite_screenlock, map_objects_count;
 
@@ -766,7 +781,7 @@ if (global.game_option[| Options.ShowMinimap]){
 				}
 			
 				var dx = mapx - (mapdrawoffx * mapdrawtilew) + ((inst.x / room_width) * mapwidth * mapdrawtilew);
-				var dy = mapy - (mapdrawoffy * mapdrawtileh) + ((inst.y / room_height) * mapheight * mapdrawtileh);
+				var dy = mapy - (mapdrawoffy * mapdrawtileh) + (((inst.y + 6) / room_height) * mapheight * mapdrawtileh);
 				var dangle = 0;
 			
 				if (map_objects_sprite_screenlock[o]){
@@ -805,8 +820,6 @@ if (global.game_option[| Options.ShowMinimap]){
 
 // Level Results / Ranking
 if (rank_display_draw){
-	blackbar_draw = true;
-	
 	draw_set_alpha(rank_display_alpha);
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
@@ -1088,6 +1101,8 @@ if (teaserend){
 	}
 	
 	scr_text_shadow(dwidth / 2, (dheight / 2) - 65 + (48 * (teaserend_button_selected_max + 1)), "Thanks for playing!", c_white);
+	
+	draw_set_valign(fa_top);
 }
 
 // Game Ending
@@ -1113,7 +1128,7 @@ if (ending){
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Sam Hollins", c_white);
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
 	
-	var cont_text = "Press " + scr_input_get_name(InputBinding.Attack) + " to return to titlescreen"
+	var cont_text = "Press " + (global.game_input_type == InputType.Gamepad ? scr_input_get_name(InputBinding.Interact) : scr_input_get_name(InputBinding.Attack)) + " to return to titlescreen"
 	
 	scr_text_shadow(dwidth / 2, (dheight / 2) + 165, cont_text, c_white);
 	

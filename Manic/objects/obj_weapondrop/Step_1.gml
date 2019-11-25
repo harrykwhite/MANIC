@@ -8,7 +8,7 @@ if (!dataset){
 	canburn = (index == PlayerWeapon.Stick);
 	specialweapon = (index == PlayerWeapon.Battleaxe || index == PlayerWeapon.Wrench);
 	
-	if (!place_meeting(x, y, obj_block_persistent)) && (!drop){
+	/*if (!place_meeting(x, y, obj_block_persistent)) && (!drop){
 		var pers = instance_create(x, y, obj_block_persistent);
 		pers.object[0] = object_index;
 		pers.object_x[0] = x;
@@ -18,7 +18,7 @@ if (!dataset){
 		pers.object_weapon_pack[0] = pack;
 		pers.object_weapon_quantity[0] = quantity;
 		pers.activate = false;
-	}
+	}*/
 	
 	dataset = true;
 }

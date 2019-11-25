@@ -4,7 +4,7 @@ if (instance_exists(obj_player)){
 	if (use_current){
         // Positioning
 		if (!global.game_pause){
-			var mdir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+			var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
     
 		    if (instance_exists(obj_player_arm)){
 		        x = obj_player_arm.x + lengthdir_x(20 + shoot_bounceback, image_angle);
@@ -19,7 +19,7 @@ if (instance_exists(obj_player)){
 			shoot_bounceback = approach(shoot_bounceback, 0, 20);
 		
 	        // Direction
-	        if (scr_input_get_mouse_x() > x){
+	        if (scr_input_get_mouse_x() > global.player_position_x){
 	            image_yscale = 1;
 	        }else{
 	            image_yscale = -1;

@@ -1,4 +1,4 @@
-scr_pawn_weapon_setup(40, WeaponType.Melee);
+scr_pawn_weapon_setup(45, WeaponType.Melee);
 
 burn = false;
 burn_time_max = 60 * 5;

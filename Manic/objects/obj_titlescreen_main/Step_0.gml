@@ -206,45 +206,33 @@ if (fade){
 			}
 		}
 	}else if (gamepad_device_search){
-		var button_matrix = scr_input_gamepad_any();
+		var gcount = gamepad_get_device_count();
 		
-		if (button_matrix[# 0, 0] != -1){
-			global.game_input_type = InputType.Gamepad;
-			
-			global.game_input_gamepad_current = button_matrix[# 0, 0];
-			global.game_input_gamepad_current_type = scr_input_gamepad_get_type();
-			
-			gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
-			gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
-			
-			selected = 2;
-			press_break = 10;
-			selected_break = 10;
-			
-			option_setting_controls_value[0] = global.game_input_type;
-			
-			gamepad_device_search = false;
-			gamepad_device_search_time = 0;
-			
-			ds_grid_destroy(button_matrix);
-			
-			scr_options_refresh();
-			return;
-		}
-		
-		ds_grid_destroy(button_matrix);
-		
-		if (gamepad_device_search_time > 0){
-			gamepad_device_search_time --;
+		if (global.game_input_type == InputType.Keyboard){
+			for(var g = 0; g < gcount; g ++){
+				if (gamepad_is_connected(g)){
+					global.game_input_type = InputType.Gamepad;
+					
+					global.game_input_gamepad_current = g;
+					global.game_input_gamepad_current_type = scr_input_gamepad_get_type();
+					
+					gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
+					gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
+					break;
+				}
+			}
 		}else{
-			gamepad_device_search = false;
-			gamepad_device_search_time = 0;
-			
 			global.game_input_type = InputType.Keyboard;
-			option_setting_controls_value[0] = InputType.Keyboard;
-			scr_options_refresh();
 		}
 		
+		option_setting_controls_value[0] = global.game_input_type;
+		
+		gamepad_device_search = false;
+		selected = -1;
+		
+		obj_controller_all.gamepad_check_break += 30;
+		
+		scr_options_refresh();
 		return;
 	}
 	
@@ -314,7 +302,6 @@ if (fade){
 						if (selected == 0){
 							if (option_setting_controls_value[0] == InputType.Gamepad){
 								gamepad_device_search = true;
-								gamepad_device_search_time = 60 * 3;
 								option_setting_controls_value[0] = InputType.Keyboard;
 							}
 							

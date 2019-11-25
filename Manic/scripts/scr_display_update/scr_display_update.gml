@@ -35,6 +35,9 @@ if (ideal_height & 1){
 
 var room_count = room_last;
 
+view_wport[0] = ideal_width;
+view_hport[0] = ideal_height;
+
 for(var i = 0; i < room_count; i ++){
 	room_set_viewport(i, 0, true, 0, 0, ideal_width, ideal_height);
 }
@@ -75,11 +78,11 @@ if (!fullscreen){
 
 obj_controller_all.gui_resize_w = ideal_width / uiscale;
 obj_controller_all.gui_resize_h = ideal_height / uiscale;
-obj_controller_all.gui_resize_time = 2;
+obj_controller_all.gui_resize_time = 4;
 
 obj_controller_all.camera_resize_w = basewidth / camscale;
 obj_controller_all.camera_resize_h = baseheight / camscale;
-obj_controller_all.camera_resize_time = 1;
+obj_controller_all.camera_resize_time = 3;
 
-display_reset(0, false);
+//display_reset(0, false);
 surface_resize(application_surface, basewidth, baseheight);

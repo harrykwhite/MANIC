@@ -5,3 +5,5 @@ map_height = room_height div map_tile_height;
 
 scr_map_clear();
 scr_map_fill();
+
+scr_level_add_bounds();

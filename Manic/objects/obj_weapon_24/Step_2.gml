@@ -19,7 +19,7 @@ if (instance_exists(obj_player)){
 			start_offset = approach(start_offset, 0, 40);
 		}
 		
-	    if (scr_input_get_mouse_x() > x){
+	    if (scr_input_get_mouse_x() > global.player_position_x){
 	        image_yscale = 1;
 			image_angle += start_offset;
 	    }else{

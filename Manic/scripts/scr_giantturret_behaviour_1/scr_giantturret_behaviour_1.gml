@@ -19,8 +19,8 @@ if (instance_exists(target)){
 			scr_effect_screenshake(2);
 			light_brightness = 1.25;
 			
-			var xpos = x + lengthdir_x(32 * scale, shoot_dir);
-			var ypos = y + lengthdir_y(32 * scale, shoot_dir);
+			var xpos = x + lengthdir_x(25 * scale, shoot_dir);
+			var ypos = y + lengthdir_y(25 * scale, shoot_dir);
 			
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
 			for(var l = 0; l < 16; l += 4){
@@ -30,14 +30,14 @@ if (instance_exists(target)){
 			var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.enemy = true;
 			bullet.damage = 1;
-			bullet.spd = 13.5;
-			bullet.strength = 1;
+			bullet.spd = 13;
+			bullet.strength = 0.7;
 			bullet.dir = shoot_dir;
 			bullet.image_angle = bullet.dir;
 			
 			if (shoot_burst < 2){
 				shoot_burst ++;
-				shoot_time = 3;
+				shoot_time = 2;
 			}else{
 				shoot_burst = 0;
 				shoot_time = 70;
@@ -102,17 +102,6 @@ if (instance_exists(target)){
 			attack ++;
 		}else{
 			attack = 0;
-		}
-		
-		if (attack == 2){
-			if (instance_number(obj_weapondrop) < 3){
-				scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
-				var drop = instance_create(x, y, obj_weapondrop);
-				drop.index = choose(PlayerWeapon.Katana, PlayerWeapon.Spear, PlayerWeapon.AssaultRifle, PlayerWeapon.QuickGun);
-				drop.spd = 11;
-				drop.dir = random(360);
-				drop.angle = 0;
-			}
 		}
 		
 		shoot_time = 120;

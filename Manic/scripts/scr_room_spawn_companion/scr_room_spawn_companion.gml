@@ -7,6 +7,8 @@ for(var i = 0; i < height; i ++){
 			comp = instance_create(obj_player.x, obj_player.y, cobj);
 		}else{
 			comp = cobj.id;
+			comp.x = obj_player.x;
+			comp.y = obj_player.y;
 		}
 		
 		comp.registered = true;

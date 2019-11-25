@@ -3,7 +3,7 @@ if (debug) && (global.cutscene_current == -1){
 	var yy = 21;
 	
 	if (global.game_option[| Options.ShowMinimap] && instance_exists(obj_controller_ui)){
-		yy = 154;
+		yy = 158;
 	}
 	
 	var debug_text = "FPS: " + string(round(fps)) + "  RFPS: " + string(round(fps_real)) + "  INST: " + string(instance_number(all));

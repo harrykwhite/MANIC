@@ -28,7 +28,7 @@ if (instance_exists(obj_player)){
 				draw_set_colour(c_red);
 			}
 		
-			draw_set_alpha(clamp(linealpha, 0, 1) * 0.6);
+			draw_set_alpha(clamp(linealpha, 0, 1) * 0.6 * image_alpha);
 			draw_line_break(xx, yy, shoot_dir, obj_p_solid, 1, false, 0);
 			draw_set_alpha(1);
 		}

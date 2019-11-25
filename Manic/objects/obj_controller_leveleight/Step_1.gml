@@ -1,6 +1,8 @@
 // Companion spawning
-scr_room_spawn_companion();
-companions_spawned = true;
+if (!companions_spawned){
+	scr_room_spawn_companion();
+	companions_spawned = true;
+}
 
 // Objectives
 if (!global.game_objective_set){

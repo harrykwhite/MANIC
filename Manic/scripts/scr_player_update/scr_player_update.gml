@@ -181,11 +181,6 @@ if (global.cutscene_current == -1){
 	}
 }
 
-// Push away
-if (state == scr_player_move){
-	scr_push_away_handler();
-}
-
 // Death
 if (global.player_health_current <= 0) && (!near_dead){
     scr_effect_blackbar();

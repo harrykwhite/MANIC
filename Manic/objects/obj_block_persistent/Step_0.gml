@@ -11,6 +11,7 @@ if (activate){
 					object_inst[i].angle = object_weapon_angle[i];
 					object_inst[i].pack = object_weapon_pack[i];
 					object_inst[i].quantity = object_weapon_quantity[i];
+					object_inst[i].quantity = object_weapon_quantity[i];
 				}
 			}
 		}

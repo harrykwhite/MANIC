@@ -14,7 +14,7 @@ if (instance_exists(owner)){
 	}
 	
 	if (!owner.burn) && (!owner.cutscene_prop){
-		if (line_alpha < 1){
+		if (line_alpha < 0.7){
 			line_alpha += 0.02 * attack_time_multiplier;
 		}
 		

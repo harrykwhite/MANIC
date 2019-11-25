@@ -106,7 +106,7 @@ if (instance_exists(obj_player)){
 					move_x_to = target.x;
 					move_y_to = target.y;
 				
-					if (distance_to_object(target) > 40 + (15 * order)){
+					if (distance_to_object(target) > 30 + (15 * order)){
 						move_speed = 1.7;
 					}else{
 						move_speed = 0;

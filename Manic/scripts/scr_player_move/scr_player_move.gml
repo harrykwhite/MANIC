@@ -116,7 +116,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	if (global.player_health_current <= 2){
-	    spd_multiplier += 0.2;
+	    spd_multiplier += 0.1;
 	}
 	
 	if (global.player_health_current <= 4){
@@ -360,7 +360,7 @@ if (global.weapon_slot_standalone == -1){
 
 // Sprite Flip
 if (move_x_to == -1) && (move_y_to == -1) && (global.cutscene_current == -1){
-	if (scr_input_get_mouse_x() > x){
+	if (scr_input_get_mouse_x() > global.player_position_x){
 		image_xscale = 1;
 	}else{
 		image_xscale = -1;

@@ -1,8 +1,3 @@
-// Push
-if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) &&  (object_index != obj_enemy_4) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
-	scr_push_away_handler();
-}
-
 // Knockback
 var kbs = knockback_speed * knockback_multiplier;
 
@@ -59,8 +54,8 @@ if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_ind
 
 // Lock in room
 if (global.cutscene_current == -1){
-	x = clamp(x, 6, room_width - 6);
-	y = clamp(y, 6, room_height - 6);
+	x = clamp(x, 24, room_width - 24);
+	y = clamp(y, 24, room_height - 24);
 }
 
 // Death

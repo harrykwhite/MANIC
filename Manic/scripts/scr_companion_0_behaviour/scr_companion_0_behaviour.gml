@@ -125,7 +125,7 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y;
 				
-				var tdist = 40 + (10 * (global.game_save_level - 1));
+				var tdist = 30 + (10 * (global.game_save_level - 1));
 				tdist += 15 * order;
 				
 				if (distance_to_object(target) > tdist){
@@ -173,13 +173,18 @@ if (instance_exists(obj_player)){
 			}else if (depart_standaway){
 				var xx = obj_player.x + 10;
 				var yy = obj_player.y + 95;
-			
-				if (distance_to_point(xx, yy) > 20 + (60 * order)){
+				
+				if (!depart_standaway_reached){
 					move_x_to = xx;
 					move_y_to = yy;
 					move_speed = 1.9;
+					
+					if (distance_to_point(xx, yy) <= 20 + (60 * order)){
+						depart_standaway_reached = true;
+					}
 				}else{
 					face_player = true;
+					
 					move_speed = 0;
 					move_x_to = obj_player.x;
 					move_y_to = obj_player.y;

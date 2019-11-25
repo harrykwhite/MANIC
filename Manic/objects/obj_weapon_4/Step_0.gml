@@ -9,7 +9,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	return;
 }
 
-var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active) && (!global.game_pause){
     var xpos = x + lengthdir_x(29, mdir);

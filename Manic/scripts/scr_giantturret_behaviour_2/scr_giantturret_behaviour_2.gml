@@ -19,8 +19,8 @@ if (instance_exists(target)){
 			scr_effect_screenshake(2);
 			light_brightness = 1.25;
 			
-			var xpos = x + lengthdir_x(32 * scale, shoot_dir);
-			var ypos = y + lengthdir_y(32 * scale, shoot_dir);
+			var xpos = x + lengthdir_x(25 * scale, shoot_dir);
+			var ypos = y + lengthdir_y(25 * scale, shoot_dir);
 			
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
 			for(var l = 0; l < 16; l += 4){
@@ -30,14 +30,14 @@ if (instance_exists(target)){
 			var bullet = instance_create(xpos, ypos, obj_proj_0);
 			bullet.enemy = true;
 			bullet.damage = 1;
-			bullet.spd = 13.5;
-			bullet.strength = 1;
+			bullet.spd = 13;
+			bullet.strength = 0.7;
 			bullet.dir = shoot_dir;
 			bullet.image_angle = bullet.dir;
 			
 			if (shoot_burst < 2){
 				shoot_burst ++;
-				shoot_time = 3;
+				shoot_time = 2;
 			}else{
 				shoot_burst = 0;
 				shoot_time = 40;
@@ -92,7 +92,7 @@ if (instance_exists(target)){
 	
 	// Enemy spawning
 	}else if (attack == 2){
-		while(instance_number(obj_p_enemy) < 9){
+		while(instance_number(obj_p_enemy) < 8){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Katana);
 			
@@ -132,8 +132,8 @@ if (instance_exists(target)){
 		}else{
 			if (instance_number(obj_proj_8) < 4){
 				shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
-				xpos = x + lengthdir_x(27 * scale, shoot_dir);
-				ypos = y + lengthdir_y(27 * scale, shoot_dir);
+				xpos = x + lengthdir_x(25 * scale, shoot_dir);
+				ypos = y + lengthdir_y(25 * scale, shoot_dir);
 			
 				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_shoot_3, false, 0.8, 1.2);
@@ -146,7 +146,7 @@ if (instance_exists(target)){
 				rocket.dir = shoot_dir;
 			    rocket.image_angle = shoot_dir;
 				rocket.spd = 2.5;
-				rocket.damage = 3;
+				rocket.damage = 2;
 				rocket.strength = 1.25;
 				rocket.enemy = true;
 				rocket.target = obj_player;

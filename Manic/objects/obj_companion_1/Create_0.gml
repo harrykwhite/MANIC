@@ -95,11 +95,6 @@ health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
 
-push_speed = 0;
-push_speed_build = 0.25;
-push_speed_max = 3;
-push_direction = 0;
-
 image_xscale = scale;
 image_yscale = scale;
 

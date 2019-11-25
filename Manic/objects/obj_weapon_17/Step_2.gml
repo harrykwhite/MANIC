@@ -22,7 +22,7 @@ if (instance_exists(obj_player)){
 			shoot_bounceback = approach(shoot_bounceback, 0, 20);
 		
 	        // Direction
-	        if (scr_input_get_mouse_x() > x){
+	        if (scr_input_get_mouse_x() > global.player_position_x){
 	            image_yscale = 1;
 	        }else{
 	            image_yscale = -1;

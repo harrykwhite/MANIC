@@ -67,7 +67,7 @@ whiteflash_alphadec = 0.075;
 cutscene_prop = false;
 in_cutscene = false;
 
-health_max = 140;
+health_max = 120;
 health_current = health_max;
 health_alpha = 0;
 health_scale = 1;

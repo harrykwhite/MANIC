@@ -8,8 +8,16 @@ if (argument_count == 1){
 ini_open(working_directory + "config.ini");
 
 if (refresh_display){
-	if (window_get_fullscreen() != global.game_option[| Options.Fullscreen]){
-		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
+	var full = global.game_option[| Options.Fullscreen];
+	
+	if (window_get_fullscreen() != full){
+		window_set_fullscreen(full);
+		
+		if (full){
+			with(obj_controller_all){
+				//minimise_time = 1;
+			}
+		}
 	}
 	
 	scr_display_update();

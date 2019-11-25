@@ -13,10 +13,13 @@ var width = room_width div cw;
 var height = room_height div ch;
 
 var thisx = (x div cw);
-var thisy = ((y + 6) div ch);
+var thisy = ((y + 4) div ch);
 
 var thisxaxis = sign((x / cw) - thisx);
-var thisyaxis = sign(((y + 6) / ch) - thisy);
+var thisyaxis = sign(((y + 4) / ch) - thisy);
+
+thisx = clamp(thisx, 0, width - 1);
+thisy = clamp(thisy, 0, height - 1);
 
 while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, thisx, thisy) == -1){
 	thisx += thisxaxis;
@@ -37,6 +40,9 @@ var gy = (move_y_to div ch);
 
 var gxaxis = sign((move_x_to / cw) - gx);
 var gyaxis = sign((move_y_to / ch) - gy);
+
+gx = clamp(gx, 0, width - 1);
+gy = clamp(gy, 0, height - 1);
 
 while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, gx, gy) == -1){
 	gx += gxaxis;

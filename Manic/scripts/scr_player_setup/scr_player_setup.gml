@@ -116,12 +116,6 @@ minecart_sprite = noone;
 minecart_sprite_image = 0;
 in_minecart = false;
 
-// Push away
-push_speed = 0;
-push_speed_build = 0.25;
-push_speed_max = 3;
-push_direction = 0;
-
 // Other
 is_visible = true;
 heartbeat = noone;

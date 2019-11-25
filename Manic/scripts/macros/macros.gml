@@ -1,6 +1,6 @@
 #macro gui_scale_x (display_get_gui_width() / camera_get_view_width(view_camera[0]))
 #macro gui_scale_y (display_get_gui_height() / camera_get_view_height(view_camera[0]))
-#macro gameversion "Pre Release v3.0"
+#macro gameversion "v1.0.1"
 #macro realtime (delta_time / 10000) / 1.6
 #macro outlinewhite make_colour_rgb(0.8 * 255, 0.8 * 255, 0.8 * 255)
 #macro outlineweapondrop make_colour_rgb(145, 191, 103)

@@ -55,7 +55,5 @@ scr_pathmap_init();
 
 scr_interior_groups_reset();
 
-scr_level_add_bounds();
-
 pathgrid_reset_time_max = 2;
 pathgrid_reset_time = pathgrid_reset_time_max;

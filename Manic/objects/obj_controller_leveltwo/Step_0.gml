@@ -17,7 +17,7 @@ if (!global.game_pause){
 		if (!audio_is_playing(m_ambience_birds_0)) || (audio_sound_get_gain(m_ambience_birds_0) < 0.01){
 			if (!audio_is_playing(m_ambience_birds_0)) audio_play_sound(m_ambience_birds_0, 3, true);
 			audio_sound_gain(m_ambience_birds_0, 0.01, 0);
-			audio_sound_gain(m_ambience_birds_0, 0.8 * obj_controller_all.real_ambience_volume, 6000);
+			audio_sound_gain(m_ambience_birds_0, 0.6 * obj_controller_all.real_ambience_volume, 6000);
 		}
 		
 		if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
@@ -179,7 +179,7 @@ if (global.cutscene_current == -1){
 			obj_controller_gameplay.checkpoint_create = true;
 			global.level_checkpoint_found[global.level_current, 0] = true;
 		}
-	}else if (room == rm_level_2_03){
+	}else if (room == rm_level_2_04){
 		if (!global.level_checkpoint_found[global.level_current, 1]){
 			obj_controller_gameplay.checkpoint_create = true;
 			global.level_checkpoint_found[global.level_current, 1] = true;

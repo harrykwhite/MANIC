@@ -87,4 +87,8 @@ if (changed){
 	with(obj_enemy_5){
 		instance_destroy();
 	}
+	
+	with(obj_block_persistent){
+		activate = true;
+	}
 }

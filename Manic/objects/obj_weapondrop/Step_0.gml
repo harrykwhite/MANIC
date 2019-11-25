@@ -94,7 +94,7 @@ if (kill){
 	}
 }
 
-// Info draw
+/* Info draw
 if (pickup){
 	with(obj_controller_ui){
 		if (other.index != weaponinfo_index_prev){
@@ -104,7 +104,7 @@ if (pickup){
 			weaponinfo_quantity = other.quantity;
 		}
 	}
-}
+}*/
 
 // Pickup
 if (instance_exists(obj_player)){
@@ -127,7 +127,7 @@ if (instance_exists(obj_player)){
 	}
     
     if (pickup){
-		scr_ui_control_indicate("Pickup");
+		scr_ui_control_indicate(global.weapon_name[index]);
 		
         if (scr_input_is_pressed(InputBinding.Interact)) && (global.player_stamina_active){
 			if (global.weapon_slot_standalone == -1){
@@ -152,15 +152,18 @@ if (instance_exists(obj_player)){
 				obj_controller_mouse.mouse_scale = 2;
 				
 				var slotcount = global.weapon_slotmax;
+				var exists = false;
+				
 				for(var i = 0; i < slotcount; i ++){
 					if (global.weapon_slot[i] == index){
 						//if (i != global.weapon_slotcurrent){
 						//	with(obj_controller_gameplay){ scr_weapon_switch(true, i); }
 						//}
 						
+						exists = true;
+						
 						if (global.weapon_type[index] == WeaponType.Ranged){
 							var amm = ammo;
-							
 							ammo = global.weapon_slotammo[i];
 							global.weapon_slotammo[i] = amm;
 						}
@@ -172,8 +175,12 @@ if (instance_exists(obj_player)){
 						
 						obj_controller_ui.weaponslot_shake[i] = 4;
 			            obj_controller_ui.weaponslot_weaponscale[i] = 0;
-						return;
+						break;
 					}
+				}
+				
+				if (exists){
+					return;
 				}
 				
 	            // Destroy the current held weapon
@@ -188,7 +195,7 @@ if (instance_exists(obj_player)){
 				var newslotind = -1;
 				
 				for(var i = 0; i < slotcount; i ++){
-					if (global.weapon_slot[i] == -1 || global.weapon_slot[i] == global.weapon_default){
+					if (global.weapon_slot[i] == -1) || (global.weapon_slot[i] == global.weapon_default){
 						global.weapon_slot[i] = index;
 						newslotind = i;
 						foundempty = true;

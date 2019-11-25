@@ -25,13 +25,13 @@ objective_scale = 1;
 
 stats_y = 0;
 
-weaponinfo = false;
+/*weaponinfo = false;
 weaponinfo_index = 0;
 weaponinfo_index_prev = 0;
 weaponinfo_ammo = -1;
 weaponinfo_quantity = -1;
 weaponinfo_yoff = 0;
-weaponinfo_yoff_max = 30;
+weaponinfo_yoff_max = 30;*/
 
 weaponammo_scale = 1;
 weaponammo_scaleTo = 1;
@@ -272,6 +272,7 @@ pausedialogue_option_exitscale = 1;
 pausedialogue_option_selected = -1;
 pausedialogue_option_selected_held_time = 0;
 pausedialogue_option_selected_held_time_max = 40;
+pausedialogue_option_select_break = 0;
 pausedialogue_option_max = 0;
 pausedialogue_type_text = "I haven't been given dialogue yet!";
 pausedialogue_option_exittext = "Resume";

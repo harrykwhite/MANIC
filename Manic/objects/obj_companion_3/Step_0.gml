@@ -69,10 +69,8 @@ if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global
 }else{
 	image_speed = 0.05;
 	sprite_index = stillsprite;
-}
-
-if (global.cutscene_current == -1){
-	cutscene_break_time = 30;
+	
+	cutscene_break_time = 50;
 }
 
 if (flash_time > 0){
@@ -101,7 +99,11 @@ health_current = max(health_current, 1);
 scr_pawn_update();
 
 if (room == rm_level_10_01){
-	y = max(y, 774);
+	if (y <= finalboss_ymin + 2){
+		finalboss_ymin_meeting = true;
+	}
+	
+	y = max(y, finalboss_ymin);
 }
 
 image_yscale = scale;

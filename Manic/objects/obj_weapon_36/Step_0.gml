@@ -9,7 +9,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	return;
 }
 
-var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 var lenpos = 42;
 var spread = 16;

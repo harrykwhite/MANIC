@@ -8,11 +8,11 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	return;
 }
 
-var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 sprite_index = spr_weapon_17;
 
 if (use_current){
-    if (scr_input_is_down(InputBinding.Attack)){
+	if (scr_input_is_down(InputBinding.Attack)){
         if (shoot_can) && (global.weapon_slot_standalone_ammo > 0) && (global.player_stamina_active){
             scr_effect_screenshake(2);
 			scr_player_flash(5);
@@ -25,21 +25,19 @@ if (use_current){
 	        var ypos = y + lengthdir_y(21, mdir) + lengthdir_y(1, up(mdir));
 			image_speed = 1;
 			
-	        var dir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
-			
-			part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
+			part_type_direction(global.pt_smoke_4, mdir - 6, mdir + 6, 0, 0);
 			for(var l = 0; l < 16; l += 4){
-				part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+				part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, mdir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, mdir) + random_range(-3, 3), global.pt_smoke_4, 1);
 			}
 			
-			part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
-			part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(2, 3));
+			part_type_direction(global.pt_shell_0, (mdir - 180) - 15, (mdir - 180) + 15, 0, 0);
+			part_particles_create(global.ps_bottom, x + lengthdir_x(3, mdir) + random_range(-3, 3), y + 4 + lengthdir_y(3, mdir) + random_range(-3, 3), global.pt_shell_0, choose(2, 3));
 			scr_mouse_control(MouseType.Crosshair, 2.5, 15);
 			
 		    var shoot = instance_create(xpos, ypos, obj_proj_0);
 			shoot.damage = shoot_damage;
 			shoot.strength = shoot_strength;
-		    shoot.dir = dir + random_range(-shoot_range, shoot_range);
+		    shoot.dir = mdir + random_range(-shoot_range, shoot_range);
 			shoot.spd = 20;
 			shoot.image_angle = shoot.dir;
             
@@ -70,9 +68,13 @@ if (shoot_time > 0){
 if (distance_to_object(obj_player) < pickup_range){
 	pickup = true;
 	
-	if (!use_current){
-		sprite_index = spr_weapon_17_interact;
-		scr_ui_control_indicate(global.weapon_name[index] + "");
+	if (global.player_stamina_active){
+		if (!use_current){
+			sprite_index = spr_weapon_17_interact;
+			scr_ui_control_indicate(global.weapon_name[index]);
+		}else{
+			scr_ui_control_indicate("Demount " + string(global.weapon_name[index]));
+		}
 	}
 }else{
 	pickup = false;
@@ -84,7 +86,7 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
 	var mount = scr_input_is_pressed(InputBinding.Interact);
 	
     if (pickup){
-		if (!use_current){
+		/*if (!use_current){
 			with(obj_controller_ui){
 				if (other.index != weaponinfo_index_prev){
 					weaponinfo = true;
@@ -93,10 +95,11 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
 					weaponinfo_quantity = -1;
 				}
 			}
-		}
+		}*/
 		
         if (mount){
 			scr_player_stamina_drain(6);
+			
 			if (!use_current){
 				scr_sound_play(snd_weapon_pickup_gun, false, 0.8, 1.2);
 				use_current = true;

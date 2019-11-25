@@ -5,4 +5,4 @@ object_weapon[0] = PlayerWeapon.Sledgehammer;
 object_weapon_angle[0] = 50;
 object_inst[0] = noone;
 object_weapon_pack[0] = false;
-object_weapon_quantity[0] = 1;
+object_weapon_quantity[0] = -1;

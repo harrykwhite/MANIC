@@ -1,6 +1,8 @@
 // Companion spawning
-scr_room_spawn_companion();
-companions_spawned = true;
+if (!companions_spawned){
+	scr_room_spawn_companion();
+	companions_spawned = true;
+}
 
 // Save
 if (!global.game_save_started){

@@ -10,7 +10,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 image_speed = 1;
 
-var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (instance_exists(obj_player)) && (global.player_stamina_active){
     if (scr_input_is_pressed(InputBinding.Attack)) || (scr_input_is_pressed(InputBinding.Throw)){

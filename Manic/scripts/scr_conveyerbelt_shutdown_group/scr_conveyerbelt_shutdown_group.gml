@@ -9,7 +9,7 @@ if (instance_exists(inst_18E1EC84)){ instance_destroy(inst_18E1EC84); }
 if (instance_exists(inst_1E60D0F5)){ instance_destroy(inst_1E60D0F5); }
 if (instance_exists(inst_63C69FB8)){ instance_destroy(inst_63C69FB8); }
 
-var nearest_group = instance_nearest(obj_player.x, obj_player.y, obj_block_conveyerbelt_group);
+var nearest_group = instance_nearest(global.player_position_x, global.player_position_y, obj_block_conveyerbelt_group);
 var nearest_group_count = 0;
 
 if (nearest_group != noone){

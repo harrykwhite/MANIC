@@ -14,7 +14,7 @@ if (!instance_exists(minecart)){
 	return;
 }
 
-if (scr_input_get_mouse_x() > x){
+if (scr_input_get_mouse_x() > global.player_position_x){
 	image_xscale = 1;
 }else{
 	image_xscale = -1;

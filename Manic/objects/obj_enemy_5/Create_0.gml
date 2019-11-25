@@ -65,11 +65,6 @@ health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
 
-push_speed = 0;
-push_speed_build = 0.2;
-push_speed_max = 2.4;
-push_direction = 0;
-
 target = obj_player;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;

@@ -680,7 +680,7 @@ if (instance_exists(obj_player)){
 			}
 			break;
 		
-		case rm_level_5_04:
+		case rm_level_5_post_00:
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_2);
 			
 			if (instance_exists(inst)){
@@ -782,6 +782,8 @@ if (instance_exists(obj_player)){
 				line[12] = "...I won't need him.";
 				linefrom[12] = obj_player;
 			}else{
+				is_last_interaction = true;
+				
 				if (global.game_boss_firstantag_talked){
 					global.cutscene_current = 40;
 					global.cutscene_time[index] = 0;
@@ -903,6 +905,7 @@ if (instance_exists(obj_player)){
 						
 						case 5:
 							obj_companion_0.depart_standaway = true;
+							obj_companion_0.depart_standaway_reached = false;
 							obj_companion_0.depart = false;
 							break;
 						
@@ -922,28 +925,28 @@ if (instance_exists(obj_player)){
 			
 			// End the dialogue sequence
 			if (cutscene_dialogue_line >= array_length_1d(line)) || (skip){
-				switch(inst){
-					case obj_thescorched:
-						if (is_last_interaction){
+				if (is_last_interaction) && (instance_exists(inst)){
+					switch(inst.object_index){
+						case obj_thescorched:
 							global.game_boss_thescorched_talked = true;
-						}
-						break;
+							break;
 					
-					case obj_thedogkeeper:
-						global.game_boss_thedogkeeper_talked = true;
-						break;
+						case obj_thedogkeeper:
+							global.game_boss_thedogkeeper_talked = true;
+							break;
 					
-					case obj_companion_0:
-						if (is_last_interaction) && (room == rm_level_6_pre_00){
-							global.game_boss_firstantag_talked = true;
-						}
-						break;
+						case obj_companion_0:
+							if (room == rm_level_6_pre_00){
+								global.game_boss_firstantag_talked = true;
+							}
+							break;
 					
-					case obj_enemy_0:
-						if (inst.type == Enemy0_Type.TrainBoss) && (is_last_interaction){
-							global.game_boss_trainhorde_talked = true;
-						}
-						break;
+						case obj_enemy_0:
+							if (inst.type == Enemy0_Type.TrainBoss){
+								global.game_boss_trainhorde_talked = true;
+							}
+							break;
+					}
 				}
 				
 				global.cutscene_time[index] = 0;
@@ -970,7 +973,9 @@ if (instance_exists(obj_player)){
 							obj_companion_0.depart_standaway = false;
 							obj_companion_0.depart = true;
 							
-							obj_antagonist.walk_off = true;
+							if (instance_exists(obj_antagonist)){
+								obj_antagonist.walk_off = true;
+							}
 							
 							scr_companion_remove(obj_companion_0);
 							obj_controller_gameplay.cutscene_moveto_level = Level.TrainStation;
@@ -1031,6 +1036,8 @@ if (instance_exists(obj_player)){
 						cutscene_look_object = noone;
 						cutscene_look_prop = false;
 					}
+				}else if (special == "firstantagtalk"){
+					global.game_boss_firstantag_talked = true;
 				}else{
 					if (special == "farmertalk"){
 						scr_objective_change(Objectives.CollectAllArtifacts, global.level_collectable_current[global.level_current], global.level_collectable_number[global.level_current]);
@@ -1046,6 +1053,8 @@ if (instance_exists(obj_player)){
 					inst.cutscene_prop = false;
 					inst.in_cutscene = false;
 				}
+				
+				scr_player_stamina_drain(4);
 				return;
 			}
 			

@@ -18,6 +18,9 @@ app_surf_refresh_time = -1;
 app_surf_refresh_w = 0;
 app_surf_refresh_h = 0;
 
+maximise_time = -1;
+minimise_time = -1;
+
 center_window_time = -1;
 
 scr_part_setup();
@@ -25,7 +28,8 @@ scr_options_init();
 scr_options_refresh(true);
 scr_update_real_volumes();
 
-gamepad_check_disconnected_time = -60;
+gamepad_check_break = 15;
+gamepad_check_disconnected_time = 0;
 
 camera_get_x1 = camera_get_view_x(view_camera[0]);
 camera_get_y1 = camera_get_view_y(view_camera[0]);

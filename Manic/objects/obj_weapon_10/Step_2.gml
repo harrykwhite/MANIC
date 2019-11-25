@@ -15,13 +15,13 @@ if (instance_exists(obj_player)){
 	if (!global.game_pause){
 	    image_angle = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y()) + attack_range_current;
 	    x = obj_player_arm.x + lengthdir_x(attack_offset + 3, image_angle);
-	    y = obj_player_arm.y + lengthdir_y(attack_offset + 3, image_angle);
+	    y = obj_player_arm.y + lengthdir_y(attack_offset + 3, image_angle) + 1;
 		
 		if (start_offset > 0){
 			start_offset = approach(start_offset, 0, 40);
 		}
 		
-	    if (scr_input_get_mouse_x() > x){
+	    if (scr_input_get_mouse_x() > global.player_position_x){
 	        image_yscale = 1;
 			image_angle += start_offset;
 	    }else{

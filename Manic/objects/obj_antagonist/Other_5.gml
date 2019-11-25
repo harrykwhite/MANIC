@@ -24,5 +24,13 @@ y = ystart;
 
 event_perform(ev_create, 0);
 
+if (instance_exists(hitbox)){
+	instance_destroy(hitbox);
+}
+
+if (instance_exists(mylight)){
+	instance_destroy(mylight);
+}
+
 cutscene_prop = true;
 in_cutscene = false;

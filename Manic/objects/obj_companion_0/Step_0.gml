@@ -72,10 +72,8 @@ if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global
 }else{
 	image_speed = 0.05;
 	sprite_index = stillsprite;
-}
-
-if (global.cutscene_current == -1){
-	cutscene_break_time = 30;
+	
+	cutscene_break_time = 50;
 }
 
 if (flash_time > 0){

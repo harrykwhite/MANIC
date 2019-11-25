@@ -3,7 +3,7 @@ var level = argument0;
 
 var room_count = room_last;
 
-for(var r = 0; r < room_count; r ++){
+for(var r = 0; r <= room_count; r ++){
 	var str = "level_" + string(level) + "_";
 	
 	if (level == 0){

@@ -12,7 +12,7 @@ if (!global.game_pause){
 	camera_zoom_to += camera_zoom_add;
 	
 	camera_set_view_size(view_camera[0], camera_zoom_width * camera_zoom, camera_zoom_height * camera_zoom);
-
+	
 	if (global.weapon_slot_standalone == -1){
 		if (global.weapon_slot[global.weapon_slotcurrent]!= -1){
 		    camera_radius = global.weapon_camerarange[global.weapon_slot[global.weapon_slotcurrent]];
@@ -86,3 +86,6 @@ if (!global.game_pause){
 	camera_screenshake = false;
 	camera_screenshake_amount = 0;
 }
+
+view_wport[0] = camera_get_view_width(view_camera[0]);
+view_hport[0] = camera_get_view_height(view_camera[0]);

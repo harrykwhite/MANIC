@@ -25,5 +25,8 @@ burn = false;
 burn_time_max = 0;
 burn_time = 0;
 kill = false;
+render = false;
+render_time = 0;
+render_time_max = 5;
 
 image_alpha = 0;

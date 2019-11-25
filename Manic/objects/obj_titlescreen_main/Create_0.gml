@@ -283,7 +283,6 @@ warning_prompt_scale[0] = 1;
 warning_prompt_scale[1] = 1;
 
 gamepad_device_search = false;
-gamepad_device_search_time = 0;
 
 in_levelselect = false;
 selected = -1;

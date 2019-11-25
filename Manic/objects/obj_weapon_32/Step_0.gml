@@ -9,16 +9,14 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	return;
 }
 
-var mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
     if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0) && (global.player_stamina_active){
         var xpos = x + lengthdir_x(25, mdir) + lengthdir_x(1, up(mdir));
         var ypos = y + lengthdir_y(25, mdir) + lengthdir_y(1, up(mdir));
 		
-		var dir = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
-		
-		scr_player_knockback_initiate(2, dir);
+		scr_player_knockback_initiate(2, mdir);
         scr_effect_screenshake(2);
         scr_mouse_control(MouseType.SmallCircle, 5, 7);
         scr_weapon_ammo_use(1);
@@ -28,18 +26,18 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
 		scr_camera_to_player();
         image_speed = 1;
 		
-		part_type_direction(global.pt_smoke_4, dir - 6, dir + 6, 0, 0);
+		part_type_direction(global.pt_smoke_4, mdir - 6, mdir + 6, 0, 0);
 		for(var l = 0; l < 24; l += 4){
-			part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, dir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, dir) + random_range(-3, 3), global.pt_smoke_4, 1);
+			part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, mdir) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, mdir) + random_range(-3, 3), global.pt_smoke_4, 1);
 		}
 		
-		part_type_direction(global.pt_shell_0, (dir - 180) - 15, (dir - 180) + 15, 0, 0);
-        part_particles_create(global.ps_bottom, x + lengthdir_x(3, dir) + random_range(-3, 3), y + 4 + lengthdir_y(3, dir) + random_range(-3, 3), global.pt_shell_0, choose(1, 2));
+		part_type_direction(global.pt_shell_0, (mdir - 180) - 15, (mdir - 180) + 15, 0, 0);
+        part_particles_create(global.ps_bottom, x + lengthdir_x(3, mdir) + random_range(-3, 3), y + 4 + lengthdir_y(3, mdir) + random_range(-3, 3), global.pt_shell_0, choose(1, 2));
 		
 		var shoot = instance_create(xpos, ypos, obj_proj_0);
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
-	    shoot.dir = dir + random_range(-shoot_range, shoot_range);
+	    shoot.dir = mdir + random_range(-shoot_range, shoot_range);
 		shoot.spd = 21;
 		shoot.image_angle = shoot.dir;
 		

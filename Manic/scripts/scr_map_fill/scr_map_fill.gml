@@ -172,16 +172,3 @@ if (instance_exists(obj_p_solid)){
 		}
 	}
 }
-
-// Roads
-if (global.level_current == Level.DesolateVillage) || (global.level_current == Level.IntoTheCity){
-	var road = layer_tilemap_get_id(layer_get_id("Road"));
-	
-	for(var yy = 0; yy < room_height; yy += map_tile_width){
-		for(var xx = 0; xx < room_width; xx += map_tile_height){
-			if (tilemap_get_at_pixel(road, xx, yy)){
-				map[xx div map_tile_width, yy div map_tile_height] = 4;
-			}
-		}
-	}
-}

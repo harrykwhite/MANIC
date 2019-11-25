@@ -19,7 +19,9 @@ if (inhordechallenge) && (!paused){
 		inhordechallenge = false;
 		
 		spawn_time = 60 * spawn_interval[global.game_combat_state];
-		audio_play_sound(spawn_music_stinger[2], 3, false);
+		
+		var stinger = audio_play_sound(spawn_music_stinger[2], 3, false);
+		audio_sound_gain(stinger, 0.9 * obj_controller_all.real_music_volume, 0);
 		
 		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
 		audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
@@ -185,14 +187,13 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 				global.game_combat_state_time_real = 0;
 				global.game_combat_state = CombatState.Climax;
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
-			
+				
 				var stinger = audio_play_sound(spawn_music_stinger[1], 3, false);
-				audio_sound_gain(stinger, 0, 0);
-				audio_sound_gain(stinger, 0.7 * obj_controller_all.real_music_volume, 1000);
+				audio_sound_gain(stinger, 0.9 * obj_controller_all.real_music_volume, 0);
 			
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 3000);
 				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0.7 * obj_controller_all.real_music_volume, 3000);
-				audio_sound_gain(spawn_music_main[CombatState.Climax], 1 * obj_controller_all.real_music_volume, 4000);
+				audio_sound_gain(spawn_music_main[CombatState.Climax], 1 * obj_controller_all.real_music_volume, 1500);
 			}else{
 				// Idle Music
 				if (!audio_is_playing(spawn_music_main[CombatState.Idle])) || ((audio_sound_get_gain(spawn_music_main[CombatState.Idle]) <= 0) && (obj_controller_all.real_music_volume > 0)){
@@ -235,11 +236,15 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 		case CombatState.Climax:
 			if (global.game_combat_state_time_real >= (60 * spawn_state_time[global.game_combat_state])) && (scr_enemy_nearby_count(260, false) <= 0){
 				global.game_combat_state_time_real = 0;
+				
 				spawn_rate_real += 0.5;
 				spawn_rate_real = clamp(spawn_rate_real, 0, 3);
-				global.game_combat_state = CombatState.Idle;
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
-				audio_play_sound(spawn_music_stinger[2], 3, false);
+				
+				global.game_combat_state = CombatState.Idle;
+				
+				var stinger = audio_play_sound(spawn_music_stinger[2], 3, false);
+				audio_sound_gain(stinger, 0.9 * obj_controller_all.real_music_volume, 0);
 				
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);

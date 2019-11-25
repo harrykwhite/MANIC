@@ -1,5 +1,5 @@
 // Weapon info
-weaponinfo = false;
+//weaponinfo = false;
 
 // Pause
 if (global.game_pause){

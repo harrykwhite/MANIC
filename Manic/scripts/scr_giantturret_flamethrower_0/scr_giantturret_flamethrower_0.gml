@@ -15,8 +15,8 @@ if (instance_exists(turret)){
 			flame.image_xscale = 0.9;
 			flame.image_yscale = 0.9;
 			flame.image_angle = flame.dir;
-			flame.damage = 2;
-			flame.strength = 1.5;
+			flame.damage = 1;
+			flame.strength = 1.2;
 			flame.spd = random_range(10, 14);
 			flame.enemy = true;
 		}

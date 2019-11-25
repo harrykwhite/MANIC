@@ -311,6 +311,8 @@ if (!ispaused){
 }else{
 	// Pause
 	if (!pausedialogue){
+		pausedialogue_option_select_break = 10;
+		
 		if (pause_has_selected){
 			if (pause_has_selected_time < 1){
 				pause_has_selected_time += 0.025;
@@ -408,6 +410,7 @@ if (!ispaused){
 		}else{
 			if (scr_input_is_pressed(InputBinding.Pause)){
 				pausedialogue = false;
+				pausedialogue_time = 0;
 				scr_toggle_pause(false);
 			}else{
 				if (pausedialogue_break > 0){
@@ -417,14 +420,14 @@ if (!ispaused){
 						if (pausedialogue_option_selected > 0){
 							pausedialogue_option_selected --;
 						}else{
-							pausedialogue_option_selected = pausedialogue_option_max - 1;
+							pausedialogue_option_selected = pausedialogue_option_max;
 						}
 					
 						pausedialogue_break = pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max ? 6 : 12;
 					}
 					
 					if (down_pressed){
-						if (pausedialogue_option_selected < pausedialogue_option_max - 1){
+						if (pausedialogue_option_selected < pausedialogue_option_max){
 							pausedialogue_option_selected ++;
 						}else{
 							pausedialogue_option_selected = 0;
@@ -432,6 +435,8 @@ if (!ispaused){
 					
 						pausedialogue_break = pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max ? 6 : 12;
 					}
+					
+					pausedialogue_option_selected = clamp(pausedialogue_option_selected, 0, pausedialogue_option_max);
 				}
 				
 				if (up_pressed || down_pressed){
@@ -442,56 +447,62 @@ if (!ispaused){
 					pausedialogue_option_selected_held_time = 0;
 				}
 				
-				if (!iskeyboard ? scr_input_is_pressed(InputBinding.Interact) : scr_input_is_pressed(InputBinding.Attack)){
-					if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected < pausedialogue_option_max){
-						if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
-							global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
-						}
+				if (pausedialogue_option_select_break > 0){
+					pausedialogue_option_select_break --;
+				}else{
+					if (!iskeyboard ? scr_input_is_pressed(InputBinding.Interact) : scr_input_is_pressed(InputBinding.Attack)){
+						if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected < pausedialogue_option_max){
+							if (pausedialogue_type_option_cutscene[pausedialogue_option_selected] != -1){
+								global.cutscene_current = pausedialogue_type_option_cutscene[pausedialogue_option_selected];
+							}
 				
-						switch(pausedialogue_type_option_special[pausedialogue_option_selected]){
-							case 0:
-								global.game_combat_in_hordechallenge = true;
-								global.game_combat_in_hordechallenge_time = 60 * 30;
-								break;
+							switch(pausedialogue_type_option_special[pausedialogue_option_selected]){
+								case 0:
+									global.game_combat_in_hordechallenge = true;
+									global.game_combat_in_hordechallenge_time = 60 * 30;
+									break;
 							
-							case 1:
-								obj_controller_gameplay.cutscene_traingoto = Level.TrainStation;
+								case 1:
+									obj_controller_gameplay.cutscene_traingoto = Level.TrainStation;
 								
-								global.game_objective_complete = true;
+									global.game_objective_complete = true;
 								
-								switch(room){
-									case rm_level_6_00:
-										obj_controller_gameplay.cutscene_trainstart_type = 0;
-										obj_controller_gameplay.cutscene_trainroom = rm_level_6_01;
-										break;
+									switch(room){
+										case rm_level_6_00:
+											obj_controller_gameplay.cutscene_trainstart_type = 0;
+											obj_controller_gameplay.cutscene_trainroom = rm_level_6_01;
+											break;
 									
-									case rm_level_6_01:
-										obj_controller_gameplay.cutscene_trainstart_type = 1;
-										obj_controller_gameplay.cutscene_trainroom = rm_level_6_00;
-										break;
-								}
-								break;
+										case rm_level_6_01:
+											obj_controller_gameplay.cutscene_trainstart_type = 1;
+											obj_controller_gameplay.cutscene_trainroom = rm_level_6_00;
+											break;
+									}
+									break;
 							
-							case 2:
-								scr_effect_flash_script(0.01, 1, c_black, scr_trigger_1);
+								case 2:
+									scr_effect_flash_script(0.01, 1, c_black, scr_trigger_1);
 								
-								global.cutscene_current = 0;
-								global.cutscene_camera_x[0] = obj_controller_camera.x;
-								global.cutscene_camera_y[0] = obj_controller_camera.y;
+									global.cutscene_current = 0;
+									global.cutscene_camera_x[0] = obj_controller_camera.x;
+									global.cutscene_camera_y[0] = obj_controller_camera.y;
 								
-								if (instance_exists(obj_townperson_6)){
-									obj_townperson_6.talked_second = true;
-								}
-								break;
+									if (instance_exists(obj_townperson_6)){
+										obj_townperson_6.talked_second = true;
+									}
+									break;
+							}
+							
+							pausedialogue = false;
+							pausedialogue_time = 0;
+							pausedialogue_option_selected_held_time = 0;
+							scr_toggle_pause(false);
+						}else if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected == pausedialogue_option_max){
+							pausedialogue = false;
+							pausedialogue_time = 0;
+							pausedialogue_option_selected_held_time = 0;
+							scr_toggle_pause(false);
 						}
-			
-						pausedialogue = false;
-						pausedialogue_option_selected_held_time = 0;
-						scr_toggle_pause(false);
-					}else if (pausedialogue_option_selected != -1) && (pausedialogue_option_selected == pausedialogue_option_max){
-						pausedialogue = false;
-						pausedialogue_option_selected_held_time = 0;
-						scr_toggle_pause(false);
 					}
 				}
 			}
