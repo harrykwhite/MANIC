@@ -386,7 +386,7 @@ draw_set_font(fnt_cambria_0);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 
-var fkey = scr_input_get_name(InputBinding.FullscreenToggle);
+var fkey = "[F]";
 var fkey_x = 18;
 var fkey_y = display_get_gui_height() - 24;
 

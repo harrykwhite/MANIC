@@ -55,30 +55,30 @@ if (!global.game_pause){
 	// Tumbleweed
 	if (random(200) < 1){
 		if (instance_number(obj_environment_tumbleweed) < 5){
-				var xx = camx + random(camw);
-				var yy = camy + random(camh);
-				var safe = 0;
-				
-				var groundlayer = layer_get_id("InteriorFloorWood");
-				var groundmap = layer_tilemap_get_id(groundlayer);
-		
-				while(point_distance(xx, yy, global.player_position_x, global.player_position_y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (tilemap_get_at_pixel(groundmap, xx, yy)){
-					xx = camx + random(camw);
-					yy = camy + random(camh);
-		
-					if (safe < 100){
-						safe ++;
-					}else{
-						break;
-					}
-				}
+			var xx = camx + random(camw);
+			var yy = camy + random(camh);
+			var safe = 0;
 			
+			var groundlayer = layer_get_id("InteriorFloorWood");
+			var groundmap = layer_tilemap_get_id(groundlayer);
+			
+			while(point_distance(xx, yy, global.player_position_x, global.player_position_y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (tilemap_get_at_pixel(groundmap, xx, yy)){
+				xx = camx + random(camw);
+				yy = camy + random(camh);
+				
 				if (safe < 100){
-					instance_create(xx, yy, obj_environment_tumbleweed);
+					safe ++;
+				}else{
+					break;
 				}
 			}
+			
+			if (safe < 100){
+				instance_create(xx, yy, obj_environment_tumbleweed);
+			}
+		}
 	}
-
+	
 	// Fog
 	if (random(3) < 1){
 		if (part_particles_count(global.pt_fog_0) < 40){
@@ -135,8 +135,12 @@ if (!global.game_pause){
 				
 						default:
 							dodraw = false;
+							
 							obj_controller_ui.dialogue_x = postlevel_dialogue_inst.x;
 							obj_controller_ui.dialogue_y = postlevel_dialogue_inst.y - 24;
+							
+							postlevel_dialogue_exception = false;
+							global.game_companion_farmer_level2post_talked_0 = true;
 							break;
 					}
 			

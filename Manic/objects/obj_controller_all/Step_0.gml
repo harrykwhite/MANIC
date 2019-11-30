@@ -27,7 +27,7 @@ if (!global.pers_runthrough){
 	surface_resize(application_surface, basewidth, baseheight);
 	
 	if (full <= 0){
-		if (scr_input_is_pressed(InputBinding.FullscreenToggle) || full_autoswitch){
+		if (keyboard_check_pressed(ord("F")) || full_autoswitch){
 			global.game_option[| Options.Fullscreen] = !global.game_option[| Options.Fullscreen];
 			full = 50;
 			full_autoswitch = false;
@@ -125,10 +125,10 @@ if (gamepad_check_break > 0){
 		
 			if (mpressed) || (kpressed){
 				if (gamepad_input_check_disconnected_time < 30){
-					gamepad_input_check_disconnected_time += 8;
+					gamepad_input_check_disconnected_time += 4;
 				
 					if (mpressed){
-						gamepad_input_check_disconnected_time += 5;
+						gamepad_input_check_disconnected_time += 9;
 					}
 				}else{
 					found = false;

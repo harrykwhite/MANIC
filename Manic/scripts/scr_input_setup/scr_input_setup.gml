@@ -8,7 +8,6 @@ enum InputBinding{
 	Attack,
 	Throw,
 	Pause,
-	FullscreenToggle,
 	SwitchWeaponForward,
 	SwitchWeaponBack,
 }

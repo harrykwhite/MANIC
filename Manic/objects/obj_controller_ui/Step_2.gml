@@ -365,7 +365,7 @@ if (!ispaused){
 						pause_selected = pause_selectedmax - 1;
 					}
 					
-					pause_selected_break = pause_selected_held_time >= pause_selected_held_time_max ? 6 : 12;
+					pause_selected_break = ((pause_selected_held_time >= pause_selected_held_time_max) ? 6 : 12);
 				}
 				
 				if (down_pressed){
@@ -375,7 +375,7 @@ if (!ispaused){
 						pause_selected = 0;
 					}
 					
-					pause_selected_break = pause_selected_held_time >= pause_selected_held_time_max ? 6 : 12;
+					pause_selected_break = ((pause_selected_held_time >= pause_selected_held_time_max) ? 6 : 12);
 				}
 			}
 			
@@ -434,7 +434,7 @@ if (!ispaused){
 								pausedialogue_option_selected = pausedialogue_option_max;
 							}
 					
-							pausedialogue_break = pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max ? 6 : 12;
+							pausedialogue_break = ((pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max) ? 6 : 12);
 						}
 					
 						if (down_pressed){
@@ -444,7 +444,7 @@ if (!ispaused){
 								pausedialogue_option_selected = 0;
 							}
 					
-							pausedialogue_break = pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max ? 6 : 12;
+							pausedialogue_break = ((pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max) ? 6 : 12);
 						}
 					
 						pausedialogue_option_selected = clamp(pausedialogue_option_selected, 0, pausedialogue_option_max);

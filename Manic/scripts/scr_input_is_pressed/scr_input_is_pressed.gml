@@ -21,7 +21,6 @@ switch(global.game_input_type){
 			case InputBinding.Attack: return mouse_check_button_pressed(mb_left);
 			case InputBinding.Throw: return mouse_check_button_pressed(mb_right);
 			case InputBinding.Pause: return keyboard_check_pressed(vk_escape);
-			case InputBinding.FullscreenToggle: return keyboard_check_pressed(ord("F"));
 			case InputBinding.SwitchWeaponBack: return mouse_wheel_up();
 			case InputBinding.SwitchWeaponForward: return mouse_wheel_down();
 		}
@@ -37,8 +36,7 @@ switch(global.game_input_type){
 			case InputBinding.Dash: return gamepad_button_check_pressed(gp, gp_face3);
 			case InputBinding.Attack: return gamepad_button_check_pressed(gp, gp_shoulderrb);
 			case InputBinding.Throw: return gamepad_button_check_pressed(gp, gp_shoulderlb);
-			case InputBinding.Pause: return gamepad_button_check_pressed(gp, gp_start);
-			case InputBinding.FullscreenToggle: return gamepad_button_check_pressed(gp, gp_select);
+			case InputBinding.Pause: return gamepad_button_check_pressed(gp, gp_select);
 			case InputBinding.SwitchWeaponBack: return gamepad_button_check_pressed(gp, gp_shoulderl);
 			case InputBinding.SwitchWeaponForward: return gamepad_button_check_pressed(gp, gp_shoulderr);
 		}

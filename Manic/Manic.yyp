@@ -5407,14 +5407,6 @@
             }
         },
         {
-            "Key": "598da256-a37a-426b-b668-f9bb4032de89",
-            "Value": {
-                "id": "2be6fb70-8a1e-4cd3-95e6-0da8e8108f49",
-                "resourcePath": "sprites\\runexperiment\\runexperiment.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "59ccd17d-1a08-4fcf-a437-716760e8a7eb",
             "Value": {
                 "id": "d87e3f56-7974-454d-951e-87937878036c",

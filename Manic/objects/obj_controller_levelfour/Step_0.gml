@@ -102,8 +102,12 @@ if (!global.game_pause){
 						
 						default:
 							dodraw = false;
+							
 							obj_controller_ui.dialogue_x = prelevel_dialogue_inst.x;
 							obj_controller_ui.dialogue_y = prelevel_dialogue_inst.y - 24;
+							
+							postlevel_dialogue_exception = false;
+							global.game_companion_farmer_level4pre_talked_0 = true;
 							break;
 					}
 			

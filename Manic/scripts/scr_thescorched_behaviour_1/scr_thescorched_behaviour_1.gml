@@ -39,7 +39,7 @@ if (instance_exists(target)){
 				run_x = random_range(arena_x, arena_x + arena_width);
 				run_y = random_range(arena_y, arena_y + arena_height);
 				
-				while(distance_to_point(run_x, run_y) < 80){
+				while(distance_to_point(run_x, run_y) < 80 || place_meeting(run_x, run_y, obj_p_solid)){
 					run_x = random_range(arena_x, arena_x + arena_width);
 					run_y = random_range(arena_y, arena_y + arena_height);
 				}

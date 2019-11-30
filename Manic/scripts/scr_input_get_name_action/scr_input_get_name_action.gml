@@ -12,7 +12,6 @@ switch(binding){
 	case InputBinding.Attack: rstr = "Attack"; break;
 	case InputBinding.Throw: rstr = "Throw"; break;
 	case InputBinding.Pause: rstr = "Pause"; break;
-	case InputBinding.FullscreenToggle: rstr = "Fullscreen"; break;
 	case InputBinding.SwitchWeaponForward: rstr = "Switch Weapon Forward"; break;
 	case InputBinding.SwitchWeaponBack: rstr = "Switch Weapon Back"; break;
 }
