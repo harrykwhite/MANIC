@@ -6,6 +6,7 @@ if (!instance_exists(owner)){
 }
 
 image_xscale = owner.scale;
+
 if (owner.weapon != -1){
 	if (instance_exists(owner.weapon)){
 		wcurrent = global.pawnweapon_playerindex[owner.weapon.index];

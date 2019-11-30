@@ -4,5 +4,5 @@ if (global.game_combat_in_hordechallenge){
 	
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_center);
-	scr_text_shadow(drawx, drawy, string(global.game_combat_in_hordechallenge_time div 60), c_white);
+	scr_text(drawx, drawy, string(global.game_combat_in_hordechallenge_time div 60), c_white);
 }

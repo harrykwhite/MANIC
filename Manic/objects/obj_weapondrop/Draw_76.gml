@@ -28,5 +28,5 @@ if (render_time > 0){
 }
 
 if (render){
-	scr_render_me(y - 29 + offset, true);
+	scr_render_me(y - 39 + offset, true);
 }

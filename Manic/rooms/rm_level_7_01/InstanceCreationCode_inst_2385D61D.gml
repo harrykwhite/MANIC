@@ -1,2 +1,3 @@
 listnum = 7;
-image_angle = 180;
+dir = 180;
+dir_to = dir;

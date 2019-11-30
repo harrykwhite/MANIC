@@ -67,7 +67,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_enemy_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_enemy_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_0, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_enemy_0, 1);
 			}
 			break;
 		
@@ -75,7 +75,7 @@ if (health_current <= 0){
 			repeat(3){
 				part_type_speed(global.pt_bodypart_enemy_1, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_enemy_1, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_1, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-3, 3), y + random_range(-3, 3), global.pt_bodypart_enemy_1, 1);
 			}
 			break;
 		
@@ -90,7 +90,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_enemy_2, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_enemy_2, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_2, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-10, 10), y + random_range(-5, 5), global.pt_bodypart_enemy_2, 1);
 			}
 			break;
 		
@@ -98,7 +98,7 @@ if (health_current <= 0){
 			repeat(5){
 				part_type_speed(global.pt_bodypart_enemy_3, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_enemy_3, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_3, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-7, 7), y + random_range(-8, 8), global.pt_bodypart_enemy_3, 1);
 			}
 			break;
 		
@@ -109,7 +109,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_enemy_4, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_enemy_4, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-10, 10), y + random_range(-6, 6), global.pt_bodypart_enemy_4, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-10, 10), y + random_range(-5, 5), global.pt_bodypart_enemy_4, 1);
 			}
 			break;
 		
@@ -122,7 +122,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_enemy_5, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_enemy_5, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_enemy_5, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-10, 10), y + random_range(-6, 8), global.pt_bodypart_enemy_5, 1);
 			}
 			
 			if (global.game_objective_current == Objectives.KillDeer) && (!global.game_objective_complete){
@@ -161,7 +161,7 @@ if (health_current <= 0){
 			repeat(6){
 				part_type_speed(global.pt_bodypart_thescorched_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_thescorched_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_thescorched_0, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_thescorched_0, 1);
 			}
 			break;
 		
@@ -172,7 +172,7 @@ if (health_current <= 0){
 			repeat(6){
 				part_type_speed(global.pt_bodypart_thedogkeeper_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_thedogkeeper_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_thedogkeeper_0, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_thedogkeeper_0, 1);
 			}
 			break;
 		
@@ -183,7 +183,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_thedogkeeper_dog_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_thedogkeeper_dog_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_thedogkeeper_dog_0, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-10, 10), y + random_range(-5, 5), global.pt_bodypart_thedogkeeper_dog_0, 1);
 			}
 			break;
 		
@@ -191,7 +191,7 @@ if (health_current <= 0){
 			repeat(9){
 				part_type_speed(global.pt_bodypart_giantturret_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_giantturret_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-24, 24), y + random_range(-10, 10), global.pt_bodypart_giantturret_0, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-24, 24), y + random_range(-12, 12), global.pt_bodypart_giantturret_0, 1);
 			}
 			break;
 		
@@ -199,7 +199,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_giantturret_flamethrower_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_giantturret_flamethrower_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_giantturret_flamethrower_0, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-7, 7), y + random_range(-6, 6), global.pt_bodypart_giantturret_flamethrower_0, 1);
 			}
 			break;
 
@@ -229,7 +229,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_companion_1, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_companion_1, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_1, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_companion_1, 1);
 			}
 			break;
 		
@@ -244,7 +244,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_companion_2, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_companion_2, knockback_direction - 35, knockback_direction + 35, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_2, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_companion_2, 1);
 			}
 			break;
 		
@@ -259,7 +259,7 @@ if (health_current <= 0){
 			repeat(4){
 				part_type_speed(global.pt_bodypart_companion_3, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_companion_3, knockback_direction - 15, knockback_direction + 15, 0, 0);
-				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_3, 1);
+				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_companion_3, 1);
 			}
 			break;
 		
@@ -281,7 +281,7 @@ if (health_current <= 0){
 	}
 	
 	if (corpse != noone){
-		corpse.spd = max(knockback_speed * 1.5, 1.35) + random_range(-0.5, 1);
+		corpse.spd = max(knockback_speed * 1.25, 1.35) + random_range(-0.5, 0.5);
 		corpse.dir = knockback_direction;
 		corpse.move = true;
 		corpse.image_xscale = image_xscale;

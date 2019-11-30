@@ -10,9 +10,9 @@ ini_open(working_directory + "config.ini");
 if (refresh_display){
 	var full = global.game_option[| Options.Fullscreen];
 	
+	window_set_fullscreen(full);
+	
 	if (window_get_fullscreen() != full){
-		window_set_fullscreen(full);
-		
 		if (full){
 			with(obj_controller_all){
 				//minimise_time = 1;
@@ -47,6 +47,7 @@ ini_write_real("Options", "MusicVolume", global.game_option[| Options.MusicVolum
 ini_write_real("Options", "AmbienceVolume", global.game_option[| Options.AmbienceVolume]);
 
 ini_write_real("Options", "InputType", global.game_input_type);
+ini_write_real("Options", "LevelSelectUnlocked", global.game_levelselect_unlocked);
 
 ini_close();
 

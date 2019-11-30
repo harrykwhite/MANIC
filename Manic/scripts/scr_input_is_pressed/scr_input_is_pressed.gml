@@ -3,6 +3,10 @@
 var binding = argument[0];
 var axiszone = (argument_count > 1 ? argument[1] : 0.05);
 
+if (steam_is_overlay_activated()) || (obj_controller_all.input_break > 0){
+	return false;
+}
+
 var gp = global.game_input_gamepad_current;
 
 switch(global.game_input_type){

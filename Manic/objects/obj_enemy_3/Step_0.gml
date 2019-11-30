@@ -3,19 +3,21 @@ if (flash_time > 0){
 }
 
 if (light_brightness < 1){
-	light_brightness += 0.05;
+	light_brightness += 0.025;
 }else if (light_brightness > 1){
-	light_brightness -= 0.05;
+	light_brightness -= 0.025;
 }
 
-if (instance_exists(mylight)) && (mylight != noone){
-	mylight.x = x;
-	mylight.y = y;
-	mylight.light[| eLight.X] = x;
-	mylight.light[| eLight.Y] = y;
-	mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+if (!instance_exists(mylight)){
+	mylight = instance_create_layer(x, y, "Lights", obj_enemy_3_light);
 }
+
+mylight.x = x;
+mylight.y = y;
+mylight.light[| eLight.X] = x;
+mylight.light[| eLight.Y] = y;
+mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 var ispaused = false;
 if (global.game_pause){
@@ -54,3 +56,5 @@ if (abs(image_angle) < 90) || (abs(image_angle) > 270){
 }else{
 	image_yscale = -scale;
 }
+
+image_angle = dir;

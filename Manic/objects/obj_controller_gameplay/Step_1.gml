@@ -5,7 +5,7 @@ if (corpse_active_time > 0){
 
 // Game Pausing
 if (global.cutscene_current == -1) && (instance_exists(obj_player)){
-    if (scr_input_is_pressed(InputBinding.Pause)) && (!obj_controller_ui.pausedialogue){
+    if (scr_input_is_pressed(InputBinding.Pause)) && (!obj_controller_ui.pausedialogue) && (!obj_controller_ui.pause_has_selected) && (!obj_controller_all.warning_prompt){
         scr_toggle_pause(!global.game_pause);
     }
 	

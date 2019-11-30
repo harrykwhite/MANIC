@@ -151,6 +151,7 @@ if (instance_exists(target)) && (!walk_off) && (!greatsword_attack){
 		
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
+		weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 		
 		run_away_time = 0;
 		run_away_direction = 0;
@@ -197,6 +198,7 @@ if (greatsword_attack){
 		weapon_index = PawnWeapon.Greatsword;
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
 		weapon.owner = id;
+		weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 		
 		has_greatsword = true;
 	}

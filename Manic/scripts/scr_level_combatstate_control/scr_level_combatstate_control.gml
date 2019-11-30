@@ -20,9 +20,6 @@ if (inhordechallenge) && (!paused){
 		
 		spawn_time = 60 * spawn_interval[global.game_combat_state];
 		
-		var stinger = audio_play_sound(spawn_music_stinger[2], 3, false);
-		audio_sound_gain(stinger, 0.9 * obj_controller_all.real_music_volume, 0);
-		
 		audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 0);
 		audio_sound_gain(spawn_music_main[CombatState.Idle], 1 * obj_controller_all.real_music_volume, 8000);
 		audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 2000);
@@ -189,7 +186,7 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
 				
 				var stinger = audio_play_sound(spawn_music_stinger[1], 3, false);
-				audio_sound_gain(stinger, 0.9 * obj_controller_all.real_music_volume, 0);
+				audio_sound_gain(stinger, 0.7 * obj_controller_all.real_music_volume, 0);
 			
 				audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 3000);
 				audio_sound_gain(spawn_music_main[CombatState.Buildup], 0.7 * obj_controller_all.real_music_volume, 3000);

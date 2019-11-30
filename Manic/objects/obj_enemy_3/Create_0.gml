@@ -17,7 +17,7 @@ shoot_in_burst = false;
 
 whiteflash_alpha = 0;
 whiteflash_alphadec = 0.075;
-mylight = instance_create_layer(x, y, "Lights", obj_enemy_3_light);
+mylight = noone;
 flash_time = 0;
 light_brightness = 0;
 
@@ -42,7 +42,7 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_multiplier = 0;
 
-dir = image_angle;
+dir = 0;
 dir_to = dir;
 
 cutscene_prop = false;

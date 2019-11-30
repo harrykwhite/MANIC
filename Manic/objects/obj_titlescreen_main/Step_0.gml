@@ -71,12 +71,6 @@ if (in_settings) || (in_levelselect){
 			option_setting_audio_scale[i] = 1;
 		}
 	}
-	
-	if (!in_settings_controls){
-		for(var i = 0; i <= option_setting_controls_max; i ++){
-			option_setting_controls_scale[i] = 1;
-		}
-	}
 }
 
 if (!in_settings){
@@ -114,7 +108,7 @@ if (fade){
 		}else if (in_settings_audio){
 			omax = option_setting_audio_max + 2;
 		}else if (in_settings_controls){
-			omax = option_setting_controls_max + 2;
+			omax = 0;
 		}
 	}else if (in_levelselect){
 		omax = option_levelselect_max + 1;
@@ -126,10 +120,8 @@ if (fade){
 	
 	var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
 	var up_pressed = scr_input_is_pressed(InputBinding.Up, 0.275);
-	var right_pressed = scr_input_is_pressed(InputBinding.Right, 0.275);
-	var left_pressed = scr_input_is_pressed(InputBinding.Left, 0.275);
 	
-	if (!warning_prompt) && (!gamepad_device_search){
+	if (!obj_controller_all.warning_prompt){
 		if (selected_break > 0){
 			selected_break --;
 		}else{
@@ -179,61 +171,6 @@ if (fade){
 		}else{
 			selected_held_time = 0;
 		}
-	}else if (warning_prompt) && (!gamepad_device_search){
-		if (!iskeyboard){
-			warning_prompt_selected = max(warning_prompt_selected, 0);
-		}
-		
-		if (warning_prompt_selected_break > 0){
-			warning_prompt_selected_break --;
-		}else{
-			if (!iskeyboard){
-				if (up_pressed || down_pressed || right_pressed || left_pressed){
-					warning_prompt_selected = !warning_prompt_selected;
-					warning_prompt_selected_break = 12;
-				}
-			}
-		}
-		
-		if (warning_prompt_selected != -1){
-			if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
-				if (warning_prompt_selected == 0){
-					scr_clear_save_data();
-				}
-			
-				warning_prompt = false;
-				return;
-			}
-		}
-	}else if (gamepad_device_search){
-		var gcount = gamepad_get_device_count();
-		
-		if (global.game_input_type == InputType.Keyboard){
-			for(var g = 0; g < gcount; g ++){
-				if (gamepad_is_connected(g)){
-					global.game_input_type = InputType.Gamepad;
-					
-					global.game_input_gamepad_current = g;
-					global.game_input_gamepad_current_type = scr_input_gamepad_get_type();
-					
-					gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
-					gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
-					break;
-				}
-			}
-		}else{
-			global.game_input_type = InputType.Keyboard;
-		}
-		
-		option_setting_controls_value[0] = global.game_input_type;
-		
-		gamepad_device_search = false;
-		selected = -1;
-		
-		obj_controller_all.gamepad_check_break += 30;
-		
-		scr_options_refresh();
-		return;
 	}
 	
 	selected = clamp(selected, -1, omax);
@@ -292,24 +229,7 @@ if (fade){
 						press_break = 5;
 					}
 				}else if (in_settings_controls){
-					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
-						if (option_setting_controls_value[selected] < option_setting_controls_value_max[selected]){
-							option_setting_controls_value[selected] += option_setting_controls_value_interval[selected];
-						}else{
-							option_setting_controls_value[selected] = option_setting_controls_value_min[selected];
-						}
-						
-						if (selected == 0){
-							if (option_setting_controls_value[0] == InputType.Gamepad){
-								gamepad_device_search = true;
-								option_setting_controls_value[0] = InputType.Keyboard;
-							}
-							
-							global.game_input_type = InputType.Keyboard;
-						}else{
-							global.game_option[| option_setting_controls_edit[selected]] = option_setting_controls_value[selected];
-						}
-						
+					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){				
 						scr_options_refresh();
 						press_break = 5;
 					}
@@ -317,7 +237,7 @@ if (fade){
 			}
 		}
 		
-		if (!iskeyboard && scr_input_is_pressed(InputBinding.Dash)){
+		if (!iskeyboard && scr_input_is_pressed(InputBinding.Dash) && (!obj_controller_all.warning_prompt)){
 			var changed = false;
 			
 			if (in_settings_gameplay) || (in_settings_display) || (in_settings_audio) || (in_settings_controls){
@@ -417,28 +337,28 @@ if (fade){
 			}else if (in_settings) && (!in_levelselect){
 				if (in_settings_gameplay) || (in_settings_display) || (in_settings_audio) || (in_settings_controls){
 					if (selected == omax - 1){
-						if (indicate_text_alpha <= 0) || (indicate_text != "Options have been reset"){
-							var otype = "";
-							var str;
-							
-							if (in_settings_gameplay){
-								otype = "gameplay";
-								str = "Gameplay settings have been reset";
-							}else if (in_settings_display){
-								otype = "display";
-								str = "Display settings have been reset";
-							}else if (in_settings_audio){
-								otype = "audio";
-								str = "Audio settings have been reset";
-							}else if (in_settings_controls){
-								otype = "controls";
-								str = "Control settings have been reset";
-							}
-							
-							scr_option_reset_defaults(otype);
-							
+						var otype = "";
+						var str;
+						
+						if (in_settings_gameplay){
+							otype = "gameplay";
+							str = "Gameplay settings have been reset";
+						}else if (in_settings_display){
+							otype = "display";
+							str = "Display settings have been reset";
+						}else if (in_settings_audio){
+							otype = "audio";
+							str = "Audio settings have been reset";
+						}else if (in_settings_controls){
+							otype = "controls";
+							str = "Control settings have been reset";
+						}
+						
+						scr_option_reset_defaults(otype);
+						
+						with(obj_controller_all){
 							indicate_text = str;
-							indicate_text_time = 135;
+							indicate_text_time = indicate_text_time_max;
 							indicate_text_alpha = 1;
 						}
 					}else if (selected == omax){
@@ -451,7 +371,7 @@ if (fade){
 						scr_titlescreen_options_scale_reset();
 					}
 				}else{
-					if (!in_settings_gameplay) && (!in_settings_display) && (!in_settings_audio) && (!in_settings_controls){
+					if (!in_settings_gameplay) && (!in_settings_display) && (!in_settings_audio) && (!in_settings_controls) && (obj_controller_all.warning_prompt_alpha <= 0){
 						isvalid = true;
 						switch(selected){
 							case 0:
@@ -472,10 +392,9 @@ if (fade){
 								break;
 						
 							case 4:
-								if (indicate_text_alpha <= 0) || ((indicate_text != "No save data was found") && (indicate_text != "Save data has been reset")){
-									warning_prompt = true;
-								}
-								
+								obj_controller_all.warning_prompt = true;
+								obj_controller_all.warning_prompt_text = "Are you sure you want to delete your save progress?";
+								obj_controller_all.warning_prompt_type = 0;
 								isvalid = false;
 								break;
 							

@@ -45,7 +45,7 @@ if (global.player_stamina_active){
 		    scr_effect_screenshake(1);
 			scr_player_stamina_drain(10);
 			scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
-		
+			
 		    throw = instance_create(x, y, obj_weapondrop);
 		    throw.index = index;
 		    throw.spd = 9;
@@ -53,7 +53,8 @@ if (global.player_stamina_active){
 		    throw.dir = mdir;
 		    throw.image_angle = throw.dir;
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
-
+			throw.specialweapon = true;
+			
 		    instance_destroy();
 		    global.weapon_slot[global.weapon_slotcurrent] = -1;
 		}

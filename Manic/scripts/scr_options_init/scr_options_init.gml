@@ -45,5 +45,6 @@ global.game_option[| Options.MusicVolume] = ini_read_real("Options", "MusicVolum
 global.game_option[| Options.AmbienceVolume] = ini_read_real("Options", "AmbienceVolume", 40);
 
 global.game_input_type = ini_read_real("Options", "InputType", InputType.Keyboard);
+global.game_levelselect_unlocked = ini_read_real("Options", "LevelSelectUnlocked", false);
 
 ini_close();

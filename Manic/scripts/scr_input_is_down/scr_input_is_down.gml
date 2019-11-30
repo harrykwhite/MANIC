@@ -2,15 +2,19 @@
 var binding = argument0;
 var gp = global.game_input_gamepad_current;
 
+if (steam_is_overlay_activated()) || (obj_controller_all.input_break > 0){
+	return false;
+}
+
 switch(global.game_input_type){
 	case InputType.Keyboard:
 		switch(binding){
-			case InputBinding.Right: return keyboard_check_direct(ord("D"));
-			case InputBinding.Left: return keyboard_check_direct(ord("A"));
-			case InputBinding.Down: return keyboard_check_direct(ord("S"));
-			case InputBinding.Up: return keyboard_check_direct(ord("W"));
-			case InputBinding.Interact: return keyboard_check_direct(ord("E"));
-			case InputBinding.Dash: return keyboard_check_direct(vk_space);
+			case InputBinding.Right: return scr_key_check_direct(ord("D"));
+			case InputBinding.Left: return scr_key_check_direct(ord("A"));
+			case InputBinding.Down: return scr_key_check_direct(ord("S"));
+			case InputBinding.Up: return scr_key_check_direct(ord("W"));
+			case InputBinding.Interact: return scr_key_check_direct(ord("E"));
+			case InputBinding.Dash: return scr_key_check_direct(vk_space);
 			case InputBinding.Attack: return mouse_check_button(mb_left);
 			case InputBinding.Throw: return mouse_check_button(mb_right);
 			case InputBinding.Pause: return keyboard_check(vk_escape);

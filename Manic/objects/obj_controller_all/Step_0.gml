@@ -1,3 +1,5 @@
+var iskeyboard = (global.game_input_type == InputType.Keyboard);
+
 if (!global.pers_runthrough){
 	// Minimise
 	if (minimise_time != -1){
@@ -39,16 +41,13 @@ if (!global.pers_runthrough){
 	window_set_fullscreen(global.game_option[| Options.Fullscreen]);
 }
 
-// Steam
-if (steam_initialised()){
-	if (steam_is_overlay_activated()){
-		if (room != rm_ini) && (room != rm_title_0){
-			if (!global.game_pause){
-				scr_toggle_pause(true);
-			}
-		}
-	}
+// Input
+if (input_break > 0){
+	input_break --;
 }
+
+// Steam
+var steam_overlay = steam_is_overlay_activated();
 
 // Gamepad
 var gcount = gamepad_get_device_count();
@@ -57,8 +56,8 @@ var found = false;
 if (gamepad_check_break > 0){
 	gamepad_check_break --;
 }else{
-	if (window_has_focus()){
-		if (global.game_input_type == InputType.Keyboard){
+	if (window_has_focus()) && (!steam_overlay) && (input_break <= 0){
+		if (iskeyboard){
 			var button_matrix = scr_input_gamepad_any();
 	
 			if (button_matrix[# 0, 0] != -1){
@@ -75,13 +74,23 @@ if (gamepad_check_break > 0){
 		
 					if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
 						with(obj_titlescreen_main){
-							option_setting_controls_value[0] = global.game_input_type;
-							selected = -1;
+							selected = 0;
 						}
 					}
 		
 					gamepad_check_break += 20;
 					gamepad_input_check_disconnected_time = 0;
+					input_break = 20;
+					
+					indicate_text = "Gamepad connected at slot " + string(global.game_input_gamepad_current);
+					indicate_text_time = indicate_text_time_max;
+					indicate_text_alpha = 1;
+					
+					if (room != rm_ini) && (room != rm_title_0){
+						if (global.cutscene_current == -1){
+							scr_toggle_pause(true);
+						}
+					}
 		
 					scr_options_refresh();
 					scr_tutourial_names_set();
@@ -116,7 +125,7 @@ if (gamepad_check_break > 0){
 		
 			if (mpressed) || (kpressed){
 				if (gamepad_input_check_disconnected_time < 30){
-					gamepad_input_check_disconnected_time += 10;
+					gamepad_input_check_disconnected_time += 8;
 				
 					if (mpressed){
 						gamepad_input_check_disconnected_time += 5;
@@ -135,17 +144,25 @@ if (gamepad_check_break > 0){
 				global.game_input_type = InputType.Keyboard;
 			
 				if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
-					obj_titlescreen_main.option_setting_controls_value[0] = InputType.Keyboard;
-					obj_titlescreen_main.selected = -1;
+					with(obj_titlescreen_main){
+						selected = -1;
+					}
 				}
 			
 				scr_tutourial_names_set();
 				scr_options_refresh();
 				
 				gamepad_check_break += 20;
-			
+				input_break = 20;
+				
+				indicate_text = "Gamepad connection lost";
+				indicate_text_time = indicate_text_time_max;
+				indicate_text_alpha = 1;
+				
 				if (room != rm_ini) && (room != rm_title_0){
-					scr_toggle_pause(true);
+					if (global.cutscene_current == -1){
+						scr_toggle_pause(true);
+					}
 				}
 			}
 		}
@@ -179,7 +196,7 @@ cutscene_previous = global.cutscene_current;
 
 // Room persistent
 if (window_get_fullscreen()){
-	//window_set_size(display_get_width(), display_get_height());
+	window_set_size(display_get_width(), display_get_height());
 }
 
 if (room_pers_clear){
@@ -228,8 +245,10 @@ if (center_window_time != -1){
 	if (center_window_time > 0){
 		center_window_time --;
 	}else{
-		if (!window_get_fullscreen()){
-			window_center();
+		if (!macbuild){
+			if (!window_get_fullscreen()){
+				window_center();
+			}
 		}
 		
 		center_window_time = -1;
@@ -244,9 +263,66 @@ if (keyboard_check_pressed(vk_tab)){
 	debug = !debug;
 }
 
+// Warning Prompt
+if (warning_prompt){
+	if (!iskeyboard){
+		warning_prompt_selected = max(warning_prompt_selected, 0);
+	}
+	
+	if (warning_prompt_selected_break > 0){
+		warning_prompt_selected_break --;
+	}else{
+		if (!iskeyboard){
+			var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
+			var up_pressed = scr_input_is_pressed(InputBinding.Up, 0.275);
+			var right_pressed = scr_input_is_pressed(InputBinding.Right, 0.275);
+			var left_pressed = scr_input_is_pressed(InputBinding.Left, 0.275);
+			
+			if (up_pressed || down_pressed || right_pressed || left_pressed){
+				warning_prompt_selected = !warning_prompt_selected;
+				warning_prompt_selected_break = 12;
+			}
+		}
+	}
+	
+	if (warning_prompt_selected != -1){
+		if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+			if (warning_prompt_selected == 0){
+				switch(warning_prompt_type){
+					case 0:
+						with(obj_titlescreen_main){
+							scr_clear_save_data();
+						}
+						break;
+					
+					case 1:
+						with(obj_controller_ui){
+							pause_has_selected = true;
+							pause_has_selected_index = 1;
+							pause_has_selected_time = 0;
+						}
+						break;
+					
+					case 2:
+						with(obj_controller_ui){
+							pause_has_selected = true;
+							pause_has_selected_index = 2;
+							pause_has_selected_time = 0;
+						}
+						break;
+				}
+			}
+			
+			warning_prompt = false;
+			return;
+		}
+	}
+}
+
 // Mouse
 if (room != rm_title_0){
 	while(!instance_exists(obj_controller_mouse)){
 		instance_create(scr_input_get_mouse_x(), scr_input_get_mouse_y(), obj_controller_mouse);
+		show_debug_message("Mouse created.");
 	}
 }

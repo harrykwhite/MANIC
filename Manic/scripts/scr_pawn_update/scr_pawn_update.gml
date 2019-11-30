@@ -54,8 +54,8 @@ if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_ind
 
 // Lock in room
 if (global.cutscene_current == -1){
-	x = clamp(x, 24, room_width - 24);
-	y = clamp(y, 24, room_height - 24);
+	x = clamp(x, 16, room_width - 16);
+	y = clamp(y, 16, room_height - 16);
 }
 
 // Death
@@ -90,8 +90,8 @@ if (health_current <= 0){
 	scr_effect_redtint_flash(redtint);
 	scr_effect_freeze(freeze);
 	scr_effect_zoom(zoom);
-    
-    instance_destroy();
+	
+	instance_destroy();
 	scr_sound_play(snd_other_kick_0, false, 0.8, 1.2);
 	
 	if (mylight != noone){
@@ -136,7 +136,10 @@ if (health_current <= 0){
 			
 			if (type == Enemy0_Type.TrainBoss){
 				global.game_boss_trainhorde_killed = true;
-				obj_pawn_other_train_1.is_boss = false;
+				
+				if (instance_exists(obj_pawn_other_train_1)){
+					obj_pawn_other_train_1.is_boss = false;
+				}
 				
 				scr_objective_change(Objectives.BoardTrain, -1, -1);
 			}
@@ -219,6 +222,13 @@ if (health_current <= 0){
 			
 		}else if (object_index == obj_antagonist){
 			global.cutscene_current = 54;
+			global.game_boss_final_killed = true;
+			
+			ini_open(working_directory + "config.ini");
+			ini_write_real("Options", "LevelSelectUnlocked", true);
+			global.game_levelselect_unlocked = true;
+			ini_close();
+			
 			obj_controller_gameplay.cutscene_ending_stage = 0;
 		}
 	}

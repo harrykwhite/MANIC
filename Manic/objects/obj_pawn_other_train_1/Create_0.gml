@@ -1,4 +1,3 @@
-event_inherited();
 dir = 1;
 spd = 4;
 component_spawn = false;

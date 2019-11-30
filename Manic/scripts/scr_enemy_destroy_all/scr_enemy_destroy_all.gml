@@ -1,11 +1,25 @@
-var length = array_length_1d(global.enemy);
-
-for(var o = 0; o < length; o ++){
-	var object = global.enemy[o];
-	
-	if (!object.cutscene_prop) && (!object.in_cutscene){
-		with(object){
-			instance_destroy();
-		}
+with(obj_enemy_0){
+	if (!cutscene_prop) && (!in_cutscene){
+		instance_destroy();
 	}
+}
+
+with(obj_enemy_1){
+	instance_destroy();
+}
+
+with(obj_enemy_2){
+	if (!cutscene_prop) && (!in_cutscene){
+		instance_destroy();
+	}
+}
+
+with(obj_enemy_4){
+	if (!cutscene_prop) && (!in_cutscene){
+		instance_destroy();
+	}
+}
+
+with(obj_enemy_5){
+	instance_destroy();
 }

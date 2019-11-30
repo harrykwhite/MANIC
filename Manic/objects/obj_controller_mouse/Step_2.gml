@@ -1,7 +1,7 @@
 var dodefault = true;
 
 if (global.game_input_type == InputType.Gamepad){
-	if (instance_exists(obj_player)){
+	if (instance_exists(obj_player)) && (!steam_is_overlay_activated()) && (obj_controller_all.input_break <= 0){
 		var axisx = gamepad_axis_value(global.game_input_gamepad_current, gp_axisrh);
 		var axisy = gamepad_axis_value(global.game_input_gamepad_current, gp_axisrv);
 		

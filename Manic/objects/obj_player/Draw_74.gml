@@ -21,22 +21,28 @@ if (global.cutscene_current == -1){
 	}
 }
 
+if (health_flash > 0.01){
+	health_flash *= 0.85;
+}else{
+	health_flash = 0;
+}
+
 if (global.player_health_max == 12){
 	draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, 6), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 35) * gui_scale_y, health_scale * scale * 0.75, health_scale * scale * 0.75, 0, c_white, health_alpha * 0.7);
 	draw_sprite_ext(spr_ui_hearts_0, clamp(hp - 6, 0, 6), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 42) * gui_scale_y, health_scale * scale * 0.75, health_scale * scale * 0.75, 0, c_white, health_alpha * 0.7);
 
 	if (i_blend_time > 0){
-		gpu_set_fog(true, make_colour_rgb(163, 42, 45), 0, 0);
-		draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, 6), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 35) * gui_scale_y, health_scale * scale * 0.75, health_scale * scale * 0.75, 0, c_white, health_alpha * 0.7 * (i_blend_time / 3));
-		draw_sprite_ext(spr_ui_hearts_0, clamp(hp - 6, 0, 6), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 42) * gui_scale_y, health_scale * scale * 0.75, health_scale * scale * 0.75, 0, c_white, health_alpha * 0.7 * (i_blend_time / 3));
+		gpu_set_fog(true, c_white, 0, 0);
+		draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, 6), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 35) * gui_scale_y, health_scale * scale * 0.75, health_scale * scale * 0.75, 0, c_white, health_alpha * 0.7 * (health_flash * 0.5));
+		draw_sprite_ext(spr_ui_hearts_0, clamp(hp - 6, 0, 6), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 42) * gui_scale_y, health_scale * scale * 0.75, health_scale * scale * 0.75, 0, c_white, health_alpha * 0.7 * (health_flash * 0.5));
 		gpu_set_fog(false, c_black, 0, 0);
 	}
 }else{
 	draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, global.player_health_max), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 35) * gui_scale_y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7);
 
 	if (i_blend_time > 0){
-		gpu_set_fog(true, make_colour_rgb(163, 42, 45), 0, 0);
-		draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, global.player_health_max), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 35) * gui_scale_y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7 * (i_blend_time / 3));
+		gpu_set_fog(true, c_white, 0, 0);
+		draw_sprite_ext(spr_ui_hearts_0, clamp(hp, 0, global.player_health_max), (x - camera_get_view_x(view_camera[0])) * gui_scale_x, ((y - camera_get_view_y(view_camera[0])) + 35) * gui_scale_y, health_scale * scale, health_scale * scale, 0, c_white, health_alpha * 0.7 * (health_flash * 0.5));
 		gpu_set_fog(false, c_black, 0, 0);
 	}
 }

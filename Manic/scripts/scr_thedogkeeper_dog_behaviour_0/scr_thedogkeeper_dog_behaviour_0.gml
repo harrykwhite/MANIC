@@ -3,7 +3,7 @@ var speed_final = 0;
 var face_player = true;
 target = obj_player;
 
-if (instance_exists(target)){
+if (instance_exists(target)) && (instance_exists(keeper)){
 	leash_dir = keeper.move_dir;
 	
 	if (distance_to_object(target) < leash_length){

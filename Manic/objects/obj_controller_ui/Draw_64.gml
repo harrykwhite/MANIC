@@ -102,7 +102,7 @@ if (instance_exists(obj_player)){
 		draw_set_halign(fa_right);
 		draw_set_font(fnt_cambria_0);
 		draw_set_alpha(1);
-		scr_text_shadow(xx - 14, yy - 28, string(counter + 1), c_gray);
+		scr_text(xx - 14, yy - 28, string(counter + 1), c_gray);
 		
 		gpu_set_fog(false, c_white, 0, 0);
 		
@@ -240,10 +240,10 @@ if (tutourial) && (!iscutscene){
 	var toffset = -(stwidth / 2) - ((stwidth / 2) * (tscale - 1));
 	
 	draw_set_alpha(tutourial_alpha);
-	scr_text_shadow_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_white, tscale, tscale, 0);
+	scr_text_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_white, tscale, tscale, 0);
 	
 	draw_set_alpha((tscale - 1) * 1.5 * tutourial_alpha);
-	scr_text_shadow_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
+	scr_text_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
 	
 	draw_set_alpha(1);
 	draw_set_valign(fa_top);
@@ -290,9 +290,9 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 	draw_set_valign(fa_middle);
 	
 	if (objective_scale > 1.01){
-		scr_text_shadow_transformed(textx, texty, text, c_white, objective_scale, objective_scale, 0);
+		scr_text_transformed(textx, texty, text, c_white, objective_scale, objective_scale, 0);
 	}else{
-		scr_text_shadow(textx, texty, text, c_white);
+		scr_text(textx, texty, text, c_white);
 	}
 	
 	redglowalpha = redglow + ((objective_scale - 1) / 0.25);
@@ -301,9 +301,9 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 		draw_set_alpha(redglowalpha);
 	
 		if (objective_scale > 1.01){
-			scr_text_shadow_transformed(textx, texty, text, c_maroon, objective_scale, objective_scale, 0);
+			scr_text_transformed(textx, texty, text, c_maroon, objective_scale, objective_scale, 0);
 		}else{
-			scr_text_shadow(textx, texty, text, c_maroon);
+			scr_text(textx, texty, text, c_maroon);
 		}
 	
 		draw_set_valign(fa_top);
@@ -327,7 +327,7 @@ if (weaponinfo_yoff > 0.02){
 	draw_set_alpha(weaponinfo_yoff / weaponinfo_yoff_max);
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
-	scr_text_shadow(dwidth / 2, dheight - 110 + weaponinfo_yoff, wname, c_white);
+	scr_text(dwidth / 2, dheight - 110 + weaponinfo_yoff, wname, c_white);
 	
 	draw_set_font(fnt_cambria_n1);
 	
@@ -338,23 +338,23 @@ if (weaponinfo_yoff > 0.02){
 		var wcontent_col = c_white;
 		
 		draw_set_halign(fa_center);
-		scr_text_shadow((dwidth / 2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
+		scr_text((dwidth / 2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
 		
 		draw_set_halign(fa_right);
-		scr_text_shadow((dwidth / 2) - gapwidth, dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
+		scr_text((dwidth / 2) - gapwidth, dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
 		
 		if (wtype == WeaponType.Ranged && weaponinfo_ammo <= 0){
 			wcontent_col = c_red;
 		}
 		
 		draw_set_halign(fa_left);
-		scr_text_shadow((dwidth / 2) + gapwidth, dheight - 76 + weaponinfo_yoff, wcontent_str, wcontent_col);
+		scr_text((dwidth / 2) + gapwidth, dheight - 76 + weaponinfo_yoff, wcontent_str, wcontent_col);
 	}else{
 		draw_set_halign(fa_right);
-		scr_text_shadow((dwidth / 2) - (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
+		scr_text((dwidth / 2) - (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
 		
 		draw_set_halign(fa_left);
-		scr_text_shadow((dwidth / 2) + (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
+		scr_text((dwidth / 2) + (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
 	}
 	
 	draw_set_alpha(1);
@@ -387,7 +387,7 @@ if (instance_exists(obj_player)){
 			
 			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
 				var quantity = global.weapon_slotquantity[counter];
-				scr_text_shadow(xx, yy, "x" + string(quantity), col);
+				scr_text(xx, yy, "x" + string(quantity), col);
 			}
 		}
 		
@@ -404,16 +404,16 @@ if (instance_exists(obj_player)){
 				if (global.weapon_slotammo[global.weapon_slotcurrent] <= 0){
 					draw_set_font(fnt_cambria_2);
 					draw_set_halign(fa_center);
-					scr_text_shadow(dwidth / 2, noammoy, "NO AMMO", c_red);
+					scr_text(dwidth / 2, noammoy, "NO AMMO", c_red);
 					draw_set_font(fnt_cambria_0);
-					scr_text_shadow(dwidth / 2, noammoy + 30, scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + " TO THROW", c_red);
+					scr_text(dwidth / 2, noammoy + 30, scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + " TO THROW", c_red);
 					// ^^^ Could this suggest to the player that there is no way of retrieving ammo back?
 				}
 			}else{
 				if (global.weapon_slot_standalone_ammo <= 0){
 					draw_set_font(fnt_cambria_2);
 					draw_set_halign(fa_center);
-					scr_text_shadow(dwidth / 2, noammoy, "NO AMMO", c_red);
+					scr_text(dwidth / 2, noammoy, "NO AMMO", c_red);
 				}
 			}
 		}*/
@@ -450,49 +450,49 @@ if (instance_exists(obj_player)){
 				switch(global.weapon_ammotype[w]){
 					case AmmoType.Bullets:
 						if (weaponammo_scale > 1.01){
-							scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, weaponammo_scale, weaponammo_scale, 0);
+							scr_text_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, weaponammo_scale, weaponammo_scale, 0);
 						}else{
-							scr_text_shadow(xx, yy, string(ammo) + "/" + string(maxammo), col);
+							scr_text(xx, yy, string(ammo) + "/" + string(maxammo), col);
 						}
 						break;
 					
 					case AmmoType.Fuel:
 						if (weaponammo_scale > 1.01){
-							scr_text_shadow_transformed(xx, yy, string(ammo) + " fuel", col, weaponammo_scale, weaponammo_scale, 0);
+							scr_text_transformed(xx, yy, string(ammo) + " fuel", col, weaponammo_scale, weaponammo_scale, 0);
 						}else{
-							scr_text_shadow(xx, yy, string(ammo) + " fuel", col);
+							scr_text(xx, yy, string(ammo) + " fuel", col);
 						}
 						break;
 					
 					case AmmoType.Explosives:
 						if (weaponammo_scale > 1.01){
-							scr_text_shadow_transformed(xx, yy, string(ammo) + " explosives", col, weaponammo_scale, weaponammo_scale, 0);
+							scr_text_transformed(xx, yy, string(ammo) + " explosives", col, weaponammo_scale, weaponammo_scale, 0);
 						}else{
-							scr_text_shadow(xx, yy, string(ammo) + " explosives", col);
+							scr_text(xx, yy, string(ammo) + " explosives", col);
 						}
 						break;
 					
 					case AmmoType.Arrows:
 						if (weaponammo_scale > 1.01){
-							scr_text_shadow_transformed(xx, yy, string(ammo) + " arrows", col, weaponammo_scale, weaponammo_scale, 0);
+							scr_text_transformed(xx, yy, string(ammo) + " arrows", col, weaponammo_scale, weaponammo_scale, 0);
 						}else{
-							scr_text_shadow(xx, yy, string(ammo) + " arrows", col);
+							scr_text(xx, yy, string(ammo) + " arrows", col);
 						}
 						break;
 					
 					case AmmoType.Darts:
 						if (weaponammo_scale > 1.01){
-							scr_text_shadow_transformed(xx, yy, string(ammo) + " darts", col, weaponammo_scale, weaponammo_scale, 0);
+							scr_text_transformed(xx, yy, string(ammo) + " darts", col, weaponammo_scale, weaponammo_scale, 0);
 						}else{
-							scr_text_shadow(xx, yy, string(ammo) + " darts", col);
+							scr_text(xx, yy, string(ammo) + " darts", col);
 						}
 						break;
 					
 					case AmmoType.Shells:
 						if (weaponammo_scale > 1.01){
-							scr_text_shadow_transformed(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col, weaponammo_scale, weaponammo_scale, 0);
+							scr_text_transformed(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col, weaponammo_scale, weaponammo_scale, 0);
 						}else{
-							scr_text_shadow(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col);
+							scr_text(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col);
 						}
 						break;
 				}
@@ -515,7 +515,7 @@ if (!drawammo){
 draw_set_alpha(1);
 draw_set_font(fnt_cambria_n1);
 draw_set_halign(fa_left);
-scr_text_shadow(136, stats_y, str, c_white);
+scr_text(136, stats_y, str, c_white);
 
 // Boss Health
 bosshealth_width_to = 500 / global.game_option[| Options.UIScale];
@@ -542,7 +542,7 @@ if (bosshealth_width_current > 0){
 	var w = bosshealth_width_current;
 	var h = 6;
 	
-	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_color_rgb(45, 45, 45), c_ltgray, c_ltgray, 0, true, false);
+	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_colour_rgb(38, 38, 38), c_ltgray, c_ltgray, 0, true, false);
 	
 	draw_set_alpha(bosshealth_flash * 0.3);
 	draw_set_colour(c_ltgray);
@@ -565,12 +565,12 @@ if (header_display_alpha > 0){
 	
 	draw_set_alpha(header_display_alpha * (header_display_line_width / line_width_to));
 	draw_set_halign(fa_center);
-	scr_text_shadow(dwidth / 2, 218 + ((1 - (header_display_line_width / line_width_to)) * 30), header_display_text, c_white);
+	scr_text(dwidth / 2, 218 + ((1 - (header_display_line_width / line_width_to)) * 30), header_display_text, c_white);
 	
 	draw_rectangle((dwidth / 2) - (header_display_line_width / 2), 254, (dwidth / 2) + (header_display_line_width / 2), 255, false);
 	
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow(dwidth / 2, 259, header_display_subtext, c_white);
+	scr_text(dwidth / 2, 259, header_display_subtext, c_white);
 	
 	draw_set_alpha(1);
 }
@@ -596,9 +596,9 @@ if (checkpoint_text_alpha > 0){
 	draw_set_halign(fa_center);
 	
 	if (checkpoint_text_time > 0){
-		scr_text_shadow((dwidth / 2), yy - ((1 - checkpoint_text_alpha) * 30), "Checkpoint Reached", c_white);
+		scr_text((dwidth / 2), yy - ((1 - checkpoint_text_alpha) * 30), "Checkpoint Reached", c_white);
 	}else{
-		scr_text_shadow((dwidth / 2), yy, "Checkpoint Reached", c_white);
+		scr_text((dwidth / 2), yy, "Checkpoint Reached", c_white);
 	}
 	
 	//var line_width_to = string_width("Checkpoint Reached") + 30;
@@ -630,7 +630,7 @@ if (control_indicate_text != ""){
 	draw_set_valign(fa_middle);
 	draw_set_alpha(0.8);
 	
-	scr_text_shadow(dwidth - control_indicate_x, dheight - 50, control_indicate_text + " " + buttonstr, c_white);
+	scr_text(dwidth - control_indicate_x, dheight - 50, control_indicate_text + " " + buttonstr, c_white);
 	
 	draw_set_valign(fa_top);
 }
@@ -648,8 +648,8 @@ if (global.game_option[| Options.ShowMinimap]){
 	var maptilewidth = obj_controller_gameplay.map_tile_width;
 	var maptileheight = obj_controller_gameplay.map_tile_height;
 
-	var mapdrawtilew = 5;
-	var mapdrawtileh = 5;
+	var mapdrawtilew = 4;
+	var mapdrawtileh = 4;
 
 	var mapdrawoffx = global.player_position_x / maptilewidth; mapdrawoffx -= (minimap_width / 2) / mapdrawtilew;
 	var mapdrawoffy = global.player_position_y / maptileheight; mapdrawoffy -= (minimap_height / 2) / mapdrawtileh;
@@ -679,59 +679,61 @@ if (global.game_option[| Options.ShowMinimap]){
 		map_objects_sprite[o + map_objects_count] = global.companion_mapicon[o];
 		map_objects_sprite_screenlock[o + map_objects_count] = false;
 	}
+	
+	map_objects_count = array_length_1d(map_objects) - 1;
 
-	map_objects[o + 1] = obj_player;
-	map_objects_sprite[o + 1] = spr_player_head_0_minimap;
-	map_objects_sprite_screenlock[o + 1] = false;
+	map_objects[map_objects_count + 1] = obj_player;
+	map_objects_sprite[map_objects_count + 1] = spr_player_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 1] = false;
 
-	map_objects[o + 2] = obj_pawn_other_prisoner_0;
-	map_objects_sprite[o + 2] = spr_prisoner_head_0_minimap;
-	map_objects_sprite_screenlock[o + 2] = false;
+	map_objects[map_objects_count + 2] = obj_pawn_other_prisoner_0;
+	map_objects_sprite[map_objects_count + 2] = spr_prisoner_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 2] = false;
 	
-	map_objects[o + 3] = obj_townperson_0;
-	map_objects_sprite[o + 3] = spr_townperson_0_head_0_minimap;
-	map_objects_sprite_screenlock[o + 3] = false;
+	map_objects[map_objects_count + 3] = obj_townperson_0;
+	map_objects_sprite[map_objects_count + 3] = spr_townperson_0_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 3] = false;
 	
-	map_objects[o + 4] = obj_townperson_1;
-	map_objects_sprite[o + 4] = spr_townperson_1_head_0_minimap;
-	map_objects_sprite_screenlock[o + 4] = false;
+	map_objects[map_objects_count + 4] = obj_townperson_1;
+	map_objects_sprite[map_objects_count + 4] = spr_townperson_1_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 4] = false;
 	
-	map_objects[o + 5] = obj_townperson_2;
-	map_objects_sprite[o + 5] = spr_townperson_2_head_0_minimap;
-	map_objects_sprite_screenlock[o + 5] = false;
+	map_objects[map_objects_count + 5] = obj_townperson_2;
+	map_objects_sprite[map_objects_count + 5] = spr_townperson_2_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 5] = false;
 	
-	map_objects[o + 6] = obj_townperson_3;
-	map_objects_sprite[o + 6] = spr_townperson_3_head_0_minimap;
-	map_objects_sprite_screenlock[o + 6] = false;
+	map_objects[map_objects_count + 6] = obj_townperson_3;
+	map_objects_sprite[map_objects_count + 6] = spr_townperson_3_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 6] = false;
 	
-	map_objects[o + 7] = obj_townperson_4;
-	map_objects_sprite[o + 7] = spr_townperson_4_head_0_minimap;
-	map_objects_sprite_screenlock[o + 7] = false;
+	map_objects[map_objects_count + 7] = obj_townperson_4;
+	map_objects_sprite[map_objects_count + 7] = spr_townperson_4_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 7] = false;
 	
-	map_objects[o + 8] = obj_townperson_5;
-	map_objects_sprite[o + 8] = spr_townperson_5_head_0_minimap;
-	map_objects_sprite_screenlock[o + 8] = false;
+	map_objects[map_objects_count + 8] = obj_townperson_5;
+	map_objects_sprite[map_objects_count + 8] = spr_townperson_5_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 8] = false;
 	
-	map_objects[o + 9] = obj_townperson_6;
-	map_objects_sprite[o + 9] = spr_townperson_6_head_0_minimap;
-	map_objects_sprite_screenlock[o + 9] = false;
+	map_objects[map_objects_count + 9] = obj_townperson_6;
+	map_objects_sprite[map_objects_count + 9] = spr_townperson_6_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 9] = false;
 	
-	map_objects[o + 10] = obj_townchild_0;
-	map_objects_sprite[o + 10] = spr_townchild_0_head_0_minimap;
-	map_objects_sprite_screenlock[o + 10] = false;
+	map_objects[map_objects_count + 10] = obj_townchild_0;
+	map_objects_sprite[map_objects_count + 10] = spr_townchild_0_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 10] = false;
 	
-	map_objects[o + 11] = obj_player_wife_0;
-	map_objects_sprite[o + 11] = spr_player_wife_head_0_minimap;
-	map_objects_sprite_screenlock[o + 11] = false;
+	map_objects[map_objects_count + 11] = obj_player_wife_0;
+	map_objects_sprite[map_objects_count + 11] = spr_player_wife_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 11] = false;
 	
-	map_objects[o + 12] = obj_player_child_0;
-	map_objects_sprite[o + 12] = spr_player_child_0_head_0_minimap;
-	map_objects_sprite_screenlock[o + 12] = false;
+	map_objects[map_objects_count + 12] = obj_player_child_0;
+	map_objects_sprite[map_objects_count + 12] = spr_player_child_0_head_0_minimap;
+	map_objects_sprite_screenlock[map_objects_count + 12] = false;
 	
 	if (global.game_objective_complete){
-		map_objects[o + 13] = obj_section_end_pointer;
-		map_objects_sprite[o + 13] = spr_ui_arrow;
-		map_objects_sprite_screenlock[o + 13] = true;
+		map_objects[map_objects_count + 13] = obj_section_end_pointer;
+		map_objects_sprite[map_objects_count + 13] = spr_ui_arrow;
+		map_objects_sprite_screenlock[map_objects_count + 13] = true;
 	}
 
 	map_objects_count = array_length_1d(map_objects);
@@ -823,7 +825,7 @@ if (rank_display_draw){
 	draw_set_alpha(rank_display_alpha);
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_center);
-	scr_text_shadow(dwidth / 2, 214, string(levelname), c_white);
+	scr_text(dwidth / 2, 214, string(levelname), c_white);
 	draw_rectangle(0, 274, dwidth, 274 + (3), false);
 	
 	draw_set_font(fnt_cambria_1);
@@ -836,10 +838,10 @@ if (rank_display_draw){
 		if (rank_display[counter]){
 			draw_set_alpha(rank_alpha[counter]);
 			draw_set_halign(fa_left);
-			scr_text_shadow(x1, (370 + (50 * counter)), string(rank_string[counter]), c_white);
+			scr_text(x1, (370 + (50 * counter)), string(rank_string[counter]), c_white);
 		
 			draw_set_halign(fa_right);
-			scr_text_shadow(x2, (370 + (50 * counter)), string(rank_score[counter]) + "pts", make_colour_rgb(189, 23, 23));
+			scr_text(x2, (370 + (50 * counter)), string(rank_score[counter]) + "pts", make_colour_rgb(189, 23, 23));
 		}
 		
 		counter ++;
@@ -851,15 +853,15 @@ if (rank_display_draw){
 		draw_set_font(fnt_cambria_2);
 		draw_set_halign(fa_center);
 		draw_set_alpha(rank_end_alpha);
-		scr_text_shadow((dwidth / 2) - 40, (370 + (50 * (length + 2))), "Grade", c_white);
+		scr_text((dwidth / 2) - 40, (370 + (50 * (length + 2))), "Grade", c_white);
 		
 		var scale = 0.85;
 		
 		draw_set_font(fnt_cambria_2);
-		scr_text_shadow_transformed((dwidth / 2) + 60, (370 + (50 * (length + 2))) - 4, string(scr_rank_to_string(rank)), c_white, scale, scale, 0);
+		scr_text_transformed((dwidth / 2) + 60, (370 + (50 * (length + 2))) - 4, string(scr_rank_to_string(rank)), c_white, scale, scale, 0);
 		
 		draw_set_font(fnt_cambria_0);
-		scr_text_shadow(dwidth / 2, (370 + (50 * (length + 2))) + 50, "Press Enter to Continue", c_white);
+		scr_text(dwidth / 2, (370 + (50 * (length + 2))) + 50, "Press Enter to Continue", c_white);
 	}
 }
 
@@ -892,7 +894,7 @@ if (pause_text_alpha > 0){
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_font(fnt_cambria_3);
-	scr_text_shadow(xx, yy - 80, "GAME PAUSED", c_white);
+	scr_text(xx, yy - 80, "GAME PAUSED", c_white);
 	
 	draw_set_font(fnt_cambria_2);
 	
@@ -905,7 +907,7 @@ if (pause_text_alpha > 0){
 	repeat(pause_selectedmax){
 		var opty = yy + (counter * offset);
 		
-		if (!selected_set){
+		if (!selected_set) && (!obj_controller_all.warning_prompt){
 			if (iskeyboard){
 				if (point_in_rectangle(mousex, mousey, xx - 80, opty - 16, xx + 80, opty + 16)){
 					pause_selected = counter;
@@ -916,10 +918,10 @@ if (pause_text_alpha > 0){
 		
 		if (pause_selected == counter){
 			pause_selectoption_scale[counter] = approach(pause_selectoption_scale[counter], 1.1, 40);
-			scr_text_shadow_transformed(xx, opty, pause_selectoption[counter], make_colour_rgb(189, 23, 23), pause_selectoption_scale[counter], pause_selectoption_scale[counter], 0);
+			scr_text_transformed(xx, opty, pause_selectoption[counter], make_colour_rgb(189, 23, 23), pause_selectoption_scale[counter], pause_selectoption_scale[counter], 0);
 		}else{
 			pause_selectoption_scale[counter] = approach(pause_selectoption_scale[counter], 1, 40);
-			scr_text_shadow_transformed(xx, opty, pause_selectoption[counter], c_white, pause_selectoption_scale[counter], pause_selectoption_scale[counter], 0);
+			scr_text_transformed(xx, opty, pause_selectoption[counter], c_white, pause_selectoption_scale[counter], pause_selectoption_scale[counter], 0);
 		}
 		
 		counter ++;
@@ -976,7 +978,7 @@ if (pausedialogue_alpha > 0){
 		
 		case 1:
 			draw_set_font(fnt_cambria_2);
-			scr_text_shadow(dwidth / 2, optyy, pausedialogue_type_text, c_white);
+			scr_text(dwidth / 2, optyy, pausedialogue_type_text, c_white);
 			
 			optyy += string_height(pausedialogue_type_text) + 20;
 			
@@ -986,7 +988,7 @@ if (pausedialogue_alpha > 0){
 				var optrealy = optyy + (counter * optint);
 				vslot ++;
 				
-				if (!selected_set){
+				if (!selected_set) && (!obj_controller_all.warning_prompt){
 					if (iskeyboard){
 						if (point_in_rectangle(mousex, mousey, optxx - 80, optrealy - 16, optxx + 80, optrealy + 16)){
 							pausedialogue_option_selected = counter;
@@ -997,10 +999,10 @@ if (pausedialogue_alpha > 0){
 				
 				if (pausedialogue_option_selected == counter){
 					pausedialogue_type_option_scale[counter] = approach(pausedialogue_type_option_scale[counter], 1.1, 40);
-					scr_text_shadow_transformed(optxx, optrealy, pausedialogue_type_option[counter], make_colour_rgb(189, 23, 23), pausedialogue_type_option_scale[counter], pausedialogue_type_option_scale[counter], 0);
+					scr_text_transformed(optxx, optrealy, pausedialogue_type_option[counter], make_colour_rgb(189, 23, 23), pausedialogue_type_option_scale[counter], pausedialogue_type_option_scale[counter], 0);
 				}else{
 					pausedialogue_type_option_scale[counter] = approach(pausedialogue_type_option_scale[counter], 1, 40);
-					scr_text_shadow_transformed(optxx, optrealy, pausedialogue_type_option[counter], c_white, pausedialogue_type_option_scale[counter], pausedialogue_type_option_scale[counter], 0);
+					scr_text_transformed(optxx, optrealy, pausedialogue_type_option[counter], c_white, pausedialogue_type_option_scale[counter], pausedialogue_type_option_scale[counter], 0);
 				}
 			}
 			
@@ -1009,7 +1011,7 @@ if (pausedialogue_alpha > 0){
 	
 	var exity = optyy + (vslot * optint);
 	
-	if (!selected_set){
+	if (!selected_set) && (!obj_controller_all.warning_prompt){
 		if (point_in_rectangle(mousex, mousey, optxx - 80, exity - 16, optxx + 80, exity + 16)){
 			pausedialogue_option_selected = counter;
 			selected_set = true;
@@ -1018,10 +1020,10 @@ if (pausedialogue_alpha > 0){
 	
 	if (pausedialogue_option_selected == counter){
 		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1.1, 40);
-		scr_text_shadow_transformed(optxx, exity, pausedialogue_option_exittext, make_colour_rgb(189, 23, 23), pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
+		scr_text_transformed(optxx, exity, pausedialogue_option_exittext, make_colour_rgb(189, 23, 23), pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
 	}else{
 		pausedialogue_option_exitscale = approach(pausedialogue_option_exitscale, 1, 40);
-		scr_text_shadow_transformed(optxx, exity, pausedialogue_option_exittext, c_white, pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
+		scr_text_transformed(optxx, exity, pausedialogue_option_exittext, c_white, pausedialogue_option_exitscale, pausedialogue_option_exitscale, 0);
 	}
 	
 	draw_set_valign(fa_top);
@@ -1054,7 +1056,7 @@ if (global.level_current == Level.Prologue){
 		
 		draw_set_alpha(game_opening_intro_text_alpha);
 		draw_set_halign(fa_center);
-		scr_text_shadow(dwidth / 2, dheight / 2, text, c_white);
+		scr_text(dwidth / 2, dheight / 2, text, c_white);
 	}
 }
 
@@ -1072,10 +1074,10 @@ if (teaserend){
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_alpha(teaserend_text_alpha);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 214, "MANIC", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 214, "MANIC", c_white);
 	
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 179, "A GAME BY GETA", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 179, "A GAME BY GETA", c_white);
 	
 	draw_set_font(fnt_cambria_1);
 	
@@ -1097,10 +1099,10 @@ if (teaserend){
 			teaserend_button_scale[b] = approach(teaserend_button_scale[b], 1, 40);
 		}
 		
-		scr_text_shadow_transformed(bx, by, teaserend_button[b], bcol, teaserend_button_scale[b], teaserend_button_scale[b], 0);
+		scr_text_transformed(bx, by, teaserend_button[b], bcol, teaserend_button_scale[b], teaserend_button_scale[b], 0);
 	}
 	
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 65 + (48 * (teaserend_button_selected_max + 1)), "Thanks for playing!", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 65 + (48 * (teaserend_button_selected_max + 1)), "Thanks for playing!", c_white);
 	
 	draw_set_valign(fa_top);
 }
@@ -1115,22 +1117,22 @@ if (ending){
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_alpha(ending_logo_text_alpha);
-	scr_text_shadow(dwidth / 2, dheight / 2, "MANIC", c_white);
+	scr_text(dwidth / 2, dheight / 2, "MANIC", c_white);
 	
 	draw_set_font(fnt_cambria_3);
 	draw_set_alpha(ending_credits_text_alpha);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 165, "A GAME BY GETA", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 165, "A GAME BY GETA", c_white);
 	
 	draw_set_font(fnt_cambria_2);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 100, "Programming, artwork and game design by Harry White", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 50, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2), "Art assistance for character design by James Lynch", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Sam Hollins", c_white);
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 100, "Programming, artwork and game design by Harry White", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 50, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
+	scr_text(dwidth / 2, (dheight / 2), "Art assistance for character design by James Lynch", c_white);
+	scr_text(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Sam Hollins", c_white);
+	scr_text(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
 	
 	var cont_text = "Press " + (global.game_input_type == InputType.Gamepad ? scr_input_get_name(InputBinding.Interact) : scr_input_get_name(InputBinding.Attack)) + " to return to titlescreen"
 	
-	scr_text_shadow(dwidth / 2, (dheight / 2) + 165, cont_text, c_white);
+	scr_text(dwidth / 2, (dheight / 2) + 165, cont_text, c_white);
 	
 	draw_set_valign(fa_top);
 }

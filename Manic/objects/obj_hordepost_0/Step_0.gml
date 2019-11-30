@@ -24,7 +24,7 @@ if (!completed){
 			case Level.TrainStation:
 				index = 1;
 		
-				if (global.game_hordechallenge1_completed){
+				if (global.game_hordechallenge1_completed) || (scr_player_has_upgrade(PlayerUpgrade.Goggles)){
 					completed = true;
 					didchange = true;
 				}
@@ -33,7 +33,7 @@ if (!completed){
 			case Level.DesolateVillage:
 				index = 2;
 		
-				if (global.game_hordechallenge2_completed){
+				if (global.game_hordechallenge2_completed) || (scr_player_has_upgrade(PlayerUpgrade.IronGlove)){
 					completed = true;
 					didchange = true;
 				}
@@ -42,7 +42,7 @@ if (!completed){
 			default:
 				index = 0;
 		
-				if (global.game_hordechallenge0_completed){
+				if (global.game_hordechallenge0_completed) || (scr_player_has_upgrade(PlayerUpgrade.ShoulderBand)){
 					completed = true;
 					didchange = true;
 				}

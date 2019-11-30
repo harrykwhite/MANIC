@@ -5,7 +5,7 @@ obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
-	var boss = inst_112E097F;
+	var boss = obj_giantturret;
 	var gate = inst_1F2A94;
 	
 	var bossexists = instance_exists(boss);

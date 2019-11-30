@@ -84,5 +84,5 @@ obj_controller_all.camera_resize_w = basewidth / camscale;
 obj_controller_all.camera_resize_h = baseheight / camscale;
 obj_controller_all.camera_resize_time = 3;
 
-//display_reset(0, false);
+display_reset(0, false);
 surface_resize(application_surface, basewidth, baseheight);

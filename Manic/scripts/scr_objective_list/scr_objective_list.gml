@@ -24,7 +24,7 @@ global.objective_counter_max[0] = 0;
 global.objective_name[1] = "Talk to and escort ^ residents in the town.";
 global.objective_counter[1] = 0;
 global.objective_counter_max[1] = 4;
-audio_get_listener_count();
+
 global.objective_name[2] = "Hunt and gather ^ deer meat.";
 global.objective_counter[2] = 0;
 global.objective_counter_max[2] = 4;

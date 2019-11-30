@@ -53,6 +53,8 @@ if (newlevel){
 	if (audio_is_playing(m_combat_city_2)){
 		audio_sound_gain(m_combat_city_2, 0, 5000);
 	}
+	
+	scr_checkpoint_reset();
 }
 
 if (audio_is_playing(m_ambience_rain_0)){

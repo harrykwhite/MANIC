@@ -213,11 +213,11 @@ if (instance_exists(obj_player)){
 			move_speed = 0;
 			
 			if (engine != noone){
-				if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) < 600){
-					if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y) > 20){
-						move_speed = 1.9;
+				if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y + 18) < 600){
+					if (point_distance(x, y, engine.x, engine.y + 18) > 50){
 						move_x_to = engine.x;
-						move_y_to = engine.y + 14;
+						move_y_to = engine.y + 18;
+						move_speed = 1.9;
 					}
 				}
 			}

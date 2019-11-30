@@ -18,9 +18,6 @@ walk_smoke_time_max = 36;
 walk_smoke_time = walk_smoke_time_max;
 
 offset = 0;
-offset_to = 0;
-offset_time = 0;
-offset_time_max = 30;
 
 canmove = true;
 
@@ -63,6 +60,7 @@ footstep_time = 0;
 // Health
 health_alpha = 0;
 health_scale = 1;
+health_flash = 0;
 
 // Stamina
 global.player_stamina_max = 100;

@@ -9,7 +9,7 @@ if (instance_exists(turret)){
 			part_particles_create(global.ps_front, xpos + lengthdir_x(-10 + l, ang) + random_range(-3, 3), ypos + lengthdir_y(-10 + l, ang) + random_range(-3, 3), global.pt_smoke_4, 1);
 		}
 		
-		repeat(choose(3, 4)){
+		repeat(choose(2, 3)){
 			var flame = instance_create(xpos, ypos, obj_proj_5);
 			flame.dir = ang + random_range(-1, 1);
 			flame.image_xscale = 0.9;

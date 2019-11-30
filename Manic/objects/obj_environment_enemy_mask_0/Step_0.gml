@@ -17,7 +17,7 @@ if (place_meeting(x, y + 8, obj_conveyerbelt_0)){
 	}
 }
 
-scr_object_table_place(25 + depth_real_offset, 1.4);
+scr_object_table_place(39 + depth_real_offset, 1.95);
 
 if (spd > 0){
 	x += lengthdir_x(spd, dir);

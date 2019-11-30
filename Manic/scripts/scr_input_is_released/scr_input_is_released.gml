@@ -2,6 +2,10 @@
 var binding = argument0;
 var gp = global.game_input_gamepad_current;
 
+if (steam_is_overlay_activated()) || (obj_controller_all.input_break > 0){
+	return false;
+}
+
 switch(global.game_input_type){
 	case InputType.Keyboard:
 		switch(binding){

@@ -31,7 +31,7 @@ if (global.weapon_slot_standalone == -1){
 	inp_check_down = scr_input_is_down(InputBinding.Down);
 	inp_check_dash = scr_input_is_pressed(InputBinding.Dash);
 	
-	if (global.game_input_type == InputType.Gamepad){
+	if (global.game_input_type == InputType.Gamepad) && (!steam_is_overlay_activated()) && (obj_controller_all.input_break <= 0){
 		hor_mult = abs(gamepad_axis_value(global.game_input_gamepad_current, gp_axislh));
 		ver_mult = abs(gamepad_axis_value(global.game_input_gamepad_current, gp_axislv));
 	}
@@ -106,7 +106,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 	
 	if (i_time > 0){
-		spd_multiplier += 0.2;
+		spd_multiplier += 0.1;
 	}
 	
 	if (has_weapon){
@@ -116,11 +116,11 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	if (global.player_health_current <= 2){
-	    spd_multiplier += 0.1;
+	    spd_multiplier += 0.075;
 	}
 	
 	if (global.player_health_current <= 4){
-		spd_multiplier += 0.1;
+		spd_multiplier += 0.075;
 	}
 
 	if (!global.player_stamina_active){
@@ -128,7 +128,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 	
 	if (burn_time > 0){
-		spd_multiplier += 0.15;
+		spd_multiplier += 0.075;
 	}
 
 	// Footstep Sound
@@ -160,11 +160,11 @@ if (global.weapon_slot_standalone == -1){
 	}
 	
 	// Player Sprite
-	if (hspd != 0) || (vspd != 0){
+	if (abs(len) > 0){
 		if (footstep_time > 0){
 			footstep_time--;
 		}else{
-			footstep_time = 36 * (1 - img_speed);
+			footstep_time = 28;
 			
 			// Play Footstep Sound
 			if (footstep_sound != -1){
@@ -180,7 +180,7 @@ if (global.weapon_slot_standalone == -1){
 			walk_smoke_time = walk_smoke_time_max;
 		}
 	}else{
-		footstep_time = 15;
+		footstep_time = 14;
 	}
 
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
@@ -340,11 +340,15 @@ if (global.weapon_slot_standalone == -1){
 	
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
 		img_speed = 0.05;
-	}else{
+	}else if (move_x_to == -1) && (move_y_to == -1){
 		if (xaxis != 0){
 			if (sign(xaxis) != sign(image_xscale)){
 				img_speed *= -1;
 			}
+		}
+	}else{
+		if (sign(move_x_to - x) != sign(image_xscale)){
+			img_speed *= -1;
 		}
 	}
 	

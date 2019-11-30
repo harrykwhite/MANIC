@@ -1,7 +1,7 @@
 ///@param level
 var level = argument0;
 
-var room_count = room_last;
+var room_count = room_last + 1;
 
 for(var r = 0; r <= room_count; r ++){
 	var str = "level_" + string(level) + "_";

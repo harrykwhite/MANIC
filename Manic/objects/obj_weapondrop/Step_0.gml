@@ -17,6 +17,30 @@ if (index == PlayerWeapon.Grenade) || (index == PlayerWeapon.ToxicGrenade) || (i
 }
 
 // Motion and Bouncing
+var tweapon = instance_place(x, y, obj_weapondrop);
+
+if (tweapon != noone){
+	pushaway_dir = point_direction(x, y, tweapon.x, tweapon.y) - 180;
+	
+	if (pushaway_speed < pushaway_speed_max){
+		pushaway_speed += 0.2;
+	}
+}else{
+	if (pushaway_speed > 0){
+		pushaway_speed -= 0.2;
+	}
+}
+
+if (pushaway_speed > 0){
+	var xjump = lengthdir_x(pushaway_speed, pushaway_dir);
+	var yjump = lengthdir_y(pushaway_speed, pushaway_dir);
+	
+	if (!place_meeting(x + xjump + lengthdir_x(1, pushaway_dir), y + yjump + lengthdir_y(1, pushaway_dir), obj_p_solid)){
+		x += xjump;
+		y += yjump;
+	}
+}
+
 if (spd > 0){
     spd -= 0.3;
 	
@@ -85,11 +109,10 @@ if (kill){
 	if (index == PlayerWeapon.Stick){
 		scr_sound_play_distance(snd_weapon_stick_break_0, false, 200);
 		
-		var sticklen = 20, thislen = 4;
-		repeat(sticklen){
+		var sticklen = 18;
+		for(var thislen = -(sticklen / 2); thislen < (sticklen / 2); thislen += 3){
 			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_0, 1);
 			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_flash_0, 1);
-			thislen += 4;
 		}
 	}
 }
@@ -267,7 +290,7 @@ if (instance_exists(obj_player)){
 				}
 				
 				// Create the new weapon object
-				if (index != -1 && !foundempty){
+				if (index != -1) && (!foundempty){
 					var new_wp_obj = instance_create(obj_player.x, obj_player.y, global.weapon_object[index]);
 					
 					if (index == PlayerWeapon.Stick){

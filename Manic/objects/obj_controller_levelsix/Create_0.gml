@@ -1,0 +1,1 @@
+trainboss_time = 0;

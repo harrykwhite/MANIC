@@ -1,7 +1,0 @@
-beats:
-* fade in
-* howling wind fades in
-* camera slowly pans over the forest
-* stops at the players house
-* the player is in one of the rooms
-* pause for a bit, then give player control

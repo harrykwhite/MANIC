@@ -19,8 +19,8 @@ if (instance_exists(target)){
 			scr_effect_screenshake(2);
 			light_brightness = 1.25;
 			
-			var xpos = x + lengthdir_x(25 * scale, shoot_dir);
-			var ypos = y + lengthdir_y(25 * scale, shoot_dir);
+			var xpos = x + lengthdir_x(18 * scale, shoot_dir);
+			var ypos = y + lengthdir_y(18 * scale, shoot_dir);
 			
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
 			for(var l = 0; l < 16; l += 4){
@@ -132,8 +132,8 @@ if (instance_exists(target)){
 		}else{
 			if (instance_number(obj_proj_8) < 4){
 				shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
-				xpos = x + lengthdir_x(25 * scale, shoot_dir);
-				ypos = y + lengthdir_y(25 * scale, shoot_dir);
+				xpos = x + lengthdir_x(18 * scale, shoot_dir);
+				ypos = y + lengthdir_y(18 * scale, shoot_dir);
 			
 				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_shoot_3, false, 0.8, 1.2);

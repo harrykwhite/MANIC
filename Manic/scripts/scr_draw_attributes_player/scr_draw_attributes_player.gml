@@ -107,11 +107,11 @@ if (drawshader){
 		draw_self();
 	
 		if (!global.game_pause){
-			if (random(2.5) < 1){
+			if (random(3.5) < 1){
 				part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-18, 18), global.pt_poison_0, 1);
 			}
 
-			if (random(3.5) < 1){
+			if (random(4.5) < 1){
 				part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-18, 18), global.pt_poison_1, 1);
 			}
 		}

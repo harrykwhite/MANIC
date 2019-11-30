@@ -3,4 +3,6 @@ if (instance_exists(owner)){
 	y = owner.y;
 	image_xscale = owner.image_xscale;
 	image_yscale = owner.image_yscale;
+}else{
+	instance_destroy();
 }

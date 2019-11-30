@@ -210,5 +210,9 @@ if (global.player_health_current <= 0) && (!near_dead){
 	global.cutscene_current = -1;
 	global.game_score_deaths -= 1000;
 	
+	if (global.boss_current == Boss.TrainBoss) && (room == rm_level_6_00){
+		scr_objective_change(Objectives.WaitForTrain, 0, 0);
+	}
+	
     instance_destroy();
 }

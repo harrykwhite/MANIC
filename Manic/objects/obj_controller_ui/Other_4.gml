@@ -162,6 +162,7 @@ if (!global.pers_runthrough_pre){
 					}
 				}else{
 					scr_save_game();
+					scr_player_upgrades_clear();
 				
 					global.level_complete[i] = false;
 				

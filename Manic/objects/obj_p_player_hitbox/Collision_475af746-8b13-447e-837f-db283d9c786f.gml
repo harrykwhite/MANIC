@@ -21,9 +21,9 @@ with(owner){
 
 	if (i_time < 1) && (inst.damage_player){
 		if (object_index == obj_player){
-			scr_player_damage(inst.damage, inst.strength, random(360), 40);
+			scr_player_damage(round(inst.damage * 0.5), inst.strength, random(360), 40);
 		}else{
-			scr_pawn_damage(inst.damage, inst.strength, random(360), 40);
+			scr_pawn_damage(round(inst.damage * 0.5), inst.strength, random(360), 40);
 		}
 	
 	    scr_effect_screenshake(4);

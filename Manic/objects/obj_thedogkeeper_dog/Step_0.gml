@@ -28,5 +28,9 @@ if (global.cutscene_current == -1) || (cutscene_prop){
 	image_speed = 0;
 }
 
+if (!instance_exists(keeper)){
+	health_current = 0;
+}
+
 scr_pawn_update();
 image_yscale = scale;

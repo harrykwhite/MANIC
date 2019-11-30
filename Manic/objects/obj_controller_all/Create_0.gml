@@ -12,6 +12,11 @@ gui_resize_w = 0;
 gui_resize_h = 0;
 gui_resize_time = -1;
 
+indicate_text = "";
+indicate_text_time = 0;
+indicate_text_time_max = 90;
+indicate_text_alpha = 0;
+
 show_ui = true;
 
 app_surf_refresh_time = -1;
@@ -21,7 +26,7 @@ app_surf_refresh_h = 0;
 maximise_time = -1;
 minimise_time = -1;
 
-center_window_time = -1;
+center_window_time = 2;
 
 scr_part_setup();
 scr_options_init();
@@ -29,7 +34,6 @@ scr_options_refresh(true);
 scr_update_real_volumes();
 
 gamepad_check_break = 15;
-gamepad_check_disconnected_time = 0;
 
 camera_get_x1 = camera_get_view_x(view_camera[0]);
 camera_get_y1 = camera_get_view_y(view_camera[0]);
@@ -54,6 +58,8 @@ room_pers_clear_original = noone;
 room_pers_runthrough_turnoff = false;
 
 cutscene_previous = -1;
+
+input_break = 0;
 
 debug = false;
 sprite_index = noone;

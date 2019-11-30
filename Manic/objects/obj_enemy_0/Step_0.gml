@@ -1,7 +1,7 @@
 if (light_brightness < 1){
-	light_brightness += 0.05;
+	light_brightness += 0.025;
 }else if (light_brightness > 1){
-	light_brightness -= 0.05;
+	light_brightness -= 0.025;
 }
 
 if (type == Enemy0_Type.TrainBoss){

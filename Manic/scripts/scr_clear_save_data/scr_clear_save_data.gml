@@ -5,9 +5,9 @@ if (object_index != obj_titlescreen_main){
 
 if (file_exists("save.ini")){
 	file_delete("save.ini");
-	indicate_text = "Save data has been reset";
+	obj_controller_all.indicate_text = "Save data has been reset";
 }else{
-	indicate_text = "No save data was found";
+	obj_controller_all.indicate_text = "No save data was found";
 }
 
 scr_save_game_reader();
@@ -25,5 +25,7 @@ if (!isteaser){
 	}
 }
 
-indicate_text_time = 135;
-indicate_text_alpha = 1;
+with(obj_controller_all){
+	indicate_text_time = indicate_text_time_max;
+	indicate_text_alpha = 1;
+}

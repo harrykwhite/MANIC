@@ -28,5 +28,8 @@ kill = false;
 render = false;
 render_time = 0;
 render_time_max = 5;
+pushaway_speed = 0;
+pushaway_speed_max = 2;
+pushaway_dir = 0;
 
 image_alpha = 0;

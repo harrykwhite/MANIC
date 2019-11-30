@@ -54,18 +54,18 @@ if (instance_exists(obj_player)){
 			if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
-				move_speed = 2.1;
+				move_speed = 1.8;
 				
 				if (dist_to_player > 100 + (60 * order)){
-					move_speed = 2.6;
+					move_speed = 2.3;
 				}
 				
 				if (dist_to_player > 140 + (60 * order)){
-					move_speed = 3.1;
+					move_speed = 2.7;
 				}
 				
 				if (dist_to_player > 180 + (60 * order)){
-					move_speed = 3.6;
+					move_speed = 3.1;
 				}
 				
 				face_player = true;
@@ -87,22 +87,23 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
 				
-				move_speed = 2.1;
+				move_speed = 2.3;
 				bite_to_time ++;
 				bite_retreat_time = 0;
 				
 				if (distance_to_point(move_x_to, move_y_to) < 3) || (bite_to_time > 120){
 					bite_to = false;
+					bite_to_time = 0;
 					bite_retreat = true;
 					bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to) - 180;
 					bite_retreat_x = target.x;
 					bite_retreat_y = target.y + 6;
 				}
 			}else if (bite_retreat){
-				move_x_to = x + lengthdir_x(30, bite_retreat_direction);
-				move_y_to = y + lengthdir_y(30, bite_retreat_direction);
+				move_x_to = x + lengthdir_x(45, bite_retreat_direction);
+				move_y_to = y + lengthdir_y(45, bite_retreat_direction);
 				
-				move_speed = 2.3;
+				move_speed = 2.1;
 				bite_retreat_time ++;
 				bite_to_time = 0;
 				
@@ -114,12 +115,12 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
 				
-				if (distance_to_object(target) > 70){
+				if (distance_to_object(target) > 60){
 					if (move_away_time > 0){
 						move_away_time --;
 						move_speed = 0;
 					}else{
-						move_speed = 1.9;
+						move_speed = 1.7;
 					}
 				}else{
 					move_away_time = 20;
@@ -138,7 +139,7 @@ if (instance_exists(obj_player)){
 		}
 	}else{
 		if (distance_to_object(obj_player) > 37 + (60 * order)){
-			move_speed = 1.9;
+			move_speed = 1.7;
 		}else{
 			move_speed = 0;
 		}

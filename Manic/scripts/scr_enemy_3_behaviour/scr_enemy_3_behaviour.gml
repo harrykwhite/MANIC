@@ -3,11 +3,18 @@ target = obj_player;
 if (instance_exists(target)){
 	var dist = distance_to_object(target);
 	
-	if (((dist < 200) || (initiated)) && (dist < 340)) || (shoot_in_burst){
+	if (((dist < 180) || (initiated)) && (dist < 330)) || (shoot_in_burst){
 		dir_to = point_direction(x, y, target.x, target.y);
+		
 		var dirdiff = angle_difference(dir, dir_to);
-		dir += min(abs(dirdiff), 10) * -sign(dirdiff);
-		image_angle = dir;
+		var dirinterv = 10;
+		
+		if (abs(dirdiff) < dirinterv){
+			dir = dir_to;
+		}else{
+			dir += -sign(dirdiff) * dirinterv;
+		}
+		
 		initiated = true;
 		
 		if (!cutscene_prop){

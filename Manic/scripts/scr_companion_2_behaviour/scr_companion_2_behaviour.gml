@@ -132,6 +132,7 @@ if (instance_exists(obj_player)){
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, obj_pawnweapon_3);
 									weapon.owner = id;
+									weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 									weapon_index = PawnWeapon.Knife;
 									attack_time = attack_time_max;
 									is_throwing = false;
@@ -209,6 +210,7 @@ if (instance_exists(obj_player)){
 						instance_destroy(weapon);
 						weapon = instance_create(x, y, global.pawnweapon_object[wind]);
 						weapon.owner = id;
+						weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 						weapon_index = wind;
 						attack_time = attack_time_max;
 					}

@@ -84,6 +84,8 @@ for(var i = 0; i < weaponcount; i ++){
 	}
 }
 
+scr_player_upgrades_clear();
+
 var upgradecount = array_length_1d(global.upgrade_name);
 for(var i = 0; i < upgradecount; i ++){
 	global.game_save_upgrade_unlocked[i] = ini_read_real("Save", "Upgrade" + string(i), false);

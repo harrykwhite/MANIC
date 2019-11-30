@@ -48,11 +48,11 @@ if (dialogue_time > 0){
 		draw_set_valign(fa_middle);
 		
 		if (dialogue_char_count >= dialogue_length){
-			scr_text_shadow(dwidth - 24, dheight - 64, "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
+			scr_text(dwidth - 24, dheight - 64, "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
 		}
 		
 		var holdstr = "Hold " + scr_input_get_name(InputBinding.Attack) + " to skip";
-		scr_text_shadow(dwidth - 24, dheight - 34, holdstr, c_white);
+		scr_text(dwidth - 24, dheight - 34, holdstr, c_white);
 		
 		if (dialogue_skip > 0){
 			var barw = string_width(holdstr);
@@ -84,7 +84,7 @@ if (level_opening){
 	var line_width_to = string_width(string(global.level_name[global.level_current])) + 30;
 	
 	draw_set_alpha(level_opening_text_alpha * (level_opening_line_width / line_width_to));
-	scr_text_shadow(dwidth / 2, (dheight / 2) - 26 + ((1 - (level_opening_line_width / line_width_to)) * 50), string(global.level_name[global.level_current]), c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 26 + ((1 - (level_opening_line_width / line_width_to)) * 50), string(global.level_name[global.level_current]), c_white);
 	
 	if (level_opening_time < 60 * 4.5){
 		level_opening_line_width = approach(level_opening_line_width, line_width_to, 5);
@@ -100,7 +100,7 @@ if (level_opening){
 	}
 	
 	draw_set_font(fnt_cambria_1);
-	scr_text_shadow((dwidth / 2), (dheight / 2) + 13, part_text, c_white);
+	scr_text((dwidth / 2), (dheight / 2) + 13, part_text, c_white);
 }
 
 // Area Next
@@ -114,6 +114,14 @@ if (area_next_fade){
 		area_next_alpha_speed = 0.02;
 		
 		scr_fade_object_list_reset();
+		
+		if (global.boss_current == Boss.SniperRobot){
+			if (instance_exists(obj_pawn_other_train_1)){
+				with(obj_pawn_other_train_1){
+					instance_destroy();
+				}
+			}
+		}
 		
 		if (area_next_room != noone){
 			var lvl = scr_level_get_index(area_next_room);

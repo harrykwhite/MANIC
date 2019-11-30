@@ -43,7 +43,7 @@ if (!isteaser){
 		option[0] = "Continue Game";
 	}
 
-	if (global.game_boss_final_killed) || (devmode){
+	if (global.game_levelselect_unlocked) || (devmode){
 		option_locked[1] = false;
 	}
 }else{
@@ -189,6 +189,13 @@ option_setting_display_value_max[4] = 1.5;
 option_setting_display_value_interval[4] = 0.1;
 option_setting_display_unit[4] = "x";
 option_setting_display_scale[4] = 1;
+
+var resolutions = scr_resolution_options();
+
+option_setting_display_value_max[1] = ds_list_size(resolutions) - 1;					
+option_setting_display_value[1] = clamp(option_setting_display_value[1], 0, option_setting_display_value_max[1]);
+
+ds_list_destroy(resolutions);
 #endregion
 
 #region Options -> Settings -> Audio
@@ -229,17 +236,6 @@ option_setting_audio_unit[3] = "%";
 option_setting_audio_scale[3] = 1;
 #endregion
 
-#region Options -> Settings -> Controls
-option_setting_controls[0] = "Input Type";
-option_setting_controls_edit[0] = noone;
-option_setting_controls_value[0] = global.game_input_type;
-option_setting_controls_value_min[0] = 0;
-option_setting_controls_value_max[0] = 1;
-option_setting_controls_value_interval[0] = 1;
-option_setting_controls_unit[0] = "";
-option_setting_controls_scale[0] = 1;
-#endregion
-
 #region Options -> Level select
 var levelcount = array_length_1d(global.level_name);
 
@@ -255,17 +251,12 @@ for(var i = 0; i < levelcount; i ++){
 reset_text_scale = 1;
 return_text_scale = 1;
 
-indicate_text = "";
-indicate_text_time = 0;
-indicate_text_alpha = 0;
-
 option_max = array_length_1d(option) - 1;
 
 option_setting_max = array_length_1d(option_setting) - 1;
 option_setting_gameplay_max = array_length_1d(option_setting_gameplay) - 1;
 option_setting_display_max = array_length_1d(option_setting_display) - 1;
 option_setting_audio_max = array_length_1d(option_setting_audio) - 1;
-option_setting_controls_max = array_length_1d(option_setting_controls) - 1;
 
 option_levelselect_max = array_length_1d(option_levelselect) - 1;
 
@@ -274,15 +265,6 @@ in_settings_gameplay = false;
 in_settings_display = false;
 in_settings_audio = false;
 in_settings_controls = false;
-
-warning_prompt = false;
-warning_prompt_alpha = 0;
-warning_prompt_selected = -1;
-warning_prompt_selected_break = 0;
-warning_prompt_scale[0] = 1;
-warning_prompt_scale[1] = 1;
-
-gamepad_device_search = false;
 
 in_levelselect = false;
 selected = -1;

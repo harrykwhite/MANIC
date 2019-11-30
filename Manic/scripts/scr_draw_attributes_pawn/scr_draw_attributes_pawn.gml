@@ -32,27 +32,6 @@ if (drawshader){
 		drawlowhealth = false;
 	}
 	
-	if (!is_metal) && (drawlowhealth){
-		if (!global.game_pause){
-		    if (random(3) < 1){
-		        part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-14, 14), global.pt_blood_2, 1);
-		    }
-		}
-		
-		a = wv;
-		r = 255 * 0.5;
-		g = 0;
-		b = 0;
-		
-		if (bleed){
-			a *= 1.5;
-			r *= 1.25;
-			
-			a = clamp(a, 0, 1);
-			r = clamp(r, 0, 255);
-		}
-	}
-
 	var wradius = 6;
 	var hradius = 18;
 	var xx = x;
@@ -74,12 +53,43 @@ if (drawshader){
 		wradius = 9;
 		hradius = 11;
 	}
+	
+	if (object_index == obj_enemy_4){
+		wradius = 12;
+		hradius = 7;
+	}
+	
+	if (object_index == obj_enemy_5){
+		wradius = 13;
+		hradius = 7;
+	}
 
 	if (object_index == obj_giantturret){
 		wradius = 34;
 		hradius = 12;
 	}
-
+	
+	if (!is_metal) && (drawlowhealth){
+		if (!global.game_pause){
+		    if (random(3) < 1){
+		        part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_blood_2, 1);
+		    }
+		}
+		
+		a = wv;
+		r = 255 * 0.5;
+		g = 0;
+		b = 0;
+		
+		if (bleed){
+			a *= 1.25;
+			r *= 1.25;
+			
+			a = clamp(a, 0, 1);
+			r = clamp(r, 0, 255);
+		}
+	}
+	
 	if (burn){
 		if (!global.game_pause){
 			if (random(3) < 1){
@@ -109,11 +119,11 @@ if (drawshader){
 	
 		if (poison){
 			if (!global.game_pause){
-				if (random(2.5 + coffset) < 1){
+				if (random(3.5 + coffset) < 1){
 					part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_poison_0, 1);
 				}
 
-				if (random(3.5 + coffset) < 1){
+				if (random(4.5 + coffset) < 1){
 					part_particles_create(global.ps_front, xx + random_range(-wradius, wradius), yy + random_range(-hradius, hradius), global.pt_poison_1, 1);
 				}
 			}

@@ -37,7 +37,7 @@ switch(room){
 			obj_player.y = -6;
 			
 			spawn_x = 526;
-			spawn_y = 140;
+			spawn_y = 180;
 		}
 		break;
 	
@@ -130,8 +130,7 @@ train_timemax = 10 * 60;
 
 trainboss_trainhead = noone;
 trainboss_leader = noone;
-trainboss_time = 0;
-trainboss_timemax = 60 * 75;
+trainboss_timemax = 60 * 78;
 trainboss_spawned = false;
 
 healer_can_spawn = global.game_firsthealer_killed;

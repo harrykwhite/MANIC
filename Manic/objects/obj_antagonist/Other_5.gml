@@ -1,3 +1,12 @@
+if (room == rm_level_10_01){
+	if (!instance_exists(obj_giantturret)){
+		instance_create(504, 414, obj_giantturret);
+	}
+	
+	instance_destroy();
+	return;
+}
+
 if (global.game_boss_firstantag_killed) || (walk_off){
 	if (room == rm_level_6_pre_00){
 		if (instance_exists(inst_364BB55F)){

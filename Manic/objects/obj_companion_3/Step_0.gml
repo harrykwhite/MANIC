@@ -78,9 +78,9 @@ if (flash_time > 0){
 }
 
 if (light_brightness < 1){
-	light_brightness += 0.05;
+	light_brightness += 0.025;
 }else if (light_brightness > 1){
-	light_brightness -= 0.05;
+	light_brightness -= 0.025;
 }
 
 if (!instance_exists(mylight)){

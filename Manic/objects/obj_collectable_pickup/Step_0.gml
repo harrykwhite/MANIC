@@ -2,7 +2,7 @@ if (global.game_pause){
 	return;
 }
 
-scr_object_table_place(29, 1.215);
+scr_object_table_place(39, 1.95);
 
 // Motion
 if (spd > 0.01){

@@ -11,6 +11,7 @@ var dir = argument[2];
 var obj = argument[3];
 var thickness = argument[4];
 var gui = argument[5];
+
 var off = 0;
 var xx_to = x, yy_to = y;
 var jump = 10, xjump = lengthdir_x(jump, dir), yjump = lengthdir_y(jump, dir);
@@ -20,7 +21,7 @@ if (argument_count == 7){
 	off = argument[6];
 }
 
-while(!collision_point(xx_to, yy_to, obj, false, true)){
+while(!collision_line(xx_to - xjump, yy_to - yjump, xx_to, yy_to, obj, false, true)){
 	xx_to += xjump;
 	yy_to += yjump;
 	

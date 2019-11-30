@@ -42,7 +42,7 @@ if (instance_exists(obj_player)){
 		}else{
 			stationary = true;
 			
-			if (global.cutscene_time[index] < 300){
+			if (global.cutscene_time[index] < 215){
 				global.cutscene_time[index] ++;
 				
 				obj_player.move_x_to = obj_player.x;

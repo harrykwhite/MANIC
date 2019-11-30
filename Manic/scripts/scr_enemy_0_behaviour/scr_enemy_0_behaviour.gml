@@ -147,6 +147,7 @@ if (instance_exists(target)){
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, obj_pawnweapon_4);
 									weapon.owner = id;
+									weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 									weapon_index = PawnWeapon.Grenade;
 									time = 40;
 									attack_time = time * attack_time_offset;

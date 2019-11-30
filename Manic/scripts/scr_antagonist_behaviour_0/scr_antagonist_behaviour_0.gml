@@ -26,7 +26,7 @@ if (instance_exists(target)){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
-			if (distance_to_object(target) < 80){
+			if (distance_to_object(target) < 50){
 				if (attack_time > 0){
 					attack_time --;
 				}else{
@@ -51,7 +51,7 @@ if (instance_exists(target)){
 				}
 			}else{
 				var dir = random(360);
-				var len = random_range(135, 170);
+				var len = random_range(50, 70);
 				run_x = target.x + lengthdir_x(len, dir);
 				run_y = target.y + lengthdir_y(len, dir);
 				run_time = 70;
@@ -187,6 +187,7 @@ if (instance_exists(target)){
 						if (distance_to_object(throw_weapon_inst) < 15){
 							weapon = instance_create(x, y, global.pawnweapon_object[throw_weapon_inst.index]);
 					        weapon.owner = id;
+							weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 							weapon_change_time = 0;
 							
 							scr_sound_play_distance(snd_weapon_pickup_gun, false, 140);
@@ -209,7 +210,7 @@ if (instance_exists(target)){
 			if (isranged){
 				weapon.attack = true;
 			}else{
-				if (distance_to_object(target) < 80){
+				if (distance_to_object(target) < 50){
 					if (attack_time > 0){
 						attack_time --;
 					}else{
@@ -234,6 +235,7 @@ if (instance_exists(target)){
 			
 			weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
 	        weapon.owner = id;
+			weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 			weapon_change_time = 0;
 		}
 		
@@ -252,10 +254,10 @@ if (instance_exists(target)){
 				}
 			}else{
 				var dir = random(360);
-				var len = random_range(70, 110);
+				var len = random_range(40, 60);
 				
 				if (isranged){
-					len += 80;
+					len += 50;
 				}
 				
 				run_x = target.x + lengthdir_x(len, dir);
@@ -316,6 +318,7 @@ if (instance_exists(target)){
 		
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
+		weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 		
 		run_away_time = 0;
 		run_away_direction = 0;
@@ -334,9 +337,11 @@ if (instance_exists(target)){
 	}
 }else{
 	if (weapon_exists) && (instance_exists(weapon)){
-		if (image_xscale == scale){
+		if (image_xscale == scale) && (weapon.dir < 270 && weapon.dir >= 90){
 			weapon.dir = 360;
-		}else{
+		}
+		
+		if (image_xscale == -scale) && (weapon.dir >= 270 || weapon.dir < 90){
 			weapon.dir = 180;
 		}
 	}

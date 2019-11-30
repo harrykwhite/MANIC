@@ -63,6 +63,7 @@ if (instance_exists(obj_player)){
 				instance_destroy(weapon);
 				weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
 			    weapon.owner = id;
+				weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 			    weapon_index = PawnWeapon.Grenade;
 			}
 		
@@ -128,6 +129,7 @@ if (instance_exists(obj_player)){
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
 							        weapon.owner = id;
+									weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
 							        weapon_index = PawnWeapon.Grenade;
 								}else{
 									weapon.attack = true;

@@ -10,12 +10,12 @@ var camh = camera_get_view_height(view_camera[0]);
 if (!global.game_pause){
 	
 	// Dust
-	if (random(2) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
-	if (random(4) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
-	if (random(6) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
+	if (random(9) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
+	if (random(7) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
+	if (random(5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
 	
 	// Tumbleweed
-	if (random(170) < 1){
+	if (random(180) < 1){
 		if (player_exists){
 			if (instance_number(obj_environment_tumbleweed) < 5){
 				var xx = camx + random(camw);
@@ -44,8 +44,8 @@ if (!global.game_pause){
 	}
 
 	// Fog
-	if (random(2) < 1){
-		if (part_particles_count(global.pt_fog_0) < 60){
+	if (random(2.5) < 1){
+		if (part_particles_count(global.pt_fog_0) < 45){
 			part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_0, 1);
 		}
 	}

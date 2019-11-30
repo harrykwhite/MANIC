@@ -5,9 +5,6 @@ if (global.game_pause){
 
 if (bend){
 	sprite_index = spr_grass_small_1_bent;
-	if (time <= 0){
-		shake = 1;
-	}
 	
 	bend = false;
 	time = 25;
@@ -18,10 +15,4 @@ if (bend){
 	}else{
 		sprite_index = spr_grass_small_1;
 	}
-}
-
-if (shake > 0){
-    x = xstart + random_range(-shake, shake);
-    y = ystart + random_range(-shake, shake);
-    shake *= 0.9;
 }

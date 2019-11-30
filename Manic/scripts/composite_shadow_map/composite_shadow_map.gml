@@ -38,6 +38,8 @@ var cameraY = camera[eLightingCamera.Y];
 var cameraW = camera[eLightingCamera.Width];
 var cameraH = camera[eLightingCamera.Height];
 
+draw_set_alpha(1);
+
 // Composite all shadow maps into a single texture
 for(var i = 0, firstLight = true; i < lightCount; ++i){
 	// Get the light's shadow map

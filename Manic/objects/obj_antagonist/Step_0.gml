@@ -12,7 +12,7 @@ mylight.x = x;
 mylight.y = y;
 mylight.light[| eLight.X] = x;
 mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) + light_brightness, 1.15);
+mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 if (global.cutscene_current == 58){

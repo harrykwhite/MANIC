@@ -1007,7 +1007,7 @@ if (instance_exists(obj_player)){
 							obj_controller_gameplay.cutscene_moveto_level = Level.TrainStation;
 							obj_controller_gameplay.cutscene_moveto_room = rm_level_6_pre_00;
 							obj_controller_gameplay.cutscene_moveto_type = 0;
-							obj_controller_gameplay.cutscene_moveto_dir = 3;
+							obj_controller_gameplay.cutscene_moveto_dir = 2;
 							obj_controller_gameplay.cutscene_moveto_instant = false;
 							break;
 					}

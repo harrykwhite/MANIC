@@ -78,8 +78,8 @@ switch(global.game_input_type){
 					case InputBinding.Dash: rstr = "Y"; break;
 					case InputBinding.Attack: rstr = "ZR"; break;
 					case InputBinding.Throw: rstr = "ZL"; break;
-					case InputBinding.Pause: rstr = "Capture"; break;
-					case InputBinding.FullscreenToggle: rstr = "Home"; break;
+					case InputBinding.Pause: rstr = (!macbuild ? "Capture" : "Minus"); break;
+					case InputBinding.FullscreenToggle: rstr = (!macbuild ? "Home" : "Plus"); break;
 					case InputBinding.SwitchWeaponForward: rstr = "R"; break;
 					case InputBinding.SwitchWeaponBack: rstr = "L"; break;
 				}

@@ -136,6 +136,6 @@ if (death){
     repeat(10)part_particles_create(global.ps_bottom, centerx + random_range(-7, 7), centery + 10 + random_range(-3, 3), global.pt_wood_0, 1);
 	
 	var brk = instance_create(x, y, obj_break);
-	brk.shake = 3;
+	brk.shake = 4;
 	brk.sprite_index = breaksprite;
 }

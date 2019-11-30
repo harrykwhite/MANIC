@@ -148,6 +148,11 @@ if (death){
 			break;
 	}
 	
+	var cblock = instance_place(x + (sprite_width / 2), y + (sprite_height / 2), obj_block_cutscene);
+	if (cblock != noone){
+		instance_destroy(cblock);
+	}
+	
 	if (beltshutdownsound){
 		scr_sound_play_distance(snd_other_conveyerbelt_1, false, 200);
 	}

@@ -121,7 +121,7 @@ if (!global.game_pause){
 			if (train_time < train_timemax){
 				train_time ++;
 			}else{
-				var xx = choose(-50, room_width + 50);
+				var xx = choose(-150, room_width + 150);
 				var yy = choose(228, 328);
 				var train;
 				

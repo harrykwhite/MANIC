@@ -59,6 +59,11 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 						}
 					}
 					
+					if (global.game_combat_in_hordechallenge){
+						interact_active = false;
+						return;
+					}
+					
 					scr_ui_control_indicate(global.level_name[moveto_level]);
 				}
 				

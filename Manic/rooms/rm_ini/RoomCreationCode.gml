@@ -1,7 +1,5 @@
 randomize();
 
-window_center();
-
 scr_global_set();
 scr_input_setup();
 scr_save_game_reader();
