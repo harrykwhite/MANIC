@@ -19,8 +19,8 @@ if (instance_exists(target)){
 			scr_effect_screenshake(2);
 			light_brightness = 1.25;
 			
-			var xpos = x + lengthdir_x(18 * scale, shoot_dir);
-			var ypos = y + lengthdir_y(18 * scale, shoot_dir);
+			var xpos = x + lengthdir_x(23 * scale, shoot_dir);
+			var ypos = y + lengthdir_y(23 * scale, shoot_dir);
 			
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
 			for(var l = 0; l < 16; l += 4){
@@ -31,7 +31,7 @@ if (instance_exists(target)){
 			bullet.enemy = true;
 			bullet.damage = 1;
 			bullet.spd = 13;
-			bullet.strength = 0.7;
+			bullet.strength = 0.6;
 			bullet.dir = shoot_dir;
 			bullet.image_angle = bullet.dir;
 			
@@ -40,7 +40,7 @@ if (instance_exists(target)){
 				shoot_time = 2;
 			}else{
 				shoot_burst = 0;
-				shoot_time = 40;
+				shoot_time = 50;
 			}
 		}
 		
@@ -92,19 +92,15 @@ if (instance_exists(target)){
 	
 	// Enemy spawning
 	}else if (attack == 2){
-		while(instance_number(obj_p_enemy) < 8){
+		while(instance_number(obj_p_enemy) < 7){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Katana);
 			
-			if (random(4) < 1){
+			if (random(6) < 1){
 				enemy.type = Enemy0_Type.Crazy;
 			}
 			
-			if (random(5) < 1){
-				enemy.type = Enemy0_Type.Fly;
-			}
-			
-			if (random(5) < 1){
+			if (random(6) < 1){
 				enemy.weapon_index = PawnWeapon.Grenade;
 			}
 			
@@ -130,10 +126,10 @@ if (instance_exists(target)){
 		if (shoot_time > 0){
 			shoot_time --;
 		}else{
-			if (instance_number(obj_proj_8) < 4){
+			if (instance_number(obj_proj_8) < 3){
 				shoot_dir = point_direction(x, y, obj_player.x, obj_player.y);
-				xpos = x + lengthdir_x(18 * scale, shoot_dir);
-				ypos = y + lengthdir_y(18 * scale, shoot_dir);
+				xpos = x + lengthdir_x(23 * scale, shoot_dir);
+				ypos = y + lengthdir_y(23 * scale, shoot_dir);
 			
 				scr_effect_screenshake(2);
 				scr_sound_play(snd_weapon_shoot_3, false, 0.8, 1.2);
@@ -165,23 +161,14 @@ if (instance_exists(target)){
 			attack = 0;
 		}
 		
-		if (attack == 2){
-			if (instance_number(obj_weapondrop) < 3){
-				scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
-				var drop = instance_create(x, y, obj_weapondrop);
-				drop.index = choose(PlayerWeapon.Katana, PlayerWeapon.Spear, PlayerWeapon.AssaultRifle, PlayerWeapon.QuickGun);
-				drop.spd = 11;
-				drop.dir = random(360);
-				drop.angle = 0;
-			}
-		}
-		
 		shoot_time = 120;
 		shoot_burst = 0;
 		shoot_buildup_time = 0;
+		
 		flamethrower_angle = 0;
 		flamethrower_angle_wait = 80;
 		flamethrower_time = 30;
+		
 		attack_time = 0;
 	}
 }

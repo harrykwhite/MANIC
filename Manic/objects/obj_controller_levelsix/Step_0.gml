@@ -118,17 +118,19 @@ if (!global.game_pause){
 		}
 		
 		if (!trainboss_spawned){
-			if (train_time < train_timemax){
-				train_time ++;
-			}else{
-				var xx = choose(-150, room_width + 150);
-				var yy = choose(228, 328);
-				var train;
+			if (trainboss_time < trainboss_timemax - (60 * 10)){
+				if (train_time < train_timemax){
+					train_time ++;
+				}else{
+					var xx = choose(-150, room_width + 150);
+					var yy = choose(228, 328);
+					var train;
 				
-				train = instance_create_layer(xx, yy, "Trains", obj_pawn_other_train_0);
-				train.component_spawn = true;
+					train = instance_create_layer(xx, yy, "Trains", obj_pawn_other_train_0);
+					train.component_spawn = true;
 		
-				train_time = 0;
+					train_time = 0;
+				}
 			}
 			
 			if (!global.game_combat_in_hordechallenge){

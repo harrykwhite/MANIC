@@ -1,4 +1,8 @@
 // Burn control
+if (global.cutscene_current != -1) || (!instance_exists(obj_player)){
+	return;
+}
+
 var is_fly = object_index == obj_enemy_1;
 var hurt_sound = choose(snd_character_hit_0, snd_character_hit_1);
 

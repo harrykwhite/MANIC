@@ -156,6 +156,14 @@ if (!global.game_pause){
 						obj_controller_ui.dialogue_voice_opened = false;
 						obj_controller_ui.dialogue_voice_closed = true;
 						
+						with(obj_sign_0){
+							talking = false;
+						}
+					
+						with(obj_sign_wall_0){
+							talking = false;
+						}
+						
 						if (postlevel_dialogue_index < 6){
 							postlevel_dialogue_inst = inst;
 							postlevel_dialogue_index ++;

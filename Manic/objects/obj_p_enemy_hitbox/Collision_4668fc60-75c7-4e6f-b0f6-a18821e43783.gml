@@ -17,7 +17,6 @@ with(owner){
 	}
 
 	if (i_time < 1) && (inst.spd > 0) && (!inst.enemy){
-		scr_bonuspoints_update(BonusPoints.WeaponThrow);
 		scr_pawn_damage(max(inst.damage - defense, 1), inst.spd / 6, inst.dir, 7);
 		
 		scr_effect_screenshake(4);

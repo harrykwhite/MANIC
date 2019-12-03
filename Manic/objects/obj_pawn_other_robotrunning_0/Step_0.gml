@@ -5,6 +5,10 @@ if (global.game_pause){
 
 if (onscreen(x, y, -40)){
 	domove = true;
+	
+	with(object_index){
+		domove = true;
+	}
 }
 
 if (domove){

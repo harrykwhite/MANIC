@@ -29,9 +29,10 @@ if (instance_exists(target)){
 			}
 		}
 		
-		if (distance_to_point(run_x, run_y) > 20){
+		if (distance_to_point(run_x, run_y) > 20) && (move_time < 70){
 			move_x_to = run_x;
 			move_y_to = run_y;
+			move_time ++;
 		}else{
 			if (run_count < 4){
 				run_count ++;
@@ -50,6 +51,8 @@ if (instance_exists(target)){
 				state = 1;
 				run_count = 0;
 			}
+			
+			move_time = 0;
 		}
 	}else if (state == 1){
 		move_speed = 0;
@@ -106,8 +109,9 @@ if (instance_exists(target)){
 			
 			slowfire_time ++;
 			
-			if (distance_to_point(move_x_to, move_y_to) > 10){
+			if (distance_to_point(move_x_to, move_y_to) > 10) && (move_time < 80){
 				move_speed = clamp(1.5 / ((health_current / health_max) * 4), 1.5, 2.25);
+				move_time ++;
 			}else{
 				move_x_to = x + random_range(-40, 40);
 				move_y_to = y + random_range(-40, 40);
@@ -116,10 +120,13 @@ if (instance_exists(target)){
 					move_x_to = x + random_range(-40, 40);
 					move_y_to = y + random_range(-40, 40);
 				}
+				
+				move_time = 0;
 			}
 		}else{
 			slowfire_time = 0;
 			state = 0;
+			move_time = 0;
 		}
 	}
 }else{

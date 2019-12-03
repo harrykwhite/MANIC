@@ -31,5 +31,7 @@ render_time_max = 5;
 pushaway_speed = 0;
 pushaway_speed_max = 2;
 pushaway_dir = 0;
+special[0] = PlayerWeapon.Battleaxe;
+special[1] = PlayerWeapon.Wrench;
 
 image_alpha = 0;

@@ -1,6 +1,9 @@
 if (global.game_pause) || (global.cutscene_current != -1){
+	image_speed = 0;
 	return;
 }
+
+image_speed = 1;
 
 // Life
 if (is_dropped){
@@ -19,6 +22,8 @@ if (is_dropped){
 		}
 	}
 }
+
+image_alpha = (flicker ? 0.2 : 1);
 
 // Picking Up
 if (place_meeting(x + 1, y + 1, obj_player)){

@@ -36,8 +36,8 @@ switch(music){
 		break;
 }
 
-spawn_interval[CombatState.Idle] = 12 / srate;
-spawn_state_time[CombatState.Idle] = 45;
+spawn_interval[CombatState.Idle] = 20 / srate;
+spawn_state_time[CombatState.Idle] = 50;
 spawn_max[CombatState.Idle] = round(clamp(srate, 1, 2));
 spawn_music_stinger[CombatState.Idle] = m_combat_stinger_0;
 spawn_music_main[CombatState.Idle] = combat_0;

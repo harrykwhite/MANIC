@@ -4,13 +4,14 @@ var face_player = false;
 target = obj_player;
 
 if (instance_exists(target)){
-	if (distance_to_point(target.x, target.y) > 10){
-		move_x_to = target.x;
-		move_y_to = target.y + 6;
+	if (distance_to_point(target.x, target.y) > 80){
 		move_speed = 0.7;
 	}else{
 		move_speed = 0;
 	}
+	
+	move_x_to = target.x;
+	move_y_to = target.y + 6;
 	
 	move_dir = point_direction(x, y, move_x_to, move_y_to);
 }else{

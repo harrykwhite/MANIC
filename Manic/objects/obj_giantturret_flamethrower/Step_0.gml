@@ -1,6 +1,15 @@
 var ispaused = false;
+
 if (global.game_pause){
 	ispaused = true;
+}
+
+if (instance_exists(turret)){
+	if (!turret.active){
+		ispaused = true;
+	}
+	
+	cutscene_prop = turret.cutscene_prop;
 }
 
 if (global.cutscene_current != -1){
@@ -9,12 +18,6 @@ if (global.cutscene_current != -1){
 	}
 }else{
 	if (cutscene_prop){
-		ispaused = true;
-	}
-}
-
-if (instance_exists(turret)){
-	if (!turret.active){
 		ispaused = true;
 	}
 }

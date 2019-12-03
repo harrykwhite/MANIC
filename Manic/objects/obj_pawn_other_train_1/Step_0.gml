@@ -1,5 +1,6 @@
 var level = scr_level_get_object();
 interact = false;
+
 if (global.game_pause){
 	image_speed = 0;
 	return;
@@ -177,7 +178,9 @@ if (open){
 			open_time = 0;
 			open = false;
 			open_pause = false;
+			
 			close = true;
+			
 			switch(type){
 				case 0:
 					sprite_index = spr_train_0_part_0_door_close;
@@ -187,6 +190,7 @@ if (open){
 					sprite_index = spr_train_1_part_0_door_close;
 					break;
 			}
+			
 			image_index = 0;
 			image_speed = 0;
 		}

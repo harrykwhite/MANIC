@@ -19,8 +19,17 @@ if (interact) && (obj_controller_ui.dialogue_time <= 0) && (global.cutscene_curr
 	
 	if (interact_break <= 0){
 		if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
+			with(obj_sign_0){
+				talking = false;
+			}
+			
+			with(obj_sign_wall_0){
+				talking = false;
+			}
+			
 			interact_break = 15;
 			talking = true;
+			
 			scr_player_stamina_drain(4);
 		
 			obj_controller_ui.dialogue = text;

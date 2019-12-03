@@ -7,9 +7,10 @@ if (instance_exists(target)){
 	if (state == 0){
 		move_speed = 2.5;
 		
-		if (distance_to_point(run_x, run_y) > 20){
+		if (distance_to_point(run_x, run_y) > 20) && (move_time < 70){
 			move_x_to = run_x;
 			move_y_to = run_y;
+			move_time ++;
 		}else{
 			if (run_count < 5){
 				run_count ++;
@@ -28,6 +29,8 @@ if (instance_exists(target)){
 				
 				run_count = 0;
 			}
+			
+			move_time = 0;
 		}
 	}else if (state == 1){
 		move_speed = 0;

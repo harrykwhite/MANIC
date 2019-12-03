@@ -19,7 +19,7 @@ if (gui_resize_time != -1){
 	if (gui_resize_time > 0){
 		gui_resize_time --;
 	}else{
-		display_set_gui_size(gui_resize_w, gui_resize_h);		
+		display_set_gui_size(gui_resize_w, gui_resize_h);
 		gui_resize_time = -1;
 	}
 }

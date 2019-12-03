@@ -46,7 +46,7 @@ switch(room){
 			obj_player.y = room_height + 4;
 			
 			spawn_x = 566;
-			spawn_y = 936;
+			spawn_y = 912;
 		}
 		break;
 	
@@ -62,7 +62,7 @@ switch(room){
 			obj_player.y = room_height + 4;
 			
 			spawn_x = 344;
-			spawn_y = 819;
+			spawn_y = 789;
 		}
 		break;
 	
@@ -94,7 +94,7 @@ switch(room){
 			obj_player.y = room_height + 4;
 			
 			spawn_x = 358;
-			spawn_y = 1515;
+			spawn_y = 1485;
 		}
 		break;
 	
@@ -110,7 +110,7 @@ switch(room){
 			obj_player.y = room_height + 4;
 			
 			spawn_x = 358;
-			spawn_y = 614;
+			spawn_y = 564;
 		}
 		break;
 	

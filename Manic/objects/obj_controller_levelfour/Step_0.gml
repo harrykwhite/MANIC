@@ -123,6 +123,14 @@ if (!global.game_pause){
 						obj_controller_ui.dialogue_voice_opened = false;
 						obj_controller_ui.dialogue_voice_closed = true;
 						
+						with(obj_sign_0){
+							talking = false;
+						}
+					
+						with(obj_sign_wall_0){
+							talking = false;
+						}
+						
 						if (prelevel_dialogue_index < 4){
 							prelevel_dialogue_inst = inst;
 							prelevel_dialogue_index ++;

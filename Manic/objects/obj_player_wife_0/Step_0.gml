@@ -31,6 +31,14 @@ if (instance_exists(obj_player)){
 					obj_controller_ui.dialogue_char_count = 0;
 					obj_controller_ui.dialogue_voice_opened = false;
 					obj_controller_ui.dialogue_voice_closed = true;
+					
+					with(obj_sign_0){
+						talking = false;
+					}
+					
+					with(obj_sign_wall_0){
+						talking = false;
+					}
 				}
 			}else{
 				interact_break --;

@@ -12,4 +12,8 @@ if (global.level_current >= Level.TrainStation){
 
 if (global.level_current >= Level.CityHeadquarters){
 	scr_upgrade_add(PlayerUpgrade.Chestplate);
+	
+	if (!global.game_is_playthrough){
+		global.player_health_current = global.player_health_max;
+	}
 }

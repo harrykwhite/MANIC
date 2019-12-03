@@ -20,18 +20,27 @@ if (instance_exists(owner)){
 		var r = 0, g = 0, b = 0, a = 0;
 		var wv = wave(0.05, 0.1, 2, 0);
 		
-		var drawlowhealth = true;
+		var drawlowhealth = ((owner.health_current <= max(floor(owner.health_max / 3), 1)) || (owner.bleed));
+		
 		if (owner.object_index == obj_antagonist){
 			if (room == rm_level_6_pre_00){
 				drawlowhealth = false;
 			}
 		}
 		
-		if (owner.health_current <= floor(owner.health_max / 3)) && (drawlowhealth){
-		    a = wv * 0.5;
-			r = 255;
+		if (drawlowhealth){
+		    a = wv;
+			r = 255 * 0.5;
 			g = 0;
 			b = 0;
+			
+			if (owner.bleed){
+				a *= 1.25;
+				r *= 1.25;
+			
+				a = clamp(a, 0, 1);
+				r = clamp(r, 0, 255);
+			}
 		}
 		
 		if (owner.burn){

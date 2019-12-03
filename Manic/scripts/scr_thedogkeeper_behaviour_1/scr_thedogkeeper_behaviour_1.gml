@@ -9,14 +9,24 @@ if (instance_exists(target)){
 	if (move_time > 0){
 		move_time --;
 	}else{
-		move_x_to = obj_player.x + random_range(-50, 50);
-		move_y_to = obj_player.y + random_range(-50, 50);
+		move_x_to = obj_player.x + random_range(-120, 120);
+		move_y_to = obj_player.y + random_range(-120, 120);
+		
 		weapon.attack = true;
 		move_time = (weapon.attack_time_max / 4) * max(0.3, (health_current / health_max) * 0.8);
 		
+		var trials = 0;
+		
 		while(distance_to_point(move_x_to, move_y_to) < 20){
-			move_x_to = obj_player.x + random_range(-50, 50);
-			move_y_to = obj_player.y + random_range(-50, 50);
+			move_x_to = obj_player.x + random_range(-120, 120);
+			move_y_to = obj_player.y + random_range(-120, 120);
+			
+			if (trials < 100){
+				trials ++;
+			}else{
+				trials = 0;
+				break;
+			}
 		}
 	}
 	

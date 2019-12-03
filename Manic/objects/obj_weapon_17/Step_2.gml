@@ -34,10 +34,7 @@ if (instance_exists(obj_player)){
         }
     }
 }else{
-	ammo = -1;
-	global.weapon_slotammo[global.weapon_slotcurrent] = global.weapon_ammomax[index];
 	use_current = false;
 	shoot_can = false;
 	use_can_stop = false;
 }
-

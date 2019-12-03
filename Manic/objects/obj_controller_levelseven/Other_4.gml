@@ -93,7 +93,7 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 446;
-			spawn_y = 1292;
+			spawn_y = 1266;
 		}else{
 			obj_player.x = 1382;
 			obj_player.y = -4;

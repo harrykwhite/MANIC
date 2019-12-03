@@ -49,9 +49,9 @@ switch(room){
 		spawn_y = 245;
 		
 		if (global.worldtrain_room == room) && (global.game_level_opening_type != 1) && (global.game_boss_trainhorde_killed){
-			var trainidle = instance_create(821, 224, obj_pawn_other_train_1);
+			var trainidle = instance_create(832, 224, obj_pawn_other_train_1);
 			trainidle.component_spawn = true;
-			trainidle.spd = 1;
+			trainidle.spd = 0;
 		}
 		break;
 
@@ -87,7 +87,7 @@ switch(room){
 		obj_player.y = 232;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_x = 120;
+			spawn_x = 180;
 			spawn_y = 232;
 		}else{
 			obj_player.x = room_width + 4;

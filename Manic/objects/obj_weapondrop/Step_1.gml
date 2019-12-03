@@ -6,7 +6,13 @@ if (!dataset){
 	quantity = round(quantity);
 	
 	canburn = (index == PlayerWeapon.Stick);
-	specialweapon = (index == PlayerWeapon.Battleaxe || index == PlayerWeapon.Wrench);
+	
+	for(var i = array_length_1d(special) - 1; i >= 0; i --){
+		if (index == special[i]){
+			specialweapon = true;
+			break;
+		}
+	}
 	
 	/*if (!place_meeting(x, y, obj_block_persistent)) && (!drop){
 		var pers = instance_create(x, y, obj_block_persistent);

@@ -28,6 +28,9 @@ if (component_spawn){
 					break;
 			}
 		}
+		
+		comp.image_speed = image_speed;
+		comp.image_index = image_index;
 	}
 	
 	mylight = instance_create_layer(x + (53 * sign(image_xscale)), y, "Lights", obj_pawn_other_train_light);

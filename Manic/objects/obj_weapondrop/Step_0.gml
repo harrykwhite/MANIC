@@ -7,7 +7,7 @@ if (global.cutscene_current == -1){
 }
 
 if (global.cutscene_current != -1){
-	if (!is_cutscene && !global.game_pause){
+	if (!is_cutscene){
 		return;
 	}
 }
@@ -109,7 +109,7 @@ if (kill){
 	if (index == PlayerWeapon.Stick){
 		scr_sound_play_distance(snd_weapon_stick_break_0, false, 200);
 		
-		var sticklen = 18;
+		var sticklen = 39;
 		for(var thislen = -(sticklen / 2); thislen < (sticklen / 2); thislen += 3){
 			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_0, 1);
 			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_flash_0, 1);
@@ -215,6 +215,7 @@ if (instance_exists(obj_player)){
 				
 				// Set the slot of the weapon
 				var foundempty = false;
+				var emptycurrent = false;
 				var newslotind = -1;
 				
 				for(var i = 0; i < slotcount; i ++){
@@ -222,6 +223,11 @@ if (instance_exists(obj_player)){
 						global.weapon_slot[i] = index;
 						newslotind = i;
 						foundempty = true;
+						
+						if (i == global.weapon_slotcurrent){
+							emptycurrent = true;
+						}
+						
 						break;
 					}
 				}
@@ -249,6 +255,13 @@ if (instance_exists(obj_player)){
 					drop.angle = angle + random_range(-30, 30);
 					drop.dataset = true;
 					drop.drop = true;
+					
+					for(var i = array_length_1d(special) - 1; i >= 0; i --){
+						if (drop.index == special[i]){
+							drop.specialweapon = true;
+							break;
+						}
+					}
 				}
 				
 				// Shake effect
@@ -290,7 +303,7 @@ if (instance_exists(obj_player)){
 				}
 				
 				// Create the new weapon object
-				if (index != -1) && (!foundempty){
+				if (index != -1) && (!foundempty || emptycurrent){
 					var new_wp_obj = instance_create(obj_player.x, obj_player.y, global.weapon_object[index]);
 					
 					if (index == PlayerWeapon.Stick){

@@ -19,8 +19,8 @@ if (instance_exists(target)){
 			scr_effect_screenshake(2);
 			light_brightness = 1.25;
 			
-			var xpos = x + lengthdir_x(18 * scale, shoot_dir);
-			var ypos = y + lengthdir_y(18 * scale, shoot_dir);
+			var xpos = x + lengthdir_x(23 * scale, shoot_dir);
+			var ypos = y + lengthdir_y(23 * scale, shoot_dir);
 			
 			part_type_direction(global.pt_smoke_4, shoot_dir - 6, shoot_dir + 6, 0, 0);
 			for(var l = 0; l < 16; l += 4){
@@ -31,7 +31,7 @@ if (instance_exists(target)){
 			bullet.enemy = true;
 			bullet.damage = 1;
 			bullet.spd = 13;
-			bullet.strength = 0.7;
+			bullet.strength = 0.6;
 			bullet.dir = shoot_dir;
 			bullet.image_angle = bullet.dir;
 			
@@ -107,9 +107,11 @@ if (instance_exists(target)){
 		shoot_time = 120;
 		shoot_burst = 0;
 		shoot_buildup_time = 0;
+		
 		flamethrower_angle = 0;
 		flamethrower_angle_wait = 80;
 		flamethrower_time = 30;
+		
 		attack_time = 0;
 	}
 }

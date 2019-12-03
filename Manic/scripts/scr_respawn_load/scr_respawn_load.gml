@@ -48,7 +48,12 @@ if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	}
 }else{
 	changed = true;
-	room_goto(global.checkpoint_room);
+	
+	if (global.checkpoint_room == room){
+		room_restart();
+	}else{
+		room_goto(global.checkpoint_room);
+	}
 	
 	/*global.weapon_slot[0] = PlayerWeapon.Revolver;
 	global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];

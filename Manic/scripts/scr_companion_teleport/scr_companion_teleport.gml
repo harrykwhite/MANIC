@@ -9,8 +9,8 @@ if (cutscene_break_time <= 0) && (!global.game_pause) && (global.cutscene_curren
 	if (!onscreen(x, y + 4, -40)){
 		var counter = 0, doteleport = true;
 		
-		var px = clamp(obj_player.x, 12, room_width - 12);
-		var py = clamp(obj_player.y, 12, room_height - 12);
+		var px = clamp(obj_player.x, 24, room_width - 24);
+		var py = clamp(obj_player.y, 24, room_height - 24);
 		
 		do{
 			var xtp = px + random_range(-150, 150);

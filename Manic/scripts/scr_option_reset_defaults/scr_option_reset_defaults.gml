@@ -14,7 +14,7 @@ switch(type){
 	
 	case "display":
 		global.game_option[| Options.Fullscreen] = false;
-		global.game_option[| Options.Resolution] = -1;
+		global.game_option[| Options.Resolution] = 8;
 		global.game_option[| Options.WindowScale] = 3;
 		global.game_option[| Options.CameraScale] = 1;
 		global.game_option[| Options.UIScale] = 1;

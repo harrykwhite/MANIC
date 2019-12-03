@@ -164,33 +164,3 @@ if (!global.game_pause){
 		counter = 0;
 	}
 }
-
-/* Score
-global.game_score  = 
-global.game_score_bonus +
-global.game_score_collectables +
-global.game_score_deaths +
-global.game_score_wpnvariation;
-
-if (bonus_killtime > 0){
-	bonus_killtime--;
-
-}else{
-	
-	switch(bonus_killamount){
-		case 2:
-			scr_bonuspoints_update(BonusPoints.DoubleKill);
-			break;
-		
-		case 3:
-			scr_bonuspoints_update(BonusPoints.TripleKill);
-			break;
-		
-		case 4:
-			scr_bonuspoints_update(BonusPoints.QuadripleKill);
-			break;
-	}
-	
-	bonus_killamount = 0;
-	bonus_killtime = 0;
-}*/

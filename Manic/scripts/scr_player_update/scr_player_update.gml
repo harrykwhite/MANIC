@@ -150,6 +150,13 @@ if (global.player_health_current < 3){
 		fly[i].xbase = x;
 		fly[i].ybase = y;
 	}
+}else{
+	for(var i = 0; i < length; i ++){
+		if (instance_exists(fly[i])){
+			instance_destroy(fly[i]);
+			fly[i] = noone;
+		}
+	}
 }
 
 // Heartbeat
@@ -208,7 +215,6 @@ if (global.player_health_current <= 0) && (!near_dead){
 	
 	global.player_is_respawning = true;
 	global.cutscene_current = -1;
-	global.game_score_deaths -= 1000;
 	
 	if (global.boss_current == Boss.TrainBoss) && (room == rm_level_6_00){
 		scr_objective_change(Objectives.WaitForTrain, 0, 0);

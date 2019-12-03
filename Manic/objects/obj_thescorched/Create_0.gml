@@ -69,6 +69,7 @@ move_speed_offset = random_range(0.75, 0.9);
 move_x_to = x;
 move_y_to = y;
 move_away_time = 20 + random_range(-10, 10);
+move_time = 0;
 
 i_time = 0;
 i_blend_time = 0;

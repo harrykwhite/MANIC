@@ -1,6 +1,23 @@
 var ispaused = false;
 var stillsprite = spr_companion_2_idle_2;
 
+if (light_brightness < 1){
+	light_brightness += 0.025;
+}else if (light_brightness > 1){
+	light_brightness -= 0.025;
+}
+
+if (!instance_exists(mylight)){
+	mylight = instance_create_layer(x, y, "Lights", obj_companion_light);
+}
+
+mylight.x = x;
+mylight.y = y;
+mylight.light[| eLight.X] = x;
+mylight.light[| eLight.Y] = y;
+mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+
 if (global.game_pause){
 	ispaused = true;
 }
@@ -79,23 +96,6 @@ if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global
 if (flash_time > 0){
 	flash_time--;
 }
-
-if (light_brightness < 1){
-	light_brightness += 0.025;
-}else if (light_brightness > 1){
-	light_brightness -= 0.025;
-}
-
-if (!instance_exists(mylight)){
-	mylight = instance_create_layer(x, y, "Lights", obj_companion_light);
-}
-
-mylight.x = x;
-mylight.y = y;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
 
 health_current = max(health_current, 1);
 

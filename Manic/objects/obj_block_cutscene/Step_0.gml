@@ -1,3 +1,7 @@
+if (global.game_pause){
+	return;
+}
+
 interact_active = false;
 
 if (special == "deerpickup"){

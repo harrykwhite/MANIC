@@ -19,3 +19,4 @@ if (instance_exists(mylight)){
 
 cutscene_prop = true;
 in_cutscene = false;
+active = false;

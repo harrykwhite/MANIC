@@ -213,7 +213,7 @@ if (greatsword_attack){
 			move_y_to = obj_player.y;
 	
 			if (playerdist > 32){
-				move_speed = 3;
+				move_speed = 3.8;
 			}else{
 				weapon.attack = true;
 				move_speed = 0;
@@ -226,7 +226,7 @@ if (greatsword_attack){
 			if (playerdist < 120){
 				move_x_to = x + lengthdir_x(200, playerdir - 180);
 				move_y_to = y + lengthdir_y(200, playerdir - 180);
-				move_speed = 2.6;
+				move_speed = 3.2;
 			}else{
 				move_speed = 0;
 			}

@@ -249,7 +249,7 @@ if (!in_settings) && (!in_levelselect){
 			var bcount = InputBinding.SwitchWeaponForward + 1;
 			
 			if (iskeyboard){
-				bgpstr = "Press any button to switch to gamepad mode";
+				bgpstr = "Press any controller button to switch to gamepad mode";
 			}
 			
 			draw_set_font(fnt_cambria_n1);

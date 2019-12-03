@@ -34,7 +34,7 @@ global.game_option[| Options.Brightness] = ini_read_real("Options", "Brightness"
 global.game_option[| Options.ShowMinimap] = ini_read_real("Options", "ShowMinimap", true);
 
 //global.game_option[| Options.Fullscreen] = ini_read_real("Options", "Fullscreen", false);
-global.game_option[| Options.Resolution] = ini_read_real("Options", "Resolution", -1);
+global.game_option[| Options.Resolution] = ini_read_real("Options", "Resolution", 8);
 global.game_option[| Options.WindowScale] = ini_read_real("Options", "WindowScale", 3);
 global.game_option[| Options.CameraScale] = ini_read_real("Options", "CameraScale", 1);
 global.game_option[| Options.UIScale] = ini_read_real("Options", "UIScale", 1);

@@ -6,24 +6,26 @@ if (instance_exists(obj_player)){
 		move_time --;
 	}else{
 		var xx, yy, dir, len;
-		var counter = 0;
+		var counter = 0, found = true;
 		
 		do{
 			dir = random(360);
-			len = random_range(40, 50);
+			len = random_range(30, 40);
 			xx = xstart + lengthdir_x(len, dir);
 			yy = ystart + lengthdir_y(len, dir);
 			
 			if (counter < 100){
 				counter ++;
 			}else{
-				counter = 0;
+				found = false;
 				break;
 			}
 		}until(!collision_line(x, y, xx, yy, obj_p_solid, false, true));
 		
-		move_x_to = xx;
-		move_y_to = yy;
+		if (found){
+			move_x_to = xx;
+			move_y_to = yy;
+		}
 		
 		move_time = 60 * random_range(3, 5);
 	}

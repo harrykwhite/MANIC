@@ -1,5 +1,9 @@
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
 
+if (macbuild){
+	window_set_cursor(cr_none);
+}
+
 if (!global.pers_runthrough){
 	// Minimise
 	if (minimise_time != -1){
@@ -245,9 +249,11 @@ if (center_window_time != -1){
 	if (center_window_time > 0){
 		center_window_time --;
 	}else{
-		if (!macbuild){
-			if (!window_get_fullscreen()){
+		if (!window_get_fullscreen()){
+			if (!macbuild){
 				window_center();
+			}else{
+				window_set_position(20, 20);
 			}
 		}
 		

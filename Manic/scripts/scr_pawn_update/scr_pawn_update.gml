@@ -48,6 +48,13 @@ if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_ind
 				fly[i].xbase = x;
 				fly[i].ybase = y;
 			}
+		}else{
+			for(var i = 0; i < length; i ++){
+				if (instance_exists(fly[i])){
+					instance_destroy(fly[i]);
+					fly[i] = noone;
+				}
+			}
 		}
 	}
 }
@@ -155,6 +162,10 @@ if (health_current <= 0){
 		}else if (object_index == obj_thescorched){
 			global.game_boss_thescorched_killed = true;
 			
+			if (instance_exists(inst_2E30B867)){
+				instance_destroy(inst_2E30B867);
+			}
+			
 			if (!scr_player_has_upgrade(PlayerUpgrade.Backpack)){
 				var udrop = instance_create(x, y, obj_upgrade_pickup);
 				udrop.index = PlayerUpgrade.Backpack;
@@ -169,6 +180,10 @@ if (health_current <= 0){
 			}
 		}else if (object_index == obj_thedogkeeper){
 			global.game_boss_thedogkeeper_killed = true;
+			
+			if (instance_exists(inst_12D47517)){
+				instance_destroy(inst_12D47517);
+			}
 			
 			if (!scr_player_has_upgrade(PlayerUpgrade.ExplosiveVest)){
 				var udrop = instance_create(x, y, obj_upgrade_pickup);
@@ -223,6 +238,10 @@ if (health_current <= 0){
 		}else if (object_index == obj_antagonist){
 			global.cutscene_current = 54;
 			global.game_boss_final_killed = true;
+			
+			if (instance_exists(inst_5141CF14)){
+				instance_destroy(inst_5141CF14);
+			}
 			
 			ini_open(working_directory + "config.ini");
 			ini_write_real("Options", "LevelSelectUnlocked", true);

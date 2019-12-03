@@ -74,6 +74,9 @@ if (instance_exists(target)){
 				run_away_complete = true;
 				
 				move_speed = 0;
+				move_x_to = target.x;
+				move_y_to = target.y;
+				
 				face_player = true;
 				
 				if (weapon_exists){

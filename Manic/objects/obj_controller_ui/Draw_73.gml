@@ -11,7 +11,7 @@ if (instance_exists(obj_player)){
 			var alpha = 0.1;
 			
 			alpha *= (instdist / 300);
-			alpha *= clamp(100 / instdist, 0, 1);
+			alpha *= clamp(200 / instdist, 0, 1);
 			
 			//var xx = (inst.x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 			//var yy = (inst.y - camera_get_view_y(view_camera[0])) * gui_scale_y;

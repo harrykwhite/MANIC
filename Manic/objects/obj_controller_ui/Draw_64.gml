@@ -13,8 +13,11 @@ var dheight = display_get_gui_height();
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
 var iscutscene = (global.cutscene_current != -1);
 
+var levelcur = global.level_current;
+
 // Red Tint
 redtint_alphato = 0;
+
 if (global.game_combat_state == CombatState.Buildup){
 	redtint_alphato = 0.025;
 }else if (global.game_combat_state == CombatState.Climax){
@@ -41,7 +44,13 @@ if (redtint_alpha > 0){
 }
 
 // Weapon Slots
-var amount = global.weapon_slotmax;
+var weaponslot = global.weapon_slot;
+var weaponcentersprite = global.weapon_centersprite;
+var weapondefault = global.weapon_default;
+var weaponslotcurrent = global.weapon_slotcurrent;
+var weaponslotamount = global.weapon_slotmax;
+var weaponslotammo = global.weapon_slotammo;
+
 var yspace = 74;
 var weapon_standalone_alpha = 1;
 
@@ -49,102 +58,97 @@ if (global.weapon_slot_standalone != -1){
 	weapon_standalone_alpha = 0.2;
 }
 
-if (instance_exists(obj_player)){
-    repeat(amount){
-        
-        // Weapon Slot Scale and Shake
-        if (weaponslot_weaponscale[counter] < 1.875){
-            weaponslot_weaponscale[counter] += 0.25;
-        }else{
-            weaponslot_weaponscale[counter] = 1.875;
-        }
-		
-		if (weaponslot_shake[counter] > 0.02){
-		    weaponslot_shake[counter] *= 0.925;
-		}else{
-		    weaponslot_shake[counter] = 0;
-		}
-		
-		// Drawing Slot
-        var xx = 78;
-        var yy = 78 + (yspace * counter);
-		var slotsprite = spr_ui_weaponslot_0;
-		
-		xx += random_range(-weaponslot_shake[counter], weaponslot_shake[counter]);
-		yy += random_range(-weaponslot_shake[counter], weaponslot_shake[counter]);
-		
-		var isred = false;
-		
-		if (global.weapon_slot[counter] != -1){
-			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Ranged){
-				if (global.weapon_slotammo[counter] <= 0){
-					isred = true;
-					gpu_set_fog(true, c_red, 0, 0);
-				}
-			}
-		}
-		
-        if (global.weapon_slotcurrent == counter){
-			slotsprite = spr_ui_weaponslot_1;
-			
-			if (global.weapon_slotscale[counter] < 1.075){
-				global.weapon_slotscale[counter] += 0.025;
-			}
-		}else{
-			if (global.weapon_slotscale[counter] > 1){
-				global.weapon_slotscale[counter] -= 0.025;
-			}
-        }
-		
-		draw_sprite_ext(slotsprite, 0, xx, yy, 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
-        
-		// Drawin Slot Number
-		draw_set_halign(fa_right);
-		draw_set_font(fnt_cambria_0);
-		draw_set_alpha(1);
-		scr_text(xx - 14, yy - 28, string(counter + 1), c_gray);
-		
-		gpu_set_fog(false, c_white, 0, 0);
-		
-        // Drawing Weapon
-        if (global.weapon_slot[counter] != -1) && (global.weapon_slot[counter] != global.weapon_default){
-            var spr = global.weapon_centersprite[global.weapon_slot[counter]];
-            
-            gpu_set_fog(true, isred ? c_red : c_white, 0, 0);
-            draw_sprite_ext(spr, 0, xx, yy, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
-            gpu_set_fog(false, c_white, 0, 0);
-        }else if (global.level_current != Level.Prologue){
-            var spr = global.weapon_centersprite[global.weapon_default];
-			
-            gpu_set_fog(true, c_gray, 0, 0);
-            draw_sprite_ext(spr, 0, xx, yy, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
-            gpu_set_fog(false, c_black, 0, 0);
-        }
-		
-		counter ++;
+repeat(weaponslotamount){
+	// Weapon Slot Scale and Shake
+    if (weaponslot_weaponscale[counter] < 1.875){
+		weaponslot_weaponscale[counter] += 0.25;
+    }else{
+        weaponslot_weaponscale[counter] = 1.875;
     }
 	
-	counter = 0;
+	if (weaponslot_shake[counter] > 0.02){
+		weaponslot_shake[counter] *= 0.925;
+	}else{
+		weaponslot_shake[counter] = 0;
+	}
+	
+	// Drawing Slot
+    var xx = 78;
+    var yy = 78 + (yspace * counter);
+	var slotsprite = spr_ui_weaponslot_0;
+	
+	xx += random_range(-weaponslot_shake[counter], weaponslot_shake[counter]);
+	yy += random_range(-weaponslot_shake[counter], weaponslot_shake[counter]);
+	
+	var isred = false;
+	
+	if (weaponslot[counter] != -1){
+		if (global.weapon_type[weaponslot[counter]] == WeaponType.Ranged){
+			if (weaponslotammo[counter] <= 0){
+				isred = true;
+				gpu_set_fog(true, c_red, 0, 0);
+			}
+		}
+	}
+	
+    if (weaponslotcurrent == counter){
+		slotsprite = spr_ui_weaponslot_1;
+		
+		if (global.weapon_slotscale[counter] < 1.075){
+			global.weapon_slotscale[counter] += 0.025;
+		}
+	}else{
+		if (global.weapon_slotscale[counter] > 1){
+			global.weapon_slotscale[counter] -= 0.025;
+		}
+    }
+	
+	draw_sprite_ext(slotsprite, 0, xx, yy, 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
+    
+	// Drawin Slot Number
+	draw_set_halign(fa_right);
+	draw_set_font(fnt_cambria_0);
+	draw_set_alpha(1);
+	scr_text(xx - 14, yy - 28, string(counter + 1), c_gray);
+	
+	gpu_set_fog(false, c_white, 0, 0);
+	
+    // Drawing Weapon
+    if (weaponslot[counter] != -1) && (weaponslot[counter] != weapondefault){
+		var spr = weaponcentersprite[weaponslot[counter]];
+        
+        gpu_set_fog(true, isred ? c_red : c_white, 0, 0);
+        draw_sprite_ext(spr, 0, xx, yy, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
+        gpu_set_fog(false, c_white, 0, 0);
+    }else if (levelcur != Level.Prologue){
+		var spr = weaponcentersprite[weapondefault];
+		
+		gpu_set_fog(true, c_gray, 0, 0);
+        draw_sprite_ext(spr, 0, xx, yy, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
+        gpu_set_fog(false, c_black, 0, 0);
+	}
+	
+	counter ++;
 }
 
+counter = 0;
+
 // Player Stamina
-if (instance_exists(obj_player)){
-    var sc = global.player_stamina_current;
-    var sm = global.player_stamina_max;
-    
-    var xx = 122;
-    var yy = 78 - 30;
-    var width = 3;
-    var height = 137;
-    var col = c_white;
-    
-    if (!global.player_stamina_active){
-        col = c_ltgray;
-    }
-    
-    draw_set_alpha(weapon_standalone_alpha * ui_alpha);
-    draw_healthbar(xx, yy, xx + width, yy + height, sc / sm * 100, make_color_rgb(45, 45, 45), col, col, 3, false, false);
+var sc = global.player_stamina_current;
+var sm = global.player_stamina_max;
+
+var xx = 122;
+var yy = 78 - 30;
+var width = 3;
+var height = 137;
+var col = c_white;
+
+if (!global.player_stamina_active){
+	col = c_ltgray;
 }
+
+draw_set_alpha(weapon_standalone_alpha * ui_alpha);
+draw_healthbar(xx, yy, xx + width, yy + height, sc / sm * 100, make_color_rgb(45, 45, 45), col, col, 3, false, false);
 
 // Player Hit
 if (playerhit_alpha > 0){
@@ -261,7 +265,7 @@ if (tutourial) && (!iscutscene){
 }
 
 // Objective Display
-if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
+if (levelcur != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
 	var text = "";
 	var textx = 40;
 	var texty = dheight - 50;
@@ -269,7 +273,7 @@ if (global.level_current != Level.CityHeadquarters) && (!scr_level_is_peaceful(r
 	if (global.game_objective_complete){
 		text = "Objective completed. ";
 		
-		if (global.level_current == Level.Prologue){
+		if (levelcur == Level.Prologue){
 			text += "Return to the house.";
 		}else{
 			text += "Proceed to the next area.";
@@ -820,51 +824,6 @@ if (global.game_option[| Options.ShowMinimap]){
 	draw_sprite(spr_ui_minimap_border_overlay_0, 0, mapx - 2, mapy - 2);
 }
 
-// Level Results / Ranking
-if (rank_display_draw){
-	draw_set_alpha(rank_display_alpha);
-	draw_set_font(fnt_cambria_2);
-	draw_set_halign(fa_center);
-	scr_text(dwidth / 2, 214, string(levelname), c_white);
-	draw_rectangle(0, 274, dwidth, 274 + (3), false);
-	
-	draw_set_font(fnt_cambria_1);
-	
-	var x1 = (dwidth / 2) - 300;
-	var x2 = (dwidth / 2) + 300;
-	var length = array_length_1d(rank_string);
-
-	repeat(length){
-		if (rank_display[counter]){
-			draw_set_alpha(rank_alpha[counter]);
-			draw_set_halign(fa_left);
-			scr_text(x1, (370 + (50 * counter)), string(rank_string[counter]), c_white);
-		
-			draw_set_halign(fa_right);
-			scr_text(x2, (370 + (50 * counter)), string(rank_score[counter]) + "pts", make_colour_rgb(189, 23, 23));
-		}
-		
-		counter ++;
-	}
-	
-	counter = 0;
-	
-	if (rank_end_display){
-		draw_set_font(fnt_cambria_2);
-		draw_set_halign(fa_center);
-		draw_set_alpha(rank_end_alpha);
-		scr_text((dwidth / 2) - 40, (370 + (50 * (length + 2))), "Grade", c_white);
-		
-		var scale = 0.85;
-		
-		draw_set_font(fnt_cambria_2);
-		scr_text_transformed((dwidth / 2) + 60, (370 + (50 * (length + 2))) - 4, string(scr_rank_to_string(rank)), c_white, scale, scale, 0);
-		
-		draw_set_font(fnt_cambria_0);
-		scr_text(dwidth / 2, (370 + (50 * (length + 2))) + 50, "Press Enter to Continue", c_white);
-	}
-}
-
 // Pause Backdrop
 if (pause_text_alpha > 0) || (pausedialogue_alpha > 0){
 	draw_set_colour(c_black);
@@ -1012,9 +971,11 @@ if (pausedialogue_alpha > 0){
 	var exity = optyy + (vslot * optint);
 	
 	if (!selected_set) && (!obj_controller_all.warning_prompt){
-		if (point_in_rectangle(mousex, mousey, optxx - 80, exity - 16, optxx + 80, exity + 16)){
-			pausedialogue_option_selected = counter;
-			selected_set = true;
+		if (iskeyboard){
+			if (point_in_rectangle(mousex, mousey, optxx - 80, exity - 16, optxx + 80, exity + 16)){
+				pausedialogue_option_selected = counter;
+				selected_set = true;
+			}
 		}
 	}
 	
@@ -1039,7 +1000,7 @@ if (screen_fade_opening > 0){
 }
 
 // Game Opening Intro
-if (global.level_current == Level.Prologue){
+if (levelcur == Level.Prologue){
 	if (game_opening_intro){
 		var text = "MANIC";
 		
@@ -1121,18 +1082,19 @@ if (ending){
 	
 	draw_set_font(fnt_cambria_3);
 	draw_set_alpha(ending_credits_text_alpha);
-	scr_text(dwidth / 2, (dheight / 2) - 165, "A GAME BY GETA", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 190, "A GAME BY GETA", c_white);
 	
 	draw_set_font(fnt_cambria_2);
-	scr_text(dwidth / 2, (dheight / 2) - 100, "Programming, artwork and game design by Harry White", c_white);
-	scr_text(dwidth / 2, (dheight / 2) - 50, "Music and sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
-	scr_text(dwidth / 2, (dheight / 2), "Art assistance for character design by James Lynch", c_white);
-	scr_text(dwidth / 2, (dheight / 2) + 50, "Programming assistance from Gideon the Bard and Sam Hollins", c_white);
-	scr_text(dwidth / 2, (dheight / 2) + 100, "Thanks for playing!", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 125, "Programming, artwork and game design by Harry White", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 75, "Music created by Frank Albrecht", c_white);
+	scr_text(dwidth / 2, (dheight / 2) - 25, "Sound effects created by Frank Albrecht and Kare Abrahamsen", c_white);
+	scr_text(dwidth / 2, (dheight / 2) + 25, "Art assistance for character design from James Lynch", c_white);
+	scr_text(dwidth / 2, (dheight / 2) + 75, "Programming assistance from Grayson Sutherlin and Sam Hollins", c_white);
+	scr_text(dwidth / 2, (dheight / 2) + 125, "Thank you for playing!", c_white);
 	
-	var cont_text = "Press " + (global.game_input_type == InputType.Gamepad ? scr_input_get_name(InputBinding.Interact) : scr_input_get_name(InputBinding.Attack)) + " to return to titlescreen"
+	var cont_text = "Press " + (!iskeyboard ? scr_input_get_name(InputBinding.Interact) : scr_input_get_name(InputBinding.Attack)) + " to return to titlescreen"
 	
-	scr_text(dwidth / 2, (dheight / 2) + 165, cont_text, c_white);
+	scr_text(dwidth / 2, (dheight / 2) + 190, cont_text, c_white);
 	
 	draw_set_valign(fa_top);
 }

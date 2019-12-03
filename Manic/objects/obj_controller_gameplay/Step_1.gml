@@ -1,6 +1,18 @@
-// Deactivating Outside Instances
-if (corpse_active_time > 0){
-	corpse_active_time --;
+// Activating corpse objects
+if (!deactivate_start){
+	with(obj_environment_corpse){
+		start = true;
+	}
+	
+	with(obj_environment_soldier_head){
+		start = true;
+	}
+	
+	with(obj_environment_soldier_limbs){
+		start = true;
+	}
+	
+	deactivate_start = true;
 }
 
 // Game Pausing

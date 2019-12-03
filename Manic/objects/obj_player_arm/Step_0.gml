@@ -15,13 +15,10 @@ if (instance_exists(obj_player)){
         image_alpha = 0;
     }
 	
-	var iscutscene = (global.cutscene_current != -1);
+	var dir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 	
-	if (global.cutscene_current == 57){
-		if (wcurrent == PlayerWeapon.Revolver){
-			iscutscene = false;
-		}
-	}
+	var iscutscene = (global.cutscene_current != -1);
+	var genericpos = true;
 	
 	if (!iscutscene){
 		
@@ -47,14 +44,7 @@ if (instance_exists(obj_player)){
 	    }
     
 	    // Weapon Position -------------------------------------------------------------------------------------------------
-	    var dir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
-		var genericpos = true;
-		
-		if (global.cutscene_current != -1){
-			dir = point_direction(global.player_position_x, global.player_position_y, obj_player.move_x_to, obj_player.move_y_to);
-		}
-		
-		if (wcurrent != -1){
+	    if (wcurrent != -1){
 			if ((global.weapon_type[wcurrent] == WeaponType.Ranged)
 			|| (global.weapon_type[wcurrent] == WeaponType.Throwing)
 			|| (global.weapon_object[wcurrent].index == PlayerWeapon.Knife)
@@ -110,15 +100,28 @@ if (instance_exists(obj_player)){
 		}else if (global.level_current == Level.Prologue){
 			image_alpha = 0;
 		}
-		
-		if (genericpos){
-			x = obj_player.x - (sign(obj_player.image_xscale) * 3);
-			y = obj_player.y;
-			image_yscale = sign(obj_player.image_xscale);
-			image_angle = dir;
-		}
 	}else{
+		if (obj_player.move_x_to != -1) || (obj_player.move_y_to != -1){
+			dir = point_direction(global.player_position_x, global.player_position_y, obj_player.move_x_to, obj_player.move_y_to);
+		}else{
+			dir = (sign(image_xscale) == 1) ? 360 : 180;
+		}
+		
+		genericpos = true;
 		image_alpha = 0;
+		
+		if (global.cutscene_current == 57){
+			if (wcurrent == PlayerWeapon.Revolver){
+				image_alpha = 1;
+			}
+		}
+	}
+	
+	if (genericpos){
+		x = obj_player.x - (sign(obj_player.image_xscale) * 3);
+		y = obj_player.y;
+		image_yscale = sign(obj_player.image_xscale);
+		image_angle = dir;
 	}
 }else{
     image_alpha = 0;

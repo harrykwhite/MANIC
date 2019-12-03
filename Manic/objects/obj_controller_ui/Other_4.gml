@@ -52,6 +52,7 @@ dialogue_y = 0;
 dialogue_skip = 0;
 dialogue_skip_max = 40;
 dialogue_break = 0;
+dialogue_new = false;
 
 enum TutourialStage{
 	Movement,
@@ -155,7 +156,7 @@ if (!global.pers_runthrough_pre){
 					scr_companions_clear();
 					scr_player_upgrades_clear();
 					scr_set_kills_and_findings();
-				
+					
 					if (global.level_complete[i]){
 						global.game_objective_set = true;
 						global.game_objective_complete = true;
@@ -225,14 +226,6 @@ area_next_alpha = 0;
 area_next_alpha_speed = 0.02;
 area_next_room = noone;
 
-score_current = global.game_score;
-score_scale = 1;
-score_shake = 0;
-score_text = "";
-score_text_offset = 0;
-score_text_time = 0;
-score_text_alpha = 0;
-
 var weaponalength = array_length_1d(global.weapon_slot);
 
 for(var i = 0; i < weaponalength; i ++){
@@ -249,9 +242,6 @@ screenblend_alpha = 0;
 screenblend_colour = c_white;
 screenblend_speed = 0.1;
 screenblend_endalpha = 0.6;
-
-rank_display_draw = false;
-rank_display_alpha = 0;
 
 control_indicate = false;
 control_indicate_text = "";

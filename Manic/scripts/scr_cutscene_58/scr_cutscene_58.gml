@@ -276,8 +276,9 @@ if (instance_exists(obj_player)){
 					cutscene_look_object = inst;
 					cutscene_look_prop = true;
 					cutscene_look_boss = Boss.TheScorched;
+					
+					script_execute(scr_cutscene_40);
 				}
-				
 				return;
 			}
 			
@@ -424,8 +425,9 @@ if (instance_exists(obj_player)){
 					cutscene_look_object = inst;
 					cutscene_look_prop = true;
 					cutscene_look_boss = Boss.TheDogkeeper;
+					
+					script_execute(scr_cutscene_40);
 				}
-				
 				return;
 			}
 			
@@ -795,8 +797,9 @@ if (instance_exists(obj_player)){
 						cutscene_look_object = inst;
 						cutscene_look_prop = true;
 						cutscene_look_boss = Boss.Antagonist;
+						
+						script_execute(scr_cutscene_40);
 					}
-					
 					return;
 				}
 				
@@ -842,6 +845,8 @@ if (instance_exists(obj_player)){
 						cutscene_look_object = inst;
 						cutscene_look_prop = true;
 						cutscene_look_boss = Boss.TrainBoss;
+						
+						script_execute(scr_cutscene_40);
 					}
 					return;
 				}
@@ -935,7 +940,7 @@ if (instance_exists(obj_player)){
 							global.game_boss_thedogkeeper_talked = true;
 							break;
 					
-						case obj_companion_0:
+						case obj_antagonist:
 							if (room == rm_level_6_pre_00){
 								global.game_boss_firstantag_talked = true;
 							}

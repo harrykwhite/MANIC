@@ -1,4 +1,3 @@
-scr_bonuspoints_list();
 scr_weapon_list();
 scr_pawn_list();
 scr_cutscene_list();
@@ -55,12 +54,6 @@ if (room == rm_ini){
 }
 
 global.fade_object_group[0, 0] = noone;
-
-global.game_score = 0;
-global.game_score_bonus = 0;
-global.game_score_deaths = 4000;
-global.game_score_collectables = 0;
-global.game_score_wpnvariation = 0;
 
 global.player_respawn_x = 0;
 global.player_respawn_y = 0;

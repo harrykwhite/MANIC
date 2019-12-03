@@ -3,6 +3,16 @@ if (activate){
 	
 	for(var i = 0; i < length; i ++){
 		if (object[i] != noone){
+			if (object_weapon[i] != -1){
+				var weaponat = instance_place(object_x[i], object_y[i], obj_weapondrop);
+				
+				if (instance_exists(weaponat)){
+					if (weaponat.index == object_weapon[i]){
+						continue;
+					}
+				}
+			}
+			
 			if (!instance_exists(object_inst[i])){
 				object_inst[i] = instance_create(object_x[i], object_y[i], object[i]);
 				

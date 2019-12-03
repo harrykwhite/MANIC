@@ -3,8 +3,8 @@ for(var i = 0; i < height; i ++){
 	if (global.player_companions[# 0, i] != -1){
 		var comp, cobj = global.player_companions[# 0, i];
 		
-		var px = clamp(obj_player.x, 12, room_width - 12);
-		var py = clamp(obj_player.y, 12, room_height - 12);
+		var px = clamp(obj_player.x, 27, room_width - 27);
+		var py = clamp(obj_player.y, 27, room_height - 27);
 		
 		if (!instance_exists(cobj)){
 			comp = instance_create(px, py, cobj);

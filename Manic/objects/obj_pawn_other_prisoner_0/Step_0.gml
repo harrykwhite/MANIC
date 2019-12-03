@@ -3,21 +3,7 @@ if (global.game_pause) || (global.cutscene_current != -1){
 	return;
 }
 
-if (talking){
-	if (global.cutscene_current == -1){
-		obj_controller_ui.dialogue_x = x;
-		obj_controller_ui.dialogue_y = y - 24;
-		
-		if (obj_controller_ui.dialogue_time <= 0){
-			talking = false;
-		}
-	}else{
-		obj_controller_ui.dialogue_time = 0;
-		talking = false;
-	}
-}
-
-if (talk){
+if (talk) && (obj_controller_ui.dialogue_time <= 0){
 	with(object_index){
 		talking = false;
 	}
@@ -33,8 +19,30 @@ if (talk){
 	obj_controller_ui.dialogue_voice_opened = false;
 	obj_controller_ui.dialogue_voice_closed = true;
 	
+	with(obj_sign_0){
+		talking = false;
+	}
+	
+	with(obj_sign_wall_0){
+		talking = false;
+	}
+	
 	talk = false;
 	talking = true;
+}
+
+if (talking){
+	if (global.cutscene_current == -1){
+		obj_controller_ui.dialogue_x = x;
+		obj_controller_ui.dialogue_y = y - 24;
+		
+		if (obj_controller_ui.dialogue_time <= 0){
+			talking = false;
+		}
+	}else{
+		obj_controller_ui.dialogue_time = 0;
+		talking = false;
+	}
 }
 
 if (domove){

@@ -3,10 +3,11 @@ if (global.pers_runthrough){
 	return;
 }
 
+instance_activate_all();
+
 counter = 0;
 
 pause_time = 0;
-corpse_active_time = 30;
 
 has_saved = false;
 
@@ -43,6 +44,10 @@ cutscene_dialogue_line = -1;
 cutscene_dialogue_special = -1;
 cutscene_dialogue_bunker_engine_destroy = false;
 cutscene_deermeat_collected = false;
+
+deactivate_time_max = 8;
+deactivate_time = deactivate_time_max;
+deactivate_start = true;
 
 weaponswitch_break = 10;
 

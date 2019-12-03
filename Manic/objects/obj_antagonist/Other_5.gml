@@ -1,6 +1,7 @@
 if (room == rm_level_10_01){
 	if (!instance_exists(obj_giantturret)){
-		instance_create(504, 414, obj_giantturret);
+		var giantturret = instance_create(504, 414, obj_giantturret);
+		giantturret.cutscene_prop = true;
 	}
 	
 	instance_destroy();

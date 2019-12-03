@@ -5,8 +5,6 @@ var up_pressed = scr_input_is_pressed(InputBinding.Up, 0.275);
 var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
 
 scr_position_view();
-scr_ui_rank_display_setup();
-scr_ui_rank_display_update();
 
 // Teaser end
 if (teaserend){
@@ -301,15 +299,6 @@ if (!ispaused){
 			}
 		}
 	}
-
-	// Score
-	score_scale = approach(score_scale, 1, 20);
-	score_shake *= 0.9;
-	score_shake = max(score_shake, 0);
-
-	if (score_current < global.game_score){
-		score_current += 50;
-	}
 }else{
 	// Pause
 	if (!pausedialogue){
@@ -446,7 +435,9 @@ if (!ispaused){
 					
 							pausedialogue_break = ((pausedialogue_option_selected_held_time >= pausedialogue_option_selected_held_time_max) ? 6 : 12);
 						}
+					}
 					
+					if (!iskeyboard){
 						pausedialogue_option_selected = clamp(pausedialogue_option_selected, 0, pausedialogue_option_max);
 					}
 				

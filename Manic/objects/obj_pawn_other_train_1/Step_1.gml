@@ -35,6 +35,9 @@ if (component_spawn){
 			
 			component[i - 1].mainsprite = component[i - 1].sprite_index;
 		}
+		
+		component[i - 1].image_speed = image_speed;
+		component[i - 1].image_index = image_index;
 	}
 	
 	mylight = instance_create_layer(x + (53 * sign(image_xscale)), y, "Lights", obj_pawn_other_train_light);
