@@ -14,14 +14,16 @@ if (!upgrades_set){
 	upgrades_set = true;
 }
 
-if (!weapon_default_set){
-	var def = PlayerWeapon.Knife;
+if (!global.weapon_default_set){
+	if (!global.game_is_playthrough){
+		var def = PlayerWeapon.Knife;
 	
-	if (global.level_current >= Level.WinterTown){
-		def = PlayerWeapon.Bayonet;
+		if (global.level_current >= Level.HumanPrison){
+			def = PlayerWeapon.Bayonet;
+		}
+	
+		global.weapon_default = def;
 	}
 	
-	global.weapon_default = def;
-	
-	weapon_default_set = true;
+	global.weapon_default_set = true;
 }

@@ -13,9 +13,6 @@ if (ispaused){
 	return;
 }
 
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
-
 if (contact_attack_ready_time > 0){
 	contact_attack_ready_time --;
 }

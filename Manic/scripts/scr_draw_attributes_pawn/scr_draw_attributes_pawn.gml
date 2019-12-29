@@ -1,6 +1,6 @@
 var is_metal = false;
 var alpha_mult = 1;
-var drawshader = (health_current <= max(floor(health_max / 3), 1)) || (bleed) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha > 0);
+var drawshader = (health_current <= max(floor(health_max / 3), 1)) || (bleed) || (burn) || (poison) || (i_blend_time > 0);
 
 if (drawshader){
 	var wv = wave(0.05, 0.1, 2, 0);
@@ -146,13 +146,6 @@ if (drawshader){
 		r = color_get_red(colour);
 		g = color_get_green(colour);
 		b = color_get_blue(colour);
-	}
-
-	if (whiteflash_alpha > 0){
-		a = whiteflash_alpha;
-		r = 255;
-		g = 255;
-		b = 255;
 	}
 
 	if (r > 0) || (g > 0) || (b > 0) || (a > 0){

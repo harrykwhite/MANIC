@@ -18,6 +18,10 @@ if (spd > 0.01){
 	spd = 0;
 }
 
+if (place_meeting(x, y, obj_p_solid)){
+	spd = 1;
+}
+
 // Pickup
 if (instance_exists(obj_player)){
     if (distance_to_object(obj_player) < pickup_range){
@@ -40,7 +44,6 @@ if (instance_exists(obj_player)){
 			
 			if (index != Collectables.DeerMeat) && (listnum != -1){
 				global.level_collectable_current[global.level_current] ++;
-			
 				global.level_collectable_found[# 0, listnum] = true;
 			}
 			

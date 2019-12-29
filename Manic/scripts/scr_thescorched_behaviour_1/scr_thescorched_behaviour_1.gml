@@ -46,7 +46,7 @@ if (instance_exists(target)){
 				}
 				
 				shoot_delay = 40;
-				shoot_time = 80 + random_range(-10, 8) * ((health_current / health_max) * 2);
+				shoot_time = max((80 + random_range(-10, 10)) * ((health_current / health_max) * 2), 50);
 			}else{
 				state = 1;
 				run_count = 0;
@@ -86,17 +86,17 @@ if (instance_exists(target)){
 					release_offset = 0;
 				}
 				
-				release_time = max(45 * ((health_current / health_max) * 2), 35);
+				release_time = max(45 * ((health_current / health_max) * 2), 38);
 				release_count ++;
 			}
 		}else{
-			release_time = max(45 * ((health_current / health_max) * 2), 35);
+			release_time = max(45 * ((health_current / health_max) * 2), 38);
 			release_count = 0;
 			
 			state = 2;
 		}
 	}else if (state == 2){
-		var maxtime = max(60 * 2.25 * ((health_current / health_max) * 2), 60 * 1.75);
+		var maxtime = max(60 * 2.25 * ((health_current / health_max) * 2), 60 * 2);
 		
 		if (slowfire_time < maxtime){
 			face_player = true;
@@ -146,9 +146,9 @@ if (instance_exists(target)){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (!scr_pawn_find_path()){

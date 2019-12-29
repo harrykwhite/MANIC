@@ -39,16 +39,16 @@ if (ammo == 0) && (global.weapon_type[index] == WeaponType.Ranged){
 
 // Special weapon effects
 if (specialweapon){
-	if (!global.game_pause){
-		if (!place_meeting(x, y, obj_environment_cover_0)){
+	/*if (!global.game_pause){
+		if (!place_meeting(x, y, obj_block_cover)){
 			if (random(13) < 1){
 				part_particles_create(global.ps_front, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_glow_0, 1);
 			}
 		}
-	}
+	}*/
 	
-	var glow = wave(0.75, 1, 2, 0);
+	var glow = wave(0.25, 1, 2, 0);
 	gpu_set_fog(true, c_white, 0, 0);
-	draw_sprite_ext(sprite, 0, x, y + yy, scale, scale, angle, c_white, 0.025 * glow);
+	draw_sprite_ext(sprite, 0, x, y + yy, scale, scale, angle, c_white, 0.4 * glow);
 	gpu_set_fog(false, c_black, 0, 0);
 }

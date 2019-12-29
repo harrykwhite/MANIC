@@ -27,7 +27,7 @@ global.objective_counter_max[1] = 4;
 
 global.objective_name[2] = "Hunt and gather ^ deer meat.";
 global.objective_counter[2] = 0;
-global.objective_counter_max[2] = 4;
+global.objective_counter_max[2] = 3;
 
 global.objective_name[3] = "Wait for an enemy train to arrive.";
 global.objective_counter[3] = 0;

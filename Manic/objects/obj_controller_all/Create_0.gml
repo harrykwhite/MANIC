@@ -12,6 +12,10 @@ gui_resize_w = 0;
 gui_resize_h = 0;
 gui_resize_time = -1;
 
+window_resize_w = 0;
+window_resize_h = 0;
+window_resize_time = -1;
+
 indicate_text = "";
 indicate_text_time = 0;
 indicate_text_time_max = 90;

@@ -61,9 +61,6 @@ knockback_speed = 0;
 knockback_direction = 0;
 knockback_multiplier = 0;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
-
 cutscene_prop = false;
 in_cutscene = false;
 

@@ -1,2 +1,2 @@
-index = PlayerWeapon.Shotgun;
+index = PlayerWeapon.Axe;
 angle = -30;

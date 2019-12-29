@@ -1,5 +1,5 @@
 var player = obj_player;
-var drawshader = (global.player_health_current <= 2) || (player.burn) || (player.poison) || (player.whiteflash_alpha > 0);
+var drawshader = (global.player_health_current <= 2) || (player.burn) || (player.poison);
 
 var ucount = array_length_1d(global.upgrade_name);
 if (ucount > 0){
@@ -37,13 +37,6 @@ if (drawshader){
 
 	if (player.poison){
 		a = wv * 0.7;
-		r = 255;
-		g = 255;
-		b = 255;
-	}
-
-	if (player.whiteflash_alpha > 0){
-		a = player.whiteflash_alpha;
 		r = 255;
 		g = 255;
 		b = 255;

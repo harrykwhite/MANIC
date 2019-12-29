@@ -22,8 +22,6 @@ bite_retreat_y = y;
 bite_retreat_direction = 0;
 bite_retreat_time = 0;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
 mylight = noone;
 
 burn = false;

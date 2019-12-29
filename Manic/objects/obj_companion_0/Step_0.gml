@@ -13,10 +13,7 @@ if (!instance_exists(mylight)){
 
 mylight.x = x;
 mylight.y = y;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.15 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+mylight.Light_Intensity = (1 + (clamp(flash_time, 0, 2) / 10)) * light_brightness;
 
 if (global.game_pause){
 	ispaused = true;
@@ -71,12 +68,10 @@ if (cutscene_prop){
 	order = scr_companion_get_order();
 }
 
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
-
 burn = false;
-poison = false;
 headless = false;
+bleed = false;
+poison = false;
 
 scr_pawn_status_handler();
 
@@ -96,8 +91,6 @@ if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global
 if (flash_time > 0){
 	flash_time--;
 }
-
-health_current = max(health_current, 1);
 
 scr_pawn_update();
 image_yscale = scale;

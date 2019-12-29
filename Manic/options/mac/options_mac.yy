@@ -8,6 +8,7 @@
     "option_mac_allow_outgoing_network": false,
     "option_mac_app_category": "Games",
     "option_mac_app_id": "MANIC",
+    "option_mac_apple_sign_in": false,
     "option_mac_build_app_store": false,
     "option_mac_copyright": "(c)2019 Geta Games",
     "option_mac_disable_sandbox": false,
@@ -21,15 +22,15 @@
     "option_mac_output_dir": "~\/GameMaker-Studio\/Manic",
     "option_mac_resize_window": true,
     "option_mac_scale": 1,
-    "option_mac_signing_identity": "Developer ID Application:",
+    "option_mac_signing_identity": "Developer ID Application: Alan White (QU2N84AU7D)",
     "option_mac_splash_png": "${options_dir}\\mac\\splash\\splash.png",
     "option_mac_start_fullscreen": true,
-    "option_mac_team_id": "",
+    "option_mac_team_id": "QU2N84AU7D",
     "option_mac_texture_page": "2048x2048",
     "option_mac_version": {
-        "build": 7,
+        "build": 0,
         "major": 1,
-        "minor": 0,
+        "minor": 1,
         "revision": 0
     },
     "option_mac_vsync": false

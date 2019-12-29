@@ -12,8 +12,6 @@ hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_fly_hitbox_0;
 hitbox.owner = id;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.1;
 mylight = noone;
 
 defense = 0;

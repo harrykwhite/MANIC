@@ -31,9 +31,6 @@ weapon = -1;
 weapon_has = false;
 weapon_index = PawnWeapon.HeavyShotgun;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
-
 burn = false;
 burn_x = x;
 burn_y = y;

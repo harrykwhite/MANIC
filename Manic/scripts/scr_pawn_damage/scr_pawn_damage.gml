@@ -43,7 +43,7 @@ if (object_index == obj_enemy_3){
 if (health_current <= 0){
 	switch(object_index){
 		case obj_enemy_0:
-			corpse = instance_create(x, y - 16, obj_enemy_corpse);
+			corpse = instance_create(x, y - 4, obj_enemy_corpse);
 			if (type == Enemy0_Type.Crazy){
 				corpse.sprite_index = spr_enemy_0_brain_corpse_0;
 			}
@@ -116,7 +116,7 @@ if (health_current <= 0){
 		case obj_enemy_5:
 			var cblock = noone;
 			
-			corpse = instance_create(x, y, obj_enemy_corpse);
+			corpse = instance_create(x, y - 1, obj_enemy_corpse);
 			corpse.sprite_index = spr_enemy_5_corpse_0;
 			
 			repeat(4){
@@ -155,7 +155,7 @@ if (health_current <= 0){
 			break;
 		
 		case obj_thescorched:
-			corpse = instance_create(x, y - 16, obj_enemy_corpse);
+			corpse = instance_create(x, y - 4, obj_enemy_corpse);
 			corpse.sprite_index = spr_thescorched_corpse_0;
 			
 			repeat(6){
@@ -166,7 +166,7 @@ if (health_current <= 0){
 			break;
 		
 		case obj_thedogkeeper:
-			corpse = instance_create(x, y - 16, obj_enemy_corpse);
+			corpse = instance_create(x, y - 4, obj_enemy_corpse);
 			corpse.sprite_index = spr_thedogkeeper_corpse_0;
 			
 			repeat(6){
@@ -203,73 +203,86 @@ if (health_current <= 0){
 			}
 			break;
 
-		//case obj_companion_0:
-		//	corpse = instance_create(x, y - 16, obj_companion_corpse);
-		//	corpse.sprite_index = spr_companion_0_corpse_0;
+		case obj_companion_0:
+			corpse = instance_create(x, y, obj_companion_corpse);
+			corpse.sprite_index = spr_companion_0_corpse_0;
+			corpse.in_cutscene = true;
 			
-		//	if (headless){
-		//		corpse.sprite_index = spr_companion_0_headless_corpse_0;
-		//	}
+			if (headless){
+				corpse.sprite_index = spr_companion_0_headless_corpse_0;
+			}
 			
-		//	repeat(4){
-		//		part_type_speed(global.pt_bodypart_companion_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
-		//		part_type_direction(global.pt_bodypart_companion_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
-		//		part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_0, 1);
-		//	}
-		//	break;
+			i_time *= 2;
+			
+			/*repeat(4){
+				part_type_speed(global.pt_bodypart_companion_0, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
+				part_type_direction(global.pt_bodypart_companion_0, knockback_direction - 35, knockback_direction + 35, 0, 0);
+				part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_bodypart_companion_0, 1);
+			}*/
+			break;
 		
 		case obj_companion_1:
-			corpse = instance_create(x, y - 16, obj_companion_corpse);
+			corpse = instance_create(x, y, obj_companion_corpse);
 			corpse.sprite_index = spr_companion_1_corpse_0;
+			corpse.in_cutscene = true;
 			
 			if (headless){
 				corpse.sprite_index = spr_companion_1_headless_corpse_0;
 			}
 			
-			repeat(4){
+			i_time *= 2;
+			
+			/*repeat(4){
 				part_type_speed(global.pt_bodypart_companion_1, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_companion_1, knockback_direction - 35, knockback_direction + 35, 0, 0);
 				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_companion_1, 1);
-			}
+			}*/
 			break;
 		
 		case obj_companion_2:
-			corpse = instance_create(x, y - 16, obj_companion_corpse);
+			corpse = instance_create(x, y, obj_companion_corpse);
 			corpse.sprite_index = spr_companion_2_corpse_0;
+			corpse.in_cutscene = true;
 			
 			if (headless){
 				corpse.sprite_index = spr_companion_2_headless_corpse_0;
 			}
 			
-			repeat(4){
+			i_time *= 2;
+			
+			/*repeat(4){
 				part_type_speed(global.pt_bodypart_companion_2, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_companion_2, knockback_direction - 35, knockback_direction + 35, 0, 0);
 				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_companion_2, 1);
-			}
+			}*/
 			break;
 		
 		case obj_companion_3:
-			corpse = instance_create(x, y - 16, obj_companion_corpse);
+			corpse = instance_create(x, y, obj_companion_corpse);
 			corpse.sprite_index = spr_companion_3_corpse_0;
+			corpse.in_cutscene = true;
 			
 			if (headless){
 				corpse.sprite_index = spr_companion_3_headless_corpse_0;
 			}
 			
-			repeat(4){
+			i_time *= 2;
+			
+			/*repeat(4){
 				part_type_speed(global.pt_bodypart_companion_3, 2.2 + (knockback_speed / 15), 2.9 + (knockback_speed / 15), -0.075, 0);
 				part_type_direction(global.pt_bodypart_companion_3, knockback_direction - 15, knockback_direction + 15, 0, 0);
 				part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-10, 10), global.pt_bodypart_companion_3, 1);
-			}
+			}*/
 			break;
 		
 		case obj_antagonist:
 			if (room != rm_level_6_pre_00){
-				corpse = instance_create(x, y - 16, obj_antagonist_corpse);
+				corpse = instance_create(x, y - 4, obj_antagonist_corpse);
 				corpse.sprite_index = spr_antagonist_corpse_0;
 			
 				var mask = instance_create(x, y + 4, obj_antagonist_mask);
 				mask.dir = knockback_direction;
+				mask.spd = 4;
 			
 				knockback_speed *= 0.7;
 			

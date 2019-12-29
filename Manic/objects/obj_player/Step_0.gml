@@ -42,9 +42,6 @@ if (global.game_pause){
 flashlight_alpha += 0.01;
 flashlight_alpha = clamp(flashlight_alpha, 0, 1);
 
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
-
 // Script
 scr_player_update();
 script_execute(state);
@@ -110,10 +107,7 @@ if (instance_exists(flashlight)){
 	
 	flashlight.x = x + lengthdir_x(4, flashlight_direction);
 	flashlight.y = y + lengthdir_y(4, flashlight_direction);
-	flashlight.light[| eLight.X] = x + lengthdir_x(4, flashlight_direction);
-	flashlight.light[| eLight.Y] = y + lengthdir_y(4, flashlight_direction);
-	flashlight.light[| eLight.LutIntensity] = 1.75;
-	flashlight.light[| eLight.Range] = max(360 * light_brightness * surrounding_light * (1 + ((global.game_option[| Options.Flashing] / 100) * (flashlight_brightness - 1))), 1);
-	flashlight.light[| eLight.Direction] = flashlight_direction;
-	flashlight.light[| eLight.Flags] |= eLightFlags.Dirty;
+	flashlight.Light_Intensity = 1.75;
+	flashlight.Light_Range = max(100 * light_brightness * surrounding_light * (1 + ((global.game_option[| Options.Flashing] / 100) * (flashlight_brightness - 1))), 1);
+	flashlight.Light_Direction = flashlight_direction;
 }

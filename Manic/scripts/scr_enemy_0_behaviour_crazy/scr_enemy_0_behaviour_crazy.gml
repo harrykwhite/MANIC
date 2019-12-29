@@ -3,6 +3,8 @@ var speed_final = 0;
 target = obj_player;
 
 if (instance_exists(target)) && (instance_exists(weapon)){
+	scr_enemy_find_companion();
+	
 	if (crazy_runback){
 		var xx = crazy_runx + lengthdir_x(30, crazy_attackdir - 180);
 		var yy = crazy_runy + lengthdir_y(30, crazy_attackdir - 180);
@@ -115,9 +117,9 @@ move_x_to = clamp(move_x_to, 0, room_width);
 move_y_to = clamp(move_y_to, 0, room_height);
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (crazy_dash){

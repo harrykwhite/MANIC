@@ -82,20 +82,20 @@ if (instance_exists(obj_player)){
 			
 			var dist_to_player = distance_to_object(obj_player);
 			
-			if (dist_to_player > 70 + (60 * order)){
+			if (dist_to_player > 70 + (40 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 2.1;
 				
-				if (dist_to_player > 100 + (60 * order)){
+				if (dist_to_player > 100 + (40 * order)){
 					move_speed = 2.6;
 				}
 				
-				if (dist_to_player > 140 + (60 * order)){
+				if (dist_to_player > 140 + (40 * order)){
 					move_speed = 3.1;
 				}
 				
-				if (dist_to_player > 180 + (60 * order)){
+				if (dist_to_player > 180 + (40 * order)){
 					move_speed = 3.6;
 				}
 				
@@ -165,7 +165,7 @@ if (instance_exists(obj_player)){
 				move_x_to = x;
 				move_y_to = room_height;
 			
-				if (distance_to_point(move_x_to, move_y_to) > 32 + (60 * order)){
+				if (distance_to_point(move_x_to, move_y_to) > 32 + (40 * order)){
 					move_speed = 1.9;
 				}else{
 					move_speed = 0;
@@ -179,7 +179,7 @@ if (instance_exists(obj_player)){
 					move_y_to = yy;
 					move_speed = 1.9;
 					
-					if (distance_to_point(xx, yy) <= 20 + (60 * order)){
+					if (distance_to_point(xx, yy) <= 20 + (40 * order)){
 						depart_standaway_reached = true;
 					}
 				}else{
@@ -190,7 +190,7 @@ if (instance_exists(obj_player)){
 					move_y_to = obj_player.y;
 				}
 			}else{
-				if (distance_to_object(obj_player) > 67 + (60 * order)){
+				if (distance_to_object(obj_player) > 67 + (40 * order)){
 					move_speed = 1.9;
 				}else{
 					face_player = true;
@@ -239,7 +239,7 @@ if (instance_exists(obj_player)){
 	
 	if (!cutscene_prop){
 		if (global.cutscene_current == 2) || ((global.cutscene_current == 58 || global.cutscene_current == 52) && (!depart) && (!depart_standaway) && (!bunker_engine_destroy)){
-			if (distance_to_object(obj_player) > 67 + (60 * order)){
+			if (distance_to_object(obj_player) > 67 + (40 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 1.9;
@@ -248,6 +248,7 @@ if (instance_exists(obj_player)){
 	}
 	
 	scr_companion_teleport();
+	scr_companion_healing();
 }else{
 	if (image_xscale == scale){
 		weapon.dir = 360;
@@ -285,9 +286,9 @@ if (dashbreak > 0){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (dash){

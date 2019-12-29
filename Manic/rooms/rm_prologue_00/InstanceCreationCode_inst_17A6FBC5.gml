@@ -9,4 +9,5 @@ if (!global.game_npc_player_wife_talked){
 	look_prop = false;
 }
 
+special = "huntingstart";
 destroy_on_activate = true;

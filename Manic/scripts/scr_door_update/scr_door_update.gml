@@ -84,6 +84,11 @@ if ((interact) && (global.cutscene_current == -1) && (!anim) && (!locked) && (id
 			image_speed = 1;
 			image_index = 0;
 			
+			if (houseraid) && (open){
+				global.cutscene_current = 3;
+				houseraid = false;
+			}
+			
 			if (object_index == obj_prisonbuilding_door_0) && (global.cutscene_current != 1){
 				switch(room){
 					case rm_level_4_post_01:

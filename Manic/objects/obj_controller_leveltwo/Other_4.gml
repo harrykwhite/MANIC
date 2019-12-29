@@ -29,7 +29,7 @@ switch(room){
 			obj_player.x = room_width + 6;
 			obj_player.y = 428;
 			
-			spawn_x = 2472;
+			spawn_x = 1472;
 			spawn_y = 428;
 		}
 		break;

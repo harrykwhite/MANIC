@@ -1,1 +1,1 @@
-global.game_lighting = 0.85 + scr_brightness_offset();
+global.game_lighting_level_to = 0.85 + scr_brightness_offset();

@@ -6,6 +6,8 @@ death = false;
 
 breakable = true;
 
+houseraid = false;
+
 locked = false;
 locked_img = 0;
 locked_img_sprite = spr_door_lock_0;

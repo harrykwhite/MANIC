@@ -3,6 +3,7 @@ var tut_count = array_length_1d(obj_controller_ui.tutourial_text);
 with(obj_controller_ui){
 	if (tutourial_stage < tut_count - 1){
 		tutourial_stage ++;
+		tutourial_stage_timer = tutourial_stage_timer_max;
 		tutourial_scale = 1.3;
 	}else{
 		tutourial_fade = true;
@@ -28,6 +29,8 @@ with(obj_controller_ui){
 		
 		ds_list_destroy(templist);
 	}else if (tutourial_stage == TutourialStage.ThrowPurpose){
-		tutourial_stage_timer = 60 * 4;
+		tutourial_stage_timer = 60 * 6;
+	}else if (tutourial_stage == TutourialStage.Pickup){
+		tutourial_stage_timer = -1;
 	}
 }

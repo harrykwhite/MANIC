@@ -1,5 +1,6 @@
 ///@param domove
 var domove = true;
+var trials = 0;
 
 if (argument_count > 0){
 	domove = argument[0];
@@ -13,10 +14,10 @@ var width = room_width div cw;
 var height = room_height div ch;
 
 var thisx = (x div cw);
-var thisy = ((y + 4) div ch);
+var thisy = ((y + 3) div ch);
 
 var thisxaxis = sign((x / cw) - thisx);
-var thisyaxis = sign(((y + 4) / ch) - thisy);
+var thisyaxis = sign(((y + 3) / ch) - thisy);
 
 thisx = clamp(thisx, 0, width - 1);
 thisy = clamp(thisy, 0, height - 1);
@@ -28,6 +29,13 @@ while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, thisx, thisy) == -1){
 	if (thisx < 0 || thisy < 0 || thisx >= width - 1 || thisy >= height - 1){
 		thisx = clamp(thisx, 0, width - 1);
 		thisy = clamp(thisy, 0, height - 1);
+		break;
+	}
+	
+	if (trials < 200){
+		trials ++;
+	}else{
+		trials = 0;
 		break;
 	}
 }
@@ -53,13 +61,20 @@ while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, gx, gy) == -1){
 		gy = clamp(gy, 0, height - 1);
 		break;
 	}
+	
+	if (trials < 200){
+		trials ++;
+	}else{
+		trials = 0;
+		break;
+	}
 }
 
 gx *= cw;
 gy *= ch;
 
 if (mp_grid_path(obj_controller_gameplay.pathgrid, mypath, thisx, thisy, gx, gy, true)){
-	if (point_distance(x, y, gx, gy) > 4){
+	if (point_distance(x, y + 3, gx, gy) > 4){
 		if (domove){
 			var xx = path_get_point_x(mypath, 2);
 			var yy = path_get_point_y(mypath, 2);
@@ -86,7 +101,7 @@ if (mp_grid_path(obj_controller_gameplay.pathgrid, mypath, thisx, thisy, gx, gy,
 				var real_px = path_get_point_x(prevpath, max(0, i - 2));
 				var real_py = path_get_point_y(prevpath, max(0, i - 2));
 				var real_dist_p = distance_to_point(real_px, real_py);
-				var dir_p = point_direction(x, y, px, py);
+				var dir_p = point_direction(x, y + 3, px, py);
 				
 				if (domove){
 					move_to_door = true;

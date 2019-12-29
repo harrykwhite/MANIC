@@ -58,11 +58,11 @@ switch(room){
 			spawn_x = 220;
 			spawn_y = 308;
 		}else{
-			obj_player.x = room_width + 4;
-			obj_player.y = 640;
+			obj_player.x = 2002;
+			obj_player.y = room_height + 4;
 			
-			spawn_x = 2167;
-			spawn_y = 640;
+			spawn_x = 2002;
+			spawn_y = 748;
 		}
 		break;
 	

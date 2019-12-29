@@ -1,5 +1,3 @@
-burn = false;
-poison = false;
 headless = false;
 
 if (!global.game_pause){

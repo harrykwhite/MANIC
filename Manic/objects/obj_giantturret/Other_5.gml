@@ -7,8 +7,6 @@ for(var i = 0; i < 4; i ++){
 x = xstart;
 y = ystart;
 
-event_perform(ev_create, 0);
-
 if (instance_exists(hitbox)){
 	instance_destroy(hitbox);
 }
@@ -16,6 +14,8 @@ if (instance_exists(hitbox)){
 if (instance_exists(mylight)){
 	instance_destroy(mylight);
 }
+
+event_perform(ev_create, 0);
 
 cutscene_prop = true;
 in_cutscene = false;

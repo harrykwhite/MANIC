@@ -13,7 +13,4 @@ scr_env_burn_effects(0, -17, 4, 4, 55);
 
 mylight.x = x;
 mylight.y = y - 17;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y - 17;
-mylight.light[| eLight.Range] = 125 + light_radius_offset;
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+mylight.Light_Range = 125 + light_radius_offset;

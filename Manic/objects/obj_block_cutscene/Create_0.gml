@@ -26,3 +26,5 @@ look_object = noone;
 look_prop = false;
 look_boss = -1;
 image_alpha = 0;
+
+check_for_companion = -1;

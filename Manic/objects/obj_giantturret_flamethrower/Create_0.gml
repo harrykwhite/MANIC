@@ -10,8 +10,6 @@ shoot = false;
 shoot_dir = 0;
 turret = noone;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
 flash_time = 0;
 mylight = noone;
 

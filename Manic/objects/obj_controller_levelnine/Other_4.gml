@@ -37,7 +37,7 @@ switch(room){
 			obj_player.y = -6;
 			
 			spawn_x = 136;
-			spawn_y = 140;
+			spawn_y = 180;
 		}
 		break;
 	
@@ -47,13 +47,13 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 920;
-			spawn_y = 1016;
+			spawn_y = 986;
 		}else{
 			obj_player.x = 278;
 			obj_player.y = -6;
 			
 			spawn_x = 278;
-			spawn_y = 126;
+			spawn_y = 160;
 		}
 		break;
 	
@@ -63,7 +63,7 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 694;
-			spawn_y = 640;
+			spawn_y = 600;
 		}else{
 			obj_player.x = 714;
 			obj_player.y = -6;

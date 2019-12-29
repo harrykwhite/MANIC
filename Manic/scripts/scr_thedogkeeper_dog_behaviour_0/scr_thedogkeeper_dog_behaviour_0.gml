@@ -75,9 +75,9 @@ if (instance_exists(target)) && (instance_exists(keeper)){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (!scr_pawn_find_path()){

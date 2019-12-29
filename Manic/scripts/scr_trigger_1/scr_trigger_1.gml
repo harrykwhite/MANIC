@@ -11,7 +11,7 @@ if (instance_exists(obj_player)){
 	
 	if (instance_exists(obj_companion_0)){
 		obj_companion_0.x = obj_player.x;
-		obj_companion_0.y = obj_player.y - 30;
+		obj_companion_0.y = obj_player.y + 40;
 	}
 	
 	if (instance_exists(obj_townperson_6)){

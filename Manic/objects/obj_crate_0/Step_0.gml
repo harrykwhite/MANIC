@@ -40,7 +40,7 @@ if (spd > 0.375){
 if (death){
 	scr_env_destroy(spr_crate_0_break);
 	
-	scr_weapon_ammo_spawn(4, 6, 5, x, y + 6);
+	scr_weapon_ammo_spawn(2, 6, 5, x, y + 6);
 	
 	if (room == rm_prologue_00){
 		with(obj_controller_ui){
@@ -48,7 +48,7 @@ if (death){
 				if (tutourial_stage == TutourialStage.CollectAmmo){
 					tutourial_stage_ammocollected_done = true;
 					
-					if (tutourial_stage_timer == -1){
+					if ((tutourial_stage_timer == -1) || (tutourial_stage_timer > 60 * 2)){
 						tutourial_stage_timer = 60 * 2;
 					}
 				}

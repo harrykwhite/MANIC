@@ -103,8 +103,15 @@ repeat(weaponslotamount){
 		}
     }
 	
-	draw_sprite_ext(slotsprite, 0, xx, yy, 2.25 * global.weapon_slotscale[counter], 2.25 * global.weapon_slotscale[counter], 0, -1, weapon_standalone_alpha * ui_alpha);
-    
+	var slotscale = global.weapon_slotscale[counter];
+	
+	if (slotscale != 1){
+		draw_sprite_ext(slotsprite, 0, xx, yy, slotscale, slotscale, 0, -1, weapon_standalone_alpha * ui_alpha);
+	}else{
+		draw_set_alpha(weapon_standalone_alpha * ui_alpha);
+		draw_sprite(slotsprite, 0, xx, yy);
+	}
+	
 	// Drawin Slot Number
 	draw_set_halign(fa_right);
 	draw_set_font(fnt_cambria_0);
@@ -181,55 +188,54 @@ if (screenblend_alpha > 0){
 if (tutourial) && (!iscutscene){
 	var tut_count = array_length_1d(tutourial_text);
 	
-	if (tutourial_stage_timer != -1){
-		if (tutourial_stage_timer > 0){
-			tutourial_stage_timer --;
-		}else{
-			tutourial_stage_timer = -1;
-			scr_tutourial_next_stage();
+	if (!global.game_pause) && (global.cutscene_current == -1){
+		if (tutourial_stage_timer != -1){
+			if (tutourial_stage_timer > 0){
+				tutourial_stage_timer --;
+			}else{
+				tutourial_stage_timer = tutourial_stage_timer_max;
+				scr_tutourial_next_stage();
 			
-			if (tutourial_stage == TutourialStage.PickupMelee){
-				if (tutourial_stage_pickupmelee_equipped){
-					scr_tutourial_next_stage();
-					tutourial_stage_timer = -1;
-					return;
-				}
-				
-				if (!tutourial_stage_pickupmelee_cseen){
-					var cutsceneblock = inst_1A5669D2;
+				if (tutourial_stage == TutourialStage.PickupMelee){
+					if (tutourial_stage_pickupmelee_equipped){
+						scr_tutourial_next_stage();
+						tutourial_stage_timer = tutourial_stage_timer_max;
+					}else{
+						if (!tutourial_stage_pickupmelee_cseen){
+							var cutsceneblock = inst_1A5669D2;
 					
-					instance_destroy(cutsceneblock);
+							instance_destroy(cutsceneblock);
 					
-					global.cutscene_current = 40;
-					obj_controller_gameplay.cutscene_look_x = 1702;
-					obj_controller_gameplay.cutscene_look_y = 505;
-					obj_controller_gameplay.cutscene_look_time = 80;
-					obj_controller_gameplay.cutscene_look_prop = false;
-					obj_controller_gameplay.cutscene_look_object = noone;
+							global.cutscene_current = 40;
+							obj_controller_gameplay.cutscene_look_x = 1702;
+							obj_controller_gameplay.cutscene_look_y = 505;
+							obj_controller_gameplay.cutscene_look_time = 80;
+							obj_controller_gameplay.cutscene_look_prop = false;
+							obj_controller_gameplay.cutscene_look_object = noone;
+						}
+					}
 				}
-			}else if (tutourial_stage == TutourialStage.CollectAmmo){
-				if (tutourial_stage_ammocollected_done){
-					scr_tutourial_next_stage();
-					tutourial_stage_timer = -1;
-					return;
-				}
-				
-				if (instance_exists(obj_player)){
-					global.cutscene_current = 40;
-					obj_controller_gameplay.cutscene_look_x = 1762;
-					obj_controller_gameplay.cutscene_look_y = 728;
-					obj_controller_gameplay.cutscene_look_time = 80;
-					obj_controller_gameplay.cutscene_look_prop = false;
-					obj_controller_gameplay.cutscene_look_object = noone
+			
+				if (tutourial_stage == TutourialStage.CollectAmmo){
+					if (tutourial_stage_ammocollected_done){
+						scr_tutourial_next_stage();
+						tutourial_stage_timer = tutourial_stage_timer_max;
+					}else{
+						if (instance_exists(obj_player)){
+							global.cutscene_current = 40;
+							obj_controller_gameplay.cutscene_look_x = 1762;
+							obj_controller_gameplay.cutscene_look_y = 728;
+							obj_controller_gameplay.cutscene_look_time = 80;
+							obj_controller_gameplay.cutscene_look_prop = false;
+							obj_controller_gameplay.cutscene_look_object = noone
+						}
+					}
 				}
 			}
 		}
-	}
-	
-	if (global.cutscene_current == -1){
-		tutourial_scale = approach(tutourial_scale, 1, 7);
-		tutourial_scale_draw = tutourial_scale;
 		
+		tutourial_scale = approach(tutourial_scale, 1, 9);
+		tutourial_scale_draw = tutourial_scale;
 		tutourial_stage_draw = tutourial_stage;
 	}
 	
@@ -245,9 +251,6 @@ if (tutourial) && (!iscutscene){
 	
 	draw_set_alpha(tutourial_alpha);
 	scr_text_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_white, tscale, tscale, 0);
-	
-	draw_set_alpha((tscale - 1) * 1.5 * tutourial_alpha);
-	scr_text_transformed((dwidth / 2) + toffset, (dheight - 160), tutourial_text[tstage], c_maroon, tscale, tscale, 0);
 	
 	draw_set_alpha(1);
 	draw_set_valign(fa_top);
@@ -280,7 +283,7 @@ if (levelcur != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
 		}
 	}else{
 		text = global.objective_name[global.game_objective_current];
-		text = string_replace(text, "^", global.objective_counter_max[global.game_objective_current] - global.objective_counter[global.game_objective_current]);
+		text = string_replace(text, "^", string(global.objective_counter_max[global.game_objective_current] - global.objective_counter[global.game_objective_current]));
 	}
 	
 	var redglow = wave(0.125, 0.225, 2, 0);
@@ -822,6 +825,74 @@ if (global.game_option[| Options.ShowMinimap]){
 	}
 
 	draw_sprite(spr_ui_minimap_border_overlay_0, 0, mapx - 2, mapy - 2);
+}
+
+// Black Bars
+if (blackbar_draw) || (global.cutscene_current != -1){
+    blackbar_sizereal = approach(blackbar_sizereal, blackbar_size, 15);
+}else{
+	blackbar_sizereal = approach(blackbar_sizereal, 0, 15);
+}
+
+blackbar_sizereal = clamp(blackbar_sizereal, 0, blackbar_size);
+
+draw_set_alpha(1);
+
+if (blackbar_sizereal > 2){
+	draw_set_colour(c_black);
+	draw_rectangle(-10, -10, dwidth + 10, blackbar_sizereal, false);
+	draw_rectangle(-10, dheight + 10, dwidth + 10, (dheight + 10) - (blackbar_sizereal + 10), false);
+}
+
+// Dialogue
+if (dialogue_time > 0){
+	var str = dialogue;
+	var strw = 425;
+	var xx = (dialogue_x - camera_get_view_x(view_camera[0])) * gui_scale_x;
+	var yy = (dialogue_y - camera_get_view_y(view_camera[0])) * gui_scale_y;
+	
+	if (xx - (strw / 2) <= 0){
+		strw -= abs((xx - (strw / 2)));
+	}
+	
+	if (xx + (strw / 2) >= dwidth){
+		strw -= abs(dwidth - (xx + (strw / 2)));
+	}
+	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_bottom);
+	
+	draw_set_font(fnt_cambria_1);
+	draw_set_colour(c_white);
+	draw_text_ext(xx, yy, string_copy(str, 0, dialogue_char_count), -1, strw);
+	
+	if (global.cutscene_current != -1) && (dialogue_pause){
+		draw_set_font(fnt_cambria_1);
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_middle);
+		
+		if (dialogue_char_count >= dialogue_length){
+			scr_text(dwidth - 24, dheight - 64, "Continue " + scr_input_get_name(InputBinding.Interact), c_white);
+		}
+		
+		var holdstr = "Hold " + scr_input_get_name(InputBinding.Attack) + " to skip";
+		scr_text(dwidth - 24, dheight - 34, holdstr, c_white);
+		
+		if (dialogue_skip > 0){
+			var barw = string_width(holdstr);
+			var barh = 2;
+			draw_healthbar(dwidth - 24 - barw, dheight - 15 - barh, dwidth - 24, dheight - 15, (dialogue_skip / dialogue_skip_max) * 100, c_black, c_white, c_white, 0, false, false);
+		}
+	}
+	
+	draw_set_valign(fa_top);
+}else{
+	if (global.game_in_dialogue){
+		global.game_in_dialogue = false;
+	}
+	
+	dialogue_skip = 0;
+	dialogue_pause = false;
 }
 
 // Pause Backdrop

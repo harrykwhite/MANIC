@@ -23,7 +23,7 @@ if (instance_exists(obj_player)){
 					talking = true;
 					scr_player_stamina_drain(4);
 			
-					obj_controller_ui.dialogue = choose("Hi.", "Hello.");
+					obj_controller_ui.dialogue = choose("How are you?", "Good evening.");
 					obj_controller_ui.dialogue_voice = snd_character_dialogue_generic_in;
 					obj_controller_ui.dialogue_time = 60 * 1.5;
 					obj_controller_ui.dialogue_pause = false;

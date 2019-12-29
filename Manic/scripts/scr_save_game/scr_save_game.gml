@@ -45,6 +45,7 @@ ini_write_real("Save", "CompanionFarmerFound", global.game_companion_farmer_foun
 ini_write_real("Save", "CompanionFarmerLevel2PostTalked0", global.game_companion_farmer_level2post_talked_0);
 ini_write_real("Save", "CompanionFarmerLevel2PostTalked1", global.game_companion_farmer_level2post_talked_1);
 ini_write_real("Save", "CompanionFarmerLevel4PreTalked0", global.game_companion_farmer_level4pre_talked_0);
+ini_write_real("Save", "CompanionFarmerLevel4PostTalked0", global.game_companion_farmer_level4post_talked_0);
 ini_write_real("Save", "CompanionGrenadierFound", global.game_companion_grenadier_found);
 ini_write_real("Save", "CompanionPrisonerFound", global.game_companion_prisoner_found);
 ini_write_real("Save", "CompanionDogFound", global.game_companion_dog_found);

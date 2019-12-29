@@ -65,21 +65,21 @@ if (!global.game_pause){
 	
 	// Pre Level Dialogue
 	if (room == rm_level_4_pre_00){
-		if (!global.game_companion_farmer_level4pre_talked_0) || (prelevel_dialogue_exception){
-			prelevel_dialogue_exception = true;
+		if (!global.game_companion_farmer_level4pre_talked_0) || (level_dialogue_exception){
+			level_dialogue_exception = true;
 			
 			if (global.cutscene_current != 58){
-				if (prelevel_dialogue_time > 0){
-					prelevel_dialogue_time --;
+				if (level_dialogue_time > 0){
+					level_dialogue_time --;
 					
-					if (instance_exists(prelevel_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
-						obj_controller_ui.dialogue_x = prelevel_dialogue_inst.x;
-						obj_controller_ui.dialogue_y = prelevel_dialogue_inst.y - 24;
+					if (instance_exists(level_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
+						obj_controller_ui.dialogue_x = level_dialogue_inst.x;
+						obj_controller_ui.dialogue_y = level_dialogue_inst.y - 24;
 					}
 				}else{
 					var text = "", inst = noone, dodraw = true;
 			
-					switch(prelevel_dialogue_index){
+					switch(level_dialogue_index){
 						case 0:
 							text = "I feel it's time that we found out who the leader of the army is, so that we can prevent the group from making further advancements.";
 							inst = obj_player;
@@ -103,10 +103,10 @@ if (!global.game_pause){
 						default:
 							dodraw = false;
 							
-							obj_controller_ui.dialogue_x = prelevel_dialogue_inst.x;
-							obj_controller_ui.dialogue_y = prelevel_dialogue_inst.y - 24;
+							obj_controller_ui.dialogue_x = level_dialogue_inst.x;
+							obj_controller_ui.dialogue_y = level_dialogue_inst.y - 24;
 							
-							postlevel_dialogue_exception = false;
+							level_dialogue_exception = false;
 							global.game_companion_farmer_level4pre_talked_0 = true;
 							break;
 					}
@@ -114,7 +114,7 @@ if (!global.game_pause){
 					if (dodraw) && (instance_exists(inst)){
 						obj_controller_ui.dialogue = text;
 						obj_controller_ui.dialogue_voice = (inst == obj_player ? snd_character_dialogue_protagonist_in : snd_character_dialogue_compfarmer_in);
-						obj_controller_ui.dialogue_time = 60 * 5;
+						obj_controller_ui.dialogue_time = 60 * 6;
 						obj_controller_ui.dialogue_pause = false;
 						obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
 						obj_controller_ui.dialogue_char_count = 0;
@@ -131,12 +131,12 @@ if (!global.game_pause){
 							talking = false;
 						}
 						
-						if (prelevel_dialogue_index < 4){
-							prelevel_dialogue_inst = inst;
-							prelevel_dialogue_index ++;
-							prelevel_dialogue_time = obj_controller_ui.dialogue_time;
+						if (level_dialogue_index < 4){
+							level_dialogue_inst = inst;
+							level_dialogue_index ++;
+							level_dialogue_time = obj_controller_ui.dialogue_time;
 						}else{
-							prelevel_dialogue_exception = false;
+							level_dialogue_exception = false;
 							global.game_companion_farmer_level4pre_talked_0 = true;
 						}
 					}
@@ -144,6 +144,95 @@ if (!global.game_pause){
 			}
 		}else{
 			global.game_companion_farmer_level4pre_talked_0 = true;
+		}
+	}
+	
+	// Post Level Dialogue
+	if (room == rm_level_4_post_01){
+		if (!global.game_companion_farmer_level4post_talked_0) || (level_dialogue_exception){
+			level_dialogue_exception = true;
+			
+			if (global.cutscene_current != 58){
+				if (level_dialogue_time > 0){
+					level_dialogue_time --;
+					
+					if (instance_exists(level_dialogue_inst)) && (obj_controller_ui.dialogue_time >= 0){
+						obj_controller_ui.dialogue_x = level_dialogue_inst.x;
+						obj_controller_ui.dialogue_y = level_dialogue_inst.y - 24;
+					}
+				}else{
+					var text = "", inst = noone, dodraw = true;
+			
+					switch(level_dialogue_index){
+						case 0:
+							text = "I've been feeling that what we're doing isn't right... this is starting to go too far.";
+							inst = obj_companion_0;
+							break;
+						
+						case 1:
+							text = "Is there not any other way to stop them, besides violence?";
+							inst = obj_companion_0;
+							break;
+						
+						case 2:
+							text = "No, there is no other way. An enemy group like this will exhibit no mercy or humanity to us.";
+							inst = obj_player;
+							break;
+						
+						case 3:
+							text = "And in the end, they must be the ones to suffer for all the pain they've imposed over me.";
+							inst = obj_player;
+							break;
+						
+						case 4:
+							text = "All right...";
+							inst = obj_companion_0;
+							break;
+						
+						default:
+							dodraw = false;
+							
+							obj_controller_ui.dialogue_x = level_dialogue_inst.x;
+							obj_controller_ui.dialogue_y = level_dialogue_inst.y - 24;
+							
+							level_dialogue_exception = false;
+							global.game_companion_farmer_level4post_talked_0 = true;
+							break;
+					}
+			
+					if (dodraw) && (instance_exists(inst)){
+						obj_controller_ui.dialogue = text;
+						obj_controller_ui.dialogue_voice = (inst == obj_player ? snd_character_dialogue_protagonist_in : snd_character_dialogue_compfarmer_in);
+						obj_controller_ui.dialogue_time = 60 * 6;
+						obj_controller_ui.dialogue_pause = false;
+						obj_controller_ui.dialogue_length = string_length(obj_controller_ui.dialogue);
+						obj_controller_ui.dialogue_char_count = 0;
+						obj_controller_ui.dialogue_x = inst.x;
+						obj_controller_ui.dialogue_y = inst.y - 24;
+						obj_controller_ui.dialogue_voice_opened = false;
+						obj_controller_ui.dialogue_voice_closed = true;
+						
+						with(obj_sign_0){
+							talking = false;
+						}
+					
+						with(obj_sign_wall_0){
+							talking = false;
+						}
+						
+						if (level_dialogue_index < 5){
+							level_dialogue_inst = inst;
+							level_dialogue_index ++;
+							level_dialogue_time = obj_controller_ui.dialogue_time;
+						}else{
+							level_dialogue_exception = false;
+							global.game_companion_farmer_level4post_talked_0 = true;
+						}
+					}
+				}
+			}
+		}else{
+			global.game_companion_farmer_level4post_talked_0 = true;
 		}
 	}
 }
@@ -188,7 +277,7 @@ if (peaceful){
 	lighting = 0.925;
 }
 
-global.game_lighting = lighting + scr_brightness_offset();
+global.game_lighting_level_to = lighting + scr_brightness_offset();
 
 if (player_exists) && (global.cutscene_current == -1){
 	if (abs(obj_player.len) > 0.1){
@@ -202,8 +291,8 @@ if (spawn_start_wait >= spawn_start_wait_max){
 	if (player_exists) && (!scr_level_is_peaceful(room)){
 		var spawn_rate = spawn_rate_real;
 		if (!global.game_pause) && ((global.boss_current == -1) || (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.SniperRobot)) && (global.cutscene_current == -1){
-			if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
-				spawn_rate += 0.5;
+			if (scr_on_heavy_weapon()){
+				spawn_rate += 2.5;
 			}
 		
 			if (global.game_combat_in_hordechallenge){
@@ -224,68 +313,72 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 			
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 2, 1))){
+				if (scr_enemy_count(false) < ((global.game_combat_in_hordechallenge || scr_on_heavy_weapon()) ? spawn_max[CombatState.Climax] : spawn_max[global.game_combat_state])){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
+					var do_spawn = true;
 				
 					while(!scr_is_valid_enemyspawn(xpos, ypos)){
 						xpos = random_range(camx - 10, camx + camw + 10);
 						ypos = random_range(camy - 10, camy + camh + 10);
 						spawn_trial ++;
 				
-						if (spawn_trial > 1000){
+						if (spawn_trial > 200){
 							spawn_trial = 0;
-							return;
+							do_spawn = false;
+							break;
 						}
 					}
-		
-					var weapon;
+					
+					if (do_spawn){
+						var weapon;
 				
-					if (chance(70)){
-						weapon = choose(PawnWeapon.Crowbar, PawnWeapon.Axe, PawnWeapon.Machete);
-					}else{
-						weapon = choose(PawnWeapon.Grenade, PawnWeapon.Rake, PawnWeapon.Sledgehammer);
-					}
+						if (chance(70)){
+							weapon = choose(PawnWeapon.Crowbar, PawnWeapon.Axe, PawnWeapon.Machete);
+						}else{
+							weapon = choose(PawnWeapon.Grenade, PawnWeapon.Rake, PawnWeapon.Sledgehammer);
+						}
 				
-					var enemy;
+						var enemy;
 				
-					if (chance(80)){
-						enemy = instance_create(xpos, ypos, obj_enemy_0);
+						if (chance(80)){
+							enemy = instance_create(xpos, ypos, obj_enemy_0);
 				
-						if (spawn_rate > 1.4){
-							if (global.boss_current == -1){
-								if (chance(5)){
-									enemy.type = Enemy0_Type.Mother;
+							if (spawn_rate > 1.4){
+								if (global.boss_current == -1){
+									if (chance(5)){
+										enemy.type = Enemy0_Type.Mother;
+									}
 								}
 							}
-						}
 					
-						if (crazy_can_spawn){
-							if (chance(5)){
-								enemy.type = Enemy0_Type.Crazy;
+							if (crazy_can_spawn){
+								if (chance(5)){
+									enemy.type = Enemy0_Type.Crazy;
+								}
 							}
-						}
 						
-						if (global.game_combat_in_hordechallenge){
-							enemy.type = Enemy0_Type.Normal;
-						}
+							if (global.game_combat_in_hordechallenge){
+								enemy.type = Enemy0_Type.Normal;
+							}
 					
-						if (weapon == PawnWeapon.Grenade){
-							enemy.type = Enemy0_Type.Grenadier;
-						}
+							if (weapon == PawnWeapon.Grenade){
+								enemy.type = Enemy0_Type.Grenadier;
+							}
 				
-						if (enemy.type == Enemy0_Type.Sniper){
-							weapon = PawnWeapon.SniperRifle;
-						}
+							if (enemy.type == Enemy0_Type.Sniper){
+								weapon = PawnWeapon.SniperRifle;
+							}
 				
-						enemy.weapon_index = weapon;
-					}else{
-						enemy = instance_create(xpos, ypos, obj_enemy_2);
-					}
+							enemy.weapon_index = weapon;
+						}else{
+							enemy = instance_create(xpos, ypos, obj_enemy_2);
+						}
 
-					repeat(9){
-						part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
+						repeat(9){
+							part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
+						}
 					}
 				}
 			

@@ -398,6 +398,6 @@ if (window_get_fullscreen()){
 
 // Copyright text
 draw_set_halign(fa_right);
-scr_text(display_get_gui_width() - 20, display_get_gui_height() - 24, (isteaser ? "Playable Teaser" : gameversion) + "\n(c)2019 Geta Games", c_white);
+scr_text(display_get_gui_width() - 20, display_get_gui_height() - 24, (isteaser ? "Playable Teaser" : gameversion) + "\n(c)2020 Geta Games", c_white);
 draw_set_valign(fa_top);
 draw_set_alpha(1);

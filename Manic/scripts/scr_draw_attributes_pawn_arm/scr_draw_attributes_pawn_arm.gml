@@ -1,7 +1,7 @@
 if (instance_exists(owner)){
 	var is_metal = false;
 	var alpha_mult = 1;
-	var drawshader = (owner.health_current <= floor(owner.health_max / 3)) || (owner.burn) || (owner.poison) || (owner.i_blend_time > 0) || (owner.whiteflash_alpha);
+	var drawshader = (owner.health_current <= floor(owner.health_max / 3)) || (owner.burn) || (owner.poison) || (owner.i_blend_time > 0);
 	
 	if (drawshader){
 		if (owner.object_index == obj_enemy_3) || (owner.object_index == obj_giantturret) || (owner.object_index == obj_giantturret_flamethrower){
@@ -70,13 +70,6 @@ if (instance_exists(owner)){
 			r = color_get_red(colour);
 			g = color_get_green(colour);
 			b = color_get_blue(colour);
-		}
-		
-		if (owner.whiteflash_alpha > 0){
-			a = owner.whiteflash_alpha;
-			r = 255;
-			g = 255;
-			b = 255;
 		}
 		
 		if (r > 0) || (g > 0) || (b > 0) || (a > 0){

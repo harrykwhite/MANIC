@@ -52,7 +52,6 @@ dialogue_y = 0;
 dialogue_skip = 0;
 dialogue_skip_max = 40;
 dialogue_break = 0;
-dialogue_new = false;
 
 enum TutourialStage{
 	Movement,
@@ -74,6 +73,7 @@ tutourial_fade = false;
 tutourial_stage = 0;
 tutourial_stage_draw = tutourial_stage;
 tutourial_stage_timer = -1;
+tutourial_stage_timer_max = 60 * 8;
 tutourial_stage_pickupmelee_cseen = false;
 tutourial_stage_pickupmelee_equipped = false;
 tutourial_stage_ammocollected_done = false;
@@ -161,6 +161,8 @@ if (!global.pers_runthrough_pre){
 						global.game_objective_set = true;
 						global.game_objective_complete = true;
 					}
+					
+					global.weapon_default_set = false;
 				}else{
 					scr_save_game();
 					scr_player_upgrades_clear();
@@ -176,7 +178,7 @@ if (!global.pers_runthrough_pre){
 			
 				global.game_combat_state = CombatState.Idle;
 				global.game_combat_state_time_real = 0;
-			
+				
 				scr_checkpoint_reset();
 				scr_player_upgrade_update();
 			
@@ -185,7 +187,19 @@ if (!global.pers_runthrough_pre){
 					level_opening_active = true;
 					level_opening_time = 60 * 4.65;
 				}
-			
+				
+				if (!global.game_boss_firstantag_killed){
+					if (!global.game_is_playthrough){
+						if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation)
+						&& (room != rm_level_2_pre_00) && (room != rm_level_2_00) && (room != rm_level_2_01) && (room != rm_level_2_02){
+							scr_companion_register(obj_companion_0);
+							global.game_companion_farmer_found = true;
+						}
+					}
+				}else{
+					scr_companion_remove(obj_companion_0);
+				}
+				
 				global.level_entered[i] = true;
 				break;
 			}
@@ -196,17 +210,7 @@ if (!global.pers_runthrough_pre){
 		}
 	}
 	
-	if (!global.game_boss_firstantag_killed){
-		if (room == rm_level_6_pre_00) && (global.game_is_playthrough){
-			scr_companion_register(obj_companion_0);
-		}
-		
-		if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation)
-		&& (room != rm_level_2_pre_00) && (room != rm_level_2_00) && (room != rm_level_2_01) && (room != rm_level_2_02){
-			scr_companion_register(obj_companion_0);
-			global.game_companion_farmer_found = true;
-		}
-	}else{
+	if (global.game_boss_firstantag_killed){
 		scr_companion_remove(obj_companion_0);
 	}
 }
@@ -278,6 +282,7 @@ minimap_width = 220;
 minimap_height = 124;
 minimap_arrow_sine = 0;
 minimap_arrow_sine_speed = 5;
+
 teaserend = false;
 teaserend_alpha = 0;
 teaserend_text_alpha = 0;

@@ -141,7 +141,7 @@ if (!global.game_pause){
 						
 						if (levelcur == Level.Prologue){
 							with(obj_controller_ui){
-								if (tutourial) && (tutourial_stage == TutourialStage.Switch) && (tutourial_stage_timer == -1){
+								if (tutourial) && (tutourial_stage == TutourialStage.Switch) && ((tutourial_stage_timer == -1) || (tutourial_stage_timer > 60 * 2)){
 									tutourial_stage_timer = 60 * 2;
 								}
 							}

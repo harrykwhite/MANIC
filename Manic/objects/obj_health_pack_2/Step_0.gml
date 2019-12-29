@@ -28,7 +28,6 @@ image_alpha = (flicker ? 0.2 : 1);
 // Picking Up
 if (place_meeting(x + 1, y + 1, obj_player)){
     if (global.player_health_current < global.player_health_max){
-		obj_player.whiteflash_alpha = 0.7;
         scr_player_heal(1);
 		scr_effect_screenshake(1);
 		scr_sound_play(snd_object_health_pickup_0, false, 0.9, 1.1);

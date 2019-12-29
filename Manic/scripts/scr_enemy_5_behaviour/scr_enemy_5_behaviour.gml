@@ -5,19 +5,26 @@ target = obj_player;
 
 if (instance_exists(target)){
 	if (wander){
-		if (distance_to_point(wander_x_to, wander_y_to) < 10) or (wander_time <= 0){
+		if (distance_to_point(wander_x_to, wander_y_to) < 10) || (wander_time <= 0){
 			var dir = random(360);
 			var len = random_range(80, 150);
-		
+			var trials = 0;
+			
 			wander_x_to = x + lengthdir_x(len, dir);
 			wander_y_to = y + lengthdir_y(len, dir);
 		
-			while(collision_line(x, y, wander_x_to, wander_y_to, obj_p_solid, false, false)){
+			while(collision_line(x, y, wander_x_to, wander_y_to, obj_p_solid, false, false) || (point_distance(wander_x_to, wander_y_to, 530, 550) < 300)){
 				dir = random(360);
 				len = random_range(80, 150);
 		
 				wander_x_to = x + lengthdir_x(len, dir);
 				wander_y_to = y + lengthdir_y(len, dir);
+				
+				if (trials < 100){
+					trials ++;
+				}else{
+					break;
+				}
 			}
 		
 			if (wander_stage < wander_stage_max){
@@ -71,9 +78,9 @@ move_x_to = clamp(move_x_to, 0, room_width);
 move_y_to = clamp(move_y_to, 0, room_height);
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (!scr_pawn_find_path()){

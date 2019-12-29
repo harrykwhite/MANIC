@@ -21,6 +21,12 @@ if (refresh_display){
 	}
 	
 	scr_display_update();
+	
+	if (room == rm_title_0){
+		with(obj_titlescreen_main){
+			scr_titlescreen_options_reload();
+		}
+	}
 }
 
 global.game_option[| Options.Screenshake] = clamp(global.game_option[| Options.Screenshake], 0, 100);
@@ -64,7 +70,7 @@ if (room == rm_title_0){
 		}
 	}
 	
-	global.game_lighting = 0.85 + scr_brightness_offset();
+	global.game_lighting_level_to = 0.85 + scr_brightness_offset();
 }
 
 obj_controller_all.option_refresh = true;

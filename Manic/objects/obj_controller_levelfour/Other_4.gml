@@ -31,7 +31,7 @@ switch(room){
 			obj_player.y = room_height + 4;
 			
 			spawn_x = 844;
-			spawn_y = 2148;
+			spawn_y = 1364;
 		}
 		break;
 	
@@ -151,10 +151,10 @@ terminal_deactivate_count = 0;
 
 crazy_can_spawn = global.game_firstcrazy_killed;
 
-prelevel_dialogue_time = 60 * 3.5;
-prelevel_dialogue_index = 0;
-prelevel_dialogue_inst = noone;
-prelevel_dialogue_exception = false;
+level_dialogue_time = 60 * 3.5;
+level_dialogue_index = 0;
+level_dialogue_inst = noone;
+level_dialogue_exception = false;
 
 if (room == rm_level_4_00) && (global.game_level_opening_type == 1){
 	global.cutscene_current = 47;

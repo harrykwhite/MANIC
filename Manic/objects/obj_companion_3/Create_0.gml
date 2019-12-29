@@ -18,8 +18,6 @@ hitbox = instance_create_layer(x, y, "Hitbox", obj_player_hitbox_0);
 hitbox.sprite_index = spr_dog_hitbox_0;
 hitbox.owner = id;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
 mylight = noone;
 
 order = 0;
@@ -46,7 +44,7 @@ headless_x = x;
 headless_y = y;
 headless_image = 0;
 
-defense = 4;
+defense = 6;
 
 bark_time = random_range(400, 650);
 target = noone;
@@ -93,6 +91,9 @@ health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
+
+heal_time_max = 60 * 2.5;
+heal_time = heal_time_max;
 
 finalboss_ymin = 774;
 finalboss_ymin_meeting = false;

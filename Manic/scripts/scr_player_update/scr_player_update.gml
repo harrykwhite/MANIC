@@ -118,7 +118,7 @@ if (poison){
 	}else{
 		if (poison_time == -1){
 			poison_time = 140;
-			poison_cycle_amount = 6;
+			poison_cycle_amount = 4;
 		}
 		
 		if (poison_cycle_amount > 0){
@@ -138,10 +138,10 @@ if (poison){
 }
 
 // Flies
-var length = array_length_1d(fly);
+var flylength = array_length_1d(fly);
 
 if (global.player_health_current < 3){
-	for(var i = 0; i < length; i ++){
+	for(var i = 0; i < flylength; i ++){
 		if (fly[i] == noone){
 			if (random(100) <= 0.05) fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
 			break;
@@ -151,7 +151,7 @@ if (global.player_health_current < 3){
 		fly[i].ybase = y;
 	}
 }else{
-	for(var i = 0; i < length; i ++){
+	for(var i = 0; i < flylength; i ++){
 		if (instance_exists(fly[i])){
 			instance_destroy(fly[i]);
 			fly[i] = noone;
@@ -218,6 +218,13 @@ if (global.player_health_current <= 0) && (!near_dead){
 	
 	if (global.boss_current == Boss.TrainBoss) && (room == rm_level_6_00){
 		scr_objective_change(Objectives.WaitForTrain, 0, 0);
+	}
+	
+	for(var i = 0; i < flylength; i ++){
+		if (instance_exists(fly[i])){
+			instance_destroy(fly[i]);
+			fly[i] = noone;
+		}
 	}
 	
     instance_destroy();

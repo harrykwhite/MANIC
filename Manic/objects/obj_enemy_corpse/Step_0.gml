@@ -6,15 +6,17 @@ scr_object_table_place(30, 1.275);
 
 if (parent == -1){
 	// Blood
-	if (spd > 0.1){
+	if (spd > 0.1) || (time > 0){
 		if (random(3) < 1){
 			part_particles_create(global.ps_bottom, x + random_range(-15, 15), y + 18, global.pt_blood_1_perm, 1);
 			part_particles_create(global.ps_bottom, x + random_range(-15, 15), y + 18, global.pt_gore_0_perm, 1);
 		}
-	
+		
 		if (random(6) < 1){
 			part_particles_create(global.ps_bottom, x + random_range(-15, 15), y + 18, global.pt_blood_3_perm, 1);
 		}
+		
+		time --;
 	}
 
 	// Motion

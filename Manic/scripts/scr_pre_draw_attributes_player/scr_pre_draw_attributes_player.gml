@@ -93,13 +93,6 @@ if (wcurrent != -1) && (instance_exists(obj_player_arm)) && (state != scr_player
 			b = 0;
 		}
 		
-		if (whiteflash_alpha > 0){
-			a = whiteflash_alpha;
-			r = 255;
-			g = 255;
-			b = 255;
-		}
-		
 		if (r > 0) || (g > 0) || (b > 0) || (a > 0){
 			shader_set_uniform_f(shader_alpha, a);
 			shader_set_uniform_f(shader_red, r);

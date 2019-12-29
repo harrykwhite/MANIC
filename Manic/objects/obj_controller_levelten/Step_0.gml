@@ -21,7 +21,7 @@ if (!global.game_pause){
 
 // Spawning
 var lighting = 0.95;
-global.game_lighting = lighting + scr_brightness_offset();
+global.game_lighting_level_to = lighting + scr_brightness_offset();
 
 // Final boss music
 if (!boss_music_active){

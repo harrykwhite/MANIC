@@ -5,11 +5,9 @@ if (!instance_exists(mylight)){
 
 mylight.x = x;
 mylight.y = y;
-mylight.light[| eLight.X] = mylight.x;
-mylight.light[| eLight.Y] = mylight.y;
 
 if (index == PlayerUpgrade.HeadLight){
-	mylight.light[| eLight.Range] = 120;
+	mylight.Light_Range = 120;
 }
 
 // Particles

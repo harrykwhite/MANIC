@@ -10,10 +10,7 @@ if (!instance_exists(mylight)){
 
 mylight.x = x;
 mylight.y = y;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+mylight.Light_Intensity = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 
 obj_controller_ui.bosshealth_value_current = health_current;
 obj_controller_ui.bosshealth_value_max = health_max;
@@ -31,7 +28,6 @@ if (global.cutscene_current == 58){
 	i_blend_time = 0;
 	health_scale = 1;
 	health_flash = 0;
-	whiteflash_alpha = 0;
 	run_count = 0;
 	cutscene_prop = false;
 	in_cutscene = true;
@@ -66,9 +62,6 @@ if (ispaused){
 
 burn = true;
 headless = false;
-
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 

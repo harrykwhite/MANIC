@@ -22,6 +22,7 @@ global.game_companion_farmer_found = false;
 global.game_companion_farmer_level2post_talked_0 = false;
 global.game_companion_farmer_level2post_talked_1 = false;
 global.game_companion_farmer_level4pre_talked_0 = false;
+global.game_companion_farmer_level4post_talked_0 = false;
 global.game_companion_grenadier_found = false;
 global.game_companion_prisoner_found = false;
 global.game_companion_dog_found = false;
@@ -54,6 +55,8 @@ global.game_conveyerbelt_shutdown0 = false;
 global.game_conveyerbelt_shutdown1 = false;
 global.game_conveyerbelt_shutdown2 = false;
 global.game_conveyerbelt_shutdown3 = false;
+
+global.player_health_current = global.player_health_max;
 
 if (ds_exists(global.level_collectable_found, ds_type_grid)){
 	ds_grid_clear(global.level_collectable_found, false);

@@ -22,8 +22,6 @@ leash_bite_retreat = false;
 attack_time = random_range(30, 45);
 attack_active_time = 45;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
 mylight = noone;
 
 burn = false;

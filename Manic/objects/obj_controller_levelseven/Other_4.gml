@@ -88,18 +88,12 @@ switch(room){
 		break;
 	
 	case rm_level_7_post_00:
-		obj_player.x = 446;
+		obj_player.x = 640;
 		obj_player.y = room_height + 4;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_x = 446;
-			spawn_y = 1266;
-		}else{
-			obj_player.x = 1382;
-			obj_player.y = -4;
-			
-			spawn_x = 1382;
-			spawn_y = 150;
+			spawn_x = 640;
+			spawn_y = 782;
 		}
 		break;
 }

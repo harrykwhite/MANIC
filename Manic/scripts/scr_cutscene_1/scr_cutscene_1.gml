@@ -23,7 +23,7 @@ if (instance_exists(obj_player)) && (instance_exists(obj_townperson_6)){
 				if (!door.open){
 					door.auto_interact = true;
 					
-					obj_controller_ui.dialogue = "Alright, good luck!";
+					obj_controller_ui.dialogue = "All right, good luck!";
 					obj_controller_ui.dialogue_voice = snd_character_dialogue_generic_in;
 					obj_controller_ui.dialogue_time = 60 * 2.5;
 					obj_controller_ui.dialogue_pause = false;
@@ -47,7 +47,7 @@ if (instance_exists(obj_player)) && (instance_exists(obj_townperson_6)){
 				global.cutscene_camera_y[index] = obj_player.y;
 				
 				obj_player.move_y_to = 0;
-				obj_player.move_ext_spd = 1;
+				obj_player.move_ext_spd = 1.7;
 				
 				if (global.cutscene_time[index] < 240){
 					global.cutscene_time[index] ++;

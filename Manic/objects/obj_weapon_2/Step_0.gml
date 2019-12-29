@@ -13,8 +13,8 @@ var mdir = point_direction(global.player_position_x, global.player_position_y, s
 
 if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active) && (!global.game_pause){
     if (shoot_can) && (global.weapon_slotammo[global.weapon_slotcurrent] > 0){
-        var xpos = x + lengthdir_x(18, mdir) + lengthdir_x(4, up(mdir));
-        var ypos = y + lengthdir_y(18, mdir) + lengthdir_y(4, up(mdir));
+        var xpos = x + lengthdir_x(20, mdir) + lengthdir_x(4, up(mdir));
+        var ypos = y + lengthdir_y(20, mdir) + lengthdir_y(4, up(mdir));
 		
 		scr_player_knockback_initiate(0.5, mdir);
 		scr_player_flash(4);

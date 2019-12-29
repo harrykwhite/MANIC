@@ -51,20 +51,20 @@ if (instance_exists(obj_player)){
 		
 			var dist_to_player = distance_to_object(obj_player);
 			
-			if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
+			if (dist_to_player > 70 + (40 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 1.8;
 				
-				if (dist_to_player > 100 + (60 * order)){
+				if (dist_to_player > 100 + (40 * order)){
 					move_speed = 2.3;
 				}
 				
-				if (dist_to_player > 140 + (60 * order)){
+				if (dist_to_player > 140 + (40 * order)){
 					move_speed = 2.7;
 				}
 				
-				if (dist_to_player > 180 + (60 * order)){
+				if (dist_to_player > 180 + (40 * order)){
 					move_speed = 3.1;
 				}
 				
@@ -138,7 +138,7 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}else{
-		if (distance_to_object(obj_player) > 37 + (60 * order)){
+		if (distance_to_object(obj_player) > 37 + (40 * order)){
 			move_speed = 1.7;
 		}else{
 			move_speed = 0;
@@ -159,7 +159,7 @@ if (instance_exists(obj_player)){
 	
 	if (!cutscene_prop){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
-			if (distance_to_object(obj_player) > 67 + (60 * order)){
+			if (distance_to_object(obj_player) > 67 + (40 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 1.9;
@@ -168,6 +168,7 @@ if (instance_exists(obj_player)){
 	}
 	
 	scr_companion_teleport();
+	scr_companion_healing();
 }else{
 	face_player = false;
 	move_speed = 0;
@@ -177,9 +178,9 @@ if (instance_exists(obj_player)){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (!scr_pawn_find_path()){

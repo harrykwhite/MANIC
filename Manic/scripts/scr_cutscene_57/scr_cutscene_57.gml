@@ -35,7 +35,7 @@ if (instance_exists(obj_player)){
 		
 		if (global.cutscene_time[index] < 130){
 			xto = 686;
-			yto = 640;
+			yto = 656;
 			
 			global.cutscene_camera_x[index] = obj_controller_camera.x;
 			global.cutscene_camera_y[index] = obj_controller_camera.y;
@@ -52,9 +52,41 @@ if (instance_exists(obj_player)){
 				obj_player.move_x_to = obj_player.x - 5;
 				obj_player.move_y_to = obj_player.y;
 				obj_player.move_ext_spd = 0;
+				
 				global.cutscene_time[index] ++;
 			}
-		}else if (global.cutscene_time[index] < 300){
+		}else if (global.cutscene_time[index] < 400){
+			xto = 676;
+			yto = 564;
+			
+			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 12) || (global.cutscene_time[index] >= 260){
+				xto = 475;
+				yto = 584;
+				
+				obj_player.move_x_to = -1;
+				obj_player.move_y_to = -1;
+				obj_player.move_ext_spd = 0;
+				obj_player.image_xscale = -1;
+				
+				global.cutscene_camera_x[index] = xto;
+				global.cutscene_camera_y[index] = yto;
+				
+				obj_controller_camera.camera_zoom_offset = -0.25;
+				
+				if (global.cutscene_time[index] < 260){
+					global.cutscene_time[index] = 260;
+				}
+			}else{
+				obj_player.move_x_to = xto;
+				obj_player.move_y_to = yto;
+				obj_player.move_ext_spd = 1.25;
+				
+				global.cutscene_camera_x[index] = obj_player.x;
+				global.cutscene_camera_y[index] = obj_player.y;
+			}
+			
+			global.cutscene_time[index] ++;
+		}else if (global.cutscene_time[index] < 500){
 			xto = 652;
 			yto = 500;
 			
@@ -72,10 +104,10 @@ if (instance_exists(obj_player)){
 				obj_player.move_y_to = obj_player.y + lengthdir_y(5, 180);
 				obj_player.image_xscale = -1;
 				
-				if (global.cutscene_time[index] < 160){
+				if (global.cutscene_time[index] < 460){
 					global.cutscene_time[index] ++;
 					
-					if (global.cutscene_time[index] == 155){
+					if (global.cutscene_time[index] == 455){
 						var dropcount = instance_number(obj_weapondrop);
 						for(var i = 0; i < dropcount; i ++){
 							var drop = instance_find(obj_weapondrop, i);
@@ -95,21 +127,21 @@ if (instance_exists(obj_player)){
 					if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 						instance_destroy(global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]]);
 					}
-				
+					
 					global.weapon_slotcurrent = 0;
-				
+					
 					global.weapon_slot[0] = PlayerWeapon.Revolver;
 					global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
-				
+					
 					global.weapon_slot[1] = -1;
 					global.weapon_slotammo[1] = -1;
-				
+					
 					instance_create(obj_player.x, obj_player.y, global.weapon_object[PlayerWeapon.Revolver]);
-				
-					global.cutscene_time[index] = 300;
+					
+					global.cutscene_time[index] = 500;
 				}
 			}
-		}else if (global.cutscene_time[index] < 360){
+		}else if (global.cutscene_time[index] < 560){
 			xto = 702;
 			yto = 624;
 			
@@ -121,12 +153,12 @@ if (instance_exists(obj_player)){
 			
 			global.cutscene_camera_x[index] = obj_player.x;
 			global.cutscene_camera_y[index] = obj_player.y;
-		}else if (global.cutscene_time[index] < 588){
+		}else if (global.cutscene_time[index] < 788){
 			xto = obj_player.x;
 			yto = 1076;
 			
 			if (!obj_controller_ui.area_next_fade){
-				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 420){
+				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 620){
 					with(obj_controller_ui){
 						area_next_fade = true;
 						area_next_alpha = 0;

@@ -1,6 +1,6 @@
 var is_metal = false;
 var alpha_mult = 1;
-var drawshader = (health_current <= floor(health_max / 3)) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha);
+var drawshader = (health_current <= floor(health_max / 3)) || (burn) || (poison) || (i_blend_time > 0);
 
 if (weapon != -1){
 	if (instance_exists(weapon) && weapon != -1){
@@ -86,14 +86,7 @@ if (weapon != -1){
 					g = color_get_green(colour);
 					b = color_get_blue(colour);
 				}
-			
-				if (whiteflash_alpha > 0){
-					a = whiteflash_alpha;
-					r = 255;
-					g = 255;
-					b = 255;
-				}
-			
+				
 				if (r > 0) || (g > 0) || (b > 0) || (a > 0){
 					shader_set_uniform_f(shader_alpha, a);
 					shader_set_uniform_f(shader_red, r);

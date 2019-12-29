@@ -46,7 +46,7 @@ if (scr_level_is_peaceful(room)){
 	lighting = 0.925;
 }
 
-global.game_lighting = lighting + scr_brightness_offset();
+global.game_lighting_level_to = lighting + scr_brightness_offset();
 
 if (player_exists) && (global.cutscene_current == -1){
 	if (abs(obj_player.len) > 0.1){
@@ -60,8 +60,8 @@ if (spawn_start_wait >= spawn_start_wait_max){
 	if (player_exists) && (!scr_level_is_peaceful(room)){
 		var spawn_rate = spawn_rate_real;
 		if (!global.game_pause) && ((global.boss_current == -1) || (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.SniperRobot)) && (global.cutscene_current == -1){
-			if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
-				spawn_rate += 0.5;
+			if (scr_on_heavy_weapon()){
+				spawn_rate += 2.5;
 			}
 		
 			if (global.game_combat_in_hordechallenge){
@@ -82,100 +82,104 @@ if (spawn_start_wait >= spawn_start_wait_max){
 			}
 			
 			if (spawn){
-				if (scr_enemy_count(false) < round(spawn_max[global.game_combat_state] * max(global.game_combat_in_hordechallenge * 2, 1))){
+				if (scr_enemy_count(false) < ((global.game_combat_in_hordechallenge || scr_on_heavy_weapon()) ? spawn_max[CombatState.Climax] : spawn_max[global.game_combat_state])){
 					var xpos = random_range(camx - 10, camx + camw + 10);
 					var ypos = random_range(camy - 10, camy + camh + 10);
 					var spawn_trial = 0;
+					var do_spawn = true;
 				
 					while(!scr_is_valid_enemyspawn(xpos, ypos)){
 						xpos = random_range(camx - 10, camx + camw + 10);
 						ypos = random_range(camy - 10, camy + camh + 10);
 						spawn_trial ++;
 				
-						if (spawn_trial > 1000){
+						if (spawn_trial > 200){
 							spawn_trial = 0;
-							return;
+							do_spawn = false;
+							break;
 						}
 					}
-		
-					var weapon;
+					
+					if (do_spawn){
+						var weapon;
 				
-					if (room == rm_level_5_02){
-						weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
-					}else{
-						if (chance(85)){
+						if (room == rm_level_5_02){
 							weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
 						}else{
-							weapon = choose(PawnWeapon.Grenade);
-						}	
-					}
-				
-					var enemy;
-				
-					if (chance(80)){
-						enemy = instance_create(xpos, ypos, obj_enemy_0);
-					
-						if ((global.weapon_slot_standalone == PlayerWeapon.MountedMachineGun) || (global.weapon_slot_standalone == PlayerWeapon.MountedMachineGunCart)){
-							enemy.move_speed_offset = 1.45;
-							enemy.attack_time = 45;
-							enemy.type = Enemy0_Type.Normal
-						
-							while(weapon == PawnWeapon.Grenade){
+							if (chance(85)){
 								weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
-							}
-						}else{
-							if (spawn_rate > 0.9){
-								if (global.boss_current == -1) && (room != rm_level_5_02){
-									if (chance(3.5)){
-										enemy.type = Enemy0_Type.Mother;
-									}
-							
-									if (sniper_can_spawn){
-										if (chance(4)){
-											enemy.type = Enemy0_Type.Sniper;
-										}
-									}
-								}
-							}
-				
-							if (spawn_rate > 1.4){
-								if (global.boss_current == -1) && (room != rm_level_5_02){
-									if (chance(4)){
-										enemy.type = Enemy0_Type.Mother;
-									}
-						
-									if (sniper_can_spawn){
-										if (chance(5)){
-											enemy.type = Enemy0_Type.Sniper;
-										}
-									}
-								}
-							}
-				
-							if (chance(5)){
-								enemy.type = Enemy0_Type.Crazy;
-							}
-							
-							if (global.game_combat_in_hordechallenge){
-								enemy.type = Enemy0_Type.Normal;
-							}
-				
-							if (weapon == PawnWeapon.Grenade){
-								enemy.type = Enemy0_Type.Grenadier;
-							}
-				
-							if (enemy.type == Enemy0_Type.Sniper){
-								weapon = PawnWeapon.SniperRifle;
-							}
+							}else{
+								weapon = choose(PawnWeapon.Grenade);
+							}	
 						}
 				
-						enemy.weapon_index = weapon;
-					}else{
-						enemy = instance_create(xpos, ypos, obj_enemy_2);
-					}
+						var enemy;
+				
+						if (chance(80)){
+							enemy = instance_create(xpos, ypos, obj_enemy_0);
+					
+							if (scr_on_heavy_weapon()){
+								enemy.move_speed_offset = 1.45;
+								enemy.attack_time = 45;
+								enemy.type = Enemy0_Type.Normal
+						
+								while(weapon == PawnWeapon.Grenade){
+									weapon = choose(PawnWeapon.Axe, PawnWeapon.Machete, PawnWeapon.Sledgehammer);
+								}
+							}else{
+								if (spawn_rate > 0.9){
+									if (global.boss_current == -1) && (room != rm_level_5_02){
+										if (chance(3.5)){
+											enemy.type = Enemy0_Type.Mother;
+										}
+							
+										if (sniper_can_spawn){
+											if (chance(4)){
+												enemy.type = Enemy0_Type.Sniper;
+											}
+										}
+									}
+								}
+				
+								if (spawn_rate > 1.4){
+									if (global.boss_current == -1) && (room != rm_level_5_02){
+										if (chance(4)){
+											enemy.type = Enemy0_Type.Mother;
+										}
+						
+										if (sniper_can_spawn){
+											if (chance(5)){
+												enemy.type = Enemy0_Type.Sniper;
+											}
+										}
+									}
+								}
+				
+								if (chance(5)){
+									enemy.type = Enemy0_Type.Crazy;
+								}
+							
+								if (global.game_combat_in_hordechallenge){
+									enemy.type = Enemy0_Type.Normal;
+								}
+				
+								if (weapon == PawnWeapon.Grenade){
+									enemy.type = Enemy0_Type.Grenadier;
+								}
+				
+								if (enemy.type == Enemy0_Type.Sniper){
+									weapon = PawnWeapon.SniperRifle;
+								}
+							}
+				
+							enemy.weapon_index = weapon;
+						}else{
+							enemy = instance_create(xpos, ypos, obj_enemy_2);
+						}
 
-					repeat(9){
-						part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
+						repeat(9){
+							part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
+						}
 					}
 				}
 			

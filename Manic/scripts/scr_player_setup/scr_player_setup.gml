@@ -34,10 +34,6 @@ surrounding_light_to = 1;
 surrounding_light = 1;
 surrounding_light_upgradedec = 0.025;
 
-// White Flash
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
-
 // Externally Controlled Movement
 move_x_to = -1;
 move_y_to = -1;
@@ -96,9 +92,6 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 
 // Upgrades
 upgrades_set = false;
-
-// Weapons
-weapon_default_set = false;
 
 // Position
 global.player_position_x = x;

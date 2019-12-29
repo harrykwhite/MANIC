@@ -33,9 +33,12 @@ switch(type){
 		break;
 }
 
+var weapon_exists = instance_exists(weapon) && weapon != -1;
+
 if (instance_exists(target)){
 	var mindist = 36;
-	var weapon_exists = instance_exists(weapon) && weapon != -1;
+	
+	scr_enemy_find_companion();
 	
 	if (sporadic){
 		mindist = 40;
@@ -61,7 +64,6 @@ if (instance_exists(target)){
 			if (healer_healtime > 0){
 				healer_healtime --;
 			}else{
-				healer_instance.whiteflash_alpha = 0.7;
 				healer_instance.health_scale = 1.5;
 				healer_instance.health_current += 2;
 				scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
@@ -175,7 +177,6 @@ if (instance_exists(target)){
 				if (healer_healselftime > 0){
 					healer_healselftime --;
 				}else{
-					whiteflash_alpha = 0.7;
 					health_scale = 1.5;
 					health_current = clamp(health_current + 2, 0, health_max);
 					healer_healselftime = 45;
@@ -212,6 +213,7 @@ if (instance_exists(target)){
 if (cutscene_prop){
 	if (!in_cutscene){
 		speed_multiplier = 0;
+		weapon.attack = false;
 	}
 }
 
@@ -219,14 +221,16 @@ if (cutscene_prop){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
-if (!scr_pawn_find_path()){
-	move_speed_real = 0;
-	speed_final = 0;
+if (!cutscene_prop || in_cutscene){
+	if (!scr_pawn_find_path()){
+		move_speed_real = 0;
+		speed_final = 0;
+	}
 }
 
 // Animation

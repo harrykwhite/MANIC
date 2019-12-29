@@ -1,4 +1,5 @@
 var height = ds_grid_height(global.player_companions);
+
 for(var i = 0; i < height; i ++){
 	if (global.player_companions[# 0, i] != -1){
 		var comp, cobj = global.player_companions[# 0, i];

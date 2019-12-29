@@ -1,1 +1,1 @@
-text = "Exit further to the right.";
+text = "Exit down south.";

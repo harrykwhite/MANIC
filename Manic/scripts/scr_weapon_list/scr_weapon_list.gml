@@ -46,6 +46,7 @@ enum PlayerWeapon{
 	ReinforcedGrenade,
 	HuntingMachete,
 	Greatsword,
+	BaseballBat,
 }
 
 enum AmmoType{
@@ -319,7 +320,7 @@ global.weapon_sprite[19] = spr_weapon_19;
 global.weapon_centersprite[19] = spr_weapon_19_center;
 global.weapon_type[19] = WeaponType.Ranged;
 global.weapon_heavy[19] = false;
-global.weapon_ammomax[19] = 16;
+global.weapon_ammomax[19] = 8;
 global.weapon_ammotype[19] = AmmoType.Fuel;
 global.weapon_camerarange[19] = 32;
 global.weapon_mouse[19] = MouseType.SmallCrosshair;
@@ -585,6 +586,18 @@ global.weapon_dualhanded[39] = false;
 global.weapon_damage[39] = WeaponLevel.VeryHigh;
 global.weapon_speed[39] = WeaponLevel.VeryLow;
 
+global.weapon_name[40] = "Baseball Bat";
+global.weapon_object[40] = obj_weapon_40;
+global.weapon_sprite[40] = spr_weapon_40;
+global.weapon_centersprite[40] = spr_weapon_40_center;
+global.weapon_type[40] = WeaponType.Melee;
+global.weapon_heavy[40] = false;
+global.weapon_camerarange[40] = 17;
+global.weapon_mouse[40] = MouseType.SmallCircle;
+global.weapon_dualhanded[40] = false;
+global.weapon_damage[40] = WeaponLevel.Average;
+global.weapon_speed[40] = WeaponLevel.Average;
+
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
 global.weapon_slotquantity[0] = -1;
@@ -610,6 +623,7 @@ global.weapon_slotmax = 2; // How many slots the player currently has
 global.weapon_potential_slotmax = 3; // How many slots the player can potentially have throughout the game
 
 global.weapon_default = PlayerWeapon.Knife;
+global.weapon_default_set = false;
 
 if (room == rm_ini){
 	var count = array_length_1d(global.weapon_name);

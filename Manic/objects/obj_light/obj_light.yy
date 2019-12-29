@@ -4,36 +4,7 @@
     "mvc": "1.0",
     "name": "obj_light",
     "eventList": [
-        {
-            "id": "571f1058-6ace-4e63-aae0-355d5b4b4bf9",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 12,
-            "m_owner": "84334f4e-b6d2-4ffe-89cf-f8641f75877e"
-        },
-        {
-            "id": "71a5327c-ce3a-477e-b48c-6fe2e7f4bd89",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 0,
-            "m_owner": "84334f4e-b6d2-4ffe-89cf-f8641f75877e"
-        },
-        {
-            "id": "108775d3-1479-4937-823e-1cc3799530bf",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 5,
-            "eventtype": 7,
-            "m_owner": "84334f4e-b6d2-4ffe-89cf-f8641f75877e"
-        }
+        
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "overriddenProperties": null,
@@ -82,8 +53,8 @@
             "rangeMax": 10,
             "rangeMin": 0,
             "resourceFilter": 1023,
-            "value": "$FFFFFFFF",
-            "varName": "Light_Color",
+            "value": "$FFCCCCCC",
+            "varName": "Light_Colour",
             "varType": 7
         },
         {
@@ -115,34 +86,6 @@
             "varType": 0
         },
         {
-            "id": "d3df915a-c684-4784-88be-0180fd6b995e",
-            "modelName": "GMObjectProperty",
-            "mvc": "1.0",
-            "listItems": null,
-            "multiselect": false,
-            "rangeEnabled": true,
-            "rangeMax": 65536,
-            "rangeMin": 1,
-            "resourceFilter": 1023,
-            "value": "32000",
-            "varName": "Light_Shadow_Length",
-            "varType": 1
-        },
-        {
-            "id": "5686c0db-78e4-4fd7-89e5-0ed522384dd8",
-            "modelName": "GMObjectProperty",
-            "mvc": "1.0",
-            "listItems": null,
-            "multiselect": false,
-            "rangeEnabled": true,
-            "rangeMax": 359,
-            "rangeMin": 0,
-            "resourceFilter": 1023,
-            "value": "0",
-            "varName": "Light_Angle",
-            "varType": 0
-        },
-        {
             "id": "b70554c1-2210-49d5-84db-fb0c2df6cbc1",
             "modelName": "GMObjectProperty",
             "mvc": "1.0",
@@ -157,7 +100,7 @@
             "varType": 0
         },
         {
-            "id": "1cb40d30-25a7-4fac-beac-2258d74cb99b",
+            "id": "5e1bf6e4-c602-482d-9717-3fb5fd22aa13",
             "modelName": "GMObjectProperty",
             "mvc": "1.0",
             "listItems": null,
@@ -166,23 +109,9 @@
             "rangeMax": 10,
             "rangeMin": 0,
             "resourceFilter": 1023,
-            "value": "256",
-            "varName": "Light_Width",
-            "varType": 1
-        },
-        {
-            "id": "2ef294e2-d3e3-42d8-ae28-23948a810f59",
-            "modelName": "GMObjectProperty",
-            "mvc": "1.0",
-            "listItems": null,
-            "multiselect": false,
-            "rangeEnabled": false,
-            "rangeMax": 10,
-            "rangeMin": 0,
-            "resourceFilter": 2,
-            "value": "noone",
-            "varName": "LUT_Intensity",
-            "varType": 5
+            "value": "0",
+            "varName": "Light_Length",
+            "varType": 0
         }
     ],
     "solid": false,

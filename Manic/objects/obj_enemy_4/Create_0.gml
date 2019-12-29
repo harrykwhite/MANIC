@@ -14,8 +14,6 @@ hitbox.owner = id;
 damage = 1;
 strength = 0.5;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
 mylight = noone;
 
 contact_attack_ready_time = 30;

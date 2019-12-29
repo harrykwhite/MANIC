@@ -38,8 +38,14 @@ if (spd > 0.375){
 
 // Object Death
 if (death){
+	var amount = 7;
+	
+	if (global.boss_current != -1){
+		amount *= 2;
+	}
+	
 	scr_env_destroy(spr_ammo_crate_break);
-	scr_weapon_ammo_spawn(12, 8, 4);
+	scr_weapon_ammo_spawn(amount, 8, 4);
 	
 	if (room == rm_prologue_00){
 		with(obj_controller_ui){
@@ -47,7 +53,7 @@ if (death){
 				if (tutourial_stage == TutourialStage.CollectAmmo){
 					tutourial_stage_ammocollected_done = true;
 					
-					if (tutourial_stage_timer == -1){
+					if ((tutourial_stage_timer == -1) || (tutourial_stage_timer > 60 * 2)){
 						tutourial_stage_timer = 60 * 2;
 					}
 				}

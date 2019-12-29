@@ -10,10 +10,6 @@ for(var i = 0; i < light_count; i ++){
 	if (instance_exists(mylight[i])){
 		mylight[i].x = x;
 		mylight[i].y = y;
-		mylight[i].light[| eLight.X] = x;
-		mylight[i].light[| eLight.Y] = y;
-		mylight[i].light[| eLight.Intensity] = 1.15;
-		mylight[i].light[| eLight.LutIntensity] = 1.55;
-		mylight[i].light[| eLight.Flags] |= eLightFlags.Dirty;
+		mylight[i].Light_Intensity = 1.25;
 	}
 }

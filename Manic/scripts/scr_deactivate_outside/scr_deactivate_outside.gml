@@ -25,9 +25,6 @@ objs[13] = obj_rock_large_0;
 objs[14] = obj_rock_large_1;
 objs[15] = obj_weapondrop;
 objs[16] = obj_collectable_pickup;
-objs[17] = obj_environment_soldier_head;
-objs[18] = obj_environment_soldier_limbs;
-objs[19] = obj_environment_corpse;
 
 objs_length = array_length_1d(objs);
 

@@ -10,16 +10,20 @@ var elist = ds_list_create();
 var ecount = collision_circle_list(px, py, radius, obj_p_enemy, false, false, elist, false);
 var count = 0;
 
-if (!include_fly){
-	for(var e = 0; e < ecount; e ++){
-		var enemy = elist[| e];
-		
-		if (enemy.object_index != obj_enemy_1){
-			count ++;
+for(var e = 0; e < ecount; e ++){
+	var enemy = elist[| e];
+	
+	if (!include_fly){
+		if (enemy.object_index == obj_enemy_1){
+			continue;
 		}
 	}
-}else{
-	count = ecount;
+	
+	if (enemy.cutscene_prop){
+		continue;
+	}
+	
+	count ++;
 }
 
 ds_list_destroy(elist);

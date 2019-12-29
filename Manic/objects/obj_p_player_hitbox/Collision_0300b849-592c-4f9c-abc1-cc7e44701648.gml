@@ -5,7 +5,7 @@ if (global.cutscene_current != -1) || (global.game_pause){
 var inst = other;
 
 with(owner){
-	if (object_index == obj_companion_0) || (object_index == obj_companion_1) || (object_index == obj_companion_2) || (object_index == obj_companion_3){
+	if (object_index == obj_companion_0){
 		return;
 	}
 	
@@ -48,10 +48,10 @@ with(owner){
 		part_type_direction(global.pt_blood_5, inst.dir - 40, inst.dir + 40, 0, 0);
 		part_type_speed(global.pt_blood_5, 3, 5, -0.2, 0);
 		repeat(20)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
-	}
-
-	if (!inst.pierce){
-		inst.deffect = true;
-		instance_destroy(inst);
+		
+		if (!inst.pierce){
+			inst.deffect = true;
+			instance_destroy(inst);
+		}
 	}
 }

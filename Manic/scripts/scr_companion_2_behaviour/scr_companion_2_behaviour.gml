@@ -1,4 +1,4 @@
-var speed_multiplier = 1.25;
+var speed_multiplier = 1;
 var face_player = false;
 var point_away = false;
 var speed_final;
@@ -64,21 +64,21 @@ if (instance_exists(obj_player)){
 				
 				var dist_to_player = distance_to_object(obj_player);
 			
-				if (dist_to_player > 70 + (60 * order)) || (global.cutscene_current == 52){
+				if (dist_to_player > 70 + (40 * order)) || (global.cutscene_current == 52){
 					move_x_to = obj_player.x;
 					move_y_to = obj_player.y;
-					move_speed = 1.9;
+					move_speed = 2.1;
 					
-					if (dist_to_player > 100 + (60 * order)){
-						move_speed = 2.3;
-					}
-					
-					if (dist_to_player > 140 + (60 * order)){
+					if (dist_to_player > 100 + (40 * order)){
 						move_speed = 2.6;
 					}
 					
-					if (dist_to_player > 180 + (60 * order)){
-						move_speed = 2.9;
+					if (dist_to_player > 140 + (40 * order)){
+						move_speed = 3.1;
+					}
+					
+					if (dist_to_player > 180 + (40 * order)){
+						move_speed = 3.6;
 					}
 					
 					face_player = true;
@@ -101,13 +101,13 @@ if (instance_exists(obj_player)){
 					
 					move_x_to = target.x + lengthdir_x(30, runaway_dir);
 					move_y_to = target.y + lengthdir_y(30, runaway_dir);
-					move_speed = 1.7;
+					move_speed = 1.9;
 				}else{
 					move_x_to = target.x;
 					move_y_to = target.y;
 				
 					if (distance_to_object(target) > 30 + (15 * order)){
-						move_speed = 1.7;
+						move_speed = 1.9;
 					}else{
 						move_speed = 0;
 						
@@ -234,7 +234,7 @@ if (instance_exists(obj_player)){
 	
 	if (!cutscene_prop){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
-			if (distance_to_object(obj_player) > 67 + (60 * order)){
+			if (distance_to_object(obj_player) > 67 + (40 * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y;
 				move_speed = 1.9;
@@ -243,6 +243,7 @@ if (instance_exists(obj_player)){
 	}
 	
 	scr_companion_teleport();
+	scr_companion_healing();
 }else{
 	if (image_xscale == scale){
 		weapon.dir = 360;
@@ -280,9 +281,9 @@ if (dashbreak > 0){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (dash){

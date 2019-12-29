@@ -15,8 +15,6 @@ shoot_buildup_time = 120;
 shoot_burst_count = 0;
 shoot_in_burst = false;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
 mylight = noone;
 flash_time = 0;
 light_brightness = 0;

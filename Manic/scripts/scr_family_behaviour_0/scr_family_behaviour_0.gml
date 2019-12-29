@@ -10,11 +10,11 @@ if (instance_exists(obj_player)){
 		
 		do{
 			dir = random(360);
-			len = random_range(30, 40);
+			len = random_range(8, 12);
 			xx = xstart + lengthdir_x(len, dir);
 			yy = ystart + lengthdir_y(len, dir);
 			
-			if (counter < 100){
+			if (counter < 200){
 				counter ++;
 			}else{
 				found = false;
@@ -30,7 +30,7 @@ if (instance_exists(obj_player)){
 		move_time = 60 * random_range(3, 5);
 	}
 	
-	if (distance_to_point(move_x_to, move_y_to) > 15){
+	if (distance_to_point(move_x_to, move_y_to) > 5){
 		move_speed = 1;
 	}else{
 		move_speed = 0;
@@ -53,9 +53,9 @@ y = clamp(y, 6, room_height - 6);
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (!scr_pawn_find_path()){

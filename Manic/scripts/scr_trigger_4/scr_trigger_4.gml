@@ -39,7 +39,7 @@ with(obj_controller_prologue){
 	}
 
 	var light = instance_create(466, 552, obj_block_light);
-	light.size[0] = 560;
+	light.size[0] = 260;
 	light.time = -1;
 
 	var firesound = instance_create(502, 544, obj_block_sound);
@@ -48,13 +48,25 @@ with(obj_controller_prologue){
 
 	var child0corpse = instance_create(child0.x, child0.y, obj_enemy_corpse);
 	child0corpse.sprite_index = spr_player_child_0_corpse_0;
-
+	
+	repeat(2){
+		instance_create(child0.x, child0.y + random_range(10, 12), obj_ef_fly);
+	}
+	
 	var child1corpse = instance_create(child1.x, child1.y, obj_enemy_corpse);
 	child1corpse.sprite_index = spr_player_child_1_corpse_0;
-
+	
+	repeat(3){
+		instance_create(child1.x, child1.y + random_range(10, 12), obj_ef_fly);
+	}
+	
 	var wifecorpse = instance_create(wife.x, wife.y, obj_enemy_corpse);
 	wifecorpse.sprite_index = spr_player_wife_corpse_0;
-
+	
+	repeat(3){
+		instance_create(wife.x, wife.y + random_range(10, 12), obj_ef_fly);
+	}
+	
 	instance_destroy(child0);
 	instance_destroy(child1);
 	instance_destroy(wife);
@@ -85,4 +97,16 @@ with(obj_controller_prologue){
 	robotprop = instance_create_layer(756, 552, "EndingObjects", obj_pawn_other_robotrunning_0);
 	robotprop.dir = 270;
 	robotprop.dir_to = robotprop.dir;
+	
+	var pblock = instance_create(590, 560, obj_block_particle);
+	pblock.spawn = true;
+	
+	pblock = instance_create(426, 546, obj_block_particle);
+	pblock.spawn = true;
+	
+	pblock = instance_create(580, 574, obj_block_particle);
+	pblock.spawn = true;
+	
+	pblock = instance_create(700, 558, obj_block_particle);
+	pblock.spawn = true;
 }

@@ -1,4 +1,4 @@
-var drawshader = (global.player_health_current <= 2) || (burn) || (poison) || (i_blend_time > 0) || (whiteflash_alpha > 0);
+var drawshader = (global.player_health_current <= 2) || (burn) || (poison) || (i_blend_time > 0);
 
 var ucount = array_length_1d(global.upgrade_name);
 if (ucount > 0) || (has_antagonist_mask){
@@ -123,13 +123,6 @@ if (drawshader){
 		r = 255;
 		g = 0;
 		b = 0;
-	}
-
-	if (whiteflash_alpha > 0){
-		a = whiteflash_alpha;
-		r = 255;
-		g = 255;
-		b = 255;
 	}
 
 	if (r > 0) || (g > 0) || (b > 0) || (a > 0){

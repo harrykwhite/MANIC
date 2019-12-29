@@ -11,6 +11,3 @@ if (!instance_exists(mylight)){
 
 mylight.x = x;
 mylight.y = y;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;

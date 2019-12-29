@@ -1,5 +1,5 @@
 enum Level{
-	Prologue = 0,
+	Prologue,
 	RavagedTown,
 	WesternFarmland,
 	UndergroundBunker,

@@ -29,9 +29,6 @@ if (instance_exists(obj_player)) && (!global.game_pause){
 
 image_speed = 1;
 
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
-
 if (instance_exists(owner)){
 	if (owner.object_index != obj_player){
 		cutscene_prop = owner.cutscene_prop;

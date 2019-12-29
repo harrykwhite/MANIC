@@ -286,10 +286,12 @@ if (instance_exists(obj_player)){
 					if (obj_controller_ui.tutourial_stage == TutourialStage.Pickup) && (index == PlayerWeapon.HuntingRifle){
 						obj_controller_ui.tutourial_stage = TutourialStage.Shoot;
 						obj_controller_ui.tutourial_scale = 1.2;
+						obj_controller_ui.tutourial_stage_timer = obj_controller_ui.tutourial_stage_timer_max;
 					}else if (index == PlayerWeapon.Sickle){
 						if (obj_controller_ui.tutourial_stage == TutourialStage.PickupMelee){
 							obj_controller_ui.tutourial_stage = TutourialStage.Switch;
 							obj_controller_ui.tutourial_scale = 1.2;
+							obj_controller_ui.tutourial_stage_timer = obj_controller_ui.tutourial_stage_timer_max;
 						}else{
 							obj_controller_ui.tutourial_stage_pickupmelee_equipped = true;
 						}

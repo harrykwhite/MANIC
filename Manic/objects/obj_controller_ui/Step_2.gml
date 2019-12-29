@@ -440,7 +440,7 @@ if (!ispaused){
 					if (!iskeyboard){
 						pausedialogue_option_selected = clamp(pausedialogue_option_selected, 0, pausedialogue_option_max);
 					}
-				
+					
 					if (up_pressed || down_pressed){
 						if (pausedialogue_option_selected_held_time < pausedialogue_option_selected_held_time_max){
 							pausedialogue_option_selected_held_time ++;

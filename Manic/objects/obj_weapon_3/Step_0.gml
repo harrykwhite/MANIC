@@ -16,7 +16,7 @@ var ypos = y + lengthdir_y(35, mdir);
 if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active) && (!global.game_pause){
     if (attack_can){
 		scr_camera_to_player();
-        scr_effect_screenshake(2);
+        scr_effect_screenshake(1);
 		
         scr_mouse_control(MouseType.SmallCircle, 2.5, 25);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);

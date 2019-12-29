@@ -21,6 +21,7 @@ deer_spawn_time = 60 * random_range(9, 12);
 // Other
 companions_spawned = false;
 endscene_initiated = false;
+hunting = false;
 
 global.cutscene_current = 56;
 
@@ -31,6 +32,14 @@ depth = -5;
 global.weapon_slot[0] = -1;
 global.weapon_slotammo[0] = -1;
 global.weapon_slotscale[0] = 1;
+
+// Music Layers
+tutmusic_layer0 = audio_play_sound(m_tutourial_layer_0, 3, true);
+tutmusic_layer1 = audio_play_sound(m_tutourial_layer_1, 3, true);
+tutmusic_endstinger = noone;
+
+audio_sound_gain(tutmusic_layer0, 0, 0);
+audio_sound_gain(tutmusic_layer1, 0, 0);
 
 // Environmentals
 var xx, yy;

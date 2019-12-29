@@ -41,9 +41,6 @@ weapon_change_time = 0;
 weapon_change_time_max = 60 * 2;
 weapon_change_origin = weapon_index;
 
-whiteflash_alpha = 0;
-whiteflash_alphadec = 0.075;
-
 greatsword_attack = false;
 greatsword_attack_killed = false;
 
@@ -96,7 +93,7 @@ cutscene_prop = false;
 in_cutscene = false;
 active = false;
 
-health_max = 85;
+health_max = (room == rm_level_10_01 ? 65 : 85);
 
 health_current = health_max;
 health_alpha = 0;

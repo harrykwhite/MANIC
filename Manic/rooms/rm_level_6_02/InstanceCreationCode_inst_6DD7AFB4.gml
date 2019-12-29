@@ -1,2 +1,2 @@
-index = PlayerWeapon.AssaultRifle;
+index = PlayerWeapon.Rake;
 angle = -10;

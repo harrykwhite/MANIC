@@ -16,10 +16,7 @@ if (fire){
 	
 	mylight.x = x;
 	mylight.y = y;
-	mylight.light[| eLight.X] = x;
-	mylight.light[| eLight.Y] = y;
-	mylight.light[| eLight.LutIntensity] = 1.45;
-	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+	mylight.Light_Intensity = 1.45;
 }else{
 	if (sprite_index != spr_tree_3){
 		sprite_index = spr_tree_3;

@@ -17,7 +17,7 @@ with(owner){
 	}
 
 	if (i_time < 1) && (inst.spd > 0) && (!inst.enemy){
-		scr_pawn_damage(max(inst.damage - defense, 1), inst.spd / 6, inst.dir, 7);
+		scr_pawn_damage(max(round(inst.damage * 1.75) - defense, 1), inst.spd / 6, inst.dir, 7);
 		
 		scr_effect_screenshake(4);
 		scr_effect_freeze(13);
@@ -40,7 +40,6 @@ with(owner){
 		}
 		
 		burn = inst.burn && inst.canburn;
-		whiteflash_alpha = 1;
 		part_particles_create(global.ps_front, x, y + 4, global.pt_burst_2, 9);
 		
 		if (object_index != obj_enemy_3) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){

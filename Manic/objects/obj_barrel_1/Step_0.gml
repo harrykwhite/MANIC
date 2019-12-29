@@ -48,17 +48,14 @@ scr_env_burn_effects(0, -3, 4, 4, 85);
 
 mylight.x = x;
 mylight.y = y - 3;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y - 3;
-mylight.light[| eLight.LutIntensity] = 1.45;
-mylight.light[| eLight.Range] = 115;
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+mylight.Light_Intensity = 1.45;
+mylight.Light_Range = 115;
 
 // Object Death
 if (death){
 	scr_env_destroy(spr_barrel_0_break);
 	
-	scr_weapon_ammo_spawn(4, 6, 5, x, y + 6);
+	scr_weapon_ammo_spawn(2, 6, 5, x, y + 6);
 
 	if (random(4) < 1){
 		instance_create(x, y + 8, obj_health_pack_0);

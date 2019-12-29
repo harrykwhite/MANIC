@@ -13,9 +13,6 @@ if (ispaused){
 	return;
 }
 
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
-
 headless = false;
 
 scr_pawn_status_handler();
@@ -27,7 +24,7 @@ if (global.cutscene_current == -1) || (cutscene_prop){
 }
 
 if (!onscreen(x, y, -36)){
-	if (offscreen_timer < 60 * 4){
+	if (offscreen_timer < 60 * 3){
 		offscreen_timer ++;
 	}else{
 		instance_destroy();

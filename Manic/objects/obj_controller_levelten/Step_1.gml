@@ -27,6 +27,8 @@ if (!weapondrops_set){
 				
 				drop[i].index = droptype[i];
 				drop[i].angle = random_range(-30, 30);
+				drop[i].ammo = -1;
+				drop[i].dataset = false;
 			}
 		}
 	}

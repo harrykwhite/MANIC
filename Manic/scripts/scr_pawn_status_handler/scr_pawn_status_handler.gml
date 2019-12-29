@@ -42,8 +42,11 @@ if (burn){
 			if (burn_cycle > 0){
 				burn_cycle--;
 				burn_time = 55;
-				scr_pawn_damage(1, 0, 0, 5);
-				scr_sound_play_distance(hurt_sound, false, 200);
+				
+				if (health_current > 1) || (object_get_parent(object_index) != obj_p_player){
+					scr_pawn_damage(1, 0, 0, 5);
+					scr_sound_play_distance(hurt_sound, false, 200);
+				}
 			}else{
 				scr_draw_burn_die(6, 18, x, y, 5);
 				burn_time = -1;
@@ -83,8 +86,11 @@ if (poison){
 		poison_time--;
 	}else{
 		poison_time = 80;
-		scr_pawn_damage(1, 0, 0, 5);
-		scr_sound_play(hurt_sound, false, 0.8, 1.2);
+		
+		if (health_current > 1) || (object_get_parent(object_index) != obj_p_player){
+			scr_pawn_damage(1, 0, 0, 5);
+			scr_sound_play(hurt_sound, false, 0.8, 1.2);
+		}
 	}
 }
 
@@ -94,8 +100,11 @@ if (bleed){
 		if (bleed_time < 30){
 			bleed_time ++;
 		}else{
-			scr_pawn_damage(1, 0, 0, 5);
-			scr_sound_play(hurt_sound, false, 0.8, 1.2);
+			if (health_current > 1) || (object_get_parent(object_index) != obj_p_player){
+				scr_pawn_damage(1, 0, 0, 5);
+				scr_sound_play(hurt_sound, false, 0.8, 1.2);
+			}
+			
 			bleed_time = 0;
 			bleed_cycle --;
 		}

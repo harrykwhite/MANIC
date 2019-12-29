@@ -20,30 +20,29 @@ if (instance_exists(obj_player)){
 	var iscutscene = (global.cutscene_current != -1);
 	var genericpos = true;
 	
-	if (!iscutscene){
-		
-		// Bobbing -----------------------------------------------------------------------------------------------------
-	    var img = floor(obj_player.img_index);
-    
-	    // Idle
-	    if (obj_player.hspd == 0) && (obj_player.vspd == 0) && (obj_player.state == scr_player_move){
-	        if (img == 1){
-	            yoffset = 1;
-	        }else{
-	            yoffset = 0;
-	        }
-	    }else if (obj_player.state == scr_player_move){
-			// Move
-	        if (img == 2) || (img == 4) || (img == 9) || (img == 11){
-	            yoffset = 1;
-	        }else if (img == 3) || (img == 10){
-	            yoffset = 2;
-	        }else{
-	            yoffset = 0;
-	        }
+	// Bobbing -----------------------------------------------------------------------------------------------------
+	var img = floor(obj_player.img_index);
+	
+	// Idle
+	if (obj_player.hspd == 0) && (obj_player.vspd == 0) && (obj_player.state == scr_player_move){
+		if (img == 1){
+			yoffset = 1;
+	    }else{
+			yoffset = 0;
 	    }
-    
-	    // Weapon Position -------------------------------------------------------------------------------------------------
+	}else if (obj_player.state == scr_player_move){
+		// Move
+	    if (img == 2) || (img == 4) || (img == 9) || (img == 11){
+			yoffset = 1;
+	    }else if (img == 3) || (img == 10){
+			yoffset = 2;
+		}else{
+			yoffset = 0;
+		}
+	}
+	
+	if (!iscutscene){
+		// Weapon Position -------------------------------------------------------------------------------------------------
 	    if (wcurrent != -1){
 			if ((global.weapon_type[wcurrent] == WeaponType.Ranged)
 			|| (global.weapon_type[wcurrent] == WeaponType.Throwing)
@@ -119,7 +118,12 @@ if (instance_exists(obj_player)){
 	
 	if (genericpos){
 		x = obj_player.x - (sign(obj_player.image_xscale) * 3);
-		y = obj_player.y;
+		y = obj_player.y - 4 + yoffset;
+		
+		if (global.cutscene_current == 57){
+			image_index = 0;
+		}
+		
 		image_yscale = sign(obj_player.image_xscale);
 		image_angle = dir;
 	}

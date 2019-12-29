@@ -16,6 +16,6 @@ with(obj_controller_ui){
 	}
 
 	tutourial_text[TutourialStage.PickupMelee] = "Pick up the melee weapon by the crates";
-	tutourial_text[TutourialStage.CollectAmmo] = "Break open the crates to retrieve ammo";
-	tutourial_text[TutourialStage.ThrowPurpose] = "Weapons can be thrown at opponents to damage them.";
+	tutourial_text[TutourialStage.CollectAmmo] = "Break open the crates with your weapon to retrieve ammo";
+	tutourial_text[TutourialStage.ThrowPurpose] = "Weapons can be thrown at opponents to damage them, also destroying the weapon";
 }

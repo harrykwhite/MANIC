@@ -40,7 +40,7 @@ if (spd > 0.375){
 if (death){
 	scr_env_destroy(spr_crate_large_0_break);
 	
-	scr_weapon_ammo_spawn(6, 8, 5, x, y + 6);
+	scr_weapon_ammo_spawn(3, 8, 5, x, y + 6);
 	
 	if (random(4) < 1){
 		instance_create(x + random_range(-3, 3), y + 8 + random_range(-3, 2), obj_health_pack_0);

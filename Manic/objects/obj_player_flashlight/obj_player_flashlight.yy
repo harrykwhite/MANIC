@@ -14,7 +14,7 @@
             "mvc": "1.0",
             "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
             "propertyId": "12977b57-3c14-4684-a860-15eef892e37e",
-            "value": "\"Spot Light\""
+            "value": "\"Directional Light\""
         },
         {
             "id": "4803cdf3-d9b4-4d8f-a494-5f05fa0ec975",
@@ -25,14 +25,6 @@
             "value": "350"
         },
         {
-            "id": "ba614d8b-16c8-4bbf-ba7e-a4c3b52e4d5a",
-            "modelName": "GMOverriddenProperty",
-            "mvc": "1.0",
-            "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
-            "propertyId": "5686c0db-78e4-4fd7-89e5-0ed522384dd8",
-            "value": "45"
-        },
-        {
             "id": "75b23f2b-40ef-4228-94aa-49c50217a987",
             "modelName": "GMOverriddenProperty",
             "mvc": "1.0",
@@ -41,12 +33,20 @@
             "value": "1.5"
         },
         {
-            "id": "c52a1594-2b63-4529-ab6e-279c6070ceac",
+            "id": "53200880-02b5-47fe-8956-45ee0216ea28",
             "modelName": "GMOverriddenProperty",
             "mvc": "1.0",
             "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
-            "propertyId": "1cb40d30-25a7-4fac-beac-2258d74cb99b",
-            "value": "1056"
+            "propertyId": "5e1bf6e4-c602-482d-9717-3fb5fd22aa13",
+            "value": "160"
+        },
+        {
+            "id": "5b2c5e5f-6d80-4830-a648-809acfb4a824",
+            "modelName": "GMOverriddenProperty",
+            "mvc": "1.0",
+            "objectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
+            "propertyId": "acc21797-5541-499d-a7a7-ca1316572c37",
+            "value": "$FF999999"
         }
     ],
     "parentObjectId": "84334f4e-b6d2-4ffe-89cf-f8641f75877e",
@@ -65,6 +65,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "daa1dd7b-b455-4665-938a-6611291af065",
+    "spriteId": "00000000-0000-0000-0000-000000000000",
     "visible": false
 }

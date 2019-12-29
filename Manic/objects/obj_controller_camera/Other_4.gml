@@ -16,6 +16,8 @@ camera_zoom_to = 1;
 camera_zoom_add = 0;
 camera_zoom_width = ceil(basewidth / global.game_option[| Options.CameraScale]);
 camera_zoom_height = ceil(baseheight / global.game_option[| Options.CameraScale]);
+camera_zoom_offset = 0;
+camera_zoom_offset_real = 0;
 
 autocontrol = true;
 dir = 0;

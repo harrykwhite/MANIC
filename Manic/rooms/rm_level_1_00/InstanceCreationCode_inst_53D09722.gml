@@ -1,2 +1,2 @@
-index = PlayerWeapon.MachineGun;
+index = PlayerWeapon.Crowbar;
 angle = 5;

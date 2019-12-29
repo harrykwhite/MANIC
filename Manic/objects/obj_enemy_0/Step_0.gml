@@ -16,14 +16,10 @@ if (type == Enemy0_Type.Grenadier) || (type == Enemy0_Type.Sniper) || (type == E
 	
 	mylight.x = x;
 	mylight.y = y - (9 * scale);
-	mylight.light[| eLight.X] = x;
-	mylight.light[| eLight.Y] = y - (9 * scale);
-	mylight.light[| eLight.LutIntensity] = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
-	mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+	mylight.Light_Intensity = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
 	
 	if (type == Enemy0_Type.TrainBoss){
 		mylight.y -= scale;
-		mylight.light[| eLight.Y] -= scale;
 	}
 }
 
@@ -44,9 +40,6 @@ if (ispaused){
 }
 
 livetime ++;
-
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 scr_pawn_status_handler();
 

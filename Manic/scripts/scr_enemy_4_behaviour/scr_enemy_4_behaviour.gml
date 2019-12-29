@@ -4,6 +4,8 @@ var face_player = false;
 target = obj_player;
 
 if (instance_exists(target)){
+	scr_enemy_find_companion();
+	
 	var dist_to = point_distance(x, y, target.x, target.y);
 	
 	move_x_to = target.x;
@@ -44,9 +46,9 @@ if (cutscene_prop){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (!scr_pawn_find_path()){

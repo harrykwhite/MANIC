@@ -31,6 +31,7 @@ if (inhordechallenge) && (!paused){
 		var uindex = -1;
 		var ux = -1;
 		var uy = -1;
+		
 		switch(level){
 			case Level.UndergroundBunker:
 				uindex = PlayerUpgrade.ShoulderBand;
@@ -231,7 +232,7 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 			break;
 	
 		case CombatState.Climax:
-			if (global.game_combat_state_time_real >= (60 * spawn_state_time[global.game_combat_state])) && (scr_enemy_nearby_count(260, false) <= 0){
+			if (global.game_combat_state_time_real >= (60 * spawn_state_time[global.game_combat_state])) && (scr_enemy_nearby_count(500, false) <= 0){
 				global.game_combat_state_time_real = 0;
 				
 				spawn_rate_real += 0.5;

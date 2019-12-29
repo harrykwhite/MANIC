@@ -20,7 +20,7 @@ if (!isteaser){
 		option[0] = "Continue Game";
 	}
 
-	if (global.game_boss_final_killed) || (devmode){
+	if (global.game_levelselect_unlocked) || (devmode){
 		option_locked[1] = false;
 	}
 }

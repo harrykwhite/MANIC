@@ -24,6 +24,16 @@ if (gui_resize_time != -1){
 	}
 }
 
+// Window size refresh
+if (window_resize_time != -1){
+	if (window_resize_time > 0){
+		window_resize_time --;
+	}else{
+		window_set_size(window_resize_w, window_resize_h);
+		window_resize_time = -1;
+	}
+}
+
 // Application surface refresh
 if (app_surf_refresh_time > 0){
 	app_surf_refresh_time --;

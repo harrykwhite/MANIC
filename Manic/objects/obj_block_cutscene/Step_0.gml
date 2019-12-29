@@ -2,6 +2,12 @@ if (global.game_pause){
 	return;
 }
 
+if (check_for_companion != -1){
+	if (!scr_player_has_companion(global.companion[check_for_companion])){
+		return;
+	}
+}
+
 interact_active = false;
 
 if (special == "deerpickup"){
@@ -81,7 +87,23 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 			global.cutscene_current = index;
 			
 			if (special == "bunkerenginedestroy"){
-				obj_controller_gameplay.cutscene_dialogue_bunker_engine_destroy = true;
+				if (!instance_exists(obj_companion_0)){
+					global.cutscene_current = -1;
+					
+					scr_objective_change(Objectives.DestroyProductionEngines, 0, 5);
+					instance_destroy();
+					return;
+				}else{
+					obj_controller_gameplay.cutscene_dialogue_bunker_engine_destroy = true;
+				}
+			}
+			
+			if (special == "bunkerenter"){
+				if (!instance_exists(obj_companion_0)){
+					global.cutscene_current = -1;
+					instance_destroy();
+					return;
+				}
 			}
 			
 			if (special == "sicklelook"){
@@ -90,6 +112,10 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 			
 			if (special == "teaserend"){
 				obj_controller_ui.teaserend = true;
+			}
+			
+			if (special == "huntingstart"){
+				obj_controller_prologue.hunting = true;
 			}
 			
 			if (index == 40){
@@ -107,6 +133,17 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				obj_controller_gameplay.cutscene_moveto_level = moveto_level;
 				obj_controller_gameplay.cutscene_moveto_type = moveto_type;
 				obj_controller_gameplay.cutscene_moveto_instant = moveto_instant;
+			}
+			
+			if (index == 57){
+				with(obj_controller_prologue){
+					tutmusic_endstinger = audio_play_sound(m_tutourial_stinger_0, 3, false);
+					audio_sound_gain(tutmusic_endstinger, 0, 0);
+					audio_sound_gain(tutmusic_endstinger, 1, 1000);
+				
+					audio_sound_gain(tutmusic_layer0, 0, 2000);
+					audio_sound_gain(tutmusic_layer1, 0, 2000);
+				}
 			}
 			
 			if (destroy_on_activate){

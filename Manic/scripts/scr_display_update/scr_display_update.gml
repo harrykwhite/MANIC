@@ -84,5 +84,11 @@ obj_controller_all.camera_resize_w = basewidth / camscale;
 obj_controller_all.camera_resize_h = baseheight / camscale;
 obj_controller_all.camera_resize_time = 3;
 
+if (macbuild && !fullscreen){
+	obj_controller_all.window_resize_w = window_width;
+	obj_controller_all.window_resize_h = window_height;
+	obj_controller_all.window_resize_time = 8;
+}
+
 display_reset(0, false);
 surface_resize(application_surface, basewidth, baseheight);

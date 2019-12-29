@@ -28,8 +28,6 @@ if (!global.pers_runthrough){
 	}
 	
 	// Fullscreen
-	surface_resize(application_surface, basewidth, baseheight);
-	
 	if (full <= 0){
 		if (keyboard_check_pressed(ord("F")) || full_autoswitch){
 			global.game_option[| Options.Fullscreen] = !global.game_option[| Options.Fullscreen];
@@ -42,7 +40,12 @@ if (!global.pers_runthrough){
 		full --;
 	}
 	
-	window_set_fullscreen(global.game_option[| Options.Fullscreen]);
+	if (!macbuild){
+		surface_resize(application_surface, basewidth, baseheight);
+		window_set_fullscreen(global.game_option[| Options.Fullscreen]);
+	}else{
+		global.game_option[| Options.Fullscreen] = window_get_fullscreen();
+	}
 }
 
 // Input
@@ -175,17 +178,17 @@ if (gamepad_check_break > 0){
 
 // Lighting
 if (!global.game_pause){
-	global.game_lighting = clamp(global.game_lighting, 0, 1);
+	global.game_lighting_level_to = clamp(global.game_lighting_level_to, 0, 1);
 	
-	var lto = global.game_lighting;
+	var lto = global.game_lighting_level_to;
 	var ljump = 0.005;
 	
 	if (room == rm_prologue_00) && (global.game_objective_complete){
 		ljump *= 0.25;
 	}
 	
-	if (global.ambientShadowIntensity != lto){
-		global.ambientShadowIntensity += min(ljump, abs(lto - global.ambientShadowIntensity)) * sign(lto - global.ambientShadowIntensity);
+	if (global.game_lighting_level != lto){
+		global.game_lighting_level += min(ljump, abs(lto - global.game_lighting_level)) * sign(lto - global.game_lighting_level);
 	}
 }
 
@@ -250,11 +253,7 @@ if (center_window_time != -1){
 		center_window_time --;
 	}else{
 		if (!window_get_fullscreen()){
-			if (!macbuild){
-				window_center();
-			}else{
-				window_set_position(20, 20);
-			}
+			window_center();
 		}
 		
 		center_window_time = -1;

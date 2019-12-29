@@ -4,6 +4,7 @@ target = obj_player;
 
 if (instance_exists(target)){
 	var csize = array_length_1d(global.companion);
+	
 	for(var i = 0; i < csize; i ++){
 		if (global.companion[i] == obj_companion_0){
 			continue;
@@ -167,9 +168,9 @@ if (instance_exists(target)){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (sniperboss_dash){

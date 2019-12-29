@@ -5,7 +5,17 @@ obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
-	var inst = inst_700A7BC8;
+	var inst = noone;
+	var wcount = instance_number(obj_weapondrop);
+	
+	for(var i = 0; i < wcount; i ++){
+		var wep = instance_find(obj_weapondrop, i);
+		
+		if (wep.index == PlayerWeapon.Bayonet){
+			inst = wep;
+			break;
+		}
+	}
 	
 	if (instance_exists(inst)){
 		var dir_to = point_direction(obj_player.x, obj_player.y, inst.x, inst.y);
@@ -26,6 +36,14 @@ if (instance_exists(obj_player)){
 				
 				global.weapon_default = PlayerWeapon.Bayonet;
 				global.cutscene_time[index] = 0;
+				
+				if (instance_exists(global.weapon_object[PlayerWeapon.Knife])){
+					instance_destroy(global.weapon_object[PlayerWeapon.Knife]);
+				}
+				
+				if (global.weapon_slot[global.weapon_slotcurrent] == PlayerWeapon.Knife || global.weapon_slot[global.weapon_slotcurrent] == -1){
+					global.weapon_slot[global.weapon_slotcurrent] = -1;
+				}
 				
 				instance_destroy(inst);
 				return;

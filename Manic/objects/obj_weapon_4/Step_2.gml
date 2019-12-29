@@ -19,7 +19,7 @@ if (instance_exists(obj_player)){
 	        obj_player_arm.y = obj_player_arm.y + lengthdir_y(attack_offset, image_angle);
 			
 			image_alpha = obj_player_arm.image_alpha;
-			image_angle = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+			image_angle = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 		    
 			x = obj_player_arm.x + lengthdir_x(attack_offset + 12, image_angle);
 		    y = obj_player_arm.y + lengthdir_y(attack_offset + 12, image_angle);

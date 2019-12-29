@@ -70,9 +70,13 @@ repeat(amount){
 		tobject = ammolist[| random(ammocount)];
 	}
 	
+	if (random(100) < 20){
+		continue;
+	}
+	
 	switch(tobject){
 		case obj_ammo_2:
-			if (random(100) < 70){
+			if (random(100) < 75){
 				continue;
 			}
 			break;
@@ -90,7 +94,7 @@ repeat(amount){
 			break;
 		
 		case obj_ammo_5:
-			if (random(100) < 30){
+			if (random(100) < 70){
 				continue;
 			}
 			break;

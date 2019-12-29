@@ -17,9 +17,6 @@ if (instance_exists(keeper)){
 	cutscene_prop = keeper.cutscene_prop;
 }
 
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
-
 scr_pawn_status_handler();
 
 if (global.cutscene_current == -1) || (cutscene_prop){

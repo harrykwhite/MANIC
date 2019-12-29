@@ -31,9 +31,9 @@ move_x_to = clamp(move_x_to, 0, room_width);
 move_y_to = clamp(move_y_to, 0, room_height);
 
 if (move_speed_real < speed_final){
-    move_speed_real += 0.2;
+    move_speed_real += min(0.2, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
-    move_speed_real -= 0.2;
+    move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
 
 if (!scr_pawn_find_path()){

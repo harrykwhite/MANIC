@@ -1,2 +1,2 @@
-index = PlayerWeapon.AssaultRifle;
+index = PlayerWeapon.Machete;
 angle = -20;

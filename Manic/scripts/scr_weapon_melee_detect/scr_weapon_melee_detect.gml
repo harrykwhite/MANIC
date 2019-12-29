@@ -76,6 +76,10 @@ switch(ctype){
 		var num = enemylinelength;
 		var mult = scr_get_blood_mult();
 		
+		if (object_index == obj_weapon_40){
+			mult *= 2;
+		}
+		
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
 				var inst = enemyline[| i].owner;
@@ -122,12 +126,12 @@ switch(ctype){
 							yoffset = 6;
 						}
 						
-						repeat(5){
+						repeat(5 * mult){
 							var gore = instance_create(inst.x, inst.y, obj_ef_gore);
 							gore.dir = dir + random_range(-20, 20);
 						}
 						
-						repeat(13){
+						repeat(13 * mult){
 							var spurt = instance_create(inst.x + random_range(-5, 5), inst.y + random_range(-8, 8), obj_ef_bloodspurt);
 							spurt.dir = dir + random_range(-38, 38);
 						}
@@ -138,7 +142,7 @@ switch(ctype){
 					    part_particles_create(global.ps_bottom, inst.x, inst.y + yoffset, global.pt_gore_0, 3 * mult);
 						part_type_direction(global.pt_blood_5, dir - 20, dir + 20, 0, 0);
 						part_type_speed(global.pt_blood_5, 2.75, 3.75, -0.15, 0);
-						repeat(9 * mult)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_blood_5, 1);
+						repeat(9 * mult)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_blood_5, mult);
 					    scr_effect_object(xEnd, yEnd, obj_ef_blood, spr_ef_blood_0, 0, 1);
 					    scr_effect_object(xEnd + random_range(-6, 6), yEnd + random_range(-6, 6), obj_ef_blood, spr_ef_blood_1, 0, 1);
 					}
@@ -165,7 +169,7 @@ switch(ctype){
 				var inst = playerline[| i].owner;
 				var final_damage = damage;
 				
-				if (inst.object_index == obj_companion_0) || (inst.object_index == obj_companion_1) || (inst.object_index == obj_companion_2) || (inst.object_index == obj_companion_3){
+				if (inst.object_index == obj_companion_0){
 					continue;
 				}
 				
@@ -242,7 +246,7 @@ switch(ctype){
 		if (num > 0){
 			for(var i = 0; i < num; i ++){
 				var inst = envline[| i], xEnd, yEnd;
-				len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst) + 4;
+				len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst, 3);
 				xEnd = xx + lengthdir_x(len, dir);
 				yEnd = yy + lengthdir_y(len, dir);
 				

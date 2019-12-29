@@ -13,6 +13,3 @@ scr_env_burn_effects(0, -2, 4, 4, 55);
 
 mylight.x = x;
 mylight.y = y - 2;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y - 2;
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;

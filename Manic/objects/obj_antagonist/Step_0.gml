@@ -10,10 +10,7 @@ if (!instance_exists(mylight)){
 
 mylight.x = x;
 mylight.y = y;
-mylight.light[| eLight.X] = x;
-mylight.light[| eLight.Y] = y;
-mylight.light[| eLight.LutIntensity] = max((1.6 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.3);
-mylight.light[| eLight.Flags] |= eLightFlags.Dirty;
+mylight.Light_Intensity = max((1.6 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.3);
 
 if (global.cutscene_current == 58){
 	in_cutscene = true;
@@ -63,7 +60,6 @@ if (global.game_pause){
 if (!active){
 	ispaused = true;
 	i_blend_time = 0;
-	whiteflash_alpha = 0;
 	i_time = 0;
 	
 	sprite_index = spr_antagonist_idle_0;
@@ -95,9 +91,6 @@ if (ispaused){
 	image_speed = 0;
 	return;
 }
-
-whiteflash_alpha -= whiteflash_alphadec;
-whiteflash_alpha = clamp(whiteflash_alpha, 0, 1);
 
 headless = false;
 
