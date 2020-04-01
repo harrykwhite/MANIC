@@ -1,6 +1,6 @@
 angle_offset = 70;
 angle_offset_current = 0;
-start_offset = 35;
+
 
 attack_can = true;
 attack_damage = 1;

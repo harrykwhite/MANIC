@@ -1,11 +1,13 @@
 // Lights
-if (!instance_exists(obj_player_light) && surrounding_light >= 0.1){
+if (!instance_exists(obj_player_light)){
 	mylight = instance_create_layer(x, y, "Lights", obj_player_light);
+	mylight.skipdraw = false;
 }
 
-if (surrounding_light < 0.1) || (global.weapon_slot[global.weapon_slotcurrent] != -1) || (global.level_current != Level.Prologue){
+if (global.weapon_slot[global.weapon_slotcurrent] != -1) || (global.weapon_default != -1){
 	if (!instance_exists(obj_player_flashlight)){
 		flashlight = instance_create_layer(x, y, "Lights", obj_player_flashlight);
+		flashlight.skipdraw = false;
 	}
 }else{
 	if (instance_exists(obj_player_flashlight)){
@@ -95,6 +97,7 @@ if (is_visible){
 if (instance_exists(mylight)){
 	mylight.x = x;
 	mylight.y = y;
+	
 	scr_modify_player_surrounding_light(mylight, x, y);
 }
 
@@ -108,6 +111,7 @@ if (instance_exists(flashlight)){
 	flashlight.x = x + lengthdir_x(4, flashlight_direction);
 	flashlight.y = y + lengthdir_y(4, flashlight_direction);
 	flashlight.Light_Intensity = 1.75;
-	flashlight.Light_Range = max(100 * light_brightness * surrounding_light * (1 + ((global.game_option[| Options.Flashing] / 100) * (flashlight_brightness - 1))), 1);
+	flashlight.Light_Range = 100 * (1 + ((global.game_option[| Options.Flashing] / 100) * (flashlight_brightness - 1)));
+	flashlight.Light_Range *= surrounding_light;
 	flashlight.Light_Direction = flashlight_direction;
 }

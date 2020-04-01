@@ -1,10 +1,12 @@
 index = -1;
 special = "";
 destroy_on_activate = false;
+destroy_on_nocutscene = false;
 deactivate_on_activate = false;
 reactivate_on_death = false;
 active = true;
 time = 25;
+incutscene = false;
 
 interact = false;
 interact_active = false;

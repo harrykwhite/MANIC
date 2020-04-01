@@ -15,8 +15,9 @@ if (instance_exists(obj_player)){
 
 object.x = xx;
 object.y = yy;
-object.Light_Range = floor(190 * lightbrightness) + (30 * (flashtime * 0.15) * (global.game_option[| Options.Flashing] / 100));
+object.Light_Range = 190 + (30 * (flashtime * 0.15) * (global.game_option[| Options.Flashing] / 100));
 object.Light_Intensity = 1.65;
+object.Light_Intensity *= lightbrightness;
 
 if (scr_player_has_upgrade(PlayerUpgrade.HeadLight)){
 	object.Light_Range += 40;
@@ -24,11 +25,10 @@ if (scr_player_has_upgrade(PlayerUpgrade.HeadLight)){
 
 with(obj_player){
 	if (surrounding_light < surrounding_light_to){
-		surrounding_light += 0.002;
+		surrounding_light += min(surrounding_light_to - surrounding_light, 0.0025);
 	}else if (surrounding_light > surrounding_light_to){
-		surrounding_light -= 0.002;
+		surrounding_light -= min(surrounding_light - surrounding_light_to, 0.0025);
 	}
 	
-	object.Light_Range = max(object.Light_Range * surrounding_light, 1);
-	object.Light_Intensity = clamp(object.Light_Intensity * surrounding_light, 0.6, 2);
+	object.Light_Range *= surrounding_light;
 }

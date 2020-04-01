@@ -16,7 +16,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
         var xpos = x + lengthdir_x(25, mdir) + lengthdir_x(1, up(mdir));
         var ypos = y + lengthdir_y(25, mdir) + lengthdir_y(1, up(mdir));
 		
-		scr_player_knockback_initiate(2, mdir);
+		scr_player_knockback_initiate(1.5, mdir);
         scr_effect_screenshake(2);
         scr_mouse_control(MouseType.SmallCircle, 5, 7);
         scr_weapon_ammo_use(1);
@@ -38,14 +38,13 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
 		shoot.damage = shoot_damage;
 		shoot.strength = shoot_strength;
 	    shoot.dir = mdir + random_range(-shoot_range, shoot_range);
-		shoot.spd = 21;
+		shoot.spd = shoot_speed;
 		shoot.image_angle = shoot.dir;
 		
         shoot_can = false;
-        shoot_time = 40;
+        shoot_time = 55;
         shoot_bounceback = -6;
         angle_offset = 10;
-		line_alpha = -4.2;
 		
 		scr_weapon_shoot_tutourial_update();
     }else{
@@ -56,7 +55,6 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
 // Throwing Weapon
 if (global.player_stamina_active){
     if (scr_input_is_pressed(InputBinding.Throw)){
-		
 		if (!collision_line(x, y, x + lengthdir_x(23, mdir), y + lengthdir_y(23, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);
 			scr_player_stamina_drain(20);
@@ -67,7 +65,7 @@ if (global.player_stamina_active){
 		    throw.spd = 9;
 		    throw.damage = throw_damage;
 		    throw.dir = mdir;
-		    throw.image_angle = throw.dir;
+		    throw.angle = image_angle;
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 			throw.dataset = true;
 			
@@ -98,9 +96,4 @@ if (shoot_time > 0){
 	
 }else{
     shoot_can = true;
-}
-
-// Line
-if (line_alpha < 0.7){
-	line_alpha += 0.1;
 }

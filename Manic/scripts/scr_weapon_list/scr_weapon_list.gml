@@ -38,7 +38,7 @@ enum PlayerWeapon{
 	MountedMachineGunCart,
 	Wrench,
 	DartRifle,
-	HuntingRifle,
+	WeakenedHuntingRifle,
 	Sickle,
 	Battleaxe,
 	Bayonet,
@@ -488,18 +488,18 @@ global.weapon_dualhanded[31] = false;
 global.weapon_damage[31] = WeaponLevel.Average;
 global.weapon_speed[31] = WeaponLevel.High;
 
-global.weapon_name[32] = "Hunting Rifle";
+global.weapon_name[32] = "Weakened Hunting Rifle";
 global.weapon_object[32] = obj_weapon_32;
 global.weapon_sprite[32] = spr_weapon_32;
 global.weapon_centersprite[32] = spr_weapon_32_center;
 global.weapon_type[32] = WeaponType.Ranged;
 global.weapon_heavy[32] = true;
-global.weapon_ammomax[32] = 8;
+global.weapon_ammomax[32] = 6;
 global.weapon_ammotype[32] = AmmoType.Bullets;
-global.weapon_camerarange[32] = 40;
+global.weapon_camerarange[32] = 30;
 global.weapon_mouse[32] = MouseType.Crosshair;
 global.weapon_dualhanded[32] = false;
-global.weapon_damage[32] = WeaponLevel.VeryHigh;
+global.weapon_damage[32] = WeaponLevel.High;
 global.weapon_speed[32] = WeaponLevel.VeryLow;
 
 global.weapon_name[33] = "Sickle";
@@ -622,7 +622,7 @@ global.weapon_slotprevious = 1;
 global.weapon_slotmax = 2; // How many slots the player currently has
 global.weapon_potential_slotmax = 3; // How many slots the player can potentially have throughout the game
 
-global.weapon_default = PlayerWeapon.Knife;
+global.weapon_default = -1;
 global.weapon_default_set = false;
 
 if (room == rm_ini){

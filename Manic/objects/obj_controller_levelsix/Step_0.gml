@@ -108,7 +108,15 @@ if (!global.game_pause){
 	if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
 		if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
 		audio_sound_gain(m_ambience_wind_0, 0.01, 0);
-		audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
+		audio_sound_gain(m_ambience_wind_0, windvolume * obj_controller_all.real_ambience_volume, 6000);
+	}
+	
+	if (room != rm_level_6_pre_00 && room != rm_level_6_00){
+		if (!audio_is_playing(m_ambience_rain_0)) || (audio_sound_get_gain(m_ambience_rain_0) < 0.01){
+			if (!audio_is_playing(m_ambience_rain_0)) audio_play_sound(m_ambience_rain_0, 3, true);
+			audio_sound_gain(m_ambience_rain_0, 0.01, 0);
+			audio_sound_gain(m_ambience_rain_0, rainvolume * obj_controller_all.real_ambience_volume, 6000);
+		}
 	}
 	
 	// Train Arrival
@@ -122,8 +130,8 @@ if (!global.game_pause){
 				if (train_time < train_timemax){
 					train_time ++;
 				}else{
-					var xx = choose(-150, room_width + 150);
-					var yy = choose(228, 328);
+					var xx = choose(-450, room_width + 450);
+					var yy = choose(225, 321);
 					var train;
 				
 					train = instance_create_layer(xx, yy, "Trains", obj_pawn_other_train_0);
@@ -138,11 +146,12 @@ if (!global.game_pause){
 					trainboss_time ++;
 				}else{
 					trainboss_spawned = true;
-					trainboss_trainhead = instance_create_layer(-247, 224, "Trains", obj_pawn_other_train_1);
+					trainboss_trainhead = instance_create_layer(-450, 225, "Trains", obj_pawn_other_train_1);
 					trainboss_trainhead.component_spawn = true;
 					trainboss_trainhead.is_boss = true;
 					trainboss_trainhead.spd = 6;
-				
+					trainboss_trainhead.sound_stop_played = false;
+					
 					scr_objective_change(Objectives.DefeatEnemyTrain, -1, -1);
 				
 					global.worldtrain_room = room;

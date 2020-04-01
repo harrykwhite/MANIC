@@ -4,7 +4,7 @@ var music = argument0;
 var lvl = scr_level_get_index(room);
 var srate = 1 + (0.05 * (lvl - 1));
 
-var combat_0, combat_1, combat_2, stinger_2;
+var combat_0, combat_1, combat_2, stinger_2, hordepost_loop;
 
 switch(music){
 	default:
@@ -12,6 +12,7 @@ switch(music){
 		combat_1 = m_combat_main_1;
 		combat_2 = m_combat_main_2;
 		stinger_2 = m_combat_stinger_2_main;
+		hordepost_loop = snd_object_hordepost_loop_normal;
 		break;
 	
 	case "windy":
@@ -19,6 +20,7 @@ switch(music){
 		combat_1 = m_combat_windy_1;
 		combat_2 = m_combat_windy_2;
 		stinger_2 = m_combat_stinger_2_windy;
+		hordepost_loop = snd_object_hordepost_loop_windy;
 		break;
 	
 	case "underground":
@@ -26,6 +28,7 @@ switch(music){
 		combat_1 = m_combat_underground_1;
 		combat_2 = m_combat_underground_2;
 		stinger_2 = m_combat_stinger_2_underground;
+		hordepost_loop = snd_object_hordepost_loop_underground;
 		break;
 	
 	case "city":
@@ -33,6 +36,7 @@ switch(music){
 		combat_1 = m_combat_city_1;
 		combat_2 = m_combat_city_2;
 		stinger_2 = m_combat_stinger_2_city;
+		hordepost_loop = snd_object_hordepost_loop_city;
 		break;
 }
 
@@ -60,6 +64,11 @@ spawn_music_main[CombatState.Climax] = combat_2;
 spawn_music_pause_gain[CombatState.Climax] = 0;
 spawn_music_pause_position[CombatState.Climax] = 0;
 
+if (scr_level_is_arena()){
+	spawn_state_time[CombatState.Idle] *= 0.5;
+	spawn_max[CombatState.Idle] = 0;
+}
+
 spawn_time = spawn_interval[global.game_combat_state];
 
 spawn_start_wait_max = 60 * 1.5;
@@ -73,4 +82,5 @@ if (global.game_combat_state == CombatState.Idle){
 	spawn_time = 60 * 5;
 }
 
+hordepost_loop_sound = hordepost_loop;
 horde_spawn_rate = scr_horde_get_spawnrate(scr_level_get_index(room));

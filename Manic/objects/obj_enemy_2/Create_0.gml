@@ -23,6 +23,7 @@ bite_retreat_direction = 0;
 bite_retreat_time = 0;
 
 mylight = noone;
+light_brightness = 0.25;
 
 burn = false;
 burn_x = x;
@@ -74,6 +75,11 @@ health_current = health_max;
 health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
+
+companion_find_time_max = 60 * 2.5;
+companion_find_time = companion_find_time_max;
+companion_find_break_max = 60;
+companion_find_break = companion_find_break_max;
 
 target = obj_player;
 

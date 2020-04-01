@@ -102,7 +102,7 @@ if (instance_exists(target)) && (!walk_off) && (!greatsword_attack){
 		}else{
 			move_speed = 0;
 			move_x_to = target.x;
-			move_y_to = target.y;
+			move_y_to = target.y + 6;
 			
 			if (weapon_exists){
 				weapon.dir = point_direction(x, y, move_x_to, move_y_to);
@@ -151,12 +151,10 @@ if (instance_exists(target)) && (!walk_off) && (!greatsword_attack){
 		
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
-		weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+		weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 		
 		run_away_time = 0;
 		run_away_direction = 0;
-		
-		throw_weapon_time = 0;
 		
 		weapon_change_time = 0;
 		weapon_change_origin = weapon_index;
@@ -198,7 +196,7 @@ if (greatsword_attack){
 		weapon_index = PawnWeapon.Greatsword;
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
 		weapon.owner = id;
-		weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+		weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 		
 		has_greatsword = true;
 	}
@@ -210,7 +208,7 @@ if (greatsword_attack){
 		
 		if (global.cutscene_current == -1){
 			move_x_to = obj_player.x;
-			move_y_to = obj_player.y;
+			move_y_to = obj_player.y + 6;
 	
 			if (playerdist > 32){
 				move_speed = 3.8;

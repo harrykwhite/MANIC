@@ -63,7 +63,7 @@ if (instance_exists(obj_player)){
 				instance_destroy(weapon);
 				weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
 			    weapon.owner = id;
-				weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+				weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 			    weapon_index = PawnWeapon.Grenade;
 			}
 		
@@ -71,7 +71,7 @@ if (instance_exists(obj_player)){
 			
 			if (dist_to_player > 70 + (40 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				move_speed = 2;
 				attack_time = 0;
 				
@@ -91,7 +91,7 @@ if (instance_exists(obj_player)){
 			}else{
 				move_speed = 0;
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				face_player = true;
 			}
 		}else if (global.cutscene_current == -1){
@@ -111,14 +111,14 @@ if (instance_exists(obj_player)){
 				move_speed = 1.8;
 			}else{
 				move_x_to = target.x;
-				move_y_to = target.y;
+				move_y_to = target.y + 6;
 				
 				if (distance_to_object(target) > 150) && (attack_time <= 0){
 					move_speed = 1.8;
 				}else{
 					move_speed = 0;
 					move_x_to = target.x;
-					move_y_to = target.y;
+					move_y_to = target.y + 6;
 					
 					if (weapon_does_exist){
 						if (attack_time > 0){
@@ -129,7 +129,7 @@ if (instance_exists(obj_player)){
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
 							        weapon.owner = id;
-									weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+									weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 							        weapon_index = PawnWeapon.Grenade;
 								}else{
 									weapon.attack = true;
@@ -153,7 +153,7 @@ if (instance_exists(obj_player)){
 		face_player = true;
 		move_speed = 0;
 		move_x_to = obj_player.x;
-		move_y_to = obj_player.y;
+		move_y_to = obj_player.y + 6;
 	}
 	
 	dist_to = distance_to_point(move_x_to, move_y_to);
@@ -174,7 +174,7 @@ if (instance_exists(obj_player)){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
 			if (distance_to_object(obj_player) > 67 + (40 * order)){
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				move_speed = 1.8;
 			}
 		}
@@ -219,7 +219,7 @@ if (dashbreak > 0){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += min(0.2, speed_final - move_speed_real);
+    move_speed_real += min(0.1, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
     move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
@@ -250,16 +250,16 @@ if (instance_exists(weapon) && weapon != -1){
 	Idle1 = spr_companion_1_idle_1; Walk1 = spr_companion_1_walk_1;
 	Idle2 = spr_companion_1_idle_2; Walk2 = spr_companion_1_walk_2;
 	
-	if (speed_final <= 0.1){
+	if (speed_final <= 0.4){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 
-if (speed_final <= 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.4) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
-}else if (speed_final >= 0.1) && (speed_final <= 0.75){
+}else if (speed_final >= 0.4) && (speed_final <= 0.75){
     image_speed = 0.15;
 }else if (speed_final < 1.1) && (speed_final > 0.75){
     image_speed = 0.25;

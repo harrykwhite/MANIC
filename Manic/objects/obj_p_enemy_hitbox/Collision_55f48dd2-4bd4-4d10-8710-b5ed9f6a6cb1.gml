@@ -5,6 +5,10 @@ if (global.cutscene_current != -1) || (global.game_pause){
 var inst = other;
 
 with(owner){
+	if (object_index == obj_enemy_1){
+		return;
+	}
+	
 	if (cutscene_prop){
 		return;
 	}

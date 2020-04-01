@@ -1,9 +1,3 @@
-if (light_brightness < 1){
-	light_brightness += 0.025;
-}else if (light_brightness > 1){
-	light_brightness -= 0.025;
-}
-
 if (type == Enemy0_Type.TrainBoss){
 	obj_controller_ui.bosshealth_value_current = health_current;
 	obj_controller_ui.bosshealth_value_max = health_max + (18 * 6);
@@ -16,7 +10,8 @@ if (type == Enemy0_Type.Grenadier) || (type == Enemy0_Type.Sniper) || (type == E
 	
 	mylight.x = x;
 	mylight.y = y - (9 * scale);
-	mylight.Light_Intensity = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+	mylight.Light_Intensity = max(1.45 + (clamp(flash_time, 0, 2) / 10), 1.2);
+	mylight.Light_Intensity *= light_brightness;
 	
 	if (type == Enemy0_Type.TrainBoss){
 		mylight.y -= scale;

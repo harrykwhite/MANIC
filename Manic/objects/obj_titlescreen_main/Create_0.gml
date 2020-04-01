@@ -1,3 +1,5 @@
+var iskeyboard = (global.game_input_type == InputType.Keyboard);
+
 scr_save_game_reader();
 
 if (!ds_exists(global.game_option, ds_type_list)){
@@ -9,7 +11,7 @@ if (!audio_is_playing(m_ambience_wind_0)){
 }
 
 audio_sound_gain(m_ambience_wind_0, 0, 0);
-audio_sound_gain(m_ambience_wind_0, 0.55 * obj_controller_all.real_ambience_volume, 1000);
+audio_sound_gain(m_ambience_wind_0, windvolume * obj_controller_all.real_ambience_volume, 1000);
 
 sprite_index = noone;
 
@@ -21,7 +23,7 @@ fade_opening = true;
 
 press_break = 0;
 
-#region Options
+#region Title
 if (!isteaser){
 	option[0] = "New Game";
 	option_locked[0] = false;
@@ -31,13 +33,17 @@ if (!isteaser){
 	option_locked[1] = true;
 	option_scale[1] = 1;
 
-	option[2] = "Settings";
+	option[2] = "Arena Mode";
 	option_locked[2] = false;
 	option_scale[2] = 1;
 
-	option[3] = "Exit Game";
+	option[3] = "Settings";
 	option_locked[3] = false;
 	option_scale[3] = 1;
+
+	option[4] = "Exit Game";
+	option_locked[4] = false;
+	option_scale[4] = 1;
 
 	if (global.game_save_started){
 		option[0] = "Continue Game";
@@ -62,7 +68,7 @@ if (!isteaser){
 
 #endregion
 
-#region Options -> Settings
+#region Settings
 option_setting[0] = "Gameplay";
 option_setting_scale[0] = 1;
 
@@ -79,7 +85,7 @@ option_setting[4] = "Clear Save Data";
 option_setting_scale[4] = 1;
 #endregion
 
-#region Options -> Settings -> Gameplay
+#region Settings -> Gameplay
 option_setting_gameplay[0] = "Screenshake";
 option_setting_gameplay_edit[0] = Options.Screenshake;
 option_setting_gameplay_value[0] = global.game_option[| Options.Screenshake];
@@ -144,7 +150,7 @@ option_setting_gameplay_unit[6] = "[BOOL]";
 option_setting_gameplay_scale[6] = 1;
 #endregion
 
-#region Options -> Settings -> Display
+#region Settings -> Display
 option_setting_display[0] = "Fullscreen";
 option_setting_display_edit[0] = Options.Fullscreen;
 option_setting_display_value[0] = global.game_option[| Options.Fullscreen];
@@ -236,14 +242,26 @@ option_setting_audio_unit[3] = "%";
 option_setting_audio_scale[3] = 1;
 #endregion
 
-#region Options -> Level select
-var levelcount = array_length_1d(global.level_name);
+#region Level select
+var levelcount = global.level_campaign_count;
 
 for(var i = 0; i < levelcount; i ++){
 	option_levelselect[i] = global.level_name[i];
 	option_levelselect_goto[i] = global.level_room[i];
 	option_levelselect_scale[i] = 1;
 	option_levelselect_unlocked[i] = true;
+}
+
+#endregion
+
+#region Arena mode
+var arenacount = global.level_arena_count;
+
+for(var i = 0; i < arenacount; i ++){
+	option_arenamode[i] = global.level_name[levelcount + i];
+	option_arenamode_goto[i] = global.level_room[levelcount + i];
+	option_arenamode_scale[i] = 1;
+	option_arenamode_unlocked[i] = true;
 }
 
 #endregion
@@ -259,6 +277,7 @@ option_setting_display_max = array_length_1d(option_setting_display) - 1;
 option_setting_audio_max = array_length_1d(option_setting_audio) - 1;
 
 option_levelselect_max = array_length_1d(option_levelselect) - 1;
+option_arenamode_max = array_length_1d(option_arenamode) - 1;
 
 in_settings = false;
 in_settings_gameplay = false;
@@ -267,7 +286,10 @@ in_settings_audio = false;
 in_settings_controls = false;
 
 in_levelselect = false;
-selected = -1;
+in_arenamode = false;
+
+selected = iskeyboard ? -1 : 0;
+selected_previous = selected;
 selected_break = 0;
 selected_held_time = 0;
 selected_held_time_max = 40;

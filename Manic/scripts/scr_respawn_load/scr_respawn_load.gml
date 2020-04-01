@@ -1,6 +1,8 @@
 var changed = false;
 
 global.game_combat_state = CombatState.Idle;
+global.game_combat_arena_wave = 0;
+
 global.weapon_slot_standalone = -1;
 
 scr_weapon_list();
@@ -29,6 +31,13 @@ global.player_health_current = global.player_health_max;
 global.weapon_slotcurrent = 0;
 
 global.boss_current = -1;
+
+if (room == rm_level_10_01){
+	if (instance_exists(obj_weapon_29)){
+		obj_weapon_29.ammo = -1;
+		obj_weapon_29.ammostart = 37;
+	}
+}
 
 if (global.player_is_respawning) && (global.checkpoint_room == noone){
 	var roomto = global.level_room[global.level_current];

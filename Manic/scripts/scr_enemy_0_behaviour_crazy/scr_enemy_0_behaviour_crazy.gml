@@ -3,7 +3,9 @@ var speed_final = 0;
 target = obj_player;
 
 if (instance_exists(target)) && (instance_exists(weapon)){
-	scr_enemy_find_companion();
+	if (weapon.type == WeaponType.Melee){
+		scr_enemy_find_companion();
+	}
 	
 	if (crazy_runback){
 		var xx = crazy_runx + lengthdir_x(30, crazy_attackdir - 180);
@@ -44,7 +46,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 		}else{
 			move_speed = 1.175;
 			move_x_to = target.x;
-			move_y_to = target.y;
+			move_y_to = target.y + 6;
 			crazy_attackbreak = 34;
 		}
 		

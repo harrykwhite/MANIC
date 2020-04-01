@@ -22,8 +22,11 @@ dash_after_dir = dash_direction;
 
 x += lengthdir_x(dash_speed, dash_direction);
 y += lengthdir_y(dash_speed, dash_direction);
+
 sprite_index = spr_player_idle_1;
 image_speed = 0;
+
+footstep_time = 10;
 
 var trail = scr_effect_trail(sprite_index, 0.8, 0.075, 0, image_xscale, 1, 0.01, 0.5, (dash_direction - 180) + random_range(-30, 30));
 if (global.player_health_current <= 2){

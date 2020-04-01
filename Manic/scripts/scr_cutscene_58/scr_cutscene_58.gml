@@ -72,31 +72,31 @@ if (instance_exists(obj_player)){
 						case 0:
 							global.game_npc_townperson0_talked = true;
 							
-							line[0] = "Are you okay?";
+							line[0] = "A-are you okay?";
 							linefrom[0] = obj_player;
 							
 							line[1] = "Yes... I'm all right...";
 							linefrom[1] = inst;
 							
-							line[2] = "Could you tell me what has happened?";
+							line[2] = "What happened here?";
 							linefrom[2] = obj_player;
 							
-							line[3] = "Large groups of them ran into the town...";
+							line[3] = "Large groups of them ran into the town.";
 							linefrom[3] = inst;
 							
-							line[4] = "They murdered our people... they ravaged our houses...";
+							line[4] = "They murdered our people, and ravaged our houses.";
 							linefrom[4] = inst;
 							
 							line[5] = "I'm not even sure how long I've been waiting here...";
 							linefrom[5] = inst;
 							
-							line[6] = "I understand. From here I can escort you over to the west where it is safe.";
+							line[6] = "I understand...";
 							linefrom[6] = obj_player;
 							
-							line[7] = "Hopefully there you'll be able to find a place to stay.";
+							line[7] = "Maybe you could head to one of the towns in the west? It might be safer over there.";
 							linefrom[7] = obj_player;
 							
-							line[8] = "Okay, thank you...";
+							line[8] = "Okay, I'll do that...";
 							linefrom[8] = inst;
 							break;
 						
@@ -109,7 +109,7 @@ if (instance_exists(obj_player)){
 							line[1] = "Hi. Were you one of the citizens here?";
 							linefrom[1] = inst;
 							
-							line[2] = "No, I'm from a farmhouse up north.";
+							line[2] = "No... I'm from a farmhouse up north.";
 							linefrom[2] = obj_player;
 							
 							line[3] = "What about you?";
@@ -124,16 +124,16 @@ if (instance_exists(obj_player)){
 							line[6] = "The area seems to be deserted, though.";
 							linefrom[6] = inst;
 							
-							line[7] = "He may have escaped to the south or west. Those would be the best options, as I doubt those areas have been taken over yet. If I were you, I'd look there first.";
+							line[7] = "He may have escaped to the south or west, as I doubt those areas have been taken over yet. If I were you, I'd look there first.";
 							linefrom[7] = obj_player;
 							
-							line[8] = "Hopefully they've found somewhere to stay in the meantime. Somewhere safe.";
+							line[8] = "Hopefully they've found somewhere safe to stay in the meantime.";
 							linefrom[8] = obj_player;
 							
 							line[9] = "As you were coming up here, did you locate where the group were going to?";
 							linefrom[9] = obj_player;
 							
-							line[10] = "Well, I do recall seeing a large group of them approaching a farm to the south-east. They appeared to be lead by some tall, burning figure.";
+							line[10] = "Well, I do recall seeing a horde of them approaching a farm to the south-east. They appeared to be lead by some tall, burning figure.";
 							linefrom[10] = inst;
 							
 							line[11] = "All right, that'll be where I'm heading next.";
@@ -152,20 +152,17 @@ if (instance_exists(obj_player)){
 							line[1] = "I'm-uh... no...";
 							linefrom[1] = inst;
 							
-							line[2] = "My town... my people... my life...";
+							line[2] = "There's nothing I can do... everything's been destroyed.";
 							linefrom[2] = inst;
 							
-							line[3] = "It's all been taken away...";
-							linefrom[3] = inst;
+							line[3] = "It's going to be okay. Do you want me to escort you out of here?";
+							linefrom[3] = obj_player;
 							
-							line[4] = "Everything will be okay. Do you want me to escort you out of here?";
-							linefrom[4] = obj_player;
+							line[4] = "Y-yes please.";
+							linefrom[4] = inst;
 							
-							line[5] = "Y-yes please.";
-							linefrom[5] = inst;
-							
-							line[6] = "Okay, follow me.";
-							linefrom[6] = obj_player;
+							line[5] = "Okay, follow me.";
+							linefrom[5] = obj_player;
 							break;
 						
 						case 3:
@@ -183,23 +180,26 @@ if (instance_exists(obj_player)){
 							line[3] = "The group? I saw them... their faces...";
 							linefrom[3] = inst;
 							
-							line[4] = "It's as if they just planted a mask onto a person's face...";
+							line[4] = "It's as if they just planted a mask onto a person's face.";
 							linefrom[4] = inst;
 							
-							line[5] = "An entire horde of them were gathering around me, gripping onto their weapons.";
+							line[5] = "An entire horde of them were gathering around me... holding their weapons.";
 							linefrom[5] = inst;
 							
-							line[6] = "So I hid in here... thankfully they couldn't find me.";
+							line[6] = "So I hid in here.";
 							linefrom[6] = inst;
 							
-							line[7] = "I... I'm just not sure what to do...";
+							line[7] = "I-I'm just not sure what to do.";
 							linefrom[7] = inst;
 							
-							line[8] = "You'll be all right. I'll take you to the west where it is safe, you should be able to find a place to stay.";
+							line[8] = "It'll be all right...";
 							linefrom[8] = obj_player;
 							
-							line[9] = "Okay, thank you.";
-							linefrom[9] = inst;
+							line[9] = "Perhaps head over the west where it is safe, there you might be able to find a place to stay.";
+							linefrom[9] = obj_player;
+							
+							line[10] = "Okay, thank you.";
+							linefrom[10] = inst;
 							break;
 					}
 					
@@ -234,7 +234,7 @@ if (instance_exists(obj_player)){
 			line[0] = "Have you seen what's happening? The invasion?";
 			linefrom[0] = inst;
 			
-			line[1] = "I have. A person from the town up north said that he saw a group of them approaching this farm?";
+			line[1] = "Yes, I have. A person from the town up north said that he saw a group of them approaching this farm?";
 			linefrom[1] = obj_player;
 			
 			line[2] = "That'd be correct. I've been trying to fight them off, but they only seem to be increasing in numbers.";
@@ -243,7 +243,7 @@ if (instance_exists(obj_player)){
 			line[3] = "How about we make a team? You and I? This army isn't going to fight itself.";
 			linefrom[3] = obj_player;
 			
-			line[4] = "Sure! I will gladly join you.";
+			line[4] = "Sure! I'm happy to join you.";
 			linefrom[4] = inst;
 			
 			line[5] = "All right, great. The man I was speaking to earlier, he recounts seeing some kind of... burning figure?";

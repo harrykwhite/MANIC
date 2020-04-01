@@ -66,7 +66,7 @@ if (instance_exists(obj_player)){
 			
 				if (dist_to_player > 70 + (40 * order)) || (global.cutscene_current == 52){
 					move_x_to = obj_player.x;
-					move_y_to = obj_player.y;
+					move_y_to = obj_player.y + 6;
 					move_speed = 2.1;
 					
 					if (dist_to_player > 100 + (40 * order)){
@@ -85,7 +85,7 @@ if (instance_exists(obj_player)){
 				}else{
 					move_speed = 0;
 					move_x_to = obj_player.x;
-					move_y_to = obj_player.y;
+					move_y_to = obj_player.y + 6;
 					face_player = true;
 				}
 			}else if (global.cutscene_current == -1){
@@ -100,11 +100,11 @@ if (instance_exists(obj_player)){
 					runaway_time--;
 					
 					move_x_to = target.x + lengthdir_x(30, runaway_dir);
-					move_y_to = target.y + lengthdir_y(30, runaway_dir);
+					move_y_to = target.y + 6 + lengthdir_y(30, runaway_dir);
 					move_speed = 1.9;
 				}else{
 					move_x_to = target.x;
-					move_y_to = target.y;
+					move_y_to = target.y + 6;
 				
 					if (distance_to_object(target) > 30 + (15 * order)){
 						move_speed = 1.9;
@@ -125,14 +125,14 @@ if (instance_exists(obj_player)){
 								    throw.spd = 9;
 								    throw.damage = 3;
 								    throw.dir = weapon.dir;
-								    throw.image_angle = throw.dir;
+								    throw.angle = throw.dir;
 								    throw.ammo = -1;
 									throw.dataset = true;
 									
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, obj_pawnweapon_3);
 									weapon.owner = id;
-									weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+									weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 									weapon_index = PawnWeapon.Knife;
 									attack_time = attack_time_max;
 									is_throwing = false;
@@ -162,64 +162,81 @@ if (instance_exists(obj_player)){
 			face_player = true;
 			move_speed = 0;
 			move_x_to = obj_player.x;
-			move_y_to = obj_player.y;
+			move_y_to = obj_player.y + 6;
 		}
 	}else{
-		var nearest_drop = instance_nearest(x, y, obj_weapondrop);
-		var run_to_drop = false;
+		if (!instance_exists(pickup_drop)){
+			var drops = ds_list_create();
+			var drop_count = collision_circle_list(x, y, 500, obj_weapondrop, false, true, drops, true);
 		
-		if (nearest_drop != noone){
-			var dropdist = point_distance(x, y, nearest_drop.x, nearest_drop.y);
+			for(var d = 0; d < drop_count; d ++){
+				var drop = drops[| d];
+				var found = false;
 			
-			if (nearest_drop.index == PlayerWeapon.Axe)
-			|| (nearest_drop.index == PlayerWeapon.Crowbar)
-			|| (nearest_drop.index == PlayerWeapon.Stick)
-			|| (nearest_drop.index == PlayerWeapon.Machete)
-			|| (nearest_drop.index == PlayerWeapon.Rake){
-				if (dropdist < 200){
-					move_x_to = nearest_drop.x;
-					move_y_to = nearest_drop.y;
-					move_speed = 1.9;
-					run_to_drop = true;
-					
-					if (dropdist < 20){
-						var wind = -1;
-						
-						switch(nearest_drop.index){
-							case PlayerWeapon.Axe:
-								wind = PawnWeapon.Axe;
-								break;
-							
-							case PlayerWeapon.Crowbar:
-								wind = PawnWeapon.Crowbar;
-								break;
-							
-							case PlayerWeapon.Stick:
-								wind = PawnWeapon.Stick;
-								break;
-							
-							case PlayerWeapon.Machete:
-								wind = PawnWeapon.Machete;
-								break;
-							
-							case PlayerWeapon.Rake:
-								wind = PawnWeapon.Rake;
-								break;
-						}
-						
-						instance_destroy(weapon);
-						weapon = instance_create(x, y, global.pawnweapon_object[wind]);
-						weapon.owner = id;
-						weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
-						weapon_index = wind;
-						attack_time = attack_time_max;
-					}
+				switch(drop.index){
+					case PlayerWeapon.Axe:
+					case PlayerWeapon.Crowbar:
+					case PlayerWeapon.Stick:
+					case PlayerWeapon.Machete:
+					case PlayerWeapon.Rake:
+						pickup_drop = drop;
+						found = true;
+						break;
 				}
+			
+				if (found){
+					break;
+				}
+			}
+		
+			ds_list_destroy(drops);
+		}
+		
+		if (instance_exists(pickup_drop)){
+			var dropdist = point_distance(x, y, pickup_drop.x, pickup_drop.y);
+			
+			move_x_to = pickup_drop.x;
+			move_y_to = pickup_drop.y;
+			move_speed = 1.9;
+			
+			if (dropdist < 20){
+				var wind = -1;
+				
+				switch(pickup_drop.index){
+					case PlayerWeapon.Axe:
+						wind = PawnWeapon.Axe;
+						break;
+					
+					case PlayerWeapon.Crowbar:
+						wind = PawnWeapon.Crowbar;
+						break;
+					
+					case PlayerWeapon.Stick:
+						wind = PawnWeapon.Stick;
+						break;
+					
+					case PlayerWeapon.Machete:
+						wind = PawnWeapon.Machete;
+						break;
+					
+					case PlayerWeapon.Rake:
+						wind = PawnWeapon.Rake;
+						break;
+				}
+				
+				instance_destroy(weapon);
+				weapon = instance_create(x, y, global.pawnweapon_object[wind]);
+				weapon.owner = id;
+				weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
+				weapon_index = wind;
+				attack_time = attack_time_max;
+				pickup_drop = noone;
 			}
 		}
 	}
 	
 	dist_to = distance_to_point(move_x_to, move_y_to);
+	
 	if (weapon_does_exist){
 		if (dist_to > 3){
 			weapon.dir = point_direction(x, y, move_x_to, move_y_to);
@@ -236,7 +253,7 @@ if (instance_exists(obj_player)){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
 			if (distance_to_object(obj_player) > 67 + (40 * order)){
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				move_speed = 1.9;
 			}
 		}
@@ -281,7 +298,7 @@ if (dashbreak > 0){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += min(0.2, speed_final - move_speed_real);
+    move_speed_real += min(0.1, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
     move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
@@ -312,16 +329,16 @@ if (instance_exists(weapon) && weapon != -1){
 	Idle1 = spr_companion_2_idle_1; Walk1 = spr_companion_2_walk_1;
 	Idle2 = spr_companion_2_idle_2; Walk2 = spr_companion_2_walk_2;
 	
-	if (speed_final <= 0.1){
+	if (speed_final <= 0.4){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 
-if (speed_final <= 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.4) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
-}else if (speed_final >= 0.1) && (speed_final <= 0.75){
+}else if (speed_final >= 0.4) && (speed_final <= 0.75){
     image_speed = 0.15;
 }else if (speed_final < 1.1) && (speed_final > 0.75){
     image_speed = 0.25;

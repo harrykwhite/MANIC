@@ -141,10 +141,10 @@ if (spawn_start_wait >= spawn_start_wait_max){
 						repeat(9){
 							part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
 						}
+						
+						spawn = false;
 					}
 				}
-				
-				spawn = false;
 			}
 		}
 	}else{

@@ -2,6 +2,10 @@ if (global.game_pause){
 	return;
 }
 
+if (alpha < 1){
+	alpha += 0.1;
+}
+
 if (global.cutscene_current == -1){
 	is_cutscene = false;
 }
@@ -174,6 +178,28 @@ if (instance_exists(obj_player)){
 				
 				obj_controller_mouse.mouse_scale = 2;
 				
+				if (index == PlayerWeapon.Knife){
+					if (room == rm_prologue_00){
+						if (obj_controller_ui.tutourial_stage == TutourialStage.PickupMelee){
+							obj_controller_ui.tutourial_stage = TutourialStage.Switch;
+							obj_controller_ui.tutourial_scale = 1.2;
+							obj_controller_ui.tutourial_stage_timer = obj_controller_ui.tutourial_stage_timer_max;
+						}else{
+							obj_controller_ui.tutourial_stage_pickupmelee_equipped = true;
+						}
+					}
+					
+					global.weapon_default = PlayerWeapon.Knife;
+					instance_destroy();
+					return;
+				}
+				
+				if (index == PlayerWeapon.Bayonet){
+					global.weapon_default = PlayerWeapon.Bayonet;
+					instance_destroy();
+					return;
+				}
+				
 				var slotcount = global.weapon_slotmax;
 				var exists = false;
 				
@@ -283,18 +309,10 @@ if (instance_exists(obj_player)){
 				
 				// If in the prologue, update the tutourial stage
 				if (global.level_current == Level.Prologue){
-					if (obj_controller_ui.tutourial_stage == TutourialStage.Pickup) && (index == PlayerWeapon.HuntingRifle){
+					if (obj_controller_ui.tutourial_stage == TutourialStage.Pickup) && (index == PlayerWeapon.WeakenedHuntingRifle){
 						obj_controller_ui.tutourial_stage = TutourialStage.Shoot;
 						obj_controller_ui.tutourial_scale = 1.2;
 						obj_controller_ui.tutourial_stage_timer = obj_controller_ui.tutourial_stage_timer_max;
-					}else if (index == PlayerWeapon.Sickle){
-						if (obj_controller_ui.tutourial_stage == TutourialStage.PickupMelee){
-							obj_controller_ui.tutourial_stage = TutourialStage.Switch;
-							obj_controller_ui.tutourial_scale = 1.2;
-							obj_controller_ui.tutourial_stage_timer = obj_controller_ui.tutourial_stage_timer_max;
-						}else{
-							obj_controller_ui.tutourial_stage_pickupmelee_equipped = true;
-						}
 					}
 				}
 				

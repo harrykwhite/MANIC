@@ -16,7 +16,8 @@ spawn_y = 480;
 spawn_pause_update = false;
 
 deer_can_spawn = false;
-deer_spawn_time = 60 * random_range(9, 12);
+deer_spawn_time_max = 60 * random_range(7, 9);
+deer_spawn_time = deer_spawn_time_max;
 
 // Other
 companions_spawned = false;

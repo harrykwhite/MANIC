@@ -11,7 +11,7 @@ hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;
 hitbox.owner = id;
 
-light_brightness = 0;
+light_brightness = 0.25;
 mylight = instance_create_layer(x, y, "Lights", obj_thescorched_light);
 
 arena_x = 0;

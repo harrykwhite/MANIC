@@ -21,7 +21,7 @@ global.objective_name[0] = "Clear the area of ^ enemies.";
 global.objective_counter[0] = 0;
 global.objective_counter_max[0] = 0;
 
-global.objective_name[1] = "Talk to and escort ^ residents in the town.";
+global.objective_name[1] = "Talk to ^ residents in the >.";
 global.objective_counter[1] = 0;
 global.objective_counter_max[1] = 4;
 
@@ -49,27 +49,27 @@ global.objective_name[7] = "Locate and destroy ^ production engines.";
 global.objective_counter[7] = 0;
 global.objective_counter_max[7] = 5;
 
-global.objective_name[8] = "Collect ^ artifacts throughout the map.";
+global.objective_name[8] = "Collect ^ artifacts throughout the >.";
 global.objective_counter[8] = 0;
 global.objective_counter_max[8] = 0;
 
-global.objective_name[9] = "Collect ^ pieces of the chestplate in the map.";
+global.objective_name[9] = "Collect ^ pieces of the chestplate in the >.";
 global.objective_counter[9] = 0;
 global.objective_counter_max[9] = 0;
 
-global.objective_name[10] = "Locate the anvil room in the city.";
+global.objective_name[10] = "Locate the anvil room in the >.";
 global.objective_counter[10] = 0;
 global.objective_counter_max[10] = 0;
 
-global.objective_name[11] = "Talk to the farmer";
+global.objective_name[11] = "Talk to the farmer.";
 global.objective_counter[11] = 0;
 global.objective_counter_max[11] = 0;
 
-global.objective_name[12] = "Explore the underground bunker";
+global.objective_name[12] = "Explore the >.";
 global.objective_counter[12] = 0;
 global.objective_counter_max[12] = 0;
 
-global.objective_name[13] = "Collect ^ pieces of the leggings in the map.";
+global.objective_name[13] = "Collect ^ pieces of the leggings in the >.";
 global.objective_counter[13] = 0;
 global.objective_counter_max[13] = 0;
 

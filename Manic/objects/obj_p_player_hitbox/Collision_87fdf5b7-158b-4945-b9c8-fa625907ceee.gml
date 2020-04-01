@@ -5,11 +5,11 @@ if (global.cutscene_current != -1) || (global.game_pause){
 var inst = other;
 
 with(owner){
-	if (object_index == obj_companion_0){
+	if (!inst.enemy){
 		return;
 	}
 	
-	if (!inst.enemy){
+	if (string_pos("obj_companion_", object_get_name(object_index)) != 0){
 		return;
 	}
 

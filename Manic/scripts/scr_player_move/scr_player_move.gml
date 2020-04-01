@@ -1,6 +1,7 @@
 // Variables
 var spd_multiplier = spd_offset;
 var weapon_index = global.weapon_slot[global.weapon_slotcurrent];
+var real_weapon_index = weapon_index == -1 ? global.weapon_default : weapon_index;
 var has_weapon = (weapon_index != -1) || (global.level_current != Level.Prologue);
 var footstep_wood, footstep_road, footstep_tile;
 footstep_sound = global.player_footstep_default;
@@ -58,34 +59,6 @@ if (global.weapon_slot_standalone == -1){
 	dir = point_direction(0, 0, xaxis, yaxis);
 	image_angle = 0;
 	
-	/* Offset
-	var spread = 0;
-	
-	if (global.game_save_level >= Level.HumanPrison){
-		spread += global.level_current;
-	}
-	
-	if (global.game_save_level >= Level.DesolateVillage){
-		spread += 4;
-	}
-	
-	if (spread > 0){
-		if (offset > offset_to){
-			offset -= 0.1;
-		}else if (offset < offset_to){
-			offset += 0.1;
-		}
-		
-		if (offset_time > 0){
-			offset_time --;
-		}else{
-			offset_to = (irandom(spread * 10) / 10) * choose(-1, 1);
-			offset_time = offset_time_max + random_range(-10, 10);
-		}
-		
-		dir += offset;
-	}*/
-	
 	// Surrounding enemies
 	var slist = ds_list_create();
 	var surrounding_enemy_count = collision_circle_list(x, y, 120, obj_p_enemy, false, true, slist, false);
@@ -110,7 +83,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 	
 	if (has_weapon){
-		if (global.weapon_heavy[global.weapon_slot[global.weapon_slotcurrent]]){
+		if (global.weapon_heavy[real_weapon_index]){
 		    spd_multiplier -= 0.1;
 		}
 	}
@@ -162,9 +135,9 @@ if (global.weapon_slot_standalone == -1){
 	// Player Sprite
 	if (abs(len) > 0){
 		if (footstep_time > 0){
-			footstep_time--;
+			footstep_time -= len / spd_max;
 		}else{
-			footstep_time = 28;
+			footstep_time = 20;
 			
 			// Play Footstep Sound
 			if (footstep_sound != -1){
@@ -180,12 +153,12 @@ if (global.weapon_slot_standalone == -1){
 			walk_smoke_time = walk_smoke_time_max;
 		}
 	}else{
-		footstep_time = 14;
+		footstep_time = 10;
 	}
 
 	if (len == 0) && (xaxis == 0) && (yaxis == 0){
 	    if (has_weapon){
-	        if (!global.weapon_heavy[weapon_index]){
+	        if (!global.weapon_heavy[real_weapon_index]){
 	            sprite_index = spr_player_idle_0;
 	        }else{
 	            sprite_index = spr_player_idle_2;
@@ -196,7 +169,7 @@ if (global.weapon_slot_standalone == -1){
 	}else{
 		// Movement
 	    if (has_weapon){
-			if (!global.weapon_heavy[weapon_index]){
+			if (!global.weapon_heavy[real_weapon_index]){
 				sprite_index = spr_player_walk_0;
 			}else{
 				sprite_index = spr_player_walk_2;
@@ -258,14 +231,6 @@ if (global.weapon_slot_standalone == -1){
 				dash_direction = 360;
 			}else{
 				dash_direction = 180;
-			}
-		}
-		
-		if (global.level_current == Level.Prologue){
-			with(obj_controller_ui){
-				if (tutourial) && (tutourial_stage == TutourialStage.Dash) && ((tutourial_stage_timer == -1) || (tutourial_stage_timer > 60 * 2)){
-					tutourial_stage_timer = 60 * 2;
-				}
 			}
 		}
 		
@@ -349,6 +314,22 @@ if (global.weapon_slot_standalone == -1){
 	}else{
 		if (sign(move_x_to - x) != sign(image_xscale)){
 			img_speed *= -1;
+		}
+	}
+	
+	if (len > 0){
+		with(obj_controller_ui){
+			if (tutourial){
+				if (tutourial_stage == TutourialStage.Movement){
+					if (tutourial_stage_moving_time < 60 * 3){
+						tutourial_stage_moving_time ++;
+					}else{
+						scr_tutourial_next_stage();
+						tutourial_stage_timer = -1;
+						tutourial_stage_moving_time = 0;
+					}
+				}
+			}
 		}
 	}
 	

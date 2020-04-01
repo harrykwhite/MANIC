@@ -1,6 +1,12 @@
 if (global.game_pause) || (global.cutscene_current != -1){
 	image_speed = 0;
-	exit;
+	return;
+}
+
+image_speed = 0.05;
+
+if (random(140) < 1){
+	image_xscale = scale * -sign(image_xscale);
 }
 
 var yy = y + 6;
@@ -60,5 +66,3 @@ if (talking){
 		talking = false;
 	}
 }
-
-scr_family_behaviour_0();

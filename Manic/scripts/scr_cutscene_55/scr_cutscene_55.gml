@@ -27,15 +27,21 @@ if (instance_exists(obj_player)){
 		if (gateexists){
 			x_to = gate.x;
 			y_to = gate.y + 20;
-			gate.closed = true;
+			
+			if (!gate.closed){
+				gate.closed = true;
+				scr_sound_play(snd_object_finalboss_door_close_0, false, 0.8, 1.2);
+			}
 		}
 	}else if (global.cutscene_time[index] < 160){
 		global.cutscene_time[index] ++;
 	}else{
 		global.cutscene_time[index] = 0;
 		global.cutscene_current = -1;
+		
 		obj_player.move_x_to = -1;
 		obj_player.move_y_to = -1;
+		
 		if (bossexists){
 			boss.in_cutscene = false;
 			boss.cutscene_prop = false;

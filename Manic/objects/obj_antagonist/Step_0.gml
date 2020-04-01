@@ -1,16 +1,11 @@
-if (light_brightness < 1){
-	light_brightness += 0.005;
-}else if (light_brightness > 1){
-	light_brightness -= 0.005;
-}
-
 if (!instance_exists(mylight)){
 	mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 }
 
 mylight.x = x;
 mylight.y = y;
-mylight.Light_Intensity = max((1.6 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.3);
+mylight.Light_Intensity = max(1.6 + (clamp(flash_time, 0, 2) / 10), 1.3);
+mylight.Light_Intensity *= light_brightness;
 
 if (global.cutscene_current == 58){
 	in_cutscene = true;
@@ -28,7 +23,7 @@ if (global.cutscene_current == 58){
 				obj_player.move_x_to = obj_player.x + 5;
 			}
 		
-			obj_player.move_y_to = obj_player.y;
+			obj_player.move_y_to = obj_player.y + 6;
 			obj_player.move_ext_spd = 0;
 		}
 	}*/

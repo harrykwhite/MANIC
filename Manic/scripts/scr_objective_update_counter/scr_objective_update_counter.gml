@@ -15,7 +15,7 @@ if (!global.game_objective_complete){
 		}*/
 	}
 	
-	obj_controller_ui.objective_scale = 1.25;
+	obj_controller_ui.objective_scale = 1.35;
 }
 
 global.objective_counter[global.game_objective_current] = clamp(global.objective_counter[global.game_objective_current], 0, global.objective_counter_max[global.game_objective_current]);

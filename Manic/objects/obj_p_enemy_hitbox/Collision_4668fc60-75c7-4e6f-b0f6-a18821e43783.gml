@@ -7,9 +7,7 @@ var destroy = false;
 
 with(owner){
 	if (object_index == obj_enemy_1){
-		if (id.owner != obj_player) && (id.owner != noone){
-			return;
-		}
+		return;
 	}
 
 	if (cutscene_prop){
@@ -73,9 +71,5 @@ with(owner){
 }
 
 if (destroy){
-	if (room == rm_prologue_00) && (inst.index == PlayerWeapon.Sickle){
-		obj_controller_ui.tutourial_sickle_respawn_time = 70;
-	}
-	
 	instance_destroy(inst);
 }

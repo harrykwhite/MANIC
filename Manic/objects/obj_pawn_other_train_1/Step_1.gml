@@ -1,4 +1,6 @@
 if (component_spawn){
+	var compcount = 4;
+	
 	switch(type){
 		case 0:
 			sprite_index = spr_train_0_part_2;
@@ -9,7 +11,7 @@ if (component_spawn){
 			break;
 	}
 	
-	for(var i = 1; i < 5; i ++){
+	for(var i = 1; i < compcount + 1; i ++){
 		component[i - 1] = instance_create_layer(x + ((i * 112) * -dir), y, "Trains", obj_pawn_other_train_1);
 		component[i - 1].spd = spd;
 		component[i - 1].dir = dir;
@@ -18,11 +20,15 @@ if (component_spawn){
 		component[i - 1].is_boss = is_boss;
 		component[i - 1].leader = id;
 		
+		if (i - 1 == floor(compcount / 2)){
+			component[i - 1].sound_handler = true;
+		}
+		
 		if (i - 1 == cutscene_opening_count){
 			obj_controller_gameplay.cutscene_trainopening_inst = component[i - 1];
 		}
 		
-		if (i == 4){
+		if (i == compcount){
 			switch(type){
 				case 0:
 					component[i - 1].sprite_index = spr_train_0_part_1;
@@ -53,6 +59,7 @@ if (!open_set){
 		open = true;
 		open_pause = false;
 	}
+	
 	open_set = true;
 }
 

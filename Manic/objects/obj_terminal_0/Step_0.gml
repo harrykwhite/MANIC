@@ -53,7 +53,7 @@ if (interact) && (active) && (global.cutscene_current == -1){
 					scr_effect_screenshake(1);
 					
 					var snd = scr_sound_play(snd_object_prisondoor_open_0, false, 0.9, 1.1);
-					audio_sound_gain(snd, 0.5, 0);
+					audio_sound_gain(snd, 0.5 * obj_controller_all.real_sound_volume, 0);
 				}
 			}
 		}

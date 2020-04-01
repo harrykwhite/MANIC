@@ -11,8 +11,13 @@ if (global.game_pause){
 }
 
 if (fobject != noone){
+	if (!instance_exists(fobject)){
+		instance_destroy();
+		return;
+	}
+	
 	xbase = fobject.x;
-	ybase = f.object.y;
+	ybase = fobject.y;
 }
 
 if (fscale < 1){
@@ -42,11 +47,12 @@ if (bfade) && (buzz != noone){
 	}
 }
 
-while(point_distance(x, y, xoffset + xbase, yoffset + ybase) < 5){
+while(point_distance(x, y, xoffset + xbase, yoffset + ybase) < 10){
 	xoffset = random_range(-xrange, xrange);
 	yoffset = random_range(-yrange, yrange);
-	fdir = point_direction(x, y, xoffset + xbase, yoffset + ybase);
 }
+
+fdir = point_direction(x, y, xoffset + xbase, yoffset + ybase);
 
 xoffsetcur += lengthdir_x(0.75, fdir);
 yoffsetcur += lengthdir_y(0.75, fdir);

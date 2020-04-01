@@ -1,20 +1,6 @@
 var ispaused = false;
 var stillsprite = spr_companion_0_idle_2;
 
-if (light_brightness < 1){
-	light_brightness += 0.025;
-}else if (light_brightness > 1){
-	light_brightness -= 0.025;
-}
-
-if (!instance_exists(mylight)){
-	mylight = instance_create_layer(x, y, "Lights", obj_companion_light);
-}
-
-mylight.x = x;
-mylight.y = y;
-mylight.Light_Intensity = (1 + (clamp(flash_time, 0, 2) / 10)) * light_brightness;
-
 if (global.game_pause){
 	ispaused = true;
 }
@@ -72,6 +58,10 @@ burn = false;
 headless = false;
 bleed = false;
 poison = false;
+
+if (keyboard_check_pressed(vk_left)){
+	scr_pawn_damage(2, 1, 0, 10, false);
+}
 
 scr_pawn_status_handler();
 

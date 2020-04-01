@@ -1,5 +1,5 @@
-// Weapon info
-//weaponinfo = false;
+pause_selected_previous = pause_selected;
+pausedialogue_option_selected_previous = pausedialogue_option_selected;
 
 // Pause
 if (global.game_pause){

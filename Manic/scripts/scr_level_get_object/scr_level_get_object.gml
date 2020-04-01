@@ -177,6 +177,10 @@ switch(room){
 		level = obj_controller_levelten;
 		break;
 	
+	case rm_arena_1_00:
+		level = obj_controller_arena;
+		break;
+	
 	default:
 		level = obj_controller_prologue;
 		break;

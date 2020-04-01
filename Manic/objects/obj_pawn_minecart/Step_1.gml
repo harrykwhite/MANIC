@@ -6,6 +6,7 @@ var mysprite = spr_pawn_minecart_0;
 visible = true;
 
 if (instance_exists(obj_player)){
+	
 	// Movement
 	if (!obj_player.in_minecart){
 		if (image_index < sprite_get_number(sprite_index)){
@@ -58,12 +59,6 @@ if (instance_exists(obj_player)){
 			}
 		}
 		
-		if (minecart_speed != 0){
-			image_speed = 1;
-		}else{
-			image_speed = 0;
-		}
-		
 		var absmdir = abs(minecart_dir);
 		minecart_dir_clean = absmdir - ((absmdir div 360) * 360);
 		
@@ -81,20 +76,21 @@ if (instance_exists(obj_player)){
 	var pickup_range = 10;
 	var pressed = scr_input_is_pressed(InputBinding.Interact);
 	var isme = obj_player.minecart == id;
+	var mustdemount = (global.cutscene_current != -1);
 	
 	if (isme){
 		x = obj_player.x;
 		y = obj_player.y;
 	}
 	
-	if (global.player_stamina_active){
+	if (global.player_stamina_active || mustdemount){
 		if (obj_player.in_minecart){
 			if (isme){
 				visible = false;
 				
 				scr_ui_control_indicate("Demount Minecart");
 
-				if (pressed) || (global.cutscene_current != -1){
+				if (pressed) || (mustdemount){
 					sprite_index = obj_player.minecart_sprite;
 					obj_player.minecart = noone;
 					obj_player.minecart_sprite = noone;
@@ -131,8 +127,10 @@ if (instance_exists(obj_player)){
 					obj_player.minecart_sprite = sprite_index;
 					obj_player.minecart_sprite_image = image_index;
 					obj_player.x = x;
-					obj_player.y = y ;
+					obj_player.y = y;
+					
 					scr_player_stamina_drain(6);
+					
 					if (instance_exists(gun)){
 						gun.interact_activate = true;
 					}
@@ -142,4 +140,8 @@ if (instance_exists(obj_player)){
 	}
 	
 	sprite_index = mysprite;
+}else{
+	minecart_speed = 0;
+	image_speed = 0;
+	image_index = 0;
 }

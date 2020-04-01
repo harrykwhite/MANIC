@@ -17,8 +17,6 @@ if (scr_input_is_down(InputBinding.Attack)) && (!global.game_pause){
         var ypos = y + lengthdir_y(24, mdir) + lengthdir_y(2, up(mdir));
 		
 		scr_player_knockback_initiate(0.1, mdir);
-		scr_player_flash(5);
-		scr_player_flashlight_flash(1.175);
 		
         scr_weapon_ammo_use(1);
 		image_speed = 1;
@@ -54,6 +52,7 @@ if (scr_input_is_down(InputBinding.Attack)) && (!global.game_pause){
         shoot_time = 4;
         shoot_bounceback = -3;
         angle_offset = 1;
+		
         flash_draw = true;
 		flash_time = 0;
     }else if (global.weapon_slotammo[global.weapon_slotcurrent] <= 0){
@@ -69,12 +68,17 @@ if (scr_input_is_down(InputBinding.Attack)) && (!global.game_pause){
 	}
 }
 
+if (started){
+	scr_player_flash(5);
+	scr_player_flashlight_flash(1.175);
+}
+
 // Throwing Weapon
 var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 
 if (global.player_stamina_active){
     if (scr_input_is_pressed(InputBinding.Throw)){
-		if (!collision_line(x, y, x + lengthdir_x(10, mdir), y + lengthdir_y(10, mdir), obj_p_solid, false, true)){
+		if (!collision_line(x, y, x + lengthdir_x(16, mdir), y + lengthdir_y(16, mdir), obj_p_solid, false, true)){
 		    scr_effect_screenshake(1);
 			scr_player_stamina_drain(20);
 			scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
@@ -84,7 +88,7 @@ if (global.player_stamina_active){
 		    throw.spd = 9;
 		    throw.damage = throw_damage;
 		    throw.dir = mdir;
-		    throw.image_angle = throw.dir;
+		    throw.angle = image_angle;
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 			throw.dataset = true;
 

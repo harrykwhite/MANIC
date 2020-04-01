@@ -1,5 +1,3 @@
-return;
-
 if (global.cutscene_current != -1) || (global.game_pause){
 	return;
 }
@@ -7,10 +5,6 @@ if (global.cutscene_current != -1) || (global.game_pause){
 var inst = other;
 
 with(owner){
-	if (object_index == obj_companion_0){
-		return;
-	}
-	
 	if (object_index == obj_player){
 		if (state == scr_player_dash){
 			return;
@@ -22,7 +16,6 @@ with(owner){
 	
 		if (object_index == obj_player){
 			scr_player_damage(inst.damage, inst.strength, dir, 50);
-			
 			poison = true;
 		}else{
 			scr_pawn_damage(inst.damage, inst.strength, dir, 50);

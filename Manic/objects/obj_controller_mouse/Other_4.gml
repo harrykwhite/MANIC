@@ -5,8 +5,8 @@ if (global.pers_runthrough){
 
 mouse = MouseType.Dot;
 mouse_scale = 1;
-mouse_scaleTo = 1;
-mouse_scaleSpeed = 20;
+mouse_scale_to = 1;
+mouse_scale_speed = 20;
 mouse_alpha = 0;
 mouse_cross = 0;
 

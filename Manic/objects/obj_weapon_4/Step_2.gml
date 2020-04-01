@@ -25,16 +25,10 @@ if (instance_exists(obj_player)){
 		    y = obj_player_arm.y + lengthdir_y(attack_offset + 12, image_angle);
 		}
 		
-		if (start_offset > 0){
-			start_offset = approach(start_offset, 0, 40);
-		}
-		
 	    if (scr_input_get_mouse_x() > global.player_position_x){
 	        image_yscale = 1;
-			image_angle += start_offset;
 	    }else{
 	        image_yscale = -1;
-			image_angle -= start_offset;
 	    }
 	}
 }

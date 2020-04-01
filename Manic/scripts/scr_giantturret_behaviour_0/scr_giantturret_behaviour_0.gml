@@ -32,18 +32,23 @@ if (instance_exists(target)){
 		if (flamethrower_time > 0){
 			flamethrower_time --;
 		}else{
+			var has_flamethrowers = false;
+			
 			for(var i = 0; i < 4; i ++){
 				if (instance_exists(flamethrower[i])){
+					has_flamethrowers = true;
 					flamethrower[i].shoot = true;
 				}
 			}
 			
-			flamethrower_time = 6;
+			if (!has_flamethrowers){
+				attack_time = attack_time_max;
+			}
 		}
 		
 	// Enemy spawning
 	}else if (attack == 1){
-		while(instance_number(obj_p_enemy) < 7){
+		while(instance_number(obj_p_enemy) < (instance_number(obj_giantturret_flamethrower) + 1) + 2){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Sledgehammer, PawnWeapon.Katana, PawnWeapon.Axe, PawnWeapon.Machete);
 			

@@ -68,7 +68,7 @@ if (instance_exists(target)){
 						instance_destroy(weapon);
 				
 						weapon = instance_create(x, y, obj_pawnweapon_8);
-						weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+						weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 						weapon.owner = id;
 						weapon_index = 8;
 					}
@@ -122,7 +122,7 @@ if (instance_exists(target)){
 					weapon = instance_create(x, y, obj_pawnweapon_2);
 					weapon.dir = 0;
 					weapon.owner = id;
-					weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+					weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 					weapon_index = 2;
 				}
 			}

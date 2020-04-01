@@ -26,48 +26,62 @@ surface_reset_target();
 
 // Iterate through all lights in the room, draw lights to the surface
 with(obj_light){
-	var thisx = x - camx;
-	var thisy = y - camy;
+	var perform = true;
 	
-	var colred = color_get_red(Light_Colour);
-	var colgreen = color_get_green(Light_Colour);
-	var colblue = color_get_blue(Light_Colour);
-	
-	var range = Light_Range * (Light_Intensity + ((Light_Intensity - 1) / 4));
-	
-	gpu_set_blendmode(bm_subtract);
-	surface_set_target(global.game_lighting);
-	
-	switch(Light_Type){
-		case "Point Light":
-			draw_ellipse_color(thisx - (range / 3), thisy - (range / 3), thisx + (range / 3), thisy + (range / 3), Light_Colour, c_black, false);
-			draw_ellipse_color(thisx - (range / 2), thisy - (range / 2), thisx + (range / 2), thisy + (range / 2), merge_color(Light_Colour, c_black, 0.3), c_black, false);
-			break;
-		
-		case "Directional Light":
-			var xx, yy, col;
-			var newrange = range;
-			var colmult = 1;
-			
-			for(var len = 0; len < Light_Length; len += 20){
-				xx = thisx + lengthdir_x(len, Light_Direction);
-				yy = thisy + lengthdir_y(len, Light_Direction);
-				col = make_colour_rgb(colred * colmult, colgreen * colmult, colblue * colmult);
-				
-				newrange += 4;
-				colmult *= 0.8;
-				
-				draw_ellipse_color(xx - (newrange / 3), yy - (newrange / 3), xx + (newrange / 3), yy + (newrange / 3), col, c_black, false);
-				draw_ellipse_color(xx - (newrange / 2), yy - (newrange / 2), xx + (newrange / 2), yy + (newrange / 2), merge_color(col, c_black, 0.3), c_black, false);
-				
-				//draw_ellipse_color(xx - (newrange / 2.5), yy - (newrange / 2.5), xx + (newrange / 2.5), yy + (newrange / 2.5), col, c_black, false);
-				//draw_ellipse_color(xx - (newrange / 2), yy - (newrange / 2), xx + (newrange / 2), yy + (newrange / 2), merge_color(col, c_black, 0.3), c_black, false);
-			}
-			break;
+	if (skipdraw){
+		perform = false;
+		skipdraw = false;
 	}
 	
-	surface_reset_target();
-	gpu_set_blendmode(bm_normal);
+	if (Light_Intensity <= 0 || Light_Range <= 0){
+		perform = false;
+	}
+	
+	if (perform){
+		var thisx = x - camx;
+		var thisy = y - camy;
+	
+		var colred = color_get_red(Light_Colour);
+		var colgreen = color_get_green(Light_Colour);
+		var colblue = color_get_blue(Light_Colour);
+	
+		var range = Light_Range * (Light_Intensity + ((Light_Intensity - 1) / 4));
+		var mult = min(abs(range), 100) / 100;
+		
+		gpu_set_blendmode(bm_subtract);
+		surface_set_target(global.game_lighting);
+	
+		switch(Light_Type){
+			case "Point Light":
+				draw_ellipse_color(thisx - (range / 3), thisy - (range / 3), thisx + (range / 3), thisy + (range / 3), Light_Colour, c_black, false);
+				draw_ellipse_color(thisx - (range / 2), thisy - (range / 2), thisx + (range / 2), thisy + (range / 2), merge_color(Light_Colour, c_black, 0.3), c_black, false);
+				break;
+		
+			case "Directional Light":
+				var xx, yy, col;
+				var newrange = range;
+				var colmult = 1;
+			
+				for(var len = 0; len < Light_Length; len += 20){
+					xx = thisx + lengthdir_x(len * mult, Light_Direction);
+					yy = thisy + lengthdir_y(len * mult, Light_Direction);
+					col = make_colour_rgb(colred * colmult, colgreen * colmult, colblue * colmult);
+				
+					newrange += 4 * mult;
+					colmult *= 0.8;
+				
+					draw_ellipse_color(xx - (newrange / 3), yy - (newrange / 3), xx + (newrange / 3), yy + (newrange / 3), col, c_black, false);
+					draw_ellipse_color(xx - (newrange / 2), yy - (newrange / 2), xx + (newrange / 2), yy + (newrange / 2), merge_color(col, c_black, 0.3), c_black, false);
+				
+					//draw_ellipse_color(xx - (newrange / 2.5), yy - (newrange / 2.5), xx + (newrange / 2.5), yy + (newrange / 2.5), col, c_black, false);
+					//draw_ellipse_color(xx - (newrange / 2), yy - (newrange / 2), xx + (newrange / 2), yy + (newrange / 2), merge_color(col, c_black, 0.3), c_black, false);
+				}
+				break;
+		}
+	
+		surface_reset_target();
+		gpu_set_blendmode(bm_normal);
+	}
 }
 
 // Draw the lighting onto the screen

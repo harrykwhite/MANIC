@@ -1,9 +1,21 @@
+if (dir == 1 && x >= room_width + 500){
+	instance_destroy();
+}
+
+if (dir == -1 && x < -500){
+	instance_destroy();
+}
+
 var level = scr_level_get_object();
 interact = false;
 
-if (global.game_pause){
+if (global.game_pause) || (global.cutscene_current != -1 && !cutscene_prop){
 	image_speed = 0;
 	return;
+}
+
+if (global.cutscene_current == -1){
+	cutscene_prop = false;
 }
 
 while (spd <= 0.2) && (instance_exists(obj_player)){
@@ -11,6 +23,16 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 		if (instance_exists(level.trainboss_leader)){
 			break;
 		}
+	}
+	
+	if (!sound_stop_played){
+		var stopsound = global.cutscene_current == 47 ? snd_object_train_stop : snd_object_bosstrain_stop;
+		var stopsoundinst;
+		
+		stopsoundinst = audio_play_sound(stopsound, 3, false);
+		audio_sound_gain(stopsoundinst, 0.75, 0);
+		
+		sound_stop_played = true;
 	}
 	
 	if (scr_enemy_count(true) <= 1) && (is_boss){
@@ -27,7 +49,13 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 			
 					if (horde_spawn_opentime < horde_spawn_opentime_max){
 						horde_spawn_opentime ++;
+						
+						if (!open){
+							scr_sound_play(snd_object_bosstrain_door_open, false, 1, 1);
+						}
+						
 						open = true;
+						
 						if (horde_spawn_wave == 1){ leader.component[0].open = true };
 						if (horde_spawn_wave == 2){ leader.component[0].open = true; leader.component[2].open = true };
 					}else{
@@ -90,6 +118,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 												sprite_index = spr_train_1_part_0_door_open;
 												break;
 										}
+										
 										image_index = 0;
 										image_speed = 0;
 									}
@@ -101,6 +130,10 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 					}
 				}
 			}else{
+				if (!open){
+					scr_sound_play(snd_object_bosstrain_door_open, false, 1, 1);
+				}
+				
 				open = true;
 				is_boss = false;
 				
@@ -131,6 +164,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 					if (obj_player.y > y){
 						interact = true;
 						scr_ui_control_indicate("Board Train");
+						
 						if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 							interact_break = 10;
 							
@@ -152,6 +186,7 @@ while (spd <= 0.2) && (instance_exists(obj_player)){
 			}
 		}
 	}
+	
 	break;
 }
 
@@ -207,6 +242,7 @@ if (open){
 			sprite_index = spr_train_1_part_0_door_close;
 			break;
 	}
+	
 	image_speed = 1;
 }else{
 	if (mainsprite != noone){
@@ -214,12 +250,14 @@ if (open){
 	}
 	
 	image_speed = 0.1 * (spd / 4);
+	
 	if (spd <= 0){
 		image_index = 0;
 	}
 }
 
 x += spd * dir;
+
 if (spd > 0) || ((leave) && (!stop_on_end)){
 	if (leave){
 		spd += 0.0075 * 1.35;
@@ -243,7 +281,7 @@ if (dir == 1){
 if (horde_dospawn){
 	repeat(3){
 		var xx = x + random_range(-25, 25);
-		var yy = y + 34 + random_range(-5, 25);
+		var yy = y + 39 + random_range(-5, 25);
 		var enemy = instance_create(xx, yy, obj_enemy_0);
 		enemy.weapon_index = choose(PawnWeapon.Axe, PawnWeapon.Crowbar, PawnWeapon.Rake);
 		enemy.move_speed_offset = random_range(1.2, 1.45);
@@ -293,3 +331,6 @@ if (instance_exists(mylight)){
 	mylight.y = y;
 	mylight.Light_Intensity = 1.25;
 }
+
+// Sound
+scr_train_handle_sound();

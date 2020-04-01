@@ -42,7 +42,7 @@ var alpha = area_next_alpha + pause_has_selected_time;
 
 if (area_next_fade){
 	if (area_next_alpha < 1){
-		area_next_alpha += area_next_alpha_speed;
+		area_next_alpha += min(area_next_alpha_speed, 1 - area_next_alpha);
 	}else{
 		area_next_fade = false;
 		area_next_alpha_speed = 0.02;

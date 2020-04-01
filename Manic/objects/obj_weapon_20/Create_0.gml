@@ -1,6 +1,6 @@
 angle_offset = 0;
 started = false;
-start_offset = 35;
+
 
 shoot_can = true;
 shoot_range = 9;

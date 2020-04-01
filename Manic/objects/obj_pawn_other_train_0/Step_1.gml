@@ -1,5 +1,5 @@
 if (component_spawn){
-	var comp;
+	var comp, compcount = 8;
 	
 	switch(type){
 		case 0:
@@ -11,13 +11,17 @@ if (component_spawn){
 			break;
 	}
 	
-	for(var i = 1; i < 9; i ++){
+	for(var i = 1; i < compcount + 1; i ++){
 		comp = instance_create_layer(x + ((i * 112) * -dir), y, "Trains", obj_pawn_other_train_0);
 		comp.spd = spd;
 		comp.dir = dir;
 		comp.type = type;
 		
-		if (i == 8){
+		if (i == floor(compcount / 2)){
+			comp.sound_handler = true;
+		}
+		
+		if (i == compcount){
 			switch(type){
 				case 0:
 					comp.sprite_index = spr_train_0_part_1;

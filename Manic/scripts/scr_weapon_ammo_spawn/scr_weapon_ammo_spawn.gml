@@ -70,7 +70,7 @@ repeat(amount){
 		tobject = ammolist[| random(ammocount)];
 	}
 	
-	if (random(100) < 20){
+	if (random(100) < 15){
 		continue;
 	}
 	

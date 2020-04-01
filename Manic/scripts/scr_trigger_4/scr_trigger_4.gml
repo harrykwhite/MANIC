@@ -38,10 +38,6 @@ with(obj_controller_prologue){
 		}
 	}
 
-	var light = instance_create(466, 552, obj_block_light);
-	light.size[0] = 260;
-	light.time = -1;
-
 	var firesound = instance_create(502, 544, obj_block_sound);
 	firesound.sound = snd_character_burn_0;
 	firesound.radius = 600;
@@ -73,15 +69,11 @@ with(obj_controller_prologue){
 
 	instance_destroy(obj_farmbuilding_3);
 	instance_destroy(obj_farmbuilding_4);
-
-	var gundrop = instance_create(652, 500, obj_weapondrop);
-	gundrop.index = PlayerWeapon.Revolver;
-	gundrop.angle = 30;
-
-	var knifedrop = instance_create(652 - 10, 500 + 10, obj_weapondrop);
-	knifedrop.index = PlayerWeapon.Knife;
-	knifedrop.angle = 110;
-
+	
+	var light = instance_create(486, 546, obj_block_light);
+	light.size[0] = 360;
+	light.time = -1;
+	
 	var robotprop = instance_create_layer(446, 722, "EndingObjects", obj_pawn_other_robotrunning_0);
 	robotprop.dir = 180;
 	robotprop.dir_to = robotprop.dir;

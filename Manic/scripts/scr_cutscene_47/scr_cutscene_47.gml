@@ -14,6 +14,10 @@ if (cutscene_trainopening_inst != noone){
 			obj_player.is_visible = false;
 			
 			if (global.cutscene_time[index] == 30){
+				if (!cutscene_trainopening_inst.open){
+					scr_sound_play(snd_object_bosstrain_door_open, false, 1, 1);
+				}
+				
 				cutscene_trainopening_inst.open = true;
 				cutscene_trainopening_inst.open_pause = false;
 			}
@@ -36,18 +40,21 @@ if (cutscene_trainopening_inst != noone){
 			if (point_distance(obj_player.x, obj_player.y, obj_player.move_x_to, obj_player.move_y_to) < 40){
 				if (global.cutscene_time[index] < 115){
 					global.cutscene_time[index] ++;
+					
 					obj_player.move_ext_spd = 0;
 					obj_player.move_x_to = -1;
 					obj_player.move_y_to = -1;
 				}else{
 					cutscene_trainopening_light = noone;
+					
 					global.cutscene_current = -1;
 					global.cutscene_time[index] = 0;
+					
 					global.player_respawn_x = obj_player.x;
 					global.player_respawn_y = obj_player.y;
+					
 					obj_player.move_x_to = -1;
 					obj_player.move_y_to = -1;
-					//obj_pawn_other_train_1.leave = true;
 				}
 			}
 		}

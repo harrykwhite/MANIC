@@ -1,7 +1,7 @@
 if (instance_exists(owner)){
 	var is_metal = false;
 	var alpha_mult = 1;
-	var drawshader = (owner.health_current <= floor(owner.health_max / 3)) || (owner.burn) || (owner.poison) || (owner.i_blend_time > 0);
+	var drawshader = (owner.health_current <= floor(owner.health_max / 3)) || (owner.bleed) || (owner.burn) || (owner.poison) || (owner.i_blend_time > 0);
 	
 	if (drawshader){
 		if (owner.object_index == obj_enemy_3) || (owner.object_index == obj_giantturret) || (owner.object_index == obj_giantturret_flamethrower){

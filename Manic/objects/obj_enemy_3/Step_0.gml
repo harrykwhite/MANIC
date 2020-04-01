@@ -2,19 +2,14 @@ if (flash_time > 0){
 	flash_time--;
 }
 
-if (light_brightness < 1){
-	light_brightness += 0.025;
-}else if (light_brightness > 1){
-	light_brightness -= 0.025;
-}
-
 if (!instance_exists(mylight)){
 	mylight = instance_create_layer(x, y, "Lights", obj_enemy_3_light);
 }
 
 mylight.x = x;
 mylight.y = y;
-mylight.Light_Intensity = max((1.45 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+mylight.Light_Intensity = max(1.45 + (clamp(flash_time, 0, 2) / 10), 1.2);
+mylight.Light_Intensity *= light_brightness;
 
 var ispaused = false;
 if (global.game_pause){

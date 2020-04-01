@@ -1,4 +1,5 @@
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
+var buttonpressed = false;
 
 if (room != rm_title_0){
 	instance_destroy();
@@ -88,8 +89,6 @@ if (!in_levelselect){
 #endregion
 
 if (fade){
-	selected = -1;
-	
 	if (fade_alpha < 1){
 		fade_alpha += fade_speed;
 	}else{
@@ -99,7 +98,7 @@ if (fade){
 }else{
 	var omax = option_max;
 	
-	if (in_settings) && (!in_levelselect){
+	if (in_settings) && (!in_levelselect) && (!in_arenamode){
 		var omax = option_setting_max + 1;
 		if (in_settings_gameplay){
 			omax = option_setting_gameplay_max + 2;
@@ -110,12 +109,10 @@ if (fade){
 		}else if (in_settings_controls){
 			omax = 0;
 		}
-	}else if (in_levelselect){
+	}else if (in_levelselect) && (!in_arenamode){
 		omax = option_levelselect_max + 1;
-	}
-	
-	if (!iskeyboard){
-		selected = max(0, selected);
+	}else if (in_arenamode){
+		omax = option_arenamode_max + 1;
 	}
 	
 	var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
@@ -140,7 +137,7 @@ if (fade){
 							selected ++;
 						}
 					}
-				
+					
 					selected_break = selected_held_time >= selected_held_time_max ? 6 : 12;
 				}
 			
@@ -175,6 +172,10 @@ if (fade){
 	
 	selected = clamp(selected, -1, omax);
 	
+	if (!iskeyboard){
+		selected = max(0, selected);
+	}
+	
 	if (fade_opening){
 		if (fade_alpha > 0){
 			fade_alpha -= 0.025;
@@ -203,6 +204,7 @@ if (fade){
 						global.game_option[| option_setting_gameplay_edit[selected]] = option_setting_gameplay_value[selected];
 						scr_options_refresh();
 						press_break = 5;
+						buttonpressed = true;
 					}
 				}else if (in_settings_display){
 					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
@@ -215,6 +217,7 @@ if (fade){
 						global.game_option[| option_setting_display_edit[selected]] = option_setting_display_value[selected];
 						scr_options_refresh(true);
 						press_break = 5;
+						buttonpressed = true;
 					}
 				}else if (in_settings_audio){
 					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
@@ -227,11 +230,13 @@ if (fade){
 						global.game_option[| option_setting_audio_edit[selected]] = option_setting_audio_value[selected];
 						scr_options_refresh(false);
 						press_break = 5;
+						buttonpressed = true;
 					}
 				}else if (in_settings_controls){
 					if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){				
 						scr_options_refresh();
 						press_break = 5;
+						buttonpressed = true;
 					}
 				}
 			}
@@ -257,6 +262,7 @@ if (fade){
 			
 			if (changed){
 				selected = (iskeyboard ? -1 : 0);
+				buttonpressed = true;
 				scr_titlescreen_options_scale_reset();
 			}
 		}
@@ -264,7 +270,7 @@ if (fade){
 		if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
 			var isvalid = false;
 			
-			if (!in_settings) && (!in_levelselect){
+			if (!in_settings) && (!in_levelselect) && (!in_arenamode){
 				isvalid = true;
 				
 				if (!isteaser){
@@ -292,10 +298,14 @@ if (fade){
 							break;
 					
 						case 2:
+							in_arenamode = true;
+							break;
+					
+						case 3:
 							in_settings = true;
 							break;
 				
-						case 3:
+						case 4:
 							scr_options_refresh(false);
 							game_end();
 							break;
@@ -334,7 +344,7 @@ if (fade){
 							break;
 					}
 				}
-			}else if (in_settings) && (!in_levelselect){
+			}else if (in_settings) && (!in_levelselect) && (!in_arenamode){
 				if (in_settings_gameplay) || (in_settings_display) || (in_settings_audio) || (in_settings_controls){
 					if (selected == omax - 1){
 						var otype = "";
@@ -407,9 +417,16 @@ if (fade){
 						}
 					}
 				}
-			}else if (in_levelselect){
+			}else if (in_levelselect || in_arenamode){
+				var arena = in_arenamode;
+				
 				if (selected == omax){
-					in_levelselect = false;
+					if (arena){
+						in_arenamode = false;
+					}else{
+						in_levelselect = false;
+					}
+					
 					selected = (iskeyboard ? -1 : 0);
 					
 					scr_titlescreen_options_scale_reset();
@@ -424,7 +441,7 @@ if (fade){
 					scr_set_kills_and_findings();
 					
 					fade = true;
-					fade_goto = option_levelselect_goto[selected];
+					fade_goto = arena ? option_arenamode_goto[selected] : option_levelselect_goto[selected];
 					fade_speed = 0.01;
 				}
 			}
@@ -433,6 +450,13 @@ if (fade){
 				selected = (iskeyboard ? -1 : 0);
 				scr_titlescreen_options_scale_reset();
 			}
+			
+			buttonpressed = true;
 		}
 	}
+}
+
+if (buttonpressed){
+	selected_previous = selected;
+	scr_sound_play(snd_menu_button_mouse_click, false, 0.8, 1.2);
 }

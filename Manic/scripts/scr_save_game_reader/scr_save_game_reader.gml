@@ -71,7 +71,7 @@ global.game_conveyerbelt_shutdown3 = ini_read_real("Save", "ConveyerBeltShutdown
 
 var weaponcount = global.weapon_potential_slotmax;
 
-global.weapon_default = ini_read_real("Save", "WeaponDefault", PlayerWeapon.Revolver);
+global.weapon_default = ini_read_real("Save", "WeaponDefault", -1);
 
 for(var i = 0; i < weaponcount; i ++){
 	if (i == 0){
@@ -92,7 +92,7 @@ for(var i = 0; i < upgradecount; i ++){
 	global.game_save_upgrade_unlocked[i] = ini_read_real("Save", "Upgrade" + string(i), false);
 }
 
-var levelcount = array_length_1d(global.level_name);
+var levelcount = global.level_campaign_count;
 for(var i = 0; i < levelcount; i ++){
 	global.level_entered[i] = ini_read_real("Save", "LevelEntered" + string(i), false);
 	global.level_complete[i] = ini_read_real("Save", "LevelComplete" + string(i), false);
@@ -116,5 +116,7 @@ if (ds_exists(global.player_companions, ds_type_grid)){
 		global.player_companions[# 1, i] = ini_read_real("Save", "Companion" + string(i) + "Health", -1);
 	}
 }
+
+global.companion_death_time = ini_read_real("Save", "CompanionDeathTime", -1);
 
 ini_close();

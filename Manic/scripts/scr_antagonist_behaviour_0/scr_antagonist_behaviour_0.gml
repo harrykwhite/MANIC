@@ -26,6 +26,7 @@ if (instance_exists(target)){
 		
 		if (weapon_exists){
 			weapon.dir = dir_to_target;
+			
 			if (distance_to_object(target) < 50){
 				if (attack_time > 0){
 					attack_time --;
@@ -75,7 +76,7 @@ if (instance_exists(target)){
 				
 				move_speed = 0;
 				move_x_to = target.x;
-				move_y_to = target.y;
+				move_y_to = target.y + 6;
 				
 				face_player = true;
 				
@@ -109,7 +110,7 @@ if (instance_exists(target)){
 			move_speed = 0;
 			run_away_complete = false;
 			move_x_to = target.x;
-			move_y_to = target.y;
+			move_y_to = target.y + 6;
 			
 			if (weapon_exists){
 				weapon.dir = point_direction(x, y, move_x_to, move_y_to);
@@ -127,80 +128,6 @@ if (instance_exists(target)){
 			}
 		}
 	}else if (state == 2){
-		var isranged = global.weapon_type[global.pawnweapon_playerindex[weapon_index]] == WeaponType.Ranged;
-		state_time_max = 60 * 2.5;
-		move_speed = 0;
-		
-		if (weapon_exists){
-			var tscale = throw_weapon_time / throw_weapon_time_max;
-			
-			if (!throw_weapon_direction_set){
-				throw_weapon_direction = dir_to_target;
-				throw_weapon_direction_set = true;
-			}
-			
-			weapon.dir = throw_weapon_direction;
-			weapon.flicker = true;
-			weapon.flicker_time_max = 10;
-			
-			if (weapon.dir <= 90 || weapon.dir >= 270){
-				weapon.dir += tscale * 50;
-			}else{
-				weapon.dir -= tscale * 50;
-			}
-			
-			if (throw_weapon_time < throw_weapon_time_max){
-				throw_weapon_time ++;
-			}else{
-				var drop = instance_create(x, y, obj_weapondrop);
-				drop.index = global.pawnweapon_playerindex[weapon_index];
-				drop.spd = 9;
-				drop.angle = weapon.dir;
-				drop.dir = dir_to_target + random_range(-3, 3);
-				drop.enemy = true;
-				drop.damage = 2;
-				
-				if (drop.index == PlayerWeapon.Revolver){
-					drop.ammo = irandom(6) + 3;
-					drop.dataset = true;
-				}
-				
-				throw_weapon_inst = drop;
-				throw_weapon_direction_set = false;
-				
-				scr_effect_screenshake(2);
-				scr_sound_play(snd_weapon_swing_0, false, 0.9, 1.1);
-				
-				instance_destroy(weapon);
-				weapon = -1;
-			}
-		}else{
-			state_time_max = throw_weapon_time_max + 120;
-			arm.image_angle = 270 + (sign(image_xscale) * 10);
-			
-			if (throw_weapon_time >= throw_weapon_time_max){
-				if (instance_exists(throw_weapon_inst)){
-					if (state_time >= state_time_max){
-						move_x_to = throw_weapon_inst.x;
-						move_y_to = throw_weapon_inst.y;
-						move_speed = 2 + (0.5 * phasetwo);
-						arm.image_angle = point_direction(x, y, move_x_to, move_y_to);
-						face_player = false;
-						
-						if (distance_to_object(throw_weapon_inst) < 15){
-							weapon = instance_create(x, y, global.pawnweapon_object[throw_weapon_inst.index]);
-					        weapon.owner = id;
-							weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
-							weapon_change_time = 0;
-							
-							scr_sound_play_distance(snd_weapon_pickup_gun, false, 140);
-							state_time = 0;
-						}
-					}
-				}
-			}
-		}
-	}else if (state == 3){
 		var dist = distance_to_point(run_x, run_y);
 		var dir = point_direction(x, y, run_x, run_y);
 		var isranged = global.weapon_type[global.pawnweapon_playerindex[weapon_index]] == WeaponType.Ranged;
@@ -238,7 +165,7 @@ if (instance_exists(target)){
 			
 			weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
 	        weapon.owner = id;
-			weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+			weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 			weapon_change_time = 0;
 		}
 		
@@ -287,10 +214,6 @@ if (instance_exists(target)){
 	}else{
 		var maxstate = 2;
 		
-		if (phasetwo){
-			maxstate = 3;
-		}
-		
 		if (state < maxstate){
 			state ++;
 		}else{
@@ -299,11 +222,7 @@ if (instance_exists(target)){
 		
 		switch(state){
 			case 0:
-				if (maxstate == 3){
-					weapon_index = weapon_change_origin;
-				}else{
-					weapon_index = PawnWeapon.Greatsword;
-				}
+				weapon_index = PawnWeapon.Greatsword;
 				break;
 			
 			case 1:
@@ -321,15 +240,10 @@ if (instance_exists(target)){
 		
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
-		weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+		weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 		
 		run_away_time = 0;
 		run_away_direction = 0;
-		
-		throw_weapon_time = 0;
-		throw_weapon_direction = 0;
-		throw_weapon_direction_set = false;
-		throw_weapon_inst = noone;
 		
 		weapon_change_time = 0;
 		weapon_change_origin = weapon_index;

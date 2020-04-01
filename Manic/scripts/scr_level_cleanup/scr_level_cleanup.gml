@@ -93,8 +93,56 @@ if (audio_is_playing(snd_weapon_flamethrower_active_0)){
 	audio_stop_sound(snd_weapon_flamethrower_active_0);
 }
 
+if (audio_is_playing(snd_weapon_flamethrower_active_1)){
+	audio_stop_sound(snd_weapon_flamethrower_active_1);
+}
+
 if (audio_is_playing(snd_other_fly_0)){
 	audio_stop_sound(snd_other_fly_0);
+}
+
+if (audio_is_playing(snd_object_minecart_0)){
+	audio_stop_sound(snd_object_minecart_0);
+}
+
+if (audio_is_playing(snd_object_hordepost_loop_normal)){
+	audio_stop_sound(snd_object_hordepost_loop_normal);
+}
+
+if (audio_is_playing(snd_object_hordepost_loop_windy)){
+	audio_stop_sound(snd_object_hordepost_loop_windy);
+}
+
+if (audio_is_playing(snd_object_hordepost_loop_underground)){
+	audio_stop_sound(snd_object_hordepost_loop_underground);
+}
+
+if (audio_is_playing(snd_object_hordepost_loop_city)){
+	audio_stop_sound(snd_object_hordepost_loop_city);
+}
+
+if (audio_is_playing(snd_object_train_start_left_0)){
+	audio_stop_sound(snd_object_train_start_left_0);
+}
+
+if (audio_is_playing(snd_object_train_loop_left_0)){
+	audio_stop_sound(snd_object_train_loop_left_0);
+}
+
+if (audio_is_playing(snd_object_train_end_left_0)){
+	audio_stop_sound(snd_object_train_end_left_0);
+}
+
+if (audio_is_playing(snd_object_train_start_right_0)){
+	audio_stop_sound(snd_object_train_start_right_0);
+}
+
+if (audio_is_playing(snd_object_train_loop_right_0)){
+	audio_stop_sound(snd_object_train_loop_right_0);
+}
+
+if (audio_is_playing(snd_object_train_end_right_0)){
+	audio_stop_sound(snd_object_train_end_right_0);
 }
 
 if (global.cutscene_current != -1){

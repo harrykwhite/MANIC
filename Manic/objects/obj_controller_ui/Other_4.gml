@@ -7,6 +7,8 @@ if (global.pers_runthrough){
 	return;
 }
 
+var iskeyboard = (global.game_input_type == InputType.Keyboard);
+
 // Setup
 global.level_current = scr_level_get_index(room);
 
@@ -21,20 +23,10 @@ vignette_flash_alpha = 0;
 vignette_flash_alpha_speed = 0;
 vignette_flash_colour = c_white;
 
+arena_scale = 1;
+
 objective_scale = 1;
 
-stats_y = 0;
-
-/*weaponinfo = false;
-weaponinfo_index = 0;
-weaponinfo_index_prev = 0;
-weaponinfo_ammo = -1;
-weaponinfo_quantity = -1;
-weaponinfo_yoff = 0;
-weaponinfo_yoff_max = 30;*/
-
-weaponammo_scale = 1;
-weaponammo_scaleTo = 1;
 weaponammo_x = 0;
 
 dialogue = "";
@@ -55,6 +47,7 @@ dialogue_break = 0;
 
 enum TutourialStage{
 	Movement,
+	Dash,
 	Pickup,
 	Shoot,
 	Throw,
@@ -62,7 +55,6 @@ enum TutourialStage{
 	PickupMelee,
 	Switch,
 	CollectAmmo,
-	Dash,
 }
 
 tutourial = false;
@@ -74,10 +66,10 @@ tutourial_stage = 0;
 tutourial_stage_draw = tutourial_stage;
 tutourial_stage_timer = -1;
 tutourial_stage_timer_max = 60 * 8;
+tutourial_stage_moving_time = 0;
 tutourial_stage_pickupmelee_cseen = false;
 tutourial_stage_pickupmelee_equipped = false;
 tutourial_stage_ammocollected_done = false;
-tutourial_sickle_respawn_time = -1;
 
 scr_tutourial_names_set();
 
@@ -93,12 +85,13 @@ redtint_flash = 0;
 
 pause_text_update = false;
 pause_text_alpha = 0;
-pause_selected = -1;
+pause_selected = iskeyboard ? -1 : 0;
+pause_selected_previous = pause_selected;
 pause_selected_break = 0;
 pause_selected_held_time = 0;
 pause_selected_held_time_max = 40;
 pause_has_selected = false;
-pause_has_selected_index = -1;
+pause_has_selected_index = iskeyboard ? -1 : 0;
 pause_has_selected_time = 0;
 pause_selectoption[0] = "Resume";
 pause_selectoption_scale[0] = 1;
@@ -137,7 +130,7 @@ level_opening_alpha = 1;
 level_opening_time = 0;
 level_opening_active = false;
 
-var levelcount = array_length_1d(global.level_name);
+var levelcount = global.level_campaign_count;
 
 if (room == rm_prologue_00){
 	global.level_entered[0] = false;
@@ -173,6 +166,10 @@ if (!global.pers_runthrough_pre){
 						if (global.game_save_upgrade_unlocked[u]){
 							scr_upgrade_add(u);
 						}
+					}
+					
+					if (instance_exists(obj_player)){
+						obj_player.surrounding_light = obj_player.surrounding_light_to;
 					}
 				}
 			
@@ -235,7 +232,12 @@ var weaponalength = array_length_1d(global.weapon_slot);
 for(var i = 0; i < weaponalength; i ++){
 	weaponslot_shake[i] = 0;
     weaponslot_weaponscale[i] = 0;
+	weaponslot_ammoscale[i] = 1;
 }
+
+weapon_standalone_ammox = -100;
+weapon_standalone_ammoy = -100;
+weapon_standalone_ammoscale = 1;
 
 blackbar_draw = false;
 blackbar_sizereal = 0;
@@ -256,7 +258,7 @@ bosshealth_value_previous = 0;
 bosshealth_value_max = 0;
 bosshealth_width_to = 0;
 bosshealth_width_current = 0;
-bosshealth_flash = 3;
+bosshealth_flash = 0;
 
 pausedialogue = false;
 pausedialogue_alpha = 0;
@@ -264,7 +266,8 @@ pausedialogue_type = 1;
 pausedialogue_time = 0;
 pausedialogue_break = 0;
 pausedialogue_option_exitscale = 1;
-pausedialogue_option_selected = -1;
+pausedialogue_option_selected = iskeyboard ? -1 : 0;
+pausedialogue_option_selected_previous = pausedialogue_option_selected;
 pausedialogue_option_selected_held_time = 0;
 pausedialogue_option_selected_held_time_max = 40;
 pausedialogue_option_select_break = 0;
@@ -294,7 +297,7 @@ teaserend_button[2] = "Follow us on Twitter!";
 teaserend_button_scale[2] = 1;
 teaserend_button[3] = "Return to titlescreen!";
 teaserend_button_scale[3] = 1;
-teaserend_button_selected = -1;
+teaserend_button_selected = iskeyboard ? -1 : 0;
 teaserend_button_selected_break = 0;
 teaserend_button_selected_held_time = 0;
 teaserend_button_selected_held_time_max = 40;

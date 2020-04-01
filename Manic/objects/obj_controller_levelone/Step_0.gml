@@ -191,10 +191,10 @@ if (spawn_start_wait >= spawn_start_wait_max){
 						repeat(9){
 							part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
 						}
+						
+						spawn = false;
 					}
 				}
-			
-				spawn = false;
 			}
 		
 		}
@@ -217,18 +217,18 @@ if (!global.game_pause){
 		rain_thunder_interval--;
 	}else{
 		var index = random(array_length_1d(rain_thunder) - 1);
-		rain_thunder_interval = 60 * random_range(10, 23);
-		
 		var thunder = audio_play_sound(rain_thunder_flash[index], 3, false);
-		audio_sound_gain(thunder, 1 * obj_controller_all.real_ambience_volume, 0);
+		
+		audio_sound_gain(thunder, rainvolume * obj_controller_all.real_ambience_volume, 0);
 		
 		scr_effect_flash(rain_thunder_flash_amount[index], 0.03, c_white, true);
+		rain_thunder_interval = 60 * random_range(10, 23);
 	}
 	
 	if (!audio_is_playing(m_ambience_rain_0)) || (audio_sound_get_gain(m_ambience_rain_0) < 0.01){
 		if (!audio_is_playing(m_ambience_rain_0)) audio_play_sound(m_ambience_rain_0, 3, true);
 		audio_sound_gain(m_ambience_rain_0, 0.01, 0);
-		audio_sound_gain(m_ambience_rain_0, 1 * obj_controller_all.real_ambience_volume, 8000);
+		audio_sound_gain(m_ambience_rain_0, rainvolume * obj_controller_all.real_ambience_volume, 6000);
 	}
 }
 

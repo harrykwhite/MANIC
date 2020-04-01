@@ -20,6 +20,7 @@ leader = 0;
 component = 0;
 mylight = noone;
 hitbox = noone;
+cutscene_prop = true;
 
 for(var i = 0; i < 18; i ++){
 	boss_entity[i] = noone;
@@ -43,11 +44,21 @@ switch(room){
 }
 
 horde_dospawn = false;
-horde_spawn_time = 60;
+horde_spawn_time = 90;
 horde_spawn_time_max = 60 * 2;
 horde_spawn_opentime = 0;
 horde_spawn_opentime_max = 60 * 2;
 horde_spawn_wave = 0;
+
+sound_left = true;
+sound_handler = false;
+sound_start_played = false;
+sound_loop_played = false;
+sound_end_played = false;
+sound_stop_played = true;
+sound_loop_inst = noone;
+sound_loop_type = noone;
+sound_loop_faded = false;
 
 if (x >= room_width){
 	dir = -1;

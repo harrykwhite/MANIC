@@ -7,11 +7,19 @@ hitbox.sprite_index = spr_giantturret_flamethrower_hitbox_0;
 hitbox.owner = id;
 
 shoot = false;
+shoot_break = 0;
+shoot_break_max = 6;
+shoot_previous = false;
+shoot_sound = noone;
+shoot_sound_radius = 400;
 shoot_dir = 0;
+
 turret = noone;
 
 flash_time = 0;
+
 mylight = noone;
+light_brightness = 0.25;
 
 burn = false;
 burn_x = x;

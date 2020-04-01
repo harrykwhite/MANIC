@@ -76,9 +76,10 @@ if (instance_exists(target)){
 			flamethrower_time --;
 		}else{
 			var has_flamethrowers = false;
+			
 			for(var i = 0; i < 4; i ++){
 				if (instance_exists(flamethrower[i])){
-					has_flamethrowers  = true;
+					has_flamethrowers = true;
 					flamethrower[i].shoot = true;
 				}
 			}
@@ -86,21 +87,19 @@ if (instance_exists(target)){
 			if (!has_flamethrowers){
 				attack_time = attack_time_max;
 			}
-			
-			flamethrower_time = 6;
 		}
-	
+		
 	// Enemy spawning
 	}else if (attack == 2){
-		while(instance_number(obj_p_enemy) < 7){
+		while(instance_number(obj_p_enemy) < (instance_number(obj_giantturret_flamethrower) + 1) + 2){
 			var enemy = instance_create(random_range(288, 720), random_range(304, 592), obj_enemy_0);
 			enemy.weapon_index = choose(PawnWeapon.Spear, PawnWeapon.Sledgehammer, PawnWeapon.Katana);
 			
-			if (random(6) < 1){
+			if (random(7) < 1){
 				enemy.type = Enemy0_Type.Crazy;
 			}
 			
-			if (random(6) < 1){
+			if (random(7) < 1){
 				enemy.weapon_index = PawnWeapon.Grenade;
 			}
 			

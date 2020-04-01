@@ -9,7 +9,7 @@ if (!instance_exists(mylight)){
 	mylight = instance_create_layer(x, y - 19, "Lights", obj_spear_ground_fire_0_light);
 }
 
-scr_env_burn_effects(0, -17, 4, 4, 55);
+scr_env_burn_effects(0, -17, 4, 4, room == rm_title_0 ? 260 : 55);
 
 mylight.x = x;
 mylight.y = y - 17;

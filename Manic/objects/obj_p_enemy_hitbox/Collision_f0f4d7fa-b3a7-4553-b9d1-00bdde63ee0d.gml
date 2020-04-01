@@ -7,9 +7,7 @@ var mult = scr_get_blood_mult();
 
 with(owner){
 	if (object_index == obj_enemy_1){
-		if (id.owner != obj_player) && (id.owner != noone){
-			return;
-		}
+		return;
 	}
 	
 	if (cutscene_prop){

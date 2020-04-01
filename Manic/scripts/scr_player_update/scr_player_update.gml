@@ -1,41 +1,7 @@
+scr_player_weapon_check();
+
 // Skill
 global.game_combat_playerskill = scr_player_determine_skill();
-
-// Inside
-//var inst = instance_place(x, y, obj_block_housing);
-//global.player_inside_inst = inst;
-
-// Equipment
-var weapon, mdir = point_direction(x, y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
-
-if (global.weapon_slot[global.weapon_slotcurrent] != -1){
-    weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
-    
-    if (!instance_exists(weapon)){
-        var wep = instance_create(x, y, weapon);
-		wep.image_angle = mdir;
-		
-		with(wep){
-			event_perform(ev_step_end, 0);
-		}
-    }
-}else if (global.level_current != Level.Prologue){
-	global.weapon_slot[global.weapon_slotcurrent] = global.weapon_default;
-	
-    if (!instance_exists(global.weapon_object[global.weapon_default])){
-        var wep = instance_create(x, y, global.weapon_object[global.weapon_default]);
-		wep.image_angle = mdir;
-		
-		with(wep){
-			event_perform(ev_step_end, 0);
-		}
-	}
-}
-
-while(!instance_exists(obj_player_arm)){
-    instance_create(x, y, obj_player_arm);
-	obj_player_arm.image_angle = mdir;
-}
 
 // Invincibility
 if (i_time > 0){
@@ -143,12 +109,12 @@ var flylength = array_length_1d(fly);
 if (global.player_health_current < 3){
 	for(var i = 0; i < flylength; i ++){
 		if (fly[i] == noone){
-			if (random(100) <= 0.05) fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
+			if (random(100) <= 0.05){
+				fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
+				fly[i].fobject = id;
+			}
 			break;
 		}
-		
-		fly[i].xbase = x;
-		fly[i].ybase = y;
 	}
 }else{
 	for(var i = 0; i < flylength; i ++){
@@ -163,6 +129,7 @@ if (global.player_health_current < 3){
 if (global.cutscene_current == -1){
 	if (global.player_health_current <= 2){
 		var vol = 0.7;
+		
 		if (!audio_is_playing(snd_other_heartbeat_0)){
 			heartbeat = scr_sound_play(snd_other_heartbeat_0, false, 0.8, 1.2);
 		}
@@ -171,7 +138,7 @@ if (global.cutscene_current == -1){
 			vol = 1;
 		}
 	
-		audio_sound_gain(heartbeat, vol, 2000);
+		audio_sound_gain(heartbeat, vol * obj_controller_all.real_sound_volume, 2000);
 	}else{
 		if (audio_is_playing(snd_other_heartbeat_0)){
 			audio_sound_gain(snd_other_heartbeat_0, 0, 1000);

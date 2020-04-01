@@ -97,7 +97,7 @@ for(var i = 0; i < upgradecount; i ++){
 	ini_write_real("Save", "Upgrade" + string(i), unlocked);
 }
 
-var levelcount = array_length_1d(global.level_name);
+var levelcount = global.level_campaign_count;
 for(var i = 0; i < levelcount; i ++){
 	ini_write_real("Save", "LevelEntered" + string(i), global.level_entered[i]);
 	ini_write_real("Save", "LevelComplete" + string(i), global.level_complete[i]);
@@ -121,5 +121,7 @@ if (ds_exists(global.player_companions, ds_type_grid)){
 		ini_write_real("Save", "Companion" + string(i) + "Health", global.player_companions[# 1, i]);
 	}
 }
+
+ini_write_real("Save", "CompanionDeathTime", global.companion_death_time);
 
 ini_close();

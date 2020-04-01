@@ -15,16 +15,10 @@ if (instance_exists(obj_player)){
 	if (!global.game_pause){
 	    image_angle = point_direction(obj_player.x, obj_player.y, scr_input_get_mouse_x(), scr_input_get_mouse_y()) + attack_range_current;
 	    
-		if (start_offset > 0){
-			start_offset = approach(start_offset, 0, 40);
-		}
-		
 	    if (scr_input_get_mouse_x() > global.player_position_x){
 	        image_yscale = 1;
-			image_angle += start_offset;
 	    }else{
 	        image_yscale = -1;
-			image_angle -= start_offset;
 	    }
     
 	    // Arm

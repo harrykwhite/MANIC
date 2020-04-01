@@ -2,7 +2,7 @@ pawn = PawnType.Companion;
 blend = -1;
 flash_time = 0;
 wait = 0;
-light_brightness = 0;
+light_brightness = 0.25;
 scale = random_range(0.975, 1.025);
 
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8);

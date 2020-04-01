@@ -13,7 +13,7 @@ hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;
 hitbox.owner = id;
 
-light_brightness = 0;
+light_brightness = 1;
 mylight = instance_create_layer(x, y, "Lights", obj_antagonist_light);
 
 shoot_time = 0;
@@ -60,12 +60,7 @@ bleed = false;
 bleed_time = 0;
 bleed_cycle = 3;
 
-headless = false; 
-
-throw_weapon_time = 0;
-throw_weapon_time_max = 60;
-throw_weapon_direction = 0;
-throw_weapon_direction_set = false;
+headless = false;
 
 barrel_pause_time = random(40);
 barrel_pause_break = 0;

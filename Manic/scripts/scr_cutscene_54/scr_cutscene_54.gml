@@ -29,7 +29,7 @@ if (instance_exists(obj_player)){
 					global.cutscene_time[index] ++;
 				}else{
 					instance_destroy(inst);
-					scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
+					scr_sound_play(snd_weapon_pickup_upgrade, false, 0.8, 1.2);
 					scr_effect_screenshake(1);
 					
 					global.cutscene_time[index] = 0;
@@ -46,7 +46,7 @@ if (instance_exists(obj_player)){
 				global.cutscene_time[index] ++;
 				
 				obj_player.move_x_to = obj_player.x;
-				obj_player.move_y_to = obj_player.y;
+				obj_player.move_y_to = obj_player.y + 6;
 				
 				if (global.cutscene_time[index] > 0){
 					obj_player.image_xscale = 1;
@@ -81,7 +81,10 @@ if (instance_exists(obj_player)){
 		var gate = inst_2F004B72;
 		
 		if (instance_exists(gate)){
-			gate.open = true;
+			if (!gate.open){
+				gate.open = true;
+				scr_sound_play(snd_object_finalboss_door_close_0_right, false, 0.8, 1.2);
+			}
 		}
 		
 		obj_player.move_x_to = x_to;

@@ -5,8 +5,8 @@ obj_controller_camera.camera_screenshake = false;
 obj_controller_camera.camera_screenshake_amount = 0;
 
 if (instance_exists(obj_player)){
-	var xto = 516;
-	var yto = 555;
+	var xto = 475;
+	var yto = 564;
 	
 	var dirto = point_direction(obj_controller_camera.x, obj_controller_camera.y, xto, yto);
 	
@@ -24,7 +24,7 @@ if (instance_exists(obj_player)){
 		}
 		
 		obj_player.move_x_to = obj_player.x - 5;
-		obj_player.move_y_to = obj_player.y;
+		obj_player.move_y_to = obj_player.y + 6;
 		obj_player.move_ext_spd = 0;
 		
 		obj_controller_camera.autocontrol = false;
@@ -34,11 +34,8 @@ if (instance_exists(obj_player)){
 		obj_controller_camera.autocontrol = true;
 		
 		if (global.cutscene_time[index] < 130){
-			xto = 686;
+			xto = 676;
 			yto = 656;
-			
-			global.cutscene_camera_x[index] = obj_controller_camera.x;
-			global.cutscene_camera_y[index] = obj_controller_camera.y;
 			
 			if (global.cutscene_time[index] > 20){
 				obj_player.move_x_to = xto;
@@ -50,28 +47,56 @@ if (instance_exists(obj_player)){
 				}
 			}else{
 				obj_player.move_x_to = obj_player.x - 5;
-				obj_player.move_y_to = obj_player.y;
+				obj_player.move_y_to = obj_player.y + 6;
 				obj_player.move_ext_spd = 0;
 				
 				global.cutscene_time[index] ++;
 			}
-		}else if (global.cutscene_time[index] < 400){
+		}else{
 			xto = 676;
 			yto = 564;
 			
 			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 12) || (global.cutscene_time[index] >= 260){
 				xto = 475;
-				yto = 584;
 				
-				obj_player.move_x_to = -1;
-				obj_player.move_y_to = -1;
-				obj_player.move_ext_spd = 0;
-				obj_player.image_xscale = -1;
-				
-				global.cutscene_camera_x[index] = xto;
-				global.cutscene_camera_y[index] = yto;
-				
-				obj_controller_camera.camera_zoom_offset = -0.25;
+				if (global.cutscene_time[index] < 400){
+					obj_player.move_x_to = -1;
+					obj_player.move_y_to = -1;
+					obj_player.move_ext_spd = 0;
+					obj_player.image_xscale = -1;
+				}else{
+					obj_player.move_x_to = xto;
+					obj_player.move_y_to = yto;
+					obj_player.move_ext_spd = 1;
+					
+					if (point_distance(obj_player.x, obj_player.y, xto, yto) < 22){
+						obj_player.move_ext_spd = 0;
+						obj_player.move_x_to = obj_player.x + lengthdir_x(5, 180);
+						obj_player.move_y_to = obj_player.y + lengthdir_y(5, 180);
+						
+						obj_player.image_xscale = -1;
+						
+						if (global.cutscene_time[index] >= 810){
+							with(obj_controller_ui){
+								if (!area_next_fade){
+									area_next_fade = true;
+									area_next_alpha = 0;
+									area_next_alpha_speed = 0.003;
+									
+									if (global.game_is_playthrough){
+										area_next_room = rm_level_1_00;
+									}else{
+										if (global.level_current != Level.RavagedTown){
+											area_next_room = rm_title_0;
+										}else{
+											area_next_room = rm_level_1_00;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 				
 				if (global.cutscene_time[index] < 260){
 					global.cutscene_time[index] = 260;
@@ -80,117 +105,22 @@ if (instance_exists(obj_player)){
 				obj_player.move_x_to = xto;
 				obj_player.move_y_to = yto;
 				obj_player.move_ext_spd = 1.25;
-				
-				global.cutscene_camera_x[index] = obj_player.x;
-				global.cutscene_camera_y[index] = obj_player.y;
 			}
 			
 			global.cutscene_time[index] ++;
-		}else if (global.cutscene_time[index] < 500){
-			xto = 652;
-			yto = 500;
-			
-			obj_player.move_x_to = xto;
-			obj_player.move_y_to = yto;
-			obj_player.move_ext_spd = 1.25;
-			
-			global.cutscene_camera_x[index] = obj_player.x;
-			global.cutscene_camera_y[index] = obj_player.y;
-			
-			// Give the player the revolver and knife
-			if (point_distance(obj_player.x, obj_player.y, xto, yto) < 12){
-				obj_player.move_ext_spd = 0;
-				obj_player.move_x_to = obj_player.x + lengthdir_x(5, 180);
-				obj_player.move_y_to = obj_player.y + lengthdir_y(5, 180);
-				obj_player.image_xscale = -1;
-				
-				if (global.cutscene_time[index] < 460){
-					global.cutscene_time[index] ++;
-					
-					if (global.cutscene_time[index] == 455){
-						var dropcount = instance_number(obj_weapondrop);
-						for(var i = 0; i < dropcount; i ++){
-							var drop = instance_find(obj_weapondrop, i);
-							
-							if (drop.index == PlayerWeapon.Knife){
-								instance_destroy(drop);
-								break;
-							}
-						}
-					}
-				}else{
-					var drop = instance_nearest(obj_player.x, obj_player.y, obj_weapondrop);
-					instance_destroy(drop);
-				
-					scr_sound_play(snd_weapon_pickup_gun, false, 0.8, 1.2);
-				
-					if (global.weapon_slot[global.weapon_slotcurrent] != -1){
-						instance_destroy(global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]]);
-					}
-					
-					global.weapon_slotcurrent = 0;
-					
-					global.weapon_slot[0] = PlayerWeapon.Revolver;
-					global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];
-					
-					global.weapon_slot[1] = -1;
-					global.weapon_slotammo[1] = -1;
-					
-					instance_create(obj_player.x, obj_player.y, global.weapon_object[PlayerWeapon.Revolver]);
-					
-					global.cutscene_time[index] = 500;
-				}
-			}
-		}else if (global.cutscene_time[index] < 560){
-			xto = 702;
-			yto = 624;
-			
-			global.cutscene_time[index] ++;
-			
-			obj_player.move_ext_spd = 1.25;
-			obj_player.move_x_to = xto;
-			obj_player.move_y_to = yto;
-			
-			global.cutscene_camera_x[index] = obj_player.x;
-			global.cutscene_camera_y[index] = obj_player.y;
-		}else if (global.cutscene_time[index] < 788){
-			xto = obj_player.x;
-			yto = 1076;
-			
-			if (!obj_controller_ui.area_next_fade){
-				if (point_distance(obj_player.x, obj_player.y, xto, yto) < 620){
-					with(obj_controller_ui){
-						area_next_fade = true;
-						area_next_alpha = 0;
-						area_next_alpha_speed = 0.005;
-					
-						if (global.game_is_playthrough){
-							area_next_room = rm_level_1_00;
-						}else{
-							if (Level.RavagedTown != global.level_current){
-								area_next_room = rm_title_0;
-							}else{
-								area_next_room = rm_level_1_00;
-							}
-						}
-					}
-				}
-			}
-			
-			obj_player.move_x_to = xto;
-			obj_player.move_y_to = yto;
-			obj_player.move_ext_spd = 1.25;
-			
-			global.cutscene_camera_x[index] = obj_player.x;
-			global.cutscene_camera_y[index] = obj_player.y;
 		}
 	}
+	
+	global.cutscene_camera_x[index] = obj_controller_camera.x;
+	global.cutscene_camera_y[index] = obj_controller_camera.y;
 	
 	obj_player.flashlight_direction = point_direction(obj_player.x, obj_player.y, xto, yto);
 }else{
 	global.cutscene_current = -1;
 	global.cutscene_time[index] = 0;
+	
 	cutscene_prologue_ending_camspeed = 0;
 	cutscene_prologue_ending_camopening = true;
+	
 	obj_controller_camera.autocontrol = true;
 }

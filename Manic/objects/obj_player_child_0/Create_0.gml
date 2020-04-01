@@ -1,13 +1,3 @@
-move_time = 60 * random_range(3, 5);
-move_speed = 0;
-move_speed_real = 0;
-move_speed_offset = 1;
-move_x_to = x;
-move_y_to = y;
-
-mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
-prevpath = noone;
-
 scale = 1;
 talking = false;
 interact = false;

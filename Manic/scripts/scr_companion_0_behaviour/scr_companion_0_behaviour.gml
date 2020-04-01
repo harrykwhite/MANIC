@@ -84,7 +84,7 @@ if (instance_exists(obj_player)){
 			
 			if (dist_to_player > 70 + (40 * order)){
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				move_speed = 2.1;
 				
 				if (dist_to_player > 100 + (40 * order)){
@@ -103,7 +103,7 @@ if (instance_exists(obj_player)){
 			}else{
 				move_speed = 0;
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				face_player = true;
 			}
 		}else if (global.cutscene_current == -1){
@@ -123,7 +123,7 @@ if (instance_exists(obj_player)){
 				move_speed = 1.9;
 			}else{
 				move_x_to = target.x;
-				move_y_to = target.y;
+				move_y_to = target.y + 6;
 				
 				var tdist = 30 + (10 * (global.game_save_level - 1));
 				tdist += 15 * order;
@@ -133,7 +133,7 @@ if (instance_exists(obj_player)){
 				}else{
 					move_speed = 0;
 					move_x_to = target.x;
-					move_y_to = target.y;
+					move_y_to = target.y + 6;
 					
 					if (weapon_does_exist){
 						if (attack_time > 0){
@@ -187,7 +187,7 @@ if (instance_exists(obj_player)){
 					
 					move_speed = 0;
 					move_x_to = obj_player.x;
-					move_y_to = obj_player.y;
+					move_y_to = obj_player.y + 6;
 				}
 			}else{
 				if (distance_to_object(obj_player) > 67 + (40 * order)){
@@ -202,14 +202,14 @@ if (instance_exists(obj_player)){
 				}
 		
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 			}
 		}else{
 			var engine = instance_nearest(x, y, obj_conveyerbelt_4);
 			weapon.attack = false;
 			
 			move_x_to = obj_player.x;
-			move_y_to = obj_player.y;
+			move_y_to = obj_player.y + 6;
 			move_speed = 0;
 			
 			if (engine != noone){
@@ -241,7 +241,7 @@ if (instance_exists(obj_player)){
 		if (global.cutscene_current == 2) || ((global.cutscene_current == 58 || global.cutscene_current == 52) && (!depart) && (!depart_standaway) && (!bunker_engine_destroy)){
 			if (distance_to_object(obj_player) > 67 + (40 * order)){
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				move_speed = 1.9;
 			}
 		}
@@ -286,7 +286,7 @@ if (dashbreak > 0){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += min(0.2, speed_final - move_speed_real);
+    move_speed_real += min(0.1, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
     move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
@@ -317,16 +317,16 @@ if (instance_exists(weapon) && weapon != -1){
 	Idle1 = spr_companion_0_idle_1; Walk1 = spr_companion_0_walk_1;
 	Idle2 = spr_companion_0_idle_2; Walk2 = spr_companion_0_walk_2;
 	
-	if (speed_final <= 0.1){
+	if (speed_final <= 0.4){
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Idle1, Idle0, Idle2);
 	}else{
 		scr_pawn_sprite_weapon(global.pawnweapon_playerindex[weapon_index], Walk1, Walk0, Walk2);
 	}
 }
 
-if (speed_final <= 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.4) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
-}else if (speed_final >= 0.1) && (speed_final <= 0.75){
+}else if (speed_final > 0.4) && (speed_final <= 0.75){
     image_speed = 0.15;
 }else if (speed_final < 1.1) && (speed_final > 0.75){
     image_speed = 0.25;

@@ -24,13 +24,13 @@ if (!global.game_pause){
 	if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
 		if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
 		audio_sound_gain(m_ambience_wind_0, 0.01, 0);
-		audio_sound_gain(m_ambience_wind_0, 0.85 * obj_controller_all.real_ambience_volume, 15000);
+		audio_sound_gain(m_ambience_wind_0, windvolume * obj_controller_all.real_ambience_volume, 15000);
 	}
 	
 	if (!audio_is_playing(m_ambience_birds_0)) || (audio_sound_get_gain(m_ambience_birds_0) < 0.01){
 		if (!audio_is_playing(m_ambience_birds_0)) audio_play_sound(m_ambience_birds_0, 3, true);
 		audio_sound_gain(m_ambience_birds_0, 0.01, 0);
-		audio_sound_gain(m_ambience_birds_0, 0.3 * obj_controller_all.real_ambience_volume, 15000);
+		audio_sound_gain(m_ambience_birds_0, birdvolume * obj_controller_all.real_ambience_volume, 15000);
 	}
 }
 
@@ -43,19 +43,21 @@ if (!global.game_objective_complete){
 	if (hunting){
 		if (audio_sound_get_gain(tutmusic_layer0) < 0.01){
 			audio_sound_gain(tutmusic_layer0, 0.01, 0);
-			audio_sound_gain(tutmusic_layer0, 0.6 * obj_controller_all.real_music_volume, 32000);
+			audio_sound_gain(tutmusic_layer0, 0.5 * obj_controller_all.real_music_volume, 32000);
 		}
 	}
 }else{
 	if (global.cutscene_current != 57){
-		var lvol = 1 - ((point_distance(global.player_position_x, global.player_position_y, 504, 540) - 600) / 600);
-		audio_sound_gain(tutmusic_layer1, clamp(lvol + 0.1, 0, 1) * obj_controller_all.real_music_volume, 3000);
+		var lvol = 1 - (point_distance(global.player_position_x, global.player_position_y, 504, 540) / 1200);
+		audio_sound_gain(tutmusic_layer1, clamp(lvol + 0.25, 0, 1) * obj_controller_all.real_music_volume, 0);
 	}
 	
 	lighting = 1;
 	
 	if (!endscene_initiated){
 		scr_effect_flash_script(0.1, 0.1, c_white, scr_trigger_4, false);
+		audio_sound_gain(tutmusic_layer1, 0.01, 0);
+		
 		endscene_initiated = true;
 	}
 }
@@ -89,12 +91,12 @@ if (!global.game_pause) && (instance_exists(obj_player)){
 			if (do_spawn){
 				instance_create(xx, yy, obj_enemy_5);
 				
-				repeat(15){
-					part_particles_create(global.ps_front, xx + random_range(-7, 7), yy + random_range(-18, 18), global.pt_spawn_0, 1);
+				repeat(18){
+					part_particles_create(global.ps_front, xx + random_range(-14, 14), yy + random_range(-7, 9), global.pt_spawn_0, 1);
 				}
 			}
 			
-			deer_spawn_time = 60 * random_range(9, 12);
+			deer_spawn_time = deer_spawn_time_max;
 		}
 	}
 }

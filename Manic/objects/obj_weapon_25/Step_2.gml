@@ -25,18 +25,14 @@ if (instance_exists(obj_player)){
 	    }else if (angle_offset < 0){
 	        angle_offset ++;
 	    }
-		
-		if (start_offset > 0){
-			start_offset = approach(start_offset, 0, 40);
-		}
     
 	    shoot_bounceback = approach(shoot_bounceback, 0, 20);
     
 	    // Direction
 	    if (sign(image_yscale) == 1){
-	        image_angle = mdir + angle_offset + start_offset;
+	        image_angle = mdir + angle_offset;
 	    }else{
-	        image_angle = mdir - angle_offset - start_offset;
+	        image_angle = mdir - angle_offset;
 	    }
         
 	    if (scr_input_get_mouse_x() > global.player_position_x){

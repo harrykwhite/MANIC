@@ -8,8 +8,10 @@ obj_controller_camera.camera_screenshake_amount = 0;
 if (instance_exists(obj_player)){
 	x_to = cutscene_trainopening_inst.x;
 	y_to = cutscene_trainopening_inst.y + 12;
+	
 	global.cutscene_camera_x[index] = x_to;
 	global.cutscene_camera_y[index] = y_to;
+	
 	obj_player.flashlight_direction = 90;
 	
 	if (point_distance(obj_player.x, obj_player.y, x_to, y_to) < 40){
@@ -21,34 +23,18 @@ if (instance_exists(obj_player)){
 		if (global.cutscene_time[index] < 40){
 			global.cutscene_time[index] ++;
 		}else{
-			instance_destroy(obj_player);
-			
 			if (!instance_exists(cutscene_trainopening_light)){
 				cutscene_trainopening_light = instance_create(x_to, y_to, obj_player_light);
+				cutscene_trainopening_light.skipdraw = false;
+				
+				scr_modify_player_surrounding_light(cutscene_trainopening_light, x_to, y_to);
 			}
+			
+			instance_destroy(obj_player);
+			
+			global.player_position_x = -100;
+			global.player_position_y = -100;
 		}
-		
-		/*switch(cutscene_moveto_level){
-			case 0:
-				cutscene_trainopening_inst.dir = -1;
-				break;
-		
-			case 3:
-				if (room == rm_level_1_00){
-					cutscene_trainopening_inst.dir = 1;
-				}else{
-					cutscene_trainopening_inst.dir = -1;
-				}
-				break;
-		
-			case 5:
-				if (room == rm_level_1_00) || (room == rm_level_4_00){
-					cutscene_trainopening_inst.dir = 1;
-				}else{
-					cutscene_trainopening_inst.dir = -1;
-				}
-				break;
-		}*/
 	}else{
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;
@@ -58,8 +44,15 @@ if (instance_exists(obj_player)){
 	x_to = cutscene_trainopening_inst.x;
 	y_to = cutscene_trainopening_inst.y + 12;
 	
-	cutscene_trainopening_light.x = x_to;
-	cutscene_trainopening_light.y = y_to;
+	if (instance_exists(cutscene_trainopening_light)){
+		cutscene_trainopening_light.x = x_to;
+		cutscene_trainopening_light.y = y_to;
+	}else{
+		cutscene_trainopening_light = instance_create(x_to, y_to, obj_player_light);
+		cutscene_trainopening_light.skipdraw = false;
+		
+		scr_modify_player_surrounding_light(cutscene_trainopening_light, x_to, y_to);
+	}
 	
 	if (global.cutscene_time[index] < 100){
 		global.cutscene_time[index] ++;

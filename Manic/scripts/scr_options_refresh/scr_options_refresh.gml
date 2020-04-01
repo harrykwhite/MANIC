@@ -63,7 +63,7 @@ with(obj_controller_all){
 
 if (room == rm_title_0){
 	if (!obj_titlescreen_main.fade){
-		audio_sound_gain(m_ambience_wind_0, 0.55 * obj_controller_all.real_ambience_volume, 1000);
+		audio_sound_gain(m_ambience_wind_0, windvolume * obj_controller_all.real_ambience_volume, 1000);
 		
 		with(obj_titlescreen_main){
 			scr_titlescreen_options_reload();

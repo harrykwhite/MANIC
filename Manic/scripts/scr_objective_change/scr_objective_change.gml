@@ -8,7 +8,7 @@ var objective_counter_max = argument2;
 global.game_objective_complete = false;
 global.game_objective_current = objective_to;
 
-obj_controller_ui.objective_scale = 1.25;
+obj_controller_ui.objective_scale = 1.35;
 
 if (objective_counter != -1){
 	global.objective_counter[global.game_objective_current] = objective_counter;

@@ -1,5 +1,5 @@
 angle_offset = 0;
-start_offset = 35;
+
 
 throw_time = 0;
 throw_time_max = 40;

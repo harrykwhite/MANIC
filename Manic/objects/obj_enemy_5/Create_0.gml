@@ -12,6 +12,7 @@ hitbox.sprite_index = spr_deer_hitbox_0;
 hitbox.owner = id;
 
 mylight = noone;
+light_brightness = 0.25;
 
 wander = false;
 wander_stage = 0;

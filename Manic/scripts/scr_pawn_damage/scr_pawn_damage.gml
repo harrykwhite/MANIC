@@ -207,6 +207,9 @@ if (health_current <= 0){
 			corpse = instance_create(x, y, obj_companion_corpse);
 			corpse.sprite_index = spr_companion_0_corpse_0;
 			corpse.in_cutscene = true;
+			corpse.doflicker = true;
+			corpse.flicker_time = corpse.flicker_time_max;
+			corpse.type = obj_companion_0;
 			
 			if (headless){
 				corpse.sprite_index = spr_companion_0_headless_corpse_0;
@@ -225,6 +228,7 @@ if (health_current <= 0){
 			corpse = instance_create(x, y, obj_companion_corpse);
 			corpse.sprite_index = spr_companion_1_corpse_0;
 			corpse.in_cutscene = true;
+			corpse.type = obj_companion_1;
 			
 			if (headless){
 				corpse.sprite_index = spr_companion_1_headless_corpse_0;
@@ -243,6 +247,7 @@ if (health_current <= 0){
 			corpse = instance_create(x, y, obj_companion_corpse);
 			corpse.sprite_index = spr_companion_2_corpse_0;
 			corpse.in_cutscene = true;
+			corpse.type = obj_companion_2;
 			
 			if (headless){
 				corpse.sprite_index = spr_companion_2_headless_corpse_0;
@@ -261,6 +266,7 @@ if (health_current <= 0){
 			corpse = instance_create(x, y, obj_companion_corpse);
 			corpse.sprite_index = spr_companion_3_corpse_0;
 			corpse.in_cutscene = true;
+			corpse.type = obj_companion_3;
 			
 			if (headless){
 				corpse.sprite_index = spr_companion_3_headless_corpse_0;

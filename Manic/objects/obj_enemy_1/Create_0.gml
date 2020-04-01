@@ -1,7 +1,7 @@
 pawn = PawnType.Enemy;
 blend = -1;
 flash_time = 0;
-light_brightness = 0;
+light_brightness = 0.25;
 scale = random_range(0.675, 0.75);
 buzz = noone;
 

@@ -25,7 +25,7 @@ if (instance_exists(owner)) && (!global.game_pause){
 	        throw.spd = 9;
 	        throw.damage = 3;
 			throw.timemax = 80;
-	        throw.image_angle = image_angle;
+	        throw.angle = image_angle;
 			throw.throw_offset = throw_offset;
 			throw.damage_enemy = true;
 			throw.damage_player = true;

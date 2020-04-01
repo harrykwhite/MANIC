@@ -17,13 +17,13 @@ if (!global.game_pause){
 		if (!audio_is_playing(m_ambience_birds_0)) || (audio_sound_get_gain(m_ambience_birds_0) < 0.01){
 			if (!audio_is_playing(m_ambience_birds_0)) audio_play_sound(m_ambience_birds_0, 3, true);
 			audio_sound_gain(m_ambience_birds_0, 0.01, 0);
-			audio_sound_gain(m_ambience_birds_0, 0.6 * obj_controller_all.real_ambience_volume, 6000);
+			audio_sound_gain(m_ambience_birds_0, birdvolume * obj_controller_all.real_ambience_volume, 6000);
 		}
 		
 		if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
 			if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
 			audio_sound_gain(m_ambience_wind_0, 0.01, 0);
-			audio_sound_gain(m_ambience_wind_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
+			audio_sound_gain(m_ambience_wind_0, windvolume * obj_controller_all.real_ambience_volume, 6000);
 		}
 	}else{
 		// Rain
@@ -45,7 +45,7 @@ if (!global.game_pause){
 		if (!audio_is_playing(m_ambience_rain_0)) || (audio_sound_get_gain(m_ambience_rain_0) < 0.01){
 			audio_play_sound(m_ambience_rain_0, 3, true);
 			audio_sound_gain(m_ambience_rain_0, 0.01, 0);
-			audio_sound_gain(m_ambience_rain_0, 0.7 * obj_controller_all.real_ambience_volume, 6000);
+			audio_sound_gain(m_ambience_rain_0, rainvolume * obj_controller_all.real_ambience_volume, 6000);
 		}
 	}
 	
@@ -311,18 +311,19 @@ if (spawn_start_wait >= spawn_start_wait_max){
 						repeat(9){
 							part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
 						}
+						
+						spawn = false;
 					}
 				}
-				
-				spawn = false;
 			}
 		
 		}
 	}else{
-		global.game_combat_state_time_real = 0;
-		spawn_rate_real = 0.75;
 		global.game_combat_state = CombatState.Idle;
-	
+		global.game_combat_state_time_real = 0;
+		
+		spawn_rate_real = 0.75;
+		
 		if (global.cutscene_current == -1){
 			audio_sound_gain(spawn_music_main[CombatState.Idle], 0, 1000);
 			audio_sound_gain(spawn_music_main[CombatState.Buildup], 0, 1000);

@@ -185,7 +185,7 @@ if (!global.game_pause){
 							break;
 						
 						case 4:
-							text = "All right...";
+							text = "Okay...";
 							inst = obj_companion_0;
 							break;
 						
@@ -242,7 +242,7 @@ if (!global.game_pause){
 	if (!audio_is_playing(m_ambience_wind_0)) || (audio_sound_get_gain(m_ambience_wind_0) < 0.01){
 		if (!audio_is_playing(m_ambience_wind_0)) audio_play_sound(m_ambience_wind_0, 3, true);
 		audio_sound_gain(m_ambience_wind_0, 0.01, 0);
-		audio_sound_gain(m_ambience_wind_0, 1 * obj_controller_all.real_ambience_volume, 7000);
+		audio_sound_gain(m_ambience_wind_0, windvolume * obj_controller_all.real_ambience_volume, 6000);
 	}
 }
 
@@ -379,10 +379,10 @@ if (spawn_start_wait >= spawn_start_wait_max){
 						repeat(9){
 							part_particles_create(global.ps_front, xpos + random_range(-7, 7), ypos + random_range(-18, 18), global.pt_spawn_0, 1);
 						}
+						
+						spawn = false;
 					}
 				}
-			
-				spawn = false;
 			}
 		}
 	}else{

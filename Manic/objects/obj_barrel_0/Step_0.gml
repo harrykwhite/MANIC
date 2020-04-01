@@ -40,15 +40,15 @@ if (hit_time > 0){
 if (death){
 	scr_env_destroy(spr_barrel_0_break);
 	
-	scr_weapon_ammo_spawn(2, 6, 5, x, y + 6);
-
+	scr_weapon_ammo_spawn(2, 5, 3, x, y + 8);
+	
 	if (random(4) < 1){
 		instance_create(x, y + 8, obj_health_pack_0);
 	}
 
 	if (global.level_current >= Level.UndergroundBunker){
 		if (random(9) < 1){
-			var weapon = instance_create(x, y + 6, obj_weapondrop);
+			var weapon = instance_create(x, y + 8, obj_weapondrop);
 			weapon.index = PlayerWeapon.Grenade;
 			
 			if (global.level_current >= Level.HumanPrison){

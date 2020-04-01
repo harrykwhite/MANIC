@@ -22,7 +22,7 @@ if (instance_exists(obj_player)){
     if (pickup){
         instance_destroy();
 		
-		scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
+		scr_sound_play(snd_weapon_pickup_upgrade, false, 0.8, 1.2);
 		scr_effect_screenshake(1);
 		scr_upgrade_add(index);
 		

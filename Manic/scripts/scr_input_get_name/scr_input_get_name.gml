@@ -1,28 +1,35 @@
 ///@param binding
 ///@param brackets
+///@param list
 var binding = argument[0];
 var brackets = true;
+var list = false;
 
-var rstr = "";
+var rstr;
+rstr[0] = "";
 
-if (argument_count > 1){
+if (argument_count == 2){
 	brackets = argument[1];
+}
+
+if (argument_count == 3){
+	list = argument[2];
 }
 
 switch(global.game_input_type){
 	case InputType.Keyboard:
 		switch(binding){
-			case InputBinding.Right: rstr = "D"; break;
-			case InputBinding.Left: rstr = "A"; break;
-			case InputBinding.Down: rstr = "S"; break;
-			case InputBinding.Up: rstr = "W"; break;
-			case InputBinding.Interact: rstr = "E"; break;
-			case InputBinding.Dash: rstr = "Space"; break;
-			case InputBinding.Attack: rstr = "Left Mouse Button"; break;
-			case InputBinding.Throw: rstr = "Right Mouse Button"; break;
-			case InputBinding.Pause: rstr = "Escape"; break;
-			case InputBinding.SwitchWeaponForward: rstr = "Scroll Wheel"; break;
-			case InputBinding.SwitchWeaponBack: rstr = "Scroll Wheel"; break;
+			case InputBinding.Right: rstr[0] = "D"; break;
+			case InputBinding.Left: rstr[0] = "A"; break;
+			case InputBinding.Down: rstr[0] = "S"; break;
+			case InputBinding.Up: rstr[0] = "W"; break;
+			case InputBinding.Interact: rstr[0] = "E"; break;
+			case InputBinding.Dash: rstr[0] = "Space"; break;
+			case InputBinding.Attack: rstr[0] = "Left Mouse Button"; break;
+			case InputBinding.Throw: rstr[0] = "Right Mouse Button"; rstr[1] = "Q"; break;
+			case InputBinding.Pause: rstr[0] = "Escape"; break;
+			case InputBinding.SwitchWeaponForward: rstr[0] = "Scroll Wheel"; break;
+			case InputBinding.SwitchWeaponBack: rstr[0] = "Scroll Wheel"; break;
 		}
 		break;
 	
@@ -35,15 +42,15 @@ switch(global.game_input_type){
 					case InputBinding.Right:
 					case InputBinding.Left:
 					case InputBinding.Down:
-					case InputBinding.Up: rstr = "Left Joystick"; break;
+					case InputBinding.Up: rstr[0] = "Left Joystick"; break;
 					
-					case InputBinding.Interact: rstr = "A"; break;
-					case InputBinding.Dash: rstr = "X"; break;
-					case InputBinding.Attack: rstr = "Right Trigger"; break;
-					case InputBinding.Throw: rstr = "Left Trigger"; break;
-					case InputBinding.Pause: rstr = "Start"; break;
-					case InputBinding.SwitchWeaponForward: rstr = "Right Bumper"; break;
-					case InputBinding.SwitchWeaponBack: rstr = "Left Bumper"; break;
+					case InputBinding.Interact: rstr[0] = "A"; break;
+					case InputBinding.Dash: rstr[0] = "X"; break;
+					case InputBinding.Attack: rstr[0] = "Right Trigger"; break;
+					case InputBinding.Throw: rstr[0] = "Left Trigger"; break;
+					case InputBinding.Pause: rstr[0] = "Start"; break;
+					case InputBinding.SwitchWeaponForward: rstr[0] = "Right Bumper"; break;
+					case InputBinding.SwitchWeaponBack: rstr[0] = "Left Bumper"; break;
 				}
 				break;
 			
@@ -52,15 +59,15 @@ switch(global.game_input_type){
 					case InputBinding.Right:
 					case InputBinding.Left:
 					case InputBinding.Down:
-					case InputBinding.Up: rstr = "Left Joystick"; break;
+					case InputBinding.Up: rstr[0] = "Left Joystick"; break;
 					
-					case InputBinding.Interact: rstr = "Cross"; break;
-					case InputBinding.Dash: rstr = "Square"; break;
-					case InputBinding.Attack: rstr = "Right Trigger"; break;
-					case InputBinding.Throw: rstr = "Left Trigger"; break;
-					case InputBinding.Pause: rstr = "Start"; break;
-					case InputBinding.SwitchWeaponForward: rstr = "Right Bumper"; break;
-					case InputBinding.SwitchWeaponBack: rstr = "Left Bumper"; break;
+					case InputBinding.Interact: rstr[0] = "Cross"; break;
+					case InputBinding.Dash: rstr[0] = "Square"; break;
+					case InputBinding.Attack: rstr[0] = "Right Trigger"; break;
+					case InputBinding.Throw: rstr[0] = "Left Trigger"; break;
+					case InputBinding.Pause: rstr[0] = "Start"; break;
+					case InputBinding.SwitchWeaponForward: rstr[0] = "Right Bumper"; break;
+					case InputBinding.SwitchWeaponBack: rstr[0] = "Left Bumper"; break;
 				}
 				break;
 			
@@ -69,15 +76,15 @@ switch(global.game_input_type){
 					case InputBinding.Right:
 					case InputBinding.Left:
 					case InputBinding.Down:
-					case InputBinding.Up: rstr = "Left Joystick"; break;
+					case InputBinding.Up: rstr[0] = "Left Joystick"; break;
 					
-					case InputBinding.Interact: rstr = "B"; break;
-					case InputBinding.Dash: rstr = "Y"; break;
-					case InputBinding.Attack: rstr = "ZR"; break;
-					case InputBinding.Throw: rstr = "ZL"; break;
-					case InputBinding.Pause: rstr = (!macbuild ? "Home" : "Plus"); break;
-					case InputBinding.SwitchWeaponForward: rstr = "R"; break;
-					case InputBinding.SwitchWeaponBack: rstr = "L"; break;
+					case InputBinding.Interact: rstr[0] = "B"; break;
+					case InputBinding.Dash: rstr[0] = "Y"; break;
+					case InputBinding.Attack: rstr[0] = "ZR"; break;
+					case InputBinding.Throw: rstr[0] = "ZL"; break;
+					case InputBinding.Pause: rstr[0] = (!macbuild ? "Home" : "Plus"); break;
+					case InputBinding.SwitchWeaponForward: rstr[0] = "R"; break;
+					case InputBinding.SwitchWeaponBack: rstr[0] = "L"; break;
 				}
 				break;
 		}
@@ -86,8 +93,10 @@ switch(global.game_input_type){
 }
 
 if (brackets){
-	rstr = string_insert("[", rstr, 0);
-	rstr = string_insert("]", rstr, string_length(rstr) + 1);
+	for(var s = array_length_1d(rstr) - 1; s >= 0; s --){
+		rstr[s] = string_insert("[", rstr[s], 0);
+		rstr[s] = string_insert("]", rstr[s], string_length(rstr[s]) + 1);
+	}
 }
 
-return rstr;
+return list ? rstr : rstr[0];

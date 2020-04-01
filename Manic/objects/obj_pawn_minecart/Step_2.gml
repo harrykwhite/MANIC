@@ -5,3 +5,10 @@ if (!instance_exists(mylight)){
 mylight.x = x;
 mylight.y = y + 6;
 mylight.Light_Intensity = 1.15;
+
+if (!audio_is_playing(minecart_sound) || minecart_sound == noone){
+	minecart_sound = scr_sound_play_distance(snd_object_minecart_0, true, 300);
+}
+
+scr_sound_set_distance(minecart_sound, 300);
+audio_sound_gain(minecart_sound, audio_sound_get_gain(minecart_sound) * (abs(minecart_speed) / 4), 0);

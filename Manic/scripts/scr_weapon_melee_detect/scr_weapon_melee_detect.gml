@@ -169,10 +169,6 @@ switch(ctype){
 				var inst = playerline[| i].owner;
 				var final_damage = damage;
 				
-				if (inst.object_index == obj_companion_0){
-					continue;
-				}
-				
 				if (inst.object_index == obj_player) && (object_index == global.pawnweapon_object[PawnWeapon.Greatsword]){
 					if (scr_player_has_upgrade(PlayerUpgrade.Chestplate)){
 						final_damage = round(final_damage * 0.25);

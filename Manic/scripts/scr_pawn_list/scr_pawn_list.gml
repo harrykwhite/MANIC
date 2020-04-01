@@ -25,6 +25,8 @@ global.companion_mapicon[2] = spr_companion_2_head_0_minimap;
 global.companion[3] = obj_companion_3;
 global.companion_mapicon[3] = spr_companion_3_head_0_minimap;
 
+global.companion_death_time_max = 60 * 15;
+
 // Boss Pawns
 enum Boss{
 	EnemyHorde,

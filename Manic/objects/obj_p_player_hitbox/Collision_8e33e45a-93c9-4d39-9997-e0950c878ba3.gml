@@ -5,10 +5,6 @@ if (global.cutscene_current != -1) || (global.game_pause){
 var inst = other;
 
 with(owner){
-	if (object_index == obj_companion_0){
-		return;
-	}
-	
 	if (!inst.enemy){
 		return;
 	}
@@ -17,6 +13,10 @@ with(owner){
 		if (state == scr_player_dash){
 			return;
 		}
+	}
+	
+	if (string_pos("obj_companion_", object_get_name(object_index)) != 0){
+		return;
 	}
 
 	if (i_time < 1){

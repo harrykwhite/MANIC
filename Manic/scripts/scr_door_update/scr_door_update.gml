@@ -77,7 +77,6 @@ if ((interact) && (global.cutscene_current == -1) && (!anim) && (!locked) && (id
 			open = !open;
 			anim = true;
 			
-			scr_effect_screenshake(1);
 			scr_player_stamina_drain(4);
 			
 			sprite_index = open ? opensprite : closedsprite;

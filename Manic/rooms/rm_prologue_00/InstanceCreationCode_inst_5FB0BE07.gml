@@ -1,2 +1,2 @@
-index = PlayerWeapon.Sickle;
+index = PlayerWeapon.Knife;
 angle = 35;

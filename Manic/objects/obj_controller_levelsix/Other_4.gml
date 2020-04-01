@@ -65,6 +65,8 @@ switch(room){
 			
 			var train = instance_create(-170, 224, obj_pawn_other_train_1);
 			train.component_spawn = true;
+			train.sound_stop_played = false;
+			
 			obj_player.x = -100;
 			obj_player.y = -100;
 		}else{
@@ -104,6 +106,8 @@ if (global.game_level_opening_type == 1) && (room == rm_level_6_00){
 	
 	var train = instance_create_layer(-247, 224, "Trains", obj_pawn_other_train_1);
 	train.component_spawn = true;
+	train.sound_stop_played = false;
+	
 	obj_player.x = -100;
 	obj_player.y = -100;
 }else{
@@ -126,7 +130,7 @@ if (room == rm_level_6_01) || (room == rm_level_6_02){
 }
 
 train_time = 0;
-train_timemax = 10 * 60;
+train_timemax = 20 * 60;
 
 trainboss_trainhead = noone;
 trainboss_leader = noone;

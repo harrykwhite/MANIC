@@ -40,7 +40,7 @@ if (hit_time > 0){
 if (death){
 	scr_env_destroy(spr_toilet_0_break);
 	
-	scr_weapon_ammo_spawn(1, 6, 5, x, y + 6);
+	scr_weapon_ammo_spawn(1, 5, 3, x, y + 6);
 
 	if (random(5) < 1){
 		instance_create(x, y + 8, obj_health_pack_0);

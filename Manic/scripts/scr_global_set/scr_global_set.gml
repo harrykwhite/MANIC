@@ -5,12 +5,18 @@ scr_collectable_list();
 scr_objective_list();
 
 global.game_pause = false;
+global.game_pause_nextframe = false;
 global.game_in_dialogue = false;
 
 global.game_combat_state = CombatState.Idle;
 global.game_combat_state_time_real = 0;
+
 global.game_combat_in_hordechallenge = false;
 global.game_combat_in_hordechallenge_time = 0;
+
+global.game_combat_arena_wave = 0;
+global.game_combat_arena_wavemax = 9;
+
 global.game_combat_playerskill = 1;
 
 global.game_level_opening_type = 0;
@@ -32,7 +38,7 @@ if (room == rm_ini){
 	global.player_companions = ds_grid_create(2, 4);
 	ds_grid_clear(global.player_companions, -1);
 	
-	var levelcount = array_length_1d(global.level_name);
+	var levelcount = global.level_campaign_count;
 	
 	var collectsize = 0;
 	for(var i = 0; i < levelcount; i ++){

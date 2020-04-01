@@ -7,3 +7,4 @@ minecart_dir_clean = 0;
 minecart_speed = 0;
 minecart_break = 0;
 minecart_touching = false;
+minecart_sound = noone;

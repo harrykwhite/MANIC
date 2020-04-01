@@ -29,6 +29,9 @@ if (instance_exists(obj_player)){
         if (global.cutscene_current != -1){
             shoot_can = false;
         }
+		
+		obj_controller_ui.weapon_standalone_ammox = x;
+		obj_controller_ui.weapon_standalone_ammoy = y + 17;
     }else{
 		cart_lock = true;
 	}

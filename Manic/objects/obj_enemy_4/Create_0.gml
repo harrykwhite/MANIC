@@ -4,6 +4,8 @@ scale = random_range(1, 1.1);
 scale_mult_x = 1;
 scale_mult_y = 1;
 
+light_brightness = 0.25;
+
 mypath = path_add(); path_set_kind(mypath, 1); path_set_precision(mypath, 8)
 prevpath = noone;
 
@@ -17,10 +19,6 @@ strength = 0.5;
 mylight = noone;
 
 contact_attack_ready_time = 30;
-
-mucus_release_time = random_range(60 * 4, 60 * 8);
-mucus_is_releasing = false;
-mucus_is_releasing_startbreak = 0;
 
 burn = false;
 burn_x = x;
@@ -73,6 +71,11 @@ health_flash = 0;
 
 target = obj_player;
 flies_created = false;
+
+companion_find_time_max = 60 * 2.5;
+companion_find_time = companion_find_time_max;
+companion_find_break_max = 60;
+companion_find_break = companion_find_break_max;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone; fly[3] = noone;
 image_xscale = scale;

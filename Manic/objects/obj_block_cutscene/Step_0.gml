@@ -2,6 +2,17 @@ if (global.game_pause){
 	return;
 }
 
+if (incutscene){
+	if (global.cutscene_current == -1){
+		if (destroy_on_nocutscene){
+			instance_destroy();
+			return;
+		}
+		
+		incutscene = false;
+	}
+}
+
 if (check_for_companion != -1){
 	if (!scr_player_has_companion(global.companion[check_for_companion])){
 		return;
@@ -86,6 +97,8 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 			
 			global.cutscene_current = index;
 			
+			incutscene = true;
+			
 			if (special == "bunkerenginedestroy"){
 				if (!instance_exists(obj_companion_0)){
 					global.cutscene_current = -1;
@@ -106,7 +119,7 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				}
 			}
 			
-			if (special == "sicklelook"){
+			if (special == "meleelook"){
 				obj_controller_ui.tutourial_stage_pickupmelee_cseen = true;
 			}
 			
@@ -139,7 +152,7 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				with(obj_controller_prologue){
 					tutmusic_endstinger = audio_play_sound(m_tutourial_stinger_0, 3, false);
 					audio_sound_gain(tutmusic_endstinger, 0, 0);
-					audio_sound_gain(tutmusic_endstinger, 1, 1000);
+					audio_sound_gain(tutmusic_endstinger, 1 * obj_controller_all.real_music_volume, 1000);
 				
 					audio_sound_gain(tutmusic_layer0, 0, 2000);
 					audio_sound_gain(tutmusic_layer1, 0, 2000);

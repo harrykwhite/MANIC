@@ -31,7 +31,11 @@
         "b2267178-5b3b-408f-88e6-bf046481e9e3",
         "883e6943-9e8c-4312-bfc3-1f94a357a5d2",
         "2d1d1079-c506-426e-ba19-ac9469da8b03",
-        "beac85f5-c102-400c-9c20-15bc1a18f7f7"
+        "beac85f5-c102-400c-9c20-15bc1a18f7f7",
+        "47f45867-44b7-41c5-bb2a-98a6e2c1936f",
+        "77fdf47e-a05f-4000-8e05-e2f60ca2e43d",
+        "15c87134-958a-4717-9526-63b8a8af25a9",
+        "883b4d79-045c-4b77-b072-3b2a1c6448fc"
     ],
     "filterType": "GMSprite",
     "folderName": "Exterior",

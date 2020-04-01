@@ -26,8 +26,7 @@ if (flyvalid){
 					break;
 				}
 		
-				fly[i].xbase = x;
-				fly[i].ybase = y;
+				fly[i].fobject = id;
 			}
 		}else{
 			for(var i = 0; i < flylength; i ++){
@@ -132,6 +131,8 @@ if (health_current <= 0){
 					obj_pawn_other_train_1.is_boss = false;
 				}
 				
+				obj_controller_ui.bosshealth_value_current = 0;
+				
 				scr_objective_change(Objectives.BoardTrain, -1, -1);
 			}
 			
@@ -216,6 +217,8 @@ if (health_current <= 0){
 				}
 			}
 			
+			obj_controller_ui.bosshealth_value_current = 0;
+			
 			var antag = instance_create(x, y, obj_antagonist);
 			antag.arena_x = 292;
 			antag.arena_y = 306;
@@ -264,13 +267,21 @@ if (health_current <= 0){
 	
 	if (pawn == PawnType.Companion){
 		scr_companion_remove(object_index);
-		global.cutscene_current = 40;
-		obj_controller_gameplay.cutscene_look_x = x;
-		obj_controller_gameplay.cutscene_look_y = y;
-		obj_controller_gameplay.cutscene_look_object = obj_companion_corpse;
-		obj_controller_gameplay.cutscene_look_boss = -1;
-		obj_controller_gameplay.cutscene_look_time = 85;
-		obj_controller_gameplay.cutscene_look_prop = false;
+		
+		if (global.cutscene_current == -1){
+			global.cutscene_current = 40;
+		
+			obj_controller_gameplay.cutscene_look_x = x;
+			obj_controller_gameplay.cutscene_look_y = y;
+			obj_controller_gameplay.cutscene_look_object = obj_companion_corpse;
+			obj_controller_gameplay.cutscene_look_boss = -1;
+			obj_controller_gameplay.cutscene_look_time = 85;
+			obj_controller_gameplay.cutscene_look_prop = false;
+		}
+		
+		if (object_index == obj_companion_0){
+			global.companion_death_time = global.companion_death_time_max;
+		}
 	}
 	
 	if (doexplode){
@@ -348,6 +359,8 @@ if (health_current <= 0){
 			pack = instance_create(x, y + 4, obj_health_pack_1);
 			pack.is_dropped = true;
 			
+			obj_controller_ui.bosshealth_value_current = 0;
+			
 			scr_weapon_ammo_spawn(choose(3, 4), 6, 8, x, y + 4);
 			global.boss_current = -1;
 		}else{
@@ -402,6 +415,8 @@ if (health_current <= 0){
 			
 			scr_weapon_ammo_spawn(choose(7, 8), 6, 8, x, y + 4);
 		}
+		
+		obj_controller_ui.bosshealth_value_current = 0;
 		
 		global.boss_current = -1;
 	}

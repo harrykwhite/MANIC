@@ -1,5 +1,5 @@
 index = 40;
-special = "sicklelook";
+special = "meleelook";
 destroy_on_activate = true;
 look_x = 1702;
 look_y = 505;

@@ -1,9 +1,3 @@
-if (light_brightness < 1){
-	light_brightness += 0.025;
-}else if (light_brightness > 1){
-	light_brightness -= 0.025;
-}
-
 if (global.cutscene_current == 55) && (in_cutscene){
 	active = true;
 }
@@ -14,7 +8,8 @@ if (!instance_exists(mylight)){
 
 mylight.x = x;
 mylight.y = y;
-mylight.Light_Intensity = max((1.55 + (clamp(flash_time, 0, 2) / 10)) * light_brightness, 1.2);
+mylight.Light_Intensity = max(1.55 + (clamp(flash_time, 0, 2) / 10), 1.2);
+mylight.Light_Intensity *= light_brightness;
 
 obj_controller_ui.bosshealth_value_current = health_current;
 obj_controller_ui.bosshealth_value_max = health_max;
@@ -60,11 +55,11 @@ if (state != sprev){
 	flamethrower_time = 30;
 	attack_time = 0;
 	attack = 0;
-	
-	for(var i = 0; i < 4; i ++){
-		if (instance_exists(flamethrower[i])){
-			flamethrower[i].shoot = false;
-		}
+}
+
+for(var i = 0; i < 4; i ++){
+	if (instance_exists(flamethrower[i])){
+		flamethrower[i].shoot = false;
 	}
 }
 

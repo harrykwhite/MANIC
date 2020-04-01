@@ -4,9 +4,9 @@ if (!global.game_pause){
 	i_time_alpha = 1;
 	if (i_time > 0){
 		if (i_time_flicker){
-			i_time_alpha = 0.25;
-		}else{
 			i_time_alpha = 0.7;
+		}else{
+			i_time_alpha = 1;
 		}
 	
 		if (i_time_flicker_time < 6){

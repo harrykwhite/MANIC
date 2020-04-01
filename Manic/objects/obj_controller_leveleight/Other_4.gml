@@ -26,34 +26,34 @@ spawn_cleared = false;
 
 switch(room){
 	case rm_level_8_00:
-		obj_player.x = 360;
+		obj_player.x = 440;
 		obj_player.y = room_height + 6;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_x = 360;
+			spawn_x = 440;
 			spawn_y = 1035;
 		}else{
-			obj_player.x = 360;
+			obj_player.x = 440;
 			obj_player.y = -6;
 			
-			spawn_x = 360;
-			spawn_y = 152;
+			spawn_x = 440;
+			spawn_y = 172;
 		}
 		break;
 	
 	case rm_level_8_01:
-		obj_player.x = 462;
+		obj_player.x = 568;
 		obj_player.y = room_height + 6;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_x = 462;
-			spawn_y = 654;
+			spawn_x = 568;
+			spawn_y = 720;
 		}else{
-			obj_player.x = 462;
+			obj_player.x = 568;
 			obj_player.y = -6;
 			
-			spawn_x = 462;
-			spawn_y = 146;
+			spawn_x = 568;
+			spawn_y = 172;
 		}
 		break;
 	
@@ -63,13 +63,13 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 374;
-			spawn_y = 862;
+			spawn_y = 842;
 		}else{
 			obj_player.x = 374;
 			obj_player.y = -6;
 			
 			spawn_x = 374;
-			spawn_y = 144;
+			spawn_y = 172;
 		}
 		break;
 	

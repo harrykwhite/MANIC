@@ -34,9 +34,10 @@ for(var i = 0; i < 4; i ++){
 	flamethrower[i] = instance_create(x + lengthdir_x(80 * scale, dir), y + lengthdir_y(80 * scale, dir), obj_giantturret_flamethrower);
 	flamethrower[i].turret = id;
 	flamethrower[i].shoot_dir = dir + 45;
+	flamethrower[i].shoot_sound_pitch = 0.8 + (i * 0.1);
 }
 
-light_brightness = 0;
+light_brightness = 0.25;
 mylight = instance_create_layer(x, y, "Lights", obj_giantturret_light);
 
 burn = false;

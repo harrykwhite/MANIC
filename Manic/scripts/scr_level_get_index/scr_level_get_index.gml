@@ -182,6 +182,10 @@ switch(rm){
 		return Level.CityHeadquarters;
 		break;
 	
+	case rm_arena_1_00:
+		return Level.Arena_NorthernFarmhouse;
+		break;
+	
 	default:
 		show_debug_message("A level room has not been included in scr_level_get_index");
 		return 0;

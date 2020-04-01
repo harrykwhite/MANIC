@@ -32,7 +32,13 @@ flashlight_alpha = 0;
 
 surrounding_light_to = 1;
 surrounding_light = 1;
-surrounding_light_upgradedec = 0.025;
+surrounding_light_upgradedec = 0.1;
+
+light_brightness = 0.25;
+flashlight_brightness = 1;
+
+mylight = noone;
+flashlight = noone;
 
 // Externally Controlled Movement
 move_x_to = -1;

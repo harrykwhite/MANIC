@@ -53,7 +53,7 @@ if (instance_exists(obj_player)){
 			
 			if (dist_to_player > 70 + (40 * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				move_speed = 1.8;
 				
 				if (dist_to_player > 100 + (40 * order)){
@@ -72,7 +72,7 @@ if (instance_exists(obj_player)){
 			}else{
 				move_speed = 0;
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				face_player = true;
 			}
 		}else if (global.cutscene_current == -1){
@@ -145,7 +145,7 @@ if (instance_exists(obj_player)){
 		}
 		
 		move_x_to = obj_player.x;
-		move_y_to = obj_player.y;
+		move_y_to = obj_player.y + 6;
 	}
 	
 	if (bark_time > 0){
@@ -161,7 +161,7 @@ if (instance_exists(obj_player)){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
 			if (distance_to_object(obj_player) > 67 + (40 * order)){
 				move_x_to = obj_player.x;
-				move_y_to = obj_player.y;
+				move_y_to = obj_player.y + 6;
 				move_speed = 1.9;
 			}
 		}
@@ -178,7 +178,7 @@ if (instance_exists(obj_player)){
 speed_final = move_speed * speed_multiplier * move_speed_offset;
 
 if (move_speed_real < speed_final){
-    move_speed_real += min(0.2, speed_final - move_speed_real);
+    move_speed_real += min(0.1, speed_final - move_speed_real);
 }else if (move_speed_real > speed_final){
     move_speed_real -= min(0.2, move_speed_real - speed_final);
 }
@@ -206,15 +206,15 @@ if (!face_player){
 }
 
 // Animation
-if (speed_final > 0.1){
+if (speed_final > 0.4){
 	sprite_index = spr_companion_3_walk_0;
 }else{
 	sprite_index = spr_companion_3_idle_0;
 }
 
-if (speed_final <= 0.1) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
+if (speed_final <= 0.4) || (!instance_exists(obj_player)) || ((x == xprevious) && (y == yprevious)){
     image_speed = 0.05;
-}else if (speed_final >= 0.1) && (speed_final <= 0.75){
+}else if (speed_final >= 0.4) && (speed_final <= 0.75){
     image_speed = 0.15;
 }else if (speed_final < 1.1) && (speed_final > 0.75){
     image_speed = 0.25;

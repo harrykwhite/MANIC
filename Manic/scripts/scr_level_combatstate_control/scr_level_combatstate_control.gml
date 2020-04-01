@@ -2,6 +2,7 @@
 var bossmusic = noone;
 var level = scr_level_get_index(room);
 var paused = global.game_pause;
+var arena = scr_level_is_arena();
 var inrealboss = global.boss_current != -1;
 var inhordechallenge = global.game_combat_in_hordechallenge;
 
@@ -44,7 +45,7 @@ if (inhordechallenge) && (!paused){
 			case Level.TrainStation:
 				uindex = PlayerUpgrade.Goggles;
 				ux = 500;
-				uy = 208;
+				uy = 280;
 				
 				global.game_hordechallenge1_completed = true;
 				break;
@@ -70,7 +71,7 @@ if (inhordechallenge) && (!paused){
 				cutsceneblock.x -= cutsceneblock.sprite_width / 2;
 				cutsceneblock.y -= cutsceneblock.sprite_height / 2;
 				cutsceneblock.index = 53;
-				cutsceneblock.destroy_on_activate = true;
+				cutsceneblock.destroy_on_nocutscene = true;
 			
 				global.cutscene_current = 40;
 				obj_controller_gameplay.cutscene_look_x = ux;
@@ -240,6 +241,10 @@ if (!paused) && (!inrealboss) && (level != Level.CityHeadquarters) && (level != 
 				spawn_time = 60 * spawn_interval[global.game_combat_state];
 				
 				global.game_combat_state = CombatState.Idle;
+				
+				if (arena){
+					scr_level_arena_wave_next();
+				}
 				
 				var stinger = audio_play_sound(spawn_music_stinger[2], 3, false);
 				audio_sound_gain(stinger, 0.9 * obj_controller_all.real_music_volume, 0);

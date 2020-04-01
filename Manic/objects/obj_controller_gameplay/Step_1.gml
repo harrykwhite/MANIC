@@ -16,6 +16,12 @@ if (!deactivate_start){
 }
 
 // Game Pausing
+if (global.game_pause != global.game_pause_nextframe){
+	global.game_pause = global.game_pause_nextframe;
+	part_system_automatic_update(global.ps_bottom, !global.game_pause_nextframe);
+	part_system_automatic_update(global.ps_front, !global.game_pause_nextframe);
+}
+
 if (global.cutscene_current == -1) && (instance_exists(obj_player)){
     if (scr_input_is_pressed(InputBinding.Pause)) && (!obj_controller_ui.pausedialogue) && (!obj_controller_ui.pause_has_selected) && (!obj_controller_all.warning_prompt){
         scr_toggle_pause(!global.game_pause);

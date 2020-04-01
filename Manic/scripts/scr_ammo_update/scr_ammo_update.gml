@@ -29,16 +29,10 @@ var playerexists = instance_exists(player);
 attract = false;
 
 if (playerexists){
-    if (windex != -1) && (distance_to_object(player) < 30){
-		if (global.weapon_type[windex] == WeaponType.Ranged){
-	        if (instance_exists(global.weapon_object[windex])){
-				if (global.weapon_slotammo[global.weapon_slotcurrent] < global.weapon_ammomax[windex]) || (ammotype == AmmoType.Fuel) || (ammotype == AmmoType.Explosives) || (ammotype == AmmoType.Arrows) || (ammotype == AmmoType.Darts){
-					if (global.weapon_ammotype[windex] == ammotype){
-						attract = true;
-						enemy = false;
-					}
-				}
-	        }
+    if (distance_to_object(player) < 30){
+		if (scr_ammo_find_matching_type(ammotype, true)){
+	        attract = true;
+			enemy = false;
 		}
     }
 }
@@ -51,7 +45,7 @@ if (playerexists) && (windex != -1){
 		
         if (place_meeting(x + 1, y + 1, player)){
             instance_destroy();
-            scr_weapon_ammo_add(1);
+            scr_weapon_ammo_add(1, ammotype);
             scr_effect_screenshake(1);
 			scr_sound_play(snd_weapon_ammo_pickup_0, false, 0.8, 1.2);
 		}

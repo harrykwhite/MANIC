@@ -2,7 +2,7 @@ pawn = PawnType.Enemy;
 blend = -1;
 flash_time = 0;
 wait = 0;
-light_brightness = 0;
+light_brightness = 0.25;
 scale = random_range(0.975, 1.025);
 sporadic = false;
 sporadic_timemax = random_range(45, 150);
@@ -112,6 +112,11 @@ in_cutscene = false;
 cutscene_prop = false;
 
 livetime = 0;
+
+companion_find_time_max = 60 * 2.5;
+companion_find_time = companion_find_time_max;
+companion_find_break_max = 60;
+companion_find_break = companion_find_break_max;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;

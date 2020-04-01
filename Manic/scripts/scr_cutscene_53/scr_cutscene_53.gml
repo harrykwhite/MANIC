@@ -35,8 +35,6 @@ if (instance_exists(obj_player)){
 			
 				global.cutscene_current = -1;
 				global.cutscene_time[index] = 0;
-			
-				obj_player.surrounding_light_to -= obj_player.surrounding_light_upgradedec;
 			}
 			
 			stationary = true;

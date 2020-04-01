@@ -1,12 +1,12 @@
-mouse_scale = approach(mouse_scale, mouse_scaleTo, mouse_scaleSpeed);
+mouse_scale = approach(mouse_scale, mouse_scale_to, mouse_scale_speed);
 
 if (global.cutscene_current != -1) && (!obj_controller_ui.teaserend){
 	if (mouse_alpha > 0){
-		mouse_alpha -= 0.1;
+		mouse_alpha -= 0.05;
 	}
 }else{
 	if (mouse_alpha < 1){
-		mouse_alpha += 0.1;
+		mouse_alpha += 0.05;
 	}
 }
 
@@ -45,13 +45,11 @@ if (instance_exists(obj_player)) && (!global.game_pause) && (!obj_controller_ui.
 		}
 	}else{
 		if (global.level_current != Level.Prologue){
-			mouse = global.weapon_mouse[global.weapon_default];
+			mouse = global.weapon_default == -1 ? global.weapon_mouse[PlayerWeapon.Knife] : global.weapon_mouse[global.weapon_default];
 		}else{
 			mouse = MouseType.Dot;
 		}
 	}
 }else{
-	mouse_scale = 1;
-	mouse_alpha = 1;
 	mouse = MouseType.Dot;
 }

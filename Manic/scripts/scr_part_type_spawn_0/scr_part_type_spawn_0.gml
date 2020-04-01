@@ -6,6 +6,6 @@ part_type_shape(pt, pt_shape_cloud);
 part_type_alpha3(pt, 0.6, 0.4, 0);
 part_type_orientation(pt, 0, 360, 0, 0, 0);
 part_type_direction(pt, 0, 360, 0, 0);
-part_type_speed(pt, 1, 1.2, -0.005, 0);
+part_type_speed(pt, 0.6, 1.2, -0.005, 0);
 part_type_life(pt, 80, 110);
 part_type_size(pt, 0.6, 0.7, -0.015, 0);

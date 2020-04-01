@@ -69,7 +69,7 @@ if (global.player_stamina_active){
 		    throw.spd = 9;
 		    throw.damage = throw_damage;
 		    throw.dir = mdir;
-		    throw.image_angle = throw.dir;
+		    throw.angle = image_angle;
 		    throw.ammo = global.weapon_slotammo[global.weapon_slotcurrent];
 
 		    instance_destroy();

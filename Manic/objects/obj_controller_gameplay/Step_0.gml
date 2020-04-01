@@ -4,6 +4,18 @@ var slotcount = global.weapon_slotmax;
 scr_position_view();
 scr_inboss();
 
+// Map refresh
+if (map_refresh != -1){
+	if (map_refresh > 0){
+		map_refresh --;
+	}else{
+		scr_map_clear();
+		scr_map_fill();
+		
+		map_refresh = -1;
+	}
+}
+
 // Level complete
 if (!global.level_complete[levelcur]){
 	global.level_complete[levelcur] = global.game_objective_complete;
@@ -137,7 +149,11 @@ if (!global.game_pause){
 					}
 					
 					if (switched){
-						weaponswitch_break = 6;
+						weaponswitch_break = macbuild ? 14 : 6;
+						
+						with(obj_player){
+							scr_player_weapon_check();
+						}
 						
 						if (levelcur == Level.Prologue){
 							with(obj_controller_ui){
@@ -151,6 +167,44 @@ if (!global.game_pause){
 			}else{
 				scr_weapon_switch(true);
 			}
+		}
+	}
+	
+	// Companion death time
+	if (global.companion_death_time != -1 && global.cutscene_current == -1){
+		if (global.companion_death_time > 0){
+			global.companion_death_time --;
+		}else{
+			var comp, compfound = noone;
+			var cnum = instance_number(obj_companion_corpse);
+		
+			for(var c = 0; c < cnum; c ++){
+				comp = instance_find(obj_companion_corpse, c);
+			
+				if (comp.type == obj_companion_0){
+					compfound = comp;
+					break;
+				}
+			}
+		
+			if (compfound == noone){
+				var compvec = scr_companion_spawn_individual(obj_player.x, obj_player.y, 200);
+				instance_create(compvec[0], compvec[1], obj_companion_0);
+			
+				repeat(9){
+					part_particles_create(global.ps_front, compvec[0] + random_range(-7, 7), compvec[1] + random_range(-18, 18), global.pt_spawn_0, 1);
+				}
+			}else{
+				instance_create(compfound.x, compfound.y, obj_companion_0);
+			
+				repeat(9){
+					part_particles_create(global.ps_front, compfound.x + random_range(-7, 7), compfound.y + random_range(-18, 18), global.pt_spawn_0, 1);
+				}
+			
+				instance_destroy(compfound);
+			}
+		
+			global.companion_death_time = -1;
 		}
 	}
 }

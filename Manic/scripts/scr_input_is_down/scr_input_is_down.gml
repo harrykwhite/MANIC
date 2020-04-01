@@ -16,7 +16,7 @@ switch(global.game_input_type){
 			case InputBinding.Interact: return scr_key_check_direct(ord("E"));
 			case InputBinding.Dash: return scr_key_check_direct(vk_space);
 			case InputBinding.Attack: return mouse_check_button(mb_left);
-			case InputBinding.Throw: return mouse_check_button(mb_right);
+			case InputBinding.Throw: return mouse_check_button(mb_right) || keyboard_check(ord("Q"));
 			case InputBinding.Pause: return keyboard_check(vk_escape);
 			case InputBinding.SwitchWeaponBack: return mouse_wheel_up();
 			case InputBinding.SwitchWeaponForward: return mouse_wheel_down();

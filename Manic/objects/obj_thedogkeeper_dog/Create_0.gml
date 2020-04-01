@@ -23,6 +23,7 @@ attack_time = random_range(30, 45);
 attack_active_time = 45;
 
 mylight = noone;
+light_brightness = 0.25;
 
 burn = false;
 burn_x = x;

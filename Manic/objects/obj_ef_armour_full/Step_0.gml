@@ -9,7 +9,7 @@ if (can_touch_player){
 			scr_upgrade_add(PlayerUpgrade.Chestplate);
 			scr_upgrade_add(PlayerUpgrade.Leggings);
 			
-			scr_sound_play(snd_weapon_pickup_collectable, false, 0.8, 1.2);
+			scr_sound_play(snd_weapon_pickup_upgrade, false, 0.8, 1.2);
 			scr_effect_screenshake(1);
 			
 			global.player_health_max = 12;

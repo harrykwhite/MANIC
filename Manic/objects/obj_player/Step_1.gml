@@ -17,7 +17,11 @@ if (!upgrades_set){
 if (!global.weapon_default_set){
 	if (!global.game_is_playthrough){
 		var def = PlayerWeapon.Knife;
-	
+		
+		if (global.level_current == Level.Prologue){
+			def = -1;
+		}
+		
 		if (global.level_current >= Level.HumanPrison){
 			def = PlayerWeapon.Bayonet;
 		}

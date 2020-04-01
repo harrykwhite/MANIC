@@ -26,13 +26,13 @@ if (obj_controller_all.show_ui){
 }
 
 // Base sprite
-draw_sprite_ext(sprite, animation, x, y + yy, scale, scale, angle, c_white, 1);
+draw_sprite_ext(sprite, animation, x, y + yy, scale, scale, angle, c_white, alpha);
 mask_index = spr_mask_0;
 
 // No ammo effects
 if (ammo == 0) && (global.weapon_type[index] == WeaponType.Ranged){
     gpu_set_fog(true, c_red, 0, 0);
-    draw_sprite_ext(sprite, animation, x, y + yy, scale, scale, angle, c_white, noammo_glow);
+    draw_sprite_ext(sprite, animation, x, y + yy, scale, scale, angle, c_white, alpha * noammo_glow);
     gpu_set_fog(false, c_black, 0, 0);
     draw_set_alpha(1);
 }
@@ -47,8 +47,8 @@ if (specialweapon){
 		}
 	}*/
 	
-	var glow = wave(0.25, 1, 2, 0);
+	var glow = wave(0.25, 0.65, 2, 0);
 	gpu_set_fog(true, c_white, 0, 0);
-	draw_sprite_ext(sprite, 0, x, y + yy, scale, scale, angle, c_white, 0.4 * glow);
+	draw_sprite_ext(sprite, 0, x, y + yy, scale, scale, angle, c_white, alpha * glow * 0.4);
 	gpu_set_fog(false, c_black, 0, 0);
 }

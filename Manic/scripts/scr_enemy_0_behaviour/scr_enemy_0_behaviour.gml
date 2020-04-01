@@ -38,7 +38,11 @@ var weapon_exists = instance_exists(weapon) && weapon != -1;
 if (instance_exists(target)){
 	var mindist = 36;
 	
-	scr_enemy_find_companion();
+	if (weapon_exists){
+		if (weapon.type == WeaponType.Melee){
+			scr_enemy_find_companion();
+		}
+	}
 	
 	if (sporadic){
 		mindist = 40;
@@ -149,7 +153,7 @@ if (instance_exists(target)){
 									instance_destroy(weapon);
 									weapon = instance_create(x, y, obj_pawnweapon_4);
 									weapon.owner = id;
-									weapon.dir = (sign(image_xscale == 1) ? 360 : 180);
+									weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
 									weapon_index = PawnWeapon.Grenade;
 									time = 40;
 									attack_time = time * attack_time_offset;

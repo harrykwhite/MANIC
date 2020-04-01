@@ -76,9 +76,10 @@ if (instance_exists(target)){
 			flamethrower_time --;
 		}else{
 			var has_flamethrowers = false;
+			
 			for(var i = 0; i < 4; i ++){
 				if (instance_exists(flamethrower[i])){
-					has_flamethrowers  = true;
+					has_flamethrowers = true;
 					flamethrower[i].shoot = true;
 				}
 			}
@@ -86,8 +87,6 @@ if (instance_exists(target)){
 			if (!has_flamethrowers){
 				attack_time = attack_time_max;
 			}
-			
-			flamethrower_time = 6;
 		}
 		
 	// Break

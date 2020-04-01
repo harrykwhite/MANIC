@@ -25,7 +25,7 @@ if (instance_exists(obj_player)) && (global.player_stamina_active){
 	            throw.spd = 10;
 	            throw.damage = throw_damage;
 	            throw.dir = mdir;
-	            throw.image_angle = image_angle;
+	            throw.angle = image_angle;
 				throw.timemax = 55;
 				throw.damage_enemy = true;
 				throw.damage_player = true;

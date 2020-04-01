@@ -17,7 +17,7 @@ shoot_in_burst = false;
 
 mylight = noone;
 flash_time = 0;
-light_brightness = 0;
+light_brightness = 0.25;
 
 burn = false;
 burn_x = x;

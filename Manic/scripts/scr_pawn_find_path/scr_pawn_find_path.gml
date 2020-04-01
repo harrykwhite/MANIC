@@ -10,14 +10,20 @@ var cw = obj_controller_gameplay.pathgrid_cell_width;
 var ch = obj_controller_gameplay.pathgrid_cell_height;
 var success = false;
 
+var yoff = 6;
+
+if (object_index == obj_enemy_2) || (object_index == obj_enemy_3) || (object_index == obj_enemy_4) || (object_index == obj_enemy_5) || (object_index == obj_companion_3){
+	yoff = 2;
+}
+
 var width = room_width div cw;
 var height = room_height div ch;
 
 var thisx = (x div cw);
-var thisy = ((y + 3) div ch);
+var thisy = ((y + yoff) div ch);
 
 var thisxaxis = sign((x / cw) - thisx);
-var thisyaxis = sign(((y + 3) / ch) - thisy);
+var thisyaxis = sign(((y + yoff) / ch) - thisy);
 
 thisx = clamp(thisx, 0, width - 1);
 thisy = clamp(thisy, 0, height - 1);
@@ -74,7 +80,7 @@ gx *= cw;
 gy *= ch;
 
 if (mp_grid_path(obj_controller_gameplay.pathgrid, mypath, thisx, thisy, gx, gy, true)){
-	if (point_distance(x, y + 3, gx, gy) > 4){
+	if (point_distance(x, (y + yoff), gx, gy) > 4){
 		if (domove){
 			var xx = path_get_point_x(mypath, 2);
 			var yy = path_get_point_y(mypath, 2);
@@ -101,14 +107,14 @@ if (mp_grid_path(obj_controller_gameplay.pathgrid, mypath, thisx, thisy, gx, gy,
 				var real_px = path_get_point_x(prevpath, max(0, i - 2));
 				var real_py = path_get_point_y(prevpath, max(0, i - 2));
 				var real_dist_p = distance_to_point(real_px, real_py);
-				var dir_p = point_direction(x, y + 3, px, py);
+				var dir_p = point_direction(x, (y + yoff), px, py);
 				
 				if (domove){
 					move_to_door = true;
 					move_to_door_dir = dir_p;
 				}
 				
-				if (real_dist_p < 35){
+				if (real_dist_p < 25){
 					if (object_index == obj_enemy_0){
 						if (instance_exists(weapon)){
 							weapon.attack = true;
@@ -123,7 +129,7 @@ if (mp_grid_path(obj_controller_gameplay.pathgrid, mypath, thisx, thisy, gx, gy,
 					}
 				}
 				
-				if (domove && real_dist_p > 30){
+				if (domove && real_dist_p > 20){
 					mp_potential_step_object(real_px, real_py, move_speed_real, obj_p_solid);
 					success = true;
 				}

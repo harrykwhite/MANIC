@@ -12,6 +12,6 @@ if (instance_exists(owner)){
 			image_yscale = -1;
 		}
 	
-		angle_offset_current = approach(angle_offset_current, angle_offset, 50);
+		angle_offset_current = approach(angle_offset_current, angle_offset, 40);
 	}
 }

@@ -152,7 +152,7 @@ if (gamepad_check_break > 0){
 			
 				if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
 					with(obj_titlescreen_main){
-						selected = -1;
+						selected = iskeyboard ? -1 : 0;
 					}
 				}
 			
@@ -319,6 +319,10 @@ if (warning_prompt){
 			}
 			
 			warning_prompt = false;
+			warning_prompt_selected = iskeyboard ? -1 : 0;
+			warning_prompt_selected_previous = iskeyboard ? -1 : 0;
+			
+			scr_sound_play(snd_menu_button_mouse_click, false, 0.8, 1.2);
 			return;
 		}
 	}

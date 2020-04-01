@@ -160,7 +160,9 @@ if (drawshader){
 }
 
 if (headless){
-	headless_image += 0.35;
+	if (!global.game_pause){
+		headless_image += 0.35;
+	}
 
 	if (object_index != obj_enemy_2) && (object_index != obj_companion_3) && (object_index != obj_thedogkeeper_dog){
 		draw_sprite_ext(spr_enemy_0_headless_blood_0, headless_image, x, y, image_xscale, image_yscale, 0, c_white, image_alpha * alpha_mult);

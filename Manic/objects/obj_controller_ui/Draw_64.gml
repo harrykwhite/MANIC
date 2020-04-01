@@ -12,8 +12,10 @@ var dheight = display_get_gui_height();
 
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
 var iscutscene = (global.cutscene_current != -1);
+var isarena = scr_level_is_arena();
 
 var levelcur = global.level_current;
+var levelobj = scr_level_get_object();
 
 // Red Tint
 redtint_alphato = 0;
@@ -51,7 +53,9 @@ var weaponslotcurrent = global.weapon_slotcurrent;
 var weaponslotamount = global.weapon_slotmax;
 var weaponslotammo = global.weapon_slotammo;
 
-var yspace = 74;
+var ammred = make_colour_rgb(230, 0, 0);
+
+var yspace = 84;
 var weapon_standalone_alpha = 1;
 
 if (global.weapon_slot_standalone != -1){
@@ -113,46 +117,96 @@ repeat(weaponslotamount){
 	}
 	
 	// Drawin Slot Number
-	draw_set_halign(fa_right);
+	draw_set_halign(fa_left);
 	draw_set_font(fnt_cambria_0);
 	draw_set_alpha(1);
-	scr_text(xx - 14, yy - 28, string(counter + 1), c_gray);
+	scr_text(xx - 41, yy - 34, string(counter + 1), c_gray);
 	
 	gpu_set_fog(false, c_white, 0, 0);
+	
+	// Drawing Ammo and Quantity
+	weaponslot_ammoscale[counter] = approach(weaponslot_ammoscale[counter], 1, 20);
+	
+	if (weaponslot[counter] != -1) && (weaponslot[counter] != weapondefault){
+		var ammx = xx + 44;
+		var ammy = yy + 37;
+		var ammscale = weaponslot_ammoscale[counter];
+		var ammcol = isred ? ammred : c_ltgray;
+		
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_bottom);
+		draw_set_font(fnt_cambria_0);
+		
+		if (global.weapon_type[weaponslot[counter]] == WeaponType.Ranged){
+			var slotamm = global.weapon_slotammo[counter];
+			var slotammmax = global.weapon_ammomax[weaponslot[counter]];
+			var slotammstr = string(slotamm) + "/" + string(slotammmax);
+			
+			var ammstrwidth = string_width(slotammstr) * ammscale;
+			//var ammstrheight = string_height(slotammstr) * ammscale;
+			
+			var ammsprite = scr_ammo_find_sprite(global.weapon_ammotype[weaponslot[counter]]);
+			var ammspritewidth = sprite_get_width(ammsprite) * ammscale;
+			var ammspriteheight = sprite_get_height(ammsprite) * ammscale;
+			
+			scr_text_transformed(ammx, ammy, slotammstr, (slotamm > 0 && !isred) ? c_ltgray : ammred, ammscale, ammscale, 0);
+			
+			gpu_set_fog(true, ammcol, 0, 0);
+			draw_sprite_ext(ammsprite, 0, ammx - ammstrwidth - ammspritewidth, ammy - ammspriteheight, ammscale * 1.5, ammscale * 1.5, 0, c_white, 1);
+			gpu_set_fog(false, c_white, 0, 0);
+		}else if (global.weapon_type[weaponslot[counter]] == WeaponType.Throwing){
+			var slotquant = global.weapon_slotquantity[counter];
+			scr_text_transformed(ammx, ammy, "x" + string(slotquant), ammcol, ammscale, ammscale, 0);
+		}
+	}
 	
     // Drawing Weapon
     if (weaponslot[counter] != -1) && (weaponslot[counter] != weapondefault){
 		var spr = weaponcentersprite[weaponslot[counter]];
         
         gpu_set_fog(true, isred ? c_red : c_white, 0, 0);
-        draw_sprite_ext(spr, 0, xx, yy, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 45, c_white, 1 * weapon_standalone_alpha * ui_alpha);
+        draw_sprite_ext(spr, 0, xx, yy, weaponslot_weaponscale[counter], weaponslot_weaponscale[counter], 30, c_white, weapon_standalone_alpha * ui_alpha);
         gpu_set_fog(false, c_white, 0, 0);
-    }else if (levelcur != Level.Prologue){
+    }else if (global.weapon_default != -1){
 		var spr = weaponcentersprite[weapondefault];
 		
 		gpu_set_fog(true, c_gray, 0, 0);
-        draw_sprite_ext(spr, 0, xx, yy, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 45, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
+        draw_sprite_ext(spr, 0, xx, yy, (weaponslot_weaponscale[counter] + 0.25), (weaponslot_weaponscale[counter] + 0.25), 30, c_white, 0.6 * weapon_standalone_alpha * ui_alpha);
         gpu_set_fog(false, c_black, 0, 0);
 	}
 	
+	draw_set_valign(fa_top);
 	counter ++;
 }
 
 counter = 0;
 
+// Standalone weapon ammo
+if (global.weapon_slot_standalone != -1){
+	var col = c_ltgray;
+	
+	if (global.weapon_slot_standalone_ammo <= 0){
+		col = make_colour_rgb(230, 0, 0);
+	}
+	
+	weapon_standalone_ammoscale = approach(weapon_standalone_ammoscale, 1, 20);
+	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_set_font(fnt_cambria_0);
+	scr_text_transformed(scr_world_to_screen_x(weapon_standalone_ammox), scr_world_to_screen_y(weapon_standalone_ammoy), string(global.weapon_slot_standalone_ammo) + "/" + string(global.weapon_ammomax[global.weapon_slot_standalone]), col, weapon_standalone_ammoscale, weapon_standalone_ammoscale, 0);
+	draw_set_valign(fa_top);
+}
+
 // Player Stamina
 var sc = global.player_stamina_current;
 var sm = global.player_stamina_max;
 
-var xx = 122;
-var yy = 78 - 30;
+var xx = 137;
+var yy = 78 - 37;
 var width = 3;
-var height = 137;
-var col = c_white;
-
-if (!global.player_stamina_active){
-	col = c_ltgray;
-}
+var height = 157;
+var col = global.player_stamina_active ? c_white : c_gray;
 
 draw_set_alpha(weapon_standalone_alpha * ui_alpha);
 draw_healthbar(xx, yy, xx + width, yy + height, sc / sm * 100, make_color_rgb(45, 45, 45), col, col, 3, false, false);
@@ -195,39 +249,41 @@ if (tutourial) && (!iscutscene){
 			}else{
 				tutourial_stage_timer = tutourial_stage_timer_max;
 				scr_tutourial_next_stage();
-			
-				if (tutourial_stage == TutourialStage.PickupMelee){
-					if (tutourial_stage_pickupmelee_equipped){
-						scr_tutourial_next_stage();
-						tutourial_stage_timer = tutourial_stage_timer_max;
-					}else{
-						if (!tutourial_stage_pickupmelee_cseen){
-							var cutsceneblock = inst_1A5669D2;
+				
+				if (!tutourial_fade){
+					if (tutourial_stage == TutourialStage.PickupMelee){
+						if (tutourial_stage_pickupmelee_equipped){
+							scr_tutourial_next_stage();
+							tutourial_stage_timer = tutourial_stage_timer_max;
+						}else{
+							if (!tutourial_stage_pickupmelee_cseen){
+								var cutsceneblock = inst_1A5669D2;
 					
-							instance_destroy(cutsceneblock);
+								instance_destroy(cutsceneblock);
 					
-							global.cutscene_current = 40;
-							obj_controller_gameplay.cutscene_look_x = 1702;
-							obj_controller_gameplay.cutscene_look_y = 505;
-							obj_controller_gameplay.cutscene_look_time = 80;
-							obj_controller_gameplay.cutscene_look_prop = false;
-							obj_controller_gameplay.cutscene_look_object = noone;
+								global.cutscene_current = 40;
+								obj_controller_gameplay.cutscene_look_x = 1702;
+								obj_controller_gameplay.cutscene_look_y = 505;
+								obj_controller_gameplay.cutscene_look_time = 80;
+								obj_controller_gameplay.cutscene_look_prop = false;
+								obj_controller_gameplay.cutscene_look_object = noone;
+							}
 						}
 					}
-				}
-			
-				if (tutourial_stage == TutourialStage.CollectAmmo){
-					if (tutourial_stage_ammocollected_done){
-						scr_tutourial_next_stage();
-						tutourial_stage_timer = tutourial_stage_timer_max;
-					}else{
-						if (instance_exists(obj_player)){
-							global.cutscene_current = 40;
-							obj_controller_gameplay.cutscene_look_x = 1762;
-							obj_controller_gameplay.cutscene_look_y = 728;
-							obj_controller_gameplay.cutscene_look_time = 80;
-							obj_controller_gameplay.cutscene_look_prop = false;
-							obj_controller_gameplay.cutscene_look_object = noone
+					
+					if (tutourial_stage == TutourialStage.CollectAmmo){
+						if (tutourial_stage_ammocollected_done){
+							scr_tutourial_next_stage();
+							tutourial_stage_timer = tutourial_stage_timer_max;
+						}else{
+							if (instance_exists(obj_player)){
+								global.cutscene_current = 40;
+								obj_controller_gameplay.cutscene_look_x = 1762;
+								obj_controller_gameplay.cutscene_look_y = 728;
+								obj_controller_gameplay.cutscene_look_time = 80;
+								obj_controller_gameplay.cutscene_look_prop = false;
+								obj_controller_gameplay.cutscene_look_object = noone
+							}
 						}
 					}
 				}
@@ -268,7 +324,7 @@ if (tutourial) && (!iscutscene){
 }
 
 // Objective Display
-if (levelcur != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
+if (levelcur != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)) && (!isarena){
 	var text = "";
 	var textx = 40;
 	var texty = dheight - 50;
@@ -282,8 +338,11 @@ if (levelcur != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
 			text += "Proceed to the next area.";
 		}
 	}else{
+		var lvl = scr_level_get_index(room);
+		
 		text = global.objective_name[global.game_objective_current];
 		text = string_replace(text, "^", string(global.objective_counter_max[global.game_objective_current] - global.objective_counter[global.game_objective_current]));
+		text = string_replace(text, ">", string(global.level_location_name[lvl]));
 	}
 	
 	var redglow = wave(0.125, 0.225, 2, 0);
@@ -317,247 +376,129 @@ if (levelcur != Level.CityHeadquarters) && (!scr_level_is_peaceful(room)){
 	}
 }
 
-/* Weapon Info
-if (weaponinfo){
-	weaponinfo_yoff = approach(weaponinfo_yoff, weaponinfo_yoff_max, 20);
-}else{
-	weaponinfo_yoff = approach(weaponinfo_yoff, 0, 20);
-}
+// Arena text
+draw_set_alpha(1);
 
-if (weaponinfo_yoff > 0.02){
-	var wname = global.weapon_name[weaponinfo_index];
-	var wdamage = global.weapon_damage[weaponinfo_index];
-	var wspeed = global.weapon_speed[weaponinfo_index];
-	var wtype = global.weapon_type[weaponinfo_index];
-	var gapwidth = 80;
+if (isarena){
+	arena_scale = approach(arena_scale, 1, 15);
 	
-	draw_set_alpha(weaponinfo_yoff / weaponinfo_yoff_max);
-	draw_set_font(fnt_cambria_2);
+	// Bar data
+	var bar_x1, bar_y1, bar_x2, bar_y2;
+	var barwidth, barheight = 6;
+	var barvalue = global.game_combat_state_time_real;
+	var barmax = 0;
+	
+	for(var s = global.game_combat_state - 1; s >= 0; s --){
+		barvalue += levelobj.spawn_state_time[s] * 60;
+	}
+	
+	for(var s = 0; s <= CombatState.Climax; s ++){
+		barmax += levelobj.spawn_state_time[s] * 60;
+	}
+	
+	// Bar moments
+	var barmoment, barmoment_count;
+	
+	barmoment[0] = (levelobj.spawn_state_time[CombatState.Idle] * 60) / barmax;
+	barmoment[1] = ((levelobj.spawn_state_time[CombatState.Idle] + levelobj.spawn_state_time[CombatState.Buildup]) * 60) / barmax;
+	
+	barmoment_count = array_length_1d(barmoment);
+	
+	// Text data
+	var text = "WAVE " + 
+		(global.game_combat_arena_wave < global.game_combat_arena_wavemax ? string(global.game_combat_arena_wave + 1) : "MAX");
+	
+	var textwidth, textheight;
+	
+	var textx = dwidth / 2;
+	var texty = dheight - 50;
+	
+	draw_set_font(fnt_cambria_3);
+	
 	draw_set_halign(fa_center);
-	scr_text(dwidth / 2, dheight - 110 + weaponinfo_yoff, wname, c_white);
+	draw_set_valign(fa_middle);
 	
-	draw_set_font(fnt_cambria_n1);
+	textwidth = string_width(text) * arena_scale;
+	textheight = string_height(text) * arena_scale;
 	
-	if (wtype == WeaponType.Ranged || wtype == WeaponType.Throwing){
-		var wcontent_str = (wtype == WeaponType.Ranged)
-		? "AMMO: " + string(weaponinfo_ammo) + "/" + string(global.weapon_ammomax[weaponinfo_index])
-		: "QUANTITY: x" + string(weaponinfo_quantity);
-		var wcontent_col = c_white;
-		
-		draw_set_halign(fa_center);
-		scr_text((dwidth / 2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
-		
-		draw_set_halign(fa_right);
-		scr_text((dwidth / 2) - gapwidth, dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
-		
-		if (wtype == WeaponType.Ranged && weaponinfo_ammo <= 0){
-			wcontent_col = c_red;
-		}
-		
-		draw_set_halign(fa_left);
-		scr_text((dwidth / 2) + gapwidth, dheight - 76 + weaponinfo_yoff, wcontent_str, wcontent_col);
+	// Bar position
+	barwidth = textwidth * 2.5;
+	bar_x1 = textx - (barwidth / 2);
+	bar_y1 = texty + (textheight / 2);
+	bar_x2 = textx + (barwidth / 2);
+	bar_y2 = texty + (textheight / 2) + barheight;
+	
+	// Draw
+	if (arena_scale > 1.01){
+		scr_text_transformed(dwidth / 2, dheight - 50, text, c_white, arena_scale, arena_scale, 0);
 	}else{
-		draw_set_halign(fa_right);
-		scr_text((dwidth / 2) - (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "SPEED: " + scr_weapon_get_level_string(wspeed), c_white);
+		scr_text(dwidth / 2, dheight - 50, text, c_white);
+	}
+	
+	draw_healthbar(bar_x1, bar_y1, bar_x2, bar_y2, (barvalue / barmax) * 100, c_black, c_white, c_white, 0, true, false);
+	
+	draw_set_colour(c_ltgray);
+	draw_set_alpha(0.25);
+	
+	for(var bm = 0; bm < barmoment_count; bm ++){
+		var moment = barmoment[bm];
+		var momentx = bar_x1 + (moment * barwidth);
+		var momentwidth = 3;
 		
-		draw_set_halign(fa_left);
-		scr_text((dwidth / 2) + (gapwidth * 0.2), dheight - 76 + weaponinfo_yoff, "DAMAGE: " + scr_weapon_get_level_string(wdamage), c_white);
+		draw_rectangle(momentx, bar_y1, momentx + momentwidth, bar_y2, false);
 	}
 	
 	draw_set_alpha(1);
-}*/
-
-// Weapon Ammo
-draw_set_valign(fa_top);
-
-var w = global.weapon_slot[global.weapon_slotcurrent];
-var drawammo = false;
-
-if (global.weapon_slot_standalone != -1){
-	w = global.weapon_slot_standalone;
 }
 
-if (instance_exists(obj_player)){
-	counter = 0;
-	var slotmax = global.weapon_slotmax;
-	
-	draw_set_alpha(ui_alpha);
-	draw_set_font(fnt_cambria_0);
-	
-	repeat(slotmax){
-		var xx = 51, yy = (74 * (counter + 1)) + 12;
-		draw_set_halign(fa_left);
-		draw_set_alpha(weapon_standalone_alpha);
-		
-		if (global.weapon_slot[counter] != -1){
-			var col = c_white;
-			
-			if (global.weapon_type[global.weapon_slot[counter]] == WeaponType.Throwing){
-				var quantity = global.weapon_slotquantity[counter];
-				scr_text(xx, yy, "x" + string(quantity), col);
-			}
-		}
-		
-		counter ++;
-	}
-	
-	counter = 0;
-	
-    if (w != -1){
-		/*if (global.weapon_type[w] == WeaponType.Ranged){
-			var noammoy = dheight - 220;
-			
-			if (global.weapon_slot_standalone == -1){
-				if (global.weapon_slotammo[global.weapon_slotcurrent] <= 0){
-					draw_set_font(fnt_cambria_2);
-					draw_set_halign(fa_center);
-					scr_text(dwidth / 2, noammoy, "NO AMMO", c_red);
-					draw_set_font(fnt_cambria_0);
-					scr_text(dwidth / 2, noammoy + 30, scr_mousecheck_string(global.game_option[| Options.Input_Throw]) + " TO THROW", c_red);
-					// ^^^ Could this suggest to the player that there is no way of retrieving ammo back?
-				}
-			}else{
-				if (global.weapon_slot_standalone_ammo <= 0){
-					draw_set_font(fnt_cambria_2);
-					draw_set_halign(fa_center);
-					scr_text(dwidth / 2, noammoy, "NO AMMO", c_red);
-				}
-			}
-		}*/
-		
-		if (instance_exists(global.weapon_object[w])){
-	        if (global.weapon_type[w] == WeaponType.Ranged){
-	            var xx = 131 + weaponammo_x;
-	            var yy = 78 - 33;
-	            var col = c_white;
-				
-	            var ammo = global.weapon_slotammo[global.weapon_slotcurrent];
-	            var maxammo = global.weapon_ammomax[w];
-	            drawammo = true;
-				
-				if (global.weapon_slot_standalone != -1){
-					ammo = global.weapon_slot_standalone_ammo;
-					maxammo = global.weapon_ammomax[global.weapon_slot_standalone];
-				}
-				
-				if (weaponammo_x < 5){
-					weaponammo_x += 2.5;
-				}
-				
-				weaponammo_scale = approach(weaponammo_scale, weaponammo_scaleTo, 20);
-				
-	            if (ammo == 0){
-	                col = c_red;
-	            }
-				
-	            draw_set_halign(fa_left);
-	            draw_set_font(fnt_cambria_2);
-				draw_set_alpha(ui_alpha);
-				
-				switch(global.weapon_ammotype[w]){
-					case AmmoType.Bullets:
-						if (weaponammo_scale > 1.01){
-							scr_text_transformed(xx, yy, string(ammo) + "/" + string(maxammo), col, weaponammo_scale, weaponammo_scale, 0);
-						}else{
-							scr_text(xx, yy, string(ammo) + "/" + string(maxammo), col);
-						}
-						break;
-					
-					case AmmoType.Fuel:
-						if (weaponammo_scale > 1.01){
-							scr_text_transformed(xx, yy, string(ammo) + " fuel", col, weaponammo_scale, weaponammo_scale, 0);
-						}else{
-							scr_text(xx, yy, string(ammo) + " fuel", col);
-						}
-						break;
-					
-					case AmmoType.Explosives:
-						if (weaponammo_scale > 1.01){
-							scr_text_transformed(xx, yy, string(ammo) + " explosives", col, weaponammo_scale, weaponammo_scale, 0);
-						}else{
-							scr_text(xx, yy, string(ammo) + " explosives", col);
-						}
-						break;
-					
-					case AmmoType.Arrows:
-						if (weaponammo_scale > 1.01){
-							scr_text_transformed(xx, yy, string(ammo) + " arrows", col, weaponammo_scale, weaponammo_scale, 0);
-						}else{
-							scr_text(xx, yy, string(ammo) + " arrows", col);
-						}
-						break;
-					
-					case AmmoType.Darts:
-						if (weaponammo_scale > 1.01){
-							scr_text_transformed(xx, yy, string(ammo) + " darts", col, weaponammo_scale, weaponammo_scale, 0);
-						}else{
-							scr_text(xx, yy, string(ammo) + " darts", col);
-						}
-						break;
-					
-					case AmmoType.Shells:
-						if (weaponammo_scale > 1.01){
-							scr_text_transformed(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col, weaponammo_scale, weaponammo_scale, 0);
-						}else{
-							scr_text(xx, yy, string(ammo) + "/" + string(maxammo) + " shells", col);
-						}
-						break;
-				}
-	        }else{
-				weaponammo_x = 0;
-			}
-		}
-    }
-}
-
-// Collectables
+// Time display
 var str = string(scr_seconds_to_timer(global.game_save_seconds));
 
-if (!drawammo){
-	stats_y = approach(stats_y, 48, 30);
-}else{
-	stats_y = approach(stats_y, 72, 30);
-}
-
-draw_set_alpha(1);
 draw_set_font(fnt_cambria_n1);
 draw_set_halign(fa_left);
-scr_text(136, stats_y, str, c_white);
+draw_set_valign(fa_top);
+scr_text(151, 38, str, c_white);
 
 // Boss Health
-bosshealth_width_to = 500 / global.game_option[| Options.UIScale];
+if (!isarena){
+	bosshealth_width_to = 500 / global.game_option[| Options.UIScale];
 
-if (!global.game_pause){
-	if (global.boss_current != -1) && (global.boss_current != Boss.SniperRobot) && (global.boss_current != Boss.MotherRobot) && (!iscutscene) && (blackbar_sizereal <= 40){
-		bosshealth_width_current = approach(bosshealth_width_current, bosshealth_width_to, 5);
-	}else if (!iscutscene){
-		bosshealth_width_current = approach(bosshealth_width_current, -10, 5);
+	if (global.boss_current == -1){
+		bosshealth_value_current = 0;
 	}
-}
 
-if (bosshealth_value_current < bosshealth_value_previous){
-	bosshealth_flash = 1;
-}
+	if (!global.game_pause){
+		if (global.boss_current != -1) && (global.boss_current != Boss.SniperRobot) && (global.boss_current != Boss.MotherRobot){
+			bosshealth_width_current = approach(bosshealth_width_current, bosshealth_width_to, 15);
+		}else if (!iscutscene){
+			bosshealth_width_current = approach(bosshealth_width_current, 0, 15);
+		}
+	}
 
-if (bosshealth_flash > 0.01){
-	bosshealth_flash *= 0.8;
-}
+	if (bosshealth_value_current < bosshealth_value_previous){
+		bosshealth_flash = 1;
+	}
 
-if (bosshealth_width_current > 0){
-	var xx = dwidth / 2;
-	var yy = dheight - 100;
-	var w = bosshealth_width_current;
-	var h = 6;
+	if (bosshealth_flash > 0.01){
+		bosshealth_flash *= 0.8;
+	}
+
+	if (floor(bosshealth_width_current) > 0){
+		var xx = dwidth / 2;
+		var yy = dheight - 100;
+		var w = bosshealth_width_current;
+		var h = 6;
 	
-	draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_colour_rgb(38, 38, 38), c_ltgray, c_ltgray, 0, true, false);
+		draw_healthbar(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), floor((bosshealth_value_current / bosshealth_value_max) * 100), make_colour_rgb(38, 38, 38), c_ltgray, c_ltgray, 0, true, false);
 	
-	draw_set_alpha(bosshealth_flash * 0.3);
-	draw_set_colour(c_ltgray);
-	draw_rectangle(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), false);
-	draw_set_alpha(1);
-}
+		draw_set_alpha(bosshealth_flash * 0.3);
+		draw_set_colour(c_ltgray);
+		draw_rectangle(xx - (w / 2), yy - (h / 2), xx + (w / 2), yy + (h / 2), false);
+		draw_set_alpha(1);
+	}
 
-bosshealth_value_previous = bosshealth_value_current;
+	bosshealth_value_previous = bosshealth_value_current;
+}
 
 // Header Display
 if (header_display_alpha > 0){
@@ -622,14 +563,13 @@ if (control_indicate){
 	}
 }else{
 	if (control_indicate_x > -388){
-		control_indicate_x = approach(control_indicate_x, -388, 10);
+		control_indicate_x = approach(control_indicate_x, -388, 20);
 	}else{
 		control_indicate_text = "";
 	}
 }
 
 if (control_indicate_text != ""){
-	var buttonstr = scr_input_get_name(InputBinding.Interact);
 	var buttonstr = scr_input_get_name(InputBinding.Interact);
 	
 	draw_set_font(fnt_cambria_1);
@@ -907,7 +847,7 @@ var xx = dwidth / 2;
 var yy = (dheight / 2) - ((30 * pause_selectedmax) / 2);
 var offset = 42;
 
-if (global.game_pause) && (!pausedialogue){
+if (global.game_pause) && (!pausedialogue) && (pausedialogue_alpha <= 0){
 	if (pause_text_alpha < 1){
 		pause_text_alpha += 0.15;
 	}
@@ -967,6 +907,10 @@ if (!pause_text_update){
 	}
 }
 
+if (pause_selected_previous != pause_selected && pause_selected != -1){
+	scr_sound_play(snd_menu_button_mouse_hover, false, 0.8, 1.2);
+}
+
 // Pause Dialogue
 var optint = 48;
 var optxx = dwidth / 2;
@@ -980,7 +924,7 @@ if (pausedialogue){
 	if (pausedialogue_alpha > 0){
 		pausedialogue_alpha -= 0.1;
 	}else{
-		pausedialogue_option_selected = 0;
+		pausedialogue_option_selected = iskeyboard ? -1 : 0;
 		pausedialogue_type = 0;
 		pausedialogue_alpha = 0;
 	}
@@ -1059,6 +1003,20 @@ if (pausedialogue_alpha > 0){
 	}
 	
 	draw_set_valign(fa_top);
+}
+
+if (pausedialogue_option_selected_previous != pausedialogue_option_selected && pausedialogue_option_selected != -1){
+	scr_sound_play(snd_menu_button_mouse_hover, false, 0.8, 1.2);
+}
+
+// Warning prompt
+with(obj_controller_all){
+	event_user(0);
+}
+
+// Mouse
+with(obj_controller_mouse){
+	event_user(0);
 }
 
 // Level Screen Opening
@@ -1163,7 +1121,7 @@ if (ending){
 	scr_text(dwidth / 2, (dheight / 2) + 75, "Programming assistance from Grayson Sutherlin and Sam Hollins", c_white);
 	scr_text(dwidth / 2, (dheight / 2) + 125, "Thank you for playing!", c_white);
 	
-	var cont_text = "Press " + (!iskeyboard ? scr_input_get_name(InputBinding.Interact) : scr_input_get_name(InputBinding.Attack)) + " to return to titlescreen"
+	var cont_text = "Press " + (!iskeyboard ? scr_input_get_name(InputBinding.Interact) : scr_input_get_name(InputBinding.Attack)) + " to return to titlescreen";
 	
 	scr_text(dwidth / 2, (dheight / 2) + 190, cont_text, c_white);
 	

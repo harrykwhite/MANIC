@@ -5,6 +5,10 @@ if (burn){
 	}
 }
 
+if (audio_is_playing(shoot_sound)){
+	audio_stop_sound(shoot_sound);
+}
+
 if (instance_exists(mylight)){
 	instance_destroy(mylight);
 }

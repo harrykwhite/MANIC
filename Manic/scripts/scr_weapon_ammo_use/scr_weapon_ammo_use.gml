@@ -8,18 +8,13 @@ if (scr_player_has_upgrade(PlayerUpgrade.AmmoPack)){
 }
 
 if (global.weapon_slot_standalone == -1){
+	obj_controller_ui.weaponslot_ammoscale[global.weapon_slotcurrent] = 1.2;
+	
 	global.weapon_slotammo[global.weapon_slotcurrent] -= amount;
-	
-	if (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Fuel) && (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Explosives) && (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Arrows) && (global.weapon_ammotype[global.weapon_slot[global.weapon_slotcurrent]] != AmmoType.Darts){
-		global.weapon_slotammo[global.weapon_slotcurrent] = clamp(global.weapon_slotammo[global.weapon_slotcurrent], 0, global.weapon_ammomax[global.weapon_slot[global.weapon_slotcurrent]]);
-	}
+	global.weapon_slotammo[global.weapon_slotcurrent] = clamp(global.weapon_slotammo[global.weapon_slotcurrent], 0, global.weapon_ammomax[global.weapon_slot[global.weapon_slotcurrent]]);
 }else{
-	global.weapon_slot_standalone_ammo -= amount;
+	obj_controller_ui.weapon_standalone_ammoscale = 1.05;
 	
-	if (global.weapon_ammotype[global.weapon_slot_standalone] != AmmoType.Fuel) && (global.weapon_ammotype[global.weapon_slot_standalone] != AmmoType.Explosives) && (global.weapon_ammotype[global.weapon_slot_standalone] != AmmoType.Arrows) && (global.weapon_ammotype[global.weapon_slot_standalone] != AmmoType.Darts){
-		global.weapon_slot_standalone_ammo = clamp(global.weapon_slot_standalone_ammo, 0, global.weapon_ammomax[global.weapon_slot_standalone]);
-	}
+	global.weapon_slot_standalone_ammo -= amount;
+	global.weapon_slot_standalone_ammo = clamp(global.weapon_slot_standalone_ammo, 0, global.weapon_ammomax[global.weapon_slot_standalone]);
 }
-
-obj_controller_ui.weaponammo_scale = 1.2;
-obj_controller_ui.weaponammo_scaleTo = 1;

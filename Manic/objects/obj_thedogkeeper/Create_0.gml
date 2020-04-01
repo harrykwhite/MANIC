@@ -10,7 +10,7 @@ hitbox = instance_create_layer(x, y, "Hitbox", obj_enemy_hitbox_0);
 hitbox.sprite_index = spr_human_hitbox_0;
 hitbox.owner = id;
 
-light_brightness = 0;
+light_brightness = 0.25;
 levelobj = scr_level_get_object();
 mylight = instance_create_layer(x, y, "Lights", obj_thedogkeeper_light);
 

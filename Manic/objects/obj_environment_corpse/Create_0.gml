@@ -11,7 +11,6 @@ image_index = random(image_number);
 var counter = 0;
 repeat(random_range(1, 2)){
     fly[counter] = instance_create(x, y, obj_ef_fly);
-	fly[counter].xbase = x;
-	fly[counter].ybase = y;
+	fly[counter].fobject = id;
 	counter ++;
 }
