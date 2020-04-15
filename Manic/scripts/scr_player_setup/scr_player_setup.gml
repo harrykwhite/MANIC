@@ -32,7 +32,7 @@ flashlight_alpha = 0;
 
 surrounding_light_to = 1;
 surrounding_light = 1;
-surrounding_light_upgradedec = 0.1;
+surrounding_light_upgradedec = 0.065;
 
 light_brightness = 0.25;
 flashlight_brightness = 1;

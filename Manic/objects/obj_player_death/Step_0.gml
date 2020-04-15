@@ -1,4 +1,4 @@
-if (global.cutscene_current != -1) || (global.game_pause){
+if (global.game_pause){
 	return;
 }
 
@@ -25,16 +25,4 @@ if (move){
 	}else{
 		spd = 0;
 	}
-}
-
-// Light
-if (light > 0){
-	if (light_time < 10){
-		light_time ++;
-	}else{
-		light_time = 0;
-		light -= 0.2;
-	}
-}else{
-	light = 0;
 }

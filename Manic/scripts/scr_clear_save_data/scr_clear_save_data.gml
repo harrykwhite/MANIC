@@ -1,5 +1,5 @@
-if (object_index != obj_titlescreen_main){
-	show_debug_message("Trying to call scr_clear_save_data() from an object outside of obj_titlescreen_main.");
+if (object_index != obj_controller_titlescreen){
+	show_debug_message("Trying to call scr_clear_save_data() from an object outside of obj_controller_titlescreen.");
 	return;
 }
 

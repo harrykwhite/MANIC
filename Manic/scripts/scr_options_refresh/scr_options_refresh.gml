@@ -23,7 +23,7 @@ if (refresh_display){
 	scr_display_update();
 	
 	if (room == rm_title_0){
-		with(obj_titlescreen_main){
+		with(obj_controller_titlescreen){
 			scr_titlescreen_options_reload();
 		}
 	}
@@ -62,10 +62,10 @@ with(obj_controller_all){
 }
 
 if (room == rm_title_0){
-	if (!obj_titlescreen_main.fade){
+	if (!obj_controller_titlescreen.fade){
 		audio_sound_gain(m_ambience_wind_0, windvolume * obj_controller_all.real_ambience_volume, 1000);
 		
-		with(obj_titlescreen_main){
+		with(obj_controller_titlescreen){
 			scr_titlescreen_options_reload();
 		}
 	}

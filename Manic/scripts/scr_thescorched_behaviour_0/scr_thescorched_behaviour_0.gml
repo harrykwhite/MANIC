@@ -40,7 +40,7 @@ if (instance_exists(target)){
 				release_time--;
 			}else{
 				var interval = 360 / 6;
-				scr_sound_play_distance_pitch(snd_weapon_flare_1, false, 400, 0.8, 1.2);
+				scr_sound_play(snd_weapon_flare_1, false, 0.8, 1.2);
 				flash_time = 5;
 				
 				for(var i = 0; i < 360; i += interval){

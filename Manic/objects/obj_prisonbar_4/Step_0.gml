@@ -30,7 +30,7 @@ if (open){
 			
 			if (scr_input_is_pressed(InputBinding.Interact) && global.player_stamina_active){
 				scr_player_stamina_drain(4);
-				scr_sound_play(snd_object_prisondoor_open_0, false, 0.9, 1.1);
+				scr_sound_play(snd_object_prisondoor_open_0, false, 0.8, 1.2);
 				
 				var released = false;
 				open = true;

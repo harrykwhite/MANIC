@@ -46,6 +46,12 @@ switch(room){
 		break;
 }
 
+// Camera
+if (instance_exists(obj_controller_camera)){
+	obj_controller_camera.x = obj_player.x;
+	obj_controller_camera.y = obj_player.y;
+}
+
 // Other
 room_music_transition = false;
 

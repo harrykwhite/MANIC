@@ -76,12 +76,14 @@ if (instance_exists(obj_player)){
 						
 						obj_player.image_xscale = -1;
 						
-						if (global.cutscene_time[index] >= 810){
+						if (global.cutscene_time[index] >= 800){
 							with(obj_controller_ui){
 								if (!area_next_fade){
+									global.weapon_default = PlayerWeapon.Knife;
+									
 									area_next_fade = true;
 									area_next_alpha = 0;
-									area_next_alpha_speed = 0.003;
+									area_next_alpha_speed = 0.004;
 									
 									if (global.game_is_playthrough){
 										area_next_room = rm_level_1_00;

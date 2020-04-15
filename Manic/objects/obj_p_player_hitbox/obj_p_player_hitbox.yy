@@ -183,6 +183,56 @@
             "enumb": 0,
             "eventtype": 4,
             "m_owner": "924f85bc-3306-4aa0-afaf-7571e53d12b8"
+        },
+        {
+            "id": "0bb513f1-7aba-4af0-be6f-c3a53e866e5a",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "8f21136f-4eea-4530-8dc0-8f2c0ebf14e1",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "924f85bc-3306-4aa0-afaf-7571e53d12b8"
+        },
+        {
+            "id": "faaa6b56-b47b-4a63-8a3b-f99c888bd75c",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "821589bc-837d-49b4-957f-907c68c757e5",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "924f85bc-3306-4aa0-afaf-7571e53d12b8"
+        },
+        {
+            "id": "985085c5-3e65-46ba-814c-c3b171c6f511",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "21bc71c5-3943-4396-9abb-04341100e913",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "924f85bc-3306-4aa0-afaf-7571e53d12b8"
+        },
+        {
+            "id": "7ff0dc1b-8806-4e55-9841-05ab049dd1dd",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "5c4f2e3a-c4aa-4888-b2fc-3a2507effd88",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "924f85bc-3306-4aa0-afaf-7571e53d12b8"
+        },
+        {
+            "id": "d24dd5a9-c7c5-4244-b8f7-ad09c967b80c",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "2b6aed8a-01a7-4c60-b1de-a0e26416011f",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "924f85bc-3306-4aa0-afaf-7571e53d12b8"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
@@ -195,7 +245,7 @@
     "physicsGroup": 0,
     "physicsKinematic": false,
     "physicsLinearDamping": 0.1,
-    "physicsObject": true,
+    "physicsObject": false,
     "physicsRestitution": 0.1,
     "physicsSensor": false,
     "physicsShape": 0,

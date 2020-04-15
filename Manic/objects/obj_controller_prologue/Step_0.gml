@@ -49,7 +49,7 @@ if (!global.game_objective_complete){
 }else{
 	if (global.cutscene_current != 57){
 		var lvol = 1 - (point_distance(global.player_position_x, global.player_position_y, 504, 540) / 1200);
-		audio_sound_gain(tutmusic_layer1, clamp(lvol + 0.25, 0, 1) * obj_controller_all.real_music_volume, 0);
+		audio_sound_gain(tutmusic_layer1, clamp(lvol + 0.25, 0, 1) * endscene_music_mult * obj_controller_all.real_music_volume, 0);
 	}
 	
 	lighting = 1;
@@ -59,6 +59,10 @@ if (!global.game_objective_complete){
 		audio_sound_gain(tutmusic_layer1, 0.01, 0);
 		
 		endscene_initiated = true;
+	}
+	
+	if (endscene_music_mult < 1){
+		endscene_music_mult += min(endscene_music_mult_increase, 1 - endscene_music_mult);
 	}
 }
 

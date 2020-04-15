@@ -29,7 +29,7 @@ if (!global.pers_runthrough){
 	
 	// Fullscreen
 	if (full <= 0){
-		if (keyboard_check_pressed(ord("F")) || full_autoswitch){
+		if (keyboard_check_pressed(vk_f11) || full_autoswitch){
 			global.game_option[| Options.Fullscreen] = !global.game_option[| Options.Fullscreen];
 			full = 50;
 			full_autoswitch = false;
@@ -79,8 +79,8 @@ if (gamepad_check_break > 0){
 					gamepad_set_axis_deadzone(global.game_input_gamepad_current, 0.1);
 					gamepad_set_button_threshold(global.game_input_gamepad_current, 0.5);
 		
-					if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
-						with(obj_titlescreen_main){
+					if (instance_exists(obj_controller_titlescreen)) && (room == rm_title_0){
+						with(obj_controller_titlescreen){
 							selected = 0;
 						}
 					}
@@ -150,8 +150,8 @@ if (gamepad_check_break > 0){
 			if (!found){
 				global.game_input_type = InputType.Keyboard;
 			
-				if (instance_exists(obj_titlescreen_main)) && (room == rm_title_0){
-					with(obj_titlescreen_main){
+				if (instance_exists(obj_controller_titlescreen)) && (room == rm_title_0){
+					with(obj_controller_titlescreen){
 						selected = iskeyboard ? -1 : 0;
 					}
 				}
@@ -295,7 +295,7 @@ if (warning_prompt){
 			if (warning_prompt_selected == 0){
 				switch(warning_prompt_type){
 					case 0:
-						with(obj_titlescreen_main){
+						with(obj_controller_titlescreen){
 							scr_clear_save_data();
 						}
 						break;

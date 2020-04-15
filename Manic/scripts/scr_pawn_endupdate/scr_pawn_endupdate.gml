@@ -1,3 +1,31 @@
+if (cutscene_prop){
+	var stopburn = object_index != obj_thescorched;
+	var stoppoison = true;
+	var stopbleed = true;
+	
+	if (stopburn){
+		burn = false;
+		burn_time = 0;
+	}
+	
+	if (stoppoison){
+		poison = false;
+		poison_time = 0;
+	}
+	
+	if (stopbleed){
+		bleed = false;
+		bleed_time = 0;
+	}
+}
+
+// Light brightness
+if (light_brightness < 1){
+	light_brightness += 0.025;
+}else if (light_brightness > 1){
+	light_brightness -= 0.025;
+}
+
 // Flies
 var flyvalid = false;
 
@@ -73,7 +101,7 @@ if (health_current <= 0){
 	scr_effect_zoom(zoom);
 	
 	instance_destroy();
-	scr_sound_play_distance_pitch(snd_other_kick_0, false, 500, 0.8, 1.2);
+	scr_sound_play(snd_other_kick_0, false, 0.8, 1.2);
 	
 	if (mylight != noone){
 		instance_destroy(mylight);
@@ -89,6 +117,8 @@ if (health_current <= 0){
 	}
 	
 	if (pawn == PawnType.Enemy){
+		scr_enemy_score();
+		
 		if (object_index != obj_enemy_1){
 			obj_controller_gameplay.bonus_killamount ++;
 			obj_controller_gameplay.bonus_killtime = 80;
@@ -270,10 +300,31 @@ if (health_current <= 0){
 		
 		if (global.cutscene_current == -1){
 			global.cutscene_current = 40;
-		
+			
+			var compcorpsecount = instance_number(obj_companion_corpse);
+			
+			for(var c = 0; c < compcorpsecount; c ++){
+				var compcorpse = instance_find(obj_companion_corpse, c);
+				
+				if (compcorpse.sprite_index == spr_companion_0_corpse_0 && object_index == obj_companion_0){
+					obj_controller_gameplay.cutscene_look_object = compcorpse;
+				}
+				
+				if (compcorpse.sprite_index == spr_companion_1_corpse_0 && object_index == obj_companion_1){
+					obj_controller_gameplay.cutscene_look_object = compcorpse;
+				}
+				
+				if (compcorpse.sprite_index == spr_companion_2_corpse_0 && object_index == obj_companion_2){
+					obj_controller_gameplay.cutscene_look_object = compcorpse;
+				}
+				
+				if (compcorpse.sprite_index == spr_companion_3_corpse_0 && object_index == obj_companion_3){
+					obj_controller_gameplay.cutscene_look_object = compcorpse;
+				}
+			}
+			
 			obj_controller_gameplay.cutscene_look_x = x;
 			obj_controller_gameplay.cutscene_look_y = y;
-			obj_controller_gameplay.cutscene_look_object = obj_companion_corpse;
 			obj_controller_gameplay.cutscene_look_boss = -1;
 			obj_controller_gameplay.cutscene_look_time = 85;
 			obj_controller_gameplay.cutscene_look_prop = false;
@@ -308,7 +359,7 @@ if (health_current <= 0){
 		scr_effect_screenshake(4);
 		scr_effect_freeze(13);
 		scr_effect_zoom(-0.1);
-		scr_sound_play_distance(snd_weapon_explode_0, false, 600);
+		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
 		
 		if (object_index == obj_giantturret_flamethrower){
 			pack = instance_create(x + random_range(-6, 6), y + random_range(3, 5), obj_health_pack_1);
@@ -317,7 +368,7 @@ if (health_current <= 0){
 			scr_weapon_ammo_spawn(choose(4, 6), 7, 5, x, y + 2);
 		}
 	}else{
-		scr_sound_play_distance(snd_character_death_0, false, 600);
+		scr_sound_play(snd_character_death_0, false, 0.8, 1.2);
 	}
 	
 	if (object_index == obj_enemy_0){

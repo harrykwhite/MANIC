@@ -1,7 +1,7 @@
 ///@param brksprite
 var brksprite = argument0;
 
-scr_sound_play_distance_pitch(snd_object_box_break_0, false, 240, 0.6, 1.4);
+scr_sound_play(snd_object_box_break_0, false, 0.8, 1.2);
 instance_destroy();
 
 // Effects

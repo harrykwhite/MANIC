@@ -5,7 +5,12 @@ global.game_combat_arena_wave = 0;
 
 global.weapon_slot_standalone = -1;
 
+var wepdef = global.weapon_default;
+
 scr_weapon_list();
+
+global.weapon_default = wepdef;
+global.weapon_default_set = true;
 
 if (global.level_current == Level.Prologue){
 	global.weapon_slot[0] = -1;
@@ -31,6 +36,21 @@ global.player_health_current = global.player_health_max;
 global.weapon_slotcurrent = 0;
 
 global.boss_current = -1;
+
+if (scr_level_is_arena()){
+	var index = 0;
+	
+	switch(room){
+		case rm_arena_1_00: index = 0; break;
+		case rm_arena_2_00: index = 1; break;
+		case rm_arena_3_00: index = 2; break;
+	}
+	
+	scr_arena_update_highscore(index);
+	scr_arena_write_highscore(index);
+	
+	global.level_score[global.level_current] = 0;
+}
 
 if (room == rm_level_10_01){
 	if (instance_exists(obj_weapon_29)){
@@ -84,5 +104,18 @@ if (changed){
 	
 	with(obj_block_persistent){
 		activate = true;
+	}
+}
+
+var comps = ds_grid_height(global.player_companions);
+
+for(var i = 0; i < comps; i ++){
+	var cobj = global.player_companions[# 0, i];
+	
+	if (cobj != -1){
+		if (instance_exists(cobj)){
+			cobj.health_current = cobj.health_max;
+			cobj.heal_time = cobj.heal_time_max;
+		}
 	}
 }

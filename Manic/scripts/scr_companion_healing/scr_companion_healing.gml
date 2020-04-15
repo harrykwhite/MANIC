@@ -6,7 +6,7 @@ if (health_current < health_max){
 		health_current = clamp(health_current, 0, health_max);
 		health_scale = 1.5;
 		
-		scr_sound_play_distance_pitch(snd_object_health_pickup_0, false, 400, 0.9, 1.1);
+		scr_sound_play(snd_object_health_pickup_0, false, 0.8, 1.2);
 		
 		repeat(5){
 			part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);

@@ -3,7 +3,7 @@ angle_offset = 0;
 
 shoot_can = true;
 shoot_speed = 19;
-shoot_range = 5;
+shoot_range = 7;
 shoot_damage = 4;
 shoot_time = 0;
 shoot_strength = 1.5;

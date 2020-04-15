@@ -1,31 +1,31 @@
 global.player_health_previous = global.player_health_current;
 
+// Upgrades
 if (!upgrades_set){
 	scr_player_upgrade_refresh();
+	scr_player_upgrade_light();
 	
-	var upgradecount = array_length_1d(global.upgrade_name);
-	for(var i = 0; i < upgradecount; i ++){
-		if (global.upgrade_equipped[i]){
-			surrounding_light -= surrounding_light_upgradedec;
-		}
-	}
-	
-	surrounding_light_to = surrounding_light;
+	surrounding_light = surrounding_light_to;
 	upgrades_set = true;
 }
 
+scr_player_upgrade_light();
+
+// Default weapon
 if (!global.weapon_default_set){
 	if (!global.game_is_playthrough){
 		var def = PlayerWeapon.Knife;
 		
-		if (global.level_current == Level.Prologue){
-			def = -1;
+		if (!scr_level_is_arena()){
+			if (global.level_current == Level.Prologue){
+				def = -1;
+			}
+		
+			if (global.level_current >= Level.HumanPrison){
+				def = PlayerWeapon.Bayonet;
+			}
 		}
 		
-		if (global.level_current >= Level.HumanPrison){
-			def = PlayerWeapon.Bayonet;
-		}
-	
 		global.weapon_default = def;
 	}
 	

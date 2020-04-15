@@ -1,7 +1,7 @@
 enum Level{
 	Prologue,
 	RavagedTown,
-	WesternFarmland,
+	EasternFarmland,
 	UndergroundBunker,
 	WinterTown,
 	HumanPrison,
@@ -37,17 +37,17 @@ global.level_entered[Level.RavagedTown] = false;
 global.level_complete[Level.RavagedTown] = false;
 global.level_checkpoint_found[Level.RavagedTown, 0] = false;
 
-global.level_name[Level.WesternFarmland] = "Eastern Farmland";
-global.level_location_name[Level.WesternFarmland] = "farmland";
-global.level_room[Level.WesternFarmland] = rm_level_2_00;
-global.level_preroom[Level.WesternFarmland] = rm_level_2_pre_00;
-global.level_collectable_current[Level.WesternFarmland] = 0;
-global.level_collectable_number[Level.WesternFarmland] = 7;
-global.level_turret_number[Level.WesternFarmland] = 0;
-global.level_entered[Level.WesternFarmland] = false;
-global.level_complete[Level.WesternFarmland] = false;
-global.level_checkpoint_found[Level.WesternFarmland, 0] = false;
-global.level_checkpoint_found[Level.WesternFarmland, 1] = false;
+global.level_name[Level.EasternFarmland] = "Eastern Farmland";
+global.level_location_name[Level.EasternFarmland] = "farmland";
+global.level_room[Level.EasternFarmland] = rm_level_2_00;
+global.level_preroom[Level.EasternFarmland] = rm_level_2_pre_00;
+global.level_collectable_current[Level.EasternFarmland] = 0;
+global.level_collectable_number[Level.EasternFarmland] = 7;
+global.level_turret_number[Level.EasternFarmland] = 0;
+global.level_entered[Level.EasternFarmland] = false;
+global.level_complete[Level.EasternFarmland] = false;
+global.level_checkpoint_found[Level.EasternFarmland, 0] = false;
+global.level_checkpoint_found[Level.EasternFarmland, 1] = false;
 
 global.level_name[Level.UndergroundBunker] = "Underground Bunker";
 global.level_location_name[Level.UndergroundBunker] = "underground bunker";
@@ -138,6 +138,8 @@ global.level_entered[Level.CityHeadquarters] = false;
 global.level_complete[Level.CityHeadquarters] = false;
 global.level_checkpoint_found[Level.CityHeadquarters, 0] = false;
 
+ini_open(working_directory + "arena.ini");
+
 global.level_name[Level.Arena_NorthernFarmhouse] = "Northern Farmhouse";
 global.level_location_name[Level.Arena_NorthernFarmhouse] = "area";
 global.level_room[Level.Arena_NorthernFarmhouse] = rm_arena_1_00;
@@ -148,10 +150,12 @@ global.level_turret_number[Level.Arena_NorthernFarmhouse] = 0;
 global.level_entered[Level.Arena_NorthernFarmhouse] = false;
 global.level_complete[Level.Arena_NorthernFarmhouse] = false;
 global.level_checkpoint_found[Level.Arena_NorthernFarmhouse, 0] = false;
+global.level_score[Level.Arena_NorthernFarmhouse] = 0;
+global.level_highscore[Level.Arena_NorthernFarmhouse] = ini_read_real("Highscores", "Arena0", 0);
 
 global.level_name[Level.Arena_WinterForest] = "Winter Forest";
 global.level_location_name[Level.Arena_WinterForest] = "forest";
-global.level_room[Level.Arena_WinterForest] = rm_prologue_00;
+global.level_room[Level.Arena_WinterForest] = rm_arena_2_00;
 global.level_preroom[Level.Arena_WinterForest] = noone;
 global.level_collectable_current[Level.Arena_WinterForest] = 0;
 global.level_collectable_number[Level.Arena_WinterForest] = 0;
@@ -159,6 +163,8 @@ global.level_turret_number[Level.Arena_WinterForest] = 0;
 global.level_entered[Level.Arena_WinterForest] = false;
 global.level_complete[Level.Arena_WinterForest] = false;
 global.level_checkpoint_found[Level.Arena_WinterForest, 0] = false;
+global.level_score[Level.Arena_WinterForest] = 0;
+global.level_highscore[Level.Arena_WinterForest] = ini_read_real("Highscores", "Arena1", 0);
 
 global.level_name[Level.Arena_PrisonBase] = "Prison Base";
 global.level_location_name[Level.Arena_PrisonBase] = "prison";
@@ -170,6 +176,10 @@ global.level_turret_number[Level.Arena_PrisonBase] = 0;
 global.level_entered[Level.Arena_PrisonBase] = false;
 global.level_complete[Level.Arena_PrisonBase] = false;
 global.level_checkpoint_found[Level.Arena_PrisonBase, 0] = false;
+global.level_score[Level.Arena_PrisonBase] = 0;
+global.level_highscore[Level.Arena_PrisonBase] = ini_read_real("Highscores", "Arena2", 0);
+
+ini_close();
 
 global.level_campaign_count = Level.CityHeadquarters + 1;
 global.level_arena_count = array_length_1d(global.level_name) - global.level_campaign_count;

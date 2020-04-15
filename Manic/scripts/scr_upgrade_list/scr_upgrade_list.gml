@@ -36,7 +36,7 @@ global.upgrade_behind[2] = false;
 global.upgrade_equipped[2] = false;
 
 global.upgrade_name[3] = "Ammo Pack";
-global.upgrade_description[3] = "25% chance to not consume ammo";
+global.upgrade_description[3] = "25% chance not to consume ammo";
 global.upgrade_sprite[3] = spr_player_upgrade_ammopack_0;
 global.upgrade_sprite_corpse[3] = spr_player_upgrade_ammopack_0_corpse;
 global.upgrade_sprite_pickup[3] = spr_player_upgrade_ammopack_0_pickup;

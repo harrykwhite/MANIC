@@ -38,16 +38,6 @@ livetime ++;
 
 scr_pawn_status_handler();
 
-if (cutscene_prop){
-	if (in_cutscene){
-		if (burn) || (burn_time > 0){
-			scr_draw_burn_die(6, 18, x, y, 5);
-			burn = false;
-			burn_time = 0;
-		}
-	}
-}
-
 if (global.cutscene_current == -1) || (cutscene_prop){
 	if (headless){
 		scr_enemy_0_behaviour_headless() 

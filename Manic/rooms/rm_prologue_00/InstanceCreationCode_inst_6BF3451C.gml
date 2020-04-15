@@ -1,2 +1,2 @@
-index = PlayerWeapon.WeakenedHuntingRifle;
+index = PlayerWeapon.OldHuntingRifle;
 angle = 15;

@@ -1,0 +1,1 @@
+return (global.level_current >= Level.UndergroundBunker) && (global.level_current != Level.Arena_NorthernFarmhouse);

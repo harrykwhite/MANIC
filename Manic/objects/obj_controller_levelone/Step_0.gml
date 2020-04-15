@@ -81,7 +81,7 @@ if (global.game_combat_in_hordechallenge){
 }
 
 if (scr_level_is_peaceful(room)){
-	lighting = 0.875 + (room == rm_level_1_01 ? factory_level_lighting_offset : 0);
+	lighting = lighting_level[CombatState.Idle] + (room == rm_level_1_01 ? factory_level_lighting_offset : 0);
 }
 
 global.game_lighting_level_to = lighting + scr_brightness_offset();
@@ -97,6 +97,7 @@ if (player_exists) && (global.cutscene_current == -1){
 if (spawn_start_wait >= spawn_start_wait_max){
 	if (player_exists) && (!scr_level_is_peaceful(room)){
 		var spawn_rate = spawn_rate_real;
+		
 		if (!global.game_pause) && ((global.boss_current == -1) || (global.boss_current == Boss.MotherRobot) || (global.boss_current == Boss.SniperRobot)) && (global.cutscene_current == -1){
 			if (scr_on_heavy_weapon()){
 				spawn_rate += 2.5;

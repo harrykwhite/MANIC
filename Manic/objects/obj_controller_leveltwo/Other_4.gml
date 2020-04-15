@@ -143,12 +143,15 @@ postlevel_dialogue_index = 0;
 postlevel_dialogue_inst = noone;
 postlevel_dialogue_exception = false;
 
+// Camera
+if (instance_exists(obj_controller_camera)){
+	obj_controller_camera.x = obj_player.x;
+	obj_controller_camera.y = obj_player.y;
+}
+
 // Other
 companions_spawned = false;
 room_music_transition = false;
-
-obj_controller_camera.x = obj_player.x;
-obj_controller_camera.y = obj_player.y;
 
 global.cutscene_current = 2;
 

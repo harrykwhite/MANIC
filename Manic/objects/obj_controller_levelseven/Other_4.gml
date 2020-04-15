@@ -93,9 +93,15 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 640;
-			spawn_y = 782;
+			spawn_y = 742;
 		}
 		break;
+}
+
+// Camera
+if (instance_exists(obj_controller_camera)){
+	obj_controller_camera.x = obj_player.x;
+	obj_controller_camera.y = obj_player.y;
 }
 
 // Other

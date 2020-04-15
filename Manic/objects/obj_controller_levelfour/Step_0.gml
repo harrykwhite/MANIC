@@ -165,7 +165,7 @@ if (!global.game_pause){
 			
 					switch(level_dialogue_index){
 						case 0:
-							text = "I've been feeling that what we're doing isn't right... this is starting to go too far.";
+							text = "I'm feeling that what we're doing isn't right... it's starting to go too far.";
 							inst = obj_companion_0;
 							break;
 						
@@ -175,18 +175,13 @@ if (!global.game_pause){
 							break;
 						
 						case 2:
-							text = "No, there is no other way. An enemy group like this will exhibit no mercy or humanity to us.";
+							text = "There is no other way. An enemy group like this will exhibit no mercy.";
 							inst = obj_player;
 							break;
 						
 						case 3:
-							text = "And in the end, they must be the ones to suffer for all the pain they've imposed over me.";
+							text = "Ultimately, they should be the ones to suffer, for all the pain they've inflicted.";
 							inst = obj_player;
-							break;
-						
-						case 4:
-							text = "Okay...";
-							inst = obj_companion_0;
 							break;
 						
 						default:
@@ -220,7 +215,7 @@ if (!global.game_pause){
 							talking = false;
 						}
 						
-						if (level_dialogue_index < 5){
+						if (level_dialogue_index < 4){
 							level_dialogue_inst = inst;
 							level_dialogue_index ++;
 							level_dialogue_time = obj_controller_ui.dialogue_time;

@@ -165,7 +165,7 @@ if (instance_exists(target)){
 			
 			weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
 	        weapon.owner = id;
-			weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
+			weapon.dir = dir_to_target;
 			weapon_change_time = 0;
 		}
 		
@@ -240,7 +240,7 @@ if (instance_exists(target)){
 		
 		weapon = instance_create(x, y, global.pawnweapon_object[weapon_index]);
         weapon.owner = id;
-		weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
+		weapon.dir = dir_to_target;
 		
 		run_away_time = 0;
 		run_away_direction = 0;

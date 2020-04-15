@@ -101,8 +101,8 @@ if (!global.game_pause){
 		if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 			weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
 		}else{
-			if (levelcur != Level.Prologue){
-				weapon = global.weapon_object[PlayerWeapon.Knife];
+			if (global.weapon_default != -1){
+				weapon = global.weapon_object[global.weapon_default];
 			}
 		}
 		

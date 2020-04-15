@@ -45,7 +45,7 @@ if (burn){
 				
 				if (health_current > 1) || (object_get_parent(object_index) != obj_p_player){
 					scr_pawn_damage(1, 0, 0, 5);
-					scr_sound_play_distance(hurt_sound, false, 200);
+					scr_sound_play(hurt_sound, false, 0.8, 1.2);
 				}
 			}else{
 				scr_draw_burn_die(6, 18, x, y, 5);

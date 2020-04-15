@@ -8,7 +8,7 @@ var camw = camera_get_view_width(view_camera[0]);
 var camh = camera_get_view_height(view_camera[0]);
 
 if (!global.game_pause){
-		
+	
 	// Dust
 	if (room != rm_level_2_pre_00){
 		if (random(4.5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_2, 1);
@@ -212,7 +212,7 @@ if (global.game_combat_in_hordechallenge){
 }
 
 if (scr_level_is_peaceful(room)){
-	lighting = 0.875;
+	lighting = lighting_level[CombatState.Idle];
 }
 
 global.game_lighting_level_to = lighting + scr_brightness_offset();

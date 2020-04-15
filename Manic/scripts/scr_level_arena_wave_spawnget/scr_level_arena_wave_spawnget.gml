@@ -11,15 +11,69 @@ switch(room){
 			enemy = instance_create(xpos, ypos, obj_enemy_0);
 			
 			if (chance(90)){
-				weapon = choose(PawnWeapon.Crowbar, PawnWeapon.Axe);
+				if (chance(55 - (wavecurrent * 2))){
+					weapon = PawnWeapon.Crowbar;
+				}else{
+					weapon = choose(PawnWeapon.Axe, PawnWeapon.Rake);
+				}
 			}else{
 				weapon = PawnWeapon.Knife;
 			}
 			
 			if (wavecurrent >= 2){
 				if (global.boss_current == -1){
-					if (chance(5)){
+					var motherchance = 3;
+					
+					if (wavecurrent >= 4){
+						motherchance += 2;
+					}
+					
+					if (wavecurrent >= 6){
+						motherchance += 2;
+					}
+					
+					if (chance(motherchance)){
 						enemy.type = Enemy0_Type.Mother;
+					}
+				}
+			}
+		}else{
+			enemy = instance_create(xpos, ypos, obj_enemy_2);
+		}
+		break;
+	
+	case rm_arena_2_00:
+		if (chance(85 - wavecurrent)){
+			enemy = instance_create(xpos, ypos, obj_enemy_0);
+			
+			if (chance(95)){
+				if (chance(10 + wavecurrent)){
+					weapon = PawnWeapon.Grenade;
+				}else{
+					weapon = choose(PawnWeapon.Axe, PawnWeapon.Sledgehammer, PawnWeapon.Rake);
+				}
+			}else{
+				weapon = PawnWeapon.Knife;
+			}
+			
+			if (wavecurrent >= 1){
+				if (chance(10 + wavecurrent)){
+					enemy.type = Enemy0_Type.Crazy;
+				}else{
+					if (global.boss_current == -1){
+						var motherchance = 5;
+					
+						if (wavecurrent >= 3){
+							motherchance += 2;
+						}
+					
+						if (wavecurrent >= 5){
+							motherchance += 2;
+						}
+					
+						if (chance(motherchance)){
+							enemy.type = Enemy0_Type.Mother;
+						}
 					}
 				}
 			}

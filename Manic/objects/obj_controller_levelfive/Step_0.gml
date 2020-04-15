@@ -43,7 +43,7 @@ if (global.game_combat_in_hordechallenge){
 }
 
 if (scr_level_is_peaceful(room)){
-	lighting = 0.925;
+	lighting = lighting_level[CombatState.Idle];
 }
 
 global.game_lighting_level_to = lighting + scr_brightness_offset();

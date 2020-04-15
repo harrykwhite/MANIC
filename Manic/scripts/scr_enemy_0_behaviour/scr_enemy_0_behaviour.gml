@@ -36,7 +36,7 @@ switch(type){
 var weapon_exists = instance_exists(weapon) && weapon != -1;
 
 if (instance_exists(target)){
-	var mindist = 36;
+	var mindist = 42;
 	
 	if (weapon_exists){
 		if (weapon.type == WeaponType.Melee){
@@ -45,8 +45,6 @@ if (instance_exists(target)){
 	}
 	
 	if (sporadic){
-		mindist = 40;
-		
 		if (sporadic_time < sporadic_timemax) && (point_distance(x, y + 6, move_x_to, move_y_to) > 15){
 			sporadic_time ++;
 		}else{
@@ -70,7 +68,7 @@ if (instance_exists(target)){
 			}else{
 				healer_instance.health_scale = 1.5;
 				healer_instance.health_current += 2;
-				scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
+				scr_sound_play(snd_object_health_pickup_0, false, 0.8, 1.2);
 		
 				repeat(5){
 					part_particles_create(global.ps_bottom, healer_instance.x + random_range(-4, 4), healer_instance.y + random_range(-4, 4), global.pt_wood_1, 1);
@@ -102,7 +100,7 @@ if (instance_exists(target)){
 				mindist = 115;
 				
 				if ((cutscene_prop) && (in_cutscene)){
-					mindist = 36;
+					mindist = 42;
 				}
 			}else{
 				speed_multiplier += 0.2;
@@ -184,7 +182,7 @@ if (instance_exists(target)){
 					health_scale = 1.5;
 					health_current = clamp(health_current + 2, 0, health_max);
 					healer_healselftime = 45;
-					scr_sound_play_distance(snd_object_health_pickup_0, false, 180);
+					scr_sound_play(snd_object_health_pickup_0, false, 0.8, 1.2);
 					
 					repeat(5){
 						part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);

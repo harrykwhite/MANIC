@@ -47,7 +47,7 @@ if (specialweapon){
 		}
 	}*/
 	
-	var glow = wave(0.25, 0.65, 2, 0);
+	var glow = wave(0.25, 0.45, 1.25, 0);
 	gpu_set_fog(true, c_white, 0, 0);
 	draw_sprite_ext(sprite, 0, x, y + yy, scale, scale, angle, c_white, alpha * glow * 0.4);
 	gpu_set_fog(false, c_black, 0, 0);

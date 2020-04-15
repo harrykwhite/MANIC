@@ -44,6 +44,7 @@ if (health_current <= 0){
 	switch(object_index){
 		case obj_enemy_0:
 			corpse = instance_create(x, y - 4, obj_enemy_corpse);
+			
 			if (type == Enemy0_Type.Crazy){
 				corpse.sprite_index = spr_enemy_0_brain_corpse_0;
 			}

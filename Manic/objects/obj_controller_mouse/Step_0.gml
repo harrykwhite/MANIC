@@ -44,11 +44,7 @@ if (instance_exists(obj_player)) && (!global.game_pause) && (!obj_controller_ui.
 			}
 		}
 	}else{
-		if (global.level_current != Level.Prologue){
-			mouse = global.weapon_default == -1 ? global.weapon_mouse[PlayerWeapon.Knife] : global.weapon_mouse[global.weapon_default];
-		}else{
-			mouse = MouseType.Dot;
-		}
+		mouse = global.weapon_default == -1 ? MouseType.Dot : global.weapon_mouse[global.weapon_default];
 	}
 }else{
 	mouse = MouseType.Dot;

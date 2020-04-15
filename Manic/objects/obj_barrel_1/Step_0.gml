@@ -61,7 +61,7 @@ if (death){
 		instance_create(x, y + 8, obj_health_pack_0);
 	}
 
-	if (global.level_current >= Level.UndergroundBunker){
+	if (scr_object_spawn_grenade()){
 		if (random(9) < 1){
 			var weapon = instance_create(x, y + 8, obj_weapondrop);
 			weapon.index = PlayerWeapon.Grenade;

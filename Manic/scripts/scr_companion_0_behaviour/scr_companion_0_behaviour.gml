@@ -82,20 +82,20 @@ if (instance_exists(obj_player)){
 			
 			var dist_to_player = distance_to_object(obj_player);
 			
-			if (dist_to_player > 70 + (40 * order)){
+			if (dist_to_player > 70 + (companionspacing * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y + 6;
 				move_speed = 2.1;
 				
-				if (dist_to_player > 100 + (40 * order)){
+				if (dist_to_player > 100 + (companionspacing * order)){
 					move_speed = 2.6;
 				}
 				
-				if (dist_to_player > 140 + (40 * order)){
+				if (dist_to_player > 140 + (companionspacing * order)){
 					move_speed = 3.1;
 				}
 				
-				if (dist_to_player > 180 + (40 * order)){
+				if (dist_to_player > 180 + (companionspacing * order)){
 					move_speed = 3.6;
 				}
 				
@@ -125,7 +125,7 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
 				
-				var tdist = 30 + (10 * (global.game_save_level - 1));
+				var tdist = 44 + global.level_current;
 				tdist += 15 * order;
 				
 				if (distance_to_object(target) > tdist){
@@ -165,7 +165,7 @@ if (instance_exists(obj_player)){
 				move_x_to = x;
 				move_y_to = room_height;
 			
-				if (distance_to_point(move_x_to, move_y_to) > 32 + (40 * order)){
+				if (distance_to_point(move_x_to, move_y_to) > 32 + (companionspacing * order)){
 					move_speed = 1.9;
 				}else{
 					move_speed = 0;
@@ -179,7 +179,7 @@ if (instance_exists(obj_player)){
 					move_y_to = yy;
 					move_speed = 1.9;
 					
-					if (distance_to_point(xx, yy) <= 20 + (40 * order)){
+					if (distance_to_point(xx, yy) <= 20 + (companionspacing * order)){
 						depart_standaway_reached = true;
 					}
 				}else{
@@ -190,7 +190,7 @@ if (instance_exists(obj_player)){
 					move_y_to = obj_player.y + 6;
 				}
 			}else{
-				if (distance_to_object(obj_player) > 67 + (40 * order)){
+				if (distance_to_object(obj_player) > 67 + (companionspacing * order)){
 					move_speed = 1.9;
 				}else{
 					face_player = true;
@@ -214,7 +214,7 @@ if (instance_exists(obj_player)){
 			
 			if (engine != noone){
 				if (point_distance(obj_player.x, obj_player.y, engine.x, engine.y + 18) < 600){
-					if (point_distance(x, y, engine.x, engine.y + 18) > 50){
+					if (point_distance(x, y, engine.x, engine.y + 18) > 60){
 						move_x_to = engine.x;
 						move_y_to = engine.y + 18;
 						move_speed = 1.9;
@@ -239,7 +239,7 @@ if (instance_exists(obj_player)){
 	
 	if (!cutscene_prop){
 		if (global.cutscene_current == 2) || ((global.cutscene_current == 58 || global.cutscene_current == 52) && (!depart) && (!depart_standaway) && (!bunker_engine_destroy)){
-			if (distance_to_object(obj_player) > 67 + (40 * order)){
+			if (distance_to_object(obj_player) > 67 + (companionspacing * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y + 6;
 				move_speed = 1.9;

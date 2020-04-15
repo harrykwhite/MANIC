@@ -12,7 +12,7 @@ if (random(140) < 1){
 var yy = y + 6;
 var box_x1 = x - (10 * sign(image_xscale));
 var box_y1 = yy - 30;
-var box_x2 = x + (75 * sign(image_xscale));
+var box_x2 = x + (45 * sign(image_xscale));
 var box_y2 = yy + 30;
 
 interact = false;

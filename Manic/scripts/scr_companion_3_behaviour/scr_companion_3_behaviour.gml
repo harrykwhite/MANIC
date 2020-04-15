@@ -51,20 +51,20 @@ if (instance_exists(obj_player)){
 		
 			var dist_to_player = distance_to_object(obj_player);
 			
-			if (dist_to_player > 70 + (40 * order)) || (global.cutscene_current == 52){
+			if (dist_to_player > 70 + (companionspacing * order)) || (global.cutscene_current == 52){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y + 6;
 				move_speed = 1.8;
 				
-				if (dist_to_player > 100 + (40 * order)){
+				if (dist_to_player > 100 + (companionspacing * order)){
 					move_speed = 2.3;
 				}
 				
-				if (dist_to_player > 140 + (40 * order)){
+				if (dist_to_player > 140 + (companionspacing * order)){
 					move_speed = 2.7;
 				}
 				
-				if (dist_to_player > 180 + (40 * order)){
+				if (dist_to_player > 180 + (companionspacing * order)){
 					move_speed = 3.1;
 				}
 				
@@ -138,7 +138,7 @@ if (instance_exists(obj_player)){
 			}
 		}
 	}else{
-		if (distance_to_object(obj_player) > 37 + (40 * order)){
+		if (distance_to_object(obj_player) > 37 + (companionspacing * order)){
 			move_speed = 1.7;
 		}else{
 			move_speed = 0;
@@ -151,7 +151,7 @@ if (instance_exists(obj_player)){
 	if (bark_time > 0){
 		bark_time--;
 	}else{
-		scr_sound_play_distance(snd_character_bark_0, false, 300);
+		scr_sound_play(snd_character_bark_0, false, 0.8, 1.2);
 		bark_time = random_range(400, 650);
 	}
 	
@@ -159,7 +159,7 @@ if (instance_exists(obj_player)){
 	
 	if (!cutscene_prop){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
-			if (distance_to_object(obj_player) > 67 + (40 * order)){
+			if (distance_to_object(obj_player) > 67 + (companionspacing * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y + 6;
 				move_speed = 1.9;

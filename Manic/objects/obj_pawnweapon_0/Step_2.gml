@@ -25,7 +25,7 @@ if (instance_exists(owner)){
 		
 		scr_effect_screenshake(3);
 		scr_effect_freeze(13);
-		scr_sound_play_distance_pitch(snd_weapon_stick_break_0, false, 220, 0.8, 1.2);
+		scr_sound_play(snd_weapon_stick_break_0, false, 0.8, 1.2);
 		
 		var sticklen = 20, thislen = 1;
 		repeat(sticklen){

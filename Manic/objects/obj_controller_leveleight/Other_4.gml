@@ -31,7 +31,7 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 440;
-			spawn_y = 1035;
+			spawn_y = 1025;
 		}else{
 			obj_player.x = 440;
 			obj_player.y = -6;
@@ -88,6 +88,12 @@ switch(room){
 			spawn_y = 144;
 		}
 		break;
+}
+
+// Camera
+if (instance_exists(obj_controller_camera)){
+	obj_controller_camera.x = obj_player.x;
+	obj_controller_camera.y = obj_player.y;
 }
 
 // Other

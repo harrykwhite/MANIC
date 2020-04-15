@@ -31,7 +31,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active)
 		s.owner_offset_x = s.x - s.owner_inst.x;
 		s.owner_offset_y = s.y - s.owner_inst.y;
 	    
-		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 38, obj_proj_2, obj_player.x, obj_player.y);
+		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 38, obj_proj_2, obj_player.x, obj_player.y, burn);
         
         attack_time = 7;
         attack_can = false;

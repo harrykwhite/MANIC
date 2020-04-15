@@ -9,9 +9,10 @@
 #macro outlinecompanion make_colour_rgb(203, 163, 55)
 #macro outlinehealth make_colour_rgb(225, 145, 78)
 #macro outlineexplosive make_colour_rgb(198, 55, 16)
+#macro companionspacing 60
 #macro devmode false
 #macro isteaser false
-#macro hordespawnrate 1.5
+#macro hordespawnrate 1.2
 #macro windvolume 0.4
 #macro birdvolume 0.1
 #macro rainvolume 0.6

@@ -130,7 +130,7 @@ if (hit_time > 0){
 
 // Object Death
 if (death){
-	scr_sound_play_distance_pitch(snd_object_box_break_0, false, 240, 0.8, 1.2);
+	scr_sound_play(snd_object_box_break_0, false, 0.8, 1.2);
     instance_destroy();
     
 	scr_effect_screenshake(3);
@@ -140,6 +140,6 @@ if (death){
     repeat(10)part_particles_create(global.ps_bottom, centerx + random_range(-7, 7), centery + 10 + random_range(-3, 3), global.pt_wood_0, 1);
 	
 	var brk = instance_create(x, y, obj_break);
-	brk.shake = 4;
+	brk.shake = 3;
 	brk.sprite_index = breaksprite;
 }

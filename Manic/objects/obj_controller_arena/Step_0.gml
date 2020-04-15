@@ -22,6 +22,29 @@ if (!global.game_pause){
 			}
 			
 			break;
+		
+		case rm_arena_2_00:
+			// Dust
+			if (random(6) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
+			if (random(8) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
+			
+			// Fog
+			if (random(2.5) < 1){
+				if (part_particles_count(global.pt_fog_0) < 40){
+					part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_0, 1);
+				}
+			}
+			
+			// Snow
+			repeat(4){
+			    part_particles_create(global.ps_front, camx + random_range(-350, camw), camy - 10, global.pt_snow_0, 1);
+			}
+			
+			if (random(2) < 1){
+			    part_particles_create(global.ps_bottom, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_snow_1, 1);
+			}
+			
+			break;
 	}
 }
 

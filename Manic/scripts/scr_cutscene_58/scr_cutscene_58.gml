@@ -34,10 +34,10 @@ if (instance_exists(obj_player)){
 			
 			global.game_npc_player_wife_talked = true;
 			
-			line[0] = "Hey honey, are you able to gather some food for tonight?";
+			line[0] = "Hi honey, are you able to gather some food for tonight?";
 			linefrom[0] = inst;
 			
-			line[1] = "Sure, I'll do that now.";
+			line[1] = "Sure. I'll do that now.";
 			linefrom[1] = obj_player;
 			break;
 		
@@ -72,7 +72,7 @@ if (instance_exists(obj_player)){
 						case 0:
 							global.game_npc_townperson0_talked = true;
 							
-							line[0] = "A-are you okay?";
+							line[0] = "Are you okay?";
 							linefrom[0] = obj_player;
 							
 							line[1] = "Yes... I'm all right...";
@@ -90,13 +90,13 @@ if (instance_exists(obj_player)){
 							line[5] = "I'm not even sure how long I've been waiting here...";
 							linefrom[5] = inst;
 							
-							line[6] = "I understand...";
+							line[6] = "I understand.";
 							linefrom[6] = obj_player;
 							
 							line[7] = "Maybe you could head to one of the towns in the west? It might be safer over there.";
 							linefrom[7] = obj_player;
 							
-							line[8] = "Okay, I'll do that...";
+							line[8] = "Okay, I'll do that.";
 							linefrom[8] = inst;
 							break;
 						
@@ -171,7 +171,7 @@ if (instance_exists(obj_player)){
 							line[0] = "What do you want from me...?";
 							linefrom[0] = inst;
 							
-							line[1] = "I'm here to help you.";
+							line[1] = "Don't worry. I'm here to help you.";
 							linefrom[1] = obj_player;
 							
 							line[2] = "What can you tell me about the group?";
@@ -234,7 +234,7 @@ if (instance_exists(obj_player)){
 			line[0] = "Have you seen what's happening? The invasion?";
 			linefrom[0] = inst;
 			
-			line[1] = "Yes, I have. A person from the town up north said that he saw a group of them approaching this farm?";
+			line[1] = "I have. A person from the town up north said that he saw a group of them approaching this farm?";
 			linefrom[1] = obj_player;
 			
 			line[2] = "That'd be correct. I've been trying to fight them off, but they only seem to be increasing in numbers.";
@@ -387,7 +387,7 @@ if (instance_exists(obj_player)){
 					line[3] = "No problem.";
 					linefrom[3] = inst;
 				
-					line[4] = "You're aiming to stop the entire army, aren't you?";
+					line[4] = "You're aiming to stop the entire army, correct?";
 					linefrom[4] = inst;
 				
 					line[5] = "Yes, that's the plan. We need to put an end to their destruction.";
@@ -399,14 +399,14 @@ if (instance_exists(obj_player)){
 					line[3] = "No problem.";
 					linefrom[3] = inst;
 				
-					line[4] = "You're aiming to stop the entire army, aren't you?";
+					line[4] = "You're aiming to stop the entire army, correct?";
 					linefrom[4] = inst;
 				
 					line[5] = "Yes, that's the plan. I need to put an end to their destruction.";
 					linefrom[5] = obj_player;
 				}
 				
-				line[6] = "Those are definitely good intentions.";
+				line[6] = "Those are good intentions.";
 				linefrom[6] = inst;
 				
 				line[7] = "Well, best of luck.";
@@ -566,19 +566,19 @@ if (instance_exists(obj_player)){
 							line[2] = "I... I think that they were coming from up north. It's hard to tell.";
 							linefrom[2] = inst;
 							
-							line[3] = "I can't remember anything that happened after that, I'm so sorry...";
+							line[3] = "I can't remember anything that happened after that, I'm so sorry.";
 							linefrom[3] = inst;
 							
 							line[4] = "I've just been standing here, paralysed by fear...";
 							linefrom[4] = inst;
 							
-							line[5] = "I just don't know what to do... how to get out of this...";
+							line[5] = "I just don't know what to do... or how to get out of this...";
 							linefrom[5] = inst;
 							
-							line[6] = "I feel so weak for not helping my son...";
+							line[6] = "I feel so pathetic for not helping my son.";
 							linefrom[6] = inst;
 							
-							line[7] = "This can't be the end...";
+							line[7] = "This can't be the end.";
 							linefrom[7] = inst;
 							
 							if (comp0_exists){
@@ -638,7 +638,7 @@ if (instance_exists(obj_player)){
 								linefrom[7] = inst;
 							}
 							
-							line[8] = "Yes, that's the plan.";
+							line[8] = "That's correct.";
 							linefrom[8] = obj_player;
 							
 							line[9] = "In that case, I'm happy to help get you in there... assuming that you'll protect me on the way, of course.";
@@ -688,7 +688,7 @@ if (instance_exists(obj_player)){
 					line[6] = "They knocked me onto the ground with a crowbar. After that, everything went black...";
 					linefrom[6] = inst;
 					
-					line[7] = "Okay, well you're all right now.";
+					line[7] = "Okay, you're all right now.";
 					linefrom[7] = obj_player;
 					
 					line[8] = "The exit is down south.";
@@ -726,7 +726,7 @@ if (instance_exists(obj_player)){
 				line[4] = "I can fight alongside you... if you need...";
 				linefrom[4] = inst;
 				
-				line[5] = "That'd be very useful. Thank you.";
+				line[5] = "That'd be useful. Thank you.";
 				linefrom[5] = obj_player;
 			}
 			break;

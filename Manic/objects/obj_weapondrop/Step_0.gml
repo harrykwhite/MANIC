@@ -111,7 +111,7 @@ if (kill){
 	instance_destroy();
 	
 	if (index == PlayerWeapon.Stick){
-		scr_sound_play_distance(snd_weapon_stick_break_0, false, 200);
+		scr_sound_play(snd_weapon_stick_break_0, false, 0.8, 1.2);
 		
 		var sticklen = 39;
 		for(var thislen = -(sticklen / 2); thislen < (sticklen / 2); thislen += 3){
@@ -309,7 +309,7 @@ if (instance_exists(obj_player)){
 				
 				// If in the prologue, update the tutourial stage
 				if (global.level_current == Level.Prologue){
-					if (obj_controller_ui.tutourial_stage == TutourialStage.Pickup) && (index == PlayerWeapon.WeakenedHuntingRifle){
+					if (obj_controller_ui.tutourial_stage == TutourialStage.Pickup) && (index == PlayerWeapon.OldHuntingRifle){
 						obj_controller_ui.tutourial_stage = TutourialStage.Shoot;
 						obj_controller_ui.tutourial_scale = 1.2;
 						obj_controller_ui.tutourial_stage_timer = obj_controller_ui.tutourial_stage_timer_max;

@@ -23,6 +23,8 @@ deer_spawn_time = deer_spawn_time_max;
 companions_spawned = false;
 endscene_initiated = false;
 hunting = false;
+endscene_music_mult = 0;
+endscene_music_mult_increase = 0.025;
 
 global.cutscene_current = 56;
 

@@ -64,20 +64,20 @@ if (instance_exists(obj_player)){
 				
 				var dist_to_player = distance_to_object(obj_player);
 			
-				if (dist_to_player > 70 + (40 * order)) || (global.cutscene_current == 52){
+				if (dist_to_player > 70 + (companionspacing * order)) || (global.cutscene_current == 52){
 					move_x_to = obj_player.x;
 					move_y_to = obj_player.y + 6;
 					move_speed = 2.1;
 					
-					if (dist_to_player > 100 + (40 * order)){
+					if (dist_to_player > 100 + (companionspacing * order)){
 						move_speed = 2.6;
 					}
 					
-					if (dist_to_player > 140 + (40 * order)){
+					if (dist_to_player > 140 + (companionspacing * order)){
 						move_speed = 3.1;
 					}
 					
-					if (dist_to_player > 180 + (40 * order)){
+					if (dist_to_player > 180 + (companionspacing * order)){
 						move_speed = 3.6;
 					}
 					
@@ -106,7 +106,7 @@ if (instance_exists(obj_player)){
 					move_x_to = target.x;
 					move_y_to = target.y + 6;
 				
-					if (distance_to_object(target) > 30 + (15 * order)){
+					if (distance_to_object(target) > 44 + (companionspacing * order)){
 						move_speed = 1.9;
 					}else{
 						move_speed = 0;
@@ -251,7 +251,7 @@ if (instance_exists(obj_player)){
 	
 	if (!cutscene_prop){
 		if (global.cutscene_current == 2) || (global.cutscene_current == 52) || (global.cutscene_current == 58){
-			if (distance_to_object(obj_player) > 67 + (40 * order)){
+			if (distance_to_object(obj_player) > 67 + (companionspacing * order)){
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y + 6;
 				move_speed = 1.9;

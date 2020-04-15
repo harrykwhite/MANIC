@@ -70,9 +70,14 @@ with(obj_controller_prologue){
 	instance_destroy(obj_farmbuilding_3);
 	instance_destroy(obj_farmbuilding_4);
 	
-	var light = instance_create(486, 546, obj_block_light);
-	light.size[0] = 360;
-	light.time = -1;
+	var lightx = 486;
+	var lighty = 546;
+	
+	if (instance_place(lightx, lighty, obj_block_light) == noone){
+		var light = instance_create(lightx, lighty, obj_block_light);
+		light.size[0] = 360;
+		light.time = -1;
+	}
 	
 	var robotprop = instance_create_layer(446, 722, "EndingObjects", obj_pawn_other_robotrunning_0);
 	robotprop.dir = 180;

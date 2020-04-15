@@ -41,7 +41,7 @@ if (instance_exists(target)){
 			sniperboss_movetime --;
 			
 			if (sniperboss_melee){
-				if (distance_to_point(move_x_to, move_y_to) < 30){
+				if (distance_to_point(move_x_to, move_y_to) < 36){
 					weapon.attack = true;
 				}
 			}

@@ -11,7 +11,7 @@ if (instance_exists(owner)){
 
     if (attack) && (attack_time <= 0){
         scr_effect_screenshake(1);
-        scr_sound_play_distance(snd_weapon_swing_0, false, 450);
+        scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
         
 	    var xpos = x + lengthdir_x(42 * owner.scale, dir);
 		var ypos = y + lengthdir_y(42 * owner.scale, dir);

@@ -16,7 +16,7 @@ if (random(100) < 1){
 var yy = y + 6;
 var box_x1 = x - (10 * sign(image_xscale));
 var box_y1 = yy - 20;
-var box_x2 = x + (65 * sign(image_xscale));
+var box_x2 = x + (45 * sign(image_xscale));
 var box_y2 = yy + 20;
 
 interact = false;

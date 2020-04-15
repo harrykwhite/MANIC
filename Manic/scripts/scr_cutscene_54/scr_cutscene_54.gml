@@ -33,7 +33,6 @@ if (instance_exists(obj_player)){
 					scr_effect_screenshake(1);
 					
 					global.cutscene_time[index] = 0;
-					obj_player.surrounding_light_to -= obj_player.surrounding_light_upgradedec;
 					obj_player.has_antagonist_mask = true;
 				}
 				

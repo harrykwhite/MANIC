@@ -30,7 +30,7 @@ if (place_meeting(x + 1, y + 1, obj_player)){
     if (global.player_health_current < global.player_health_max){
         scr_player_heal(2);
 		scr_effect_screenshake(1);
-		scr_sound_play(snd_object_health_pickup_0, false, 0.9, 1.1);
+		scr_sound_play(snd_object_health_pickup_0, false, 0.8, 1.2);
 		
 		repeat(5){
 			part_particles_create(global.ps_bottom, x + random_range(-4, 4), y + random_range(-4, 4), global.pt_wood_1, 1);

@@ -154,7 +154,7 @@ if (death){
 	}
 	
 	if (beltshutdownsound){
-		scr_sound_play_distance(snd_other_conveyerbelt_1, false, 200);
+		scr_sound_play(snd_other_conveyerbelt_1, false, 1, 1);
 	}
 	
 	if (beltcount > 0){

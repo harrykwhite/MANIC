@@ -24,6 +24,8 @@ vignette_flash_alpha_speed = 0;
 vignette_flash_colour = c_white;
 
 arena_scale = 1;
+arena_score_scale = 1;
+arena_score_current = 0;
 
 objective_scale = 1;
 
@@ -167,10 +169,6 @@ if (!global.pers_runthrough_pre){
 							scr_upgrade_add(u);
 						}
 					}
-					
-					if (instance_exists(obj_player)){
-						obj_player.surrounding_light = obj_player.surrounding_light_to;
-					}
 				}
 			
 				global.game_combat_state = CombatState.Idle;
@@ -187,7 +185,7 @@ if (!global.pers_runthrough_pre){
 				
 				if (!global.game_boss_firstantag_killed){
 					if (!global.game_is_playthrough){
-						if (global.level_current >= Level.WesternFarmland) && (global.level_current < Level.TrainStation)
+						if (global.level_current >= Level.EasternFarmland) && (global.level_current < Level.TrainStation)
 						&& (room != rm_level_2_pre_00) && (room != rm_level_2_00) && (room != rm_level_2_01) && (room != rm_level_2_02){
 							scr_companion_register(obj_companion_0);
 							global.game_companion_farmer_found = true;

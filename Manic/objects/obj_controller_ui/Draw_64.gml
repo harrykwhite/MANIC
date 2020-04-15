@@ -381,10 +381,11 @@ draw_set_alpha(1);
 
 if (isarena){
 	arena_scale = approach(arena_scale, 1, 15);
+	arena_score_scale = approach(arena_score_scale, 1, 15);
 	
 	// Bar data
 	var bar_x1, bar_y1, bar_x2, bar_y2;
-	var barwidth, barheight = 6;
+	var barwidth, barheight = 4;
 	var barvalue = global.game_combat_state_time_real;
 	var barmax = 0;
 	
@@ -396,18 +397,8 @@ if (isarena){
 		barmax += levelobj.spawn_state_time[s] * 60;
 	}
 	
-	// Bar moments
-	var barmoment, barmoment_count;
-	
-	barmoment[0] = (levelobj.spawn_state_time[CombatState.Idle] * 60) / barmax;
-	barmoment[1] = ((levelobj.spawn_state_time[CombatState.Idle] + levelobj.spawn_state_time[CombatState.Buildup]) * 60) / barmax;
-	
-	barmoment_count = array_length_1d(barmoment);
-	
 	// Text data
-	var text = "WAVE " + 
-		(global.game_combat_arena_wave < global.game_combat_arena_wavemax ? string(global.game_combat_arena_wave + 1) : "MAX");
-	
+	var text = "WAVE " + (global.game_combat_arena_wave < global.game_combat_arena_wavemax ? string(global.game_combat_arena_wave + 1) : "MAX");
 	var textwidth, textheight;
 	
 	var textx = dwidth / 2;
@@ -423,12 +414,14 @@ if (isarena){
 	
 	// Bar position
 	barwidth = textwidth * 2.5;
+	barwidth *= 1 + ((arena_scale - 1) * 0.5);
+	
 	bar_x1 = textx - (barwidth / 2);
 	bar_y1 = texty + (textheight / 2);
 	bar_x2 = textx + (barwidth / 2);
 	bar_y2 = texty + (textheight / 2) + barheight;
 	
-	// Draw
+	// Draw wave bar
 	if (arena_scale > 1.01){
 		scr_text_transformed(dwidth / 2, dheight - 50, text, c_white, arena_scale, arena_scale, 0);
 	}else{
@@ -437,16 +430,21 @@ if (isarena){
 	
 	draw_healthbar(bar_x1, bar_y1, bar_x2, bar_y2, (barvalue / barmax) * 100, c_black, c_white, c_white, 0, true, false);
 	
-	draw_set_colour(c_ltgray);
-	draw_set_alpha(0.25);
+	// Draw score
+	var textbold = arena_score_current > global.level_highscore[levelcur];
 	
-	for(var bm = 0; bm < barmoment_count; bm ++){
-		var moment = barmoment[bm];
-		var momentx = bar_x1 + (moment * barwidth);
-		var momentwidth = 3;
-		
-		draw_rectangle(momentx, bar_y1, momentx + momentwidth, bar_y2, false);
-	}
+	var textscore = scr_score_to_text(arena_score_current);
+	var texthighscore = scr_score_to_text(global.level_highscore[levelcur]);
+	
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+	draw_set_font(textbold ? fnt_cambria_3_bold : fnt_cambria_3);
+	scr_text_transformed(40, dheight - 70, textscore, c_white, arena_score_scale, arena_score_scale, 0);
+	
+	draw_set_font(fnt_cambria_1);
+	scr_text(40, dheight - 46, texthighscore + " HI", c_white);
+	
+	draw_set_valign(fa_top);
 	
 	draw_set_alpha(1);
 }
@@ -1011,11 +1009,6 @@ if (pausedialogue_option_selected_previous != pausedialogue_option_selected && p
 
 // Warning prompt
 with(obj_controller_all){
-	event_user(0);
-}
-
-// Mouse
-with(obj_controller_mouse){
 	event_user(0);
 }
 

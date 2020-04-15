@@ -88,3 +88,10 @@ if (alpha > 0){
 }
 
 draw_set_alpha(1);
+
+// Mouse
+with(obj_controller_mouse){
+	event_user(0);
+}
+
+draw_set_alpha(1);

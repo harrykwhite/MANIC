@@ -15,31 +15,31 @@ switch(rm){
 		break;
 	
 	case rm_level_2_pre_00:
-		return Level.WesternFarmland;
+		return Level.EasternFarmland;
 		break;
 	
 	case rm_level_2_00:
-		return Level.WesternFarmland;
+		return Level.EasternFarmland;
 		break;
 	
 	case rm_level_2_01:
-		return Level.WesternFarmland;
+		return Level.EasternFarmland;
 		break;
 	
 	case rm_level_2_02:
-		return Level.WesternFarmland;
+		return Level.EasternFarmland;
 		break;
 	
 	case rm_level_2_03:
-		return Level.WesternFarmland;
+		return Level.EasternFarmland;
 		break;
 	
 	case rm_level_2_04:
-		return Level.WesternFarmland;
+		return Level.EasternFarmland;
 		break;
 	
 	case rm_level_2_post_00:
-		return Level.WesternFarmland;
+		return Level.EasternFarmland;
 		break;
 	
 	case rm_level_3_00:
@@ -184,6 +184,10 @@ switch(rm){
 	
 	case rm_arena_1_00:
 		return Level.Arena_NorthernFarmhouse;
+		break;
+	
+	case rm_arena_2_00:
+		return Level.Arena_WinterForest;
 		break;
 	
 	default:

@@ -178,6 +178,7 @@ switch(room){
 		break;
 	
 	case rm_arena_1_00:
+	case rm_arena_2_00:
 		level = obj_controller_arena;
 		break;
 	

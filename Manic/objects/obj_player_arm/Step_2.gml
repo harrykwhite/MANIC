@@ -82,7 +82,7 @@ if (instance_exists(obj_player)){
 					image_yscale = -1;
 		        }
 		    }
-		}else if (global.level_current == Level.Prologue){
+		}else if (global.weapon_default == -1){
 			image_alpha = 0;
 		}
 	}else{

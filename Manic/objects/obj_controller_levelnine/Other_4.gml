@@ -31,7 +31,7 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 640;
-			spawn_y = 704;
+			spawn_y = 694;
 		}else{
 			obj_player.x = 136;
 			obj_player.y = -6;
@@ -47,7 +47,7 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 920;
-			spawn_y = 986;
+			spawn_y = 976;
 		}else{
 			obj_player.x = 278;
 			obj_player.y = -6;
@@ -63,7 +63,7 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 694;
-			spawn_y = 600;
+			spawn_y = 580;
 		}else{
 			obj_player.x = 714;
 			obj_player.y = -6;
@@ -72,6 +72,12 @@ switch(room){
 			spawn_y = 202;
 		}
 		break;
+}
+
+// Camera
+if (instance_exists(obj_controller_camera)){
+	obj_controller_camera.x = obj_player.x;
+	obj_controller_camera.y = obj_player.y;
 }
 
 // Other

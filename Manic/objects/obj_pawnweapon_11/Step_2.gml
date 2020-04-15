@@ -5,6 +5,11 @@ if (instance_exists(owner)){
 	    y = owner.arm.y + lengthdir_y(7 * owner.scale, dir) + lengthdir_y(1 * owner.scale, up(dir));
 		
 	    image_angle = dir + (angle_offset * owner.image_xscale);
+		image_angle %= 360;
+		
+		while(image_angle < 0){
+			image_angle += 360;
+		}
 		
 		if (image_angle > 270 || image_angle <= 90){
 			image_yscale = 1;

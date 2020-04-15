@@ -60,7 +60,7 @@ if (domove){
 		facing = -1;
 	}
 	
-	image_speed = 0.28 * spd;
+	image_speed = 0.25 * spd;
 	sprite_index = spr_prisoner_walk_0;
 	x += lengthdir_x(spd, dir);
 	y += lengthdir_y(spd, dir);

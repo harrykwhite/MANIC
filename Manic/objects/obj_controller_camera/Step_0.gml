@@ -17,11 +17,13 @@ if (!global.game_pause){
 	camera_set_view_size(view_camera[0], camera_zoom_width * camera_zoom, camera_zoom_height * camera_zoom);
 	
 	if (global.weapon_slot_standalone == -1){
-		if (global.weapon_slot[global.weapon_slotcurrent]!= -1){
+		if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 		    camera_radius = global.weapon_camerarange[global.weapon_slot[global.weapon_slotcurrent]];
 		}else{
-		    camera_radius = -1;
+		    camera_radius = global.weapon_camerarange[global.weapon_default == -1 ? PlayerWeapon.Knife : global.weapon_default];
 		}
+	}else{
+		camera_radius = global.weapon_camerarange[global.weapon_slot_standalone];
 	}
 	
 	camera_zoom_offset = 0;
@@ -30,10 +32,11 @@ if (!global.game_pause){
 	if (instance_exists(obj_player)){
 		if (autocontrol){
 			camera_speed = 0.085;
+			
 		    if (global.cutscene_current == -1){
 		        if (camera_radius != -1) && (!camera_move_to_player){
-		            xx = obj_player.x + lengthdir_x(min(camera_radius * 1.25, mdist), dir);
-		            yy = obj_player.y + lengthdir_y(min(camera_radius * 1.25, mdist), dir);
+		            xx = obj_player.x + lengthdir_x(min(camera_radius, mdist), dir);
+		            yy = obj_player.y + lengthdir_y(min(camera_radius, mdist), dir);
 		        }else{
 		            xx = obj_player.x;
 		            yy = obj_player.y;

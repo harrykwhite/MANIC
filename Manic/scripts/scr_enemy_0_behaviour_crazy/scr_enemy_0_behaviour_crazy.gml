@@ -32,6 +32,7 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 	}else{
 		if (point_distance(x, y, target.x, target.y) < 46){
 			move_speed = 0;
+			
 			if (crazy_attackbreak > 0){
 				crazy_attackbreak --;
 			}else{

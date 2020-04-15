@@ -8,16 +8,22 @@
 ///@param object
 ///@param sourcex
 ///@param sourcey
-var enemyproj = argument0;
-var xx = argument1;
-var yy = argument2;
-var dir = argument3;
-var damage = argument4;
-var strength = argument5;
-var len = argument6 + 16;
-var obj = argument7;
-var sourcex = argument8;
-var sourcey = argument9;
+///@param doburn
+var enemyproj = argument[0];
+var xx = argument[1];
+var yy = argument[2];
+var dir = argument[3];
+var damage = argument[4];
+var strength = argument[5];
+var len = argument[6] + 16;
+var obj = argument[7];
+var sourcex = argument[8];
+var sourcey = argument[9];
+var doburn = -1;
+
+if (argument_count > 10){
+	doburn = argument[10];
+}
 
 if (global.cutscene_current != -1) || (global.game_pause){
 	return;
@@ -116,6 +122,12 @@ switch(ctype){
 								bite_retreat_x = xx;
 								bite_retreat_y = yy;
 							}
+						}
+						
+						if (doburn == true){
+							burn = doburn;
+							move_x_to = x;
+							move_y_to = y;
 						}
 					}
 					
@@ -228,6 +240,12 @@ switch(ctype){
 						part_type_direction(global.pt_blood_5, 0, 360, 0, 0);
 						part_type_speed(global.pt_blood_5, 3, 5, -0.2, 0);
 						repeat(3)part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_blood_5, 1);
+						
+						if (doburn == true){
+							burn = doburn;
+							move_x_to = x;
+							move_y_to = y;
+						}
 					}
 					
 					stick_kill = true;
@@ -245,6 +263,14 @@ switch(ctype){
 				len = collision_distance_object(sourcex, sourcey, xx + lengthdir_x(len, dir), yy + lengthdir_y(len, dir), inst, 3);
 				xEnd = xx + lengthdir_x(len, dir);
 				yEnd = yy + lengthdir_y(len, dir);
+				
+				if (inst.object_index == obj_conveyerbelt_4){
+					if (global.level_current == Level.UndergroundBunker){
+						if (global.game_objective_current != Objectives.DestroyProductionEngines){
+							return;
+						}
+					}
+				}
 				
 				if (inst.object_index == obj_p_depth_door) || (object_get_parent(inst.object_index) == obj_p_depth_door){
 					if (!inst.breakable){
@@ -278,10 +304,10 @@ switch(ctype){
 					inst.dir = dir;
 					
 					if (inst.object_index == obj_prisonbar_3){
-						scr_sound_play_distance_pitch(snd_object_metal_hit_0, false, 220, 0.8, 1.2);
+						scr_sound_play(snd_object_metal_hit_0, false, 0.8, 1.2);
 						scr_effect_object(xEnd + random_range(-13, 13), yEnd + random_range(-6, 6), obj_ef_blood, spr_ef_metal_0, 0, 1);
 					}else{
-						scr_sound_play_distance_pitch(snd_object_box_hit_0, false, 220, 0.8, 1.2);
+						scr_sound_play(snd_object_box_hit_0, false, 0.8, 1.2);
 						part_type_direction(global.pt_wood_1, (dir - 180) - 30, (dir - 180) + 30, 0, 0);
 						repeat(7) part_particles_create(global.ps_bottom, xEnd + random_range(-8, 8), yEnd + random_range(-8, 8), global.pt_wood_1, 2);
 					}

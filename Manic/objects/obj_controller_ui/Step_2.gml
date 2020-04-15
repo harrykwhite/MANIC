@@ -196,6 +196,16 @@ if (!ispaused){
 		minimap_arrow_sine = 0;
 	}
 	
+	// Arena
+	var arenascore = global.level_score[global.level_current];
+	var arenascorejump = 5;
+	
+	if (arena_score_current < arenascore){
+		arena_score_current += min(arenascorejump, arenascore - arena_score_current);
+	}else if (arena_score_current > arenascore){
+		arena_score_current -= min(arenascorejump, arena_score_current - arenascore);
+	}
+	
 	// Header
 	if (header_display_time > 0){
 		header_display_time --;
@@ -447,7 +457,11 @@ if (!ispaused){
 								case 0:
 									global.game_combat_in_hordechallenge = true;
 									global.game_combat_in_hordechallenge_time = 60 * 30;
-									scr_sound_play(snd_object_hordepost_activate, false, 0.9, 1.1);
+									
+									var levelobj = scr_level_get_object();
+									levelobj.spawn_time = 0;
+									
+									scr_sound_play(snd_object_hordepost_activate, false, 0.8, 1.2);
 									break;
 						
 								case 1:

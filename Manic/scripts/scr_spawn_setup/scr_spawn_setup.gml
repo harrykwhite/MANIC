@@ -2,7 +2,12 @@
 var music = argument0;
 
 var lvl = scr_level_get_index(room);
+var arena = scr_level_is_arena();
 var srate = 1 + (0.05 * (lvl - 1));
+
+if (arena){
+	srate = 1;
+}
 
 var combat_0, combat_1, combat_2, stinger_2, hordepost_loop;
 
@@ -64,8 +69,8 @@ spawn_music_main[CombatState.Climax] = combat_2;
 spawn_music_pause_gain[CombatState.Climax] = 0;
 spawn_music_pause_position[CombatState.Climax] = 0;
 
-if (scr_level_is_arena()){
-	spawn_state_time[CombatState.Idle] *= 0.5;
+if (arena){
+	spawn_state_time[CombatState.Idle] = round(0.5 * spawn_state_time[CombatState.Idle]);
 	spawn_max[CombatState.Idle] = 0;
 }
 

@@ -122,6 +122,12 @@ spawn_pause_update = false;
 spawn_rate_real = 1;
 spawn_cleared = false;
 
+// Camera
+if (instance_exists(obj_controller_camera)){
+	obj_controller_camera.x = obj_player.x;
+	obj_controller_camera.y = obj_player.y;
+}
+
 // Other
 companions_spawned = false;
 room_music_transition = false;

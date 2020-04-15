@@ -42,7 +42,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
 		shoot.image_angle = shoot.dir;
 		
         shoot_can = false;
-        shoot_time = 55;
+        shoot_time = 60;
         shoot_bounceback = -6;
         angle_offset = 10;
 		

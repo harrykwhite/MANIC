@@ -1,6 +1,6 @@
 // Titlescreen
 if (room == rm_title_0){
-	with(obj_titlescreen_main){
+	with(obj_controller_titlescreen){
 		event_user(0);
 	}
 }

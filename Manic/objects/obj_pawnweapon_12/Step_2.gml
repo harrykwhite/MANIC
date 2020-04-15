@@ -7,6 +7,10 @@ if (instance_exists(owner)){
 	    image_angle = dir + (angle_offset * owner.image_xscale);
 		image_angle %= 360;
 		
+		while(image_angle < 0){
+			image_angle += 360;
+		}
+		
 		if (image_angle > 270 || image_angle <= 90){
 			image_yscale = 1;
 		}else{

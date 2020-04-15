@@ -1,1 +1,1 @@
-text = "Train station up north from the exit on the left.";
+text = "Train station located north from the exit on the left.";

@@ -20,8 +20,8 @@ obj_controller_ui.playerhit_alpha = 0.75;
 
 if (global.player_health_current <= 0){
 	if (!near_dead){
-		var d = instance_create(x, y - 16, obj_player_death);
-		d.spd = min(1.5, (kbs * 2.5));
+		var d = instance_create(x, y - 4, obj_player_death);
+		d.spd = min(2.5, (kbs * 3));
 		d.dir = kbd;
 		d.move = true;
 	
@@ -63,6 +63,6 @@ if (scr_player_has_upgrade(PlayerUpgrade.ExplosiveVest)){
 	    scr_effect_screenshake(2);
 		scr_effect_zoom(-0.025);
 		scr_effect_vignette_flash(c_ltgray, 0.2, 0.01);
-		scr_sound_play(snd_weapon_explode_0, false, 0.9, 1.1);
+		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
 	}
 }

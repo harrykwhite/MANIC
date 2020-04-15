@@ -7,6 +7,7 @@ reactivate_on_death = false;
 active = true;
 time = 25;
 incutscene = false;
+check_hordechallenge = false;
 
 interact = false;
 interact_active = false;

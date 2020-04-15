@@ -1,4 +1,4 @@
-if (global.level_current >= Level.UndergroundBunker){
+if (scr_object_spawn_grenade()){
 	scr_upgrade_add(PlayerUpgrade.Backpack);
 }
 

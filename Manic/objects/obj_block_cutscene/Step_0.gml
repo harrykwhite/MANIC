@@ -67,6 +67,12 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				}
 			}
 			
+			if (check_hordechallenge){
+				if (global.game_combat_in_hordechallenge){
+					return;
+				}
+			}
+			
 			if (interact){
 				interact_active = true;
 				

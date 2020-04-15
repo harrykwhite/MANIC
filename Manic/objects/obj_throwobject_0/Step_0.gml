@@ -72,5 +72,5 @@ if (explode){
 	scr_effect_freeze(13);
 	scr_effect_zoom(-0.1);
 	scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
-	scr_sound_play_distance(snd_weapon_explode_0, false, 400 * explode_scale);
+	scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
 }

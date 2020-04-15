@@ -2,7 +2,7 @@
 var spd_multiplier = spd_offset;
 var weapon_index = global.weapon_slot[global.weapon_slotcurrent];
 var real_weapon_index = weapon_index == -1 ? global.weapon_default : weapon_index;
-var has_weapon = (weapon_index != -1) || (global.level_current != Level.Prologue);
+var has_weapon = weapon_index != -1;
 var footstep_wood, footstep_road, footstep_tile;
 footstep_sound = global.player_footstep_default;
 
@@ -141,7 +141,7 @@ if (global.weapon_slot_standalone == -1){
 			
 			// Play Footstep Sound
 			if (footstep_sound != -1){
-				scr_sound_play_distance_pitch(footstep_sound, false, 110, 0.8, 1.1);
+				scr_sound_play(footstep_sound, false, 0.8, 1.2);
 			}
 		}
 		

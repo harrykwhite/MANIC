@@ -70,7 +70,7 @@ if (!completed){
 				interact_break = 15;
 				obj_controller_ui.pausedialogue = true;
 				obj_controller_ui.pausedialogue_type = 1;
-				obj_controller_ui.pausedialogue_type_text = "Start the horde challenge?\n\nSpawn rates will be increased by " + string(srate * 100) + "% for 30 seconds.\nAn upgrade is waiting for those who survive.";
+				obj_controller_ui.pausedialogue_type_text = "Start the horde challenge?\n\nSpawn rates will be increased by " + string(srate * 100) + "% for 30 seconds.\nAn upgrade is waiting for the survivor.";
 				obj_controller_ui.pausedialogue_option_exittext = "Resume";
 				obj_controller_ui.pausedialogue_type_option[0] = "Start the challenge";
 				obj_controller_ui.pausedialogue_type_option_scale[0] = 1;
