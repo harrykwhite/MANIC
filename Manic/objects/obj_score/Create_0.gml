@@ -6,4 +6,4 @@ scalespeed = 0.1;
 life = 90;
 
 hspd = 0
-vspd = -3;
+vspd = -random_range(2.5, 3);

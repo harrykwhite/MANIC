@@ -44,6 +44,6 @@ if (_score != 0){
 	
 	obj_controller_ui.arena_score_scale = 1.35;
 	
-	var pts = instance_create(x, y, obj_score);
+	var pts = instance_create(x, y - 2, obj_score);
 	pts._score = _score;
 }

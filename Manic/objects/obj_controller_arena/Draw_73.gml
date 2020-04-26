@@ -10,6 +10,11 @@ switch(room){
 		alpha = 0.04;
 		colour = c_ltgray;
 		break;
+	
+	case rm_arena_3_00:
+		alpha = 0.1;
+		colour = c_dkgray;
+		break;
 }
 
 draw_set_alpha(alpha);

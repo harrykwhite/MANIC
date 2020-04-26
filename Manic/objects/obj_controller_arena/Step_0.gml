@@ -45,6 +45,21 @@ if (!global.game_pause){
 			}
 			
 			break;
+		
+		
+		case rm_arena_3_00:
+			// Dust
+			if (random(5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);
+			if (random(10) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_1, 1);
+	
+			// Fog
+			if (random(2.5) < 1){
+				if (part_particles_count(global.pt_fog_0) < 40){
+					part_particles_create(global.ps_front, camx + random_range(0, camw), camy + random_range(0, camh), global.pt_fog_0, 1);
+				}
+			}
+		
+			break;
 	}
 }
 
@@ -53,6 +68,12 @@ var lighting_level;
 lighting_level[CombatState.Climax] = 1;
 lighting_level[CombatState.Buildup] = 0.925;
 lighting_level[CombatState.Idle] = 0.85;
+
+if (room == rm_arena_3_00){
+	lighting_level[CombatState.Climax] = 1;
+	lighting_level[CombatState.Buildup] = 0.95;
+	lighting_level[CombatState.Idle] = 0.9;
+}
 
 var lighting = lighting_level[global.game_combat_state];
 
@@ -141,5 +162,4 @@ if (spawn_start_wait >= spawn_start_wait_max){
 }
 
 scr_level_combatstate_control();
-
 scr_level_audio_pause_and_resume();

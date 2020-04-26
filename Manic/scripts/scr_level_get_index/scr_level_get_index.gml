@@ -190,6 +190,10 @@ switch(rm){
 		return Level.Arena_WinterForest;
 		break;
 	
+	case rm_arena_3_00:
+		return Level.Arena_PrisonBase;
+		break;
+	
 	default:
 		show_debug_message("A level room has not been included in scr_level_get_index");
 		return 0;

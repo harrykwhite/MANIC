@@ -17,6 +17,8 @@ if (!instance_exists(obj_player)){
 
 global.player_footstep_default = snd_character_footstep_grass;
 
+var music = "main";
+
 switch(room){
 	case rm_arena_1_00:
 		obj_player.x = 826;
@@ -36,11 +38,23 @@ switch(room){
 		spawn_y = room_height - 200;
 		
 		wave_spawn_rate_change = 0.3;
+		music = "windy";
+		break;
+	
+	case rm_arena_3_00:
+		obj_player.x = 768;
+		obj_player.y = room_height + 6;
+		
+		spawn_x = obj_player.x;
+		spawn_y = room_height - 200;
+		
+		wave_spawn_rate_change = 0.35;
+		music = "underground";
 		break;
 }
 
 // Spawn System
-scr_spawn_setup("main");
+scr_spawn_setup(music);
 spawn_pause_update = false;
 
 spawn_rate_real = 1;

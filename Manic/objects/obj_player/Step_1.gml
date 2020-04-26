@@ -2,6 +2,10 @@ global.player_health_previous = global.player_health_current;
 
 // Upgrades
 if (!upgrades_set){
+	if (scr_level_is_arena()){
+		scr_player_upgrade_update();
+	}
+	
 	scr_player_upgrade_refresh();
 	scr_player_upgrade_light();
 	
@@ -22,6 +26,10 @@ if (!global.weapon_default_set){
 			}
 		
 			if (global.level_current >= Level.HumanPrison){
+				def = PlayerWeapon.Bayonet;
+			}
+		}else{
+			if (global.level_current == Level.Arena_PrisonBase){
 				def = PlayerWeapon.Bayonet;
 			}
 		}
