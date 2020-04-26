@@ -414,7 +414,6 @@ if (isarena){
 	
 	// Bar position
 	barwidth = textwidth * 2.5;
-	barwidth *= 1 + ((arena_scale - 1) * 0.5);
 	
 	bar_x1 = textx - (barwidth / 2);
 	bar_y1 = texty + (textheight / 2);
@@ -441,7 +440,7 @@ if (isarena){
 	draw_set_font(textbold ? fnt_cambria_3_bold : fnt_cambria_3);
 	scr_text_transformed(40, dheight - 70, textscore, c_white, arena_score_scale, arena_score_scale, 0);
 	
-	draw_set_font(fnt_cambria_1);
+	draw_set_font(fnt_cambria_0);
 	scr_text(40, dheight - 46, texthighscore + " HI", c_white);
 	
 	draw_set_valign(fa_top);

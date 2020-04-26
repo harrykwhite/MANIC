@@ -51,12 +51,14 @@ if (death){
 			var weapon = instance_create(x, y + 8, obj_weapondrop);
 			weapon.index = PlayerWeapon.Grenade;
 			
-			if (global.level_current >= Level.HumanPrison){
-				weapon.index = choose(PlayerWeapon.Grenade, PlayerWeapon.Grenade, PlayerWeapon.ReinforcedGrenade);
-			}
-			
-			if (global.level_current >= Level.TrainStation){
-				weapon.index = choose(PlayerWeapon.Grenade, PlayerWeapon.ReinforcedGrenade, PlayerWeapon.LandMine);
+			if (!scr_level_is_arena()){
+				if (global.level_current >= Level.HumanPrison){
+					weapon.index = choose(PlayerWeapon.Grenade, PlayerWeapon.Grenade, PlayerWeapon.ReinforcedGrenade);
+				}
+				
+				if (global.level_current >= Level.TrainStation){
+					weapon.index = choose(PlayerWeapon.Grenade, PlayerWeapon.ReinforcedGrenade, PlayerWeapon.LandMine);
+				}
 			}
 			
 			weapon.angle = random_range(-10, 10);

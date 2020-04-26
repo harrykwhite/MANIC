@@ -37,21 +37,6 @@ global.weapon_slotcurrent = 0;
 
 global.boss_current = -1;
 
-if (scr_level_is_arena()){
-	var index = 0;
-	
-	switch(room){
-		case rm_arena_1_00: index = 0; break;
-		case rm_arena_2_00: index = 1; break;
-		case rm_arena_3_00: index = 2; break;
-	}
-	
-	scr_arena_update_highscore(index);
-	scr_arena_write_highscore(index);
-	
-	global.level_score[global.level_current] = 0;
-}
-
 if (room == rm_level_10_01){
 	if (instance_exists(obj_weapon_29)){
 		obj_weapon_29.ammo = -1;

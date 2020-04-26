@@ -399,7 +399,7 @@ if (!in_settings) && (!in_levelselect) && (!in_arenamode){
 		var col = c_white;
         var scale = 1;
         var xx = (display_get_gui_width() / 2);
-        var yy = (((display_get_gui_height() / 2) - (gapverylarge * option_arenamode_max * 0.5)) + (gapverylarge * i));
+        var yy = ((display_get_gui_height() / 2) - (gapverylarge * option_arenamode_max * 0.5)) + (gapverylarge * i);
         var islocked = false;
 		
         if (i < option_arenamode_max + 1){
@@ -434,8 +434,8 @@ if (!in_settings) && (!in_levelselect) && (!in_arenamode){
 
             scale = option_arenamode_scale[i];
 			
-			draw_set_font(fnt_cambria_0);
-            scr_text_transformed(xx, yy + 26, scr_score_to_text(global.level_highscore[Level.Arena_NorthernFarmhouse + i]) + " HI", col, scale, scale, 0);
+			draw_set_font(fnt_cambria_n1);
+            scr_text(xx, yy + 24, scr_score_to_text(global.level_highscore[Level.Arena_NorthernFarmhouse + i]) + " HI", c_white);
         } else {
             str = "Back to Title";
 

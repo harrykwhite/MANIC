@@ -39,8 +39,7 @@ if (global.weapon_slot_standalone == -1){
 	if (new_weaponslot != -1){
 	    if (!instance_exists(global.weapon_object[new_weaponslot])){
 	        var wep = instance_create(obj_player.x, obj_player.y, global.weapon_object[new_weaponslot]); // Create the new weapon object.
-			wep.image_angle = point_direction(obj_player_arm.x, obj_player_arm.y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
-			
+			wep.image_angle = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
 			with(wep){
 				event_perform(ev_step_end, 0);
 			}

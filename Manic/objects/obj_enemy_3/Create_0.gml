@@ -60,6 +60,8 @@ fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;
 image_yscale = scale;
 
-if (global.level_current >= Level.IntoTheCity){
-	defense ++;
+if (!scr_level_is_arena()){
+	if (global.level_current >= Level.IntoTheCity){
+		defense ++;
+	}
 }

@@ -435,12 +435,6 @@ if (health_current <= 0){
 					angle = weapon.image_angle + random_range(-30, 30);
 					ind = global.pawnweapon_playerindex[weapon_index];
 					
-					if (ind == PlayerWeapon.Grenade){
-						if (random(2.5) < 1) && (global.level_current >= Level.TrainStation){
-							ind = PlayerWeapon.LandMine;
-						}
-					}
-					
 					w = instance_create(xx, yy, obj_weapondrop);
 					w.angle = angle;
 					w.index = ind;
@@ -448,7 +442,7 @@ if (health_current <= 0){
 					w.spd = random_range(1.5, 2.5);
 					w.dir = random(360);
 					
-					if (ind == PlayerWeapon.Grenade) || (ind == PlayerWeapon.LandMine){
+					if (ind == PlayerWeapon.Grenade || ind == PlayerWeapon.ReinforcedGrenade || ind == PlayerWeapon.ToxicGrenade || ind == PlayerWeapon.LandMine){
 						w.pack = true;
 						w.angle = 0;
 						w.quantity = choose(2, 3);

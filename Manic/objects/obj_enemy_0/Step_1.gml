@@ -89,16 +89,18 @@ if (!typedet){
 		mylight = instance_create_layer(x, y - 9, "Lights", obj_enemy_0_light);
 	}
 	
-	if (global.level_current >= Level.HumanPrison){
-		knockback_multiplier *= 0.95;
-	}
+	if (!scr_level_is_arena()){
+		if (global.level_current >= Level.HumanPrison){
+			knockback_multiplier *= 0.95;
+		}
 	
-	if (global.level_current >= Level.TheCemetery){
-		knockback_multiplier *= 0.9;
-	}
+		if (global.level_current >= Level.TheCemetery){
+			knockback_multiplier *= 0.9;
+		}
 	
-	if (global.level_current >= Level.IntoTheCity){
-		knockback_multiplier *= 0.85;
+		if (global.level_current >= Level.IntoTheCity){
+			knockback_multiplier *= 0.85;
+		}
 	}
 	
 	typedet = true;

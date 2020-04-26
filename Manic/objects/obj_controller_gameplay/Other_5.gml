@@ -11,3 +11,18 @@ for(var i = 0; i < comps; i ++){
 		}
 	}
 }
+
+if (scr_level_is_arena()){
+	var index = 0;
+	
+	switch(room){
+		case rm_arena_1_00: index = 0; break;
+		case rm_arena_2_00: index = 1; break;
+		case rm_arena_3_00: index = 2; break;
+	}
+	
+	scr_arena_update_highscore(index);
+	scr_arena_write_highscore(index);
+	
+	global.level_score[global.level_current] = 0;
+}

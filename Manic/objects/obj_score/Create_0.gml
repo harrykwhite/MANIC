@@ -1,7 +1,7 @@
 _score = 0;
 scorecurrent = 0;
 scorespeed = 5;
-scale = 0.5;
+scale = 1;
 scalespeed = 0.1;
 life = 90;
 

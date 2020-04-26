@@ -168,7 +168,7 @@ global.level_highscore[Level.Arena_WinterForest] = ini_read_real("Highscores", "
 
 global.level_name[Level.Arena_PrisonBase] = "Prison Base";
 global.level_location_name[Level.Arena_PrisonBase] = "prison";
-global.level_room[Level.Arena_PrisonBase] = rm_prologue_00;
+global.level_room[Level.Arena_PrisonBase] = rm_arena_3_00;
 global.level_preroom[Level.Arena_PrisonBase] = noone;
 global.level_collectable_current[Level.Arena_PrisonBase] = 0;
 global.level_collectable_number[Level.Arena_PrisonBase] = 0;

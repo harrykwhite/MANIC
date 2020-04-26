@@ -18,9 +18,13 @@ if (argument_count > 1){
 }
 
 var slotcount = global.weapon_slotmax;
+
 var ammo;
 var ammolist = ds_list_create();
 var ammocount = 0;
+
+var spawned = false;
+var arena = scr_level_is_arena();
 
 for(var i = 0; i < slotcount; i ++){
 	if (global.weapon_slot[i] != -1){
@@ -70,39 +74,45 @@ repeat(amount){
 		tobject = ammolist[| random(ammocount)];
 	}
 	
-	if (random(100) < 15){
-		continue;
-	}
+	if (spawned){
+		if (!arena){
+			if (random(100) < 15){
+				continue;
+			}
+		}
 	
-	switch(tobject){
-		case obj_ammo_2:
-			if (random(100) < 75){
-				continue;
-			}
-			break;
+		switch(tobject){
+			case obj_ammo_2:
+				if (random(100) < 75){
+					continue;
+				}
+				break;
 		
-		case obj_ammo_3:
-			if (random(100) < 20){
-				continue;
-			}
-			break;
+			case obj_ammo_3:
+				if (random(100) < 20){
+					continue;
+				}
+				break;
 		
-		case obj_ammo_4:
-			if (random(100) < 20){
-				continue;
-			}
-			break;
+			case obj_ammo_4:
+				if (random(100) < 20){
+					continue;
+				}
+				break;
 		
-		case obj_ammo_5:
-			if (random(100) < 70){
-				continue;
-			}
-			break;
+			case obj_ammo_5:
+				if (random(100) < 70){
+					continue;
+				}
+				break;
+		}
 	}
 	
 	ammo = instance_create(xx + random_range(-xrange, xrange), yy + random_range(-yrange, yrange), tobject);
     ammo.spd = random_range(0.8, 2.2);
     ammo.dir = random(360);
+	
+	spawned = true;
 }
 
 ds_list_destroy(ammolist);

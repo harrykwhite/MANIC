@@ -325,6 +325,10 @@ if (instance_exists(obj_player)){
 				// Create the new weapon object
 				if (index != -1) && (!foundempty || emptycurrent){
 					var new_wp_obj = instance_create(obj_player.x, obj_player.y, global.weapon_object[index]);
+					new_wp_obj.image_angle = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
+					with(new_wp_obj){
+						event_perform(ev_step_end, 0);
+					}
 					
 					if (index == PlayerWeapon.Stick){
 						new_wp_obj.burn = burn;
