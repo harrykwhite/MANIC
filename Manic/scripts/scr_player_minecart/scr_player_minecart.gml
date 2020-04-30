@@ -33,32 +33,8 @@ if (mdir == 90) || (mdir == 270){
 	minecart_sprite = spr_pawn_minecart_0;
 }
 
-if (scr_input_is_down(InputBinding.Right)){
-	if (mdir == 180) || (mdir == 270){
-		if (minecart_speed > -4){
-			minecart_speed -= acceleration;
-		}
-	}else{
-		if (minecart_speed < 4){
-			minecart_speed += acceleration;
-		}
-	}
-}else if (scr_input_is_down(InputBinding.Left)){
-	if (mdir == 180) || (mdir == 270){
-		if (minecart_speed < 4){
-			minecart_speed += acceleration;
-		}
-	}else{
-		if (minecart_speed > -4){
-			minecart_speed -= acceleration;
-		}
-	}
-}else{
-	if (minecart_speed > 0){
-		minecart_speed -= 0.005;
-	}else if (minecart_speed < 0){
-		minecart_speed += 0.005;
-	}
+if (minecart_speed < 3){
+	minecart_speed += acceleration;
 }
 
 if (minecart_speed != 0) || (minecart_speed != 0){

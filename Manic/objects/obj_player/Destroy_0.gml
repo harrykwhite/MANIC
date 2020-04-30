@@ -23,3 +23,11 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 if (instance_exists(wobj)){
 	instance_destroy(wobj);
 }
+
+var flylength = array_length_1d(fly);
+for(var i = 0; i < flylength; i ++){
+	if (instance_exists(fly[i])){
+		instance_destroy(fly[i]);
+		fly[i] = noone;
+	}
+}

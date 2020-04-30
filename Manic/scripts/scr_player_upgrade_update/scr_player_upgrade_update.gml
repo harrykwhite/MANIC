@@ -21,10 +21,9 @@ if (!scr_level_is_arena()){
 }else{
 	if (global.level_current != Level.Arena_NorthernFarmhouse){
 		scr_upgrade_add(PlayerUpgrade.Backpack);
-		scr_upgrade_add(PlayerUpgrade.ExplosiveVest);
 		
 		if (global.level_current == Level.Arena_PrisonBase){
-			scr_upgrade_add(PlayerUpgrade.DashBoots);
+			scr_upgrade_add(PlayerUpgrade.ExplosiveVest);
 		}
 	}
 }

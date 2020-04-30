@@ -1,3 +1,7 @@
+if (global.game_pause) || (global.cutscene_current != -1){
+	return;
+}
+
 var xx = (x - camera_get_view_x(view_camera[0])) * gui_scale_x;
 var yy = (y - camera_get_view_y(view_camera[0])) * gui_scale_y;
 

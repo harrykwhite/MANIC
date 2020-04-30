@@ -56,7 +56,6 @@ bite_to_time = 0;
 bite_retreat = false;
 bite_retreat_x = x;
 bite_retreat_y = y;
-bite_retreat_direction = 0;
 bite_retreat_time = 0;
 
 move_speed = 0;

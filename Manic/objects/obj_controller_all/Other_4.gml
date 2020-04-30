@@ -9,3 +9,5 @@ warning_prompt_selected_previous = warning_prompt_selected;
 warning_prompt_selected_break = 0;
 warning_prompt_scale[0] = 1;
 warning_prompt_scale[1] = 1;
+
+unlock_check = false;

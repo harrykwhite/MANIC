@@ -35,7 +35,7 @@ if (instance_exists(obj_player)) && (!global.game_npc_townperson2_talked) && (gl
 
 // Sprite
 sprite_index = spr_townperson_2_idle_0;
-image_speed = 0.02;
+image_speed = 0.05;
 
 if (instance_exists(obj_player)){
 	if (obj_player.x > x){

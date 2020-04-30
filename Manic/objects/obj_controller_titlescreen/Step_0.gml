@@ -23,7 +23,7 @@ if (random(200) < 1){
 		var safe = 0;
 		
 		if (instance_exists(obj_player)){
-			while(point_distance(xx, yy, obj_player.x, obj_player.y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (place_meeting(xx, yy, obj_interior_fade)){
+			while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true)){
 				xx = random_range(camx, camx + camw);
 				yy = random_range(camy, camy + camh);
 				
@@ -403,7 +403,7 @@ if (fade){
 						
 							case 4:
 								obj_controller_all.warning_prompt = true;
-								obj_controller_all.warning_prompt_text = "Are you sure you want to delete your save progress?";
+								obj_controller_all.warning_prompt_text = "Are you sure you want to delete your campaign progress?";
 								obj_controller_all.warning_prompt_type = 0;
 								isvalid = false;
 								break;

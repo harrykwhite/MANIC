@@ -231,6 +231,7 @@ if (instance_exists(obj_player)){
 			inst = instance_nearest(obj_player.x, obj_player.y, obj_companion_0);
 			special = "farmertalk";
 			
+			if (inst != noone)
 			line[0] = "Have you seen what's happening? The invasion?";
 			linefrom[0] = inst;
 			

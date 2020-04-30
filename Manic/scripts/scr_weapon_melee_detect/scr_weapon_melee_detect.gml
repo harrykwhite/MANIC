@@ -15,7 +15,7 @@ var yy = argument[2];
 var dir = argument[3];
 var damage = argument[4];
 var strength = argument[5];
-var len = argument[6] + 16;
+var len = argument[6] + 20;
 var obj = argument[7];
 var sourcex = argument[8];
 var sourcey = argument[9];
@@ -32,12 +32,8 @@ if (global.cutscene_current != -1) || (global.game_pause){
 var width;
 
 switch(obj){
-	case obj_proj_1:
-		width = 10;
-		break;
-	
 	case obj_proj_2:
-		width = 7;
+		width = 8;
 		break;
 	
 	case obj_proj_3:
@@ -113,16 +109,6 @@ switch(ctype){
 					
 					with(inst){
 						scr_pawn_damage(max(damage - defense, 1), strength, dir, 4, glove);
-						
-						if (object_index == obj_enemy_2){
-							if (bite_to){
-								bite_to = false;
-								bite_retreat = true;
-								bite_retreat_direction = point_direction(x, y, xx, yy) - 180;
-								bite_retreat_x = xx;
-								bite_retreat_y = yy;
-							}
-						}
 						
 						if (doburn == true){
 							burn = doburn;
@@ -282,10 +268,6 @@ switch(ctype){
 					inst.flash = 0.8;
 				
 					switch(obj){
-						case obj_proj_1:
-							inst.hit -= 5;
-							break;
-					
 						case obj_proj_2:
 							inst.hit -= 4;
 							break;

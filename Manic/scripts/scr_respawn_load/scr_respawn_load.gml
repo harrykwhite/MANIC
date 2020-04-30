@@ -1,5 +1,7 @@
 var changed = false;
 
+scr_level_cleanup(false);
+
 global.game_combat_state = CombatState.Idle;
 global.game_combat_arena_wave = 0;
 

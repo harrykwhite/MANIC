@@ -1,5 +1,5 @@
 var speed_multiplier = 1;
-var face_player = false;
+var face_player = true;
 var speed_final;
 var dist_to = 0;
 
@@ -67,13 +67,10 @@ if (instance_exists(obj_player)){
 				if (dist_to_player > 180 + (companionspacing * order)){
 					move_speed = 3.1;
 				}
-				
-				face_player = true;
 			}else{
 				move_speed = 0;
 				move_x_to = obj_player.x;
 				move_y_to = obj_player.y + 6;
-				face_player = true;
 			}
 		}else if (global.cutscene_current == -1){
 			if (distance_to_object(obj_player) > 200){
@@ -87,27 +84,29 @@ if (instance_exists(obj_player)){
 				move_x_to = target.x;
 				move_y_to = target.y + 6;
 				
-				move_speed = 2.3;
+				move_speed = 2;
 				bite_to_time ++;
 				bite_retreat_time = 0;
 				
-				if (distance_to_point(move_x_to, move_y_to) < 3) || (bite_to_time > 120){
+				if (distance_to_point(move_x_to, move_y_to) < 7) || (bite_to_time > 120){
 					bite_to = false;
 					bite_to_time = 0;
 					bite_retreat = true;
-					bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to) - 180;
 					bite_retreat_x = target.x;
 					bite_retreat_y = target.y + 6;
 				}
 			}else if (bite_retreat){
-				move_x_to = x + lengthdir_x(45, bite_retreat_direction);
-				move_y_to = y + lengthdir_y(45, bite_retreat_direction);
+				var rdir = point_direction(target.x, target.y + 6, x, y);
+				move_x_to = x + lengthdir_x(45, rdir);
+				move_y_to = y + lengthdir_y(45, rdir);
 				
-				move_speed = 2.1;
+				move_speed = 1.6;
 				bite_retreat_time ++;
 				bite_to_time = 0;
 				
-				if (distance_to_point(move_x_to, move_y_to) < 16) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 100) || (bite_retreat_time > 120){
+				face_player = false;
+				
+				if (bite_retreat_time > 60){
 					bite_to = false;
 					bite_retreat = false;
 				}
@@ -120,7 +119,7 @@ if (instance_exists(obj_player)){
 						move_away_time --;
 						move_speed = 0;
 					}else{
-						move_speed = 1.7;
+						move_speed = 1.2;
 					}
 				}else{
 					move_away_time = 20;
@@ -189,6 +188,10 @@ if (!scr_pawn_find_path()){
 }
 
 // Facing
+if (face_player && !instance_exists(target)){
+	face_player = false;
+}
+
 if (!face_player){
 	if (dist_to > 15){
 		if (move_x_to > x){
@@ -198,7 +201,7 @@ if (!face_player){
 		}
 	}
 }else{
-	if (obj_player.x > x){
+	if (target.x > x){
 		image_xscale = scale;
 	}else{
 		image_xscale = -scale;

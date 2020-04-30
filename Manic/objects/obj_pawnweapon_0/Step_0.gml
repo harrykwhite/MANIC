@@ -13,11 +13,11 @@ if (instance_exists(owner)){
         scr_effect_screenshake(2);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
         
-	    var xpos = x + lengthdir_x(35 * owner.scale, dir);
-	    var ypos = y + lengthdir_y(35 * owner.scale, dir);
+	    var xpos = owner.x + lengthdir_x(35 * owner.scale, dir);
+	    var ypos = owner.y + lengthdir_y(35 * owner.scale, dir);
 		var isEnemy = true;
 		
-	    proj = instance_create(xpos, ypos, obj_proj_1);
+	    proj = instance_create(xpos, ypos, obj_proj_2);
 	    proj.image_angle = dir;
 	    proj.depth = depth + 1;
 		proj.creator = owner;
@@ -29,7 +29,7 @@ if (instance_exists(owner)){
 			isEnemy = false;
 		}
 		
-		scr_weapon_melee_detect(isEnemy, x, y, dir, scr_pawn_weapon_damage(0), 1.5, 35, obj_proj_1, owner.x, owner.y, burn);
+		scr_weapon_melee_detect(isEnemy, owner.x, owner.y, dir, scr_pawn_weapon_damage(0), 1.5, 35, obj_proj_2, owner.x, owner.y, burn);
 		
         owner.knockback_speed = 1;
         owner.knockback_direction = dir;

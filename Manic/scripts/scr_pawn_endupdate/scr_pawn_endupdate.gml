@@ -47,13 +47,9 @@ if (flyvalid){
 		if (health_current <= floor(health_max / 3)) || (object_index == obj_enemy_4){
 			for(var i = 0; i < flylength; i ++){
 				if (fly[i] == noone){
-					if (random(150) < 1){
-						fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
-					}
-				
-					break;
+					fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
 				}
-		
+				
 				fly[i].fobject = id;
 			}
 		}else{
@@ -125,7 +121,6 @@ if (health_current <= 0){
 		}
 		
 		if (object_index == obj_enemy_0){
-			global.game_firstenemy_killed = true;
 			scr_level_increase_kill_count();
 			
 			switch(type){
@@ -356,7 +351,7 @@ if (health_current <= 0){
 	
 		scr_damage_custom(2, 1, 45, 45, 3, true, true, true, true);
 		scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
-		scr_effect_screenshake(4);
+		scr_effect_screenshake(3);
 		scr_effect_freeze(13);
 		scr_effect_zoom(-0.1);
 		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);

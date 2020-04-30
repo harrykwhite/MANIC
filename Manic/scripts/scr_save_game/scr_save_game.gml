@@ -32,7 +32,6 @@ ini_write_real("Save", "FirstAntagTalked", global.game_boss_firstantag_talked);
 ini_write_real("Save", "TrainHordeKilled", global.game_boss_trainhorde_killed);
 ini_write_real("Save", "TrainHordeTalked", global.game_boss_trainhorde_talked);
 ini_write_real("Save", "FinalBossKilled", global.game_boss_final_killed);
-ini_write_real("Save", "FirstEnemyKilled", global.game_firstenemy_killed);
 ini_write_real("Save", "FirstDogKilled", global.game_firstdog_killed);
 ini_write_real("Save", "FirstGrenadierKilled", global.game_firstgrenadier_killed);
 ini_write_real("Save", "FirstCrazyKilled", global.game_firstcrazy_killed);

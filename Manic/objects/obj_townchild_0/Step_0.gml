@@ -5,7 +5,7 @@ if (global.game_pause){
 
 // Sprite
 sprite_index = spr_townchild_0_idle_0;
-image_speed = 0.02;
+image_speed = 0.05;
 
 if (instance_exists(obj_player)){
 	if (obj_player.x > x){

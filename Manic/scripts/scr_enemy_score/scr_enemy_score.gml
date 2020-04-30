@@ -1,3 +1,7 @@
+if (!scr_level_is_arena()){
+	return;
+}
+
 var level = scr_level_get_index(room);
 var _score = 0;
 

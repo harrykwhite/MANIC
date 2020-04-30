@@ -123,7 +123,10 @@ header_display_line_width = 0;
 
 checkpoint_text_alpha = 0;
 checkpoint_text_time = 0;
-//checkpoint_text_line_width = 0;
+
+unlock_text = "";
+unlock_text_alpha = 0;
+unlock_text_time = 0;
 
 level_opening = false;
 level_opening_line_width = 0;
@@ -136,6 +139,14 @@ var levelcount = global.level_campaign_count;
 
 if (room == rm_prologue_00){
 	global.level_entered[0] = false;
+}
+
+if (scr_level_is_arena()){
+	scr_companions_clear();
+	scr_player_upgrades_clear();
+	scr_set_kills_and_findings();
+	
+	global.weapon_default_set = false;
 }
 
 if (!global.pers_runthrough_pre){
@@ -170,13 +181,13 @@ if (!global.pers_runthrough_pre){
 						}
 					}
 				}
-			
+				
 				global.game_combat_state = CombatState.Idle;
 				global.game_combat_state_time_real = 0;
 				
 				scr_checkpoint_reset();
 				scr_player_upgrade_update();
-			
+				
 				if (i != Level.Prologue) && (!isteaser){
 					level_opening = true;
 					level_opening_active = true;

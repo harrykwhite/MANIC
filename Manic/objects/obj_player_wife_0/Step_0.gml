@@ -5,8 +5,13 @@ if (global.game_pause) || (global.cutscene_current != -1){
 
 image_speed = 0.05;
 
-if (random(140) < 1){
-	image_xscale = scale * -sign(image_xscale);
+if (fliptime > 0){
+	fliptime --;
+}else{
+	if (random(240) < 1){
+		image_xscale = scale * -sign(image_xscale);
+		fliptime = 60;
+	}
 }
 
 var yy = y + 6;

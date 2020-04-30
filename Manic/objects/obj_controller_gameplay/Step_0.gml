@@ -59,11 +59,6 @@ if (instance_number(obj_enemy_corpse) > global.game_option[| Options.MaxCorpses]
 // Fade Object
 scr_fade_object_control();
 
-// Cutscene Control
-if (global.cutscene_current != -1){
-	script_execute(global.cutscene_script[global.cutscene_current]);
-}
-
 // Value Controlling
 global.player_health_current = clamp(global.player_health_current, 0, global.player_health_max);
 
@@ -171,9 +166,15 @@ if (!global.game_pause){
 	}
 	
 	// Companion death time
-	if (global.companion_death_time != -1 && global.cutscene_current == -1){
+	if (global.companion_death_time != -1){
+		if (global.cutscene_current == 58){
+			global.companion_death_time = 0;
+		}
+		
 		if (global.companion_death_time > 0){
-			global.companion_death_time --;
+			if (global.cutscene_current == -1){
+				global.companion_death_time --;
+			}
 		}else{
 			var comp, compfound = noone;
 			var cnum = instance_number(obj_companion_corpse);
@@ -217,4 +218,9 @@ if (!global.game_pause){
 		global.game_save_seconds ++;
 		counter = 0;
 	}
+}
+
+// Cutscene Control
+if (global.cutscene_current != -1){
+	script_execute(global.cutscene_script[global.cutscene_current]);
 }

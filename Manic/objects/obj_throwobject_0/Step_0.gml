@@ -68,7 +68,7 @@ if (explode){
 	
     instance_destroy();
     scr_damage_custom(damage, 1, explode_damage_size * explode_scale, explode_damage_size * explode_scale, 3, damage_enemy, damage_player, damage_companion, true);
-    scr_effect_screenshake(4);
+    scr_effect_screenshake(3);
 	scr_effect_freeze(13);
 	scr_effect_zoom(-0.1);
 	scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);

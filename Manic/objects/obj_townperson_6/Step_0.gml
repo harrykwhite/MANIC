@@ -49,7 +49,7 @@ if (instance_exists(obj_player)) && (!talked_second) && (global.cutscene_current
 
 // Sprite
 sprite_index = spr_townperson_6_idle_0;
-image_speed = 0.02;
+image_speed = 0.05;
 
 if (instance_exists(obj_player)){
 	if (obj_player.x > x){

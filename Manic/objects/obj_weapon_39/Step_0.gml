@@ -10,13 +10,13 @@ if (global.game_pause) || (global.cutscene_current != -1){
 }
 
 var mdir = point_direction(global.player_position_x, global.player_position_y, scr_input_get_mouse_x(), scr_input_get_mouse_y());
-var xpos = x + lengthdir_x(38, mdir);
-var ypos = y + lengthdir_y(38, mdir);
+var xpos = global.player_position_x + lengthdir_x(38, mdir);
+var ypos = global.player_position_y + lengthdir_y(38, mdir);
 
 if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active) && (!global.game_pause){
     if (attack_can){
 		scr_camera_to_player();
-        scr_effect_screenshake(4);
+        scr_effect_screenshake(3);
 		
         scr_mouse_control(MouseType.SmallCircle, 2.5, 25);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
@@ -24,14 +24,14 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (global.player_stamina_active)
         scr_player_stamina_drain(22);
         angle_offset = -angle_offset;
 		
-	    var s = instance_create(xpos, ypos, obj_proj_1);
+	    var s = instance_create(xpos, ypos, obj_proj_2);
 	    s.image_angle = mdir;
 	    s.depth = depth + 1;
 		s.owner_inst = obj_player.id;
 		s.owner_offset_x = s.x - s.owner_inst.x;
 		s.owner_offset_y = s.y - s.owner_inst.y;
 		
-		scr_weapon_melee_detect(false, x, y, s.image_angle, attack_damage, attack_strength, 38, obj_proj_2, obj_player.x, obj_player.y);
+		scr_weapon_melee_detect(false, global.player_position_x, global.player_position_y, s.image_angle, attack_damage, attack_strength, 38, obj_proj_2, obj_player.x, obj_player.y);
         
         attack_time = 36;
         attack_can = false;

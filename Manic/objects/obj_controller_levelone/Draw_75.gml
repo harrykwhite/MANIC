@@ -1,7 +1,7 @@
 if (factory_explode){
 	if (factory_explode_alpha > 0){
 		factory_explode_alpha -= 0.05;
-		scr_effect_screenshake(2.5);
+		scr_effect_screenshake(2);
 	}else{
 		factory_explode = false;
 		factory_explode_alpha = 0;

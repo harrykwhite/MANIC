@@ -10,12 +10,11 @@ if (instance_exists(owner)){
     }
     
     if (attack) && (attack_time <= 0){
-		
         scr_effect_screenshake(1);
         scr_sound_play(snd_weapon_swing_0, false, 0.8, 1.2);
         
-	    var xpos = x + lengthdir_x(53 * owner.scale, dir);
-	    var ypos = y + lengthdir_y(53 * owner.scale, dir);
+	    var xpos = owner.x + lengthdir_x(53 * owner.scale, dir);
+	    var ypos = owner.y + lengthdir_y(53 * owner.scale, dir);
 		var isEnemy = true;
 		
 	    proj = instance_create(xpos, ypos, obj_proj_3);
@@ -30,7 +29,7 @@ if (instance_exists(owner)){
 			isEnemy = false;
 		}
 		
-		scr_weapon_melee_detect(isEnemy, x, y, dir, scr_pawn_weapon_damage(1), 2.85, 53, obj_proj_3, owner.x, owner.y);
+		scr_weapon_melee_detect(isEnemy, owner.x, owner.y, dir, scr_pawn_weapon_damage(1), 2.85, 53, obj_proj_3, owner.x, owner.y);
         
         owner.knockback_speed = -2;
         owner.knockback_direction = dir;

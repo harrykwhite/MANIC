@@ -13,7 +13,6 @@ with(owner){
 			
 			if (object_index == obj_player){
 				scr_player_damage(inst.damage, inst.strength, dir, 50);
-				
 				poison = true;
 			}else{
 				scr_pawn_damage(inst.damage, inst.strength, dir, 50);

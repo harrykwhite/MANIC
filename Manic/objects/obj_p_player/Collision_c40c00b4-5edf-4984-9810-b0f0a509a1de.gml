@@ -5,7 +5,7 @@ if (global.player_health_current > 0) && (other.owner.spd > 0.1){
 		scr_pawn_damage(global.player_health_max, 2, random(360), 6);
 	}
 	
-	scr_effect_screenshake(4);
+	scr_effect_screenshake(3);
 	part_particles_create(global.ps_front, x, y, global.pt_blood_0, 6);
 	part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10);
 	part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3);

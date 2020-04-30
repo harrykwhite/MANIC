@@ -9,7 +9,6 @@ global.game_boss_firstantag_talked = false;
 global.game_boss_trainhorde_killed = false;
 global.game_boss_trainhorde_talked = false;
 global.game_boss_final_killed = false;
-global.game_firstenemy_killed = false;
 global.game_firstdog_killed = false;
 global.game_firstgrenadier_killed = false;
 global.game_firstcrazy_killed = false;

@@ -9,6 +9,14 @@ for(var i = 0; i < 3; i ++){
 	}
 }
 
+var flylength = array_length_1d(fly);
+for(var i = 0; i < flylength; i ++){
+	if (instance_exists(fly[i])){
+		instance_destroy(fly[i]);
+		fly[i] = noone;
+	}
+}
+
 if (weapon != -1){
 	instance_destroy(weapon);
 	weapon = -1;

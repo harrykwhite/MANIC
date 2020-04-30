@@ -5,9 +5,9 @@ if (object_index != obj_controller_titlescreen){
 
 if (file_exists("save.ini")){
 	file_delete("save.ini");
-	obj_controller_all.indicate_text = "Save data has been reset";
+	obj_controller_all.indicate_text = "Campaign data has been reset";
 }else{
-	obj_controller_all.indicate_text = "No save data was found";
+	obj_controller_all.indicate_text = "No campaign data was found";
 }
 
 scr_save_game_reader();

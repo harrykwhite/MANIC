@@ -4,6 +4,14 @@ for(var i = 0; i < 4; i ++){
 	}
 }
 
+var flylength = array_length_1d(fly);
+for(var i = 0; i < flylength; i ++){
+	if (instance_exists(fly[i])){
+		instance_destroy(fly[i]);
+		fly[i] = noone;
+	}
+}
+
 x = xstart;
 y = ystart;
 

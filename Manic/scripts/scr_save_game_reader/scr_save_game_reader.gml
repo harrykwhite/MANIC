@@ -22,7 +22,6 @@ global.game_boss_firstantag_talked = ini_read_real("Save", "FirstAntagTalked", f
 global.game_boss_trainhorde_killed = ini_read_real("Save", "TrainHordeKilled", false);
 global.game_boss_trainhorde_talked = ini_read_real("Save", "TrainHordeTalked", false);
 global.game_boss_final_killed = ini_read_real("Save", "FinalBossKilled", false);
-global.game_firstenemy_killed = ini_read_real("Save", "FirstEnemyKilled", false);
 global.game_firstdog_killed = ini_read_real("Save", "FirstDogKilled", false);
 global.game_firstgrenadier_killed = ini_read_real("Save", "FirstGrenadierKilled", false);
 global.game_firstcrazy_killed = ini_read_real("Save", "FirstCrazyKilled", false);

@@ -520,16 +520,18 @@ if (header_display_alpha > 0){
 	draw_set_alpha(1);
 }
 
-// Checkpoint Display
-if (checkpoint_text_time > 0){
-	if (checkpoint_text_alpha < 1){
-		checkpoint_text_alpha += 0.05;
-	}
+// Checkpoint display
+if (!iscutscene){
+	if (checkpoint_text_time > 0){
+		if (checkpoint_text_alpha < 1){
+			checkpoint_text_alpha += 0.05;
+		}
 	
-	checkpoint_text_time --;
-}else{
-	if (checkpoint_text_alpha > 0){
-		checkpoint_text_alpha -= 0.05;
+		checkpoint_text_time --;
+	}else{
+		if (checkpoint_text_alpha > 0){
+			checkpoint_text_alpha -= 0.05;
+		}
 	}
 }
 
@@ -539,17 +541,39 @@ if (checkpoint_text_alpha > 0){
 	draw_set_alpha(checkpoint_text_alpha);
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
 	
-	if (checkpoint_text_time > 0){
-		scr_text((dwidth / 2), yy - ((1 - checkpoint_text_alpha) * 30), "Checkpoint Reached", c_white);
+	scr_text((dwidth / 2), yy, "Checkpoint Reached", c_white);
+	
+	draw_set_alpha(1);
+}
+
+// Unlock display
+if (!iscutscene){
+	if (unlock_text_time > 0){
+		if (unlock_text_alpha < 1){
+			unlock_text_alpha += 0.05;
+		}
+	
+		unlock_text_time --;
 	}else{
-		scr_text((dwidth / 2), yy, "Checkpoint Reached", c_white);
+		if (unlock_text_alpha > 0){
+			unlock_text_alpha -= 0.05;
+		}
 	}
+}
+
+if (unlock_text_alpha > 0){
+	var yy = dheight - 96;
 	
-	//var line_width_to = string_width("Checkpoint Reached") + 30;
-	//checkpoint_text_line_width = approach(checkpoint_text_line_width, line_width_to, 5);
+	draw_set_alpha(unlock_text_alpha);
+	draw_set_font(fnt_cambria_1);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_bottom);
 	
-	//draw_rectangle((dwidth / 2) - (checkpoint_text_line_width / 2), yy - 3, (dwidth / 2) + (checkpoint_text_line_width / 2), yy - 2, false);
+	scr_text((dwidth / 2), yy, unlock_text, c_white);
+	
+	draw_set_valign(fa_top);
 	draw_set_alpha(1);
 }
 

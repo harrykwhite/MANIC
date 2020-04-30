@@ -22,7 +22,7 @@ with(owner){
 			scr_pawn_damage(round(inst.damage * 0.5), inst.strength, random(360), 40);
 		}
 	
-	    scr_effect_screenshake(4);
+	    scr_effect_screenshake(3);
 	    part_particles_create(global.ps_front, x, y, global.pt_blood_0, 6);
 	    part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10);
 		part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_3, 3);

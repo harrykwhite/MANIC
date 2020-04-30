@@ -10,7 +10,7 @@ if (instance_exists(obj_player)){
 	}
 	
 	if (distance_to_point(move_x_to, move_y_to) > 10){
-		move_speed = 1.65;
+		move_speed = (object_index == obj_companion_3 ? 2 : 1.85);
 	}else{
 		var safe = 0;
 		move_speed = 0;

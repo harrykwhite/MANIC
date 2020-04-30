@@ -62,7 +62,6 @@ if (global.cutscene_current == -1){
 					scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 				}
 			}else{
-				scr_draw_burn_die(6, 18, x, y, 5);
 				burn_time = -1;
 				burn = false;
 				audio_stop_sound(burn_sound);
@@ -96,7 +95,6 @@ if (poison){
 				scr_sound_play(choose(snd_character_hit_0, snd_character_hit_1), false, 0.8, 1.2);
 			}
 		}else{
-			scr_draw_poison_die(6, 18, x, y, 5);
 			poison_time = -1;
 			poison = false;
 		}
@@ -106,15 +104,13 @@ if (poison){
 // Flies
 var flylength = array_length_1d(fly);
 
-if (global.player_health_current < 3){
+if (global.player_health_current <= 2){
 	for(var i = 0; i < flylength; i ++){
 		if (fly[i] == noone){
-			if (random(100) <= 0.05){
-				fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
-				fly[i].fobject = id;
-			}
-			break;
+			fly[i] = instance_create(x + random_range(-15, 15), y + random_range(-15, 15), obj_ef_fly);
 		}
+		
+		fly[i].fobject = id;
 	}
 }else{
 	for(var i = 0; i < flylength; i ++){

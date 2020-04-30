@@ -61,28 +61,32 @@ if (!global.game_pause){
 			x += xspd;
 			y += yspd;
 		}
-	
+		
 		camera_set_view_pos(view_camera[0],
 		-(camera_get_view_width(view_camera[0]) / 2) + x,
 		-(camera_get_view_height(view_camera[0]) / 2) + y);
 		
+		if (camera_screenshake){
+			camera_set_view_pos(view_camera[0],
+			camera_get_view_x(view_camera[0]) + (dsin(camera_screenshake_time) * camera_screenshake_amount * 3),
+			camera_get_view_y(view_camera[0]) + (dsin(camera_screenshake_time) * camera_screenshake_amount * 3));
+			
+			camera_screenshake_time += camera_screenshake_speed;
+			camera_screenshake_time %= 360;
+			
+			if (camera_screenshake_amount > 0){
+				camera_screenshake_amount -= min(0.075, camera_screenshake_amount);
+			}else{
+				camera_screenshake_amount = 0;
+		        camera_screenshake = false;
+			}
+		}else{
+			camera_screenshake_time = 0;
+		}
+		
 		camera_set_view_pos(view_camera[0],
 		clamp(camera_get_view_x(view_camera[0]), 0, room_width - camera_get_view_width(view_camera[0])),
 		clamp(camera_get_view_y(view_camera[0]), 0, room_height - camera_get_view_height(view_camera[0])));
-		
-		if (camera_screenshake){
-			camera_set_view_pos(view_camera[0],
-			camera_get_view_x(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.25, 0),
-			camera_get_view_y(view_camera[0]) + wave(-camera_screenshake_amount, camera_screenshake_amount, 0.25, 0));
-		
-		    if (camera_screenshake_amount > 0.001){
-		        camera_screenshake_amount *= 0.9;
-		    }else{
-		        camera_screenshake_amount = 0;
-		        camera_screenshake = false;
-		        return;
-		    }
-		}
 		
 		if (camera_move_to_player_time > 0){
 			camera_move_to_player_time--;

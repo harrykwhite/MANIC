@@ -47,4 +47,6 @@ global.game_option[| Options.AmbienceVolume] = ini_read_real("Options", "Ambienc
 global.game_input_type = ini_read_real("Options", "InputType", InputType.Keyboard);
 global.game_levelselect_unlocked = ini_read_real("Options", "LevelSelectUnlocked", false);
 
+scr_arena_read_unlock();
+
 ini_close();

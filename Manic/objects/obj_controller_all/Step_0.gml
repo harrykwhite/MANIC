@@ -335,3 +335,54 @@ if (room != rm_title_0){
 		show_debug_message("Mouse created.");
 	}
 }
+
+// Unlocks
+if (!unlock_check){
+	var newarena = -1;
+	
+	ini_open(working_directory + "config.ini");
+	
+	if (!global.game_level_arena_unlocked[0]){
+		global.game_level_arena_unlocked[0] = true;
+		newarena = Level.Arena_NorthernFarmhouse;
+		
+		if (room == rm_title_0){
+			obj_controller_titlescreen.option_arenamode_unlocked[0] = true;
+		}
+	}
+	
+	if (!global.game_level_arena_unlocked[1]){
+		if (global.game_save_level >= Level.WinterTown){
+			global.game_level_arena_unlocked[1] = true;
+			newarena = Level.Arena_WinterForest;
+		
+			if (room == rm_title_0){
+				obj_controller_titlescreen.option_arenamode_unlocked[1] = true;
+			}
+		}
+	}
+	
+	if (!global.game_level_arena_unlocked[2]){
+		if (global.game_save_level >= Level.TheCemetery){
+			global.game_level_arena_unlocked[2] = true;
+			newarena = Level.Arena_PrisonBase;
+		
+			if (room == rm_title_0){
+				obj_controller_titlescreen.option_arenamode_unlocked[2] = true;
+			}
+		}
+	}
+	
+	scr_arena_write_unlock();
+	
+	ini_close();
+
+	if (newarena != -1){
+		if (room != rm_ini && room != rm_title_0){
+			obj_controller_ui.unlock_text = "Arena Unlocked: " + global.level_name[newarena];
+			obj_controller_ui.unlock_text_time = 60 * 5;
+		}
+	}
+
+	unlock_check = true;
+}

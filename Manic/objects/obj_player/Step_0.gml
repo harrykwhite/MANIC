@@ -48,7 +48,7 @@ flashlight_alpha = clamp(flashlight_alpha, 0, 1);
 scr_player_update();
 script_execute(state);
 
-// Confining the player to the room.
+// Confining the player to the room
 var confine_range = 12;
 
 if (global.cutscene_current != -1){

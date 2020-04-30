@@ -1,40 +1,42 @@
 var speed_multiplier = 1;
 var speed_final = 0;
-var face_player = false;
+var face_player = true;
 target = obj_player;
 
 if (instance_exists(target)){
 	scr_enemy_find_companion();
 	
 	if (bite_to){
-		var dirTo;
+		var dir_to;
 		move_x_to = target.x;
 		move_y_to = target.y + 6;
 		
-		dirTo = point_direction(x, y, move_x_to, move_y_to);
-		move_x_to += lengthdir_x(50, dirTo);
-		move_y_to += lengthdir_y(50, dirTo);
+		dir_to = point_direction(x, y, move_x_to, move_y_to);
+		move_x_to += lengthdir_x(50, dir_to);
+		move_y_to += lengthdir_y(50, dir_to);
 		
-		move_speed = 1.75;
+		move_speed = 2;
 		bite_to_time ++;
 		bite_retreat_time = 0;
 		
-		if (distance_to_point(move_x_to, move_y_to) < 3) || (bite_to_time > 120){
+		if (distance_to_point(move_x_to, move_y_to) < 7) || (bite_to_time > 120){
 			bite_to = false;
 			bite_retreat = true;
-			bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to + 6) - 180;
 			bite_retreat_x = target.x;
 			bite_retreat_y = target.y + 6;
 		}
 	}else if (bite_retreat){
-		move_x_to = x + lengthdir_x(30, bite_retreat_direction);
-		move_y_to = y + lengthdir_y(30, bite_retreat_direction);
+		face_player = false;
+		
+		var rdir = point_direction(target.x, target.y + 6, x, y);
+		move_x_to = x + lengthdir_x(45, rdir);
+		move_y_to = y + lengthdir_y(45, rdir);
 		
 		move_speed = 1.6;
 		bite_retreat_time ++;
 		bite_to_time = 0;
 		
-		if (distance_to_point(move_x_to, move_y_to) < 16) || (distance_to_point(bite_retreat_x, bite_retreat_y) > 120) || (bite_retreat_time > 120){
+		if (bite_retreat_time > 60){
 			bite_to = false;
 			bite_retreat = false;
 			bite_retreat_time = 0;

@@ -115,8 +115,8 @@ if (kill){
 		
 		var sticklen = 39;
 		for(var thislen = -(sticklen / 2); thislen < (sticklen / 2); thislen += 3){
-			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_0, 1);
-			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, image_angle), y + lengthdir_y(thislen, image_angle), global.pt_stick_break_flash_0, 1);
+			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, angle), y + lengthdir_y(thislen, angle), global.pt_stick_break_0, 1);
+			part_particles_create(global.ps_bottom, x + lengthdir_x(thislen, angle), y + lengthdir_y(thislen, angle), global.pt_stick_break_flash_0, 1);
 		}
 	}
 }

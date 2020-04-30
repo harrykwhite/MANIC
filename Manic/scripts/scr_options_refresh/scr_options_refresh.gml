@@ -55,6 +55,8 @@ ini_write_real("Options", "AmbienceVolume", global.game_option[| Options.Ambienc
 ini_write_real("Options", "InputType", global.game_input_type);
 ini_write_real("Options", "LevelSelectUnlocked", global.game_levelselect_unlocked);
 
+scr_arena_write_unlock();
+
 ini_close();
 
 with(obj_controller_all){

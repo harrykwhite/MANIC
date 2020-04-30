@@ -1,3 +1,11 @@
+var flylength = array_length_1d(fly);
+for(var i = 0; i < flylength; i ++){
+	if (instance_exists(fly[i])){
+		instance_destroy(fly[i]);
+		fly[i] = noone;
+	}
+}
+
 if (room == rm_level_10_01){
 	if (!instance_exists(obj_giantturret)){
 		var giantturret = instance_create(504, 414, obj_giantturret);

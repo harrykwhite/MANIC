@@ -27,16 +27,6 @@ with(owner){
 	if (i_time <= 0){
 		scr_pawn_damage(max(inst.damage - defense, 1), inst.strength, random(360), 5);
 		
-		if (object_index == obj_enemy_2){
-			if (bite_to){
-				bite_to = false;
-				bite_retreat = true;
-				bite_retreat_direction = point_direction(x, y, inst.x, inst.y) - 180;
-				bite_retreat_x = inst.x;
-				bite_retreat_y = inst.y;
-			}
-		}
-		
 		if (object_index == obj_enemy_0) || (object_index == obj_enemy_2) ||  (object_index == obj_thedogkeeper_dog){
 			if (inst.damage > 3){
 				if (object_index == obj_enemy_0){

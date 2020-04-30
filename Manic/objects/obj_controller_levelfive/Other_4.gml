@@ -78,7 +78,7 @@ switch(room){
 			obj_player.x = -4;
 			obj_player.y = 688;
 			
-			spawn_x = 154;
+			spawn_x = 258;
 			spawn_y = 688;
 		}
 		break;

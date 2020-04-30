@@ -21,7 +21,7 @@ if (scr_input_is_pressed(InputBinding.Attack)) && (!global.game_pause){
 		scr_player_flashlight_flash(1.17);
 		
 		scr_camera_to_player(1);
-        scr_effect_screenshake(3);
+        scr_effect_screenshake(2);
         scr_weapon_ammo_use(1);
         scr_sound_play(snd_weapon_flare_0, false, 0.8, 1.2);
 		image_speed = 1;

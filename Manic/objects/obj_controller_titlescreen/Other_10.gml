@@ -384,7 +384,7 @@ if (!in_settings) && (!in_levelselect) && (!in_arenamode){
         }
 
         if (islocked){
-            scr_text_transformed(xx, yy, "?????", c_gray, scale, scale, 0);
+            scr_text_transformed(xx, yy, str, c_gray, scale, scale, 0);
         } else {
             if (selected == i){
                 scr_text_transformed(xx, yy, str, make_colour_rgb(189, 23, 23), scale, scale, 0);
@@ -422,7 +422,7 @@ if (!in_settings) && (!in_levelselect) && (!in_arenamode){
 		if (selected == i){
 			col = make_colour_rgb(189, 23, 23);
 		}
-
+		
         if (i != option_arenamode_max + 1){
             str = option_arenamode[i];
 			
@@ -435,8 +435,13 @@ if (!in_settings) && (!in_levelselect) && (!in_arenamode){
             scale = option_arenamode_scale[i];
 			
 			draw_set_font(fnt_cambria_n1);
-            scr_text(xx, yy + 24, scr_score_to_text(global.level_highscore[Level.Arena_NorthernFarmhouse + i]) + " HI", c_white);
-        } else {
+			
+			if (islocked){
+				scr_text(xx, yy + 24, scr_score_to_text(0) + " HI", c_gray);
+			}else{
+				scr_text(xx, yy + 24, scr_score_to_text(global.level_highscore[Level.Arena_NorthernFarmhouse + i]) + " HI", c_white);
+			}
+		} else {
             str = "Back to Title";
 
             if (selected == i){
@@ -449,12 +454,7 @@ if (!in_settings) && (!in_levelselect) && (!in_arenamode){
         }
 		
 		draw_set_font(fnt_cambria_2);
-
-        if (islocked){
-            scr_text_transformed(xx, yy, "?????", c_gray, scale, scale, 0);
-        } else {
-            scr_text_transformed(xx, yy, str, col, scale, scale, 0);
-        }
+        scr_text_transformed(xx, yy, str, islocked ? c_gray : col, scale, scale, 0);
     }
 }
 

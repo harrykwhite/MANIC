@@ -81,7 +81,7 @@ option_setting_scale[2] = 1;
 option_setting[3] = "Controls";
 option_setting_scale[3] = 1;
 
-option_setting[4] = "Clear Save Data";
+option_setting[4] = "Clear Campaign Data";
 option_setting_scale[4] = 1;
 #endregion
 
@@ -260,8 +260,8 @@ var arenacount = global.level_arena_count;
 for(var i = 0; i < arenacount; i ++){
 	option_arenamode[i] = global.level_name[levelcount + i];
 	option_arenamode_goto[i] = global.level_room[levelcount + i];
+	option_arenamode_unlocked[i] = global.game_level_arena_unlocked[i] || devmode;
 	option_arenamode_scale[i] = 1;
-	option_arenamode_unlocked[i] = true;
 }
 
 #endregion

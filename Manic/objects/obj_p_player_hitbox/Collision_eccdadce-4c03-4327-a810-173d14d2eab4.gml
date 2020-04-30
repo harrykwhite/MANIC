@@ -11,7 +11,7 @@ with(owner){
 		}
 	}
 
-	if (i_time < 1) && (inst.bite_to){
+	if (i_time < 1){
 		var dir = point_direction(inst.x, inst.y, x, y);
 	
 		if (object_index == obj_player){
@@ -46,7 +46,6 @@ with(owner){
 		with(inst){
 			bite_to = false;
 			bite_retreat = true;
-			bite_retreat_direction = point_direction(x, y, move_x_to, move_y_to) - 180;
 			bite_retreat_x = target.x;
 			bite_retreat_y = target.y + 6;
 		}

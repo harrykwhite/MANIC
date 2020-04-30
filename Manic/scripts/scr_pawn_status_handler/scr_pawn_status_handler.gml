@@ -48,7 +48,6 @@ if (burn){
 					scr_sound_play(hurt_sound, false, 0.8, 1.2);
 				}
 			}else{
-				scr_draw_burn_die(6, 18, x, y, 5);
 				burn_time = -1;
 				burn_start = false;
 				burn = false;

@@ -54,9 +54,9 @@ if (cart_lock){
 		}
 		
 		if (cart.minecart_dir_clean == 270){
-			y += 10;
-		}else if (cart.minecart_dir_clean == 90){
 			y -= 10;
+		}else if (cart.minecart_dir_clean == 90){
+			y += 10;
 		}
 		
 		image_angle = 90;

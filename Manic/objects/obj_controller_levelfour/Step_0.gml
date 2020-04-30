@@ -29,7 +29,7 @@ if (!global.game_pause){
 				var groundlayer = layer_get_id("InteriorFloorWood");
 				var groundmap = layer_tilemap_get_id(groundlayer);
 		
-				while(point_distance(xx, yy, global.player_position_x, global.player_position_y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (tilemap_get_at_pixel(groundmap, xx, yy)){
+				while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true) || tilemap_get_at_pixel(groundmap, xx, yy)){
 					xx = camx + random(camw);
 					yy = camy + random(camh);
 		

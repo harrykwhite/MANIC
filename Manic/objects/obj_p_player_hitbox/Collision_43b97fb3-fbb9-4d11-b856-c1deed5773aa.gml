@@ -15,7 +15,7 @@ with(owner){
 		}
 	}
 
-	if (i_time < 1) && (inst.leash_bite){
+	if (i_time < 1){
 		var dir = point_direction(inst.x, inst.y, x, y);
 	
 		if (object_index == obj_player){
@@ -46,7 +46,7 @@ with(owner){
 		part_type_direction(global.pt_blood_5, dir - 30, dir + 30, 0, 0);
 		part_type_speed(global.pt_blood_5, 3, 5, -0.2, 0);
 		repeat(20)part_particles_create(global.ps_bottom, x + random_range(-8, 8), y + random_range(-8, 8), global.pt_blood_5, 1);
-	
+		
 		with(inst){
 			leash_bite = false;
 			leash_bite_retreat = true;

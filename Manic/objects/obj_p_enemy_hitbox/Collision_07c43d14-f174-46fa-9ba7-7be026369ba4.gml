@@ -27,16 +27,6 @@ with(owner){
 			scr_mouse_cross();
 		}
 		
-		if (object_index == obj_enemy_2){
-			if (bite_to){
-				bite_to = false;
-				bite_retreat = true;
-				bite_retreat_direction = point_direction(x, y, inst.x, inst.y) - 180;
-				bite_retreat_x = inst.x;
-				bite_retreat_y = inst.y;
-			}
-		}
-	
 		if (object_index != obj_enemy_1) && (object_index != obj_enemy_3) && (object_index != obj_giantturret) && (object_index != obj_giantturret_flamethrower){
 			part_particles_create(global.ps_front, inst.x, inst.y, global.pt_blood_0, 3 * mult);
 			part_particles_create(global.ps_bottom, x, y + 6, global.pt_blood_1, 10 * mult);

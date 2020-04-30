@@ -26,7 +26,7 @@ if (!global.game_pause){
 				var groundlayer = layer_get_id("InteriorFloorWood");
 				var groundmap = layer_tilemap_get_id(groundlayer);
 				
-				while(point_distance(xx, yy, global.player_position_x, global.player_position_y) < 200) || (place_meeting(xx, yy, obj_p_solid)) || (tilemap_get_at_pixel(groundmap, xx, yy)){
+				while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true) || tilemap_get_at_pixel(groundmap, xx, yy)){
 					xx = camx + random(camw);
 					yy = camy + random(camh);
 		
@@ -127,7 +127,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 					var spawn_trial = 0;
 					var do_spawn = true;
 					
-					while(!scr_is_valid_enemyspawn(xpos, ypos) || ((!enemy_has_panned) && (point_distance(xpos, ypos, player.x, player.y) < 110))){
+					while(!scr_is_valid_enemyspawn(xpos, ypos) || (point_distance(xpos, ypos, player.x, player.y) < 110)){
 						xpos = random_range(camx - 10, camx + camw + 10);
 						ypos = random_range(camy - 10, camy + camh + 10);
 						spawn_trial ++;
@@ -152,18 +152,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 				
 						if (chance(90)) || (!dog_can_spawn){
 							enemy = instance_create(xpos, ypos, obj_enemy_0);
-					
-							if (!enemy_has_panned){
-								global.cutscene_current = 40;
-								obj_controller_gameplay.cutscene_look_x = xpos;
-								obj_controller_gameplay.cutscene_look_y = ypos;
-								obj_controller_gameplay.cutscene_look_time = 85;
-								obj_controller_gameplay.cutscene_look_object = enemy;
-								obj_controller_gameplay.cutscene_look_prop = true;
-						
-								enemy_has_panned = true;
-							}
-					
+							
 							if (spawn_rate > 1.5){
 								if (global.boss_current == -1){
 									if (chance(5)){
@@ -171,7 +160,7 @@ if (spawn_start_wait >= spawn_start_wait_max){
 									}
 								}
 							}
-						
+							
 							if (global.game_combat_in_hordechallenge){
 								enemy.type = Enemy0_Type.Normal;
 							}

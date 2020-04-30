@@ -220,7 +220,6 @@ if (global.weapon_slot_standalone == -1){
 			scr_sound_play(snd_character_dash_0, false, 0.8, 1.2);
 		}
 		
-		scr_effect_screenshake(2);
 		scr_effect_vignette_flash(c_ltgray, 0.064, 0.004);
 		
 		dash_length_current = 0;
