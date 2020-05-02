@@ -10,11 +10,11 @@
         "4104fd89-b043-4cdb-ba8c-919ab365787e",
         "edc51c49-67d0-402d-85e6-b778115a7bfc",
         "096ff1a4-a06e-4fa2-ae3e-2f610aa91b48",
-        "51a738fe-82e9-4287-b7b0-4b6dc35aaf96",
-        "c4a9d35a-6b88-4f92-affc-7e64e156760a",
-        "e2ba9b25-fb4f-46c1-b3a8-1a710550de9e",
-        "0308d2f7-0004-4a55-aa74-440a18775d8b",
-        "7ee39622-52f5-4848-934a-6322fe1040ba"
+        "2f261a0e-0965-47ec-a7b8-7364bb6acbcf",
+        "5fb43189-207e-4cb9-81a5-376b6877635a",
+        "32489152-db81-4cf9-ab47-e86ec0610180",
+        "1630b155-a2ba-41cd-aae7-4111aaeb19ad",
+        "cd4fea4e-17eb-4ee2-a4ad-4a02e014089d"
     ],
     "filterType": "GMSprite",
     "folderName": "Factory",

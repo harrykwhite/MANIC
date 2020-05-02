@@ -119,14 +119,6 @@
             }
         },
         {
-            "Key": "0308d2f7-0004-4a55-aa74-440a18775d8b",
-            "Value": {
-                "id": "1b33b6cf-e630-4dcc-9397-69294f225e03",
-                "resourcePath": "sprites\\spr_factorybuilding_door_closed_0_interact\\spr_factorybuilding_door_closed_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "030a4464-d2e9-4131-a91d-a09bfe49b3fc",
             "Value": {
                 "id": "05c6260f-0726-47fa-abbd-47c888dc8eba",
@@ -383,6 +375,14 @@
             }
         },
         {
+            "Key": "062a46b4-fc3c-47b5-9dba-3bd0d558ff40",
+            "Value": {
+                "id": "84413c0f-860a-4553-a63e-68682d9ac1aa",
+                "resourcePath": "sprites\\spr_destroyedbuilding_door_closed_0_interact\\spr_destroyedbuilding_door_closed_0_interact.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "062aaaf1-5283-4604-9eb7-552b47b1c451",
             "Value": {
                 "id": "98a6796b-9745-4218-bd42-884604ec5a02",
@@ -535,6 +535,14 @@
             }
         },
         {
+            "Key": "08d1ea91-f611-4b0b-a67a-539131c6f976",
+            "Value": {
+                "id": "0a69e1eb-4856-4e69-937a-d49cb851000b",
+                "resourcePath": "sprites\\spr_prisonbuilding_door_break_0\\spr_prisonbuilding_door_break_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "08d7f13e-be8f-4119-830f-ee720d29109c",
             "Value": {
                 "id": "8f5c3cea-1e23-41e2-8d3a-81eba82240f3",
@@ -564,6 +572,14 @@
                 "id": "ed6604d2-c6db-46a0-9fd8-2cd86acfdacf",
                 "resourcePath": "scripts\\scr_weapon_get_level_string\\scr_weapon_get_level_string.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "09192a8b-664c-4662-9177-26f40d3202e2",
+            "Value": {
+                "id": "b1deaae6-6e8f-4c3a-b876-12b5a0fba38c",
+                "resourcePath": "sprites\\spr_farmbuilding_door_closed_0_interact\\spr_farmbuilding_door_closed_0_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -759,14 +775,6 @@
             }
         },
         {
-            "Key": "0c35c141-31a4-4c59-8eee-022779f5b692",
-            "Value": {
-                "id": "8083dbfa-9329-4f7d-b111-4cf516b286e1",
-                "resourcePath": "sprites\\spr_farmbuilding_door_closed_0\\spr_farmbuilding_door_closed_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "0c4998af-7ce4-4e0a-974e-6d974683cefc",
             "Value": {
                 "id": "4faed013-33d4-476e-83d9-21a80f2d70ec",
@@ -828,6 +836,14 @@
                 "id": "1659ef17-9f30-4930-ab54-b825916d86b3",
                 "resourcePath": "objects\\obj_throwobject_3\\obj_throwobject_3.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "0d131bd3-c803-423d-965e-9f513cb959b7",
+            "Value": {
+                "id": "973348e3-b9c9-4fee-b0f7-95ea73aa06e5",
+                "resourcePath": "sprites\\spr_farmbuilding_door_break_0\\spr_farmbuilding_door_break_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -1255,6 +1271,14 @@
             }
         },
         {
+            "Key": "1630b155-a2ba-41cd-aae7-4111aaeb19ad",
+            "Value": {
+                "id": "85efca1a-1338-4612-a279-c8911b37a6d6",
+                "resourcePath": "sprites\\spr_factorybuilding_door_closed_0_interact\\spr_factorybuilding_door_closed_0_interact.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "1649c1ae-74fe-4060-a8b6-a9516630bfdc",
             "Value": {
                 "id": "3af37ff8-bc3d-497b-8a24-a5a11a54972b",
@@ -1287,6 +1311,14 @@
             }
         },
         {
+            "Key": "16a82e19-130e-42f7-acaa-6819d320eeae",
+            "Value": {
+                "id": "55b6c225-65ed-4bc2-8cfd-650670e24bc0",
+                "resourcePath": "sprites\\spr_snowbuilding_door_open_0_interact\\spr_snowbuilding_door_open_0_interact.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "16ab2b06-e538-4a71-87d9-a8f5d61f9e6c",
             "Value": {
                 "id": "c8adab23-780a-4de6-8f7a-751ea9100610",
@@ -1299,6 +1331,14 @@
             "Value": {
                 "id": "bdb367e2-ac47-4c51-a26c-f2b335009855",
                 "resourcePath": "sprites\\spr_bunker_wall_0\\spr_bunker_wall_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "16ce2427-3e97-4918-9ef7-1fa661dd2c0b",
+            "Value": {
+                "id": "5ec9716f-9ed5-484d-ae6b-5590a820275d",
+                "resourcePath": "sprites\\spr_prisonbuilding_door_closed_0\\spr_prisonbuilding_door_closed_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -1679,14 +1719,6 @@
             }
         },
         {
-            "Key": "1d394473-ec1c-4f56-8c39-9c3829d3b052",
-            "Value": {
-                "id": "e9b0c752-a86d-4026-b9c9-d49ab2240a5d",
-                "resourcePath": "sprites\\spr_citybuilding_door_break_0\\spr_citybuilding_door_break_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "1d6291c7-5aac-4deb-85e2-4363b6f9bb78",
             "Value": {
                 "id": "6cb98e00-1bd2-4821-b2a8-2ad5ffefdf2d",
@@ -1991,14 +2023,6 @@
             }
         },
         {
-            "Key": "234faa59-064e-4f7e-ad94-3bab94930ed9",
-            "Value": {
-                "id": "f77c1686-3a8f-4297-8b3d-ca4568631383",
-                "resourcePath": "sprites\\spr_snowbuilding_door_closed_0\\spr_snowbuilding_door_closed_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "2360902f-40c8-4f0f-8a74-d98d57d239fa",
             "Value": {
                 "id": "ff034ba7-724d-4921-b4db-1ad3c1ee2b6d",
@@ -2020,14 +2044,6 @@
                 "id": "9be31d7c-0445-4500-a3f3-714b5b26ae50",
                 "resourcePath": "scripts\\scr_cutscene_3\\scr_cutscene_3.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "23b12eb7-9755-4de6-bb74-6ea739f03d49",
-            "Value": {
-                "id": "928778c2-d00a-492c-8bc4-5c03dbb1e6a5",
-                "resourcePath": "sprites\\spr_farmbuilding_door_break_0\\spr_farmbuilding_door_break_0.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -2799,6 +2815,14 @@
             }
         },
         {
+            "Key": "2f261a0e-0965-47ec-a7b8-7364bb6acbcf",
+            "Value": {
+                "id": "11029080-58d7-4c90-8797-1a2fb78dbb2f",
+                "resourcePath": "sprites\\spr_factorybuilding_door_open_0\\spr_factorybuilding_door_open_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "2f3023ee-02ff-43b8-9bb6-c52dd569c802",
             "Value": {
                 "id": "6ed2a5e0-b507-4914-a6b5-d29354f93212",
@@ -2972,6 +2996,14 @@
                 "id": "3948e885-62ef-46f6-aeec-09f3453b6650",
                 "resourcePath": "objects\\obj_ef_trail\\obj_ef_trail.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "32489152-db81-4cf9-ab47-e86ec0610180",
+            "Value": {
+                "id": "9b377af0-a86a-49bf-9a92-5e180e517f7f",
+                "resourcePath": "sprites\\spr_factorybuilding_door_open_0_interact\\spr_factorybuilding_door_open_0_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -3260,14 +3292,6 @@
                 "id": "3ca5af7f-870a-479b-bd77-4144cfa13d4c",
                 "resourcePath": "objects\\obj_fence_6\\obj_fence_6.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "3648a49c-f536-4965-b036-215c6c9107aa",
-            "Value": {
-                "id": "4c87ac55-8150-43a9-9dc7-3908f243d4f6",
-                "resourcePath": "sprites\\spr_destroyedbuilding_door_closed_0_interact\\spr_destroyedbuilding_door_closed_0_interact.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -3615,14 +3639,6 @@
             }
         },
         {
-            "Key": "3b3ae07a-60bd-4401-95a2-6d4e915217fd",
-            "Value": {
-                "id": "82204fb7-858f-4aac-9a39-e83ff5e249d9",
-                "resourcePath": "sprites\\spr_prisonbuilding_door_open_0_interact\\spr_prisonbuilding_door_open_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "3b422d38-ca18-4654-a224-c8be83c41bcc",
             "Value": {
                 "id": "8b5ab655-39af-4398-a905-8854c23bc461",
@@ -3828,6 +3844,14 @@
                 "id": "d4c6b10e-f3c4-4a49-9821-e62b9081632b",
                 "resourcePath": "objects\\obj_decorative_3\\obj_decorative_3.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "402f2fff-f517-462d-b3f1-e3c4b11312b1",
+            "Value": {
+                "id": "87667035-6e44-41e4-9721-954d48e00a75",
+                "resourcePath": "sprites\\spr_destroyedbuilding_door_open_0_interact\\spr_destroyedbuilding_door_open_0_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -4308,14 +4332,6 @@
                 "id": "362fb0da-270e-4ec9-a6d4-26a2762b1bd3",
                 "resourcePath": "scripts\\scr_antagonist_behaviour_0\\scr_antagonist_behaviour_0.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "47118ed8-f14c-413f-83f9-02bc6c955f2a",
-            "Value": {
-                "id": "9dfadbbb-17eb-4d64-a1b5-54a99a7826c3",
-                "resourcePath": "sprites\\spr_destroyedbuilding_door_open_0_interact\\spr_destroyedbuilding_door_open_0_interact.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -4903,14 +4919,6 @@
             }
         },
         {
-            "Key": "51a738fe-82e9-4287-b7b0-4b6dc35aaf96",
-            "Value": {
-                "id": "2464a319-7fb3-4786-88e2-db3892c80cea",
-                "resourcePath": "sprites\\spr_factorybuilding_door_open_0\\spr_factorybuilding_door_open_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "51cae2de-537d-494a-9e6b-97b30ecba0e4",
             "Value": {
                 "id": "c1f82b17-2f97-420a-a81e-bbcd448b9b92",
@@ -4931,14 +4939,6 @@
             "Value": {
                 "id": "2ba6a1ec-af0c-494a-9c78-e4e61807e00e",
                 "resourcePath": "sprites\\spr_weapon_21\\spr_weapon_21.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "5218e5a0-03af-4630-8332-a2902206915b",
-            "Value": {
-                "id": "0382840c-4fdd-429a-92d1-250cc7c4f77f",
-                "resourcePath": "sprites\\spr_prisonbuilding_door_break_0\\spr_prisonbuilding_door_break_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -5308,6 +5308,14 @@
                 "id": "a8929bdd-1584-420b-bc12-889eb559ce24",
                 "resourcePath": "objects\\obj_controller_prologue\\obj_controller_prologue.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "581376f0-1e70-492f-91aa-6291102625ae",
+            "Value": {
+                "id": "80ee3d38-d339-46c8-9fde-f636baf6dbf6",
+                "resourcePath": "sprites\\spr_citybuilding_door_open_0_interact\\spr_citybuilding_door_open_0_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -5687,6 +5695,14 @@
             }
         },
         {
+            "Key": "5fb43189-207e-4cb9-81a5-376b6877635a",
+            "Value": {
+                "id": "31fcd03c-555c-41a9-a269-ec74d46b8e18",
+                "resourcePath": "sprites\\spr_factorybuilding_door_closed_0\\spr_factorybuilding_door_closed_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "5fdc0691-41bc-421b-b440-b7088acce1cc",
             "Value": {
                 "id": "e50d635d-da37-4925-9f78-cc28f2d7b8b9",
@@ -5699,6 +5715,14 @@
             "Value": {
                 "id": "3db49382-e100-4339-86e8-002bc5e03174",
                 "resourcePath": "sprites\\spr_snowbuilding_0\\spr_snowbuilding_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "60044350-d2fb-4c0c-a465-11fec2b2f291",
+            "Value": {
+                "id": "0b028f9d-43f7-4555-a8a1-11758459f44b",
+                "resourcePath": "sprites\\spr_prisonbuilding_door_open_0\\spr_prisonbuilding_door_open_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -6535,14 +6559,6 @@
             }
         },
         {
-            "Key": "6d626b50-d53f-4584-b139-6a8aca72451f",
-            "Value": {
-                "id": "acc77825-8c79-41f3-abea-cbb67b98ad60",
-                "resourcePath": "sprites\\spr_farmbuilding_door_closed_0_interact\\spr_farmbuilding_door_closed_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "6d661303-7c45-4709-87b8-200b7803431e",
             "Value": {
                 "id": "8d06ea76-c287-45bd-a72c-bdc83138f507",
@@ -6879,6 +6895,14 @@
             }
         },
         {
+            "Key": "72768fa5-4914-4d7c-96fe-eca09dfcdd70",
+            "Value": {
+                "id": "a5891e06-43d8-42fd-a571-5143995a61f9",
+                "resourcePath": "sprites\\spr_prisonbuilding_door_open_0_interact\\spr_prisonbuilding_door_open_0_interact.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "7286406e-31ce-4087-9061-11bebb57de64",
             "Value": {
                 "id": "d04ef3cd-4e26-4a61-ac91-2698d5097d6a",
@@ -7140,14 +7164,6 @@
                 "id": "d2ec6030-b966-4601-8d5b-2e0813f7ee86",
                 "resourcePath": "views\\75e23992-8ea1-4048-853f-dab422b73305.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "75fd5f3a-5fda-4eea-9483-29a14ad523ba",
-            "Value": {
-                "id": "e9bec4ed-4312-41d1-9c7b-0bd48e18b035",
-                "resourcePath": "sprites\\spr_prisonbuilding_door_closed_0\\spr_prisonbuilding_door_closed_0.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -7423,6 +7439,14 @@
             }
         },
         {
+            "Key": "7c4756db-6503-42dc-954b-82f337b485a3",
+            "Value": {
+                "id": "25e9fa49-dff9-47b5-97c9-975d307285e1",
+                "resourcePath": "sprites\\spr_farmbuilding_door_open_0_interact\\spr_farmbuilding_door_open_0_interact.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "7c52a8f6-b301-410b-bbb2-3e98135f7278",
             "Value": {
                 "id": "447201d1-a17f-4301-8cbb-cace58c7161c",
@@ -7559,18 +7583,10 @@
             }
         },
         {
-            "Key": "7ee39622-52f5-4848-934a-6322fe1040ba",
+            "Key": "7f398dc6-6f11-4177-a542-397b49d2869e",
             "Value": {
-                "id": "724fac1d-9f83-4cbb-8f5b-53d780b1c632",
-                "resourcePath": "sprites\\spr_factorybuilding_door_break_0\\spr_factorybuilding_door_break_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "7f2a3f82-dce6-4e95-ae7d-a0ec2ae888e8",
-            "Value": {
-                "id": "da47240d-b719-4935-8925-672314f160b7",
-                "resourcePath": "sprites\\spr_citybuilding_door_closed_0\\spr_citybuilding_door_closed_0.yy",
+                "id": "ae9ac215-a07b-4358-bf5c-cffc123d2683",
+                "resourcePath": "sprites\\spr_citybuilding_door_closed_0_interact\\spr_citybuilding_door_closed_0_interact.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -7660,6 +7676,14 @@
                 "id": "5dd1da22-0d16-45cb-a18c-0379936399c2",
                 "resourcePath": "scripts\\scr_player_setup\\scr_player_setup.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "8060a444-2718-462d-b3b8-15a8221aa4df",
+            "Value": {
+                "id": "93ecce07-74e3-4952-aee7-975da3b31491",
+                "resourcePath": "sprites\\spr_citybuilding_door_closed_0\\spr_citybuilding_door_closed_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -7780,14 +7804,6 @@
                 "id": "f5c3f53f-cdc3-45d4-930c-15ae22de064c",
                 "resourcePath": "sounds\\m_boss_final_transition_0\\m_boss_final_transition_0.yy",
                 "resourceType": "GMSound"
-            }
-        },
-        {
-            "Key": "82549cb6-b1fb-4ecb-81f2-ec348063f56c",
-            "Value": {
-                "id": "f122debf-e4de-419d-aadc-3dbb14ee697b",
-                "resourcePath": "sprites\\spr_farmbuilding_door_open_0\\spr_farmbuilding_door_open_0.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -7996,6 +8012,14 @@
                 "id": "bbb068a0-c59d-49d3-8442-a0b8635f4c0a",
                 "resourcePath": "objects\\obj_player_flashlight\\obj_player_flashlight.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "85ce66d2-88f6-42a6-8fea-61be811194b0",
+            "Value": {
+                "id": "5435592a-ea2b-4e5e-b2fe-b6ea0a16df54",
+                "resourcePath": "sprites\\spr_destroyedbuilding_door_break_0\\spr_destroyedbuilding_door_break_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -8399,14 +8423,6 @@
             }
         },
         {
-            "Key": "8bd73a23-8dfe-4f0c-8a68-d3783d06ba0e",
-            "Value": {
-                "id": "832a8340-3bcb-4347-8dab-bc0225c1874b",
-                "resourcePath": "sprites\\spr_citybuilding_door_open_0_interact\\spr_citybuilding_door_open_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "8beff69b-9fe5-41c0-b60b-5dcb4bfd9d16",
             "Value": {
                 "id": "256a37fc-6c20-4060-afd7-fe9397b8dca1",
@@ -8451,6 +8467,14 @@
             "Value": {
                 "id": "3cf32070-aee2-4958-91f0-93cfeb11114d",
                 "resourcePath": "sprites\\spr_weapon_29\\spr_weapon_29.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "8c51e08c-be2d-40c8-a7b7-ed331480cbed",
+            "Value": {
+                "id": "806d8a6b-9d04-4dc9-b9d5-b8558bc6ede9",
+                "resourcePath": "sprites\\spr_farmbuilding_door_open_0\\spr_farmbuilding_door_open_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -8532,6 +8556,14 @@
                 "id": "b8c31b31-51da-4bb5-8984-775972f36b35",
                 "resourcePath": "shaders\\sh_pawntint\\sh_pawntint.yy",
                 "resourceType": "GMShader"
+            }
+        },
+        {
+            "Key": "8d76a9f4-16ca-41c2-a1ba-47298f63d5f7",
+            "Value": {
+                "id": "efe85bd4-9b37-4a20-90c4-18b217b6d620",
+                "resourcePath": "sprites\\spr_prisonbuilding_door_closed_0_interact\\spr_prisonbuilding_door_closed_0_interact.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -10527,6 +10559,14 @@
             }
         },
         {
+            "Key": "ad8c012a-eb43-4caf-9b78-8da6771f6733",
+            "Value": {
+                "id": "cdb920c7-d8ee-4f95-be46-58c6d12365fb",
+                "resourcePath": "sprites\\spr_snowbuilding_door_closed_0\\spr_snowbuilding_door_closed_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "ade40983-7887-4eaa-852d-206d723118e5",
             "Value": {
                 "id": "33b9a6a3-69bb-4297-9603-bd95ce0a3cc2",
@@ -11047,6 +11087,14 @@
             }
         },
         {
+            "Key": "b5574e5d-7e10-4f4b-8495-8863832ee765",
+            "Value": {
+                "id": "d8db78b8-0d23-40fe-8300-45773ea7b45e",
+                "resourcePath": "sprites\\spr_farmbuilding_door_closed_0\\spr_farmbuilding_door_closed_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b5a14452-34a1-4506-9b2c-09ebabe707a1",
             "Value": {
                 "id": "c2bb36a3-714c-4691-a1d5-b9ba9262d13e",
@@ -11447,14 +11495,6 @@
             }
         },
         {
-            "Key": "be55edf2-b8d5-4bf0-a897-e91d59748913",
-            "Value": {
-                "id": "6065b5bf-6e03-46cf-a51e-924ec482ccc3",
-                "resourcePath": "sprites\\spr_destroyedbuilding_door_closed_0\\spr_destroyedbuilding_door_closed_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "beac85f5-c102-400c-9c20-15bc1a18f7f7",
             "Value": {
                 "id": "ef4d3f12-5bda-4e8f-b057-fb24f8aa9b0c",
@@ -11468,14 +11508,6 @@
                 "id": "bf116ae1-6a81-4dba-b956-f65d0c608af4",
                 "resourcePath": "objects\\obj_bunkerbuilding_0\\obj_bunkerbuilding_0.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "bf3c11c2-9a71-474a-82d4-a089b55e5d72",
-            "Value": {
-                "id": "36a2a938-5433-4f0d-a4fd-ccd2610356b1",
-                "resourcePath": "sprites\\spr_destroyedbuilding_door_open_0\\spr_destroyedbuilding_door_open_0.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -11540,6 +11572,14 @@
                 "id": "356121c9-26f6-4499-b348-4cb31488d09b",
                 "resourcePath": "objects\\obj_cityheadquarters_building_2\\obj_cityheadquarters_building_2.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "c07092a4-a1f3-4708-9ebd-9562d27f8d5e",
+            "Value": {
+                "id": "f718120d-3163-4be4-999b-b8cec762cec3",
+                "resourcePath": "sprites\\spr_destroyedbuilding_door_open_0\\spr_destroyedbuilding_door_open_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -11711,14 +11751,6 @@
             }
         },
         {
-            "Key": "c4a9d35a-6b88-4f92-affc-7e64e156760a",
-            "Value": {
-                "id": "5f2ba02a-74ac-4418-a18e-b7944cc2eb34",
-                "resourcePath": "sprites\\spr_factorybuilding_door_open_0_interact\\spr_factorybuilding_door_open_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "c4b698ea-f3f3-4014-8b5a-6f8529ebcf49",
             "Value": {
                 "id": "b59cca80-cdbc-4cdf-bb7d-f957d3a2765f",
@@ -11860,14 +11892,6 @@
                 "id": "e967416a-b569-44c8-b486-f14fc34b3302",
                 "resourcePath": "objects\\obj_table_0\\obj_table_0.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "c7361a7b-cba7-44a1-81f7-0c5f870813af",
-            "Value": {
-                "id": "d921f023-21ff-4c47-91ad-0df43747f702",
-                "resourcePath": "sprites\\spr_prisonbuilding_door_open_0\\spr_prisonbuilding_door_open_0.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -12183,6 +12207,14 @@
             }
         },
         {
+            "Key": "cd4fea4e-17eb-4ee2-a4ad-4a02e014089d",
+            "Value": {
+                "id": "a9b18915-61c2-4f23-88d0-0e48a16c8cf0",
+                "resourcePath": "sprites\\spr_factorybuilding_door_break_0\\spr_factorybuilding_door_break_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "cd98bb61-75f5-4561-9b5a-02fac6fef634",
             "Value": {
                 "id": "70139c16-fbef-4b82-86c6-37fb82bf62fc",
@@ -12476,14 +12508,6 @@
                 "id": "f7f21287-57cb-4012-b12e-f80d7da5c9e7",
                 "resourcePath": "rooms\\rm_level_9_02\\rm_level_9_02.yy",
                 "resourceType": "GMRoom"
-            }
-        },
-        {
-            "Key": "d4200289-0354-4d1a-b302-5675b92cfd50",
-            "Value": {
-                "id": "7c27cf74-e71a-49bc-a664-2842b974027c",
-                "resourcePath": "sprites\\spr_prisonbuilding_door_closed_0_interact\\spr_prisonbuilding_door_closed_0_interact.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -12823,14 +12847,6 @@
             }
         },
         {
-            "Key": "da984c18-4ea6-42e7-bdb4-90ea10ee22b2",
-            "Value": {
-                "id": "2466e70f-e74b-412d-8d03-f88f44c48afe",
-                "resourcePath": "sprites\\spr_citybuilding_door_open_0\\spr_citybuilding_door_open_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "da9f4560-9a5e-407a-b40d-8a617c95bbbc",
             "Value": {
                 "id": "f3d89fdb-d51e-41bb-b31c-af75cd752686",
@@ -13087,14 +13103,6 @@
             }
         },
         {
-            "Key": "df8ff81e-9f3e-4641-b4a1-9659963f9e18",
-            "Value": {
-                "id": "99cbca35-c47e-4ec7-9ad2-e05be60c60c4",
-                "resourcePath": "sprites\\spr_citybuilding_door_closed_0_interact\\spr_citybuilding_door_closed_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "df9fbabc-5a03-4d38-bb1a-8dcf47fe547a",
             "Value": {
                 "id": "3ee4b4ee-cc78-40e8-88ed-dd10fbffa92d",
@@ -13319,14 +13327,6 @@
             }
         },
         {
-            "Key": "e2ba9b25-fb4f-46c1-b3a8-1a710550de9e",
-            "Value": {
-                "id": "38eabc80-70b7-49d5-a5d0-bfd0b615030f",
-                "resourcePath": "sprites\\spr_factorybuilding_door_closed_0\\spr_factorybuilding_door_closed_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "e32c1175-44d0-43c5-bd27-7ec1af70cb13",
             "Value": {
                 "id": "352cfe00-dfd2-4b14-98ae-ff2b1ee4c10f",
@@ -13423,6 +13423,14 @@
             }
         },
         {
+            "Key": "e55e9e32-1781-4d1f-bb91-1f3317169479",
+            "Value": {
+                "id": "0653396f-17fc-41d0-919b-46b746a5b23e",
+                "resourcePath": "sprites\\spr_citybuilding_door_open_0\\spr_citybuilding_door_open_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "e586e2f1-985b-4e5d-b14f-f1bbbaaa830e",
             "Value": {
                 "id": "50c08e1e-0984-4b29-8e49-63161e457e7f",
@@ -13479,14 +13487,6 @@
             }
         },
         {
-            "Key": "e68137ed-f3e6-4230-a09b-256b01d7ee59",
-            "Value": {
-                "id": "47d65b4c-c792-45b0-aacc-2924a98e039b",
-                "resourcePath": "sprites\\spr_snowbuilding_door_open_0_interact\\spr_snowbuilding_door_open_0_interact.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "e686a97d-8ded-41c7-b519-6dd51af32998",
             "Value": {
                 "id": "870ccfae-84c4-44a3-b22e-99c3f8ede208",
@@ -13507,14 +13507,6 @@
             "Value": {
                 "id": "f853595a-ff35-4419-a8f8-5d0c358a8b82",
                 "resourcePath": "sprites\\spr_enemy_0_fly_idle_1\\spr_enemy_0_fly_idle_1.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "e75dffb3-e240-4bd9-9edf-81d2abc99baa",
-            "Value": {
-                "id": "e8c70507-58eb-43d4-b7f4-1ce494e3f422",
-                "resourcePath": "sprites\\spr_farmbuilding_door_open_0_interact\\spr_farmbuilding_door_open_0_interact.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -14335,14 +14327,6 @@
             }
         },
         {
-            "Key": "f43e0b1e-d58c-48fc-bd75-d6a38395d9c8",
-            "Value": {
-                "id": "b0c38d8c-c377-47fc-96fc-4a1607891069",
-                "resourcePath": "sprites\\spr_destroyedbuilding_door_break_0\\spr_destroyedbuilding_door_break_0.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "f4612359-366b-4afb-83c9-83cbf0e5f1d4",
             "Value": {
                 "id": "89014679-0b14-40a9-94e8-86b5e370b5f6",
@@ -14719,6 +14703,14 @@
             }
         },
         {
+            "Key": "fa3efd35-ec88-4dac-86c6-66bb7eb94c96",
+            "Value": {
+                "id": "b48bc790-29a6-4298-8bca-3fa3714b2aef",
+                "resourcePath": "sprites\\spr_citybuilding_door_break_0\\spr_citybuilding_door_break_0.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "fa42420a-43f0-412e-a38a-599db5dcab23",
             "Value": {
                 "id": "30b3fdd2-ca82-48bd-96ee-8c97bb1c99d4",
@@ -14772,6 +14764,14 @@
                 "id": "a03a8567-35d8-42a9-856e-0ff01acaa270",
                 "resourcePath": "scripts\\macros\\macros.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "fb3c93ec-2c42-4f60-93dc-86249dced765",
+            "Value": {
+                "id": "e6f983f7-e380-4096-97a0-7920b827e141",
+                "resourcePath": "sprites\\spr_destroyedbuilding_door_closed_0\\spr_destroyedbuilding_door_closed_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

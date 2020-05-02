@@ -1,1 +1,0 @@
-sprite_index = spr_destroyedbuilding_door_break_0;

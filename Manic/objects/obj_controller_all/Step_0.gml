@@ -195,7 +195,7 @@ if (!global.game_pause){
 // Cutscene previous
 if (cutscene_previous != -1) && (global.cutscene_current == -1){
 	if (instance_exists(obj_player)){
-		obj_player.i_time = 30;
+		obj_player.i_time = 60;
 	}
 }
 

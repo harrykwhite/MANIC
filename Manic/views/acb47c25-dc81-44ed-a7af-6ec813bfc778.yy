@@ -9,11 +9,11 @@
         "baa04e5c-9391-4075-a5eb-e203f3e334d2",
         "7b3084f1-eae7-4330-a714-2cbd263ead9d",
         "2a2dc70e-d097-4030-ae2d-1c62facb1120",
-        "c7361a7b-cba7-44a1-81f7-0c5f870813af",
-        "3b3ae07a-60bd-4401-95a2-6d4e915217fd",
-        "75fd5f3a-5fda-4eea-9483-29a14ad523ba",
-        "d4200289-0354-4d1a-b302-5675b92cfd50",
-        "5218e5a0-03af-4630-8332-a2902206915b"
+        "60044350-d2fb-4c0c-a465-11fec2b2f291",
+        "16ce2427-3e97-4918-9ef7-1fa661dd2c0b",
+        "72768fa5-4914-4d7c-96fe-eca09dfcdd70",
+        "8d76a9f4-16ca-41c2-a1ba-47298f63d5f7",
+        "08d1ea91-f611-4b0b-a67a-539131c6f976"
     ],
     "filterType": "GMSprite",
     "folderName": "Prison Buidling",

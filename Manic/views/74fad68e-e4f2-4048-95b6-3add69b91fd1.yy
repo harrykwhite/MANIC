@@ -11,11 +11,11 @@
         "8ba37d78-309f-4347-b6ee-b9ad94d6a78d",
         "9b45aa84-cebb-4104-9507-de5bc8db7fe3",
         "41315c3a-c809-4a7a-930c-1195661b57cb",
-        "0c35c141-31a4-4c59-8eee-022779f5b692",
-        "6d626b50-d53f-4584-b139-6a8aca72451f",
-        "82549cb6-b1fb-4ecb-81f2-ec348063f56c",
-        "e75dffb3-e240-4bd9-9edf-81d2abc99baa",
-        "23b12eb7-9755-4de6-bb74-6ea739f03d49"
+        "8c51e08c-be2d-40c8-a7b7-ed331480cbed",
+        "b5574e5d-7e10-4f4b-8495-8863832ee765",
+        "7c4756db-6503-42dc-954b-82f337b485a3",
+        "09192a8b-664c-4662-9177-26f40d3202e2",
+        "0d131bd3-c803-423d-965e-9f513cb959b7"
     ],
     "filterType": "GMSprite",
     "folderName": "Farm Building",

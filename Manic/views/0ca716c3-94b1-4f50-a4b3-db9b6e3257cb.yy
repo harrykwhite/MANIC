@@ -10,11 +10,11 @@
         "fdc970cf-2e5b-40b5-adeb-547968b1d10a",
         "900449e0-838c-4882-ae69-0741562e6842",
         "6da2e522-7ef5-4f89-939c-18802d58db11",
-        "be55edf2-b8d5-4bf0-a897-e91d59748913",
-        "3648a49c-f536-4965-b036-215c6c9107aa",
-        "bf3c11c2-9a71-474a-82d4-a089b55e5d72",
-        "47118ed8-f14c-413f-83f9-02bc6c955f2a",
-        "f43e0b1e-d58c-48fc-bd75-d6a38395d9c8"
+        "c07092a4-a1f3-4708-9ebd-9562d27f8d5e",
+        "fb3c93ec-2c42-4f60-93dc-86249dced765",
+        "402f2fff-f517-462d-b3f1-e3c4b11312b1",
+        "062a46b4-fc3c-47b5-9dba-3bd0d558ff40",
+        "85ce66d2-88f6-42a6-8fea-61be811194b0"
     ],
     "filterType": "GMSprite",
     "folderName": "Destroyed Building",

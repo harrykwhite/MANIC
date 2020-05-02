@@ -80,8 +80,8 @@ if ((interact) && (global.cutscene_current == -1) && (!anim) && (!locked) && (id
 			scr_player_stamina_drain(4);
 			
 			sprite_index = open ? opensprite : closedsprite;
-			image_speed = 1;
 			image_index = 0;
+			image_speed = 1;
 			
 			if (houseraid) && (open){
 				global.cutscene_current = 3;
