@@ -12,7 +12,8 @@ if (warning_prompt){
     if (warning_prompt_alpha > 0){
         warning_prompt_alpha -= 0.1;
     } else {
-        warning_prompt_selected = (iskeyboard ? -1 : 1);
+        warning_prompt_selected = iskeyboard ? -1 : 1;
+		warning_prompt_selected_previous = iskeyboard ? -1 : 0;
         warning_prompt_alpha = 0;
         warning_prompt_scale[0] = 1;
         warning_prompt_scale[1] = 1;

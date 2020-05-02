@@ -14,7 +14,7 @@ var mdir = point_direction(global.player_position_x, global.player_position_y, s
 if (instance_exists(obj_player)) && (global.player_stamina_active){
     if (scr_input_is_down(InputBinding.Attack) || scr_input_is_down(InputBinding.Throw)){
         if (throw_time >= throw_time_max - 5){
-			if (!collision_line(obj_player.x, obj_player.y, x + lengthdir_x(3, mdir), y + lengthdir_y(3, mdir), obj_p_solid, false, true)){
+			if (!collision_line(obj_player.x, obj_player.y, x + lengthdir_x(8, mdir), y + lengthdir_y(8, mdir), obj_p_solid, false, true)){
 	            scr_player_stamina_drain(20);
 				
 				scr_effect_screenshake(1);

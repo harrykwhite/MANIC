@@ -569,7 +569,7 @@ if (unlock_text_alpha > 0){
 	draw_set_alpha(unlock_text_alpha);
 	draw_set_font(fnt_cambria_1);
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_bottom);
+	draw_set_valign(fa_middle);
 	
 	scr_text((dwidth / 2), yy, unlock_text, c_white);
 	
@@ -1064,53 +1064,6 @@ if (levelcur == Level.Prologue){
 		draw_set_halign(fa_center);
 		scr_text(dwidth / 2, dheight / 2, text, c_white);
 	}
-}
-
-// Teaser Ending
-if (iskeyboard){
-	teaserend_button_selected = -1;
-}
-
-if (teaserend){
-	draw_set_alpha(teaserend_alpha * 0.2);
-	draw_set_colour(c_black);
-	draw_rectangle(0, 0, dwidth, dheight, false);
-	
-	draw_set_font(fnt_cambria_6);
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
-	draw_set_alpha(teaserend_text_alpha);
-	scr_text(dwidth / 2, (dheight / 2) - 214, "MANIC", c_white);
-	
-	draw_set_font(fnt_cambria_1);
-	scr_text(dwidth / 2, (dheight / 2) - 179, "A GAME BY GETA", c_white);
-	
-	draw_set_font(fnt_cambria_1);
-	
-	for(var b = 0; b < teaserend_button_selected_max; b ++){
-		var bx = dwidth / 2;
-		var by = (dheight / 2) - 65 + (48 * b);
-		var bcol = c_white;
-		
-		if (iskeyboard){
-			if (point_in_rectangle(mousex, mousey, bx - 80, by - 16, bx + 80, by + 16)){
-				teaserend_button_selected = b;
-			}
-		}
-		
-		if (teaserend_button_selected == b){
-			teaserend_button_scale[b] = approach(teaserend_button_scale[b], 1.1, 40);
-			bcol = make_colour_rgb(189, 23, 23);
-		}else{
-			teaserend_button_scale[b] = approach(teaserend_button_scale[b], 1, 40);
-		}
-		
-		scr_text_transformed(bx, by, teaserend_button[b], bcol, teaserend_button_scale[b], teaserend_button_scale[b], 0);
-	}
-	
-	scr_text(dwidth / 2, (dheight / 2) - 65 + (48 * (teaserend_button_selected_max + 1)), "Thanks for playing!", c_white);
-	
-	draw_set_valign(fa_top);
 }
 
 // Game Ending

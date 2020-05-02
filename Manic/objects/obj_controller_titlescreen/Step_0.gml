@@ -258,11 +258,15 @@ if (fade){
 			}else if (in_levelselect){
 				in_levelselect = false;
 				changed = true;
+			}else if (in_arenamode){
+				in_arenamode = false;
+				changed = true;
 			}
 			
 			if (changed){
 				selected = (iskeyboard ? -1 : 0);
 				buttonpressed = true;
+				
 				scr_titlescreen_options_scale_reset();
 			}
 		}
@@ -273,76 +277,41 @@ if (fade){
 			if (!in_settings) && (!in_levelselect) && (!in_arenamode){
 				isvalid = true;
 				
-				if (!isteaser){
-					switch(selected){
-						case 0:
-							isvalid = false;
-							audio_sound_gain(m_ambience_wind_0, 0, 2000);
-						
-							global.game_is_playthrough = true;
-							fade = true;
-						
-							if (global.game_save_level_atpreroom) && (global.level_preroom[global.game_save_level] != noone){
-								fade_goto = global.level_preroom[global.game_save_level];
-							}else{
-								fade_goto = global.level_room[global.game_save_level];
-							}
-						
-							fade_speed = 0.01;
-						
-							global.level_current = global.game_save_level;
-							break;
+				switch(selected){
+					case 0:
+						isvalid = false;
+						audio_sound_gain(m_ambience_wind_0, 0, 2000);
 					
-						case 1:
-							in_levelselect = true;
-							break;
+						global.game_is_playthrough = true;
+						fade = true;
 					
-						case 2:
-							in_arenamode = true;
-							break;
+						if (global.game_save_level_atpreroom) && (global.level_preroom[global.game_save_level] != noone){
+							fade_goto = global.level_preroom[global.game_save_level];
+						}else{
+							fade_goto = global.level_room[global.game_save_level];
+						}
 					
-						case 3:
-							in_settings = true;
-							break;
+						fade_speed = 0.01;
+					
+						global.level_current = global.game_save_level;
+						break;
+					
+					case 1:
+						in_levelselect = true;
+						break;
+					
+					case 2:
+						in_arenamode = true;
+						break;
+					
+					case 3:
+						in_settings = true;
+						break;
 				
-						case 4:
-							scr_options_refresh(false);
-							game_end();
-							break;
-					}
-				}else{
-					switch(selected){
-						case 0:
-							isvalid = false;
-							audio_sound_gain(m_ambience_wind_0, 0, 2000);
-							
-							global.game_is_playthrough = false;
-							global.level_entered[Level.RavagedTown] = false;
-							global.game_save_seconds = 0;
-							fade = true;
-							
-							if (global.game_save_level_atpreroom) && (global.level_preroom[Level.RavagedTown] != noone){
-								fade_goto = global.level_preroom[Level.RavagedTown];
-							}else{
-								fade_goto = global.level_room[Level.RavagedTown];
-							}
-							
-							fade_speed = 0.01;
-							
-							global.level_current = Level.RavagedTown;
-							
-							scr_set_kills_and_findings();
-							break;
-							
-						case 1:
-							in_settings = true;
-							break;
-							
-						case 2:
-							scr_options_refresh(false);
-							game_end();
-							break;
-					}
+					case 4:
+						scr_options_refresh(false);
+						game_end();
+						break;
 				}
 			}else if (in_settings) && (!in_levelselect) && (!in_arenamode){
 				if (in_settings_gameplay) || (in_settings_display) || (in_settings_audio) || (in_settings_controls){

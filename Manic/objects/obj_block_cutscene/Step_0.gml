@@ -129,10 +129,6 @@ if (instance_exists(obj_player)) && (global.cutscene_current == -1){
 				obj_controller_ui.tutourial_stage_pickupmelee_cseen = true;
 			}
 			
-			if (special == "teaserend"){
-				obj_controller_ui.teaserend = true;
-			}
-			
 			if (special == "huntingstart"){
 				obj_controller_prologue.hunting = true;
 			}

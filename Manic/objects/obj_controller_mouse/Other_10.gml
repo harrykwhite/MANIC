@@ -2,12 +2,6 @@ if (!obj_controller_all.show_ui){
 	return;
 }
 
-if (global.game_input_type == InputType.Gamepad){
-	if (!instance_exists(obj_player) || global.game_pause){
-		return;
-	}
-}
-
 var xx = scr_world_to_screen_x(x);
 var yy = scr_world_to_screen_y(y);
 var scale = 2;

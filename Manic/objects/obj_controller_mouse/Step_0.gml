@@ -1,16 +1,23 @@
+var fade = global.cutscene_current != -1;
+
 mouse_scale = approach(mouse_scale, mouse_scale_to, mouse_scale_speed);
 
-if (global.cutscene_current != -1) && (!obj_controller_ui.teaserend){
+if (global.game_input_type == InputType.Gamepad){
+	fade |= global.game_pause;
+	fade |= !instance_exists(obj_player);
+}
+
+if (fade){
 	if (mouse_alpha > 0){
-		mouse_alpha -= 0.05;
+		mouse_alpha -= 0.1;
 	}
 }else{
 	if (mouse_alpha < 1){
-		mouse_alpha += 0.05;
+		mouse_alpha += 0.1;
 	}
 }
 
-mouse_alpha = clamp(mouse_alpha,  0, 1);
+mouse_alpha = clamp(mouse_alpha, 0, 1);
 
 if (mouse_cross > 0.01){
 	mouse_cross *= 0.9;
@@ -18,7 +25,7 @@ if (mouse_cross > 0.01){
 	mouse_cross = 0;
 }
 
-if (instance_exists(obj_player)) && (!global.game_pause) && (!obj_controller_ui.teaserend){
+if (instance_exists(obj_player)) && (!global.game_pause){
 	// Mouse Type
 	var index = global.weapon_slot[global.weapon_slotcurrent];
 	
@@ -47,5 +54,7 @@ if (instance_exists(obj_player)) && (!global.game_pause) && (!obj_controller_ui.
 		mouse = global.weapon_default == -1 ? MouseType.Dot : global.weapon_mouse[global.weapon_default];
 	}
 }else{
-	mouse = MouseType.Dot;
+	if (global.game_input_type != InputType.Gamepad){
+		mouse = MouseType.Dot;
+	}
 }

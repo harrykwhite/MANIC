@@ -959,14 +959,6 @@
             }
         },
         {
-            "Key": "10a3e926-fb30-45fe-b5a0-f41d8fb5684f",
-            "Value": {
-                "id": "aa397ecd-ae11-453c-8041-080078ebf592",
-                "resourcePath": "objects\\obj_snowbuilding_8\\obj_snowbuilding_8.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "10b35188-174c-4ea1-ab37-ec88a7868bad",
             "Value": {
                 "id": "ca47c04a-a54d-48a0-9756-01dc9487378e",
@@ -988,14 +980,6 @@
                 "id": "6ee7bfd4-c574-4a47-aaf6-e1da0412c404",
                 "resourcePath": "sprites\\spr_prisonbar_1\\spr_prisonbar_1.yy",
                 "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "1160e3d1-0763-4ff2-b82a-a2b97ebdbca1",
-            "Value": {
-                "id": "da619c37-d8de-40f8-8fd4-258739a1bf8b",
-                "resourcePath": "objects\\obj_farmbuilding_6\\obj_farmbuilding_6.yy",
-                "resourceType": "GMObject"
             }
         },
         {
@@ -2543,6 +2527,14 @@
             }
         },
         {
+            "Key": "2ad5e562-b7e6-4734-9ed5-f01f472eb689",
+            "Value": {
+                "id": "19e2783a-ec3d-4312-ab09-8c3c11164b70",
+                "resourcePath": "objects\\obj_destroyedbuilding_4\\obj_destroyedbuilding_4.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "2b09d22e-ba34-4366-a67d-73711404bfe8",
             "Value": {
                 "id": "2a95a651-2b42-4c7b-9dfa-c7f04af83b54",
@@ -3111,6 +3103,14 @@
             }
         },
         {
+            "Key": "34557c51-c3b3-4120-9010-a35c8116a4db",
+            "Value": {
+                "id": "5cb69375-6adc-44d5-be5d-a18c681a46d7",
+                "resourcePath": "sprites\\spr_block_leftside\\spr_block_leftside.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "345939fd-b3de-4fa7-8062-ba716cabc5c7",
             "Value": {
                 "id": "503c460e-e76a-4faa-a247-4d5d13dd214a",
@@ -3316,6 +3316,14 @@
                 "id": "3567d86b-92c8-44b3-a767-98ad02ea887d",
                 "resourcePath": "sprites\\spr_tree_3_fire\\spr_tree_3_fire.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "372de5bb-83a5-4e2b-a2d0-446add4f2f57",
+            "Value": {
+                "id": "fc754547-43a5-4da6-95f8-c76d8b542aaf",
+                "resourcePath": "objects\\obj_destroyedbuilding_5\\obj_destroyedbuilding_5.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -4639,14 +4647,6 @@
             }
         },
         {
-            "Key": "4d242947-8734-420e-929b-78c15103943e",
-            "Value": {
-                "id": "8b89db9f-5ce1-4ad2-a45a-22a0813497fc",
-                "resourcePath": "objects\\obj_snowbuilding_9\\obj_snowbuilding_9.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "4d3f8743-63f0-4bcb-b8d1-7288a7886c9d",
             "Value": {
                 "id": "ec38896d-3b90-4126-a1ad-586b572a47dc",
@@ -5287,6 +5287,14 @@
             }
         },
         {
+            "Key": "57d70065-1832-4eb6-ac9f-63a097f4ecbd",
+            "Value": {
+                "id": "ec489646-5e76-4218-ad58-4ca1c67c54f7",
+                "resourcePath": "objects\\obj_farmbuilding_6\\obj_farmbuilding_6.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "57e369cd-8b68-40f6-8666-4e692691a37e",
             "Value": {
                 "id": "0e7a9d55-a4d1-426f-859b-b27355080f99",
@@ -5719,14 +5727,6 @@
             }
         },
         {
-            "Key": "603e0b7b-e148-499b-a256-33c378266201",
-            "Value": {
-                "id": "cd943c50-82a4-48e2-868a-cb8984daa80a",
-                "resourcePath": "objects\\obj_factorybuilding_4\\obj_factorybuilding_4.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "606842d9-4bab-489a-813a-6475dea55005",
             "Value": {
                 "id": "779c3929-e1b1-4b4f-8d20-27a21573433a",
@@ -5935,14 +5935,6 @@
             }
         },
         {
-            "Key": "634da2f9-506a-40a4-997a-dcf95b0f8a47",
-            "Value": {
-                "id": "79d925ab-9cd1-498f-90c0-faa6973d76b3",
-                "resourcePath": "objects\\obj_factorybuilding_5\\obj_factorybuilding_5.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "638dc00a-9619-468a-a905-be8726c83911",
             "Value": {
                 "id": "e056ffa4-b832-447a-8fd6-56abdd09ffba",
@@ -6007,14 +5999,6 @@
             }
         },
         {
-            "Key": "646904ac-20a0-4edc-aa02-3b16f5911c5d",
-            "Value": {
-                "id": "04f99760-c538-4595-a73e-273b60188193",
-                "resourcePath": "objects\\obj_farmbuilding_5\\obj_farmbuilding_5.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "64733adf-6cea-45dc-a1b7-72719eca7a37",
             "Value": {
                 "id": "ea08a5a0-9a47-43e7-b6df-138fdaa04c97",
@@ -6036,6 +6020,14 @@
                 "id": "80810cca-830b-44c6-b0b0-5684a38ee5c8",
                 "resourcePath": "views\\649e8993-d9c3-49f2-967c-4ce0a93e0c0d.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "64d51e7a-45d4-4b63-b887-5b36afe2635e",
+            "Value": {
+                "id": "f8b95e33-7550-4b23-b58b-5e722b99a2b2",
+                "resourcePath": "objects\\obj_snowbuilding_8\\obj_snowbuilding_8.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -6580,14 +6572,6 @@
                 "id": "9f311e0b-c9aa-4987-8b34-f85f21242300",
                 "resourcePath": "sprites\\spr_ui_control_0\\spr_ui_control_0.yy",
                 "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "6dfaa063-ebca-48db-84d3-0b946d512309",
-            "Value": {
-                "id": "0c8e7755-f893-48db-8c8b-c379a8b110cc",
-                "resourcePath": "objects\\obj_citybuilding_4\\obj_citybuilding_4.yy",
-                "resourceType": "GMObject"
             }
         },
         {
@@ -7935,6 +7919,14 @@
             }
         },
         {
+            "Key": "84baecff-a595-446e-86cf-1c9dde369291",
+            "Value": {
+                "id": "944b4c70-82fc-496a-86cd-5ff96c7365a7",
+                "resourcePath": "objects\\obj_citybuilding_5\\obj_citybuilding_5.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "84bd3659-1e54-4047-8b20-f47552a92532",
             "Value": {
                 "id": "8f498410-456d-4ce2-8555-f2c22cd6a471",
@@ -8028,14 +8020,6 @@
                 "id": "e604d9d9-0883-4fae-bcf0-ee8ec845d80c",
                 "resourcePath": "scripts\\scr_cutscene_46\\scr_cutscene_46.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "86c0fbe0-2d8c-4b65-8476-a36cdd6e0475",
-            "Value": {
-                "id": "4364cedf-417e-4757-b3d3-dca109e929f9",
-                "resourcePath": "objects\\obj_destroyedbuilding_5\\obj_destroyedbuilding_5.yy",
-                "resourceType": "GMObject"
             }
         },
         {
@@ -8319,6 +8303,14 @@
             }
         },
         {
+            "Key": "8a8662f6-38ee-476d-a91a-77077ca21697",
+            "Value": {
+                "id": "986878a4-844c-421b-8dea-5978afe6f5d8",
+                "resourcePath": "objects\\obj_factorybuilding_5\\obj_factorybuilding_5.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "8a8f2e6a-241e-4d88-bf2a-e14991a3e4a5",
             "Value": {
                 "id": "aec51dca-a41b-4bce-bb8f-c751d9aee0c8",
@@ -8372,6 +8364,14 @@
                 "id": "cb9bd343-5ca0-43a5-a726-9742900a7c1d",
                 "resourcePath": "scripts\\scr_text_transformed\\scr_text_transformed.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "8b6f4c04-de4a-4168-96ac-44812709474b",
+            "Value": {
+                "id": "55495875-422e-474b-8f5e-be95b0749ba5",
+                "resourcePath": "objects\\obj_farmbuilding_5\\obj_farmbuilding_5.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -8476,6 +8476,14 @@
                 "id": "81571d0c-831c-4626-bc5b-14643c3a2350",
                 "resourcePath": "scripts\\scr_part_type_bodypart_companion_3\\scr_part_type_bodypart_companion_3.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "8c874bbb-d237-4631-ba12-cc557ad5bb6c",
+            "Value": {
+                "id": "b7090118-0b54-4694-aa80-40cd78331efd",
+                "resourcePath": "objects\\obj_citybuilding_4\\obj_citybuilding_4.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -10775,6 +10783,14 @@
             }
         },
         {
+            "Key": "b0645917-b2af-4cca-84af-0cb4ef10aeaf",
+            "Value": {
+                "id": "a21c4bd2-5dcd-4b1b-a0ac-abc02732431f",
+                "resourcePath": "objects\\obj_snowbuilding_9\\obj_snowbuilding_9.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "b166caf6-ac9d-44c0-b1aa-3c403f84cb37",
             "Value": {
                 "id": "36792073-728b-4e89-ba56-53b65be51889",
@@ -11599,6 +11615,14 @@
             }
         },
         {
+            "Key": "c3353e17-b451-4dae-b5b4-d5c1987b0ab9",
+            "Value": {
+                "id": "efa47877-d995-4cb4-a079-4055dd63bc0f",
+                "resourcePath": "objects\\obj_block_leftside\\obj_block_leftside.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "c3357fb3-27e9-423e-90e3-6d990b14ea39",
             "Value": {
                 "id": "b8315b89-82dc-4f38-8359-6309f325e464",
@@ -12307,14 +12331,6 @@
             "Value": {
                 "id": "90a09d07-dead-4e96-a7cb-3532e186ecb5",
                 "resourcePath": "objects\\obj_cityheadquarters_building_1\\obj_cityheadquarters_building_1.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "d11d1d2f-5546-4d90-9de0-14355862f662",
-            "Value": {
-                "id": "812ab1e7-0efe-4799-abed-faa1661a17e4",
-                "resourcePath": "objects\\obj_citybuilding_5\\obj_citybuilding_5.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -14199,14 +14215,6 @@
             }
         },
         {
-            "Key": "f23864a8-68e2-4c34-bbdd-eda17863bc50",
-            "Value": {
-                "id": "8bbd99fe-f82f-497f-9c73-15f34da99f9b",
-                "resourcePath": "objects\\obj_destroyedbuilding_4\\obj_destroyedbuilding_4.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "f24ccef2-b571-4f97-b1f8-d1c7a32abd7d",
             "Value": {
                 "id": "fd0e70c2-21ec-4123-936f-a0eac477718e",
@@ -14371,6 +14379,14 @@
             "Value": {
                 "id": "8dead85e-2688-45a8-8e40-0e00c82aeab8",
                 "resourcePath": "sprites\\spr_companion_0_idle_1\\spr_companion_0_idle_1.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "f51c858b-2975-45fe-9359-c43c23bb2293",
+            "Value": {
+                "id": "566e7a78-492f-4650-9c88-60f8bd57f49f",
+                "resourcePath": "sprites\\spr_block_rightside\\spr_block_rightside.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -14612,6 +14628,14 @@
                 "id": "80d008a4-5b75-447f-aba5-7032ce6101bb",
                 "resourcePath": "scripts\\scr_cutscene_41\\scr_cutscene_41.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "f87b85e3-1d3c-42d6-948a-9343fff8bc54",
+            "Value": {
+                "id": "6ecdba73-a090-4070-9a8b-ba9c494c0c75",
+                "resourcePath": "objects\\obj_factorybuilding_4\\obj_factorybuilding_4.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -15067,6 +15091,14 @@
             "Value": {
                 "id": "59d98924-f267-422e-bf34-6b16b013be23",
                 "resourcePath": "objects\\obj_p_enemy\\obj_p_enemy.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "ff46b559-9a92-45e5-b9d0-0e1ccbacf8d9",
+            "Value": {
+                "id": "da17ffcc-ecb9-4879-8508-5e96928ee07d",
+                "resourcePath": "objects\\obj_block_rightside\\obj_block_rightside.yy",
                 "resourceType": "GMObject"
             }
         },

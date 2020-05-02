@@ -32,10 +32,6 @@ scr_text_transformed(logox, logoy, "MANIC", c_white, titlescale, titlescale, ang
 
 draw_set_font(fnt_cambria_2);
 
-if (isteaser){
-	scr_text_transformed(logox + lengthdir_x(38, angle - 90), logoy + lengthdir_y(38, angle - 90), "Teaser", c_white, titlescale / 1.3, titlescale / 1.3, angle);
-}
-
 if (!in_settings) && (!in_levelselect) && (!in_arenamode){
     for (var i = 0; i <= option_max; i ++){
         var str = option[i];
@@ -466,7 +462,7 @@ draw_set_halign(fa_left);
 scr_text(26, display_get_gui_height() - 26, "[F11] " + (window_get_fullscreen() ? "Windowed" : "Fullscreen"), c_white);
 
 draw_set_halign(fa_right);
-scr_text(display_get_gui_width() - 26, display_get_gui_height() - 26, (isteaser ? "Playable Teaser" : gameversion) + "\n(c)2020 Geta Games", c_white);
+scr_text(display_get_gui_width() - 26, display_get_gui_height() - 26, gameversion + "\n(c)2020 Geta Games", c_white);
 
 draw_set_valign(fa_top);
 draw_set_alpha(1);

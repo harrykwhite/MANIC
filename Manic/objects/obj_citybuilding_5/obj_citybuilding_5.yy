@@ -1,38 +1,38 @@
 {
-    "id": "d11d1d2f-5546-4d90-9de0-14355862f662",
+    "id": "84baecff-a595-446e-86cf-1c9dde369291",
     "modelName": "GMObject",
     "mvc": "1.0",
     "name": "obj_citybuilding_5",
     "eventList": [
         {
-            "id": "1736422a-14a0-4eb6-b20d-c80d43dd5299",
+            "id": "5a3a5987-b593-4635-a484-453e59bd0285",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 76,
             "eventtype": 8,
-            "m_owner": "d11d1d2f-5546-4d90-9de0-14355862f662"
+            "m_owner": "84baecff-a595-446e-86cf-1c9dde369291"
         },
         {
-            "id": "8b0469ba-98f4-4aa2-b8aa-c73202c52976",
+            "id": "1a0e6bd1-622a-45a9-8dbe-5b64ed673c18",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 10,
             "eventtype": 7,
-            "m_owner": "d11d1d2f-5546-4d90-9de0-14355862f662"
+            "m_owner": "84baecff-a595-446e-86cf-1c9dde369291"
         },
         {
-            "id": "fc83d382-5011-4f19-90cd-2e5eb8147fdf",
+            "id": "8e057b2e-baac-4725-a266-c3665231fc8f",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 8,
-            "m_owner": "d11d1d2f-5546-4d90-9de0-14355862f662"
+            "m_owner": "84baecff-a595-446e-86cf-1c9dde369291"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",

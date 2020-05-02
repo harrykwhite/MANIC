@@ -9,6 +9,8 @@ global.game_lighting = noone;
 global.game_lighting_level = 1;
 global.game_lighting_level_to = 1;
 
+global.game_input_type = InputType.Keyboard;
+
 // Enumerators
 enum InputType{
 	Keyboard,

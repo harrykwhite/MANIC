@@ -23,26 +23,26 @@ spawn_pause_update = false;
 switch(room){
 	case rm_level_10_00:
 		obj_player.x = 502;
-		obj_player.y = room_height + 4;
+		obj_player.y = room_height + 6;
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 502;
-			spawn_y = 1488;
+			spawn_y = room_height - walkindist;
 		}else{
 			obj_player.x = 502;
-			obj_player.y = -4;
+			obj_player.y = -6;
 			
 			spawn_x = 502;
-			spawn_y = 188;
+			spawn_y = walkindist;
 		}
 		break;
 	
 	case rm_level_10_01:
 		obj_player.x = 502;
-		obj_player.y = room_height + 4;
+		obj_player.y = room_height + 6;
 		
 		spawn_x = 502;
-		spawn_y = 912;
+		spawn_y = room_height - walkindist;
 		break;
 }
 

@@ -188,7 +188,7 @@ if (!global.pers_runthrough_pre){
 				scr_checkpoint_reset();
 				scr_player_upgrade_update();
 				
-				if (i != Level.Prologue) && (!isteaser){
+				if (i != Level.Prologue){
 					level_opening = true;
 					level_opening_active = true;
 					level_opening_time = 60 * 4.65;
@@ -294,24 +294,6 @@ minimap_width = 220;
 minimap_height = 124;
 minimap_arrow_sine = 0;
 minimap_arrow_sine_speed = 5;
-
-teaserend = false;
-teaserend_alpha = 0;
-teaserend_text_alpha = 0;
-teaserend_button[0] = "Wishlist the game on Steam!";
-teaserend_button_scale[0] = 1;
-teaserend_button[1] = "Join the official Discord group!";
-teaserend_button_scale[1] = 1;
-teaserend_button[2] = "Follow us on Twitter!";
-teaserend_button_scale[2] = 1;
-teaserend_button[3] = "Return to titlescreen!";
-teaserend_button_scale[3] = 1;
-teaserend_button_selected = iskeyboard ? -1 : 0;
-teaserend_button_selected_break = 0;
-teaserend_button_selected_held_time = 0;
-teaserend_button_selected_held_time_max = 40;
-teaserend_button_selected_max = array_length_1d(teaserend_button);
-teaserend_button_has_selected = false;
 
 sprite_index = noone;
 depth = -4;

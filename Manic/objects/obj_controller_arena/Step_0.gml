@@ -124,7 +124,6 @@ if (!global.game_pause){
 			
 			break;
 		
-		
 		case rm_arena_3_00:
 			// Dust
 			if (random(5) < 1) part_particles_create(global.ps_front, random_range(camx, camx + camw), random_range(camy, camy + camh), global.pt_dust_0, 1);

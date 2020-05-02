@@ -52,7 +52,6 @@ ini_write_real("Options", "SoundVolume", global.game_option[| Options.SoundVolum
 ini_write_real("Options", "MusicVolume", global.game_option[| Options.MusicVolume]);
 ini_write_real("Options", "AmbienceVolume", global.game_option[| Options.AmbienceVolume]);
 
-ini_write_real("Options", "InputType", global.game_input_type);
 ini_write_real("Options", "LevelSelectUnlocked", global.game_levelselect_unlocked);
 
 scr_arena_write_unlock();

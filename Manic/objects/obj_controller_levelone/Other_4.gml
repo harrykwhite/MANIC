@@ -20,15 +20,15 @@ global.player_footstep_default = snd_character_footstep_grass;
 switch(room){
 	case rm_level_1_00:
 		obj_player.x = 572;
-		obj_player.y = 30;
+		obj_player.y = -6;
 		
 		spawn_x = 572;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_y = 247;
+			spawn_y = walkindist;
 		}else if (global.game_level_opening_type == 1){
-			obj_player.y = room_height - 30;
-			spawn_y = room_height - 247;
+			obj_player.y = room_height + 6;
+			spawn_y = room_height - walkindist;
 		}
 		
 		if (global.worldtrain_room == room) && (global.game_level_opening_type != 2){
@@ -40,15 +40,15 @@ switch(room){
 	
 	case rm_level_1_01:
 		obj_player.x = 518;
-		obj_player.y = -4;
+		obj_player.y = -6;
 		
 		spawn_x = 518;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_y = 168;
+			spawn_y = walkindist;
 		}else if (global.game_level_opening_type == 1){
-			obj_player.y = room_height + 4;
-			spawn_y = room_height - 168;
+			obj_player.y = room_height + 6;
+			spawn_y = room_height - walkindist;
 		}
 		break;
 }

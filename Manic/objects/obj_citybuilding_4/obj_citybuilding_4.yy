@@ -1,38 +1,38 @@
 {
-    "id": "6dfaa063-ebca-48db-84d3-0b946d512309",
+    "id": "8c874bbb-d237-4631-ba12-cc557ad5bb6c",
     "modelName": "GMObject",
     "mvc": "1.0",
     "name": "obj_citybuilding_4",
     "eventList": [
         {
-            "id": "12bb03e5-0e66-4779-9976-68a558c9e5f7",
+            "id": "b11545a4-921b-4d39-b1af-7245b53eaf12",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 76,
             "eventtype": 8,
-            "m_owner": "6dfaa063-ebca-48db-84d3-0b946d512309"
+            "m_owner": "8c874bbb-d237-4631-ba12-cc557ad5bb6c"
         },
         {
-            "id": "0ea99e6e-be9e-47ff-b2b7-1dc3c8ec9431",
+            "id": "3b1b1601-3062-405a-b0e5-3e844a20564a",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 10,
             "eventtype": 7,
-            "m_owner": "6dfaa063-ebca-48db-84d3-0b946d512309"
+            "m_owner": "8c874bbb-d237-4631-ba12-cc557ad5bb6c"
         },
         {
-            "id": "9e09e56f-1fa0-4ea8-aaaa-9793ee8da3f3",
+            "id": "0f3b1aca-8717-4ba9-8bb1-86410bc872c2",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 8,
-            "m_owner": "6dfaa063-ebca-48db-84d3-0b946d512309"
+            "m_owner": "8c874bbb-d237-4631-ba12-cc557ad5bb6c"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",

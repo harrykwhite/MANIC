@@ -44,7 +44,6 @@ global.game_option[| Options.SoundVolume] = ini_read_real("Options", "SoundVolum
 global.game_option[| Options.MusicVolume] = ini_read_real("Options", "MusicVolume", 70);
 global.game_option[| Options.AmbienceVolume] = ini_read_real("Options", "AmbienceVolume", 40);
 
-global.game_input_type = ini_read_real("Options", "InputType", InputType.Keyboard);
 global.game_levelselect_unlocked = ini_read_real("Options", "LevelSelectUnlocked", false);
 
 scr_arena_read_unlock();

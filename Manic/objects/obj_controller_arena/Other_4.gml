@@ -25,19 +25,19 @@ switch(room){
 		obj_player.y = room_height + 6;
 		
 		spawn_x = obj_player.x;
-		spawn_y = room_height - 200;
+		spawn_y = room_height - walkindist;
 		
-		wave_spawn_rate_change = 0.25;
+		wave_spawn_rate_change = 0.1;
 		break;
 	
 	case rm_arena_2_00:
-		obj_player.x = 1151;
+		obj_player.x = 1152;
 		obj_player.y = room_height + 6;
 		
 		spawn_x = obj_player.x;
-		spawn_y = room_height - 200;
+		spawn_y = room_height - walkindist;
 		
-		wave_spawn_rate_change = 0.3;
+		wave_spawn_rate_change = 0.15;
 		music = "windy";
 		break;
 	
@@ -46,9 +46,9 @@ switch(room){
 		obj_player.y = room_height + 6;
 		
 		spawn_x = obj_player.x;
-		spawn_y = room_height - 200;
+		spawn_y = room_height - walkindist;
 		
-		wave_spawn_rate_change = 0.35;
+		wave_spawn_rate_change = 0.2;
 		music = "underground";
 		break;
 }

@@ -68,14 +68,14 @@ if (!global.game_pause){
 		
 		if (camera_screenshake){
 			camera_set_view_pos(view_camera[0],
-			camera_get_view_x(view_camera[0]) + (dsin(camera_screenshake_time) * camera_screenshake_amount * 3),
-			camera_get_view_y(view_camera[0]) + (dsin(camera_screenshake_time) * camera_screenshake_amount * 3));
+			camera_get_view_x(view_camera[0]) + (dsin(camera_screenshake_time) * camera_screenshake_amount * 1.5),
+			camera_get_view_y(view_camera[0]) + (dsin(camera_screenshake_time) * camera_screenshake_amount * 1.5));
 			
 			camera_screenshake_time += camera_screenshake_speed;
 			camera_screenshake_time %= 360;
 			
 			if (camera_screenshake_amount > 0){
-				camera_screenshake_amount -= min(0.075, camera_screenshake_amount);
+				camera_screenshake_amount -= min(0.025, camera_screenshake_amount);
 			}else{
 				camera_screenshake_amount = 0;
 		        camera_screenshake = false;

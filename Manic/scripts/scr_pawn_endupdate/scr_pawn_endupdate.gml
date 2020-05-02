@@ -421,6 +421,10 @@ if (health_current <= 0){
 		}
 		
 		if (weapon.index != PawnWeapon.Knife) && (weapon.index != -1){
+			if (scr_level_is_arena()){
+				dropchance *= 0.25;
+			}
+			
 		    if (chance(dropchance)){
 				var xx, yy, angle, ind, w;
 				

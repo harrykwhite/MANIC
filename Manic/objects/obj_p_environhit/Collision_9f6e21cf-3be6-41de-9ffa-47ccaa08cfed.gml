@@ -7,7 +7,7 @@ if (object_index == obj_conveyerbelt_4){
 }
 
 if (object_index == obj_p_depth_door) || (object_get_parent(object_index) == obj_p_depth_door){
-	if (!breakable){
+	if (!breakable || open){
 		return;
 	}
 }

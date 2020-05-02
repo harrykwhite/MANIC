@@ -31,13 +31,13 @@ switch(room){
 		
 		if (global.game_level_opening_type == 0){
 			spawn_x = 702;
-			spawn_y = 2216;
+			spawn_y = obj_player.y + 6 + walkindist;
 		}else{
 			obj_player.x = 526;
 			obj_player.y = -6;
 			
 			spawn_x = 526;
-			spawn_y = 180;
+			spawn_y = walkindist;
 		}
 		break;
 	
@@ -46,7 +46,7 @@ switch(room){
 		obj_player.y = room_height + 6;
 		
 		spawn_x = 656;
-		spawn_y = 245;
+		spawn_y = room_height - walkindist;
 		
 		if (global.worldtrain_room == room) && (global.game_level_opening_type != 1) && (global.game_boss_trainhorde_killed){
 			var trainidle = instance_create(832, 224, obj_pawn_other_train_1);
@@ -70,10 +70,10 @@ switch(room){
 			obj_player.x = -100;
 			obj_player.y = -100;
 		}else{
-			obj_player.x = room_width + 4;
+			obj_player.x = room_width + 6;
 			obj_player.y = 232;
 			
-			spawn_x = 866;
+			spawn_x = room_width - walkindist;
 			spawn_y = 232;
 			
 			if (global.worldtrain_room == room){
@@ -85,17 +85,17 @@ switch(room){
 		break;
 	
 	case rm_level_6_02:
-		obj_player.x = -4;
+		obj_player.x = -6;
 		obj_player.y = 232;
 		
 		if (global.game_level_opening_type == 0){
-			spawn_x = 180;
+			spawn_x = walkindist;
 			spawn_y = 232;
 		}else{
-			obj_player.x = room_width + 4;
+			obj_player.x = room_width + 6;
 			obj_player.y = 232;
 			
-			spawn_x = 1182;
+			spawn_x = room_width - walkindist;
 			spawn_y = 232;
 		}
 		break;

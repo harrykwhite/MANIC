@@ -240,13 +240,6 @@ if (room_pers_clear){
 	global.pers_runthrough_pre = false;
 }
 
-/* Show ui
-if (devmode){
-	if (keyboard_check_pressed(vk_f1)){
-		show_ui = !show_ui;
-	}
-}*/
-
 // Center window
 if (center_window_time != -1){
 	if (center_window_time > 0){
@@ -309,21 +302,17 @@ if (warning_prompt){
 						break;
 					
 					case 2:
-						with(obj_controller_ui){
-							pause_has_selected = true;
-							pause_has_selected_index = 2;
-							pause_has_selected_time = 0;
-						}
+						scr_options_refresh(false);
+						audio_stop_all();
+						game_end();
+						
+						obj_controller_gameplay.has_saved = true;
 						break;
 				}
 			}
 			
 			warning_prompt = false;
-			warning_prompt_selected = iskeyboard ? -1 : 0;
-			warning_prompt_selected_previous = iskeyboard ? -1 : 0;
-			
 			scr_sound_play(snd_menu_button_mouse_click, false, 0.8, 1.2);
-			return;
 		}
 	}
 }

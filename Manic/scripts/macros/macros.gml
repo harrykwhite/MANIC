@@ -11,7 +11,6 @@
 #macro outlineexplosive make_colour_rgb(198, 55, 16)
 #macro companionspacing 60
 #macro devmode false
-#macro isteaser false
 #macro hordespawnrate 1.2
 #macro windvolume 0.4
 #macro birdvolume 0.1
@@ -19,3 +18,4 @@
 #macro basewidth 720
 #macro baseheight 405
 #macro macbuild false
+#macro walkindist 186

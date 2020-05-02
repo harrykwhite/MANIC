@@ -6,82 +6,6 @@ var down_pressed = scr_input_is_pressed(InputBinding.Down, 0.275);
 
 scr_position_view();
 
-// Teaser end
-if (teaserend){
-	if (teaserend_alpha < 1){
-		teaserend_alpha += 0.02;
-	}else{
-		if (teaserend_text_alpha < 1){
-			teaserend_text_alpha += 0.02;
-		}
-	}
-	
-	if (!teaserend_button_has_selected){
-		if (teaserend_button_selected_break > 0){
-			teaserend_button_selected_break --;
-		}else if (!iskeyboard){
-			if (up_pressed){
-				if (teaserend_button_selected > 0){
-					teaserend_button_selected --;
-				}else{
-					teaserend_button_selected = teaserend_button_selected_max - 1;
-				}
-		
-				teaserend_button_selected_break = teaserend_button_selected_held_time >= teaserend_button_selected_held_time_max ? 6 : 12;
-			}
-	
-			if (down_pressed){
-				if (teaserend_button_selected < teaserend_button_selected_max - 1){
-					teaserend_button_selected ++;
-				}else{
-					teaserend_button_selected = 0;
-				}
-		
-				teaserend_button_selected_break = teaserend_button_selected_held_time >= teaserend_button_selected_held_time_max ? 6 : 12;
-			}
-		}
-		
-		if (up_pressed || down_pressed){
-			if (teaserend_button_selected_held_time < teaserend_button_selected_held_time_max){
-				teaserend_button_selected_held_time ++;
-			}
-		}else{
-			teaserend_button_selected_held_time = 0;
-		}
-		
-		if (!iskeyboard ? scr_input_is_pressed(InputBinding.Interact) : scr_input_is_pressed(InputBinding.Attack)){
-			if (teaserend_button_selected != -1){
-				switch(teaserend_button_selected){
-					case 0:
-						url_open("https://store.steampowered.com/app/1144850/MANIC/");
-						break;
-				
-					case 1:
-						url_open("https://discord.gg/CqykxNh");
-						break;
-				
-					case 2:
-						url_open("https://twitter.com/GetaGamesTeam");
-						break;
-				
-					case 3:
-						scr_effect_flash_script(0.02, 1, c_black, scr_trigger_3);
-						teaserend_button_has_selected = true;
-						break;
-				}
-			}
-		}
-	}
-}else{
-	if (teaserend_alpha > 0){
-		teaserend_alpha -= 0.05;
-	}
-	
-	if (teaserend_text_alpha > 0){
-		teaserend_text_alpha -= 0.05;
-	}
-}
-
 // Level opening
 if (level_opening){
 	if (level_opening_time > 0){
@@ -311,14 +235,6 @@ if (!ispaused){
 						scr_global_set();
 						audio_stop_all();
 						room_goto(rm_title_0);
-						
-						obj_controller_gameplay.has_saved = true;
-						break;
-					
-					case 2:
-						scr_options_refresh(false);
-						audio_stop_all();
-						game_end();
 						
 						obj_controller_gameplay.has_saved = true;
 						break;

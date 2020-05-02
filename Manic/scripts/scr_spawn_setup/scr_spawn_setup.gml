@@ -70,7 +70,7 @@ spawn_music_pause_gain[CombatState.Climax] = 0;
 spawn_music_pause_position[CombatState.Climax] = 0;
 
 if (arena){
-	spawn_state_time[CombatState.Idle] = round(0.5 * spawn_state_time[CombatState.Idle]);
+	spawn_state_time[CombatState.Idle] = round(0.25 * spawn_state_time[CombatState.Idle]);
 	spawn_max[CombatState.Idle] = 0;
 }
 

@@ -12,17 +12,15 @@ if (file_exists("save.ini")){
 
 scr_save_game_reader();
 
-if (!isteaser){
-	option[0] = "New Game";
-	option_locked[1] = true;
+option[0] = "New Game";
+option_locked[1] = true;
 
-	if (global.game_save_started){
-		option[0] = "Continue Game";
-	}
+if (global.game_save_started){
+	option[0] = "Continue Game";
+}
 
-	if (global.game_levelselect_unlocked) || (devmode){
-		option_locked[1] = false;
-	}
+if (global.game_levelselect_unlocked) || (devmode){
+	option_locked[1] = false;
 }
 
 with(obj_controller_all){

@@ -24,46 +24,32 @@ fade_opening = true;
 press_break = 0;
 
 #region Title
-if (!isteaser){
-	option[0] = "New Game";
-	option_locked[0] = false;
-	option_scale[0] = 1;
+option[0] = "New Game";
+option_locked[0] = false;
+option_scale[0] = 1;
 
-	option[1] = "Level Select";
-	option_locked[1] = true;
-	option_scale[1] = 1;
+option[1] = "Level Select";
+option_locked[1] = true;
+option_scale[1] = 1;
 
-	option[2] = "Arena Mode";
-	option_locked[2] = false;
-	option_scale[2] = 1;
+option[2] = "Arena Mode";
+option_locked[2] = false;
+option_scale[2] = 1;
 
-	option[3] = "Settings";
-	option_locked[3] = false;
-	option_scale[3] = 1;
+option[3] = "Settings";
+option_locked[3] = false;
+option_scale[3] = 1;
 
-	option[4] = "Exit Game";
-	option_locked[4] = false;
-	option_scale[4] = 1;
+option[4] = "Exit Game";
+option_locked[4] = false;
+option_scale[4] = 1;
 
-	if (global.game_save_started){
-		option[0] = "Continue Game";
-	}
+if (global.game_save_started){
+	option[0] = "Continue Game";
+}
 
-	if (global.game_levelselect_unlocked) || (devmode){
-		option_locked[1] = false;
-	}
-}else{
-	option[0] = "Start Game";
-	option_locked[0] = false;
-	option_scale[0] = 1;
-
-	option[1] = "Settings";
+if (global.game_levelselect_unlocked) || (devmode){
 	option_locked[1] = false;
-	option_scale[1] = 1;
-
-	option[2] = "Exit Game";
-	option_locked[2] = false;
-	option_scale[2] = 1;
 }
 
 #endregion

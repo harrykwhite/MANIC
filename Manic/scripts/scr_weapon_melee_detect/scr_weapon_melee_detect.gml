@@ -259,7 +259,7 @@ switch(ctype){
 				}
 				
 				if (inst.object_index == obj_p_depth_door) || (object_get_parent(inst.object_index) == obj_p_depth_door){
-					if (!inst.breakable){
+					if (!inst.breakable || inst.open){
 						return;
 					}
 				}
