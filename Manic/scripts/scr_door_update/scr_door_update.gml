@@ -130,16 +130,24 @@ if (hit_time > 0){
 
 // Object Death
 if (death){
-	scr_sound_play(snd_object_box_break_0, false, 0.8, 1.2);
-    instance_destroy();
+	instance_destroy();
     
-	scr_effect_screenshake(2);
-	scr_effect_freeze(13);
-	scr_effect_vignette_flash(c_ltgray, 0.1, 0.01);
-	
-    repeat(10)part_particles_create(global.ps_bottom, centerx + random_range(-7, 7), centery + 10 + random_range(-3, 3), global.pt_wood_0, 1);
+	if (death_effects){
+		scr_sound_play(snd_object_box_break_0, false, 0.8, 1.2);
+	    
+		scr_effect_screenshake(2);
+		scr_effect_freeze(13);
+		scr_effect_vignette_flash(c_ltgray, 0.1, 0.01);
+		
+	    repeat(10)part_particles_create(global.ps_bottom, centerx + random_range(-7, 7), centery + 10 + random_range(-3, 3), global.pt_wood_0, 1);
+	}
 	
 	var brk = instance_create(x, y, obj_break);
-	brk.shake = 3;
 	brk.sprite_index = breaksprite;
+	
+	if (death_effects){
+		brk.shake = 3;
+	}else{
+		brk.shake = 0;
+	}
 }

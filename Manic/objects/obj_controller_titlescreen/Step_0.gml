@@ -124,13 +124,31 @@ if (fade){
 		}else{
 			if (!iskeyboard){
 				if (down_pressed){
-					do{
+					while(true){
 						if (selected < omax){
 							selected ++;
 						}else{
 							selected = 0;
 						}
-					}until((in_settings || in_levelselect) || (!option_locked[selected]));
+						
+						if (!in_settings && !in_levelselect && !in_arenamode){
+							if (selected < array_length_1d(option_locked)){
+								if (option_locked[selected]){
+									continue;
+								}
+							}
+						}
+						
+						if (in_arenamode){
+							if (selected < array_length_1d(option_arenamode_unlocked)){
+								if (!option_arenamode_unlocked[selected]){
+									continue;
+								}
+							}
+						}
+						
+						break;
+					}
 					
 					if (in_settings_controls){
 						if (selected == omax - 1){
@@ -142,13 +160,31 @@ if (fade){
 				}
 			
 				if (up_pressed){
-					do{
+					while(true){
 						if (selected > 0){
 							selected --;
 						}else{
 							selected = omax;
 						}
-					}until((in_settings || in_levelselect) || (!option_locked[selected]));
+						
+						if (!in_settings && !in_levelselect && !in_arenamode){
+							if (selected < array_length_1d(option_locked)){
+								if (option_locked[selected]){
+									continue;
+								}
+							}
+						}
+						
+						if (in_arenamode){
+							if (selected < array_length_1d(option_arenamode_unlocked)){
+								if (!option_arenamode_unlocked[selected]){
+									continue;
+								}
+							}
+						}
+						
+						break;
+					}
 					
 					if (in_settings_controls){
 						if (selected == omax - 1){

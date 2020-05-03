@@ -4,21 +4,36 @@ with(obj_controller_prologue){
 	var wife = inst_6C02B40B;
 
 	instance_activate_all();
-
-	with(obj_bed_small_0){
-		fire = true;
+	
+	if (instance_exists(obj_bed_small_0)){
+		with(obj_bed_small_0){
+			fire = true;
+		}
 	}
-
-	with(obj_bed_large_0){
-		fire = true;
+	
+	if (instance_exists(obj_bed_large_0)){
+		with(obj_bed_large_0){
+			fire = true;
+		}
 	}
-
-	with(obj_table_0){
-		fire = true;
+	
+	if (instance_exists(obj_table_0)){
+		with(obj_table_0){
+			fire = true;
+		}
 	}
-
-	with(obj_chair_0){
-		fire = true;
+	
+	if (instance_exists(obj_chair_0)){
+		with(obj_chair_0){
+			fire = true;
+		}
+	}
+	
+	if (instance_exists(obj_farmbuilding_door_0)){
+		with(obj_farmbuilding_door_0){
+			death = true;
+			death_effects = false;
+		}
 	}
 
 	var cratecount = instance_number(obj_crate_0);

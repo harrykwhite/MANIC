@@ -189,12 +189,24 @@ if (instance_exists(obj_player)){
 						}
 					}
 					
+					if (oldweapon == -1 && global.weapon_default != -1){
+						if (instance_exists(global.weapon_object[global.weapon_default])){
+							instance_destroy(global.weapon_object[global.weapon_default]);
+				        }
+					}
+					
 					global.weapon_default = PlayerWeapon.Knife;
 					instance_destroy();
 					return;
 				}
 				
 				if (index == PlayerWeapon.Bayonet){
+					if (oldweapon == -1 && global.weapon_default != -1){
+						if (instance_exists(global.weapon_object[global.weapon_default])){
+							instance_destroy(global.weapon_object[global.weapon_default]);
+				        }
+					}
+					
 					global.weapon_default = PlayerWeapon.Bayonet;
 					instance_destroy();
 					return;
@@ -236,6 +248,10 @@ if (instance_exists(obj_player)){
 				if (oldweapon != -1){
 					if (instance_exists(global.weapon_object[oldweapon])){
 						instance_destroy(global.weapon_object[oldweapon]);
+			        }
+				}else if (global.weapon_default != -1){
+					if (instance_exists(global.weapon_object[global.weapon_default])){
+						instance_destroy(global.weapon_object[global.weapon_default]);
 			        }
 				}
 				

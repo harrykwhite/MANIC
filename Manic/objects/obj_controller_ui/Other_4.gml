@@ -154,10 +154,10 @@ if (!global.pers_runthrough_pre){
 		if (room == global.level_room[i]){
 			if (!global.level_entered[i]){
 				var upgradecount = array_length_1d(global.upgrade_name);
-			
+				
 				global.game_objective_set = false;
 				global.game_objective_complete = false;
-			
+				
 				if (!global.game_is_playthrough) || (room == rm_prologue_00){
 					scr_companions_clear();
 					scr_player_upgrades_clear();

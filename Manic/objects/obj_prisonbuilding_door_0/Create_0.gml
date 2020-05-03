@@ -3,6 +3,7 @@ auto_interact = false;
 anim = false;
 
 death = false;
+death_effects = true;
 
 breakable = false;
 

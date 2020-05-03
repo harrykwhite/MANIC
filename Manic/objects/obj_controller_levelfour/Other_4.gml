@@ -157,7 +157,7 @@ terminal_deactivate_count = 0;
 
 crazy_can_spawn = global.game_firstcrazy_killed;
 
-level_dialogue_time = 60 * 3.5;
+level_dialogue_time = 60 * 3;
 level_dialogue_index = 0;
 level_dialogue_inst = noone;
 level_dialogue_exception = false;

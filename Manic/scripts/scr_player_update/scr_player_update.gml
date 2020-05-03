@@ -12,6 +12,7 @@ if (i_time > 0){
 
 // Upgrades
 global.weapon_slotmax = 2;
+
 if (upgrade_has[PlayerUpgrade.Backpack]){
 	global.weapon_slotmax = 3;
 }

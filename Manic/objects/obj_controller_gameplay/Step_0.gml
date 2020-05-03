@@ -105,15 +105,17 @@ if (!global.game_pause){
 			if (global.weapon_slot_standalone == -1){
 				if (instance_exists(weapon)) || (weapon == noone){
 					if (weapon != noone){
-						if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){
-							if (weapon.attack_time > 0){
-								return;
+						if (global.weapon_slot[global.weapon_slotcurrent] != -1){
+							if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Melee){
+								if (weapon.attack_time > 0){
+									return;
+								}
 							}
-						}
-					
-						if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){
-							if (weapon.shoot_time > 0){
-								return;
+						
+							if (global.weapon_type[global.weapon_slot[global.weapon_slotcurrent]] == WeaponType.Ranged){
+								if (weapon.shoot_time > 0){
+									return;
+								}
 							}
 						}
 					}

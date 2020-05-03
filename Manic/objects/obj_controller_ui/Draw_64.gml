@@ -928,8 +928,10 @@ if (!pause_text_update){
 	}
 }
 
-if (pause_selected_previous != pause_selected && pause_selected != -1){
-	scr_sound_play(snd_menu_button_mouse_hover, false, 0.8, 1.2);
+if (global.cutscene_current == -1){
+	if (pause_selected_previous != pause_selected && pause_selected != -1){
+		scr_sound_play(snd_menu_button_mouse_hover, false, 0.8, 1.2);
+	}
 }
 
 // Pause Dialogue
@@ -1026,8 +1028,10 @@ if (pausedialogue_alpha > 0){
 	draw_set_valign(fa_top);
 }
 
-if (pausedialogue_option_selected_previous != pausedialogue_option_selected && pausedialogue_option_selected != -1){
-	scr_sound_play(snd_menu_button_mouse_hover, false, 0.8, 1.2);
+if (global.cutscene_current == -1){
+	if (pausedialogue_option_selected_previous != pausedialogue_option_selected && pausedialogue_option_selected != -1){
+		scr_sound_play(snd_menu_button_mouse_hover, false, 0.8, 1.2);
+	}
 }
 
 // Warning prompt

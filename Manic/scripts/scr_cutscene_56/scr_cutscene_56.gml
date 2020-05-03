@@ -27,7 +27,7 @@ if (instance_exists(obj_player)){
 		}
 		
 		obj_controller_camera.x -= cutscene_prologue_opening_camspeed;
-		obj_controller_camera.y = obj_player.y + 16;
+		obj_controller_camera.y = obj_player.y;
 	}
 	
 	obj_controller_camera.autocontrol = false;

@@ -87,7 +87,7 @@ if (!global.game_pause){
 	}
 	
 	// Post Level Dialogue
-	if (room == rm_level_2_post_00) && (global.cutscene_current == -1){
+	if (room == rm_level_2_post_00){
 		if (!global.game_companion_farmer_level2post_talked_0) || (postlevel_dialogue_exception){
 			postlevel_dialogue_exception = true;
 			

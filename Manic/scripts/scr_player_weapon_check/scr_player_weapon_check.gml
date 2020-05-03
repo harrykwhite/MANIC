@@ -12,8 +12,6 @@ if (global.weapon_slot[global.weapon_slotcurrent] != -1){
 		}
     }
 }else if (global.weapon_default != -1){
-	global.weapon_slot[global.weapon_slotcurrent] = global.weapon_default;
-	
     if (!instance_exists(global.weapon_object[global.weapon_default])){
         var wep = instance_create(x, y, global.weapon_object[global.weapon_default]);
 		wep.image_angle = mdir;

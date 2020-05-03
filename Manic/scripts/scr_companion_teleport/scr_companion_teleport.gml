@@ -22,7 +22,7 @@ if (cutscene_break_time <= 0) && (!global.game_pause) && (global.cutscene_curren
 				doteleport = false;
 				break;
 			}
-		}until (inroom(xtp, ytp)) && (!place_meeting(xtp, ytp, obj_p_solid) && (!collision_line(xtp, ytp, px, py, obj_p_solid, false, true)));
+		}until (inroom(xtp, ytp)) && (!collision_rectangle(xtp - 20, ytp - 30, xtp + 20, ytp + 30, obj_p_solid, false, true) && (!collision_line(xtp, ytp, px, py, obj_p_solid, false, true)));
 		
 		if (doteleport){
 			x = xtp;
