@@ -13,7 +13,7 @@ if (random(5) < 1){
 }
 
 for(var len = 0; len < spd; len ++){
-	var colat = instance_place(x - lengthdir_x(9, dir), y - lengthdir_y(9, dir), obj_p_solid);
+	var colat = instance_place(x - lengthdir_x(9 + spd, dir), y - lengthdir_y(9 + spd, dir), obj_p_solid);
 	
 	if (colat != noone){
 		if (colat.object_index != obj_p_depth_environhit) && (object_get_parent(colat.object_index) != obj_p_depth_environhit){

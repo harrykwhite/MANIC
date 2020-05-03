@@ -62,7 +62,7 @@ global.level_checkpoint_found[Level.UndergroundBunker, 0] = false;
 
 global.level_name[Level.WinterTown] = "Winter Town";
 global.level_location_name[Level.WinterTown] = "town";
-global.level_room[Level.WinterTown] = rm_level_4_00;
+global.level_room[Level.WinterTown] = rm_level_4_post_01;
 global.level_preroom[Level.WinterTown] = rm_level_4_pre_00;
 global.level_collectable_current[Level.WinterTown] = 0;
 global.level_collectable_number[Level.WinterTown] = 6;

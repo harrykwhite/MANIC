@@ -11,6 +11,14 @@ objs[objs_counter] = obj_block_solid;
 objs_type[objs_counter] = 0;
 objs_counter ++;
 
+objs[objs_counter] = obj_block_leftside;
+objs_type[objs_counter] = 0;
+objs_counter ++;
+
+objs[objs_counter] = obj_block_rightside;
+objs_type[objs_counter] = 0;
+objs_counter ++;
+
 objs[objs_counter] = obj_bunker_wall_0;
 objs_type[objs_counter] = 0;
 objs_counter ++;

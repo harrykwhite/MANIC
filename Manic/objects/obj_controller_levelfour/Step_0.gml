@@ -64,7 +64,7 @@ if (!global.game_pause){
 	}
 	
 	// Pre Level Dialogue
-	if (room == rm_level_4_pre_00){
+	if (room == rm_level_4_pre_00) && (global.cutscene_current == -1){
 		if (!global.game_companion_farmer_level4pre_talked_0) || (level_dialogue_exception){
 			level_dialogue_exception = true;
 			
@@ -148,7 +148,7 @@ if (!global.game_pause){
 	}
 	
 	// Post Level Dialogue
-	if (room == rm_level_4_post_01){
+	if (room == rm_level_4_post_01) && (global.cutscene_current == -1){
 		if (!global.game_companion_farmer_level4post_talked_0) || (level_dialogue_exception){
 			level_dialogue_exception = true;
 			
