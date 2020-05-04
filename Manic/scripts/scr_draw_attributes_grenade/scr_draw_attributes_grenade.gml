@@ -1,7 +1,7 @@
 gpu_set_fog(true, c_ltgray, 0, 0);
 
 if (alpha_flicker){
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.9);
+	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.75);
 }
 
 if (explode_anim){
