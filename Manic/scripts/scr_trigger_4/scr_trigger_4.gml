@@ -35,24 +35,7 @@ with(obj_controller_prologue){
 			death_effects = false;
 		}
 	}
-
-	var cratecount = instance_number(obj_crate_0);
-
-	for(var i = 0; i < cratecount; i ++){
-		var thiscrate = instance_find(obj_crate_0, i);
 	
-		if (instance_exists(thiscrate)){
-			if (thiscrate.x < 1038){
-				with(thiscrate){
-					var brk = instance_create(x, y, obj_break);
-					brk.sprite_index = spr_crate_0_break;
-				}
-		
-				instance_destroy(thiscrate);
-			}
-		}
-	}
-
 	var firesound = instance_create(502, 544, obj_block_sound);
 	firesound.sound = snd_character_burn_0;
 	firesound.radius = 600;

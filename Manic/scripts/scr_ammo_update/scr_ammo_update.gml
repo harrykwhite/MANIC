@@ -22,7 +22,6 @@ if (life > life_max * 0.85){
 }
 
 // Finding Player
-var windex = global.weapon_slot[global.weapon_slotcurrent];
 var player = obj_player;
 var playerexists = instance_exists(player);
 
@@ -38,7 +37,7 @@ if (playerexists){
 }
 
 // Moving to Player
-if (playerexists) && (windex != -1){
+if (playerexists){
     if (attract){
         dir = point_direction(x, y, player.x, player.y + 6);
         spd += ammospeed;

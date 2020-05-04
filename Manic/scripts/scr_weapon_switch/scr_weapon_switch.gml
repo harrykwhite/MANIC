@@ -60,7 +60,7 @@ if (old_weaponslot != -1){
     if (instance_exists(old_weapon)){
         instance_destroy(global.weapon_object[old_weaponslot]);
     }
-}else{
+}else if (global.weapon_default != -1){
 	if (instance_exists(global.weapon_object[global.weapon_default])){
         instance_destroy(global.weapon_object[global.weapon_default]);
     }

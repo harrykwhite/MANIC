@@ -1,5 +1,9 @@
 var wcurrent = global.weapon_slot[global.weapon_slotcurrent];
 
+if (wcurrent == -1){
+	wcurrent = global.weapon_default;
+}
+
 if (global.game_pause){
 	return;
 }
