@@ -19,7 +19,7 @@ if (instance_exists(obj_player)){
 			var x_to = inst.x;
 			var y_to = inst.y;
 			
-			if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 25){
+			if (point_distance(obj_player.x, obj_player.y, x_to, y_to) > 35){
 				obj_player.move_x_to = x_to;
 				obj_player.move_y_to = y_to;
 				obj_player.move_ext_spd = obj_player.spd_max * 0.75;

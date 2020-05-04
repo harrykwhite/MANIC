@@ -1,6 +1,6 @@
 object[0] = obj_health_pack_0;
 object_x[0] = x - 14;
-object_y[0] = y - 2;
+object_y[0] = y - 1;
 object_inst[0] = noone;
 object_weapon[0] = -1;
 object_weapon_angle[0] = 0;

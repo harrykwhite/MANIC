@@ -14,7 +14,7 @@ if (!global.game_pause){
 	camera_zoom_offset_real = approach(camera_zoom_offset_real, camera_zoom_offset, 15);
 	camera_zoom_to += camera_zoom_offset_real;
 	
-	camera_set_view_size(view_camera[0], camera_zoom_width * camera_zoom, camera_zoom_height * camera_zoom);
+	camera_set_view_size(view_camera[0], camera_zoom_width * (camera_zoom + camera_zoom_add), camera_zoom_height * (camera_zoom + camera_zoom_add));
 	
 	if (global.weapon_slot_standalone == -1){
 		if (global.weapon_slot[global.weapon_slotcurrent] != -1){

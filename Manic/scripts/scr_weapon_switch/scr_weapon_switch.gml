@@ -46,7 +46,13 @@ if (global.weapon_slot_standalone == -1){
 		}
 	}
 }else{
-	old_weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
+	if (global.weapon_slot[global.weapon_slotcurrent] != -1){
+		old_weapon = global.weapon_object[global.weapon_slot[global.weapon_slotcurrent]];
+	}else if (global.weapon_default != -1){
+		old_weapon = global.weapon_object[global.weapon_default];
+	}else{
+		old_weapon = noone;
+	}
 }
 
 // Replacing Old Weapon
