@@ -47,6 +47,10 @@ enum PlayerWeapon{
 	HuntingMachete,
 	Greatsword,
 	BaseballBat,
+	Eagle,
+	Hoe,
+	EagleRifle,
+	Lockpick,
 }
 
 enum AmmoType{
@@ -597,6 +601,58 @@ global.weapon_mouse[40] = MouseType.SmallCircle;
 global.weapon_dualhanded[40] = false;
 global.weapon_damage[40] = WeaponLevel.Average;
 global.weapon_speed[40] = WeaponLevel.Average;
+
+global.weapon_name[41] = "Eagle";
+global.weapon_object[41] = obj_weapon_41;
+global.weapon_sprite[41] = spr_weapon_41;
+global.weapon_centersprite[41] = spr_weapon_41_center;
+global.weapon_type[41] = WeaponType.Ranged;
+global.weapon_heavy[41] = false;
+global.weapon_ammomax[41] = 17;
+global.weapon_ammotype[41] = AmmoType.Bullets;
+global.weapon_camerarange[41] = 40;
+global.weapon_mouse[41] = MouseType.Crosshair;
+global.weapon_dualhanded[41] = false;
+global.weapon_damage[41] = WeaponLevel.Low;
+global.weapon_speed[41] = WeaponLevel.High;
+
+global.weapon_name[42] = "Hoe";
+global.weapon_object[42] = obj_weapon_42;
+global.weapon_sprite[42] = spr_weapon_42;
+global.weapon_centersprite[42] = spr_weapon_42_center;
+global.weapon_type[42] = WeaponType.Melee;
+global.weapon_heavy[42] = true;
+global.weapon_camerarange[42] = 20;
+global.weapon_mouse[42] = MouseType.SmallCircle;
+global.weapon_dualhanded[42] = false;
+global.weapon_damage[42] = WeaponLevel.Average;
+global.weapon_speed[42] = WeaponLevel.VeryLow;
+
+global.weapon_name[43] = "Eagle Rifle";
+global.weapon_object[43] = obj_weapon_43;
+global.weapon_sprite[43] = spr_weapon_43;
+global.weapon_centersprite[43] = spr_weapon_43_center;
+global.weapon_type[43] = WeaponType.Ranged;
+global.weapon_heavy[43] = false;
+global.weapon_ammomax[43] = 11;
+global.weapon_ammotype[43] = AmmoType.Bullets;
+global.weapon_camerarange[43] = 40;
+global.weapon_mouse[43] = MouseType.Crosshair;
+global.weapon_dualhanded[43] = false;
+global.weapon_damage[43] = WeaponLevel.VeryLow;
+global.weapon_speed[43] = WeaponLevel.High;
+
+global.weapon_name[44] = "Lockpick";
+global.weapon_object[44] = obj_weapon_44;
+global.weapon_sprite[44] = spr_weapon_44;
+global.weapon_centersprite[44] = spr_weapon_44_center;
+global.weapon_type[44] = WeaponType.Melee;
+global.weapon_heavy[44] = false;
+global.weapon_camerarange[44] = 20;
+global.weapon_mouse[44] = MouseType.SmallCircle;
+global.weapon_dualhanded[44] = false;
+global.weapon_damage[44] = WeaponLevel.VeryLow;
+global.weapon_speed[44] = WeaponLevel.VeryHigh;
 
 global.weapon_slot[0] = PlayerWeapon.Revolver;
 global.weapon_slotammo[0] = global.weapon_ammomax[PlayerWeapon.Revolver];

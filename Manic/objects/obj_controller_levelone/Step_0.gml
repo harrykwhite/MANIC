@@ -26,7 +26,7 @@ if (!global.game_pause){
 				var groundlayer = layer_get_id("InteriorFloorWood");
 				var groundmap = layer_tilemap_get_id(groundlayer);
 				
-				while(collision_rectangle(xx - 8, yy - 8, xx + 8, yy + 8, obj_p_solid, false, true) || tilemap_get_at_pixel(groundmap, xx, yy)){
+				while(collision_rectangle(xx - 16, yy - 16, xx + 16, yy + 16, obj_p_solid, false, true) || tilemap_get_at_pixel(groundmap, xx, yy)){
 					xx = camx + random(camw);
 					yy = camy + random(camh);
 		
@@ -277,9 +277,11 @@ if (room == rm_level_1_01 && factory_explode && !factory_explode_effects_created
 		part_particles_create(global.ps_bottom, random_range(x1, x2), random_range(y1, y2), global.pt_scraps_0, 1);
 	}
 	
-	scr_sound_play(snd_weapon_explode_0, false, 0.8, 0.8);
-	scr_effect_zoom(-0.2);
-	scr_effect_freeze(7);
+	scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
+	scr_effect_screenshake(4);
+	scr_effect_freeze(9);
+	scr_effect_zoom(-0.1);
+	scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
 	
 	factory_explode_look_wait = 60 * 1.5;
 	factory_explode_effects_created = true;

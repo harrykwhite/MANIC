@@ -1,7 +1,7 @@
 // Draw Line
 if (!global.game_pause) && (global.cutscene_current == -1){
-	var xx = x + lengthdir_x(25, image_angle);
-	var yy = y + lengthdir_y(25, image_angle);
+	var xx = x + lengthdir_x(25, dir);
+	var yy = y + lengthdir_y(25, dir);
 	
 	if (line_alpha > 0.85){
 		if (line_flicker_time > 0){
@@ -15,7 +15,7 @@ if (!global.game_pause) && (global.cutscene_current == -1){
 		line_flicker = false;
 	}
 	
-	if (!collision_line(owner.x, owner.y + 4, xx, yy, obj_p_solid, false, true)){
+	if (!collision_line(x, y, xx, yy, obj_p_solid, false, true)){
 		draw_set_colour(c_maroon);
 	
 		if (line_flicker){
@@ -23,7 +23,7 @@ if (!global.game_pause) && (global.cutscene_current == -1){
 		}
 	
 		draw_set_alpha(clamp(line_alpha, 0, 1) * 0.6 * image_alpha);
-		draw_line_break(xx, yy, image_angle, obj_p_solid, 1, false, 0);
+		draw_line_break(xx, yy, dir, obj_p_solid, 1, false, 0);
 	}
 	
 	draw_set_alpha(1);

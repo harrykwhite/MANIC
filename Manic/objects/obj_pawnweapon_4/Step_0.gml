@@ -13,7 +13,7 @@ if (instance_exists(owner)) && (!global.game_pause){
 		if (throw_offset < 40){
 			throw_offset ++;
 		}else{
-			if (!collision_rectangle(x - 8, y - 8, x + 8, y + 8, obj_p_solid, false, false)){
+			if (!collision_rectangle(x - 12, y - 12, x + 12, y + 12, obj_p_solid, false, false)){
 		        scr_effect_screenshake(1);
 		        instance_destroy();
 				var dCompanion = true;

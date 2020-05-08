@@ -350,10 +350,10 @@ if (health_current <= 0){
 		fl.fadeSpeed = 0.015;
 	
 		scr_damage_custom(2, 1, 45, 45, 3, true, true, true, true);
-		scr_effect_vignette_flash(c_ltgray, 0.4, 0.01);
-		scr_effect_screenshake(3);
-		scr_effect_freeze(13);
+		scr_effect_screenshake(4);
+		scr_effect_freeze(9);
 		scr_effect_zoom(-0.1);
+		scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
 		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
 		
 		if (object_index == obj_giantturret_flamethrower){

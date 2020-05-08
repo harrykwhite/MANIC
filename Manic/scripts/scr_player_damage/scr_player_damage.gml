@@ -60,9 +60,10 @@ if (scr_player_has_upgrade(PlayerUpgrade.ExplosiveVest)){
 		fl.fadeSpeed = 0.015;
 		
 	    scr_damage_custom(explode_damage, 1, explode_damage_size * explode_scale, explode_damage_size * explode_scale, 3, true, false, false, true);
-	    scr_effect_screenshake(2);
-		scr_effect_zoom(-0.025);
-		scr_effect_vignette_flash(c_ltgray, 0.2, 0.01);
+		scr_effect_screenshake(4);
+		scr_effect_freeze(9);
+		scr_effect_zoom(-0.1);
+		scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
 		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
 	}
 }

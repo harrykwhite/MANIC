@@ -53,22 +53,20 @@ if (spd > 0){
 	
 	if (spd > 0){
 		if (bounce_time <= 0){
-			var touched = false;
-			
-			if (place_meeting(x + lengthdir_x(spd, dir), y, obj_p_solid)){
-				dir = 180 - dir;
-				touched = true;
+			for(var i = 0; i < 5; i ++){
+			    var touched = false;
+		
+				if (place_meeting(x + lengthdir_x((spd / 5) * i, dir), y + lengthdir_y((spd / 5) * i, dir), obj_p_solid)){
+			        dir -= 180;
+					touched = true;
+			    }
+		
+				if (touched){
+			        spd *= 0.85;
+					bounce_time = 2;
+					break;
+				}
 			}
-			
-			if (place_meeting(x, y + lengthdir_y(spd, dir), obj_p_solid)){
-			    dir = -dir;
-				touched = true;
-			}
-			
-			if (touched){
-			    spd *= 0.75;
-			}
-	
 		}
 	}
 }else{

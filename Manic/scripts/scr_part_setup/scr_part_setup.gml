@@ -87,6 +87,8 @@ scr_part_type_burst_3();
 scr_part_type_toxic_0();
 scr_part_type_toxic_1();
 
+scr_part_type_flare_0();
+
 scr_part_type_fire_0();
 scr_part_type_fire_1();
 scr_part_type_fire_2();

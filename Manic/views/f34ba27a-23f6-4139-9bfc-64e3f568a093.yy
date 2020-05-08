@@ -44,7 +44,11 @@
         "da464b71-8c11-477b-8f2e-83d549246f8f",
         "d92e3fdb-b3b9-47b2-870d-b85f28da9b05",
         "c14cf652-e00e-474c-91df-7b30f82732a7",
-        "d4ba2797-3ecd-41d0-8b7c-801d1fbbc07b"
+        "d4ba2797-3ecd-41d0-8b7c-801d1fbbc07b",
+        "b8aed8cb-d515-42f9-905f-63c249da376d",
+        "e5836a7a-c967-4b2d-8138-ee67b75a0fd1",
+        "941b1a49-f4fd-4433-9045-a302badb1ef4",
+        "bbc8fd9b-aa73-4eb4-b19a-913afc1ef71c"
     ],
     "filterType": "GMSprite",
     "folderName": "Weapons",

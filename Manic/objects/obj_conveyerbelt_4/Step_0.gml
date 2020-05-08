@@ -84,10 +84,11 @@ if (death){
 		}
 		
 		// Explosion
-		scr_sound_play(snd_weapon_explode_0, false, 0.8, 0.8);
+		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
+		scr_effect_screenshake(4);
+		scr_effect_freeze(9);
 		scr_effect_zoom(-0.1);
-		scr_effect_freeze(7);
-		scr_effect_vignette_flash(c_white, 0.5, 0.025);
+		scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
 	}else{
 		var brk = instance_create(x, y, obj_break);
 		brk.shake = 0;

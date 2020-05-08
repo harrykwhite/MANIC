@@ -139,7 +139,7 @@ if (instance_exists(obj_player)){
 							line[11] = "All right, that'll be where I'm heading next.";
 							linefrom[11] = obj_player;
 							
-							line[12] = "I appreciate the dedication. Hopefully this will all be over soon.";
+							line[12] = "I appreciate the help. Hopefully this will all be over soon.";
 							linefrom[12] = inst;
 							break;
 						

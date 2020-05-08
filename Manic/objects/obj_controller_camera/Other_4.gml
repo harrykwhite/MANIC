@@ -8,7 +8,7 @@ camera_radius = 0;
 camera_screenshake = false;
 camera_screenshake_amount = 0;
 camera_screenshake_time = 0;
-camera_screenshake_speed = 40;
+camera_screenshake_speed = 50;
 
 camera_move_to_player = false;
 camera_move_to_player_time = 4;
