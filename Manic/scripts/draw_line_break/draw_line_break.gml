@@ -13,7 +13,7 @@ var thickness = argument[4];
 var gui = argument[5];
 
 var off = 0;
-var xx_to = x, yy_to = y;
+var xx_to = xx, yy_to = yy;
 var jump = 10, xjump = lengthdir_x(jump, dir), yjump = lengthdir_y(jump, dir);
 var counter = 0;
 

@@ -99,54 +99,53 @@ if (instance_exists(obj_player)){
 				target = noone;
 				runaway_time = 0;
 				runaway_starttime = 0;
-				return;
-			}
-			
-			if (runaway_time > 0){
-				runaway_time--;
-		
-				var dir = point_direction(target.x, target.y, x, y);
-				move_x_to = target.x + lengthdir_x(30, dir);
-				move_y_to = target.y + lengthdir_y(30, dir);
-				move_speed = 1.8;
 			}else{
-				move_x_to = target.x;
-				move_y_to = target.y + 6;
-				
-				if (distance_to_object(target) > 150) && (attack_time <= 0){
+				if (runaway_time > 0){
+					runaway_time--;
+		
+					var dir = point_direction(target.x, target.y, x, y);
+					move_x_to = target.x + lengthdir_x(30, dir);
+					move_y_to = target.y + lengthdir_y(30, dir);
 					move_speed = 1.8;
 				}else{
-					move_speed = 0;
 					move_x_to = target.x;
 					move_y_to = target.y + 6;
+				
+					if (distance_to_object(target) > 150) && (attack_time <= 0){
+						move_speed = 1.8;
+					}else{
+						move_speed = 0;
+						move_x_to = target.x;
+						move_y_to = target.y + 6;
 					
-					if (weapon_does_exist){
-						if (attack_time > 0){
-							attack_time --;
-						}else{
-							if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
-								if (weapon_index == PawnWeapon.Knife){
-									instance_destroy(weapon);
-									weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
-							        weapon.owner = id;
-									weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
-							        weapon_index = PawnWeapon.Grenade;
-								}else{
-									weapon.attack = true;
-								}
+						if (weapon_does_exist){
+							if (attack_time > 0){
+								attack_time --;
+							}else{
+								if (!collision_line(x, y, target.x, target.y, obj_p_solid, false, true)){
+									if (weapon_index == PawnWeapon.Knife){
+										instance_destroy(weapon);
+										weapon = instance_create(x, y, global.pawnweapon_object[PawnWeapon.Grenade]);
+								        weapon.owner = id;
+										weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
+								        weapon_index = PawnWeapon.Grenade;
+									}else{
+										weapon.attack = true;
+									}
 							
-								attack_time = attack_time_max;
+									attack_time = attack_time_max;
+								}
 							}
 						}
 					}
 				}
-			}
 			
-			if (runaway_starttime > 0){
-				runaway_starttime --;
-			}else if (runaway_starttime != -2){
-				runaway_starttime = -2;
-				runaway_time = 17;
+				if (runaway_starttime > 0){
+					runaway_starttime --;
+				}else if (runaway_starttime != -2){
+					runaway_starttime = -2;
+					runaway_time = 17;
+				}
 			}
 		}
 	}else{

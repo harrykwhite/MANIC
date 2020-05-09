@@ -112,7 +112,7 @@ if (instance_exists(target)){
 		}
 		
 		if (type == Enemy0_Type.Grenadier){
-			mindist = 120;
+			mindist = 100;
 		}
 		
 		if (!sporadic){
@@ -141,6 +141,7 @@ if (instance_exists(target)){
 							attack_time--;
 						}else{
 							var time = 45;
+							var doattack = true;
 							
 							if (global.player_health_current < 3){
 								time *= 2;
@@ -155,18 +156,20 @@ if (instance_exists(target)){
 									weapon_index = PawnWeapon.Grenade;
 									time = 40;
 									attack_time = time * attack_time_offset;
-									return;
+									doattack = false;
 								}else{
 									time = 100;
 									if (collision_line(x, y, target.x, target.y, obj_p_solid, false, true)) || (collision_line(x, y, target.x, target.y, obj_enemy_0, false, true)){
-										return;
+										doattack = false;
 									}
 								}
 							}
 							
-							weapon.dir = point_direction(x, y, target.x, target.y);
-							weapon.attack = true;
-							attack_time = time * attack_time_offset;
+							if (doattack){
+								weapon.dir = point_direction(x, y, target.x, target.y);
+								weapon.attack = true;
+								attack_time = time * attack_time_offset;
+							}
 						}
 					}
 				}

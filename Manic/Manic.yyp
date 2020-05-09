@@ -4495,14 +4495,6 @@
             }
         },
         {
-            "Key": "4932a87e-51cd-439f-bd24-873fe2725e3e",
-            "Value": {
-                "id": "14090895-a406-46db-ab38-a007d9acf835",
-                "resourcePath": "sprites\\spr_prisonbuilding_1\\spr_prisonbuilding_1.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "49508934-9cac-4ade-94b4-d3c1e1df5df5",
             "Value": {
                 "id": "8a7a16a2-701a-40f6-a57e-edc314e44f01",
@@ -4571,6 +4563,14 @@
             "Value": {
                 "id": "fca28ce5-26f3-4fbb-a98b-7b051b7ef5ea",
                 "resourcePath": "sprites\\spr_weapon_13_center\\spr_weapon_13_center.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "4a54ad3e-cb2d-4d61-b26a-461ee4d2ea0d",
+            "Value": {
+                "id": "1caa3619-19b1-4255-b15c-5f867cc455a5",
+                "resourcePath": "sprites\\spr_playerturret_0\\spr_playerturret_0.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -6887,6 +6887,14 @@
             }
         },
         {
+            "Key": "7161074d-0630-49c2-8480-527b119c58ea",
+            "Value": {
+                "id": "4e972416-a7f9-4aec-a0cd-51dca677750f",
+                "resourcePath": "sprites\\spr_prisonbuilding_2\\spr_prisonbuilding_2.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "716e9103-bd48-4dd0-980b-d63df41cfd42",
             "Value": {
                 "id": "ab6999d8-cc0d-4d12-976f-addc52fb387b",
@@ -8279,6 +8287,14 @@
             }
         },
         {
+            "Key": "89679d30-4fc6-438c-986d-e9b867705a2b",
+            "Value": {
+                "id": "512bae7e-219d-4307-b0e1-49f41c94e57c",
+                "resourcePath": "objects\\obj_playerturret_0\\obj_playerturret_0.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "89a4455e-5999-44c6-9e06-94ab84f2c75c",
             "Value": {
                 "id": "a1acf212-874e-4cab-96a7-0bc92bcd7f68",
@@ -8372,6 +8388,14 @@
                 "id": "0f5d20dd-c95a-414d-a6ba-af49f70c5f47",
                 "resourcePath": "objects\\obj_block_tutourialtrigger\\obj_block_tutourialtrigger.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "8ade4899-7e09-4dfe-bde4-3e3d9950ed3b",
+            "Value": {
+                "id": "ea8d8432-2f45-46e2-a77f-c7bc2d11a406",
+                "resourcePath": "sprites\\spr_prisonbuilding_1\\spr_prisonbuilding_1.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -9103,6 +9127,14 @@
             }
         },
         {
+            "Key": "9227f855-12d6-4457-a5d6-304091d318a0",
+            "Value": {
+                "id": "4d1e91a5-20de-43ea-865c-0963cd8237e8",
+                "resourcePath": "scripts\\scr_explode_effects\\scr_explode_effects.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "924f85bc-3306-4aa0-afaf-7571e53d12b8",
             "Value": {
                 "id": "f2fb64a1-077d-4e57-a4b7-4628669c421b",
@@ -9188,6 +9220,14 @@
                 "id": "9e8a6395-26ef-4ead-a784-225803dee732",
                 "resourcePath": "scripts\\scr_option_reset_defaults\\scr_option_reset_defaults.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "93fd131b-9655-4988-9d43-f1a6bceb5965",
+            "Value": {
+                "id": "5f4040db-e9ec-4d23-94c2-013403de6b9b",
+                "resourcePath": "sprites\\spr_playerturret_stand_0\\spr_playerturret_stand_0.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -11311,6 +11351,14 @@
             }
         },
         {
+            "Key": "b9795122-c0d0-4701-a8ef-57a9e9dd482a",
+            "Value": {
+                "id": "5477c1f5-41b6-4674-a2d5-cf3fd2ef2eff",
+                "resourcePath": "objects\\obj_playerturret_0_light\\obj_playerturret_0_light.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "b99a163b-c655-404e-86b4-bf483ad2e8f6",
             "Value": {
                 "id": "a444d410-54e8-48a6-b71a-998f5df7f4c6",
@@ -11396,14 +11444,6 @@
                 "id": "ed2c1116-fd7b-40ca-b096-88a67c673530",
                 "resourcePath": "views\\ba96191c-b90b-4536-b544-107534587b3b.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "baa04e5c-9391-4075-a5eb-e203f3e334d2",
-            "Value": {
-                "id": "8de80089-09d2-4c41-b23d-7006406897a9",
-                "resourcePath": "sprites\\spr_prisonbuilding_2\\spr_prisonbuilding_2.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -13583,14 +13623,6 @@
             }
         },
         {
-            "Key": "e6681dcc-6803-4aec-93dd-c8fa8b174d3b",
-            "Value": {
-                "id": "38b8ff14-3012-448d-9e84-9b1287afda99",
-                "resourcePath": "scripts\\scr_part_type_flare_0\\scr_part_type_flare_0.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "e66a9b13-b6f5-4bbb-8001-b43a6c8c8286",
             "Value": {
                 "id": "d2f58e52-5b23-477d-b2db-87bd5cc063b1",
@@ -13900,6 +13932,14 @@
                 "id": "17953ad0-4eb4-4e2f-8dd0-46ca496e8c9b",
                 "resourcePath": "sprites\\spr_weapon_33\\spr_weapon_33.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "eba89eed-de8d-4b76-af1e-a80322d5bbe1",
+            "Value": {
+                "id": "02d85601-90ea-45f0-b486-fbd4b5092ba5",
+                "resourcePath": "scripts\\scr_player_endupdate\\scr_player_endupdate.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -14580,14 +14620,6 @@
                 "id": "76714144-e237-47b4-9892-c0ccd93d7482",
                 "resourcePath": "sprites\\spr_bunker_wall_0_prison\\spr_bunker_wall_0_prison.yy",
                 "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "f68001bb-f6b6-499c-919c-6c9a13948aef",
-            "Value": {
-                "id": "72569dad-2325-4453-bb15-120709c28cf6",
-                "resourcePath": "scripts\\scr_damage_custom_burn\\scr_damage_custom_burn.yy",
-                "resourceType": "GMScript"
             }
         },
         {
@@ -15297,6 +15329,7 @@
         "a146404e-735a-4ab8-ad42-1ca2222e7db1",
         "f63d2659-4327-4c22-b9a6-cc0ab0563e89",
         "a4b78e09-99f0-4346-bbae-f9839fb1e3e0",
+        "eba89eed-de8d-4b76-af1e-a80322d5bbe1",
         "a8d239a0-b0f4-4961-9423-621218bf8152",
         "d4289acc-80da-410c-beca-d283e17720b9",
         "fa5bf071-6073-4fbd-b9b0-febf79a7559e",
@@ -15454,7 +15487,6 @@
         "2ca36067-38c8-4ae6-981b-a629ee8c1511",
         "e073d3a0-e01b-4862-987b-5d0da9b06f33",
         "8beff69b-9fe5-41c0-b60b-5dcb4bfd9d16",
-        "e6681dcc-6803-4aec-93dd-c8fa8b174d3b",
         "4620c77a-c6ec-476e-a851-02598b30df2b",
         "da22ef1b-2e75-4260-9c2e-1a077a313f01",
         "ea305b39-e392-4da4-80b4-e87802cdeb82",
@@ -15552,7 +15584,6 @@
         "8289aa14-30a9-4c57-9dc0-c8b682854a45",
         "341e1f30-ebd1-44f4-bfc7-b8d7e36144f1",
         "d317508d-969d-406b-a22a-392f97107cef",
-        "f68001bb-f6b6-499c-919c-6c9a13948aef",
         "eae68723-0ccf-45ad-b415-ef212ce34b7a",
         "5e5ffd77-57a0-4344-8b7e-c0baf0ffb7dc",
         "6720c961-d518-45a3-8c42-eaf3eb02144a",
@@ -15647,7 +15678,8 @@
         "4cc191f2-d68b-4e7a-a36a-999294af5e21",
         "62f44a54-1641-415e-bd3a-775891c4f11d",
         "306a8a59-0172-440b-b740-8e55ae1945e4",
-        "347bcfdf-e2eb-481e-950f-09449f8585b1"
+        "347bcfdf-e2eb-481e-950f-09449f8585b1",
+        "9227f855-12d6-4457-a5d6-304091d318a0"
     ],
     "tutorial": ""
 }

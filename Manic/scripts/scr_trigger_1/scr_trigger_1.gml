@@ -1,5 +1,5 @@
 if (instance_exists(obj_player)){
-	obj_player.x = 2222;
+	obj_player.x = 2221;
 	obj_player.y = 550;
 	
 	obj_player.move_x_to = obj_player.x;

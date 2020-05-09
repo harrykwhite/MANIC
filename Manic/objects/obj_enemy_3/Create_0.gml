@@ -59,6 +59,7 @@ target = obj_player;
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;
 image_yscale = scale;
+image_speed = 0;
 
 if (!scr_level_is_arena()){
 	if (global.level_current >= Level.IntoTheCity){

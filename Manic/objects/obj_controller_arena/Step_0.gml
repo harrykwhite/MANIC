@@ -79,7 +79,7 @@ if (!global.game_pause){
 			
 			// Snow
 			repeat(4){
-			    part_particles_create(global.ps_front, camx + random_range(-350, camw), camy - 10, global.pt_snow_0, 1);
+			    part_particles_create(global.ps_front, camx + random_range(-450, camw), camy - 10, global.pt_snow_0, 1);
 			}
 			
 			if (random(2) < 1){

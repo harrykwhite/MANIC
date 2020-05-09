@@ -63,36 +63,6 @@ if (bounce_time <= 0) && (spd > 0){
 
 // Explode
 if (explode){
-    var explode_scale = 1.2;
-    var explode_damage_size = 72;
-	
-	repeat(13 * explode_scale){
-        part_particles_create(global.ps_front, x + random_range(-explode_damage_size * explode_scale * 0.5, explode_damage_size * explode_scale * 0.5), y + random_range(-explode_damage_size * explode_scale * 0.5, explode_damage_size * explode_scale * 0.5), global.pt_smoke_2, 1);
-    }
-	
-	repeat(15 * explode_scale){
-        part_particles_create(global.ps_front, x + random_range(-explode_damage_size * explode_scale * 0.5, explode_damage_size * explode_scale * 0.5), y + random_range(-explode_damage_size * explode_scale * 0.5, explode_damage_size * explode_scale * 0.5), global.pt_fire_0, 1);
-    }
-	
-	repeat(4 * explode_scale){
-        part_particles_create(global.ps_front, x + random_range(-explode_damage_size * explode_scale, explode_damage_size * explode_scale), y + random_range(-explode_damage_size * explode_scale, explode_damage_size * explode_scale), global.pt_smoke_2, 1);
-    }
-	
-	repeat(10){
-		part_particles_create(global.ps_bottom, x + random_range(-explode_damage_size * explode_scale * 0.1, explode_damage_size * explode_scale * 0.1), y + random_range(-explode_damage_size * explode_scale * 0.1, explode_damage_size * explode_scale * 0.1), global.pt_ash_0_perm, 1);
-	}
-    
-	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 23);
-	
-	var fl = instance_create(x, y, obj_block_light);
-	fl.mylight[0] = noone; fl.size[0] = 130 * explode_scale;
-	fl.fadeSpeed = 0.015;
-	
-    instance_destroy();
-    scr_damage_custom(damage, 1, (explode_damage_size * explode_scale), (explode_damage_size * explode_scale), 3, damage_enemy, damage_player, damage_companion, true);
-	scr_effect_screenshake(4);
-	scr_effect_freeze(9);
-	scr_effect_zoom(-0.1);
-	scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
-	scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
+	scr_explode_effects(90, damage, damage_enemy, damage_player, damage_companion);
+	instance_destroy();
 }

@@ -23,6 +23,7 @@ if (ispaused){
 	}
 	
 	image_speed = 0;
+	image_index = 0;
 	return;
 }
 
@@ -36,14 +37,15 @@ if (global.cutscene_current == -1) || (cutscene_prop){
 	scr_enemy_3_behaviour();
 }else{
 	image_speed = 0;
+	image_index = 0;
 }
 
 scr_pawn_update();
+
+image_angle = dir;
 
 if (abs(image_angle) < 90) || (abs(image_angle) > 270){
 	image_yscale = scale;
 }else{
 	image_yscale = -scale;
 }
-
-image_angle = dir;

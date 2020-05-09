@@ -6,11 +6,7 @@ mylight.x = x;
 mylight.y = y + 6;
 mylight.Light_Intensity = 1.15;
 
-if (global.game_pause){
-	return;
-}
-
-if (global.cutscene_current != -1){
+if (global.game_pause || global.cutscene_current != -1){
 	if (audio_is_playing(minecart_sound) && minecart_sound != noone){
 		if (!audio_is_paused(minecart_sound)){
 			audio_pause_sound(minecart_sound);

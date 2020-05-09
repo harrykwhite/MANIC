@@ -56,7 +56,7 @@ if (!global.game_pause){
 	
 	// Snow
 	repeat(4){
-	    part_particles_create(global.ps_front, camx + random_range(-350, camw), camy - 10, global.pt_snow_0, 1);
+	    part_particles_create(global.ps_front, camx + random_range(-450, camw), camy - 10, global.pt_snow_0, 1);
 	}
 
 	if (random(2) < 1){
@@ -81,17 +81,17 @@ if (!global.game_pause){
 			
 					switch(level_dialogue_index){
 						case 0:
-							text = "I feel it's time that we found out who the leader of the army is, so that we can prevent the group from making further advancements.";
+							text = "It's time that we found out who the leader of the army is, so that we can prevent the group from making further advancements.";
 							inst = obj_player;
 							break;
 						
 						case 1:
-							text = "Perhaps some of the artifacts in the town down below might give us an indication as to who that is?";
+							text = "Perhaps some of the artifacts in the town down below might give us an indication as to who that may be?";
 							inst = obj_companion_0;
 							break;
 						
 						case 2:
-							text = "As well as that, there may still be some people there who we can ask about it.";
+							text = "As well as that, there might be some people who we can ask about it.";
 							inst = obj_companion_0;
 							break;
 						

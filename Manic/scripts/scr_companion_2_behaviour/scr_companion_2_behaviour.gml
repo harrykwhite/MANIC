@@ -93,69 +93,68 @@ if (instance_exists(obj_player)){
 					target = noone;
 					runaway_time = 0;
 					runaway_starttime = 0;
-					return;
-				}
-				
-				if (runaway_time > 0){
-					runaway_time--;
-					
-					move_x_to = target.x + lengthdir_x(30, runaway_dir);
-					move_y_to = target.y + 6 + lengthdir_y(30, runaway_dir);
-					move_speed = 1.9;
 				}else{
-					move_x_to = target.x;
-					move_y_to = target.y + 6;
-				
-					if (distance_to_object(target) > 44 + (companionspacing * order)){
+					if (runaway_time > 0){
+						runaway_time--;
+					
+						move_x_to = target.x + lengthdir_x(30, runaway_dir);
+						move_y_to = target.y + 6 + lengthdir_y(30, runaway_dir);
 						move_speed = 1.9;
 					}else{
-						move_speed = 0;
+						move_x_to = target.x;
+						move_y_to = target.y + 6;
+				
+						if (distance_to_object(target) > 44 + (companionspacing * order)){
+							move_speed = 1.9;
+						}else{
+							move_speed = 0;
 						
-						if (weapon_does_exist){
-							if (attack_time > 0){
-								attack_time --;
+							if (weapon_does_exist){
+								if (attack_time > 0){
+									attack_time --;
 								
-								if (is_throwing){
-									weapon.flicker = true;
-								}
-							}else{
-								if (is_throwing){
-									var throw = instance_create(x, y, obj_weapondrop);
-								    throw.index = global.pawnweapon_playerindex[weapon_index];
-								    throw.spd = 9;
-								    throw.damage = 3;
-								    throw.dir = weapon.dir;
-								    throw.angle = throw.dir;
-								    throw.ammo = -1;
-									throw.dataset = true;
-									
-									instance_destroy(weapon);
-									weapon = instance_create(x, y, obj_pawnweapon_3);
-									weapon.owner = id;
-									weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
-									weapon_index = PawnWeapon.Knife;
-									attack_time = attack_time_max;
-									is_throwing = false;
+									if (is_throwing){
+										weapon.flicker = true;
+									}
 								}else{
-									weapon.attack = true;
-									attack_time = attack_time_max;
+									if (is_throwing){
+										var throw = instance_create(x, y, obj_weapondrop);
+									    throw.index = global.pawnweapon_playerindex[weapon_index];
+									    throw.spd = 9;
+									    throw.damage = 3;
+									    throw.dir = weapon.dir;
+									    throw.angle = throw.dir;
+									    throw.ammo = -1;
+										throw.dataset = true;
 									
-									if (random(5) < 1) && (health_current < 3){
-										is_throwing = true;
-									}else{
+										instance_destroy(weapon);
+										weapon = instance_create(x, y, obj_pawnweapon_3);
+										weapon.owner = id;
+										weapon.dir = (sign(image_xscale) == 1 ? 360 : 180);
+										weapon_index = PawnWeapon.Knife;
+										attack_time = attack_time_max;
 										is_throwing = false;
+									}else{
+										weapon.attack = true;
+										attack_time = attack_time_max;
+									
+										if (random(5) < 1) && (health_current < 3){
+											is_throwing = true;
+										}else{
+											is_throwing = false;
+										}
 									}
 								}
 							}
 						}
 					}
-				}
 			
-				if (runaway_starttime > 0){
-					runaway_starttime--;
-				}else if (runaway_starttime != -2){
-					runaway_starttime = -2;
-					runaway_time = 34;
+					if (runaway_starttime > 0){
+						runaway_starttime--;
+					}else if (runaway_starttime != -2){
+						runaway_starttime = -2;
+						runaway_time = 34;
+					}
 				}
 			}
 		}else{

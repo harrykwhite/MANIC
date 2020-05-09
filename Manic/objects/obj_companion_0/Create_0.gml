@@ -100,6 +100,11 @@ health_flash = 0;
 heal_time_max = 60 * 2.5;
 heal_time = heal_time_max;
 
+cellx = -1;
+celly = -1;
+tox = -1;
+toy = -1;
+
 image_xscale = scale;
 image_yscale = scale;
 

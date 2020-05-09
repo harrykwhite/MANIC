@@ -14,7 +14,7 @@ var gaplarge = 48;
 var gapverylarge = 60;
 
 if (in_settings_controls){
-	logoy -= 40;
+	//logoy -= 40;
 }
 
 var iskeyboard = (global.game_input_type == InputType.Keyboard);
@@ -247,7 +247,7 @@ if (!in_settings) && (!in_levelselect) && (!in_arenamode){
 		
 		if (in_settings_controls){
 			var bgpstr = "Press any key to switch to keyboard mode";
-			var bcount = InputBinding.SwitchWeaponForward + 1;
+			var bcount = InputBinding.SwitchWeaponBack + 1;
 			
 			if (iskeyboard){
 				bgpstr = "Press any controller button to switch to gamepad mode";

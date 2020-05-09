@@ -50,27 +50,11 @@ if (explode){
 
 // Object Death
 if (death){
-	repeat(11){
-        part_particles_create(global.ps_front, x + random_range(-32, 32), y + random_range(-32, 32), global.pt_smoke_2, 1);
-    }
+	scr_explode_effects(60, 10, true, true, true);
+	instance_destroy();
 	
-	repeat(7){
-		part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_ash_0_perm, 1);
-	}
-	
-	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 21);
-	
-	var fl = instance_create(x, y, obj_block_light);
-	fl.mylight[0] = noone; fl.size[0] = 100;
-	fl.fadeSpeed = 0.015;
-	
-    instance_destroy();
-    scr_damage_custom(10, 1, 46, 46, 5, true, true, true, true);
-    scr_effect_screenshake(4);
-	scr_effect_freeze(9);
-	scr_effect_zoom(-0.1);
-	scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
-	scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
-	var brk = instance_create(x, y, obj_break); brk.shake = 4; brk.sprite_index = spr_barrel_0_break;
+	var brk = instance_create(x, y, obj_break);
+	brk.shake = 4;
+	brk.sprite_index = spr_barrel_0_break;
 }
 

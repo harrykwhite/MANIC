@@ -44,7 +44,9 @@ if (instance_exists(target)){
 					bullet.strength = 1;
 					bullet.dir = image_angle;
 					bullet.image_angle = bullet.dir;
-				
+					
+					image_speed = 1;
+					
 					if (shoot_burst_count < 2){
 						shoot_burst_count ++;
 						shoot_time = 3;

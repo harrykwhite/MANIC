@@ -1,1 +1,1 @@
-scr_weapon_melee_end_update(14);
+scr_weapon_melee_end_update(13);

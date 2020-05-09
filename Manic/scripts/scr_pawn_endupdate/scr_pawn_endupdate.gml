@@ -331,30 +331,7 @@ if (health_current <= 0){
 	}
 	
 	if (doexplode){
-		repeat(9){
-			part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
-		}
-	
-		repeat(2){
-			part_particles_create(global.ps_front, x + random_range(-42, 42), y + random_range(-42, 42), global.pt_smoke_2, 1);
-		}
-		
-		repeat(7){
-			part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_ash_0_perm, 1);
-		}
-    
-		part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
-	
-		var fl = instance_create(x, y, obj_block_light);
-		fl.mylight[0] = noone; fl.size[0] = 100;
-		fl.fadeSpeed = 0.015;
-	
-		scr_damage_custom(2, 1, 45, 45, 3, true, true, true, true);
-		scr_effect_screenshake(4);
-		scr_effect_freeze(9);
-		scr_effect_zoom(-0.1);
-		scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
-		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
+		scr_explode_effects(60, 2, true, true, true);
 		
 		if (object_index == obj_giantturret_flamethrower){
 			pack = instance_create(x + random_range(-6, 6), y + random_range(3, 5), obj_health_pack_1);
@@ -382,8 +359,12 @@ if (health_current <= 0){
 			return;
 		}
 	
-		if (weapon.type == WeaponType.Ranged){
-			dropchance = 20;
+		if (weapon != -1){
+			if (instance_exists(weapon)){
+				if (weapon.type == WeaponType.Ranged){
+					dropchance = 20;
+				}
+			}
 		}
 	
 		if (type == Enemy0_Type.Mother) || (type == Enemy0_Type.Sniper){
@@ -420,31 +401,33 @@ if (health_current <= 0){
 			}
 		}
 		
-		if (weapon.index != PawnWeapon.Knife) && (weapon.index != -1){
-			if (scr_level_is_arena()){
-				dropchance *= 0.25;
-			}
+		if (weapon != -1){
+			if (instance_exists(weapon)){
+				if (weapon.index != PawnWeapon.Knife) && (weapon.index != -1){
+					if (scr_level_is_arena()){
+						dropchance *= 0.25;
+					}
 			
-		    if (chance(dropchance)){
-				var xx, yy, angle, ind, w;
+				    if (chance(dropchance)){
+						var xx, yy, angle, ind, w;
 				
-				if (instance_exists(weapon) && weapon != -1){
-					xx = weapon.x;
-					yy = weapon.y;
-					angle = weapon.image_angle + random_range(-30, 30);
-					ind = global.pawnweapon_playerindex[weapon_index];
+						xx = weapon.x;
+						yy = weapon.y;
+						angle = weapon.image_angle + random_range(-30, 30);
+						ind = global.pawnweapon_playerindex[weapon_index];
 					
-					w = instance_create(xx, yy, obj_weapondrop);
-					w.angle = angle;
-					w.index = ind;
-					w.drop = true;
-					w.spd = random_range(1.5, 2.5);
-					w.dir = random(360);
-					
-					if (ind == PlayerWeapon.Grenade || ind == PlayerWeapon.ReinforcedGrenade || ind == PlayerWeapon.ToxicGrenade || ind == PlayerWeapon.LandMine){
-						w.pack = true;
-						w.angle = 0;
-						w.quantity = choose(2, 3);
+						w = instance_create(xx, yy, obj_weapondrop);
+						w.angle = angle;
+						w.index = ind;
+						w.drop = true;
+						w.spd = random_range(1.5, 2.5);
+						w.dir = random(360);
+				
+						if (ind == PlayerWeapon.Grenade || ind == PlayerWeapon.ReinforcedGrenade || ind == PlayerWeapon.ToxicGrenade || ind == PlayerWeapon.LandMine){
+							w.pack = true;
+							w.angle = 0;
+							w.quantity = choose(2, 3);
+						}
 					}
 				}
 			}

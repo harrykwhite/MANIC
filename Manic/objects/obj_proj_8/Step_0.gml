@@ -25,37 +25,6 @@ y += lengthdir_y(spd, dir);
 part_particles_create(global.ps_front, x, y, global.pt_fire_0, 1);
 
 if (explode){
-    repeat(9){
-        part_particles_create(global.ps_front, x + random_range(-22, 22), y + random_range(-22, 22), global.pt_smoke_2, 1);
-    }
-	
-	repeat(4){
-        part_particles_create(global.ps_front, x + random_range(-42, 42), y + random_range(-42, 42), global.pt_smoke_2, 1);
-    }
-	
-	repeat(4){
-		part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_fire_0, 1);
-	}
-	
-	repeat(3){
-		part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-6, 6), global.pt_fire_2, 1);
-	}
-    
-	repeat(3){
-		part_particles_create(global.ps_bottom, x + random_range(-3, 3), y + random_range(-3, 3), global.pt_ash_0_perm, 1);
-	}
-	
-	part_particles_create(global.ps_front, x, y, global.pt_fire_1, 17);
-	
-	var fl = instance_create(x, y, obj_block_light);
-	fl.mylight[0] = noone; fl.size[0] = 90;
-	fl.fadeSpeed = 0.015;
-	
-    instance_destroy();
-    scr_damage_custom(damage, 1, 45, 45, 3, !enemy, enemy, true, true);
-    scr_effect_screenshake(4);
-	scr_effect_freeze(9);
-	scr_effect_zoom(-0.1);
-	scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
-	scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
+	scr_explode_effects(60, damage, !enemy, enemy, true);
+	instance_destroy();
 }

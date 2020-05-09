@@ -59,11 +59,6 @@ healer_healtime = 5;
 healer_healselftime = 40;
 healer_findtime = 40;
 
-crazy_runx = x;
-crazy_runy = y;
-crazy_runback = false;
-crazy_runback_time = 0;
-crazy_attackdir = 0;
 crazy_attackbreak = 50;
 crazy_dash = false;
 crazy_dashbreak = 0;
@@ -117,6 +112,11 @@ companion_find_time_max = 60 * 2.5;
 companion_find_time = companion_find_time_max;
 companion_find_break_max = 60;
 companion_find_break = companion_find_break_max;
+
+cellx = -1;
+celly = -1;
+tox = -1;
+toy = -1;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;

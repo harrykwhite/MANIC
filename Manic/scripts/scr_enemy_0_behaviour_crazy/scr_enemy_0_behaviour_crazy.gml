@@ -7,64 +7,36 @@ if (instance_exists(target)) && (instance_exists(weapon)){
 		scr_enemy_find_companion();
 	}
 	
-	if (crazy_runback){
-		var xx = crazy_runx + lengthdir_x(30, crazy_attackdir - 180);
-		var yy = crazy_runy + lengthdir_y(30, crazy_attackdir - 180);
+	if (point_distance(x, y, target.x, target.y) < 42){
+		move_speed = 0;
 		
-		if (crazy_runback_time < 42){
-			crazy_runback_time ++;
+		if (crazy_attackbreak > 0){
+			crazy_attackbreak --;
 		}else{
-			crazy_runback = false;
-			crazy_runback_time = 0;
-		}
-		
-		if (distance_to_point(xx, yy) > 15){
-			move_speed = 2;
+			weapon.attack = true;
 			crazy_dash = false;
-			
-			move_x_to = xx;
-			move_y_to = yy;
-		}else{
-			crazy_runback = false;
+			crazy_attackbreak = 30;
 		}
-		
-		weapon.dir = point_direction(x, y, xx, yy);
 	}else{
-		if (point_distance(x, y, target.x, target.y) < 46){
-			move_speed = 0;
-			
-			if (crazy_attackbreak > 0){
-				crazy_attackbreak --;
-			}else{
-				weapon.attack = true;
-				crazy_runback = true;
-				crazy_attackdir = weapon.dir;
-				crazy_runx = x;
-				crazy_runy = y;
-				crazy_dash = false;
-				crazy_attackbreak = 34;
-			}
-		}else{
-			move_speed = 1.175;
-			move_x_to = target.x;
-			move_y_to = target.y + 6;
-			crazy_attackbreak = 34;
-		}
-		
-		if (point_distance(x, y, target.x, target.y) > 75){
-			if (crazy_dashbreak < 45){
-				crazy_dashbreak ++;
-			}else{
-				crazy_dash = true;
-				crazy_dashdirection = move_to_door ? move_to_door_dir : point_direction(x, y, move_x_to, move_y_to) + random_range(-5, 5);
-				crazy_dashspeed = 5.2;
-				crazy_dashtime = 8;
-				crazy_dashbreak = 0;
-			}
-		}
-		
-		weapon.dir = point_direction(x, y, target.x, target.y + 1);
+		move_speed = 1.175;
+		move_x_to = target.x;
+		move_y_to = target.y + 6;
+		crazy_attackbreak = 30;
 	}
+	
+	if (point_distance(x, y, target.x, target.y) > 75){
+		if (crazy_dashbreak < 45){
+			crazy_dashbreak ++;
+		}else{
+			crazy_dash = true;
+			crazy_dashdirection = move_to_door ? move_to_door_dir : point_direction(x, y, move_x_to, move_y_to) + random_range(-5, 5);
+			crazy_dashspeed = 5.2;
+			crazy_dashtime = 8;
+			crazy_dashbreak = 0;
+		}
+	}
+	
+	weapon.dir = point_direction(x, y, target.x, target.y + 6);
 }else{
 	if (image_xscale == scale){
 		if (instance_exists(weapon) && weapon != -1){

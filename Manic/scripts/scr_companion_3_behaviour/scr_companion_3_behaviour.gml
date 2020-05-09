@@ -77,62 +77,61 @@ if (instance_exists(obj_player)){
 				target = noone;
 				bite_to = false;
 				bite_retreat = false;
-				return;
-			}
-			
-			if (bite_to){
-				move_x_to = target.x;
-				move_y_to = target.y + 6;
-				
-				move_speed = 2;
-				bite_to_time ++;
-				bite_retreat_time = 0;
-				
-				if (distance_to_point(move_x_to, move_y_to) < 7) || (bite_to_time > 120){
-					bite_to = false;
-					bite_to_time = 0;
-					bite_retreat = true;
-					bite_retreat_x = target.x;
-					bite_retreat_y = target.y + 6;
-				}
-			}else if (bite_retreat){
-				var rdir = point_direction(target.x, target.y + 6, x, y);
-				move_x_to = x + lengthdir_x(45, rdir);
-				move_y_to = y + lengthdir_y(45, rdir);
-				
-				move_speed = 1.6;
-				bite_retreat_time ++;
-				bite_to_time = 0;
-				
-				face_player = false;
-				
-				if (bite_retreat_time > 60){
-					bite_to = false;
-					bite_retreat = false;
-				}
 			}else{
-				move_x_to = target.x;
-				move_y_to = target.y + 6;
+				if (bite_to){
+					move_x_to = target.x;
+					move_y_to = target.y + 6;
 				
-				if (distance_to_object(target) > 60){
-					if (move_away_time > 0){
-						move_away_time --;
-						move_speed = 0;
-					}else{
-						move_speed = 1.2;
+					move_speed = 2;
+					bite_to_time ++;
+					bite_retreat_time = 0;
+				
+					if (distance_to_point(move_x_to, move_y_to) < 7) || (bite_to_time > 120){
+						bite_to = false;
+						bite_to_time = 0;
+						bite_retreat = true;
+						bite_retreat_x = target.x;
+						bite_retreat_y = target.y + 6;
 					}
-				}else{
-					move_away_time = 20;
-					
-					if (bite_time > 0){
-						bite_time --;
-					}else{
-						bite_time = bite_time_max + random_range(-20, 5);
-						bite_to = true;
+				}else if (bite_retreat){
+					var rdir = point_direction(target.x, target.y + 6, x, y);
+					move_x_to = x + lengthdir_x(45, rdir);
+					move_y_to = y + lengthdir_y(45, rdir);
+				
+					move_speed = 1.6;
+					bite_retreat_time ++;
+					bite_to_time = 0;
+				
+					face_player = false;
+				
+					if (bite_retreat_time > 60){
+						bite_to = false;
 						bite_retreat = false;
 					}
+				}else{
+					move_x_to = target.x;
+					move_y_to = target.y + 6;
 				
-					move_speed = 0;
+					if (distance_to_object(target) > 60){
+						if (move_away_time > 0){
+							move_away_time --;
+							move_speed = 0;
+						}else{
+							move_speed = 1.2;
+						}
+					}else{
+						move_away_time = 20;
+					
+						if (bite_time > 0){
+							bite_time --;
+						}else{
+							bite_time = bite_time_max + random_range(-20, 5);
+							bite_to = true;
+							bite_retreat = false;
+						}
+				
+						move_speed = 0;
+					}
 				}
 			}
 		}

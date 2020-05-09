@@ -97,7 +97,7 @@ if (instance_exists(obj_player)){
 		}
 	}else if (cutscene_ending_stage == 4){
 		var x_to = room_width + 200;
-		var y_to = 454;
+		var y_to = obj_player.y;
 		
 		obj_player.move_x_to = x_to;
 		obj_player.move_y_to = y_to;

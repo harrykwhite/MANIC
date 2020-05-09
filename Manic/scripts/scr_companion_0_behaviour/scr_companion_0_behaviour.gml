@@ -111,46 +111,45 @@ if (instance_exists(obj_player)){
 				target = noone;
 				runaway_time = 0;
 				runaway_starttime = 0;
-				return;
-			}
-			
-			if (runaway_time > 0){
-				runaway_time --;
-				
-				var dir = point_direction(target.x, target.y, x, y);
-				move_x_to = target.x + lengthdir_x(30, dir);
-				move_y_to = target.y + lengthdir_y(30, dir);
-				move_speed = 1.9;
 			}else{
-				move_x_to = target.x;
-				move_y_to = target.y + 6;
+				if (runaway_time > 0){
+					runaway_time --;
 				
-				var tdist = 44 + global.level_current;
-				tdist += 15 * order;
-				
-				if (distance_to_object(target) > tdist){
+					var dir = point_direction(target.x, target.y, x, y);
+					move_x_to = target.x + lengthdir_x(30, dir);
+					move_y_to = target.y + lengthdir_y(30, dir);
 					move_speed = 1.9;
 				}else{
-					move_speed = 0;
 					move_x_to = target.x;
 					move_y_to = target.y + 6;
+				
+					var tdist = 44 + global.level_current;
+					tdist += 15 * order;
+				
+					if (distance_to_object(target) > tdist){
+						move_speed = 1.9;
+					}else{
+						move_speed = 0;
+						move_x_to = target.x;
+						move_y_to = target.y + 6;
 					
-					if (weapon_does_exist){
-						if (attack_time > 0){
-							attack_time --;
-						}else{
-							weapon.attack = true;
-							attack_time = attack_time_max;
+						if (weapon_does_exist){
+							if (attack_time > 0){
+								attack_time --;
+							}else{
+								weapon.attack = true;
+								attack_time = attack_time_max;
+							}
 						}
 					}
 				}
-			}
 			
-			if (runaway_starttime > 0){
-				runaway_starttime --;
-			}else if (runaway_starttime != -2){
-				runaway_starttime = -2;
-				runaway_time = 17;
+				if (runaway_starttime > 0){
+					runaway_starttime --;
+				}else if (runaway_starttime != -2){
+					runaway_starttime = -2;
+					runaway_time = 17;
+				}
 			}
 		}else{
 			move_speed = 0;

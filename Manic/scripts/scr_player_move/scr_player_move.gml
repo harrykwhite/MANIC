@@ -1,4 +1,5 @@
 // Variables
+var levelcur = scr_level_get_index(room);
 var spd_multiplier = spd_offset;
 var weapon_index = global.weapon_slot_standalone != -1 ? global.weapon_slot_standalone : global.weapon_slot[global.weapon_slotcurrent];
 var real_weapon_index = weapon_index == -1 ? global.weapon_default : weapon_index;
@@ -105,7 +106,7 @@ if (global.weapon_slot_standalone == -1){
 	}
 
 	// Footstep Sound
-	if (global.level_current != Level.UndergroundBunker) && (global.level_current != Level.HumanPrison) && (global.level_current != Level.CityHeadquarters){
+	if (levelcur != Level.UndergroundBunker) && (levelcur != Level.HumanPrison) && (levelcur != Level.CityHeadquarters){
 		if (layer_exists("InteriorFloorWood")){
 			footstep_wood = layer_tilemap_get_id("InteriorFloorWood");
 			if (tilemap_get_at_pixel(footstep_wood, x, y + 18)){
@@ -139,7 +140,6 @@ if (global.weapon_slot_standalone == -1){
 		}else{
 			footstep_time = 20;
 			
-			// Play footstep sound
 			if (footstep_sound != -1){
 				scr_sound_play(footstep_sound, false, 0.8, 1.2);
 			}

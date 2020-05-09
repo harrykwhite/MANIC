@@ -1,59 +1,59 @@
 {
-    "id": "baa04e5c-9391-4075-a5eb-e203f3e334d2",
+    "id": "7161074d-0630-49c2-8480-527b119c58ea",
     "modelName": "GMSprite",
     "mvc": "1.12",
     "name": "spr_prisonbuilding_2",
     "For3D": false,
     "HTile": false,
     "VTile": false,
-    "bbox_bottom": 45,
-    "bbox_left": 12,
+    "bbox_bottom": 37,
+    "bbox_left": 9,
     "bbox_right": 15,
-    "bbox_top": 38,
+    "bbox_top": 32,
     "bboxmode": 2,
     "colkind": 1,
     "coltolerance": 0,
     "edgeFiltering": false,
     "frames": [
         {
-            "id": "9e0aabab-d0ef-485b-b085-22260a289159",
+            "id": "acba9547-7559-4b18-a3d9-79b1ec527672",
             "modelName": "GMSpriteFrame",
             "mvc": "1.0",
-            "SpriteId": "baa04e5c-9391-4075-a5eb-e203f3e334d2",
+            "SpriteId": "7161074d-0630-49c2-8480-527b119c58ea",
             "compositeImage": {
-                "id": "a4d596c4-c962-414a-a419-7a9ac528bb79",
+                "id": "ecfb9476-bf45-4bb3-9e9b-a19236d4543d",
                 "modelName": "GMSpriteImage",
                 "mvc": "1.0",
-                "FrameId": "9e0aabab-d0ef-485b-b085-22260a289159",
+                "FrameId": "acba9547-7559-4b18-a3d9-79b1ec527672",
                 "LayerId": "00000000-0000-0000-0000-000000000000"
             },
             "images": [
                 {
-                    "id": "33ff09fc-a4eb-49a1-9cf5-d4c5df0179a1",
+                    "id": "c71837d6-ddf7-4580-b766-f9fbe991e9a2",
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
-                    "FrameId": "9e0aabab-d0ef-485b-b085-22260a289159",
-                    "LayerId": "d00f96c0-09e5-4de6-a8ef-575f047d367f"
+                    "FrameId": "acba9547-7559-4b18-a3d9-79b1ec527672",
+                    "LayerId": "8637866e-9f9c-42f2-830f-e77ab4684282"
                 },
                 {
-                    "id": "121362fc-d160-4504-8e15-70e32d9e2664",
+                    "id": "1d442587-7045-4d5e-ae66-e771a81dd6d3",
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
-                    "FrameId": "9e0aabab-d0ef-485b-b085-22260a289159",
-                    "LayerId": "c4bfa1e5-f053-4e3b-8d89-962b4f1d8cd1"
+                    "FrameId": "acba9547-7559-4b18-a3d9-79b1ec527672",
+                    "LayerId": "500eed22-b93c-4d10-8b8e-de6a2617a7d3"
                 }
             ]
         }
     ],
     "gridX": 0,
     "gridY": 0,
-    "height": 48,
+    "height": 44,
     "layers": [
         {
-            "id": "d00f96c0-09e5-4de6-a8ef-575f047d367f",
+            "id": "8637866e-9f9c-42f2-830f-e77ab4684282",
             "modelName": "GMImageLayer",
             "mvc": "1.0",
-            "SpriteId": "baa04e5c-9391-4075-a5eb-e203f3e334d2",
+            "SpriteId": "7161074d-0630-49c2-8480-527b119c58ea",
             "blendMode": 0,
             "isLocked": false,
             "name": "default",
@@ -61,10 +61,10 @@
             "visible": true
         },
         {
-            "id": "c4bfa1e5-f053-4e3b-8d89-962b4f1d8cd1",
+            "id": "500eed22-b93c-4d10-8b8e-de6a2617a7d3",
             "modelName": "GMImageLayer",
             "mvc": "1.0",
-            "SpriteId": "baa04e5c-9391-4075-a5eb-e203f3e334d2",
+            "SpriteId": "7161074d-0630-49c2-8480-527b119c58ea",
             "blendMode": 0,
             "isLocked": false,
             "name": "Shadow",
