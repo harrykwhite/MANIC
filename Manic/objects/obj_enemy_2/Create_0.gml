@@ -75,17 +75,14 @@ health_alpha = 0;
 health_scale = 1;
 health_flash = 0;
 
+flash_time = 0;
+
 companion_find_time_max = 60 * 2.5;
 companion_find_time = companion_find_time_max;
 companion_find_break_max = 60;
 companion_find_break = companion_find_break_max;
 
 target = obj_player;
-
-cellx = -1;
-celly = -1;
-tox = -1;
-toy = -1;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;

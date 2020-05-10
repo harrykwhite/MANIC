@@ -1,5 +1,6 @@
 event_inherited();
 death = false;
+death_effects = true;
 
 hit = 5;
 hit_time = 0;

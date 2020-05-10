@@ -28,7 +28,7 @@ if (!global.game_pause){
 	}else{
 		// Rain
 		if (random(2) < 1){
-			part_particles_create(global.ps_front, camx + random_range(0, camw + 150), camy - 10, global.pt_rain_0, 1);
+			part_particles_create(global.ps_front, camx + random_range(-450, camw), camy - 10, global.pt_rain_0, 1);
 		}
 		
 		if (random(3) < 1){

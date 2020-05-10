@@ -78,9 +78,5 @@ if ((global.cutscene_current == -1) || (global.cutscene_current == 2) || (global
 	cutscene_break_time = 50;
 }
 
-if (flash_time > 0){
-	flash_time--;
-}
-
 scr_pawn_update();
 image_yscale = scale;

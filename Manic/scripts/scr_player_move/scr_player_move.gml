@@ -109,14 +109,14 @@ if (global.weapon_slot_standalone == -1){
 	if (levelcur != Level.UndergroundBunker) && (levelcur != Level.HumanPrison) && (levelcur != Level.CityHeadquarters){
 		if (layer_exists("InteriorFloorWood")){
 			footstep_wood = layer_tilemap_get_id("InteriorFloorWood");
-			if (tilemap_get_at_pixel(footstep_wood, x, y + 18)){
+			if (tilemap_get_at_pixel(footstep_wood, x, y + 16)){
 				footstep_sound = snd_character_footstep_wood;
 			}
 		}
 		
 		if (layer_exists("InteriorFloorTile")){
 			footstep_tile = layer_tilemap_get_id("InteriorFloorTile");
-			if (tilemap_get_at_pixel(footstep_tile, x, y + 18)){
+			if (tilemap_get_at_pixel(footstep_tile, x, y + 16)){
 				footstep_sound = snd_character_footstep_wood;
 			}
 		}
@@ -125,7 +125,7 @@ if (global.weapon_slot_standalone == -1){
 			if (layer_exists("Road")){
 				footstep_road = layer_tilemap_get_id("Road");
 				if (layer_tilemap_exists(layer_get_id("Road"), footstep_road)){
-					if (tilemap_get_at_pixel(footstep_road, x, y + 18)){
+					if (tilemap_get_at_pixel(footstep_road, x, y + 16)){
 						footstep_sound = snd_character_footstep_wood;
 					}
 				}
@@ -219,8 +219,6 @@ if (global.weapon_slot_standalone == -1){
 		}else{
 			scr_sound_play(snd_character_dash_0, false, 0.8, 1.2);
 		}
-		
-		scr_effect_vignette_flash(c_ltgray, 0.064, 0.004);
 		
 		dash_length_current = 0;
 	    dash_direction = point_direction(0, 0, xaxis, yaxis);

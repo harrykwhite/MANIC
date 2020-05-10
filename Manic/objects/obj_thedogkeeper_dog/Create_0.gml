@@ -77,12 +77,9 @@ health_flash = 0;
 
 idleanim_time = 0;
 
-target = obj_player;
+flash_time = 0;
 
-cellx = -1;
-celly = -1;
-tox = -1;
-toy = -1;
+target = obj_player;
 
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;

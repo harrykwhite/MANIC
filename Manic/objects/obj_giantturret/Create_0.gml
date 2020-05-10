@@ -14,9 +14,6 @@ attack = 0;
 attack_time = 0;
 attack_time_max = 1;
 
-line_flicker = false;
-line_flicker_time = 5;
-
 shoot_time = 120;
 shoot_burst = 0;
 shoot_dir = 0;

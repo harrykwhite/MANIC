@@ -242,7 +242,7 @@ if (screenblend_alpha > 0){
 if (tutourial) && (!iscutscene){
 	var tut_count = array_length_1d(tutourial_text);
 	
-	if (!global.game_pause) && (global.cutscene_current == -1){
+	if (!global.game_pause){
 		if (tutourial_stage_timer != -1){
 			if (tutourial_stage_timer > 0){
 				tutourial_stage_timer --;
@@ -290,13 +290,11 @@ if (tutourial) && (!iscutscene){
 			}
 		}
 		
-		tutourial_scale = approach(tutourial_scale, 1, 9);
-		tutourial_scale_draw = tutourial_scale;
-		tutourial_stage_draw = tutourial_stage;
+		tutourial_scale = approach(tutourial_scale, 1, 15);
 	}
 	
-	var tscale = tutourial_scale_draw;
-	var tstage = min(tutourial_stage_draw, tut_count - 1);
+	var tscale = tutourial_scale;
+	var tstage = min(tutourial_stage, tut_count - 1);
 	
 	draw_set_font(fnt_cambria_2);
 	draw_set_halign(fa_left);
@@ -1055,9 +1053,9 @@ if (levelcur == Level.Prologue){
 		
 		if (game_opening_intro_text_stage == 0){
 			text = "Geta presents";
-			draw_set_font(fnt_cambria_1);
+			draw_set_font(fnt_cambria_2);
 		}else{
-			draw_set_font(fnt_cambria_4);
+			draw_set_font(fnt_cambria_6);
 		}
 		
 		draw_set_alpha(game_opening_intro_alpha);

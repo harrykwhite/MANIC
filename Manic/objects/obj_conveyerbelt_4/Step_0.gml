@@ -70,32 +70,13 @@ if (death){
 		}
 		
 		scr_env_destroy(spr_conveyerbelt_4_break);
-		
-		repeat(8){
-			part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-10, 10), global.pt_fire_1, 1);
-		}
-		
-		repeat(5){
-			part_particles_create(global.ps_front, x + random_range(-6, 6), y + random_range(-10, 10), global.pt_smoke_7, 1);
-		}
-		
-		repeat(4){
-			part_particles_create(global.ps_bottom, x + random_range(-6, 6), y + random_range(-10, 10), global.pt_ash_0_perm, 1);
-		}
-		
-		// Explosion
-		scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);
-		scr_effect_screenshake(4);
-		scr_effect_freeze(9);
-		scr_effect_zoom(-0.1);
-		scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
+		scr_explode_effects(60, 10, true, true, true);
 	}else{
 		var brk = instance_create(x, y, obj_break);
 		brk.shake = 0;
 		brk.sprite_index = spr_conveyerbelt_4_break;
 		
 		instance_destroy();
-		
 		return;
 	}
 	

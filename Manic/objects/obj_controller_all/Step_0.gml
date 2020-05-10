@@ -29,7 +29,7 @@ if (!global.pers_runthrough){
 	
 	// Fullscreen
 	if (full <= 0){
-		if (keyboard_check_pressed(vk_f11) || full_autoswitch){
+		if (keyboard_check_pressed(macbuild ? vk_f1 : vk_f11) || full_autoswitch){
 			global.game_option[| Options.Fullscreen] = !global.game_option[| Options.Fullscreen];
 			full = 50;
 			full_autoswitch = false;
@@ -257,8 +257,10 @@ scr_position_view();
 scr_update_real_volumes();
 
 // Debug
-if (keyboard_check_pressed(vk_tab)){
-	debug = !debug;
+if (devmode){
+	if (keyboard_check_pressed(vk_tab)){
+		debug = !debug;
+	}
 }
 
 // Warning Prompt

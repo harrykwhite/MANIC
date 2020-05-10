@@ -10,7 +10,7 @@
     "option_mac_app_id": "MANIC",
     "option_mac_apple_sign_in": false,
     "option_mac_build_app_store": false,
-    "option_mac_copyright": "(c)2019 Geta Games",
+    "option_mac_copyright": "(c)2020 Geta Games",
     "option_mac_disable_sandbox": false,
     "option_mac_display_cursor": false,
     "option_mac_display_name": "MANIC",

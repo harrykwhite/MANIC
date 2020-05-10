@@ -41,7 +41,6 @@ if (instance_exists(target)){
 			}else{
 				var interval = 360 / 6;
 				scr_sound_play(snd_weapon_flare_1, false, 0.8, 1.2);
-				flash_time = 5;
 				
 				for(var i = 0; i < 360; i += interval){
 					fire = instance_create(x, y, obj_proj_4);

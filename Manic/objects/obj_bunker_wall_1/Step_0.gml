@@ -32,7 +32,6 @@ if (explode){
 	brk.sprite_index = spr_bunker_wall_1_remains;
 	
 	scr_effect_freeze(6);
-	scr_effect_vignette_flash(c_white, 0.3, 0.025);
 	scr_effect_screenshake(2);
 	scr_sound_play(snd_object_box_break_0, false, 0.8, 1.2);
 	

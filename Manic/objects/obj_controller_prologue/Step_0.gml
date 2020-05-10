@@ -58,6 +58,10 @@ if (!global.game_objective_complete){
 		scr_effect_flash_script(0.1, 0.1, c_white, scr_trigger_4, false);
 		audio_sound_gain(tutmusic_layer1, 0.01, 0);
 		
+		if (obj_controller_ui.tutourial){
+			obj_controller_ui.tutourial_fade = true;
+		}
+		
 		endscene_initiated = true;
 	}
 	

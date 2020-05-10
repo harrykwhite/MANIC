@@ -46,7 +46,7 @@ if (!global.game_pause){
 		
 	// Rain
 	repeat(2){
-	    part_particles_create(global.ps_front, camx + random_range(0, camw + 150), camy - 10, global.pt_rain_0, 1);
+	    part_particles_create(global.ps_front, camx + random_range(-450, camw), camy - 10, global.pt_rain_0, 1);
 	}
 
 	if (random(2) < 1){
@@ -281,7 +281,7 @@ if (room == rm_level_1_01 && factory_explode && !factory_explode_effects_created
 	scr_effect_screenshake(4);
 	scr_effect_freeze(9);
 	scr_effect_zoom(-0.1);
-	scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
+	scr_effect_vignette_flash(c_ltgray, 0.3);
 	
 	factory_explode_look_wait = 60 * 1.5;
 	factory_explode_effects_created = true;

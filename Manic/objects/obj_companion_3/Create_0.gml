@@ -97,11 +97,6 @@ heal_time = heal_time_max;
 finalboss_ymin = 774;
 finalboss_ymin_meeting = false;
 
-cellx = -1;
-celly = -1;
-tox = -1;
-toy = -1;
-
 image_xscale = scale;
 image_yscale = scale;
 

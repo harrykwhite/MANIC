@@ -459,7 +459,7 @@ draw_set_font(fnt_cambria_1);
 draw_set_valign(fa_bottom);
 
 draw_set_halign(fa_left);
-scr_text(26, display_get_gui_height() - 26, "[F11] " + (window_get_fullscreen() ? "Windowed" : "Fullscreen"), c_white);
+scr_text(26, display_get_gui_height() - 26, (macbuild ? "[F1] " : "[F11] ") + (window_get_fullscreen() ? "Windowed" : "Fullscreen"), c_white);
 
 draw_set_halign(fa_right);
 scr_text(display_get_gui_width() - 26, display_get_gui_height() - 26, gameversion + "\n(c)2020 Geta Games", c_white);
@@ -471,9 +471,3 @@ draw_set_alpha(1);
 if (selected_previous != selected && selected != -1){
 	scr_sound_play(snd_menu_button_mouse_hover, false, 0.8, 1.2);
 }
-
-// Fade
-draw_set_alpha(fade_alpha);
-draw_set_colour(c_black);
-draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
-draw_set_alpha(1);

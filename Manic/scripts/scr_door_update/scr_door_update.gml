@@ -137,7 +137,6 @@ if (death){
 	    
 		scr_effect_screenshake(2);
 		scr_effect_freeze(13);
-		scr_effect_vignette_flash(c_ltgray, 0.1, 0.01);
 		
 	    repeat(10)part_particles_create(global.ps_bottom, centerx + random_range(-7, 7), centery + 10 + random_range(-3, 3), global.pt_wood_0, 1);
 	}

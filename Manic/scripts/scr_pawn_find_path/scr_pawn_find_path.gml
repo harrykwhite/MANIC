@@ -10,7 +10,7 @@ var cw = obj_controller_gameplay.pathgrid_cell_width;
 var ch = obj_controller_gameplay.pathgrid_cell_height;
 var success = false;
 
-var yoff = 6;
+var yoff = 4;
 
 if (object_index == obj_enemy_2) || (object_index == obj_enemy_3) || (object_index == obj_enemy_4) || (object_index == obj_enemy_5) || (object_index == obj_companion_3){
 	yoff = 2;
@@ -21,25 +21,14 @@ var height = room_height div ch;
 
 var thisx = (x div cw);
 var thisy = ((y + yoff) div ch);
-var thisclear = false;
-
-//var thisxaxis = sign((x / cw) - thisx);
-//var thisyaxis = sign(((y + yoff) / ch) - thisy);
 
 thisx = clamp(thisx, 0, width - 1);
 thisy = clamp(thisy, 0, height - 1);
-thisclear = mp_grid_get_cell(obj_controller_gameplay.pathgrid, thisx, thisy) != -1;
 
-if (cellx != -1 && celly != -1){
-	if (!thisclear){
-		if (mp_grid_get_cell(obj_controller_gameplay.pathgrid, cellx, celly) != -1){
-			thisx = cellx;
-			thisy = celly;
-		}
-	}
-}
+var thisxaxis = sign((x / cw) - thisx);
+var thisyaxis = sign(((y + yoff) / ch) - thisy);
 
-/*while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, thisx, thisy) == -1){
+while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, thisx, thisy) == -1){
 	thisx += thisxaxis;
 	thisy += thisyaxis;
 	
@@ -55,11 +44,6 @@ if (cellx != -1 && celly != -1){
 		trials = 0;
 		break;
 	}
-}*/
-
-if (thisclear){
-	cellx = thisx;
-	celly = thisy;
 }
 
 thisx *= cw;
@@ -67,25 +51,14 @@ thisy *= ch;
 
 var gx = (move_x_to div cw);
 var gy = (move_y_to div ch);
-var gclear = false;
-
-//var gxaxis = sign((move_x_to / cw) - gx);
-//var gyaxis = sign((move_y_to / ch) - gy);
 
 gx = clamp(gx, 0, width - 1);
 gy = clamp(gy, 0, height - 1);
-gclear = mp_grid_get_cell(obj_controller_gameplay.pathgrid, gx, gy) != -1;
 
-if (tox != -1 && toy != -1){
-	if (!gclear){
-		if (mp_grid_get_cell(obj_controller_gameplay.pathgrid, tox, toy) != -1){
-			gx = tox;
-			gy = toy;
-		}
-	}
-}
+var gxaxis = sign((move_x_to / cw) - gx);
+var gyaxis = sign((move_y_to / ch) - gy);
 
-/*while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, gx, gy) == -1){
+while(mp_grid_get_cell(obj_controller_gameplay.pathgrid, gx, gy) == -1){
 	gx += gxaxis;
 	gy += gyaxis;
 	
@@ -101,11 +74,6 @@ if (tox != -1 && toy != -1){
 		trials = 0;
 		break;
 	}
-}*/
-
-if (gclear){
-	tox = gx;
-	toy = gy;
 }
 
 gx *= cw;

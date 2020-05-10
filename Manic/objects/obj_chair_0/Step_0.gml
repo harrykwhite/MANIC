@@ -48,5 +48,12 @@ if (hit_time > 0){
 
 // Object Death
 if (death){
-	scr_env_destroy(spr_chair_0_break);
+	if (death_effects){
+		scr_env_destroy(spr_chair_0_break);
+	}else{
+		var brk = instance_create(x, y, obj_break);
+		brk.sprite_index = spr_chair_0_break;
+		brk.shake = 0;
+		instance_destroy();
+	}
 }

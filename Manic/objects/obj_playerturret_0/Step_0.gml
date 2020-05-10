@@ -1,7 +1,3 @@
-if (flash_time > 0){
-	flash_time--;
-}
-
 if (!instance_exists(mylight)){
 	mylight = instance_create_layer(x, y, "Lights", obj_playerturret_0_light);
 }

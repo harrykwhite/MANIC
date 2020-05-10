@@ -20,7 +20,7 @@ playerhit_alpha = 0;
 playerhit_colour = c_maroon;
 
 vignette_flash_alpha = 0;
-vignette_flash_alpha_speed = 0;
+vignette_flash_alpha_speed = 0.05;
 vignette_flash_colour = c_white;
 
 arena_scale = 1;
@@ -61,11 +61,9 @@ enum TutourialStage{
 
 tutourial = false;
 tutourial_scale = 1;
-tutourial_scale_draw = tutourial_scale;
 tutourial_alpha = 1;
 tutourial_fade = false;
 tutourial_stage = 0;
-tutourial_stage_draw = tutourial_stage;
 tutourial_stage_timer = -1;
 tutourial_stage_timer_max = 60 * 8;
 tutourial_stage_moving_time = 0;

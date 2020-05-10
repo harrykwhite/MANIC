@@ -25,7 +25,8 @@ with(obj_controller_prologue){
 	
 	if (instance_exists(obj_chair_0)){
 		with(obj_chair_0){
-			fire = true;
+			death = true;
+			death_effects = false;
 		}
 	}
 	

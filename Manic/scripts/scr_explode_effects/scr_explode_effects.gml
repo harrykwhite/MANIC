@@ -31,5 +31,5 @@ scr_damage_custom(dmg, 1, size, size, 3, enemy, player, comp, true);
 scr_effect_screenshake(4);
 scr_effect_freeze(9);
 scr_effect_zoom(-0.1);
-scr_effect_vignette_flash(c_ltgray, 0.6, 0.01);
+scr_effect_vignette_flash(c_ltgray, 0.3);
 scr_sound_play(snd_weapon_explode_0, false, 0.8, 1.2);

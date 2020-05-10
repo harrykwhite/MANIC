@@ -7,7 +7,7 @@
     "option_windows_borderless": false,
     "option_windows_company_info": "Geta Games",
     "option_windows_copy_exe_to_dest": false,
-    "option_windows_copyright_info": "(c)2019 Geta Games",
+    "option_windows_copyright_info": "(c)2020 Geta Games",
     "option_windows_description_info": "",
     "option_windows_disable_sandbox": false,
     "option_windows_display_cursor": false,

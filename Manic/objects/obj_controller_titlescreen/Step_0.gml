@@ -5,6 +5,10 @@ if (room != rm_title_0){
 	instance_destroy();
 }
 
+if (obj_controller_all.warning_prompt){
+	press_break = 5;
+}
+
 #region Effects
 var camx = camera_get_view_x(view_camera[0]);
 var camy = camera_get_view_y(view_camera[0]);
@@ -307,7 +311,7 @@ if (fade){
 			}
 		}
 		
-		if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact)){
+		if (scr_input_is_pressed(iskeyboard ? InputBinding.Attack : InputBinding.Interact) && (press_break <= 0) && (!obj_controller_all.warning_prompt)){
 			var isvalid = false;
 			
 			if (!in_settings) && (!in_levelselect) && (!in_arenamode){
@@ -456,6 +460,7 @@ if (fade){
 				scr_titlescreen_options_scale_reset();
 			}
 			
+			press_break = 5;
 			buttonpressed = true;
 		}
 	}

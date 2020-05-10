@@ -113,11 +113,6 @@ companion_find_time = companion_find_time_max;
 companion_find_break_max = 60;
 companion_find_break = companion_find_break_max;
 
-cellx = -1;
-celly = -1;
-tox = -1;
-toy = -1;
-
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;
 image_yscale = scale;

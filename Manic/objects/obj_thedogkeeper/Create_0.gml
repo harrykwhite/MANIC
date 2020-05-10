@@ -101,11 +101,6 @@ target = obj_player;
 
 mid_cutscene_played = false;
 
-cellx = -1;
-celly = -1;
-tox = -1;
-toy = -1;
-
 fly[0] = noone; fly[1] = noone; fly[2] = noone;
 image_xscale = scale;
 image_yscale = scale;

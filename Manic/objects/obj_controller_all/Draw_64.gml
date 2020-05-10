@@ -55,3 +55,10 @@ if (!instance_exists(obj_controller_ui)){
 		event_user(0);
 	}
 }
+
+// Titlescreen fade
+if (room == rm_title_0){
+	with(obj_controller_titlescreen){
+		event_user(1);
+	}
+}

@@ -1,3 +1,7 @@
+if (global.game_pause){
+	return;
+}
+
 if (cutscene_prop){
 	var stopburn = object_index != obj_thescorched;
 	var stoppoison = true;
@@ -20,6 +24,10 @@ if (cutscene_prop){
 }
 
 // Light brightness
+if (flash_time > 0){
+	flash_time--;
+}
+
 if (light_brightness < 1){
 	light_brightness += 0.025;
 }else if (light_brightness > 1){
